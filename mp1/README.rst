@@ -562,12 +562,7 @@ Overview
 
 For this exercise, you will write a testbench to verify an unsigned integer add-shift multiplier for
 use in an 8-bit computer. The multiplier is described in ``mp1/multiplier/hdl/add_shift_multiplier.sv``. In
-this exercise, you will:
-
-1. Design a test bench to verify this design.
-
-2. While verifying, notice the given RTL design has bugs. Your submission must have these bugs fixed
-   for full credit.
+this exercise, you will design a test bench to verify this design. There are no RTL bugs in the multiplier.
 
 Specification
 -------------
