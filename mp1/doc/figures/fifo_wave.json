@@ -1,0 +1,18 @@
+{ signal: [
+  { name: 'clk_i', 			wave: 'P.......|....'},
+  { name: 'reset_n_i', 		wave: '101.....|....'},
+  ['valid-ready',
+   	['ctrl', 
+    	{ name: 'valid_i', 		wave: '0...1...|.0..'},
+     	{ name: 'ready_o',  	wave: 'x..1....|.01.'}
+	],
+  	{ name: 'data_i', wave: 'xxxx====|=xxx', data: [1, 2,3,4,'cap']},
+   ],
+   ['valid-yumi',
+    ['ctrl',
+  		{ name: 'valid_o', 		wave: 'xxx0.1..|....'},
+     	{ name: 'yumi_i', 		wave: '0.......|.1..'}
+    ],
+    { name: 'data_o', wave: 'xxxxx=..|..==', data: [1,2,3,4]}
+   ]
+]}

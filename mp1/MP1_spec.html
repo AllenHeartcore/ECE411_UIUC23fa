@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="generator" content="Docutils 0.15.2: http://docutils.sourceforge.net/" />
+<title>ECE 411: MP0 Documentation</title>
+<style type="text/css">
+
+/* Minimal style sheet for the HTML output of Docutils.                    */
+/*                                                                         */
+/* :Author: Günter Milde, based on html4css1.css by David Goodger          */
+/* :Id: $Id: minimal.css 8216 2018-06-05 13:37:44Z milde $               */
+/* :Copyright: © 2015 Günter Milde.                                        */
+/* :License: Released under the terms of the `2-Clause BSD license`_,      */
+/*    in short:                                                            */
+/*                                                                         */
+/*    Copying and distribution of this file, with or without modification, */
+/*    are permitted in any medium without royalty provided the copyright   */
+/*    notice and this notice are preserved.                                */
+/*                                                                         */
+/*    This file is offered as-is, without any warranty.                    */
+/*                                                                         */
+/* .. _2-Clause BSD license: http://www.spdx.org/licenses/BSD-2-Clause     */
+
+/* This CSS2.1_ stylesheet defines rules for Docutils elements without    */
+/* HTML equivalent. It is required to make the document semantic visible. */
+/*                                                                        */
+/* .. _CSS2.1: http://www.w3.org/TR/CSS2                                  */
+/* .. _validates: http://jigsaw.w3.org/css-validator/validator$link       */
+
+/* alignment of text and inline objects inside block objects*/
+.align-left   { text-align: left; }
+.align-right  { text-align: right; }
+.align-center { clear: both; text-align: center; }
+.align-top    { vertical-align: top; }
+.align-middle { vertical-align: middle; }
+.align-bottom { vertical-align: bottom; }
+
+/* titles */
+h1.title, p.subtitle {
+  text-align: center;
+}
+p.admonition-title,
+p.topic-title,
+p.sidebar-title,
+p.rubric,
+p.system-message-title {
+  font-weight: bold;
+}
+h1 + p.subtitle,
+h1 + p.section-subtitle {
+  font-size: 1.6em;
+}
+h2 + p.section-subtitle { font-size: 1.28em; }
+p.subtitle,
+p.section-subtitle,
+p.sidebar-subtitle {
+  font-weight: bold;
+  margin-top: -0.5em;
+}
+p.sidebar-title,
+p.rubric {
+  font-size: larger;
+}
+p.rubric { color: maroon; }
+a.toc-backref {
+  color: black;
+  text-decoration: none; }
+
+/* Warnings, Errors */
+div.caution p.admonition-title,
+div.attention p.admonition-title,
+div.danger p.admonition-title,
+div.error p.admonition-title,
+div.warning p.admonition-title,
+div.system-messages h1,
+div.error,
+span.problematic,
+p.system-message-title {
+  color: red;
+}
+
+/* inline literals */
+span.docutils.literal {
+  font-family: monospace;
+  white-space: pre-wrap;
+}
+/* do not wraph at hyphens and similar: */
+.literal > span.pre { white-space: nowrap; }
+
+/* Lists */
+
+/* compact and simple lists: no margin between items */
+.simple  li, .compact li,
+.simple  ul, .compact ul,
+.simple  ol, .compact ol,
+.simple > li p, .compact > li p,
+dl.simple > dd, dl.compact > dd {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Table of Contents */
+div.topic.contents { margin: 0; }
+div.topic.contents ul {
+  list-style-type: none;
+  padding-left: 1.5em;
+}
+
+/* Enumerated Lists */
+ol.arabic     { list-style: decimal }
+ol.loweralpha { list-style: lower-alpha }
+ol.upperalpha { list-style: upper-alpha }
+ol.lowerroman { list-style: lower-roman }
+ol.upperroman { list-style: upper-roman }
+
+dt span.classifier { font-style: italic }
+dt span.classifier:before {
+  font-style: normal;
+  margin: 0.5em;
+  content: ":";
+}
+
+/* Field Lists and drivatives */
+/* bold field name, content starts on the same line */
+dl.field-list > dt,
+dl.option-list > dt,
+dl.docinfo > dt,
+dl.footnote > dt,
+dl.citation > dt {
+  font-weight: bold;
+  clear: left;
+  float: left;
+  margin: 0;
+  padding: 0;
+  padding-right: 0.5em;
+}
+/* Offset for field content (corresponds to the --field-name-limit option) */
+dl.field-list > dd,
+dl.option-list > dd,
+dl.docinfo > dd {
+  margin-left:  9em; /* ca. 14 chars in the test examples */
+}
+/* start field-body on a new line after long field names */
+dl.field-list > dd > *:first-child,
+dl.option-list > dd > *:first-child
+{
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+}
+/* field names followed by a colon */
+dl.field-list > dt:after,
+dl.docinfo > dt:after {
+  content: ":";
+}
+
+/* Bibliographic Fields (docinfo) */
+pre.address { font: inherit; }
+dd.authors > p { margin: 0; }
+
+/* Option Lists */
+dl.option-list { margin-left: 40px; }
+dl.option-list > dt { font-weight: normal; }
+span.option { white-space: nowrap; }
+
+/* Footnotes and Citations  */
+dl.footnote.superscript > dd {margin-left: 1em; }
+dl.footnote.brackets > dd {margin-left: 2em; }
+dl > dt.label { font-weight: normal; }
+a.footnote-reference.brackets:before,
+dt.label > span.brackets:before { content: "["; }
+a.footnote-reference.brackets:after,
+dt.label > span.brackets:after { content: "]"; }
+a.footnote-reference.superscript,
+dl.footnote.superscript > dt.label {
+  vertical-align: super;
+  font-size: smaller;
+}
+dt.label > span.fn-backref { margin-left: 0.2em; }
+dt.label > span.fn-backref > a { font-style: italic; }
+
+/* Line Blocks */
+div.line-block { display: block; }
+div.line-block div.line-block {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 40px;
+}
+
+/* Figures, Images, and Tables */
+.figure.align-left,
+img.align-left,
+object.align-left,
+table.align-left {
+  margin-right: auto;
+}
+.figure.align-center,
+img.align-center,
+object.align-center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+table.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+.figure.align-right,
+img.align-right,
+object.align-right,
+table.align-right {
+  margin-left: auto;
+}
+/* reset inner alignment in figures and tables */
+/* div.align-left, div.align-center, div.align-right, */
+table.align-left, table.align-center, table.align-right
+{ text-align: inherit }
+
+/* Admonitions and System Messages */
+div.admonition,
+div.system-message,
+div.sidebar{
+  margin: 40px;
+  border: medium outset;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+/* Sidebar */
+div.sidebar {
+  width: 30%;
+  max-width: 26em;
+  float: right;
+  clear: right;
+}
+
+/* Text Blocks */
+blockquote,
+div.topic,
+pre.literal-block,
+pre.doctest-block,
+pre.math,
+pre.code {
+  margin-left: 1.5em;
+  margin-right: 1.5em
+}
+pre.code .ln { color: gray; } /* line numbers */
+
+/* Tables */
+table { border-collapse: collapse; }
+td, th {
+  border-style: solid;
+  border-color: silver;
+  padding: 0 1ex;
+  border-width: thin;
+}
+td > p:first-child, th > p:first-child { margin-top: 0; }
+td > p, th > p { margin-bottom: 0; }
+
+table > caption {
+  text-align: left;
+  margin-bottom: 0.25em
+}
+
+table.borderless td, table.borderless th {
+  border: 0;
+  padding: 0;
+  padding-right: 0.5em /* separate table cells */
+}
+
+</style>
+<style type="text/css">
+
+/* CSS31_ style sheet for the output of Docutils HTML writers.             */
+/* Rules for easy reading and pre-defined style variants.		   */
+/*                                                                         */
+/* :Author: Günter Milde, based on html4css1.css by David Goodger          */
+/* :Id: $Id: plain.css 8229 2018-11-20 17:47:12Z milde $               */
+/* :Copyright: © 2015 Günter Milde.                                        */
+/* :License: Released under the terms of the `2-Clause BSD license`_,      */
+/*    in short:                                                            */
+/*                                                                         */
+/*    Copying and distribution of this file, with or without modification, */
+/*    are permitted in any medium without royalty provided the copyright   */
+/*    notice and this notice are preserved.                                */
+/*    	     	      	     	 					   */
+/*    This file is offered as-is, without any warranty.                    */
+/*                                                                         */
+/* .. _2-Clause BSD license: http://www.spdx.org/licenses/BSD-2-Clause     */
+/* .. _CSS3: http://www.w3.org/TR/CSS3		        		   */
+
+
+/* Document Structure */
+/* ****************** */
+
+/* "page layout" */
+body {
+  margin: 0;
+  background-color: #dbdbdb;
+}
+div.document {
+  line-height:1.3;
+  counter-reset: table;
+  /* counter-reset: figure; */
+  /* avoid long lines --> better reading */
+  /* OTOH: lines should not be too short because of missing hyphenation, */
+  max-width: 50em;
+  padding: 1px 2%; /* 1px on top avoids grey bar above title (mozilla) */
+  margin: auto;
+  background-color: white;
+}
+
+/* Sections */
+
+/* Transitions */
+
+hr.docutils {
+  width: 80%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  clear: both;
+}
+
+/* Paragraphs               */
+/* ==========               */
+
+/* vertical space (parskip) */
+p, ol, ul, dl,
+div.line-block,
+table{
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+h1, h2, h3, h4, h5, h6,
+dl > dd {
+  margin-bottom: 0.5em;
+}
+
+/* Lists                    */
+/* ==========               */
+
+/* Definition Lists         */
+
+dl > dd > p:first-child { margin-top: 0; }
+/* :last-child is not part of CSS 2.1 (introduced in CSS 3) */
+dl > dd > p:last-child  { margin-bottom: 0; }
+
+/* lists nested in definition lists */
+/* :only-child is not part of CSS 2.1 (introduced in CSS 3) */
+dd > ul:only-child, dd > ol:only-child { padding-left: 1em; }
+
+/* Description Lists */
+/* styled like in most dictionaries, encyclopedias etc. */
+dl.description > dt {
+  font-weight: bold;
+  clear: left;
+  float: left;
+  margin: 0;
+  padding: 0;
+  padding-right: 0.5em;
+}
+
+/* Field Lists */
+
+/* example for custom field-name width */
+dl.field-list.narrow > dd {
+  margin-left: 5em;
+}
+/* run-in: start field-body on same line after long field names */
+dl.field-list.run-in > dd p {
+  display: block;
+}
+
+/* Bibliographic Fields */
+
+/* generally, bibliographic fields use special definition list dl.docinfo */
+/* but dedication and abstract are placed into "topic" divs */
+div.abstract p.topic-title {
+  text-align: center;
+}
+div.dedication {
+  margin: 2em 5em;
+  text-align: center;
+  font-style: italic;
+}
+div.dedication p.topic-title {
+  font-style: normal;
+}
+
+/* Citations */
+dl.citation dt.label {
+  font-weight: bold;
+}
+span.fn-backref {
+  font-weight: normal;
+}
+
+/* Text Blocks           */
+/* ============          */
+
+/* Literal Blocks           */
+
+/* Block Quotes             */
+
+blockquote > table,
+div.topic > table {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+blockquote p.attribution,
+div.topic p.attribution {
+  text-align: right;
+  margin-left: 20%;
+}
+
+/* Tables                   */
+/* ======                   */
+
+/* th { vertical-align: bottom; } */
+
+table tr { text-align: left; }
+
+/* "booktabs" style (no vertical lines) */
+table.booktabs {
+  border: 0;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.booktabs * {
+  border: 0;
+}
+table.booktabs th {
+  border-bottom: thin solid;
+}
+
+/* numbered tables (counter defined in div.document) */
+table.numbered > caption:before {
+  counter-increment: table;
+  content: "Table " counter(table) ": ";
+  font-weight: bold;
+}
+
+/* Explicit Markup Blocks   */
+/* ======================   */
+
+/* Footnotes and Citations  */
+/* -----------------------  */
+
+/* line on the left */
+dl.footnote {
+  padding-left: 1ex;
+  border-left: solid;
+  border-left-width: thin;
+}
+
+/* Directives               */
+/* ----------               */
+
+/* Body Elements            */
+/* ~~~~~~~~~~~~~            */
+
+/* Images and Figures */
+
+/* let content flow to the side of aligned images and figures */
+.figure.align-left,
+img.align-left,
+object.align-left {
+  display: block;
+  clear: left;
+  float: left;
+  margin-right: 1em
+}
+.figure.align-right,
+img.align-right,
+object.align-right {
+  display: block;
+  clear: right;
+  float: right;
+  margin-left: 1em
+}
+/* Stop floating sidebars, images and figures at section level 1,2,3 */
+h1, h2, h3 { clear: both; }
+
+/* Sidebar */
+
+/* Move into the margin. In a layout with fixed margins, */
+/* it can be moved into the margin completely.		 */
+div.sidebar {
+  width: 30%;
+  max-width: 26em;
+  margin-left: 1em;
+  margin-right: -5.5%;
+  background-color: #ffffee ;
+}
+
+/* Code                     */
+
+pre.code { padding: 0.7ex }
+pre.code, code { background-color: #eeeeee }
+pre.code .ln { color: gray; } /* line numbers */
+/* basic highlighting: for a complete scheme, see */
+/* http://docutils.sourceforge.net/sandbox/stylesheets/ */
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+/* Math                     */
+/* styled separately (see math.css for math-output=HTML) */
+
+/* Epigraph                 */
+/* Highlights               */
+/* Pull-Quote               */
+/* Compound Paragraph       */
+/* Container                */
+
+/* can be styled in a custom stylesheet */
+
+/* Document Header and Footer */
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller;
+}
+
+/* Inline Markup            */
+/* =============            */
+
+/* Emphasis                 */
+/*   em                     */
+/* Strong Emphasis          */
+/*   strong		    */
+/* Interpreted Text         */
+/*   span.interpreted  	    */
+/* Title Reference 	    */
+/*   cite		    */
+/* Inline Literals          */
+/* possible values: normal, nowrap, pre, pre-wrap, pre-line */
+/*   span.docutils.literal { white-space: pre-wrap; } */
+
+/* Hyperlink References     */
+a { text-decoration: none; }
+
+/* External Targets         */
+/*   span.target.external   */
+/* Internal Targets  	    */
+/*   span.target.internal   */
+/* Footnote References      */
+/*   a.footnote-reference   */
+/* Citation References      */
+/*   a.citation-reference   */
+
+</style>
+</head>
+<body>
+<div class="document" id="ece-411-mp0-documentation">
+<h1 class="title">ECE 411: MP0 Documentation</h1>
+<p class="subtitle" id="introduction-to-systemverilog-hdl-and-hvl">Introduction to SystemVerilog HDL and HVL</p>
+
+<blockquote>
+<p>The software programs described in this document are confidential and proprietary products of
+Altera Corporation and Mentor Graphics Corporation or its licensors. The terms and conditions
+governing the sale and licensing of Altera and Mentor Graphics products are set forth in written
+agreements between Altera, Mentor Graphics and its customers. No representation or other
+affirmation of fact contained in this publication shall be deemed to be a warranty or give rise
+to any liability of Altera and Mentor Graphics whatsoever. Images of software programs in use
+are assumed to be copyright and may not be reproduced.</p>
+<p>This document is for informational and instructional purposes only. The ECE 411 teaching staff
+reserves the right to make changes in specifications and other information contained in this
+publication without prior notice, and the reader should, in all cases, consult the teaching
+staff to determine whether any changes have been made.</p>
+</blockquote>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="auto-toc simple">
+<li><p><a class="reference internal" href="#introduction" id="id46"><span class="sectnum">1</span> Introduction</a></p>
+<ul class="auto-toc">
+<li><p><a class="reference internal" href="#notation" id="id47"><span class="sectnum">1.1</span> Notation</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#getting-started" id="id48"><span class="sectnum">2</span> Getting Started</a></p>
+<ul class="auto-toc">
+<li><p><a class="reference internal" href="#creating-a-github-repository" id="id49"><span class="sectnum">2.1</span> Creating a Github Repository</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#what-is-verification" id="id50"><span class="sectnum">3</span> What is Verification</a></p>
+<ul class="auto-toc">
+<li><p><a class="reference internal" href="#verification-is-hard" id="id51"><span class="sectnum">3.1</span> Verification is Hard</a></p></li>
+<li><p><a class="reference internal" href="#verification-is-necessary" id="id52"><span class="sectnum">3.2</span> Verification is Necessary</a></p></li>
+<li><p><a class="reference internal" href="#verification-is-not-validation" id="id53"><span class="sectnum">3.3</span> Verification is not Validation</a></p></li>
+<li><p><a class="reference internal" href="#how-to-do-verification" id="id54"><span class="sectnum">3.4</span> How To Do Verification</a></p></li>
+<li><p><a class="reference internal" href="#a-simple-verification-example" id="id55"><span class="sectnum">3.5</span> A Simple Verification Example</a></p></li>
+<li><p><a class="reference internal" href="#verifying-a-sequential-circuit" id="id56"><span class="sectnum">3.6</span> Verifying a Sequential Circuit</a></p>
+<ul class="auto-toc">
+<li><p><a class="reference internal" href="#coverage-points" id="id57"><span class="sectnum">3.6.1</span> Coverage Points</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#testbench-components" id="id58"><span class="sectnum">3.7</span> Testbench Components</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#verifying-a-multiplier" id="id59"><span class="sectnum">4</span> Verifying a Multiplier</a></p>
+<ul class="auto-toc">
+<li><p><a class="reference internal" href="#overview" id="id60"><span class="sectnum">4.1</span> Overview</a></p></li>
+<li><p><a class="reference internal" href="#specification" id="id61"><span class="sectnum">4.2</span> Specification</a></p></li>
+<li><p><a class="reference internal" href="#coverages" id="id62"><span class="sectnum">4.3</span> Coverages</a></p></li>
+<li><p><a class="reference internal" href="#error-reporting" id="id63"><span class="sectnum">4.4</span> Error Reporting</a></p></li>
+<li><p><a class="reference internal" href="#clocking-blocks" id="id64"><span class="sectnum">4.5</span> Clocking Blocks</a></p></li>
+<li><p><a class="reference internal" href="#driving-signals" id="id65"><span class="sectnum">4.6</span> Driving Signals</a></p></li>
+<li><p><a class="reference internal" href="#sampling-signals" id="id66"><span class="sectnum">4.7</span> Sampling Signals</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#verifying-a-fifo" id="id67"><span class="sectnum">5</span> Verifying a FIFO</a></p>
+<ul class="auto-toc">
+<li><p><a class="reference internal" href="#id33" id="id68"><span class="sectnum">5.1</span> Overview</a></p></li>
+<li><p><a class="reference internal" href="#id36" id="id69"><span class="sectnum">5.2</span> Specification</a></p></li>
+<li><p><a class="reference internal" href="#id37" id="id70"><span class="sectnum">5.3</span> Coverages</a></p></li>
+<li><p><a class="reference internal" href="#id38" id="id71"><span class="sectnum">5.4</span> Error Reporting</a></p></li>
+<li><p><a class="reference internal" href="#id39" id="id72"><span class="sectnum">5.5</span> Driving Signals</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#verifying-a-cam" id="id73"><span class="sectnum">6</span> Verifying a CAM</a></p>
+<ul class="auto-toc">
+<li><p><a class="reference internal" href="#id40" id="id74"><span class="sectnum">6.1</span> Overview</a></p></li>
+<li><p><a class="reference internal" href="#id41" id="id75"><span class="sectnum">6.2</span> Specification</a></p></li>
+<li><p><a class="reference internal" href="#id42" id="id76"><span class="sectnum">6.3</span> Coverages</a></p></li>
+<li><p><a class="reference internal" href="#id43" id="id77"><span class="sectnum">6.4</span> Error Reporting</a></p></li>
+<li><p><a class="reference internal" href="#id44" id="id78"><span class="sectnum">6.5</span> Driving Signals</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#designing-a-serializer" id="id79"><span class="sectnum">7</span> Designing a Serializer</a></p></li>
+<li><p><a class="reference internal" href="#modelsim" id="id80"><span class="sectnum">8</span> ModelSim</a></p></li>
+<li><p><a class="reference internal" href="#submission" id="id81"><span class="sectnum">9</span> Submission</a></p></li>
+<li><p><a class="reference internal" href="#appendix-a-div5-dfa" id="id82"><span class="sectnum">10</span> Appendix A: DIV5 DFA</a></p></li>
+<li><p><a class="reference internal" href="#notes" id="id83"><span class="sectnum">11</span> Notes</a></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<!-- Aliases for appendix references -->
+<div class="section" id="introduction">
+<h1><a class="toc-backref" href="#id46"><span class="sectnum">1</span> Introduction</a></h1>
+<p>Welcome to the first ECE 411 Machine Problem! In this MP you will verify and debug designs for
+several hardware components. Additionally, you will design a hardware component using test-driven
+design methodology. This document contains the design specifications required to complete these
+tasks.</p>
+<p>The primary objective of these exercises is to introduce you to hardware verification methodologies
+using SystemVerilog which you will use for the more complicated hardware designs found in following
+MPs. Additionally, you will learn how to verify and/or design the following hardware components:</p>
+<ul class="simple">
+<li><p>An eight-bit multiplier</p></li>
+<li><p>A synchronous FIFO</p></li>
+<li><p>A content addressable memory (CAM)</p></li>
+<li><p>A parallel input, serial output sequencer</p></li>
+</ul>
+<p>The remainder of this section describes some notation that you will encounter throughout this
+tutorial. Most of this notation should not be new to you; however, it will be worthwhile for you to
+reacquaint yourself with it before proceeding to the tutorial itself. The following sections will
+take you through the process of verifying and designing several hardware modules. The <a class="reference internal" href="#modelsim">ModelSim</a>
+section covers the simulation of the design using ModelSim. Finally, the <a class="reference internal" href="#submission">Submission</a> section
+contains the items you will need to submit for a grade. Additional useful information is included in
+the appendices.</p>
+<p>As a final note, <strong>read each and every word of the tutorial</strong> and follow it very carefully. Careful
+attention to how signal values are assigned and sampled is key to passing the verification
+assignments. If you do decide to work on the MP before finishing the documentation, make sure to see
+Sections <a class="reference internal" href="#modelsim">ModelSim</a> and <a class="reference internal" href="#submission">Submission</a> for instructions on running the simulation software and
+submitting your MP for grading, respectively.</p>
+<div class="section" id="notation">
+<h2><a class="toc-backref" href="#id47"><span class="sectnum">1.1</span> Notation</a></h2>
+<p>The numbering and notation conventions used in this tutorial are described below:</p>
+<ul>
+<li><p>Indexing into arrays is based on the dimensions of the array. For example, in
+<span class="docutils literal">logic [7:0] arr1</span>, 'bit 0' refers to the <em>rightmost</em> bit of <span class="docutils literal">arr1</span>, while in
+<span class="docutils literal">logic [0:7] arr2</span>, 'bit 0' refers to the <em>leftmost</em> bit of <span class="docutils literal">arr2</span>. <a class="footnote-reference brackets" href="#id2" id="id1">1</a></p></li>
+<li><p>Numbers beginning with <span class="docutils literal">0x</span> are hexadecimal.</p></li>
+<li><p>For RTL descriptions, <span class="docutils literal">pattern[x:y]</span> identifies a bit field consisting of bits <span class="docutils literal">x</span> through
+<span class="docutils literal">y</span> of a larger binary pattern.  For example, <span class="docutils literal">X[15:12]</span> identifies a field consisting of bits
+15, 14, 13, and 12 from the value <span class="docutils literal">X</span>.</p></li>
+<li><p>Commands to be typed on the terminal are shown as follows:</p>
+<pre class="literal-block">$ command</pre>
+<p>Do not type the dollar sign; this represents the prompt displayed by the shell (e.g.,
+<span class="docutils literal"><span class="pre">[netid&#64;linux-a2</span> ~]$</span>).</p>
+</li>
+<li><p>Filenames are shown in <span class="docutils literal">fixed_width</span>, referenced from your root 411 repository (e.g.
+<span class="docutils literal">mp0/cam/run.do</span>) and will end in either an extension, or a directory marker (<span class="docutils literal">/</span>).</p></li>
+<li><p>SystemVerilog keywords and signal identifiers are shown in <span class="docutils literal">fixed_width</span>.</p>
+<ul class="simple">
+<li><p>Longer code segments will be formatted as a block, appearing with a darker background and syntax
+highlighting.</p></li>
+</ul>
+</li>
+<li><p>Signal identifiers are written in 'snake case' (lower case with underscores separating words).
+Additionally identifiers may include one or more suffix:</p>
+<ul class="simple">
+<li><p>port input signals are suffixed with <span class="docutils literal">_i</span>;</p></li>
+<li><p>port output signals are suffixed with <span class="docutils literal">_o</span>;</p></li>
+<li><p>port inout signals are suffixed with <span class="docutils literal">_io</span>;</p></li>
+<li><p>signals which are synthesized into registers are suffixed with <span class="docutils literal">_r</span>;</p></li>
+<li><p>signals which are used to wire components within a module are suffixed with <span class="docutils literal">_w</span>;</p></li>
+<li><p>signals which are 'active low' are suffixed with <span class="docutils literal">_n</span>;</p></li>
+<li><p>SystemVerilog <span class="docutils literal">interface</span> signals are suffixed appropriately to show the driver of the signal
+and, if there is only one consumer, the consumer (e.g. if the 'master' port is the driver and
+the 'slave' port is the consumer, then the signal will use the suffix <span class="docutils literal">_m_s</span>);</p></li>
+<li><p>a <span class="docutils literal">parameter</span> identifier is suffixed with <span class="docutils literal">_p</span>;</p></li>
+<li><p>a <span class="docutils literal">localparameter</span> identifier is suffixed with <span class="docutils literal">_lp</span>; and</p></li>
+<li><p>signals may concatenate multiple suffixes as necissary.</p></li>
+</ul>
+</li>
+<li><p>All SystemVerilog <span class="docutils literal">function</span>, <span class="docutils literal">task</span>, <span class="docutils literal">module</span>, <span class="docutils literal">interface</span>, <span class="docutils literal">modport</span>, and <span class="docutils literal">class</span>
+identifiers use either 'snake case' of 'camel case'.</p></li>
+<li><p>SystemVerilog macro identifiers are written in <span class="docutils literal">UPPER_CASE</span> and do not have a prefixed
+underscore.</p></li>
+<li><p>Actions to take in the GUI are shown in <strong>bold</strong>.</p></li>
+</ul>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>If these notations are new to you, see IEEE Standard 1800-2017 &quot;IEEE Standard for
+SystemVerilog&quot; section 7.4 &quot;Packed and Unpacked Arrays&quot;:
+<a class="reference external" href="https://ieeexplore.ieee.org/document/8299595">https://ieeexplore.ieee.org/document/8299595</a></p>
+</dd>
+</dl>
+<!-- Perhaps this document should be downloaded and published on the course webpage -->
+</div>
+</div>
+<div class="section" id="getting-started">
+<h1><a class="toc-backref" href="#id48"><span class="sectnum">2</span> Getting Started</a></h1>
+<div class="section" id="creating-a-github-repository">
+<h2><a class="toc-backref" href="#id49"><span class="sectnum">2.1</span> Creating a Github Repository</a></h2>
+<p>To create your git repository, go to <a class="reference external" href="https://edu.cs.illinois.edu/create-ghe-repo/ece411-fa19/">https://edu.cs.illinois.edu/create-ghe-repo/ece411-fa19/</a>.</p>
+<p>Next, create a directory to contain your ECE 411 files (this will include subdirectories for each
+MP, so chose a name such as <span class="docutils literal">ece411</span>) and execute the following commands (replacing NETID with
+your netid):</p>
+<pre class="literal-block">$ git init
+$ git remote add origin git&#64;github-dev.cs.illinois.edu:ece411-fa19/NETID.git
+$ git remote add release git&#64;github-dev.cs.illinois.edu:ece411-fa19/_release.git
+$ git fetch release
+$ git merge --allow-unrelated-histories release/mp0 -m &quot;Merging provided MP0 files&quot;
+$ git push --set-upstream origin master</pre>
+<p>Alternatively, you may download the <span class="docutils literal">_release/mp0/</span> directory from Github and copy the files
+manually to your repository.</p>
+</div>
+</div>
+<div class="section" id="what-is-verification">
+<h1><a class="toc-backref" href="#id50"><span class="sectnum">3</span> What is Verification</a></h1>
+<p>When designing a digital circuit in a hardware descriptor language (HDL), we are attempting to
+describe a hardware component whose behavior will comply with a high level description of an
+intended behavior (a specification). Hardware verification is a process which attempts to ensure
+that a design's behavior matches a specified behavior.</p>
+<div class="section" id="verification-is-hard">
+<h2><a class="toc-backref" href="#id51"><span class="sectnum">3.1</span> Verification is Hard</a></h2>
+<p>Digital hardware verification is a hard <a class="footnote-reference brackets" href="#id5" id="id3">2</a> problem. For example, consider the collection of
+Boolean functions 𝐵ₙ = {𝑓 | 𝑓 : {0,1}ⁿ → {0,1}}.</p>
+<!-- The above equation would be better rendered on a separate line using LaTeX syntax. GitHub does
+not support this though, so unicode literals are used instead.  The same goes for the math in the
+following paragraphs. -->
+<p>These are the functions with 𝑛 binary inputs and a binary output.</p>
+<p>How would you go about writing a program which takes as input an element of 𝐵ₙ (the specification),
+and a SystemVerilog description of a digital circuit (the design), and outputs whether or not the
+design matches the specification? Can you come up with something significantly better than iterating
+through all 2ⁿ possible function inputs and ensuring that the output of the design matches the
+output of the specification? <a class="footnote-reference brackets" href="#id6" id="id4">3</a></p>
+<dl class="footnote brackets">
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dd><p>coNP-Complete</p>
+</dd>
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
+<dd><p>If you can, please give ECE 411 a shout out as you claim your
+<a class="reference external" href="http://www.claymath.org/millennium-problems/p-vs-np-problem">$1M prize</a></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="verification-is-necessary">
+<h2><a class="toc-backref" href="#id52"><span class="sectnum">3.2</span> Verification is Necessary</a></h2>
+<p>Since verification is both hard and an integral part of hardware development, it figures that it
+must be important. Visit <a class="reference external" href="https://www.edaplayground.com/">EDA Playground</a> (a digital hardware design and verification simulator)
+and <a class="reference external" href="https://www.jsfiddle.net/">JSFiddle</a> (a front-end web development equivalent of EDA Playground) and you'll see that while
+EDA Playground by default gives as much screenspace to testbench development as design development,
+JSFiddle gives zero screenspace to debugging.</p>
+<p>We have all experienced buggy software where developers clearly prioritized getting a product to
+market over getting a product to work correctly (<em>cough</em> EDA tools <em>cough</em>). What makes hardware so
+different from most software in that thorough verification is considered necessary in industry?</p>
+<p>There are numerous reasons, including the following from Kropf <a class="footnote-reference brackets" href="#id8" id="id7">4</a>:</p>
+<ul class="simple">
+<li><p>fabrication costs are much higher for hardware than for software;</p></li>
+<li><p>hardware bug fixes after delivery to customers are almost impossible;</p></li>
+<li><p>quality expectations are usually higher for hardware than for software;</p></li>
+<li><p>time to market severely affects potential revenue.</p></li>
+</ul>
+<p>In this excerpt, &quot;quality expectations are usually higher&quot; often means &quot;human safety is at risk if
+this hardware device does not work properly&quot;.</p>
+<p>For you, an ECE 411 student, verification is also important because your GPA will depend on
+successfully verifying digital designs.</p>
+<!-- TODO something about job availability for verification engineers -->
+<dl class="footnote brackets">
+<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id7">4</a></span></dt>
+<dd><ol class="upperalpha simple" start="20">
+<li><p>Kropf, <em>Introduction to Formal Hardware Verification</em>, Springer, 1999, ISBN: 3-540-65445-3.</p></li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="verification-is-not-validation">
+<h2><a class="toc-backref" href="#id53"><span class="sectnum">3.3</span> Verification is not Validation</a></h2>
+<p>A similar but different process to verification is <em>validation</em>. Whereas verification is a process
+by which we ensure that a design matches <strong>its</strong> specification, validation is a process by which we
+ensure that a design matches <strong>a</strong> specification.</p>
+<p>Consider the case where a truck is designed to meet a specification of being able to haul twenty
+tons of material. The truck designers at ACME Truck Co. must <em>verify</em> that their trucks can haul
+twenty tons. Likewise, ACE Hauling Co. requires a truck which can haul twenty-two tons. Thus the
+engineers and technicians at ACE Hauling Co. must <em>validate</em> that the ACME Truck Co.'s truck can
+haul twenty-two tons.</p>
+</div>
+<div class="section" id="how-to-do-verification">
+<h2><a class="toc-backref" href="#id54"><span class="sectnum">3.4</span> How To Do Verification</a></h2>
+<p>There are three central tasks to verification <a class="footnote-reference brackets" href="#id12" id="id9">5</a>:</p>
+<ol class="arabic simple">
+<li><p>Stimulate a design by providing sequences of stimuli;</p></li>
+<li><p>Check that the design outputs results in accordance with the specification;</p></li>
+<li><p>Measure how much of a design's <em>execution state space</em> <a class="footnote-reference brackets" href="#id13" id="id10">6</a> has been stimulated and checked.</p></li>
+</ol>
+<p>The way that you will complete these three tasks in this MP is by using <em>dynamic simulation</em> <a class="footnote-reference brackets" href="#id14" id="id11">7</a>.
+In this MP you will use specifications to generate (sometimes random) sequences of input stimuli,
+create software checkers which confirm that the output of the <em>design under test</em> (DUT) conform to
+the specification, and &quot;scoreboard&quot; DUT accuracy and coverage.</p>
+<dl class="footnote brackets">
+<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id9">5</a></span></dt>
+<dd><p>E. Seligman et al, <em>Formal Verification: An Essential Toolkit for Modern VLSI Design</em>,
+Elsevier, ISBN: 978-0-12-800727-3, pg.23,
+<a class="reference external" href="http://elibrary.nusamandiri.ac.id/ebook/2015_Formal_Verification_An_Essential_Toolkit_for_Modern_VLSI_Design.pdf">http://elibrary.nusamandiri.ac.id/ebook/2015_Formal_Verification_An_Essential_Toolkit_for_Modern_VLSI_Design.pdf</a></p>
+</dd>
+<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id10">6</a></span></dt>
+<dd><p>The full space of all RTL state and input values.</p>
+</dd>
+<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id11">7</a></span></dt>
+<dd><p>In <em>dynamic simulation</em>, the design is simulated in software using cycle or gate level
+simulators (e.g. ModelSim), stimuli consist of sequences of input signals to the device under
+test, and outputs are verified against the specification using assertions. This is in
+contrast to <em>formal verification</em> techniques which use mathematical representations of the
+design, along with assumptions about possible inputs and states, to constrain the test space
+to a subset of the execution state space which is actually reachable by the design (and
+assumptions). In effect, formal verification techniques partition the execution state space
+into <em>reachable space</em> and <em>unreachable space</em>, often drastically reducing the size of the
+space needed to be tested, and then use automated proofing techniques to prove properties
+about the circuit.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="a-simple-verification-example">
+<h2><a class="toc-backref" href="#id55"><span class="sectnum">3.5</span> A Simple Verification Example</a></h2>
+<p>To demonstrate dynamic simulation we can use the simple example of a purely combinational circuit. <a class="footnote-reference brackets" href="#id21" id="id15">8</a></p>
+<p>Our task is to verify that <span class="docutils literal">module purefunction</span>, shown in <a class="reference internal" href="#listing-1">Listing 1</a> (the design) actually
+implements the truth-table its description comment says it does. The truth-table is an example of a
+specification which describes the intended behavior of the circuit. <a class="footnote-reference brackets" href="#id22" id="id16">9</a></p>
+<p id="listing-1">Listing 1: A purely combinational design</p>
+<pre class="code verilog literal-block"><code><span class="ln"> 1 </span><span class="comment single">// Module implements the following truth-table:
+</span><span class="ln"> 2 </span><span class="comment single"></span><span class="comment multiline">/*
+</span><span class="ln"> 3 </span><span class="comment multiline">    abc || x
+</span><span class="ln"> 4 </span><span class="comment multiline">    000 || 0
+</span><span class="ln"> 5 </span><span class="comment multiline">    001 || 0
+</span><span class="ln"> 6 </span><span class="comment multiline">    010 || 1
+</span><span class="ln"> 7 </span><span class="comment multiline">    011 || 1
+</span><span class="ln"> 8 </span><span class="comment multiline">    100 || 0
+</span><span class="ln"> 9 </span><span class="comment multiline">    101 || 1
+</span><span class="ln">10 </span><span class="comment multiline">    110 || 0
+</span><span class="ln">11 </span><span class="comment multiline">    111 || 1
+</span><span class="ln">12 </span><span class="comment multiline"> */</span>
+<span class="ln">13 </span><span class="keyword">module</span> <span class="name">purefunction</span>
+<span class="ln">14 </span><span class="punctuation">(</span>
+<span class="ln">15 </span>    <span class="keyword">input</span> <span class="keyword type">logic</span> <span class="name">a_i</span><span class="punctuation">,</span>
+<span class="ln">16 </span>    <span class="keyword">input</span> <span class="keyword type">logic</span> <span class="name">b_i</span><span class="punctuation">,</span>
+<span class="ln">17 </span>    <span class="keyword">input</span> <span class="keyword type">logic</span> <span class="name">c_i</span><span class="punctuation">,</span>
+<span class="ln">18 </span>    <span class="keyword">output</span> <span class="keyword type">logic</span> <span class="name">x_o</span>
+<span class="ln">19 </span><span class="punctuation">);</span>
+<span class="ln">20 </span>
+<span class="ln">21 </span><span class="keyword">assign</span> <span class="name">x_o</span> <span class="operator">=</span> <span class="name">a_i</span> <span class="operator">^</span> <span class="name">b_i</span> <span class="operator">^</span> <span class="punctuation">(</span><span class="name">a_i</span> <span class="operator">&amp;</span> <span class="name">c_i</span><span class="punctuation">);</span>
+<span class="ln">22 </span>
+<span class="ln">23 </span><span class="keyword">endmodule</span> <span class="operator">:</span> <span class="name">purefuction</span></code></pre>
+<p>In a sense, combinational circuits are the simplest of digital circuits: they have no initial or
+intermediate state, the size of the input and the output are fixed, and the &quot;runtime&quot; is constant.
+To verify the design, we can simply <a class="footnote-reference brackets" href="#id23" id="id17">10</a> run though all possible inputs and verify that the DUT
+generates the proper outputs:</p>
+<p id="listing-2">Listing 2: Generating Stimulus <a class="footnote-reference brackets" href="#id24" id="id18">11</a></p>
+<pre class="code verilog literal-block"><code><span class="ln">1 </span><span class="keyword">initial</span> <span class="keyword">begin</span>
+<span class="ln">2 </span>    <span class="keyword">for</span> <span class="punctuation">(</span><span class="keyword type">int</span> <span class="name">i</span> <span class="operator">=</span> <span class="literal number hex">0</span><span class="punctuation">;</span> <span class="name">i</span> <span class="operator">&lt;</span> <span class="literal number hex">4</span><span class="literal number bin">'b1000</span><span class="punctuation">;</span> <span class="operator">++</span><span class="name">i</span><span class="punctuation">)</span> <span class="keyword">begin</span>
+<span class="ln">3 </span>        <span class="punctuation">{</span><span class="name">a_i</span><span class="punctuation">,</span> <span class="name">b_i</span><span class="punctuation">,</span> <span class="name">c_i</span><span class="punctuation">}</span> <span class="operator">=</span> <span class="name">i</span><span class="punctuation">[</span><span class="literal number hex">2</span><span class="operator">:</span><span class="literal number hex">0</span><span class="punctuation">];</span>
+<span class="ln">4 </span>        <span class="punctuation">#</span><span class="literal number hex">1</span><span class="punctuation">;</span>
+<span class="ln">5 </span>    <span class="keyword">end</span>
+<span class="ln">6 </span><span class="keyword">end</span></code></pre>
+<p>Now that we've managed to generate all possible inputs, we must create a model of the specified
+behavior:</p>
+<p id="listing-3">Listing 3: Modeling the Proper Behavior <a class="footnote-reference brackets" href="#id25" id="id19">12</a></p>
+<pre class="code verilog literal-block"><code><span class="ln"> 1 </span><span class="keyword">function</span> <span class="keyword type">logic</span> <span class="name">spec_output</span><span class="punctuation">(</span><span class="keyword type">logic</span> <span class="name">a</span><span class="punctuation">,</span> <span class="keyword type">logic</span> <span class="name">b</span><span class="punctuation">,</span> <span class="keyword type">logic</span> <span class="name">c</span><span class="punctuation">);</span>
+<span class="ln"> 2 </span>    <span class="keyword">case</span> <span class="punctuation">({</span><span class="name">a</span><span class="punctuation">,</span> <span class="name">b</span><span class="punctuation">,</span> <span class="name">c</span><span class="punctuation">})</span>
+<span class="ln"> 3 </span>        <span class="literal number hex">3</span><span class="literal number bin">'b000</span><span class="operator">:</span> <span class="keyword">return</span> <span class="literal number hex">0</span><span class="punctuation">;</span>
+<span class="ln"> 4 </span>        <span class="literal number hex">3</span><span class="literal number bin">'b001</span><span class="operator">:</span> <span class="keyword">return</span> <span class="literal number hex">0</span><span class="punctuation">;</span>
+<span class="ln"> 5 </span>        <span class="literal number hex">3</span><span class="literal number bin">'b011</span><span class="operator">:</span> <span class="keyword">return</span> <span class="literal number hex">1</span><span class="punctuation">;</span>
+<span class="ln"> 6 </span>        <span class="literal number hex">3</span><span class="literal number bin">'b010</span><span class="operator">:</span> <span class="keyword">return</span> <span class="literal number hex">1</span><span class="punctuation">;</span>
+<span class="ln"> 7 </span>        <span class="literal number hex">3</span><span class="literal number bin">'b110</span><span class="operator">:</span> <span class="keyword">return</span> <span class="literal number hex">0</span><span class="punctuation">;</span>
+<span class="ln"> 8 </span>        <span class="literal number hex">3</span><span class="literal number bin">'b100</span><span class="operator">:</span> <span class="keyword">return</span> <span class="literal number hex">1</span><span class="punctuation">;</span>
+<span class="ln"> 9 </span>        <span class="literal number hex">3</span><span class="literal number bin">'b101</span><span class="operator">:</span> <span class="keyword">return</span> <span class="literal number hex">0</span><span class="punctuation">;</span>
+<span class="ln">10 </span>        <span class="literal number hex">3</span><span class="literal number bin">'b111</span><span class="operator">:</span> <span class="keyword">return</span> <span class="literal number hex">1</span><span class="punctuation">;</span>
+<span class="ln">11 </span>        <span class="keyword">default</span><span class="operator">:</span> <span class="name">$error</span><span class="punctuation">(</span><span class="literal string">&quot;Invalid input to spec_output function&quot;</span><span class="punctuation">);</span>
+<span class="ln">12 </span>    <span class="keyword">endcase</span>
+<span class="ln">13 </span><span class="keyword">endfunction</span></code></pre>
+<p>Here we directly implement the specified truth table in something which resembles a MUX. In the case
+of combinational logic with more inputs, we could instead load the truth table into a memory indexed
+by the inputs as our specification model.</p>
+<p>Finally, we can rewrite the for loop which generates the input stimuli to check that the output of
+the DUT matches the output of the model:</p>
+<p id="listing-4">Listing 4: Checking Outputs <a class="footnote-reference brackets" href="#id26" id="id20">13</a></p>
+<pre class="code verilog literal-block"><code><span class="ln"> 1 </span><span class="keyword">initial</span> <span class="keyword">begin</span>
+<span class="ln"> 2 </span>    <span class="keyword">for</span> <span class="punctuation">(</span><span class="keyword type">int</span> <span class="name">i</span> <span class="operator">=</span> <span class="literal number hex">0</span><span class="punctuation">;</span> <span class="name">i</span> <span class="operator">&lt;=</span> <span class="literal number hex">4</span><span class="literal number bin">'b1000</span><span class="punctuation">;</span> <span class="operator">++</span><span class="name">i</span><span class="punctuation">)</span> <span class="keyword">begin</span>
+<span class="ln"> 3 </span>        <span class="punctuation">{</span><span class="name">a_i</span><span class="punctuation">,</span> <span class="name">b_i</span><span class="punctuation">,</span> <span class="name">c_i</span><span class="punctuation">}</span> <span class="operator">=</span> <span class="name">i</span><span class="punctuation">[</span><span class="literal number hex">2</span><span class="operator">:</span><span class="literal number hex">0</span><span class="punctuation">];</span>
+<span class="ln"> 4 </span>        <span class="punctuation">#</span><span class="literal number hex">1</span><span class="punctuation">;</span>
+<span class="ln"> 5 </span>        <span class="name label">output_equiv:</span> <span class="name">assert</span> <span class="punctuation">(</span><span class="name">x_o</span> <span class="operator">==</span> <span class="name">spec_output</span><span class="punctuation">(</span><span class="name">a_i</span><span class="punctuation">,</span> <span class="name">b_i</span><span class="punctuation">,</span> <span class="name">c_i</span><span class="punctuation">))</span>
+<span class="ln"> 6 </span>                      <span class="keyword">else</span> <span class="name">$error</span><span class="punctuation">(</span><span class="literal string">&quot;{a,b,c}=%b, dut output: %b spec output: %b&quot;</span><span class="punctuation">,</span>
+<span class="ln"> 7 </span>                                  <span class="punctuation">{</span><span class="name">a_i</span><span class="punctuation">,</span><span class="name">b_i</span><span class="punctuation">,</span><span class="name">c_i</span><span class="punctuation">},</span><span class="name">x_o</span><span class="punctuation">,</span><span class="name">spec_output</span><span class="punctuation">(</span><span class="name">a_i</span><span class="punctuation">,</span><span class="name">b_i</span><span class="punctuation">,</span><span class="name">c_i</span><span class="punctuation">));</span>
+<span class="ln"> 8 </span>    <span class="keyword">end</span>
+<span class="ln"> 9 </span>    <span class="name builtin">$finish</span><span class="punctuation">;</span>
+<span class="ln">10 </span><span class="keyword">end</span></code></pre>
+<p>Putting this all together, we can write our testbench to verify <span class="docutils literal">module purefunction</span>:</p>
+<pre class="code verilog literal-block"><code><span class="ln"> 1 </span><span class="keyword">function</span> <span class="keyword type">logic</span> <span class="name">spec_output</span><span class="punctuation">(</span><span class="keyword type">logic</span> <span class="name">a</span><span class="punctuation">,</span> <span class="keyword type">logic</span> <span class="name">b</span><span class="punctuation">,</span> <span class="keyword type">logic</span> <span class="name">c</span><span class="punctuation">);</span>
+<span class="ln"> 2 </span>    <span class="keyword">case</span> <span class="punctuation">({</span><span class="name">a</span><span class="punctuation">,</span> <span class="name">b</span><span class="punctuation">,</span> <span class="name">c</span><span class="punctuation">})</span>
+<span class="ln"> 3 </span>        <span class="literal number hex">3</span><span class="literal number bin">'b000</span><span class="operator">:</span> <span class="keyword">return</span> <span class="literal number hex">0</span><span class="punctuation">;</span>
+<span class="ln"> 4 </span>        <span class="literal number hex">3</span><span class="literal number bin">'b001</span><span class="operator">:</span> <span class="keyword">return</span> <span class="literal number hex">0</span><span class="punctuation">;</span>
+<span class="ln"> 5 </span>        <span class="literal number hex">3</span><span class="literal number bin">'b011</span><span class="operator">:</span> <span class="keyword">return</span> <span class="literal number hex">1</span><span class="punctuation">;</span>
+<span class="ln"> 6 </span>        <span class="literal number hex">3</span><span class="literal number bin">'b010</span><span class="operator">:</span> <span class="keyword">return</span> <span class="literal number hex">1</span><span class="punctuation">;</span>
+<span class="ln"> 7 </span>        <span class="literal number hex">3</span><span class="literal number bin">'b110</span><span class="operator">:</span> <span class="keyword">return</span> <span class="literal number hex">0</span><span class="punctuation">;</span>
+<span class="ln"> 8 </span>        <span class="literal number hex">3</span><span class="literal number bin">'b100</span><span class="operator">:</span> <span class="keyword">return</span> <span class="literal number hex">1</span><span class="punctuation">;</span>
+<span class="ln"> 9 </span>        <span class="literal number hex">3</span><span class="literal number bin">'b101</span><span class="operator">:</span> <span class="keyword">return</span> <span class="literal number hex">0</span><span class="punctuation">;</span>
+<span class="ln">10 </span>        <span class="literal number hex">3</span><span class="literal number bin">'b111</span><span class="operator">:</span> <span class="keyword">return</span> <span class="literal number hex">1</span><span class="punctuation">;</span>
+<span class="ln">11 </span>        <span class="keyword">default</span><span class="operator">:</span> <span class="name">$error</span><span class="punctuation">(</span><span class="literal string">&quot;Invalid input to spec_output function&quot;</span><span class="punctuation">);</span>
+<span class="ln">12 </span>    <span class="keyword">endcase</span>
+<span class="ln">13 </span><span class="keyword">endfunction</span>
+<span class="ln">14 </span>
+<span class="ln">15 </span><span class="keyword">module</span> <span class="name">purefunction_tb</span><span class="punctuation">;</span>
+<span class="ln">16 </span>    <span class="name">timeunit</span> <span class="literal number hex">1</span><span class="name">ns</span><span class="punctuation">;</span>
+<span class="ln">17 </span>    <span class="name">timeprecision</span> <span class="literal number hex">1</span><span class="name">ns</span><span class="punctuation">;</span>
+<span class="ln">18 </span>
+<span class="ln">19 </span>    <span class="keyword type">logic</span> <span class="name">a_i</span><span class="punctuation">,</span> <span class="name">b_i</span><span class="punctuation">,</span> <span class="name">c_i</span><span class="punctuation">,</span> <span class="name">x_o</span><span class="punctuation">;</span>
+<span class="ln">20 </span>
+<span class="ln">21 </span>    <span class="name">purefunction</span> <span class="name">dut</span><span class="punctuation">(.</span><span class="operator">*</span><span class="punctuation">);</span>
+<span class="ln">22 </span>
+<span class="ln">23 </span>    <span class="keyword">initial</span> <span class="keyword">begin</span>
+<span class="ln">24 </span>        <span class="name">reset</span> <span class="operator">=</span> <span class="literal number">'1</span><span class="punctuation">;</span>
+<span class="ln">25 </span>        <span class="comment single">// Generate sequence of inputs
+</span><span class="ln">26 </span><span class="comment single"></span>        <span class="keyword">for</span> <span class="punctuation">(</span><span class="keyword type">int</span> <span class="name">i</span> <span class="operator">=</span> <span class="literal number hex">0</span><span class="punctuation">;</span> <span class="name">i</span> <span class="operator">&lt;=</span> <span class="literal number hex">4</span><span class="literal number bin">'b1000</span><span class="punctuation">;</span> <span class="operator">++</span><span class="name">i</span><span class="punctuation">)</span> <span class="keyword">begin</span>
+<span class="ln">27 </span>            <span class="comment single">// Set input values to the dut, and let combinational logic settle
+</span><span class="ln">28 </span><span class="comment single"></span>            <span class="punctuation">{</span><span class="name">a_i</span><span class="punctuation">,</span> <span class="name">b_i</span><span class="punctuation">,</span> <span class="name">c_i</span><span class="punctuation">}</span> <span class="operator">=</span> <span class="name">i</span><span class="punctuation">[</span><span class="literal number hex">2</span><span class="operator">:</span><span class="literal number hex">0</span><span class="punctuation">];</span>
+<span class="ln">29 </span>            <span class="punctuation">#</span><span class="literal number hex">1</span><span class="punctuation">;</span>
+<span class="ln">30 </span>            <span class="name">reset</span> <span class="operator">=</span> <span class="literal number">'0</span><span class="punctuation">;</span>
+<span class="ln">31 </span>            <span class="comment single">// Check dut output vs specification output
+</span><span class="ln">32 </span><span class="comment single"></span>            <span class="name label">output_equiv:</span> <span class="name">assert</span> <span class="punctuation">(</span><span class="name">x_o</span> <span class="operator">==</span> <span class="name">spec_output</span><span class="punctuation">(</span><span class="name">a_i</span><span class="punctuation">,</span> <span class="name">b_i</span><span class="punctuation">,</span> <span class="name">c_i</span><span class="punctuation">))</span>
+<span class="ln">33 </span>                          <span class="keyword">else</span> <span class="name">$error</span><span class="punctuation">(</span><span class="literal string">&quot;With {a, b, c}=%b, dut outputs: %b while spec outputs: %b&quot;</span><span class="punctuation">,</span>
+<span class="ln">34 </span>                                      <span class="punctuation">{</span><span class="name">a_i</span><span class="punctuation">,</span> <span class="name">b_i</span><span class="punctuation">,</span> <span class="name">c_i</span><span class="punctuation">},</span> <span class="name">x_o</span><span class="punctuation">,</span> <span class="name">spec_output</span><span class="punctuation">(</span><span class="name">a_i</span><span class="punctuation">,</span> <span class="name">b_i</span><span class="punctuation">,</span> <span class="name">c_i</span><span class="punctuation">));</span>
+<span class="ln">35 </span>        <span class="keyword">end</span>
+<span class="ln">36 </span>        <span class="name builtin">$finish</span><span class="punctuation">;</span>
+<span class="ln">37 </span>    <span class="keyword">end</span>
+<span class="ln">38 </span><span class="keyword">endmodule</span> <span class="operator">:</span> <span class="name">purefunction_tb</span></code></pre>
+<p>Our testbench generates sequences of input stimuli, uses these stimuli to drive the DUT as well as a
+software model of the specification, and compares the outputs of the two. Further, although we don't
+explicitly measure it, our knowledge of the test stimuli generated and the execution state space
+ensures that we have full coverage of the design.</p>
+<dl class="footnote brackets">
+<dt class="label" id="id21"><span class="brackets"><a class="fn-backref" href="#id15">8</a></span></dt>
+<dd><p>Although in this case, an eight-to-one MUX may be an appropriate implementation of
+<span class="docutils literal">module purefunction</span>, consider a similar circuit but with 20 bits of input rather than 3,
+implementing a function 𝑓 : {0, 1}²⁰ → {0,1}. In this case, a 2²⁰-to-one mux is likely
+unreasonable, and the circuit should be implemented differently.</p>
+</dd>
+</dl>
+<!-- Once again, GitHub does not support math type, so literals are used instead. -->
+<dl class="footnote brackets">
+<dt class="label" id="id22"><span class="brackets"><a class="fn-backref" href="#id16">9</a></span></dt>
+<dd><p>In this case, the specification is a <em>formal</em> specification, as it is written in a formal
+language with the expressivity of propositional logic. Often an initial specification will
+not be formalized so nicely.</p>
+</dd>
+<dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id17">10</a></span></dt>
+<dd><p>in time exponential to the number of inputs</p>
+</dd>
+<dt class="label" id="id24"><span class="brackets"><a class="fn-backref" href="#id18">11</a></span></dt>
+<dd><p>Note line 4: we must have some time delay in order to ensure that each input stimulus
+actually gets simulated. If there were no time delay, the input stimulus would immediately
+be set to <span class="docutils literal">3'b111</span>.</p>
+</dd>
+<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id19">12</a></span></dt>
+<dd><p>Note line 11: we have this default case since <em>logic</em> encodes four-states. Thus if the input
+to the function is mistakenly <span class="docutils literal">x</span> or <span class="docutils literal">z</span>, we can display an error showing our <em>test
+bench</em> is at fault, rather than our <em>DUT</em>.</p>
+</dd>
+<dt class="label" id="id26"><span class="brackets"><a class="fn-backref" href="#id20">13</a></span></dt>
+<dd><p>Note line 5: the label <span class="docutils literal">output_equiv:</span> is used as a name for the <em>assertion</em>. This is NOT a
+label for flow control (in fact, SystemVerilog lacks a <span class="docutils literal">goto</span> statement).</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="verifying-a-sequential-circuit">
+<h2><a class="toc-backref" href="#id56"><span class="sectnum">3.6</span> Verifying a Sequential Circuit</a></h2>
+<p>When verifying a circuit representation of a Boolean function, we can exhaust all possible inputs
+simply by iterating through each possible input combination. Consider the case of a sequential
+circuit, which takes arbitrarily large inputs serially. Clearly, verifying the circuit by simply
+monitoring the input and output ports is insufficient, since the circuit can potentially processes
+infinitely many different input &quot;strings&quot;. We consider such an example:</p>
+<p id="listing-5">Listing 5: A Sequential Circuit with Binary String Input</p>
+<pre class="code verilog literal-block"><code><span class="ln"> 1 </span><span class="keyword">module</span> <span class="name">div5</span> <span class="punctuation">(</span>
+<span class="ln"> 2 </span>    <span class="keyword">input</span> <span class="keyword type">logic</span> <span class="name">clk</span><span class="punctuation">,</span>
+<span class="ln"> 3 </span>    <span class="keyword">input</span> <span class="keyword type">logic</span> <span class="name">rst</span><span class="punctuation">,</span>
+<span class="ln"> 4 </span>    <span class="keyword">input</span> <span class="keyword type">logic</span> <span class="name">serial_in</span><span class="punctuation">,</span>
+<span class="ln"> 5 </span>    <span class="keyword">input</span> <span class="keyword type">logic</span> <span class="name">run</span><span class="punctuation">,</span>
+<span class="ln"> 6 </span>    <span class="keyword">output</span> <span class="keyword type">logic</span> <span class="name">decision</span>
+<span class="ln"> 7 </span><span class="punctuation">);</span>
+<span class="ln"> 8 </span>
+<span class="ln"> 9 </span><span class="keyword type">logic</span> <span class="punctuation">[</span><span class="literal number hex">2</span><span class="operator">:</span><span class="literal number hex">0</span><span class="punctuation">]</span> <span class="name">state</span><span class="punctuation">;</span>
+<span class="ln">10 </span><span class="keyword">localparam</span> <span class="keyword type">logic</span> <span class="punctuation">[</span><span class="literal number hex">2</span><span class="operator">:</span><span class="literal number hex">0</span><span class="punctuation">]</span> <span class="name">initial_state</span> <span class="operator">=</span> <span class="literal number">'1</span><span class="punctuation">;</span>
+<span class="ln">11 </span>
+<span class="ln">12 </span><span class="keyword">always_ff</span> <span class="punctuation">&#64;(</span><span class="keyword">posedge</span> <span class="name">clk</span><span class="punctuation">)</span> <span class="keyword">begin</span>
+<span class="ln">13 </span>    <span class="keyword">if</span> <span class="punctuation">(</span><span class="name">rst</span><span class="punctuation">)</span> <span class="keyword">begin</span>
+<span class="ln">14 </span>        <span class="name">state</span> <span class="operator">&lt;=</span> <span class="name">initial_state</span><span class="punctuation">;</span>
+<span class="ln">15 </span>    <span class="keyword">end</span>
+<span class="ln">16 </span>    <span class="keyword">else</span> <span class="keyword">if</span> <span class="punctuation">(</span><span class="name">run</span><span class="punctuation">)</span> <span class="keyword">begin</span>
+<span class="ln">17 </span>        <span class="keyword">case</span> <span class="punctuation">(</span><span class="name">state</span><span class="punctuation">)</span>
+<span class="ln">18 </span>            <span class="name">initial_state</span><span class="punctuation">,</span>
+<span class="ln">19 </span>            <span class="literal number hex">3</span><span class="literal number bin">'b000</span><span class="operator">:</span> <span class="name">state</span> <span class="operator">&lt;=</span> <span class="name">serial_in</span> <span class="operator">?</span> <span class="literal number hex">3</span><span class="literal number bin">'b001</span> <span class="operator">:</span> <span class="literal number hex">3</span><span class="literal number bin">'b000</span><span class="punctuation">;</span>
+<span class="ln">20 </span>            <span class="literal number hex">3</span><span class="literal number bin">'b001</span><span class="operator">:</span> <span class="name">state</span> <span class="operator">&lt;=</span> <span class="name">serial_in</span> <span class="operator">?</span> <span class="literal number hex">3</span><span class="literal number bin">'b011</span> <span class="operator">:</span> <span class="literal number hex">3</span><span class="literal number bin">'b010</span><span class="punctuation">;</span>
+<span class="ln">21 </span>            <span class="literal number hex">3</span><span class="literal number bin">'b010</span><span class="operator">:</span> <span class="name">state</span> <span class="operator">&lt;=</span> <span class="name">serial_in</span> <span class="operator">?</span> <span class="literal number hex">3</span><span class="literal number bin">'b000</span> <span class="operator">:</span> <span class="literal number hex">3</span><span class="literal number bin">'b100</span><span class="punctuation">;</span>
+<span class="ln">22 </span>            <span class="literal number hex">3</span><span class="literal number bin">'b011</span><span class="operator">:</span> <span class="name">state</span> <span class="operator">&lt;=</span> <span class="name">serial_in</span> <span class="operator">?</span> <span class="literal number hex">3</span><span class="literal number bin">'b010</span> <span class="operator">:</span> <span class="literal number hex">3</span><span class="literal number bin">'b001</span><span class="punctuation">;</span>
+<span class="ln">23 </span>            <span class="literal number hex">3</span><span class="literal number bin">'b100</span><span class="operator">:</span> <span class="name">state</span> <span class="operator">&lt;=</span> <span class="name">serial_in</span> <span class="operator">?</span> <span class="literal number hex">3</span><span class="literal number bin">'b100</span> <span class="operator">:</span> <span class="literal number hex">3</span><span class="literal number bin">'b011</span><span class="punctuation">;</span>
+<span class="ln">24 </span>        <span class="keyword">endcase</span>
+<span class="ln">25 </span>    <span class="keyword">end</span>
+<span class="ln">26 </span>    <span class="keyword">else</span> <span class="keyword">begin</span>
+<span class="ln">27 </span>        <span class="name">state</span> <span class="operator">&lt;=</span> <span class="name">initial_state</span><span class="punctuation">;</span>
+<span class="ln">28 </span>    <span class="keyword">end</span>
+<span class="ln">29 </span><span class="keyword">end</span>
+<span class="ln">30 </span>
+<span class="ln">31 </span><span class="keyword">assign</span> <span class="name">decision</span> <span class="operator">=</span> <span class="name">state</span> <span class="operator">==</span> <span class="literal number hex">3</span><span class="literal number bin">'b000</span><span class="punctuation">;</span>
+<span class="ln">32 </span>
+<span class="ln">33 </span><span class="keyword">endmodule</span> <span class="operator">:</span> <span class="name">div5</span></code></pre>
+<p><a class="reference internal" href="#listing-5">Listing 5</a> is a SystemVerilog representation of a Deterministic Finite Automaton (DFA) which
+&quot;decides&quot; the language &quot;DIV5&quot;. If the input string is divisible by five, then on completion of input
+processing, the output port <span class="docutils literal">decision</span> should be high. Similarly, if the input string is NOT
+divisible by five, then on completion of input processing, the output port <span class="docutils literal">decision</span> should be
+low.</p>
+<p>Since there is no limit on how long input strings can be, if we test the functionality by looking
+only at inputs and outputs of the design module, then we can only give guarantees qualified by a
+certain input size (e.g. &quot;all inputs of less than 16-bits produced the proper outputs&quot;). Luckily,
+we <em>can</em> verify whether this design is functionally correct without qualifications. Rather than
+specifying that the design produces a certain output signal based on the sequence of input signals,
+we instead specify that the design implements a specific DFA which we prove decides the language
+DIV5. Thus, we must simply verify that the design implements the DFA.</p>
+<p>The DFA that we implement has six states, five of which are labeled 0 through 4 which represent the
+value of the in-process input string modulus 5. The sixth state is the initial state, labeled s. The
+next state transition function, 𝛿, which takes the current state 𝑖 and input bit 𝑏 as follows:</p>
+<pre class="literal-block">𝛿(𝑖,𝑏) = (2𝑖+𝑏) mod 5 if 𝑖 ∈ {0,1,2,3,4} else 𝑏</pre>
+<!-- Ugh, GitHub, why are you like this. This equation might be better served as a png after being
+rendered in LaTeX... -->
+<p>An input string is divisible by five if and only if the DFA moves to state 0 upon processing the
+last (least significant) bit in the string. We consider the DFA to consume its input string from
+left-to-right (i.e. the most significant bit first).  See <a class="reference internal" href="#appendix-a-div5-dfa">Appendix A</a> for a proof of the DFA's
+correctness.</p>
+<p>Thus, to verify the design, we must move the design into every possible state it can enter, and then
+ensure the transitions from these states are correct.</p>
+<div class="section" id="coverage-points">
+<h3><a class="toc-backref" href="#id57"><span class="sectnum">3.6.1</span> Coverage Points</a></h3>
+<p>These &quot;edges&quot; -- combinations of internal design state and input signals -- are called &quot;coverage
+points&quot; (or &quot;coverages&quot; of &quot;covers&quot;). In this MP, you will be graded on your ability to write
+testbenches which reach these coverage points and ensure the correct behavior of the design at these
+points.</p>
+</div>
+</div>
+<div class="section" id="testbench-components">
+<h2><a class="toc-backref" href="#id58"><span class="sectnum">3.7</span> Testbench Components</a></h2>
+<p>In the prior examples, the verification steps of input stimulus generation, driving the DUT and
+model, and comparing the results of the two are done using only the most basic building blocks
+of SystemVerilog: modules, arithmetic and logical operators, procedural flow-control, immediate
+assertions, functions, and the timestep delay operator (<span class="docutils literal">#</span>). Additionally, it may be useful to
+separate functionality of the verification process into multiple independent parts:</p>
+<ul class="simple">
+<li><p>A 'sequencer' whose only responsibility is generating input stimuli, independent of the bus or
+interface used by the DUT.</p>
+<ul>
+<li><p>Consider two 8-bit adders, one whose data inputs are sent in parallel through a 16 bit port in
+one clock cycle, and another whose data inputs are sent serially one bit per cycle. Since both
+have the same functionality -- 8-bit adder -- they both should be simulated with the same data
+stimuli (i.e. 3+5), while the interface protocol stimuli must be radically different.</p></li>
+</ul>
+</li>
+<li><p>A 'driver' which generates the bus or interface control input stimuli and transfers the
+sequencer's data to the DUT.</p>
+<ul>
+<li><p>Similarly, we can reuse drivers across differing modules as long as those modules share the same
+bus protocol.</p></li>
+</ul>
+</li>
+<li><p>A 'monitor' which acts like a mirrored image of the driver. Just as the driver transactionalizes
+input stimuli to send to the DUT, the monitor observes and collects the inputs and outputs of the
+DUT to identify when a transaction is complete and ready to be evaluated by the 'scoreboard'.</p></li>
+<li><p>A 'scoreboard' takes the output of the monitor and evaluates whether the DUT produced the
+appropriate value. In addition to evaluating correctness, the scoreboard can also measure testing
+coverage.</p></li>
+</ul>
+<p>Performing dynamic simulation of more complicated designs will often suggest using other
+SystemVerilog language features, such as object-oriented programming and interprocess communication
+<a class="footnote-reference brackets" href="#id29" id="id27">14</a> features. Further, other designs may have far too large of an execution state space to fully
+cover, and thus explicit cover points must be determined and tested for, while large portions of the
+execution space may only be covered if randomized <a class="footnote-reference brackets" href="#id30" id="id28">15</a> stimulus happen to check those states.</p>
+<p>In the ensuing exercises, you will see designs which you should be able to fully cover as we did for
+<span class="docutils literal">module purefunction</span>, and designs whose execution state space is too large to fully cover.</p>
+<dl class="footnote brackets">
+<dt class="label" id="id29"><span class="brackets"><a class="fn-backref" href="#id27">14</a></span></dt>
+<dd><p>Each <span class="docutils literal">initial</span> and <span class="docutils literal">always</span> block is treated as an individual process by SystemVerilog
+simulators. Additionally, the <span class="docutils literal">fork ... join[_any | _none]?</span> constructs allow dynamic
+creation of additional processes. SystemVerilog's <span class="docutils literal">mailbox</span> provides signals and message
+passing, while <span class="docutils literal">mutex</span> provides both blocking and non-blocking mutual exclusion primitives.</p>
+</dd>
+<dt class="label" id="id30"><span class="brackets"><a class="fn-backref" href="#id28">15</a></span></dt>
+<dd><p>ModelSim does support random number generation, but it does not support SystemVerilog's
+<span class="docutils literal">rand</span> modifier, or its constrained randomization features.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="verifying-a-multiplier">
+<h1><a class="toc-backref" href="#id59"><span class="sectnum">4</span> Verifying a Multiplier</a></h1>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id60"><span class="sectnum">4.1</span> Overview</a></h2>
+<p>For this exercise, you will write a testbench to verify an unsigned integer add-shift multiplier for
+use in an 8-bit computer. The multiplier is described in <span class="docutils literal">mp0/multiplier/hdl/multiplier.sv</span>. In
+this exercise, you will design a test bench to verify this design.</p>
+</div>
+<div class="section" id="specification">
+<h2><a class="toc-backref" href="#id61"><span class="sectnum">4.2</span> Specification</a></h2>
+<p>The multiplier has the following port listing:</p>
+<pre class="code verilog literal-block"><code><span class="keyword">module</span> <span class="name">add_shift_multiplier</span>
+<span class="punctuation">(</span>
+    <span class="keyword">input</span> <span class="keyword type">logic</span> <span class="name">clk_i</span><span class="punctuation">,</span>
+    <span class="keyword">input</span> <span class="keyword type">logic</span> <span class="name">reset_n_i</span><span class="punctuation">,</span>
+    <span class="keyword">input</span> <span class="name">operand_t</span> <span class="name">multiplicand_i</span><span class="punctuation">,</span>
+    <span class="keyword">input</span> <span class="name">operand_t</span> <span class="name">multiplier_i</span><span class="punctuation">,</span>
+    <span class="keyword">input</span> <span class="keyword type">logic</span> <span class="name">start_i</span><span class="punctuation">,</span>
+    <span class="keyword">output</span> <span class="keyword type">logic</span> <span class="name">ready_o</span><span class="punctuation">,</span>
+    <span class="keyword">output</span> <span class="name">result_t</span> <span class="name">product_o</span><span class="punctuation">,</span>
+    <span class="keyword">output</span> <span class="keyword type">logic</span> <span class="name">done_o</span>
+<span class="punctuation">);</span></code></pre>
+<ul class="simple">
+<li><p><span class="docutils literal">clk_i</span> is the clock which drives the sequential logic in the multiplier</p></li>
+<li><p><span class="docutils literal">reset_n_i</span> is an active low, synchronous reset signal. If this signal is asserted at
+<span class="docutils literal">&#64;(posedge clk_i)</span>, the multiplier should halt any ongoing multiplication and reset its state to
+allow for the start of a new multiplication.</p></li>
+<li><p><span class="docutils literal">multiplicand_i</span> and <span class="docutils literal">multiplier_i</span> are the input operands for the multiplication.  When a
+multiplication begins, these signals are registered in the multiplier and thus are not required
+to be continuously asserted throughout the multiplication.</p></li>
+<li><p><span class="docutils literal">start_i</span> begins a new multiplication if it is asserted at <span class="docutils literal">&#64;(posedge clk_i)</span> and the
+multiplier is in a 'ready' state.  If the multiplier is not in a 'ready' state, assertion of this
+signal has no effect.</p></li>
+<li><p><span class="docutils literal">ready_o</span> asserts that the multiplier is in a 'ready' state and can begin a new multiplication.</p></li>
+<li><p><span class="docutils literal">product_o</span> contains the <span class="docutils literal">2 * width_p</span> bit output of the multiplication when the multiplier is
+in a 'done' state.</p></li>
+<li><p><span class="docutils literal">done_o</span> is asserted when the multiplier is in a 'done' state. This occurs when multiplication
+is complete, meaning (<span class="docutils literal">product_o</span> contains the product of the registered input operands OR a
+synchronous reset has occurred), AND a new multiplication has not been started.</p></li>
+</ul>
+<p>See <a class="reference internal" href="#figure-1">Figure 1</a> below for a timing diagram of this protocol. We do not specify how many cycles the
+multiplier takes to complete the multiplicaiton.</p>
+<div class="figure align-center" id="figure-1">
+<img alt="multiplier timing diagram" src="doc/figures/multiplier_wave.png" style="width: 80%;" />
+<p class="caption">Figure 1: Multiplier Timing Diagram</p>
+</div>
+</div>
+<div class="section" id="coverages">
+<h2><a class="toc-backref" href="#id62"><span class="sectnum">4.3</span> Coverages</a></h2>
+<p>Your testbench must cover at least the following:</p>
+<ul class="simple">
+<li><p>From a 'ready' <a class="footnote-reference brackets" href="#id32" id="id31">16</a> state, assert <span class="docutils literal">start_i</span> with every possible combination of multiplicand and
+multiplier, and without any resets until the multiplier enters a 'done' state (resets while the
+device is in a 'done' state are acceptable);</p></li>
+<li><p>For each 'run' state <span class="docutils literal">s</span>, assert the <span class="docutils literal">start_i</span> signal while the multiplier is in state <span class="docutils literal">s</span>;</p></li>
+<li><p>For each 'run' state <span class="docutils literal">s</span>, assert the active-low <span class="docutils literal">reset_n_i</span> signal while the multiplier is in
+state <span class="docutils literal">s</span>.</p></li>
+</ul>
+<dl class="footnote brackets">
+<dt class="label" id="id32"><span class="brackets"><a class="fn-backref" href="#id31">16</a></span></dt>
+<dd><p>see <span class="docutils literal">ready_states</span> in <span class="docutils literal">mp0/multiplier/include/types.sv</span></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="error-reporting">
+<h2><a class="toc-backref" href="#id63"><span class="sectnum">4.4</span> Error Reporting</a></h2>
+<p>Your testbench must detect the following errors (defined in <span class="docutils literal">types.sv</span>):</p>
+<ul class="simple">
+<li><p>Upon entering the 'DONE' state, if the output signal <span class="docutils literal">product_o</span> holds an incorrect product,
+report a <span class="docutils literal">BAD_RPODUCT</span> error;</p></li>
+<li><p>If the <span class="docutils literal">ready_o</span> signal is not asserted after a reset, report a <span class="docutils literal">NOT_READY</span> error;</p></li>
+<li><p>If the <span class="docutils literal">ready_o</span> signal is not asserted upon completion of a multiplication, report a
+<span class="docutils literal">NOT_READY</span> error.</p></li>
+</ul>
+<p>To report an error, pass the appropriate error type to <span class="docutils literal">report_error</span> task defined in
+<span class="docutils literal">testbench.sv</span>. An example is given below.</p>
+<pre class="code verilog literal-block"><code><span class="name">assert</span> <span class="punctuation">(</span><span class="comment multiline">/* your assertion here */</span><span class="punctuation">)</span>
+  <span class="keyword">else</span> <span class="keyword">begin</span>
+    <span class="name">$error</span> <span class="punctuation">(</span><span class="literal string">&quot;%0d: %0t: BAD_PRODUCT error detected&quot;</span><span class="punctuation">,</span> <span class="name constant">`__LINE__</span><span class="punctuation">,</span> <span class="name builtin">$time</span><span class="punctuation">);</span>
+    <span class="name">report_error</span> <span class="punctuation">(</span><span class="name constant">BAD_PRODUCT</span><span class="punctuation">);</span>
+  <span class="keyword">end</span></code></pre>
+</div>
+<div class="section" id="clocking-blocks">
+<h2><a class="toc-backref" href="#id64"><span class="sectnum">4.5</span> Clocking Blocks</a></h2>
+<p>In SystemVerilog, <span class="docutils literal">clocking</span> blocks are an abstraction used to capture precise timing information
+and allow the verification engineer to write verification code at the 'cycle' level. The
+<span class="docutils literal">clocking</span> blocks allow you to specify input and output skews, but in this MP, they are only used
+to specify clocks. When using a <span class="docutils literal">default clocking</span> construct, signals should be assigned using
+non-blocking assignments. Further, you can insert a delay of <span class="docutils literal">N</span> cycles using the syntax
+<span class="docutils literal"><span class="pre">##(N)</span></span>. To delay until some condition holds, use the 'if and only if' keyword:
+<span class="docutils literal"><span class="pre">&#64;(&lt;clk&gt;</span> iff <span class="pre">&lt;conditon&gt;);</span></span>.</p>
+</div>
+<div class="section" id="driving-signals">
+<h2><a class="toc-backref" href="#id65"><span class="sectnum">4.6</span> Driving Signals</a></h2>
+<p>In order to facilitate autograding, your testbench should set signal values only at time 0 (the
+beginning of an <span class="docutils literal">initial</span> block) or using the <span class="docutils literal">tb_clk</span> clock as described in the
+<a class="reference internal" href="#clocking-blocks">Clocking Blocks</a> section. Additionally, at time 0, your testbench must assert the <span class="docutils literal">reset_n_i</span>
+signal.</p>
+</div>
+<div class="section" id="sampling-signals">
+<h2><a class="toc-backref" href="#id66"><span class="sectnum">4.7</span> Sampling Signals</a></h2>
+<p>Additionally, all time delaying constructs should be associated with this default clock. That is,
+they should either be of the form <span class="docutils literal"><span class="pre">##(n)</span></span>, which waits for <span class="docutils literal">n</span> cycles with respect to the
+clocking block, or <span class="docutils literal">&#64;(tb_clk [iff <span class="pre">&lt;predicate&gt;])</span></span> which delays for a single cycle, or delays until
+'predicate' is evaluated true with samples taken with respect to the clocking block. Using the
+default clocking block in these ways is vital to getting an accurate assessment.</p>
+<p>For example, the following are appropriate procedural blocks for your testbench</p>
+<pre class="code verilog literal-block"><code><span class="keyword">initial</span> <span class="name">reset_n</span> <span class="operator">=</span> <span class="literal number hex">0</span><span class="punctuation">;</span>   <span class="comment single">// initialize reset signal
+</span><span class="keyword">initial</span> <span class="keyword">begin</span>
+    <span class="punctuation">##(</span><span class="literal number hex">5</span><span class="punctuation">);</span>               <span class="comment single">// Ensure DUT is reset
+</span>    <span class="name">reset_n</span> <span class="operator">&lt;=</span> <span class="literal number hex">1</span><span class="punctuation">;</span>
+    <span class="name">multiplicand_i</span> <span class="operator">&lt;=</span> <span class="literal number hex">16</span><span class="punctuation">;</span>
+    <span class="name">multiplier_i</span> <span class="operator">&lt;=</span> <span class="literal number hex">32</span><span class="punctuation">;</span>  <span class="comment single">// NBA: signals still have their initial values
+</span>    <span class="punctuation">&#64;(</span><span class="name">tb_clk</span><span class="punctuation">);</span>           <span class="comment single">// Wait for clock signal (could use '##(1)')
+</span>                         <span class="comment single">// Now, when the values get assigned
+</span><span class="keyword">end</span>
+
+<span class="keyword">always</span> <span class="punctuation">&#64;()</span> <span class="keyword">begin</span>
+    <span class="name builtin">$display</span><span class="punctuation">(</span><span class="literal string">&quot;SystemVerilog Functions cannot block&quot;</span><span class="punctuation">);</span>
+<span class="keyword">end</span></code></pre>
+<p>and the following are inappropriate</p>
+<pre class="code verilog literal-block"><code><span class="keyword">initial</span> <span class="keyword">begin</span>
+    <span class="name">reset_n_i</span> <span class="operator">=</span> <span class="literal number hex">1</span><span class="literal number bin">'b1</span><span class="punctuation">;</span>    <span class="comment single">// reset not initialized to active low 0
+</span>    <span class="punctuation">&#64;(</span><span class="keyword">posedge</span> <span class="name">clk</span><span class="punctuation">);</span>      <span class="comment single">// Using clk rather than tb_clk
+</span>    <span class="name">multiplier_i</span> <span class="operator">=</span> <span class="literal number hex">32</span><span class="punctuation">;</span>   <span class="comment single">// signal value set at rising edge of clock
+</span><span class="keyword">end</span>
+
+<span class="keyword">always</span> <span class="punctuation">&#64;(</span><span class="keyword">negedge</span> <span class="name">clk</span><span class="punctuation">)</span> <span class="keyword">begin</span>
+    <span class="name">reset_n_i</span> <span class="operator">=</span> <span class="literal number hex">1</span><span class="literal number bin">'b0</span><span class="punctuation">;</span>
+    <span class="name">multiplicand_i</span> <span class="operator">=</span> <span class="literal number hex">16</span><span class="punctuation">;</span>
+    <span class="name">multiplier_i</span> <span class="operator">=</span> <span class="literal number hex">32</span><span class="punctuation">;</span>  <span class="comment single">// Only use NON Blocking Assignments
+</span>                        <span class="comment single">// with a clocking block
+</span>    <span class="punctuation">&#64;(</span><span class="name">tb_clk</span><span class="punctuation">);</span>
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+<div class="section" id="verifying-a-fifo">
+<h1><a class="toc-backref" href="#id67"><span class="sectnum">5</span> Verifying a FIFO</a></h1>
+<div class="section" id="id33">
+<h2><a class="toc-backref" href="#id68"><span class="sectnum">5.1</span> Overview</a></h2>
+<p>For this exercise, you will write a testbench to verify a synchronous FIFO with a single enqueuer
+and a single dequeuer. A FIFO is called 'synchronous' when the enqueue clock and the dequeue clock
+are the same. <a class="footnote-reference brackets" href="#id35" id="id34">17</a> The FIFO is described in <span class="docutils literal">mp0/fifo/hdl/fifo.sv</span>. In this exercise, you will
+design a test bench to verify this design.</p>
+<dl class="footnote brackets">
+<dt class="label" id="id35"><span class="brackets"><a class="fn-backref" href="#id34">17</a></span></dt>
+<dd><p>If the clocks are distinct, then it is an <em>asynchrnous</em> FIFO, and much more complicated.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id36">
+<h2><a class="toc-backref" href="#id69"><span class="sectnum">5.2</span> Specification</a></h2>
+<p>The FIFO implements a valid-ready enqueue protocol, and a valid-yumi dequeue protocol, and has the
+following port listing:</p>
+<pre class="code verilog literal-block"><code><span class="keyword">module</span> <span class="name">fifo_synch_1r1w</span>
+<span class="punctuation">(</span>
+    <span class="keyword">input</span> <span class="keyword type">logic</span> <span class="name">clk_i</span><span class="punctuation">,</span>
+    <span class="keyword">input</span> <span class="keyword type">logic</span> <span class="name">reset_n_i</span><span class="punctuation">,</span>
+
+    <span class="comment single">// valid-ready input protocol
+</span>    <span class="keyword">input</span> <span class="name">word_t</span> <span class="name">data_i</span><span class="punctuation">,</span>
+    <span class="keyword">input</span> <span class="keyword type">logic</span> <span class="name">valid_i</span><span class="punctuation">,</span>
+    <span class="keyword">output</span> <span class="keyword type">logic</span> <span class="name">ready_o</span><span class="punctuation">,</span>
+
+    <span class="comment single">// valid-yumi output protocol
+</span>    <span class="keyword">output</span> <span class="keyword type">logic</span> <span class="name">valid_o</span><span class="punctuation">,</span>
+    <span class="keyword">output</span> <span class="name">word_t</span> <span class="name">data_o</span><span class="punctuation">,</span>
+    <span class="keyword">input</span> <span class="keyword type">logic</span> <span class="name">yumi_i</span>
+<span class="punctuation">);</span></code></pre>
+<ul class="simple">
+<li><p><span class="docutils literal">clk_i</span> is the clock which drives the sequential logic in the fifo;</p></li>
+<li><p><span class="docutils literal">reset_n_i</span> is an active low, synchronous reset signal. If this signal is asserted at
+<span class="docutils literal">&#64;(posedge clk_i)</span>, the FIFO sets itself to 'empty';</p></li>
+<li><p>The valid-ready protocol is:</p>
+<ul>
+<li><p><span class="docutils literal">data_i</span> contains the enqueued data word;</p></li>
+<li><p><span class="docutils literal">valid_i</span> is asserted by the enqueuer to enqueue <span class="docutils literal">data_i</span> into the FIFO;</p></li>
+<li><p><span class="docutils literal">ready_o</span> asserts that the FIFO is not full and has capacity to enqueue a word. The behavior
+when <span class="docutils literal">valid_i</span> is asserted while the FIFO is full is undefined and should be avoided.</p></li>
+</ul>
+</li>
+<li><p>The valid-yumi protocol is:</p>
+<ul>
+<li><p><span class="docutils literal">valid_o</span> asserts that the FIFO is not empty and that the value on <span class="docutils literal">data_o</span> is the oldest
+word stored in the FIFO;</p></li>
+<li><p><span class="docutils literal">yumi_i</span> is asserted by the dequeuer to signal to the FIFO that the word in <span class="docutils literal">data_o</span> must be
+removed from the FIFO</p></li>
+</ul>
+</li>
+</ul>
+<p>See <a class="reference internal" href="#figure-2">Figure 2</a> below for a timing diagram depiction of these protocols.</p>
+<div class="figure align-center" id="figure-2">
+<img alt="FIFO timing diagram" src="doc/figures/fifo_wave.png" style="width: 80%;" />
+<p class="caption">Figure 2: FIFO Timing Diagram</p>
+</div>
+</div>
+<div class="section" id="id37">
+<h2><a class="toc-backref" href="#id70"><span class="sectnum">5.3</span> Coverages</a></h2>
+<p>Your testbench must cover at least the following for the FIFO with capacity <span class="docutils literal">cap_p</span>:</p>
+<ul class="simple">
+<li><p>You must enqueue words while the FIFO has size in [0, cap_p-1];</p></li>
+<li><p>You must dequeue words while the FIFO has size in [1, cap_p];</p></li>
+<li><p>You must simultaneously enqueue and dequeue while the FIFO has size in [1, cap_p-1].</p></li>
+</ul>
+</div>
+<div class="section" id="id38">
+<h2><a class="toc-backref" href="#id71"><span class="sectnum">5.4</span> Error Reporting</a></h2>
+<p>Your testbench must detect the following errors (defined in <span class="docutils literal">mp0/fifo/include/types.sv</span>):</p>
+<ul class="simple">
+<li><p>Asserting <span class="docutils literal">reset_n_i</span> at <span class="docutils literal">&#64;(tb_clk)</span> should result in <span class="docutils literal">ready_o</span> being high at
+<span class="docutils literal">&#64;(posedge clk_i)</span>. If it is not, report the appropriate error.</p></li>
+<li><p>When asserting <span class="docutils literal">yumi_i</span> at <span class="docutils literal">&#64;(tb_clk)</span> when data is ready, the value on <span class="docutils literal">data_o</span> is the
+CORRECT value. If not, report the appropriate error. Recall that asserting <span class="docutils literal">yumi_i</span> when the
+FIFO is empty results in undefined behavior, so avoid doing this.</p></li>
+</ul>
+<p>To report an error, pass the appropriate error type to <span class="docutils literal">report_error</span> task defined in
+<span class="docutils literal">mp0/fifo/hvl/testbench.sv</span>. An example is given below.</p>
+<pre class="code verilog literal-block"><code><span class="name">assert</span> <span class="punctuation">(</span><span class="comment multiline">/* your assertion here */</span><span class="punctuation">)</span>
+  <span class="keyword">else</span> <span class="keyword">begin</span>
+    <span class="name">$error</span> <span class="punctuation">(</span><span class="literal string">&quot;%0d: %0t: %s error detected&quot;</span><span class="punctuation">,</span> <span class="name constant">`__LINE__</span><span class="punctuation">,</span> <span class="name builtin">$time</span><span class="punctuation">,</span> <span class="name">err</span><span class="punctuation">.</span><span class="name">name</span><span class="punctuation">);</span>
+    <span class="name">report_error</span> <span class="punctuation">(</span><span class="name">err</span><span class="punctuation">);</span>
+  <span class="keyword">end</span></code></pre>
+</div>
+<div class="section" id="id39">
+<h2><a class="toc-backref" href="#id72"><span class="sectnum">5.5</span> Driving Signals</a></h2>
+<p>Once again, only drive signals at time 0 or using non-blocking assignments synchronized using the
+default <span class="docutils literal">tb_clk</span>. Only sample signals as described in <a class="reference internal" href="#sampling-signals">Sampling Signals</a> above.</p>
+</div>
+</div>
+<div class="section" id="verifying-a-cam">
+<h1><a class="toc-backref" href="#id73"><span class="sectnum">6</span> Verifying a CAM</a></h1>
+<div class="section" id="id40">
+<h2><a class="toc-backref" href="#id74"><span class="sectnum">6.1</span> Overview</a></h2>
+<p>For this exercise, you will write a testbench to verify a content addressable memory, or CAM. A CAM
+can be thought of as similar to an associative array in computer programming, with the distinction
+that a CAM is of fixed size. A CAM, then, is a collection of key-value pairs, and supports read and
+write operations. When reading a CAM, a key is provided, and the CAM responds with the appropriate
+value, or a signal indicating that there is no value associated with the key in the CAM. On a write,
+both a key and a value are provided, and these get stored into the CAM.</p>
+<p>Since a CAM has a fixed number of entries (eight, in this MP), some type of 'replacement policy'
+must be used when writing to a full CAM. The replacement policy used by the CAM in this MP is the
+'least recently used' <a class="reference external" href="https://en.wikipedia.org/wiki/Cache_replacement_policies">(LRU)</a> policy,
+which evicts (removes) the entry whose key was least recently used by a read or write.</p>
+<p>The CAM is described across several files in <span class="docutils literal">mp0/cam/hdl</span>. In this exercise, you will design a
+test bench to verify this design.</p>
+</div>
+<div class="section" id="id41">
+<h2><a class="toc-backref" href="#id75"><span class="sectnum">6.2</span> Specification</a></h2>
+<p>The CAM has the following port listing:</p>
+<pre class="code verilog literal-block"><code><span class="keyword">module</span> <span class="name">cam</span>
+<span class="punctuation">(</span>
+    <span class="keyword">input</span> <span class="name">clk_i</span><span class="punctuation">,</span>
+    <span class="keyword">input</span> <span class="name">reset_n_i</span><span class="punctuation">,</span>
+    <span class="keyword">input</span> <span class="name">rw_n_i</span><span class="punctuation">,</span>
+    <span class="keyword">input</span> <span class="name">valid_i</span><span class="punctuation">,</span>
+    <span class="keyword">input</span> <span class="name">key_t</span> <span class="name">key_i</span><span class="punctuation">,</span>
+    <span class="keyword">input</span> <span class="name">val_t</span> <span class="name">val_i</span><span class="punctuation">,</span>
+    <span class="keyword">output</span> <span class="name">val_t</span> <span class="name">val_o</span><span class="punctuation">,</span>
+    <span class="keyword">output</span> <span class="keyword type">logic</span> <span class="name">valid_o</span>
+<span class="punctuation">);</span></code></pre>
+<ul class="simple">
+<li><p><span class="docutils literal">clk_i</span> is the clock which drives the sequential logic in the CAM;</p></li>
+<li><p><span class="docutils literal">reset_n_i</span> is an active low, synchronous reset signal. If this signal is asserted at
+<span class="docutils literal">&#64;(posedge clk_i)</span>, the CAM resets itself to 'empty';</p></li>
+<li><p><span class="docutils literal">rw_n_i</span> decides whether the operation is a read (if set to <span class="docutils literal">1'b1</span>) or a write (if set to
+<span class="docutils literal">1'b0</span>). This value has no effect on the CAM unless <span class="docutils literal">valid_i</span> is asserted;</p></li>
+<li><p><span class="docutils literal">valid_i</span> is asserted when a read or write operation is performed;</p></li>
+<li><p><span class="docutils literal">key_i</span> is the key input used by both read and write operations;</p></li>
+<li><p><span class="docutils literal">val_i</span> is the value input used by write operations;</p></li>
+<li><p><span class="docutils literal">val_o</span> is the output value on reads;</p></li>
+<li><p><span class="docutils literal">valid_o</span> is asserted by the CAM on reads to assert that the value in <span class="docutils literal">val_o</span> is correct (that
+is, the CAM found a value associated with <span class="docutils literal">key_i</span>).</p></li>
+</ul>
+<p>Write and read operations are serviced at the rising edge of <span class="docutils literal">clk_i</span>. That is, the CAM updates its
+internal state (both key-value pairs as well as LRU metadata) sequentially. Additionally, the CAM
+guarantees that <span class="docutils literal">val_o</span> and <span class="docutils literal">valid_o</span> show the correct value on a read at the rising edge of
+<span class="docutils literal">clk_i</span>.</p>
+</div>
+<div class="section" id="id42">
+<h2><a class="toc-backref" href="#id76"><span class="sectnum">6.3</span> Coverages</a></h2>
+<p>Your testbench must cover at least the following:</p>
+<ul class="simple">
+<li><p>The CAM must evict a key-value pair from each of its eight indices;</p></li>
+<li><p>The CAM must record a 'read-hit from each of its eight indices;</p></li>
+<li><p>You must perform writes to the same key on consecutive clock cycles;</p></li>
+<li><p>You must perform a write then a read to the same key on consecutive clock cycles.</p></li>
+</ul>
+</div>
+<div class="section" id="id43">
+<h2><a class="toc-backref" href="#id77"><span class="sectnum">6.4</span> Error Reporting</a></h2>
+<p>Your testbench must detect the following errors</p>
+<ul class="simple">
+<li><p>Assert a read error when the value read from the CAM is incorrect.</p></li>
+</ul>
+<p>To report an error, pass the appropriate error type to <span class="docutils literal">itf.tb_report_dut_error</span> task defined in
+<span class="docutils literal">mp0/cam/include/cam_itf.sv</span>. An example is given below.</p>
+<pre class="code verilog literal-block"><code><span class="punctuation">&#64;(</span><span class="name">clk</span><span class="punctuation">);</span>
+<span class="name">assert</span> <span class="punctuation">(</span><span class="name">itf</span><span class="punctuation">.</span><span class="name">val_o</span> <span class="operator">==</span> <span class="name">val</span><span class="punctuation">)</span> <span class="keyword">else</span>  <span class="keyword">begin</span>
+    <span class="name">itf</span><span class="punctuation">.</span><span class="name">tb_report_dut_error</span><span class="punctuation">(</span><span class="name constant">READ_ERROR</span><span class="punctuation">);</span>
+    <span class="name">$error</span><span class="punctuation">(</span><span class="literal string">&quot;%0t TB: Read %0d, expected %0d&quot;</span><span class="punctuation">,</span> <span class="name builtin">$time</span><span class="punctuation">,</span> <span class="name">itf</span><span class="punctuation">.</span><span class="name">val_o</span><span class="punctuation">,</span> <span class="name">val</span><span class="punctuation">);</span>
+<span class="keyword">end</span></code></pre>
+</div>
+<div class="section" id="id44">
+<h2><a class="toc-backref" href="#id78"><span class="sectnum">6.5</span> Driving Signals</a></h2>
+<p>Once again, only drive signals at time 0 or using non-blocking assignments synchronized using the
+default <span class="docutils literal">tb_clk</span>. Only sample signals as described in <a class="reference internal" href="#sampling-signals">Sampling Signals</a> above.</p>
+</div>
+</div>
+<div class="section" id="designing-a-serializer">
+<h1><a class="toc-backref" href="#id79"><span class="sectnum">7</span> Designing a Serializer</a></h1>
+<p>In this assignment, you will design a Parallel-to-Serial converter which is able to pass the
+testbench file provided in <span class="docutils literal">mp0/piso/hvl/testbench.sv</span>. A skeleton design file is provided in
+<span class="docutils literal">mp0/piso/hdl/piso.sv</span>.</p>
+<p>The recommended way of approaching this is to start by writing only enough HDL code to pass the
+first test. Once the first test passes, add HDL code to pass the second test, etc. This portion of
+the MP is completely self-grading: if your design passes all of the tests in the testbench, it will
+receive full credit.</p>
+</div>
+<div class="section" id="modelsim">
+<h1><a class="toc-backref" href="#id80"><span class="sectnum">8</span> ModelSim</a></h1>
+<p>In the base directory of each of the verification assignments, there is a Tcl (Tool Command
+Language) file named <span class="docutils literal">run.do</span>. To test your design, execute the following from the command line:</p>
+<ul>
+<li><p>Load ModelSim module</p>
+<pre class="code literal-block"><code>$ module load altera/18.1-std</code></pre>
+</li>
+<li><p>Run ModelSim from its CLI</p>
+<pre class="code literal-block"><code>$ vsim -c</code></pre>
+</li>
+<li><p>Run the Tcl file</p>
+<pre class="code literal-block"><code>&gt; do run.do</code></pre>
+</li>
+</ul>
+</div>
+<div class="section" id="submission">
+<h1><a class="toc-backref" href="#id81"><span class="sectnum">9</span> Submission</a></h1>
+<p>The 'master' branch of your repository is graded nightly. Ensure that any additional files you use
+are <span class="docutils literal">`include</span>'ed in each testbench. Nightly autograder runs submit results into the '_grade'
+branch in your git repository.</p>
+</div>
+<div class="section" id="appendix-a-div5-dfa">
+<h1><a class="toc-backref" href="#id82"><span class="sectnum">10</span> Appendix A: DIV5 DFA</a></h1>
+<p>Binary strings are defined recursively as either</p>
+<ul class="simple">
+<li><p>The empty string, denoted as 𝜀, or</p></li>
+<li><p><span class="docutils literal">s0</span> --- a binary string, <span class="docutils literal">s</span> followed by the symbol '0', or</p></li>
+<li><p><span class="docutils literal">s1</span> --- a binary string, <span class="docutils literal">s</span> followed by the symbol '1'.</p></li>
+</ul>
+<p>We define the length of a binary string <span class="docutils literal">w</span>, notated as <span class="docutils literal">|w|</span> as</p>
+<ul class="simple">
+<li><p><span class="docutils literal">|w| = 0</span> for <span class="docutils literal">w = 𝜀</span></p></li>
+<li><p><span class="docutils literal">|w| = 1 + |s|</span> for <span class="docutils literal">w = s0</span> or <span class="docutils literal">w = s1</span>.</p></li>
+</ul>
+<p>To prove this DFA is correct, we will actually prove a stronger property: for any non-empty string,
+<span class="docutils literal">w</span>, the DFA will halt in state <span class="docutils literal">k</span> where <span class="docutils literal">k = w mod 5</span> where <span class="docutils literal">w</span> is interpreted as a binary
+number.</p>
+<p><em>Proof.</em> Let <span class="docutils literal">w</span> be an arbitrary binary string. Assume, for every string <span class="docutils literal">x</span> such that
+<span class="docutils literal">1 ≤ |x| &lt; |w|</span> that the DFA described above halts in state <span class="docutils literal">k</span> where <span class="docutils literal">k = x mod 5</span>. There are
+four cases to consider.</p>
+<ul>
+<li><p>Suppose <span class="docutils literal">w = 0</span>.  Then the DFA halts in state <span class="docutils literal">0 = 0 mod 5</span>.</p></li>
+<li><p>Suppose <span class="docutils literal">w = 1</span>.  Then the DFA halts in state <span class="docutils literal">1 = 1 mod 5</span>.</p></li>
+<li><p>Suppose <span class="docutils literal">w = x0</span> for some binary string <span class="docutils literal">x</span>. Since <span class="docutils literal">|x| &lt; |w|</span>, by the inductive assumption,
+the DFA is in state <span class="docutils literal">k = x mod 5</span>. Thus, after processing <span class="docutils literal">w = x0</span> from left-to-right, the DFA
+is in state</p>
+<pre class="literal-block">𝛿(k, 0) = (2k + 0) mod 5
+        = (2(x mod 5)) mod 5
+        = 2x mod 5
+        = w mod 5.</pre>
+<p>Thus the DFA halts in state <span class="docutils literal">w mod 5</span>.</p>
+</li>
+<li><p>Suppose <span class="docutils literal">w = x1</span> for some binary string <span class="docutils literal">x</span>. Since <span class="docutils literal">|x| &lt; |w|</span>, by the inductive assumption,
+the DFA is in state <span class="docutils literal">k = x mod 5</span>. Thus, after processing <span class="docutils literal">w = x1</span> from left-to-right, the DFA
+is in state</p>
+<pre class="literal-block">𝛿(k, 0) = (2k + 1) mod 5
+        = (2(x mod 5) + 1) mod 5
+        = (2x + 1) mod 5
+        = w mod 5.</pre>
+<p>Thus the DFA halts in state <span class="docutils literal">w mod 5</span>.</p>
+</li>
+</ul>
+<p>Therefore the DFA halts in state <span class="docutils literal">w mod 5</span> for any non-empty binary string <span class="docutils literal">w</span>.</p>
+<p><em>Q.E.D.</em></p>
+<p>The above proof combined with the facts that the DFA only accepts in state 0, and that the start
+state is not accepting prove that the DFA accepts a binary string if and only if the binary number
+represented by that string is divisible by five.</p>
+</div>
+<div class="section" id="notes">
+<h1><a class="toc-backref" href="#id83"><span class="sectnum">11</span> Notes</a></h1>
+<p>This document is written in reStructuredText (rst), a markup language similar to Markdown, developed
+by the Python community. rst files are automatically rendered by Github, so you shouldn't need to
+download or save anything to see the documentation.  However, if you would like an offline version
+of the file, you may use the HTML version in the MP directory. Follow the steps below to generate
+your own HTML or PDF version.</p>
+<p>Install Python docutils if not already installed:</p>
+<pre class="literal-block">$ sudo pip3 install docutils</pre>
+<p>Use a docutils frontend to convert rst to another format:</p>
+<pre class="literal-block">$ rst2html5 README.rst MP0_spec.html
+$ rst2latex README.rst MP0_spec.tex</pre>
+<p>If creating a PDF using LaTeX, you will need a TeX distribution installed. You can then use:</p>
+<pre class="literal-block">$ pdflatex MP0_spec.tex</pre>
+<p>Note that this document was optimized for viewing online in the Github repository. Generated HTML
+files should match pretty closely to what you will see on Github, perhaps with different styles.
+PDF documents will likely look different though, so use at your own risk.</p>
+<p>See the <a class="reference external" href="http://docutils.sourceforge.net/docs/user/tools.html">Docutils Front-End Tools</a> for more details.</p>
+</div>
+</div>
+</body>
+</html>
