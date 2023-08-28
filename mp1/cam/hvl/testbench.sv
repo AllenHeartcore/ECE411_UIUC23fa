@@ -17,7 +17,7 @@ default clocking tb_clk @(negedge itf.clk); endclocking
 
 initial begin
     $fsdbDumpfile("dump.fsdb");
-    $fsdbDumpvars();
+    $fsdbDumpvars(0, "+all");
 end
 
 task reset();

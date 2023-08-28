@@ -22,7 +22,7 @@ fifo_synch_1r1w dut (
 
 initial begin
     $fsdbDumpfile("dump.fsdb");
-    $fsdbDumpvars();
+    $fsdbDumpvars(0, "+all");
 end
 
 // Clock Synchronizer for Student Use

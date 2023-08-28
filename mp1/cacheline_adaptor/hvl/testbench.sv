@@ -206,7 +206,7 @@ module testbench;
 
     initial begin
         $fsdbDumpfile("dump.fsdb");
-        $fsdbDumpvars();
+        $fsdbDumpvars(0, "+all");
     end
 
 endmodule : testbench
