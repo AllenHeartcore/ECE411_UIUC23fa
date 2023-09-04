@@ -78,13 +78,13 @@ aligned load and stores. We will not test your CPU on non-naturally aligned acce
 
 However, there is also an additional requirement we impose on your memory interface:
 all accesses made by your CPU must be 32-bit aligned. Say for example, if your CPU executes ``LB`` on
-address ``0x10000003``, your CPU should access address ``0x10000000``, take the third byte from ``mem_rdata``,
+address ``0x10000003``, your CPU should access address ``0x10000000``, take highest byte from ``mem_rdata``,
 and put it into the lowest 8 bits in ``rd``.
 
 Writing only some bytes within the 4 byte bus is accomplished by using ``mem_byte_enable``:
 for example, SB on address ``0x10000003`` should:
 - Put ``0x10000000`` as mem_address
-- Put valid data on the third byte in ``mem_wdata``
+- Put valid data on the highest byte in ``mem_wdata``
 - Put ``4'b0100`` on ``mem_byte_enable``
 - Raise ``mem_write``
 
@@ -333,7 +333,7 @@ We synthesize the design using Synopsys Design Compiler. To synthesize your desi
 
 
 If your design is successfully synthesized, this will produce an area report and a timing report.
-We target a 100 MHz clock. Given the gate delays in the 45Nm node we are targeting, this is NOT an aggressive target and you should be able to 
+We target a 100 MHz clock. Given the gate delays in the 45nm node we are targeting, this is NOT an aggressive target and you should be able to
 meet timing constraints easily. 
 
 The timing report will list the longest path delay in your design. If you see a positive slack value for the longest path, that means your design passes timing.
