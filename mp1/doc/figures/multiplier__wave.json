@@ -1,0 +1,16 @@
+{ signal: [
+  { name: 'clk_i', 			wave: 'P.....|....'},
+  ['Master',
+   	['ctrl', 
+    	{ name: 'start_i', 		wave: '0..10.|....'},
+  		{ name: 'reset_n_i', 		wave: '101...|....'},
+	],
+  	{ name: 'multiplicand_i', wave: 'xxx=xx|xxxx', data: ['op1']},
+  	{ name: 'multiplier_i', 	wave: 'xxx=xx|xxxx', data: ['op2']},
+   ],
+   ['Slave',
+  	{ name: 'ready_o', 		wave: 'xx1.0.|..1.'},
+  	{ name: 'product_o', 		wave: 'xxxxxx|xx=.', data: ['op1 * op2']},
+  	{ name: 'done_o', 		wave: 'xx0...|..1.'}
+   ]
+]}
