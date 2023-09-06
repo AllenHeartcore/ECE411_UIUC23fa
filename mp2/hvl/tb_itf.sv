@@ -16,7 +16,6 @@ logic [31:0] mem_rdata;
 logic [31:0] mem_wdata;
 logic [31:0] write_data;
 logic halt;
-logic [31:0] registers [32];
 
 // The monitor has a reset signal, which it needs, but
 // you use initial blocks in your DUT, so we generate two clocks
@@ -29,7 +28,7 @@ endfunction
 
 
 modport tb(
-    input clk, rst, mem_resp, mem_rdata, halt, registers,
+    input clk, rst, mem_resp, mem_rdata, halt,
     output mem_read, mem_write, mem_byte_enable, mem_address,
             mem_wdata
 );

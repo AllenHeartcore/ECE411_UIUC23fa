@@ -26,8 +26,9 @@ module memory #(
         _write <= itf.mcb.write;
     end
 
-    always_ff @(itf.mcb iff itf.mcb.write && !_write) begin
-
+    always @(itf.mcb iff (itf.mcb.read && itf.mcb.write)) begin
+        $error("Memory Error: Simultaneous memory read and write detected");
+        itf.mcb.error <= 1'b1;
     end
 
     initial begin

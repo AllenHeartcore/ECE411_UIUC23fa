@@ -78,7 +78,7 @@ aligned load and stores. We will not test your CPU on non-naturally aligned acce
 
 However, there is also an additional requirement we impose on your memory interface:
 all accesses made by your CPU must be 32-bit aligned. Say for example, if your CPU executes ``LB`` on
-address ``0x10000003``, your CPU should access address ``0x10000000``, take highest byte from ``mem_rdata``,
+address ``0x10000003``, your CPU should access address ``0x10000000``, take the highest byte from ``mem_rdata``,
 and put it into the lowest 8 bits in ``rd``.
 
 Writing only some bytes within the 4 byte bus is accomplished by using ``mem_byte_enable``:
@@ -172,10 +172,11 @@ instruction will pass through the fetch and decode states, and once decoded, pas
 appropriate for the particular instruction. See `Appendix C`_ for a partial state diagram
 of the controller.
 
-Starting PC
------------
+PC
+--
 
 You will have to create your own PC register in the datapath. Your PC should reset to ``0x40000000``.
+You should assert ``load_pc`` on the last state of each instruction.
 
 Design Setup
 ============
@@ -289,7 +290,7 @@ To run the RTL simulation, from your MP2 directory, :
 
 This will invoke ``generate_memory_file.sh`` detailed in `Appendix A`_, compile your RTL design, and run the simulation.
 The ``sim/compile.log`` file will contain the VCS compilation output.  Pay attention to any compiler warnings,
-as they can lead to subtle bugs. The ``sim/sim.log`` file will contain the VCS simulation output.
+as they can lead to subtle bugs. The ``sim/simulation.log`` file will contain the VCS simulation output.
 The simulation will print any mismatches detected by RVFI. Expected values will be prefixed with ``spec`` while your value is prefixed with ``rvfi``.
 
 Wave Traces
@@ -333,7 +334,7 @@ We synthesize the design using Synopsys Design Compiler. To synthesize your desi
 
 
 If your design is successfully synthesized, this will produce an area report and a timing report.
-We target a 100 MHz clock. Given the gate delays in the 45nm node we are targeting, this is NOT an aggressive target and you should be able to
+We target a 100 MHz clock. Given the gate delays in the 45nm node we are targeting, this is NOT an aggressive target and you should be able to 
 meet timing constraints easily. 
 
 The timing report will list the longest path delay in your design. If you see a positive slack value for the longest path, that means your design passes timing.
@@ -380,7 +381,7 @@ possible for small bugs. The second method of testing will be a larger test code
 your design can successfully run larger sequences of instructions. No partial credit will be given
 for this larger test code but it will not test corner cases as thoroughly as the targeted tests.
 
-Additionally, **certain tests may be withheld from you until the CP1 and Final due-dates**. This
+**Certain tests will be withheld from you until the CP1 and Final due-dates**. This
 means that you should not treat earlier autograding runs as your verification effort. **You must
 verify your own design.**
 
