@@ -252,6 +252,11 @@ all the signals that need to be monitored in control and datapath. Please do not
 and program them according to their implied functionality. If you get the
 "cross module reference error" when compiling, it is likely the case that you have modified some of these signal names.
 
+To ensure correctness, RVFI requires all connected signals (as specified in ``top.sv``) to be correct when you raise the 'commit' signal (``load_pc`` for this MP). 
+Notably, this means that memory address, memory read/write data, and ``regfilemux_out`` must remain correct while incrementing the PC after finishing the read/write.
+
+You should always raise ``load_pc`` at the last state of each instruction, and make sure all RVFI signals are still valid at that time.
+
 Two different testbenches are provided. To choose which one to instantiate in ``mp2/hvl/top.sv``,
 set the ``TESTBENCH`` macro to either ``SRC`` or ``RAND``.
 
@@ -268,6 +273,12 @@ The ``RAND`` testbench drives the DUT by executing a sequence of randomly genera
 This testbench can and should be modified, as we have only provided the code to randomly generate register-immediate instructions.
 We suggest extending this testbench to support simulation of randomly
 generated register-register instructions, and load-store instructions. When using the RAND testbench, it is not necessary to supply the PROG argument to make.
+
+When you are running the ``RAND`` testbench, you still need to provide a program argument to ``make run PROG=..``. Even though the program will not be run,
+it is necessary to make the script in `Appendix A`_ happy.
+
+Note that the ``RAND`` testbench only works with the RVFI monitor since instructions are generated on the fly, and the instruction stream is not saved after simulation.
+It will not generate an ELF that can be run by Spike.
 
 Testbench Memory Initialization
 -------------------------------
@@ -446,6 +457,10 @@ Then you can find the golden Spike log in ``mp2/sim/golden_spike.log``
 In addition, code provided in ``mp2/hvl/top.sv`` will print out a log in the exact same format, which can be found at ``mp2/sim/spike.log``.
 You can use your favorite diff tool to compare the two.
 
+When you are trying to run Spike on your own testcode,
+make sure to include all the lines about ``tohost`` in the example testcode, and the 4 lines that write 1 into ``tohost`` right before halting.
+Spike only terminates when you ``sw`` into a special 'variable' in your assembly code, so failing to include these instructions will lead to
+Spike getting stuck in the infinite loop.
 
 Appendix C: Control
 ===================
