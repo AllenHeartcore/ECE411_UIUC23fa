@@ -85,7 +85,7 @@ Writing only some bytes within the 4 byte bus is accomplished by using ``mem_byt
 for example, SB on address ``0x10000003`` should:
 - Put ``0x10000000`` as mem_address
 - Put valid data on the highest byte in ``mem_wdata``
-- Put ``4'b0100`` on ``mem_byte_enable``
+- Put ``4'b1000`` on ``mem_byte_enable``
 - Raise ``mem_write``
 
 
