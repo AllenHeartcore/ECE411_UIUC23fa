@@ -40,6 +40,7 @@ cp "$IN_FILE" "$WORK_DIR"
 
 function ecompile {
     ELF_FILE="${WORK_DIR}/$(basename "${IN_FILE%.*}").elf"
+    rm -f $ELF_FILE
     "$ASSEMBLER" -mcmodel=medany -static -fno-common -ffreestanding -nostartfiles -march=$ARCH -mabi=ilp32 -Ofast -flto -Wall -Wextra -Wno-unused -T$LINK_FILE $START_FILE "${WORK_DIR}/$(basename $IN_FILE)" -o "$ELF_FILE" -lm -static-libgcc -lgcc -lc -Wl,--no-relax
     # Fail if object file doesn't exist or has no memory content
     if [[ ! -e "$ELF_FILE" || "$(cat "$ELF_FILE" | wc -c)" -le "1" ]]; then
@@ -51,11 +52,13 @@ function ecompile {
 
 function edisassembly {
     DIS_FILE="${WORK_DIR}/$(basename "${ELF_FILE%.*}").dis"
+    rm -f $DIS_FILE
     "$OBJDUMP" -D "$ELF_FILE" -Mnumeric > "$DIS_FILE"
 }
 
 function eobjcopy {
     BIN_FILE="${WORK_DIR}/$(basename "${ELF_FILE%.*}").bin"
+    rm -f $BIN_FILE
     "$OBJCOPY" -O binary "$ELF_FILE" "$BIN_FILE"
     # Fail if binary file doesn't exist or has no memory content
     if [[ ! -e "$BIN_FILE" || "$(cat "$BIN_FILE" | wc -c)" -le "1" ]]; then
