@@ -36,7 +36,7 @@ Introduction
 
 We will move on to study the RISC-V architecture.
 In this MP we will step through the design and simulation of a simple, non-pipelined processor
-that implements a subset of the RV32I instruction set architecture (ISA). This page 
+that implements a subset of the RV32I instruction set architecture (ISA). This page
 contains the specification for the design. You will follow
 the directions to create the design and verify it using dynamic simulation.
 
@@ -52,7 +52,7 @@ The RV32I Instruction Set Architecture
 
 The RISC-V specification was created to be a free and open alternative to other popular ISAs. It includes a 64
 bit variant and many extensions for atomic operations, floating point
-arithmetic, compressed instructions, etc. 
+arithmetic, compressed instructions, etc.
 
 **Please read** `RISC-V specification`_ **Chapter 2 carefully for all the instructions needed to be implemted
 and the specification of those instructions.** For this MP, you will implement all of the RV32I
@@ -252,33 +252,58 @@ all the signals that need to be monitored in control and datapath. Please do not
 and program them according to their implied functionality. If you get the
 "cross module reference error" when compiling, it is likely the case that you have modified some of these signal names.
 
-To ensure correctness, RVFI requires all connected signals (as specified in ``top.sv``) to be correct when you raise the 'commit' signal (``load_pc`` for this MP). 
+To ensure correctness, RVFI requires all connected signals (as specified in ``top.sv``) to be correct when you raise the 'commit' signal (``load_pc`` for this MP).
 Notably, this means that memory address, memory read/write data, and ``regfilemux_out`` must remain correct while incrementing the PC after finishing the read/write.
 
 You should always raise ``load_pc`` at the last state of each instruction, and make sure all RVFI signals are still valid at that time.
 
-Two different testbenches are provided. To choose which one to instantiate in ``mp2/hvl/top.sv``,
-set the ``TESTBENCH`` macro to either ``SRC`` or ``RAND``.
+Three different testbenches are provided. To choose which one to instantiate in ``mp2/hvl/top.sv``,
+set the ``TESTBENCH`` macro to either ``SRC``, ``RAND``, or ``MODERN_RAND``. Note that if you want randomized testing, ``MODERN_RAND`` is highly recommended
+over ``RAND``, which will be deprecated soon.
 
 The ``SRC`` testbench drives the DUT by loading a program binary into memory, and executing the
 program. This testbench should largely remain unchanged, instead modify the tests by modifying the
 compiled program.
-
 The memory is provided as a behavioral SystemVerilog file ``memory.sv``. The model reads
 memory contents from the ``memory.lst`` file in the ``sim`` directory of your
 MP2 project. See `Appendix A`_ for instructions on compiling RISC-V programs and loading them
 into memory.
 
-The ``RAND`` testbench drives the DUT by executing a sequence of randomly generated instructions.
-This testbench can and should be modified, as we have only provided the code to randomly generate register-immediate instructions.
+The ``RAND`` and ``MODERN_RAND`` testbenches drive the DUT by executing a sequence of randomly generated instructions.
+``MODERN_RAND`` can and should be modified, as we have only provided the code to randomly generate register-immediate instructions, ``AUIPC``, ``LUI``, and ``JAL``.
 We suggest extending this testbench to support simulation of randomly
-generated register-register instructions, and load-store instructions. When using the RAND testbench, it is not necessary to supply the PROG argument to make.
-
-When you are running the ``RAND`` testbench, you still need to provide a program argument to ``make run PROG=..``. Even though the program will not be run,
+generated register-register instructions, branches, and load-store instructions.
+When you are running the ``MODERN_RAND`` or ``RAND`` testbench, you still need to provide a program argument to ``make run PROG=..``. Even though the program will not be run,
 it is necessary to make the script in `Appendix A`_ happy.
-
-Note that the ``RAND`` testbench only works with the RVFI monitor since instructions are generated on the fly, and the instruction stream is not saved after simulation.
+Note that the ``RAND`` and ``MODERN_RAND`` testbenches only work with the RVFI monitor since instructions are generated on the fly, and the instruction stream is not saved after simulation.
 It will not generate an ELF that can be run by Spike.
+
+For the ``MODERN_RAND`` testbench, it is very useful to view the coverage report to see that you're actually testing all the instructions
+that you should be. To view the coverage report, do ``make covrep``. This will generate the coverage reports as HTML in the directory
+``sim/urgReport/dashboard.html``, which you can open in Firefox on EWS. Navigate to "Groups" to see the breakdown.
+
+
+.. figure:: doc/figures/coverage.png
+   :align: center
+   :width: 80%
+   :alt: Coverage webpage screenshot
+
+   Figure 1: The coverage report of the provided modern random testbench.
+
+Advanced: If you are using SSH (and you don't want to X forward a web browser), you instead do the following steps to view the remote webpage on
+your local browser. First, SSH into EWS with:
+
+.. code::
+
+    ssh -L 8000:localhost:8000 netid@linux.ews.illinois.edu
+
+Then, navigate to ``mp2/sim/urgReport``, and start a web server:
+
+.. code::
+
+   python3 -m http.server 8000 &
+
+Now, on your local machine, navigate to http://localhost:8000/dashboard.html, and you should see the coverage report.
 
 Testbench Memory Initialization
 -------------------------------
@@ -299,6 +324,7 @@ To run the RTL simulation, from your MP2 directory, :
 
    make run PROG=PATH_TO_TESTCODE
 
+Replace ``PATH_TO_TESTCODE`` with path to your test code.
 This will invoke ``generate_memory_file.sh`` detailed in `Appendix A`_, compile your RTL design, and run the simulation.
 The ``sim/compile.log`` file will contain the VCS compilation output.  Pay attention to any compiler warnings,
 as they can lead to subtle bugs. The ``sim/simulation.log`` file will contain the VCS simulation output.
@@ -307,8 +333,8 @@ The simulation will print any mismatches detected by RVFI. Expected values will 
 Wave Traces
 -----------
 
-To aid in debugging, we will use Synopsys Verdi. Once a simulation is run, it will dump all signals in the design in a .fsdb (Fast Signal Database) file. 
-Launch Verdi by running 
+To aid in debugging, we will use Synopsys Verdi. Once a simulation is run, it will dump all signals in the design in a .fsdb (Fast Signal Database) file.
+Launch Verdi by running
 
 .. code::
 
@@ -321,11 +347,11 @@ While trying to debug, you may want to edit the source code, run a simulation an
 while Verdi is running. Once the simulation has finished, press ``Shift + L`` while the Verdi window is active to reload the design. You can now view the waves
 corresponding to the new simulation.
 
-Additionally, you can save a "signal" file that instructs Verdi to load a set of signals in the waveform viewer. Once you have a set of signals added to 
+Additionally, you can save a "signal" file that instructs Verdi to load a set of signals in the waveform viewer. Once you have a set of signals added to
 the waveform viewer, select the nWave window, and press ``Shift + S`` to save the file.
 
 Next time you launch Verdi, you can restore the signals by selecting the nWave window and pressing ``r``, and selecting the file that you saved earlier.
-We recommend that you refer to the full Verdi user guide. Verdi has numerous debug features that can help improve productivity. 
+We recommend that you refer to the full Verdi user guide. Verdi has numerous debug features that can help improve productivity.
 
 
 Using Spike to Verify Your Design
@@ -337,25 +363,25 @@ See `Appendix B`_
 Synthesis
 =========
 
-We synthesize the design using Synopsys Design Compiler. To synthesize your design, run 
+We synthesize the design using Synopsys Design Compiler. To synthesize your design, run
 
 .. code::
-   
-   make synth 
+
+   make synth
 
 
 If your design is successfully synthesized, this will produce an area report and a timing report.
-We target a 100 MHz clock. Given the gate delays in the 45nm node we are targeting, this is NOT an aggressive target and you should be able to 
-meet timing constraints easily. 
+We target a 100 MHz clock. Given the gate delays in the 45nm node we are targeting, this is NOT an aggressive target and you should be able to
+meet timing constraints easily.
 
 The timing report will list the longest path delay in your design. If you see a positive slack value for the longest path, that means your design passes timing.
 If there is a negative value, that means that particular path takes longer than 10 ns to propagate. The report will also list the gates in the pathway that will indicate
 where the long piece of logic exists.
 
-The second lab for MP2 will cover more information on Design Compiler and its GUI, Design Vision. 
+The second lab for MP2 will cover more information on Design Compiler and its GUI, Design Vision.
 
 For full credit on this MP, your design must successfully synthesize and meet all timing constraints. There is no area constraint.
-Note that this is only a requirement for the final checkpoint. 
+Note that this is only a requirement for the final checkpoint.
 
 
 Hand-ins
@@ -429,7 +455,7 @@ that is placed into the simulation directory ``mp2/sim``. The ``generate_memory_
 directory is used to do this.
 
 The ``generate_memory_file.sh`` script takes a RISC-V assembly file or a single C file as input, optially compile it to assembly,
-assembles it into a RISC-V ELF then object file, and converts the object file into a suitable format for initializing the testbench memory. 
+assembles it into a RISC-V ELF then object file, and converts the object file into a suitable format for initializing the testbench memory.
 
 The ``generate_memory_file.sh`` script stores all its intermediate products in ``mp2/sim/bin``.
 Notably, it places the ELF version of your program there, which can be directly fed to Spike (see `Appendix B`_).
@@ -452,6 +478,7 @@ To run an ELF on spike, run the following command
 
   make spike ELF=PATH_TO_ELF
 
+Replace ``PATH_TO_ELF`` with path to an ELF file
 Then you can find the golden Spike log in ``mp2/sim/golden_spike.log``
 
 In addition, code provided in ``mp2/hvl/top.sv`` will print out a log in the exact same format, which can be found at ``mp2/sim/spike.log``.
@@ -462,6 +489,9 @@ make sure to include all the lines about ``tohost`` in the example testcode, and
 Spike only terminates when you ``sw`` into a special 'variable' in your assembly code, so failing to include these instructions will lead to
 Spike getting stuck in the infinite loop.
 
+Spike uses ``x5``, ``x10``, and ``x11`` for some internal purposes before it actually jumps to run the ELF you supplied.
+Keep this in mind when you are writing your own test code.
+
 Appendix C: Control
 ===================
 
@@ -470,7 +500,7 @@ Appendix C: Control
    :width: 80%
    :alt: RV32I control state diagram
 
-   Figure 1: Example RV32I control state diagram -- sufficient for **most** of checkpoint 1
+   Figure 2: Example RV32I control state diagram -- sufficient for **most** of checkpoint 1
 
 
 Appendix D: Datapath
@@ -481,7 +511,7 @@ Appendix D: Datapath
    :width: 80%
    :alt: RV32I datapath diagram
 
-   Figure 2: Example RV32I datapath diagram -- sufficient for **most** of checkpoint 1
+   Figure 3: Example RV32I datapath diagram -- sufficient for **most** of checkpoint 1
 
 Appendix E: Instructions Needed for this MP
 ===========================================

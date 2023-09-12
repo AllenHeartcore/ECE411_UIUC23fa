@@ -1,5 +1,6 @@
 `define SRC 0
 `define RAND 1
+`define MODERN_RAND 2
 `define TESTBENCH `SRC
 
 
@@ -36,8 +37,11 @@ generate
 if (`TESTBENCH == `SRC) begin : testbench
     source_tb tb(.mem_itf(itf));
 end
-else begin : testbench
+else if (`TESTBENCH == `RAND) begin : testbench
     random_tb tb(.itf(itf), .mem_itf(itf));
+end
+else begin
+    modern_random_tb tb(.itf(itf), .mem_itf(itf));
 end
 endgenerate
 
