@@ -91,6 +91,9 @@ import rv32i_types::*;
     rand instr_t instr;
     rand bit [NUM_TYPES-1:0] instr_type;
 
+    // Make sure we have an even distribution of instruction types.
+    constraint solve_order_c { solve instr_type before instr; }
+
     // Pick one of the instruction types.
     constraint instr_type_c {
       $countones(instr_type) == 1; // Ensures one-hot.
