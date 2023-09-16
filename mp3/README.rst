@@ -3,7 +3,7 @@ ECE 411: MP3 Documentation
 ==========================
 
 --------------------------------------------------------------
-The RV32I Processor with a Unified 2-Way Set-Associative Cache
+The RV32I Processor with a Unified 4-Way Set-Associative Cache
 --------------------------------------------------------------
 
     The software programs described in this document are confidential and proprietary products of
