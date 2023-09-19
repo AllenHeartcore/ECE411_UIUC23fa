@@ -60,41 +60,44 @@ initial begin
     /************************ Your Code Here ***********************/
     // Feel free to make helper tasks / functions, initial / always blocks, etc.
 
+    `define MAGIC_1 8'b10100101
+    `define MAGIC_2 8'b01011010
+
     check_if_ready();
 
     // [COVERAGE 1] Sequential enqueue
-    itf.valid_i = 1'b1;
+    itf.valid_i <= 1'b1;
     for (int i = 0; i < CAP_P; i++) begin
         /* for an especially buggy design, say it enqueues the
            pointer value instead, we can catch these errors by 
            avoiding enqueueing a simple increasing sequence */
-        itf.data_i = i ^ 8'b10100101;
+        itf.data_i <= i ^ `MAGIC_1;
         ##(1);
     end
-    itf.valid_i = 1'b0;
+    itf.valid_i <= 1'b0;
 
     // [COVERAGE 2] Sequential dequeue
-    itf.yumi = 1'b1;
+    itf.yumi <= 1'b1;
     for (int i = 0; i < CAP_P; i++) begin
-        check_if_equal(i ^ 8'b10100101);
+        check_if_equal(i ^ `MAGIC_1);
         ##(1);
     end
-    itf.yumi = 1'b0;
+    itf.yumi <= 1'b0;
 
     reset(); // in (a buggy) case that any data lingers around
     check_if_ready();
 
     // [COVERAGE 3] Simultaneous enqueue and dequeue
-    itf.valid_i = 1'b1;
+    itf.valid_i <= 1'b1;
     for (int i = 0; i < CAP_P; i++) begin
-        itf.data_i = i ^ 8'b01011010;
+        itf.data_i <= i ^ `MAGIC_2;
         ##(1);
-        itf.yumi = 1'b1;
+        itf.yumi <= 1'b1;
         ##(1);
-        check_if_equal(((i + 1) / 2) ^ 8'b01011010); // two ins, one out
-        itf.yumi = 1'b0;
+        check_if_equal(((i + 1) / 2) ^ `MAGIC_2); // two ins, one out
+        itf.yumi <= 1'b0;
     end
-    itf.valid_i = 1'b0;
+    itf.valid_i <= 1'b0;
 
     reset();
     check_if_ready();
