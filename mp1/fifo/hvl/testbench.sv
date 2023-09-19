@@ -41,11 +41,63 @@ endfunction : report_error
 
 // DO NOT MODIFY CODE ABOVE THIS LINE
 
+task check_if_equal(int expected);
+    assert (dut.data_o == expected) else begin
+        $error ("%0d: %0t: INCORRECT_DATA_O_ON_YUMI_I error detected", `__LINE__, $time);
+        report_error (INCORRECT_DATA_O_ON_YUMI_I);
+    end
+endtask : check_if_equal
+
+task check_if_ready();
+    assert (dut.ready_o == 1'b1) else begin
+        $error ("%0d: %0t: RESET_DOES_NOT_CAUSE_READY_O error detected", `__LINE__, $time);
+        report_error (RESET_DOES_NOT_CAUSE_READY_O);
+    end
+endtask : check_if_ready
+
 initial begin
     reset();
     /************************ Your Code Here ***********************/
     // Feel free to make helper tasks / functions, initial / always blocks, etc.
 
+    check_if_ready();
+
+    // [COVERAGE 1] Sequential enqueue
+    itf.valid_i = 1'b1;
+    for (int i = 0; i < CAP_P; i++) begin
+        /* for an especially buggy design, say it enqueues the
+           pointer value instead, we can catch these errors by 
+           avoiding enqueueing a simple increasing sequence */
+        itf.data_i = i ^ 8'b10100101;
+        ##(1);
+    end
+    itf.valid_i = 1'b0;
+
+    // [COVERAGE 2] Sequential dequeue
+    itf.yumi = 1'b1;
+    for (int i = 0; i < CAP_P; i++) begin
+        check_if_equal(i ^ 8'b10100101);
+        ##(1);
+    end
+    itf.yumi = 1'b0;
+
+    reset(); // in (a buggy) case that any data lingers around
+    check_if_ready();
+
+    // [COVERAGE 3] Simultaneous enqueue and dequeue
+    itf.valid_i = 1'b1;
+    for (int i = 0; i < CAP_P; i++) begin
+        itf.data_i = i ^ 8'b01011010;
+        ##(1);
+        itf.yumi = 1'b1;
+        ##(1);
+        check_if_equal(((i + 1) / 2) ^ 8'b01011010); // two ins, one out
+        itf.yumi = 1'b0;
+    end
+    itf.valid_i = 1'b0;
+
+    reset();
+    check_if_ready();
 
     /***************************************************************/
     // Make sure your test bench exits by calling itf.finish();

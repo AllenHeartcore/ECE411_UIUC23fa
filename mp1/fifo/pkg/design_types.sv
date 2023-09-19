@@ -8,8 +8,13 @@ typedef logic [WIDTH_P-1:0] word_t;
 // ports of the FIFO's memory
 parameter int PTR_WIDTH_P = 8;
 
+`define VAL_MASK PTR_WIDTH_P-1:0
+`define SIGN_MASK PTR_WIDTH_P
+
 // How do we decide the width of ptr_t?
-typedef logic [PTR_WIDTH_P-1:0] ptr_t;
+typedef logic [PTR_WIDTH_P:0] ptr_t;
+// sign bit extended to distinguish between "empty" and "full"
+// but setting PTR_WIDTH_P to 9 messes up the case counter in autograder
 
 // Why does this work? Could using SystemVerilog's ** operator also work here?
 // The number of words stored in the FIFO

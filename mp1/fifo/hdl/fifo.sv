@@ -40,8 +40,8 @@ assign data_o = output_buffer_r;
 
 /******************************** Assignments ********************************/
 assign full = ptr_eq & (~sign_match);
-assign ptr_eq = |(read_ptr == write_ptr);
-assign sign_match = read_ptr[PTR_WIDTH_P-1] == write_ptr[PTR_WIDTH_P-1];
+assign ptr_eq = |(read_ptr[`VAL_MASK] == write_ptr[`VAL_MASK]);
+assign sign_match = read_ptr[`SIGN_MASK] == write_ptr[`SIGN_MASK];
 assign empty = ptr_eq & sign_match;
 assign enqueue = ready_o & valid_i;
 assign dequeue = valid_o & yumi_i;
@@ -60,11 +60,11 @@ always_ff @(posedge clk_i, negedge reset_n_i) begin
         case ({enqueue, dequeue})
             2'b00: ;
             2'b01: begin : dequeue_case
-                output_buffer_r <= queue[read_ptr_next];
+                output_buffer_r <= queue[read_ptr_next[`VAL_MASK]];
                 read_ptr <= read_ptr_next;
             end
             2'b10: begin : enqueue_case
-                queue[write_ptr] <= data_i;
+                queue[write_ptr[`VAL_MASK]] <= data_i;
                 write_ptr <= write_ptr_next;
                 if (empty) begin
                     output_buffer_r <= data_i;
@@ -78,11 +78,11 @@ always_ff @(posedge clk_i, negedge reset_n_i) begin
                 // Dequeue portion
                 output_buffer_r <= read_ptr_next == write_ptr ?
                                    data_i :
-                                   queue[read_ptr_next];
+                                   queue[read_ptr_next[`VAL_MASK]];
                 read_ptr <= read_ptr_next;
 
                 // Enqueue portion
-                queue[write_ptr] <= data_i;
+                queue[write_ptr[`VAL_MASK]] <= data_i;
                 write_ptr <= write_ptr_next;
                 // No need to check empty, since can't dequeue from empty
             end
