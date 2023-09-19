@@ -18,15 +18,15 @@ assign valid_o = |vec_i;
 always_comb begin
     idx_o = '0;
     unique case (vec_i)
-        8'd00: idx_o = 3'd0;
-        8'd01: idx_o = 3'd0;
-        8'd02: idx_o = 3'd1;
-        8'd04: idx_o = 3'd2;
-        8'd08: idx_o = 3'd3;
-        8'd10: idx_o = 3'd4;
-        8'd20: idx_o = 3'd5;
-        8'd40: idx_o = 3'd6;
-        8'd80: idx_o = 3'd7;
+        8'h00: idx_o = 3'd0;
+        8'h01: idx_o = 3'd0;
+        8'h02: idx_o = 3'd1;
+        8'h04: idx_o = 3'd2;
+        8'h08: idx_o = 3'd3;
+        8'h10: idx_o = 3'd4;
+        8'h20: idx_o = 3'd5;
+        8'h40: idx_o = 3'd6;
+        8'h80: idx_o = 3'd7;
         default: if ($time != 0)
             $info("CAMCTL: %s %0d: reset to make valid",
                             `__FILE__, `__LINE__);

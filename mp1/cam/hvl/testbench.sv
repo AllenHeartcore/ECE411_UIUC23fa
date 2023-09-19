@@ -35,6 +35,13 @@ endtask
 task read(input key_t key, output val_t val);
 endtask
 
+task check_read_error(int expected);
+    assert (itf.val_o == expected) else begin
+        itf.tb_report_dut_error(READ_ERROR);
+        $error("%0t TB: Read %0d, expected %0d", $time, itf.val_o, expected);
+    end
+endtask
+
 initial begin
     $display("Starting CAM Tests");
 
@@ -44,6 +51,48 @@ initial begin
     // Consider using the task skeltons above
     // To report errors, call itf.tb_report_dut_error in cam/include/cam_itf.sv
 
+    `define READ  1'b1
+    `define WRITE 1'b0
+    `define MAGIC_1 16'h171A // chosen at random
+    `define MAGIC_2 16'hDC8B
+    `define MAGIC_3 16'h56F8
+    `define MAGIC_4 16'h2C1A
+
+    // [Initial Population]
+    itf.valid_i <= 1'b1;
+    itf.rw_n    <= `WRITE;
+    for (int i = 0; i < camsize_p; i++) begin
+        itf.key   <= i ^ `MAGIC_1;
+        itf.val_i <= i ^ `MAGIC_2;
+        @(tb_clk);
+    end
+
+    // [COVERAGE 1] Entry evictions
+    for (int i = 0; i < camsize_p; i++) begin
+        itf.key   <= i ^ `MAGIC_3;
+        itf.val_i <= i ^ `MAGIC_4;
+        @(tb_clk);
+    end
+
+    // [COVERAGE 2] Read hits
+    itf.rw_n    <= `READ;
+    for (int i = 0; i < camsize_p; i++) begin
+        itf.key   <= i ^ `MAGIC_3;
+        @(tb_clk iff itf.valid_o);
+        check_read_error(i ^ `MAGIC_4);
+    end
+
+    // [COVERAGE 3] Consecutive writes to the same key
+    // [COVERAGE 4] Reading a key that was just written
+    itf.rw_n    <= `WRITE;
+    itf.key     <= `MAGIC_1;
+    itf.val_i   <= `MAGIC_2;
+    @(tb_clk);
+    itf.val_i   <= `MAGIC_3;
+    @(tb_clk);
+    itf.rw_n    <= `READ;
+    @(tb_clk iff itf.valid_o);
+    check_read_error(`MAGIC_3);
 
     /**********************************************************************/
 
