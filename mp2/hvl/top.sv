@@ -1,5 +1,6 @@
 `define SRC 0
 `define RAND 1
+`define MODERN_RAND 2
 `define TESTBENCH `SRC
 
 
@@ -10,7 +11,7 @@ timeprecision 1ns;
 
 /****************************** Generate Clock *******************************/
 bit clk;
-always #5 clk = clk === 1'b0;
+always #1 clk = clk === 1'b0;
 
 
 /*********************** Variable/Interface Declarations *********************/
@@ -20,9 +21,13 @@ tb_itf itf(clk);
 logic [63:0] order;
 initial order = 0;
 always @(posedge itf.clk iff commit) order <= order + 1;
-int timeout = 100000000;   // Feel Free to adjust the timeout value
-assign itf.registers = dut.datapath.regfile.data;
-assign itf.halt = dut.load_pc & (dut.datapath.pc_out == dut.datapath.pcmux_out);
+int timeout = 1000000;   // Feel Free to adjust the timeout value
+assign itf.halt = dut.load_pc &
+                  (dut.datapath.pc_out == dut.datapath.pcmux_out) &
+                  (
+                      (dut.datapath.IR.data == 32'h00000063) |
+                      (dut.datapath.IR.data == 32'h0000006F)
+                  );
 /*****************************************************************************/
 
 /************************** Testbench Instantiation **************************/
@@ -32,8 +37,11 @@ generate
 if (`TESTBENCH == `SRC) begin : testbench
     source_tb tb(.mem_itf(itf));
 end
-else begin : testbench
+else if (`TESTBENCH == `RAND) begin : testbench
     random_tb tb(.itf(itf), .mem_itf(itf));
+end
+else begin
+    modern_random_tb tb(.itf(itf), .mem_itf(itf));
 end
 endgenerate
 
@@ -52,8 +60,14 @@ end
 // Stop simulation on error detection
 always @(itf.errcode iff (itf.errcode != 0)) begin
     $system($sformatf("echo 'DASM(%8h)' | spike-dasm", dut.datapath.IR.data));
-    repeat (30) @(posedge itf.clk);
-    $display("TOP: Errcode: %0d", itf.errcode);
+    repeat (5) @(posedge itf.clk);
+    $display("TOP: RVFI Errcode: %0d", itf.errcode);
+    $finish;
+end
+
+always @(itf.mem_error iff (itf.mem_error != 0)) begin
+    repeat (5) @(posedge itf.clk);
+    $display("TOP: Memory Error");
     $finish;
 end
 
@@ -67,10 +81,6 @@ always @(posedge itf.clk) begin
     end
     timeout <= timeout - 1;
 end
-
-// Simulataneous Memory Read and Write
-always @(posedge itf.clk iff (itf.mem_read && itf.mem_write))
-    $error("@%0t TOP: Simultaneous memory read and write detected", $time);
 
 /*****************************************************************************/
 
@@ -104,7 +114,7 @@ riscv_formal_monitor_rv32i monitor(
     .rvfi_rd_wdata(monitor.rvfi_rd_addr ? dut.datapath.regfilemux_out : 0),
     .rvfi_pc_rdata(dut.datapath.pc_out),
     .rvfi_pc_wdata(dut.datapath.pcmux_out),
-    .rvfi_mem_addr(itf.mem_address),
+    .rvfi_mem_addr({itf.mem_address[31:2], 2'b00}),
     .rvfi_mem_rmask(dut.control.rmask),
     .rvfi_mem_wmask(dut.control.wmask),
     .rvfi_mem_rdata(dut.datapath.mdrreg_out),
@@ -141,7 +151,7 @@ assign			spike_print_rd_s     = dut.datapath.rd;
 assign			spike_print_rd_v     = dut.datapath.regfilemux_out;
 assign			spike_print_rmask    = dut.control.rmask;
 assign			spike_print_wmask    = dut.control.wmask;
-assign			spike_print_dm_addr  = itf.mem_address;
+assign			spike_print_dm_addr  = {itf.mem_address[31:2], 2'b00};
 assign			spike_print_dm_wdata = dut.datapath.mem_wdata;
 
 always @ (negedge spike_print_clk) begin
