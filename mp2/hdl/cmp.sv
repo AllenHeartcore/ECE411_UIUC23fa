@@ -10,10 +10,10 @@ import rv32i_types::*;
 always_comb
 begin
     unique case (cmpop)
-		cmp_eq : f = (a == b);
-		cmp_ne : f = (a != b);
-		cmp_lt : f = (a < b);
-		cmp_ge : f = (a >= b);
+    cmp_eq : f = (a == b);
+    cmp_ne : f = (a != b);
+    cmp_lt : f = (a < b);
+    cmp_ge : f = (a >= b);
     endcase
 end
 
