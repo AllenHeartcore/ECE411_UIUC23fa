@@ -21,15 +21,7 @@ ir IR(
     //Fill in the wires
 );
 
-logic [31:0] mdr;
-always_ff @( posedge clk ) begin : mdr_ff
-    if (rst) begin
-        mdr <= '0;
-    end else if (load_mdr) begin
-        mdr <= mem_rdata;
-    end
-end : mdr_ff
-assign mdrreg_out = mdr;
+register mdr(.*, .load(load_mdr), .in(mem_rdata),  .out(mdrreg_out));
 
 /*****************************************************************************/
 
