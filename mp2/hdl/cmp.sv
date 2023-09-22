@@ -4,7 +4,7 @@ import rv32i_types::*;
 (
     input cmp_ops cmpop,
     input [31:0] a, b,
-    output logic [31:0] f
+    output logic f
 );
 
 always_comb
