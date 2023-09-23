@@ -311,10 +311,13 @@ begin : state_actions
         end
 
         CALC_ADDR: begin
-            setALU(alumux::rs1_out, alumux::i_imm, 1'b1, alu_add);
             loadMAR(marmux::alu_out);
-            if (op_store)
+            if (opcode == op_store) begin
                 loadDataOut();
+                setALU(alumux::rs2_out, alumux::s_imm, 1'b1, alu_add);
+            end else begin
+                setALU(alumux::rs1_out, alumux::i_imm, 1'b1, alu_add);
+            end
         end
 
         LD1: begin
