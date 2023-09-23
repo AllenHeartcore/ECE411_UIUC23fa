@@ -314,7 +314,7 @@ begin : state_actions
             loadMAR(marmux::alu_out);
             if (opcode == op_store) begin
                 loadDataOut();
-                setALU(alumux::rs2_out, alumux::s_imm, 1'b1, alu_add);
+                setALU(alumux::rs1_out, alumux::s_imm, 1'b1, alu_add);
             end else begin
                 setALU(alumux::rs1_out, alumux::i_imm, 1'b1, alu_add);
             end
