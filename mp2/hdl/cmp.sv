@@ -2,7 +2,7 @@
 module cmp
 import rv32i_types::*;
 (
-    input cmp_ops cmpop,
+    input branch_funct3_t cmpop,
     input [31:0] a, b,
     output logic f
 );
@@ -10,10 +10,12 @@ import rv32i_types::*;
 always_comb
 begin
     unique case (cmpop)
-    cmp_eq : f = (a == b);
-    cmp_ne : f = (a != b);
-    cmp_lt : f = (a < b);
-    cmp_ge : f = (a >= b);
+        beq: f = (a == b);
+        bne: f = (a != b);
+        blt: f = ($signed(a) < $signed(b));
+        bge: f = ($signed(a) >= $signed(b));
+        bltu: f = (a < b);
+        bgeu: f = (a >= b);
     endcase
 end
 

@@ -21,7 +21,7 @@ import rv32i_types::*; /* Import types defined in rv32i_types.sv */
     output marmux::marmux_sel_t marmux_sel,
     output cmpmux::cmpmux_sel_t cmpmux_sel,
     output alu_ops aluop,
-    output cmp_ops cmpop,
+    output branch_funct3_t cmpop,
     output logic load_pc,
     output logic load_ir,
     output logic load_regfile,

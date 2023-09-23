@@ -70,13 +70,6 @@ typedef enum bit [2:0] {
     alu_and = 3'b111
 } alu_ops;
 
-typedef enum bit [1:0] {
-    cmp_eq = 2'b00,
-    cmp_ne = 2'b01,
-    cmp_lt = 2'b10,
-    cmp_ge = 2'b11
-} cmp_ops;
-
 
 endpackage : rv32i_types
 
