@@ -48,11 +48,13 @@ branch_funct3_t branch_funct3;
 store_funct3_t store_funct3;
 load_funct3_t load_funct3;
 arith_funct3_t arith_funct3;
+alu_ops alu_op;
 
 assign arith_funct3 = arith_funct3_t'(funct3);
 assign branch_funct3 = branch_funct3_t'(funct3);
 assign load_funct3 = load_funct3_t'(funct3);
 assign store_funct3 = store_funct3_t'(funct3);
+assign alu_op = alu_ops'(funct3);
 assign rs1_addr = rs1;
 assign rs2_addr = rs2;
 
@@ -75,8 +77,8 @@ begin : trap_check
         op_load: begin
             case (load_funct3)
                 lw: rmask = 4'b1111;
-                lh, lhu: rmask = 4'bXXXX /* Modify for MP2 Final */ ;
-                lb, lbu: rmask = 4'bXXXX /* Modify for MP2 Final */ ;
+                lh, lhu: rmask = 4'b0011;
+                lb, lbu: rmask = 4'b0001;
                 default: trap = '1;
             endcase
         end
@@ -84,8 +86,8 @@ begin : trap_check
         op_store: begin
             case (store_funct3)
                 sw: wmask = 4'b1111;
-                sh: wmask = 4'bXXXX /* Modify for MP2 Final */ ;
-                sb: wmask = 4'bXXXX /* Modify for MP2 Final */ ;
+                sh: wmask = 4'b0011;
+                sb: wmask = 4'b0001;
                 default: trap = '1;
             endcase
         end
@@ -97,6 +99,9 @@ end
 
 enum int unsigned {
     /* List of states */
+    FETCH1, FETCH2, FETCH3, DECODE,
+    LUI, AUIPC, JAL, JALR, BR1, BR2, IMM, REG,
+    CALC_ADDR, LD1, LD2, ST1, ST2
 } state, next_states;
 
 /************************* Function Definitions *******************************/
@@ -118,6 +123,23 @@ enum int unsigned {
  *   and then call it at the beginning of your always_comb block.
 **/
 function void set_defaults();
+    load_pc = 1'b0;
+    load_ir = 1'b0;
+    load_regfile = 1'b0;
+    load_mar = 1'b0;
+    load_mdr = 1'b0;
+    load_data_out = 1'b0;
+    pcmux_sel = pcmux::pc_plus4;
+    alumux1_sel = alumux::rs1_out;
+    alumux2_sel = alumux::i_imm;
+    regfilemux_sel = regfilemux::alu_out;
+    marmux_sel = marmux::pc_out;
+    cmpmux_sel = cmpmux::rs2_out;
+    aluop = alu_op;
+    cmpop = branch_funct3;
+    mem_read = 1'b0;
+    mem_write = 1'b0;
+    mem_byte_enable = 4'b1111;
 endfunction
 
 /**
@@ -129,24 +151,47 @@ function void loadPC(pcmux::pcmux_sel_t sel);
     pcmux_sel = sel;
 endfunction
 
+function void loadIR();
+    load_ir = 1'b1;
+endfunction
+
 function void loadRegfile(regfilemux::regfilemux_sel_t sel);
+    load_regfile = 1'b1;
+    regfilemux_sel = sel;
 endfunction
 
 function void loadMAR(marmux::marmux_sel_t sel);
+    load_mar = 1'b1;
+    marmux_sel = sel;
 endfunction
 
 function void loadMDR();
+    load_mdr = 1'b1;
+endfunction
+
+function loadDataOut();
+    load_data_out = 1'b1;
 endfunction
 
 function void setALU(alumux::alumux1_sel_t sel1, alumux::alumux2_sel_t sel2, logic setop, alu_ops op);
-    /* Student code here */
-
-
+    alumux1_sel = sel1;
+    alumux2_sel = sel2;
     if (setop)
         aluop = op; // else default value
 endfunction
 
 function automatic void setCMP(cmpmux::cmpmux_sel_t sel, branch_funct3_t op);
+    cmpmux_sel = sel;
+    cmpop = op;
+endfunction
+
+function memoryRead();
+    mem_read = 1'b1;
+endfunction
+
+function memoryWrite(logic [3:0] wmask);
+    mem_write = 1'b1;
+    mem_byte_enable = wmask;
 endfunction
 
 /*****************************************************************************/
@@ -158,17 +203,208 @@ begin : state_actions
     /* Default output assignments */
     set_defaults();
     /* Actions for each state */
+
+    unique case (state)
+
+        FETCH1: begin
+            loadMAR(marmux::pc_out);
+            loadPC(pcmux::pc_plus4);
+        end
+
+        FETCH2: begin
+            memoryRead();
+            loadMDR();
+        end
+
+        FETCH3: begin
+            loadIR();
+        end
+
+        LUI: begin
+            loadRegfile(regfilemux::u_imm);
+        end
+
+        AUIPC: begin
+            setALU(alumux::pc_out, alumux::u_imm, 1'b1, alu_add);
+            loadRegfile(regfilemux::alu_out);
+        end
+
+        JAL: begin
+            setALU(alumux::pc_out, alumux::j_imm, 1'b1, alu_add);
+            loadPC(pcmux::alu_out);
+            loadRegfile(regfilemux::pc_plus4);
+        end
+
+        JALR: begin
+            setALU(alumux::rs1_out, alumux::i_imm, 1'b1, alu_add);
+            loadPC(pcmux::alu_out);
+            loadRegfile(regfilemux::pc_plus4);
+        end
+
+        BR2: begin
+            setCMP(cmpmux::rs2_out, branch_funct3);
+        end
+
+        IMM: begin
+            case (arith_funct3)
+                slt: begin
+                    setCMP(cmpmux::i_imm, blt);
+                    loadRegfile(regfilemux::br_en);
+                end
+                sltu: begin
+                    setCMP(cmpmux::i_imm, bltu);
+                    loadRegfile(regfilemux::br_en);
+                end
+                sr: begin
+                    if (funct7[5]) begin
+                        setALU(alumux::rs1_out, alumux::i_imm, 1'b1, alu_sra);
+                        loadRegfile(regfilemux::alu_out);
+                    end
+                    else begin
+                        setALU(alumux::rs1_out, alumux::i_imm, 1'b1, alu_srl);
+                        loadRegfile(regfilemux::alu_out);
+                    end
+                end
+                default: begin
+                    setALU(alumux::rs1_out, alumux::i_imm, 1'b1, alu_op);
+                    loadRegfile(regfilemux::alu_out);
+                end
+            endcase
+        end
+
+        REG: begin
+            case (arith_funct3)
+                slt: begin
+                    setCMP(cmpmux::rs2_out, blt);
+                    loadRegfile(regfilemux::br_en);
+                end
+                sltu: begin
+                    setCMP(cmpmux::rs2_out, bltu);
+                    loadRegfile(regfilemux::br_en);
+                end
+                sr: begin
+                    if (funct7[5]) begin
+                        setALU(alumux::rs1_out, alumux::rs2_out, 1'b1, alu_sra);
+                        loadRegfile(regfilemux::alu_out);
+                    end
+                    else begin
+                        setALU(alumux::rs1_out, alumux::rs2_out, 1'b1, alu_srl);
+                        loadRegfile(regfilemux::alu_out);
+                    end
+                end
+                add: begin
+                    if (funct7[5]) begin
+                        setALU(alumux::rs1_out, alumux::rs2_out, 1'b1, alu_sub);
+                        loadRegfile(regfilemux::alu_out);
+                    end
+                    else begin
+                        setALU(alumux::rs1_out, alumux::rs2_out, 1'b1, alu_add);
+                        loadRegfile(regfilemux::alu_out);
+                    end
+                end
+                default: begin
+                    setALU(alumux::rs1_out, alumux::rs2_out, 1'b1, alu_op);
+                    loadRegfile(regfilemux::alu_out);
+                end
+            endcase
+        end
+
+        CALC_ADDR: begin
+            setALU(alumux::rs1_out, alumux::i_imm, 1'b1, alu_add);
+            loadMAR(marmux::alu_out);
+            if (op_store)
+                loadDataOut();
+        end
+
+        LD1: begin
+            memoryRead();
+            loadMDR();
+        end
+
+        LD2: begin
+            case (load_funct3)
+                lb:  loadRegfile(regfilemux::lb);
+                lbu: loadRegfile(regfilemux::lbu);
+                lh:  loadRegfile(regfilemux::lh);
+                lhu: loadRegfile(regfilemux::lhu);
+                lw:  loadRegfile(regfilemux::lw);
+                default:;
+            endcase
+        end
+
+        ST1: begin
+            memoryWrite(wmask);
+        end
+
+        default: ;
+    endcase
+
 end
 
 always_comb
 begin : next_state_logic
     /* Next state information and conditions (if any)
      * for transitioning between states */
+
+    unique case (state)
+
+        FETCH1:             next_states = FETCH2;
+        FETCH2:
+            if (mem_resp)   next_states = FETCH3;
+            else            next_states = FETCH2;
+        FETCH3:             next_states = DECODE;
+
+        DECODE:
+            case (opcode)
+                op_lui:     next_states = LUI;
+                op_auipc:   next_states = AUIPC;
+                op_jal:     next_states = JAL;
+                op_jalr:    next_states = JALR;
+                op_br:      next_states = BR1;
+                op_imm:     next_states = IMM;
+                op_reg:     next_states = REG;
+                op_load:    next_states = CALC_ADDR;
+                op_store:   next_states = CALC_ADDR;
+                default:    next_states = FETCH1;
+            endcase
+
+        LUI, AUIPC, JAL, JALR, IMM, REG:
+                            next_states = FETCH1;
+
+        BR1:
+            if (br_en)      next_states = BR2;
+            else            next_states = FETCH1;
+        BR2:                next_states = FETCH1;
+
+        CALC_ADDR:
+            case (opcode)
+                op_load:    next_states = LD1;
+                op_store:   next_states = ST1;
+                default:    next_states = FETCH1;
+            endcase
+
+        LD1:
+            if (mem_resp)   next_states = LD2;
+            else            next_states = LD1;
+        LD2:                next_states = FETCH1;
+        ST1:
+            if (mem_resp)   next_states = ST2;
+            else            next_states = ST1;
+        ST2:                next_states = FETCH1;
+
+        default:            next_states = FETCH1;
+
+    endcase
+
 end
 
 always_ff @(posedge clk)
 begin: next_state_assignment
     /* Assignment of next state on clock edge */
+    if (rst)
+        state <= FETCH1;
+    else
+        state <= next_states;
 end
 
 endmodule : control
