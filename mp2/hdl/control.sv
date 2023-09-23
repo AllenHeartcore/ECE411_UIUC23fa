@@ -100,7 +100,7 @@ end
 enum int unsigned {
     /* List of states */
     FETCH1, FETCH2, FETCH3, DECODE,
-    LUI, AUIPC, JAL, JALR, BR1, BR2, IMM, REG,
+    LUI, AUIPC, JAL, JALR, BR, IMM, REG,
     CALC_ADDR, LD1, LD2, ST1, ST2
 } state, next_states;
 
@@ -241,8 +241,9 @@ begin : state_actions
             loadRegfile(regfilemux::pc_plus4);
         end
 
-        BR2: begin
+        BR: begin
             setCMP(cmpmux::rs2_out, branch_funct3);
+            loadPC(pcmux::pcmux_sel_t'({1'b0, br_en}));
         end
 
         IMM: begin
@@ -360,7 +361,7 @@ begin : next_state_logic
                 op_auipc:   next_states = AUIPC;
                 op_jal:     next_states = JAL;
                 op_jalr:    next_states = JALR;
-                op_br:      next_states = BR1;
+                op_br:      next_states = BR;
                 op_imm:     next_states = IMM;
                 op_reg:     next_states = REG;
                 op_load:    next_states = CALC_ADDR;
@@ -368,13 +369,8 @@ begin : next_state_logic
                 default:    next_states = FETCH1;
             endcase
 
-        LUI, AUIPC, JAL, JALR, IMM, REG:
+        LUI, AUIPC, JAL, JALR, BR, IMM, REG:
                             next_states = FETCH1;
-
-        BR1:
-            if (br_en)      next_states = BR2;
-            else            next_states = FETCH1;
-        BR2:                next_states = FETCH1;
 
         CALC_ADDR:
             case (opcode)
