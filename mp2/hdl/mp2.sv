@@ -27,7 +27,7 @@ marmux::marmux_sel_t marmux_sel;
 cmpmux::cmpmux_sel_t cmpmux_sel;
 alu_ops aluop;
 branch_funct3_t cmpop;
-logic load_pc, load_ir, load_regfile, load_mar, load_mdr, load_data_out;
+logic load_ir, load_mar, load_mdr, load_data_out;
 /*****************************************************************************/
 
 rv32i_opcode opcode;

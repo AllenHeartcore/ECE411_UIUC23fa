@@ -169,7 +169,7 @@ function void loadMDR();
     load_mdr = 1'b1;
 endfunction
 
-function loadDataOut();
+function void loadDataOut();
     load_data_out = 1'b1;
 endfunction
 
@@ -185,11 +185,11 @@ function automatic void setCMP(cmpmux::cmpmux_sel_t sel, branch_funct3_t op);
     cmpop = op;
 endfunction
 
-function memoryRead();
+function void memoryRead();
     mem_read = 1'b1;
 endfunction
 
-function memoryWrite(logic [3:0] wmask);
+function void memoryWrite(logic [3:0] wmask);
     mem_write = 1'b1;
     mem_byte_enable = wmask;
 endfunction
@@ -237,7 +237,7 @@ begin : state_actions
 
         JALR: begin
             setALU(alumux::rs1_out, alumux::i_imm, 1'b1, alu_add);
-            loadPC(pcmux::alu_out);
+            loadPC(pcmux::alu_mod2);
             loadRegfile(regfilemux::pc_plus4);
         end
 
