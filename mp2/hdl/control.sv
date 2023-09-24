@@ -208,7 +208,6 @@ begin : state_actions
 
         FETCH1: begin
             loadMAR(marmux::pc_out);
-            loadPC(pcmux::pc_plus4);
         end
 
         FETCH2: begin
@@ -221,11 +220,13 @@ begin : state_actions
         end
 
         LUI: begin
+            loadPC(pcmux::pc_plus4);
             loadRegfile(regfilemux::u_imm);
         end
 
         AUIPC: begin
             setALU(alumux::pc_out, alumux::u_imm, 1'b1, alu_add);
+            loadPC(pcmux::pc_plus4);
             loadRegfile(regfilemux::alu_out);
         end
 
@@ -271,6 +272,7 @@ begin : state_actions
                     loadRegfile(regfilemux::alu_out);
                 end
             endcase
+            loadPC(pcmux::pc_plus4);
         end
 
         REG: begin
@@ -308,6 +310,7 @@ begin : state_actions
                     loadRegfile(regfilemux::alu_out);
                 end
             endcase
+            loadPC(pcmux::pc_plus4);
         end
 
         CALC_ADDR: begin
@@ -334,10 +337,15 @@ begin : state_actions
                 lw:  loadRegfile(regfilemux::lw);
                 default:;
             endcase
+            loadPC(pcmux::pc_plus4);
         end
 
         ST1: begin
             memoryWrite(wmask);
+        end
+
+        ST2: begin
+            loadPC(pcmux::pc_plus4);
         end
 
         default: ;
@@ -372,24 +380,18 @@ begin : next_state_logic
                 default:    next_states = FETCH1;
             endcase
 
-        LUI, AUIPC, JAL, JALR, BR, IMM, REG:
-                            next_states = FETCH1;
-
         CALC_ADDR:
             case (opcode)
                 op_load:    next_states = LD1;
                 op_store:   next_states = ST1;
                 default:    next_states = FETCH1;
             endcase
-
         LD1:
             if (mem_resp)   next_states = LD2;
             else            next_states = LD1;
-        LD2:                next_states = FETCH1;
         ST1:
             if (mem_resp)   next_states = ST2;
             else            next_states = ST1;
-        ST2:                next_states = FETCH1;
 
         default:            next_states = FETCH1;
 
