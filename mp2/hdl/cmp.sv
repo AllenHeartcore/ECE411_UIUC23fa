@@ -16,6 +16,7 @@ begin
         bge: f = ($signed(a) >= $signed(b));
         bltu: f = (a < b);
         bgeu: f = (a >= b);
+        default: f = 0;
     endcase
 end
 
