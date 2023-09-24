@@ -70,7 +70,16 @@ ir IR(
     .opcode, .funct3, .funct7, .rs1, .rs2, .rd
 );
 
-register pc (.*, .load(load_pc),  .in(pcmux_out),  .out(pc_out));
+logic [31:0] PC;
+always_ff @( posedge clk ) begin : reg_ff
+    if (rst) begin
+        PC <= 32'h40000000; // the sole reason why PC isn't wrapped in a "register" module
+    end else if (load_pc) begin
+        PC <= pcmux_out;
+    end
+end : reg_ff
+assign pc_out = PC;
+
 register mar(.*, .load(load_mar), .in(marmux_out), .out(mem_address));
 register mdr(.*, .load(load_mdr), .in(mem_rdata),  .out(mdrreg_out));
 register mem_data_out(.*, .load(load_data_out), .in(rs2_out), .out(mem_wdata));
