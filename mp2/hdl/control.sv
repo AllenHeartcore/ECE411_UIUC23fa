@@ -243,6 +243,7 @@ begin : state_actions
         end
 
         BR: begin
+            setALU(alumux::pc_out, alumux::b_imm, 1'b1, alu_add);
             setCMP(cmpmux::rs2_out, branch_funct3);
             loadPC(pcmux::pcmux_sel_t'({1'b0, br_en}));
         end
