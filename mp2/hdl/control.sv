@@ -189,7 +189,7 @@ function void memoryRead();
     mem_read = 1'b1;
 endfunction
 
-function void memoryWrite(logic [3:0] wmask);
+function void memoryWrite();
     mem_write = 1'b1;
     mem_byte_enable = wmask;
 endfunction
@@ -342,7 +342,7 @@ begin : state_actions
         end
 
         ST1: begin
-            memoryWrite(wmask);
+            memoryWrite();
         end
 
         ST2: begin
