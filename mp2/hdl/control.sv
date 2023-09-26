@@ -77,18 +77,42 @@ begin : trap_check
 
         op_load: begin
             case (load_funct3)
-                lw: rmask = 4'b1111;
-                lh, lhu: rmask = 4'b0011;
-                lb, lbu: rmask = 4'b0001;
+                lw:
+                    rmask = 4'b1111;
+                lh, lhu: begin
+                    case (byte_in_word[1])
+                        1'b0: rmask = 4'b0011;
+                        1'b1: rmask = 4'b1100;
+                    endcase
+                end
+                lb, lbu: begin
+                    case (byte_in_word)
+                        2'b00: rmask = 4'b0001;
+                        2'b01: rmask = 4'b0010;
+                        2'b10: rmask = 4'b0100;
+                        2'b11: rmask = 4'b1000;
+                    endcase
+                end
                 default: trap = '1;
             endcase
         end
 
         op_store: begin
             case (store_funct3)
-                sw: wmask = 4'b1111;
-                sh: wmask = 4'b0011;
-                sb: wmask = 4'b0001;
+                sw:
+                    wmask = 4'b1111;
+                sh:
+                    case (byte_in_word[1])
+                        1'b0: wmask = 4'b0011;
+                        1'b1: wmask = 4'b1100;
+                    endcase
+                sb:
+                    case (byte_in_word)
+                        2'b00: wmask = 4'b0001;
+                        2'b01: wmask = 4'b0010;
+                        2'b10: wmask = 4'b0100;
+                        2'b11: wmask = 4'b1000;
+                    endcase
                 default: trap = '1;
             endcase
         end

@@ -46,7 +46,7 @@ rv32i_word mdrreg_out;
 logic [4:0] rd;
 rv32i_word rs1_out, rs2_out, pc_out, alu_out;
 rv32i_word i_imm, s_imm, b_imm, u_imm, j_imm;
-rv32i_word alumux1_out, alumux2_out, regfilemux_out, marmux_out, cmpmux_out;
+rv32i_word alumux1_out, alumux2_out, regfilemux_out, marmux_out, cmpmux_out, store_data;
 
 /***************************** Registers *************************************/
 
@@ -74,9 +74,31 @@ ir IR(
 register PC (.*, .load(load_pc),  .in(pcmux_out),  .out(pc_out),      .rst_value(32'h40000000));
 register MAR(.*, .load(load_mar), .in(marmux_out), .out(mem_address), .rst_value(32'h0));
 register MDR(.*, .load(load_mdr), .in(mem_rdata),  .out(mdrreg_out),  .rst_value(32'h0));
-register mem_data_out(.*, .load(load_data_out), .in(rs2_out), .out(mem_wdata), .rst_value(32'h0));
+register mem_data_out(.*, .load(load_data_out), .in(store_data), .out(mem_wdata), .rst_value(32'h0));
 
 assign byte_in_word = mem_address[1:0];
+
+always_comb begin : CALC_STORE_DATA
+    if (opcode == op_store) begin
+        unique case (store_funct3_t'(funct3))
+            sw:
+                store_data = rs2_out;
+            sh:
+                case (marmux_out[1])
+                    1'b0: store_data = rs2_out;
+                    1'b1: store_data = rs2_out << 16;
+                endcase
+            sb:
+                case (marmux_out[1:0])
+                    2'b00: store_data = rs2_out;
+                    2'b01: store_data = rs2_out << 8;
+                    2'b10: store_data = rs2_out << 16;
+                    2'b11: store_data = rs2_out << 24;
+                endcase
+            default: ;
+        endcase
+    end
+end
 
 /*****************************************************************************/
 
@@ -142,10 +164,30 @@ always_comb begin : MUXES
         regfilemux::u_imm    : regfilemux_out = u_imm;
         regfilemux::lw       : regfilemux_out = mdrreg_out;
         regfilemux::pc_plus4 : regfilemux_out = pc_out + 4;
-        regfilemux::lb       : regfilemux_out = {{24{mdrreg_out[7]}}, mdrreg_out[7:0]};
-        regfilemux::lbu      : regfilemux_out = {24'b0, mdrreg_out[7:0]};
-        regfilemux::lh       : regfilemux_out = {{16{mdrreg_out[15]}}, mdrreg_out[15:0]};
-        regfilemux::lhu      : regfilemux_out = {16'b0, mdrreg_out[15:0]};
+        regfilemux::lb       :
+            case (byte_in_word)
+                2'b00: regfilemux_out = {{24{mdrreg_out[7]}}, mdrreg_out[7:0]};
+                2'b01: regfilemux_out = {{24{mdrreg_out[15]}}, mdrreg_out[15:8]};
+                2'b10: regfilemux_out = {{24{mdrreg_out[23]}}, mdrreg_out[23:16]};
+                2'b11: regfilemux_out = {{24{mdrreg_out[31]}}, mdrreg_out[31:24]};
+            endcase
+        regfilemux::lbu      :
+            case (byte_in_word)
+                2'b00: regfilemux_out = {24'b0, mdrreg_out[7:0]};
+                2'b01: regfilemux_out = {24'b0, mdrreg_out[15:8]};
+                2'b10: regfilemux_out = {24'b0, mdrreg_out[23:16]};
+                2'b11: regfilemux_out = {24'b0, mdrreg_out[31:24]};
+            endcase
+        regfilemux::lh       :
+            case (byte_in_word[1])
+                1'b0: regfilemux_out = {{16{mdrreg_out[15]}}, mdrreg_out[15:0]};
+                1'b1: regfilemux_out = {{16{mdrreg_out[31]}}, mdrreg_out[31:16]};
+            endcase
+        regfilemux::lhu      :
+            case (byte_in_word[1])
+                1'b0: regfilemux_out = {16'b0, mdrreg_out[15:0]};
+                1'b1: regfilemux_out = {16'b0, mdrreg_out[31:16]};
+            endcase
     endcase
 end
 /*****************************************************************************/
