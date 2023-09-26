@@ -12,6 +12,7 @@ import rv32i_types::*; /* Import types defined in rv32i_types.sv */
     input logic br_en,
     input logic [4:0] rs1,
     input logic [4:0] rs2,
+    input logic [1:0] byte_in_word,
 
     // to datapath
     output pcmux::pcmux_sel_t pcmux_sel,

@@ -27,6 +27,7 @@ import rv32i_types::*;
     output logic br_en,
     output logic [4:0] rs1,
     output logic [4:0] rs2,
+    output logic [1:0] byte_in_word,
 
     // from memory
     input rv32i_word mem_rdata,
@@ -74,6 +75,8 @@ register PC (.*, .load(load_pc),  .in(pcmux_out),  .out(pc_out),      .rst_value
 register MAR(.*, .load(load_mar), .in(marmux_out), .out(mem_address), .rst_value(32'h0));
 register MDR(.*, .load(load_mdr), .in(mem_rdata),  .out(mdrreg_out),  .rst_value(32'h0));
 register mem_data_out(.*, .load(load_data_out), .in(rs2_out), .out(mem_wdata), .rst_value(32'h0));
+
+assign byte_in_word = mem_address[1:0];
 
 /*****************************************************************************/
 
