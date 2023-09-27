@@ -79,7 +79,6 @@ register mem_data_out(.*, .load(load_data_out), .in(store_data), .out(mem_wdata)
 assign byte_in_word = mem_address[1:0];
 
 always_comb begin : CALC_STORE_DATA
-    if (opcode == op_store) begin
         unique case (store_funct3_t'(funct3))
             sw:
                 store_data = rs2_out;
@@ -95,9 +94,8 @@ always_comb begin : CALC_STORE_DATA
                     2'b10: store_data = rs2_out << 16;
                     2'b11: store_data = rs2_out << 24;
                 endcase
-            default: ;
+            default: store_data = rs2_out;
         endcase
-    end
 end
 
 /*****************************************************************************/
