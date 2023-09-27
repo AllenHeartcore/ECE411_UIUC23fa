@@ -37,7 +37,7 @@ MP3 Design Diagram
 -------------------
 
 .. _Figure 1:
-.. figure:: doc/figures/diagram.png
+.. figure:: doc/figures/diagram.svg
    :align: center
    :figwidth: 25%
    :alt: MP3 design diagram
@@ -58,7 +58,7 @@ following specifications:
 - Indexing scheme following `Figure 2`_
 
 .. _Figure 2:
-.. figure:: doc/figures/address.png
+.. figure:: doc/figures/address.svg
    :align: center
    :figwidth: 50%
    :alt: MP3 address format
@@ -73,16 +73,15 @@ to communicate with the CPU; i.e., the datapath must have no knowledge of your m
 signals used are described in the `Signal Specifications`_ section below.
 
 In MP3, the main memory code will be provided as ``burst_memory.sv``. This memory module mimics
-the timing characteristics of a real world off-the-shelf DDR memory.
+the timing characteristics of a real world off-the-shelf 512MiB SDRAM DIMM.
 The memory interface is 64 bit, with 4 bursts per access, so that a single load will fill an entire cache line.
 
-You will use `OpenRAM`_ for your data and tag arrays. See `Appendix A`_ for an overview of how SRAM
+You must use `OpenRAM`_ for your data and tag arrays. See `Appendix A`_ for an overview of how SRAM
 circuits work and how they fit into the IC design flow. Note that only the data and tag arrays are
-SRAM. You may assume that valid, dirty, and LRU arrays are arrays of flip-flops with the same
-interface as the SRAM.
+SRAM. You must implement all other arrays using flip-flops.
 
 Initially, when all your valid bits are zero, you will populate each set in PLRU order. That is, you
-do **not** need to give invalid cachelines priority over whichever cacheline the PLRU logic dictates
+should **not** give invalid cachelines priority over whichever cacheline the PLRU logic dictates
 you use.
 
 Read/Write hits **MUST** take exactly two clock cycles to complete in this cache. Other operations
@@ -275,7 +274,7 @@ new folder for MP3. The steps for copying and beginning MP3 are below.
 
 2. Copy your MP1 cacheline adaptor design into your mp3/hdl directory::
 
-     $ cp -p mp1/cacheline_adaptor/hdl/cacheline_adaptor.sv mp3/hdl
+     $ cp -p mp1/cacheline_adaptor/hdl/cacheline_adaptor.sv mp3/hdl/
 
 3. Copy your MP2 design into your MP3 directory::
 
@@ -304,19 +303,32 @@ Things you must not do
 
 - **DO NOT** model the cache behaviorally in SystemVerilog. Ensure that it is synthesizable.
 
-- **DO NOT** modify the provided files. Most of them will be overwritten by the autograder,
-  including:
+- **DO NOT** modify the provided files listed below:
 
-  - ``pkg/*``
-  - ``sram/*``
-  - ``hdl/cache/bus_adapter.sv``
+  - ``bin/*``
+  - ``hdl/bus_adapter.sv``
+  - ``hdl/cache/ff_array.sv``
   - ``hdl/cpu/alu.sv`` (from MP2)
   - ``hdl/cpu/ir.sv`` (from MP2)
   - ``hdl/cpu/regfile.sv`` (from MP2)
+  - ``pkg/rv32i_mux_types.sv``
+  - ``pkg/rv32i_types.sv``
   - ``hvl/mp3_data_array.sv``
   - ``hvl/mp3_tag_array.sv``
+  - ``sram/*``
+  - ``synth/*``
 
-- **DO NOT** add files in the ``pkg/`` directory. This will not work with the autograder.
+- **DO NOT** add new files in the ``pkg/`` directory. Add your own cache types in ``pkg/my_types.sv``.
+
+
+Verification
+============
+We have provided a skeleton testbench for testing your cache as a DUT (decoupled from the CPU). You are strongly encouraged to test your cache
+as a DUT, so that you can verify timing information that testing with the CPU would hide.
+
+We have provided a unfinished module called "shadow memory", which sits on the CPU side of the cache and makes sure
+all data read from the cache is correct. It does so by maintaining a side-channel memory that functions like the one in MP2.
+You should complete it if you wish to use it.
 
 
 Checkpoints
@@ -378,13 +390,13 @@ Gradescope before the posted deadline. Your testing analysis should not be longe
 Checkpoint One
 -----------------
 
-For this checkpoint, you will be required to have cache reads working.
+For this checkpoint, you will be required to have cache reads and PLRU working.
 
 Checkpoint Two
 --------------
 
-For the final hand-in, you will be required to have both cache reads and cache writes working.
-
+For the final hand-in, you will be required to have both cache reads and cache writes working, along with PLRU.
+Your design should have an area smaller than 100k micrometers squared.
 
 Grading Rubric
 ==============
@@ -403,7 +415,7 @@ Grading Rubric
 - Checkpoint 2: 70 points
 
   - Targeted Tests (using cache as DUT): 45 points
-  - Longer Test (using cache with your CPU): 10 points
+  - CPU Oriented Test (using cache with your CPU): 10 points
   - Timing And Synthesis: 15 points
 
 
@@ -440,10 +452,10 @@ This provided Makefile will call the OpenRAM generator, with the configurations 
 To get the list of available configurations, read the OpenRAM documentation.
 
 This will generate all relevant files in ``mp3/sram/output``.
-The Makefile also converts the timing model to a format that DC can use in ``mp3/sram/synopsys_db``.
+The Makefile also converts the timing model to a format that DC can use.
 This timing model is used by the provided synthesis script.
 
-We have provided pre-generated files in the aforementioned directories.
+We have provided pre-generated files in the aforementioned directories. You should not modify them for this MP.
 
 Here is the list of signals for the SRAM blocks:
 
@@ -469,6 +481,8 @@ Here is the list of signals for the SRAM blocks:
 ``dout0``
   Read data.
 
+Here is the timing diagram for the SRAM blocks:
+
 .. _Figure 4:
 .. figure:: doc/figures/sram_single_read.svg
    :align: center
@@ -489,7 +503,7 @@ Here is the list of signals for the SRAM blocks:
    :figwidth: 25%
    :alt: SRAM single write timing diagram
 
-   Figure 4C: SRAM single write timing diagram [#]_
+   Figure 4C: SRAM single write timing diagram
 
 .. figure:: doc/figures/sram_conseq_write.svg
    :align: center
@@ -498,6 +512,7 @@ Here is the list of signals for the SRAM blocks:
 
    Figure 4D: SRAM consecutive write timing diagram
 
-.. [#] Technically, this is the behavior of a write-through SRAM. OpenRAM is non-write-through, so
-       we have patched the provided simulation models in ``hvl/`` to conform to the behavior in the
-       waveform.
+Technically, this is the behavior of a write-through SRAM. OpenRAM is non-write-through.
+Using non-write-through SRAM in this cache design is a little bit more difficult.
+For the purpose of this class, since we only care about the approximate area and timing characteristics,
+we elect to patch the provided simulation models in ``hvl/`` and ``sram/`` to make them write-through.
