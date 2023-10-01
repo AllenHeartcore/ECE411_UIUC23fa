@@ -19,7 +19,6 @@ import pkg_cache::*;
 
 
     function void set_cache_defaults();
-        mem_resp = 1'b0;
         pmem_read = 1'b0;
         pmem_write = 1'b0;
         LD_VALID = 1'b0;
@@ -86,6 +85,7 @@ import pkg_cache::*;
 
     always_comb begin : next_state_logic
         next_state = state;
+        mem_resp = 1'b0;
         case (state)
             IDLE:
                 if (mem_read || mem_write)
@@ -93,14 +93,18 @@ import pkg_cache::*;
                         next_state = HIT;
                     else
                         next_state = MISS;
-            HIT:
+            HIT: begin
                 next_state = IDLE;
+                mem_resp = 1'b1;
+            end
             MISS:
                 if (pmem_resp)
                     next_state = EVICT;
             EVICT:
-                if (!SIGDIRTY || pmem_resp)
+                if (!SIGDIRTY || pmem_resp) begin
                     next_state = IDLE;
+                    mem_resp = 1'b1;
+                end
         endcase
     end : next_state_logic
 
@@ -109,9 +113,7 @@ import pkg_cache::*;
         set_cache_defaults();
         case (state)
 
-            IDLE: begin
-                mem_resp = 1'b1;
-            end
+            IDLE: ;
 
             HIT: begin
                 if (mem_read) begin
