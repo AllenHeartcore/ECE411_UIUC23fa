@@ -38,6 +38,7 @@ import rv32i_types::*;
     );
 
     cacheline_adaptor cacheline_adaptor(.*,
+        .reset_n    (!rst),
         .address_i  (pmem_address),
         .line_o     (pmem_rdata),
         .line_i     (pmem_wdata),
