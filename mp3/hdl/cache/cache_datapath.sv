@@ -72,7 +72,7 @@ import pkg_cache::*;
             .clk0       (clk),
             .csb0       (1'b0),
             .web0       (!(LD_DATA & (DATAWMUX ? MASKLRU[i] : MASKHIT[i]))),
-            .wmask0     (DATAMUX ? mem_byte_enable : 32'hFFFF_FFFF),
+            .wmask0     (DATAMUX ? 32'hFFFF_FFFF : mem_byte_enable),
             .addr0      (addr_index),
             .din0       (DATAMUX ? pmem_rdata : mem_wdata),
             .dout0      (data_q[i])
