@@ -106,9 +106,12 @@ import pkg_cache::*;
 
 
     always_comb begin : state_actions
+        set_cache_defaults();
         case (state)
 
-            IDLE: ;
+            IDLE: begin
+                mem_resp = 1'b1;
+            end
 
             HIT: begin
                 if (mem_read) begin
