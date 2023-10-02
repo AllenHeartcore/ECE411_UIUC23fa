@@ -47,7 +47,7 @@ import pkg_cache::*;
             logic   [  1:0] WAYHIT;
             logic   [  1:0] WAYLRU;
     assign pmem_wdata = data_q[WAYLRU];
-    assign pmem_address = PMADMUX ? {tag_q[WAYLRU], addr_index, addr_offset} : mem_address;
+    assign pmem_address = {PMADMUX ? tag_q[WAYLRU] : addr_tag, addr_index, {s_offset{1'b0}}};
     assign mem_rdata  = MERDMUX ? pmem_rdata : data_q[WAYHIT];
     assign SIGDIRTY   = valid_q[WAYLRU] & dirty_q[WAYLRU];
 
