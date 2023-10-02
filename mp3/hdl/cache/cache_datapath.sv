@@ -25,6 +25,7 @@ import pkg_cache::*;
     input   logic           LD_TMPTAG, LD_TMPDATA, LD_PLRU, DIRTYVAL,
     input   pkg_cache::dirtywmux_t DIRTYWMUX,
     input   pkg_cache::datawmux_t DATAWMUX,
+    input   pkg_cache::plruwmux_t PLRUWMUX,
     input   pkg_cache::datamux_t DATAMUX,
     input   pkg_cache::merdmux_t MERDMUX,
     input   pkg_cache::pmadmux_t PMADMUX
@@ -130,7 +131,7 @@ import pkg_cache::*;
             if (rst)
                 PLRU[j] <= 3'b000;
             else if (LD_PLRU & (addr_index == j[s_index-1:0]))
-                case (WAYHIT)
+                case (PLRUWMUX ? WAYLRU : WAYHIT)
                     2'b00: PLRU[j] <= {PLRU[j][2], 1'b0, 1'b0};
                     2'b01: PLRU[j] <= {PLRU[j][2], 1'b1, 1'b0};
                     2'b10: PLRU[j] <= {1'b0, PLRU[j][1], 1'b1};

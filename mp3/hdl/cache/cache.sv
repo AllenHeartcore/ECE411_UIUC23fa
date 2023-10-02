@@ -33,6 +33,7 @@ logic   LD_VALID, LD_DIRTY, LD_TAG, LD_DATA;
 logic   LD_TMPTAG, LD_TMPDATA, LD_PLRU, DIRTYVAL;
 pkg_cache::dirtywmux_t DIRTYWMUX;
 pkg_cache::datawmux_t DATAWMUX;
+pkg_cache::plruwmux_t PLRUWMUX;
 pkg_cache::datamux_t DATAMUX;
 pkg_cache::merdmux_t MERDMUX;
 pkg_cache::pmadmux_t PMADMUX;

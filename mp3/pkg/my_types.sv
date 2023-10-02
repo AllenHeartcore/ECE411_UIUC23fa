@@ -11,6 +11,11 @@ typedef enum bit {
 } datawmux_t;
 
 typedef enum bit {
+    U_HIT   = 1'b0, /* Update PLRU[WAYHIT] */
+    U_LRU   = 1'b1  /* Update PLRU[WAYLRU] */
+} plruwmux_t;
+
+typedef enum bit {
     D_CPU   = 1'b0, /* data[...] = mem_wdata  */
     D_LLC   = 1'b1  /* data[...] = pmem_rdata */
 } datamux_t;
