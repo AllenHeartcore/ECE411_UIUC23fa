@@ -73,7 +73,7 @@ import pkg_cache::*;
     endfunction
 
 
-    enum logic [1:0] {IDLE, HIT, MISS, EVICT} state, next_state;
+    enum logic [1:0] {IDLE, CMP, MISS, EVICT} state, next_state;
 
     always_ff @ (posedge clk) begin
         if (rst)
@@ -89,13 +89,14 @@ import pkg_cache::*;
         case (state)
             IDLE:
                 if (mem_read || mem_write)
-                    if (SIGHIT)
-                        next_state = HIT;
-                    else
-                        next_state = MISS;
-            HIT: begin
+                    next_state = CMP;
+            CMP: begin
+            if (SIGHIT) begin
                 next_state = IDLE;
                 mem_resp = 1'b1;
+            end else begin
+                next_state = MISS;
+            end
             end
             MISS:
                 if (pmem_resp)
@@ -115,7 +116,8 @@ import pkg_cache::*;
 
             IDLE: ;
 
-            HIT: begin
+            CMP: begin
+            if (SIGHIT) begin
                 if (mem_read) begin
                     setMemRDataMUX(M_CACHE);
                 end else begin
@@ -123,6 +125,7 @@ import pkg_cache::*;
                     loadDirty(T_HIT, 1'b1);
                 end
                 LD_PLRU = 1'b1;
+            end
             end
 
             MISS: begin
