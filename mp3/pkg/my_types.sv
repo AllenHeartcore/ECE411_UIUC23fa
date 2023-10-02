@@ -1,19 +1,9 @@
 package pkg_cache;
 
 typedef enum bit {
-    T_HIT   = 1'b0, /* dirty[WAYHIT] = DIRTYVAL */
-    T_LRU   = 1'b1  /* dirty[WAYLRU] = DIRTYVAL */
-} dirtywmux_t;
-
-typedef enum bit {
-    W_HIT   = 1'b0, /* data[WAYHIT] = ... */
-    W_LRU   = 1'b1  /* data[WAYLRU] = ... */
-} datawmux_t;
-
-typedef enum bit {
-    U_HIT   = 1'b0, /* Update PLRU[WAYHIT] */
-    U_LRU   = 1'b1  /* Update PLRU[WAYLRU] */
-} plruwmux_t;
+    W_HIT   = 1'b0, /* WAYHIT */
+    W_LRU   = 1'b1  /* WAYLRU */
+} waymux_t;
 
 typedef enum bit {
     D_CPU   = 1'b0, /* data[...] = mem_wdata  */

@@ -23,9 +23,7 @@ import pkg_cache::*;
     output  logic           SIGHIT, SIGDIRTY,
     input   logic           LD_VALID, LD_DIRTY, LD_TAG, LD_DATA,
     input   logic           LD_TMPTAG, LD_TMPDATA, LD_PLRU, DIRTYVAL,
-    input   pkg_cache::dirtywmux_t DIRTYWMUX,
-    input   pkg_cache::datawmux_t DATAWMUX,
-    input   pkg_cache::plruwmux_t PLRUWMUX,
+    input   pkg_cache::waymux_t DIRTYWMUX, DATAWMUX, PLRUWMUX,
     input   pkg_cache::datamux_t DATAMUX,
     input   pkg_cache::merdmux_t MERDMUX,
     input   pkg_cache::pmadmux_t PMADMUX

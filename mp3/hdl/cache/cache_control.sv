@@ -10,9 +10,7 @@ import pkg_cache::*;
     input   logic SIGHIT, SIGDIRTY,
     output  logic LD_VALID, LD_DIRTY, LD_TAG, LD_DATA,
     output  logic LD_TMPTAG, LD_TMPDATA, LD_PLRU, DIRTYVAL,
-    output  pkg_cache::dirtywmux_t DIRTYWMUX,
-    output  pkg_cache::datawmux_t DATAWMUX,
-    output  pkg_cache::plruwmux_t PLRUWMUX,
+    output  pkg_cache::waymux_t DIRTYWMUX, DATAWMUX, PLRUWMUX,
     output  pkg_cache::datamux_t DATAMUX,
     output  pkg_cache::merdmux_t MERDMUX,
     output  pkg_cache::pmadmux_t PMADMUX
@@ -30,9 +28,9 @@ import pkg_cache::*;
         LD_TMPDATA = 1'b0;
         LD_PLRU = 1'b0;
         DIRTYVAL = 1'b0;
-        DIRTYWMUX = T_HIT;
+        DIRTYWMUX = W_HIT;
         DATAWMUX = W_HIT;
-        PLRUWMUX = U_HIT;
+        PLRUWMUX = W_HIT;
         DATAMUX = D_CPU;
         MERDMUX = M_CACHE;
         PMADMUX = P_CPU;
@@ -42,7 +40,7 @@ import pkg_cache::*;
         LD_VALID = 1'b1;
     endfunction
 
-    function void loadDirty(pkg_cache::dirtywmux_t dirtywmux, logic dirtyval);
+    function void loadDirty(pkg_cache::waymux_t dirtywmux, logic dirtyval);
         LD_DIRTY = 1'b1;
         DIRTYVAL = dirtyval;
         DIRTYWMUX = dirtywmux;
@@ -52,13 +50,13 @@ import pkg_cache::*;
         LD_TAG = 1'b1;
     endfunction
 
-    function void loadData(pkg_cache::datawmux_t datawmux, pkg_cache::datamux_t datamux);
+    function void loadData(pkg_cache::waymux_t datawmux, pkg_cache::datamux_t datamux);
         LD_DATA = 1'b1;
         DATAWMUX = datawmux;
         DATAMUX = datamux;
     endfunction
 
-    function void loadPLRU(pkg_cache::plruwmux_t plruwmux);
+    function void loadPLRU(pkg_cache::waymux_t plruwmux);
         LD_PLRU = 1'b1;
         PLRUWMUX = plruwmux;
     endfunction
@@ -126,9 +124,9 @@ import pkg_cache::*;
                     setMemRDataMUX(M_CACHE);
                 end else begin
                     loadData(W_HIT, D_CPU);
-                    loadDirty(T_HIT, 1'b1);
+                    loadDirty(W_HIT, 1'b1);
                 end
-                loadPLRU(U_HIT);
+                loadPLRU(W_HIT);
             end
             end
 
@@ -143,14 +141,14 @@ import pkg_cache::*;
             EVICT: begin
                 loadTag();
                 loadValid();
-                loadPLRU(U_LRU);
+                loadPLRU(W_LRU);
                 if (mem_read) begin
                     setMemRDataMUX(M_LLC);
                     loadData(W_LRU, D_LLC);
-                    loadDirty(T_LRU, 1'b0);
+                    loadDirty(W_LRU, 1'b0);
                 end else begin
                     loadData(W_LRU, D_CPU);
-                    loadDirty(T_LRU, 1'b1);
+                    loadDirty(W_LRU, 1'b1);
                 end
                 if (SIGDIRTY) begin
                     setPMemAddrMUX(P_CACHE);
