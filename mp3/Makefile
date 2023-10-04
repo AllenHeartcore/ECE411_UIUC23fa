@@ -38,6 +38,10 @@ spike: $(ELF)
 interactive_spike: $(ELF)
 	/class/ece411/software/spike_new/bin/spike --isa=rv32i -m0x40000000:0x20000000 --log-commits -d $(ELF)
 
+.PHONY: synth
+synth:
+	cd synth && $(MAKE) synth
+
 .PHONY: clean
 clean: 
 	rm -rf sim verdi
