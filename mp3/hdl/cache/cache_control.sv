@@ -17,6 +17,7 @@ import pkg_cache::*;
 
 
     function void set_cache_defaults();
+        mem_resp = 1'b0;
         pmem_read = 1'b0;
         pmem_write = 1'b0;
         LD_VALID = 1'b0;
@@ -77,38 +78,14 @@ import pkg_cache::*;
     end
 
 
-    always_comb begin : next_state_logic
+    always_comb begin
+        set_cache_defaults();
         next_state = state;
-        mem_resp = 1'b0;
         case (state)
+
             IDLE:
                 if (mem_read || mem_write)
                     next_state = CMP;
-            CMP: begin
-                if (SIGHIT) begin
-                    next_state = IDLE;
-                    mem_resp = 1'b1;
-                end else if (SIGDIRTY) begin
-                    next_state = EVICT;
-                end else begin
-                    next_state = LOAD;
-                end
-            end
-            EVICT:
-                if (pmem_resp)
-                    next_state = LOAD;
-            LOAD:
-                if (pmem_resp)
-                    next_state = CMP;
-        endcase
-    end : next_state_logic
-
-
-    always_comb begin : state_actions
-        set_cache_defaults();
-        case (state)
-
-            IDLE: ;
 
             CMP: begin
                 if (SIGHIT) begin
@@ -119,25 +96,35 @@ import pkg_cache::*;
                         loadDirty(W_HIT, 1'b1);
                     end
                     loadPLRU(W_HIT);
+                    mem_resp = 1'b1;
+                    next_state = IDLE;
+                end else if (SIGDIRTY) begin
+                    next_state = EVICT;
+                end else begin
+                    next_state = LOAD;
                 end
             end
 
             EVICT: begin
                 setPMemAddrMUX(P_CACHE);
                 pmem_write = 1'b1;
+                if (pmem_resp)
+                    next_state = LOAD;
             end
 
             LOAD: begin
-                setPMemAddrMUX(P_CPU);
-                pmem_read = 1'b1;
                 loadTag();
                 loadValid();
                 loadData(W_LRU, D_LLC);
                 loadDirty(W_LRU, 1'b0);
+                setPMemAddrMUX(P_CPU);
+                pmem_read = 1'b1;
+                if (pmem_resp)
+                    next_state = CMP;
             end
 
         endcase
-    end : state_actions
+    end
 
 
 endmodule : cache_control
