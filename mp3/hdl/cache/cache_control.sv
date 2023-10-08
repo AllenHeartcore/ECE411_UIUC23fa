@@ -85,14 +85,14 @@ import pkg_cache::*;
                 if (mem_read || mem_write)
                     next_state = CMP;
             CMP: begin
-            if (SIGHIT) begin
-                next_state = IDLE;
-                mem_resp = 1'b1;
-            end else if (SIGDIRTY) begin
-                next_state = EVICT;
-            end else begin
-                next_state = LOAD;
-            end
+                if (SIGHIT) begin
+                    next_state = IDLE;
+                    mem_resp = 1'b1;
+                end else if (SIGDIRTY) begin
+                    next_state = EVICT;
+                end else begin
+                    next_state = LOAD;
+                end
             end
             EVICT:
                 if (pmem_resp)
@@ -111,15 +111,15 @@ import pkg_cache::*;
             IDLE: ;
 
             CMP: begin
-            if (SIGHIT) begin
-                if (mem_read) begin
-                    setMemRDataMUX(M_CACHE);
-                end else begin
-                    loadData(W_HIT, D_CPU);
-                    loadDirty(W_HIT, 1'b1);
+                if (SIGHIT) begin
+                    if (mem_read) begin
+                        setMemRDataMUX(M_CACHE);
+                    end else begin
+                        loadData(W_HIT, D_CPU);
+                        loadDirty(W_HIT, 1'b1);
+                    end
+                    loadPLRU(W_HIT);
                 end
-                loadPLRU(W_HIT);
-            end
             end
 
             EVICT: begin
@@ -132,8 +132,8 @@ import pkg_cache::*;
                 pmem_read = 1'b1;
                 loadTag();
                 loadValid();
-                    loadData(W_LRU, D_LLC);
-                    loadDirty(W_LRU, 1'b0);
+                loadData(W_LRU, D_LLC);
+                loadDirty(W_LRU, 1'b0);
             end
 
         endcase
