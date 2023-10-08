@@ -8,8 +8,7 @@ import pkg_cache::*;
     output  logic mem_resp, pmem_read, pmem_write,
 
     input   logic SIGHIT, SIGDIRTY,
-    output  logic LD_VALID, LD_DIRTY, LD_TAG, LD_DATA,
-    output  logic LD_TMPTAG, LD_TMPDATA, LD_PLRU, DIRTYVAL,
+    output  logic LD_VALID, LD_DIRTY, LD_TAG, LD_DATA, LD_PLRU, DIRTYVAL,
     output  pkg_cache::waymux_t DIRTYWMUX, DATAWMUX, PLRUWMUX,
     output  pkg_cache::datamux_t DATAMUX,
     output  pkg_cache::merdmux_t MERDMUX,
@@ -24,8 +23,6 @@ import pkg_cache::*;
         LD_DIRTY = 1'b0;
         LD_TAG = 1'b0;
         LD_DATA = 1'b0;
-        LD_TMPTAG = 1'b0;
-        LD_TMPDATA = 1'b0;
         LD_PLRU = 1'b0;
         DIRTYVAL = 1'b0;
         DIRTYWMUX = W_HIT;
@@ -61,11 +58,6 @@ import pkg_cache::*;
         PLRUWMUX = plruwmux;
     endfunction
 
-    function void storeTmps();
-        LD_TMPTAG  = 1'b1;
-        LD_TMPDATA = 1'b1;
-    endfunction
-
     function void setMemRDataMUX(pkg_cache::merdmux_t merdmux);
         MERDMUX = merdmux;
     endfunction
@@ -75,7 +67,7 @@ import pkg_cache::*;
     endfunction
 
 
-    enum logic [1:0] {IDLE, CMP, MISS, EVICT} state, next_state;
+    enum logic [1:0] {IDLE, CMP, EVICT, LOAD} state, next_state;
 
     always_ff @ (posedge clk) begin
         if (rst)
@@ -96,18 +88,18 @@ import pkg_cache::*;
             if (SIGHIT) begin
                 next_state = IDLE;
                 mem_resp = 1'b1;
+            end else if (SIGDIRTY) begin
+                next_state = EVICT;
             end else begin
-                next_state = MISS;
+                next_state = LOAD;
             end
             end
-            MISS:
-                if (pmem_resp)
-                    next_state = EVICT;
             EVICT:
-                if (!SIGDIRTY || pmem_resp) begin
-                    next_state = IDLE;
-                    mem_resp = 1'b1;
-                end
+                if (pmem_resp)
+                    next_state = LOAD;
+            LOAD:
+                if (pmem_resp)
+                    next_state = CMP;
         endcase
     end : next_state_logic
 
@@ -130,30 +122,18 @@ import pkg_cache::*;
             end
             end
 
-            MISS: begin
-                if (SIGDIRTY) begin
-                    storeTmps();
-                end
-                setPMemAddrMUX(P_CPU);
-                pmem_read = 1'b1;
+            EVICT: begin
+                setPMemAddrMUX(P_CACHE);
+                pmem_write = 1'b1;
             end
 
-            EVICT: begin
+            LOAD: begin
+                setPMemAddrMUX(P_CPU);
+                pmem_read = 1'b1;
                 loadTag();
                 loadValid();
-                loadPLRU(W_LRU);
-                if (mem_read) begin
-                    setMemRDataMUX(M_LLC);
                     loadData(W_LRU, D_LLC);
                     loadDirty(W_LRU, 1'b0);
-                end else begin
-                    loadData(W_LRU, D_CPU);
-                    loadDirty(W_LRU, 1'b1);
-                end
-                if (SIGDIRTY) begin
-                    setPMemAddrMUX(P_CACHE);
-                    pmem_write = 1'b1;
-                end
             end
 
         endcase

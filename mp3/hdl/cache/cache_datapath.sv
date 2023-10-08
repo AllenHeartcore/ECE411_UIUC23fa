@@ -21,8 +21,7 @@ import pkg_cache::*;
     input   logic   [255:0] pmem_rdata,
 
     output  logic           SIGHIT, SIGDIRTY,
-    input   logic           LD_VALID, LD_DIRTY, LD_TAG, LD_DATA,
-    input   logic           LD_TMPTAG, LD_TMPDATA, LD_PLRU, DIRTYVAL,
+    input   logic           LD_VALID, LD_DIRTY, LD_TAG, LD_DATA, LD_PLRU, DIRTYVAL,
     input   pkg_cache::waymux_t DIRTYWMUX, DATAWMUX, PLRUWMUX,
     input   pkg_cache::datamux_t DATAMUX,
     input   pkg_cache::merdmux_t MERDMUX,
@@ -103,22 +102,6 @@ import pkg_cache::*;
             .dout0      (dirty_q[i])
         );
     end endgenerate
-
-
-    /* temp registers */
-    logic [s_tag-1:0] tmptag;
-    logic [255:0] tmpdata;
-
-    always_ff @ (posedge clk) begin : temp_reg
-        if (LD_TMPTAG)
-            tmptag <= tag_q[WAYLRU];
-        else
-            tmptag <= tmptag;
-        if (LD_TMPDATA)
-            tmpdata <= data_q[WAYLRU];
-        else
-            tmpdata <= tmpdata;
-    end : temp_reg
 
 
     /* PLRU implementation */
