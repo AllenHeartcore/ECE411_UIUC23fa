@@ -22,9 +22,8 @@ import pkg_cache::*;
 
     output  logic           SIGHIT, SIGDIRTY,
     input   logic           LD_VALID, LD_DIRTY, LD_TAG, LD_DATA, LD_PLRU, DIRTYVAL,
-    input   pkg_cache::waymux_t DIRTYWMUX, DATAWMUX, PLRUWMUX,
+    input   pkg_cache::waymux_t DIRTYWMUX, DATAWMUX,
     input   pkg_cache::datamux_t DATAMUX,
-    input   pkg_cache::merdmux_t MERDMUX,
     input   pkg_cache::pmadmux_t PMADMUX
 );
 
@@ -43,9 +42,9 @@ import pkg_cache::*;
 
             logic   [  1:0] WAYHIT;
             logic   [  1:0] WAYLRU;
+    assign mem_rdata  = data_q[WAYHIT];
     assign pmem_wdata = data_q[WAYLRU];
     assign pmem_address = {PMADMUX ? tag_q[WAYLRU] : addr_tag, addr_index, {s_offset{1'b0}}};
-    assign mem_rdata  = MERDMUX ? pmem_rdata : data_q[WAYHIT];
     assign SIGDIRTY   = valid_q[WAYLRU] & dirty_q[WAYLRU];
 
             logic   [  3:0] MASKHIT;
@@ -112,7 +111,7 @@ import pkg_cache::*;
             if (rst)
                 PLRU[j] <= 3'b000;
             else if (LD_PLRU & (addr_index == j[s_index-1:0]))
-                case (PLRUWMUX ? WAYLRU : WAYHIT)
+                case (WAYHIT)
                     2'b00: PLRU[j] <= {PLRU[j][2], 1'b0, 1'b0};
                     2'b01: PLRU[j] <= {PLRU[j][2], 1'b1, 1'b0};
                     2'b10: PLRU[j] <= {1'b0, PLRU[j][1], 1'b1};

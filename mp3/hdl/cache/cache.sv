@@ -30,9 +30,8 @@ module cache #(
 
 logic   SIGHIT, SIGDIRTY;
 logic   LD_VALID, LD_DIRTY, LD_TAG, LD_DATA, LD_PLRU, DIRTYVAL;
-pkg_cache::waymux_t DIRTYWMUX, DATAWMUX, PLRUWMUX;
+pkg_cache::waymux_t DIRTYWMUX, DATAWMUX;
 pkg_cache::datamux_t DATAMUX;
-pkg_cache::merdmux_t MERDMUX;
 pkg_cache::pmadmux_t PMADMUX;
 
 cache_control control

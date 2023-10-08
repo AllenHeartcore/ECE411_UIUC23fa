@@ -11,11 +11,6 @@ typedef enum bit {
 } datamux_t;
 
 typedef enum bit {
-    M_CACHE = 1'b0, /* mem_rdata = data[WAYHIT] */
-    M_LLC   = 1'b1  /* mem_rdata = pmem_rdata   */
-} merdmux_t;
-
-typedef enum bit {
     P_CPU   = 1'b0, /* pmem_address = {addr_tag,    9'b0} */
     P_CACHE = 1'b1  /* pmem_address = {tag[WAYLRU], 9'b0} */
 } pmadmux_t;

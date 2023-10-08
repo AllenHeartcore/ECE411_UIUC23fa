@@ -9,9 +9,8 @@ import pkg_cache::*;
 
     input   logic SIGHIT, SIGDIRTY,
     output  logic LD_VALID, LD_DIRTY, LD_TAG, LD_DATA, LD_PLRU, DIRTYVAL,
-    output  pkg_cache::waymux_t DIRTYWMUX, DATAWMUX, PLRUWMUX,
+    output  pkg_cache::waymux_t DIRTYWMUX, DATAWMUX,
     output  pkg_cache::datamux_t DATAMUX,
-    output  pkg_cache::merdmux_t MERDMUX,
     output  pkg_cache::pmadmux_t PMADMUX
 );
 
@@ -28,9 +27,7 @@ import pkg_cache::*;
         DIRTYVAL = 1'b0;
         DIRTYWMUX = W_HIT;
         DATAWMUX = W_HIT;
-        PLRUWMUX = W_HIT;
         DATAMUX = D_CPU;
-        MERDMUX = M_CACHE;
         PMADMUX = P_CPU;
     endfunction
 
@@ -54,13 +51,8 @@ import pkg_cache::*;
         DATAMUX = datamux;
     endfunction
 
-    function void loadPLRU(pkg_cache::waymux_t plruwmux);
+    function void loadPLRU();
         LD_PLRU = 1'b1;
-        PLRUWMUX = plruwmux;
-    endfunction
-
-    function void setMemRDataMUX(pkg_cache::merdmux_t merdmux);
-        MERDMUX = merdmux;
     endfunction
 
     function void setPMemAddrMUX(pkg_cache::pmadmux_t pmadmux);
@@ -89,20 +81,18 @@ import pkg_cache::*;
 
             CMP: begin
                 if (SIGHIT) begin
-                    if (mem_read) begin
-                        setMemRDataMUX(M_CACHE);
-                    end else begin
+                    if (mem_write) begin
                         loadData(W_HIT, D_CPU);
                         loadDirty(W_HIT, 1'b1);
                     end
-                    loadPLRU(W_HIT);
+                    loadPLRU();
                     mem_resp = 1'b1;
                     next_state = IDLE;
-                end else if (SIGDIRTY) begin
-                    next_state = EVICT;
-                end else begin
-                    next_state = LOAD;
                 end
+                else if (SIGDIRTY)
+                    next_state = EVICT;
+                else
+                    next_state = LOAD;
             end
 
             EVICT: begin
