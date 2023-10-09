@@ -5,6 +5,8 @@ HDL_SRCS := $(shell find $(PWD)/hdl -name '*.sv')
 HVL_SRCS := $(shell find $(PWD)/hvl -name '*.sv' -o -name '*.v')
 SRCS := $(PKG_SRCS) $(HDL_SRCS) $(HVL_SRCS)
 
+SYNTH_TCL := $(CURDIR)/synthesis.tcl
+
 VCS_FLAGS= -full64 -lca -sverilog +lint=all,noNS -timescale=1ns/1ns -debug_acc+all -kdb -fsdb 
 
 sim/top_tb: $(SRCS)
@@ -27,6 +29,17 @@ run_cache_dut: sim/cache_dut_tb
 .PHONY: covrep_dut
 covrep_dut: sim/cache_dut_tb.vdb
 	cd sim && urg -dir cache_dut_tb.vdb
+
+.PHONY: synth
+synth: $(SRCS) $(SYNTH_TCL)
+	mkdir -p synth/reports
+	cd synth && dc_shell -f $(SYNTH_TCL) |& tee synthesis.log
+	@if grep -q -i -f synth-error-codes synth/synthesis.log; then \
+		echo -e "\033[0;31m Fix errors/warnings below \033[0m"; \
+		grep -H -i -n -f synth-error-codes synth/synthesis.log; exit 1; \
+	else \
+		echo -e "\033[0;32m Synthesis Successful \033[0m Check timing and power report under synth/reports/"; \
+    fi
 
 .PHONY: spike
 spike: $(ELF)
