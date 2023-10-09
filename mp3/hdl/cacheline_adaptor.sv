@@ -78,6 +78,8 @@ always_comb begin
             write_o = 1'b0;
         end
 
+        default: next_state = IDLE;
+
     endcase
 
 end
