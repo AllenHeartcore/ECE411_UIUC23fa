@@ -30,6 +30,10 @@ suppress_message LINT-2
 suppress_message OPT-1206
 #The register '' will be removed.
 suppress_message OPT-1207
+#Can't read link_library file '%s'
+suppress_message UID-3
+#Design '%s' contains %d high-fanout nets.
+suppress_message TIM-134
 
 define_design_lib WORK -path ./work
 set alib_library_analysis_path [getenv STD_CELL_ALIB]
