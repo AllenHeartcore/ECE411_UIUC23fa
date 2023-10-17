@@ -150,9 +150,9 @@ Checkpoint 1: RV32I ISA and basic pipelining
 --------------------------------------------
 
 By checkpoint 1, you should have a basic processor that can handle all of the non-control RV32I instructions.
-You **do not** need to handle any control 
-hazards or data hazards. For this checkpoint you can use a dual-port "magic" memory that always sets ``mem_resp`` high 
-immediately, so that you do not have to handle cache misses or memory stalls. You also need to have RVFI working at 
+You **do not** need to handle any control
+hazards or data hazards. For this checkpoint you can use a dual-port "magic" memory that always sets ``mem_resp`` high
+immediately, so that you do not have to handle cache misses or memory stalls. You also need to have RVFI working at
 this checkpoint.
 
 **Please note that your PC should start at 0x40000000 throughout this MP.**
@@ -261,7 +261,7 @@ Table 1: MP4 point breakdown. Points for each item are enclosed in brackets. Poi
 |             |                                         | - Roadmap [2]                                       |
 +-------------+-----------------------------------------+-----------------------------------------------------+
 | CP 3 [69]   | - CoreMark Runs Correctly [50]          | - TA Meeting [1]                                    |
-|             | - Synthesizes [10]                      | - Progress report [2]                               |                                    
+|             | - Synthesizes [10]                      | - Progress report [2]                               |
 |             |                                         | - Advanced Features Proposals + Design [6]          |
 +-------------+-----------------------------------------+-----------------------------------------------------+
 | CP 4 [35]   | - Design competition [5+X]              | - Presentation [10]                                 |
@@ -351,7 +351,53 @@ responses on the group evaluation should not come as a surprise to anyone.
 Advanced Design Options
 =======================
 
-TBD.
+The following sections describe some common advanced design options. Each design option is assigned
+a point value (listed in brackets). Also note that based on
+design effort, your mentor TA can decide to take off or add points to a design option. To obtain
+full points for a design option, you must satisfy all the requirements given in the
+`Advanced Features`_ grading section. If you would like to add a feature to this list, you may work
+with your mentor TA to assign it a point value.
+
+- Cache organization and design options
+
+  - Multi level cache system [2] (Additional points up to TA discretion)
+  - Fully parameterized cache [6]
+
+- Advanced cache options
+
+  - Eviction write buffer with write merging [4]
+  - Victim cache [4]
+  - Pipelined L1 caches [8]
+  - Non-blocking L1 cache [8]
+  - Banked L1 or L2 cache [3]
+
+- Branch prediction options: note that multiple types of branch
+  predictors will receive decreasing credit in the following geometric
+  sequence: 80%, 40%, 20%, and so on. For instance, if you implement
+  both LTAGE and perceptron branch predictors, you will receive
+  8 + 0.8*7 = 13.6 points instead of 15.
+
+  - Local branch history table [2]
+  - Global 2-level branch history table [3]
+  - LTAGE branch predictor [8]
+  - Perceptron branch predictor [7]
+  - Software branch predictor model [2]
+  - Tournament branch predictor [2]
+  - Alternative branch predictor [points up to TA discretion]
+  - Branch target buffer, support for jumps [4]
+  - 4-way set associative or higher BTB [3]
+  - Return address stack [2]
+
+- Prefetch design options
+
+  - Basic hardware prefetching [4]
+  - Stride/advanced hardware prefetching [6]
+
+- RISC-V extensions
+
+  - RISC-V M Extension: A basic multiplier and divider design is worth
+    [2] each while an advanced multiplier and divider is worth [5] each.
+  - RISC-V C Extension [8]
 
 
 Advice from Past Students
