@@ -64,4 +64,6 @@ import rv32i_types::*;
     assign monitor_mem_rdata = ;
     assign monitor_mem_wdata = ;
 
+    cpu cpu(.*);
+
 endmodule : mp4
