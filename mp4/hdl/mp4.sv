@@ -47,22 +47,22 @@ import rv32i_types::*;
     // Fill this out
     // Only use hierarchical references here for verification
     // **DO NOT** use hierarchical references in the actual design!
-    assign monitor_valid     = ;
-    assign monitor_order     = ;
-    assign monitor_inst      = ;
-    assign monitor_rs1_addr  = ;
-    assign monitor_rs2_addr  = ;
-    assign monitor_rs1_rdata = ;
-    assign monitor_rs2_rdata = ;
-    assign monitor_rd_addr   = ;
-    assign monitor_rd_wdata  = ;
-    assign monitor_pc_rdata  = ;
-    assign monitor_pc_wdata  = ;
-    assign monitor_mem_addr  = ;
-    assign monitor_mem_rmask = ;
-    assign monitor_mem_wmask = ;
-    assign monitor_mem_rdata = ;
-    assign monitor_mem_wdata = ;
+    // assign monitor_valid     = ;
+    // assign monitor_order     = ;
+    // assign monitor_inst      = ;
+    // assign monitor_rs1_addr  = ;
+    // assign monitor_rs2_addr  = ;
+    // assign monitor_rs1_rdata = ;
+    // assign monitor_rs2_rdata = ;
+    // assign monitor_rd_addr   = ;
+    // assign monitor_rd_wdata  = ;
+    // assign monitor_pc_rdata  = ;
+    // assign monitor_pc_wdata  = ;
+    // assign monitor_mem_addr  = ;
+    // assign monitor_mem_rmask = ;
+    // assign monitor_mem_wmask = ;
+    // assign monitor_mem_rdata = ;
+    // assign monitor_mem_wdata = ;
 
     cpu cpu(.*);
 
