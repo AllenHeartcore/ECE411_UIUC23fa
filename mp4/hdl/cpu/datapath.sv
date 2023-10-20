@@ -37,22 +37,46 @@ import pipeline_reg_pkg::*;
     output rv32i_word imem_address, dmem_address,
     output rv32i_word dmem_wdata
 );
-    logic [31:0] alu_out;
-    
-    if_id_reg_t if_id_reg_i, if_id_reg_o;
 
-    if_unit if_unit(
-        .clk(clk), .rst(rst), .pcmux_sel(pcmux_sel), .alu_out(alu_out), 
-        .imem_rdata(imem_rdata), .imem_address(imem_address), 
-        .load_pc(hazard_ctrl.load_pc), .if_reg(if_id_reg_i)
-    );
+
+
+    /* Datapath Registers */
+
+    rv32i_word pc_out, alu_out;
+    rv32i_word pcmux_out;
+
+    register #(.rst_value(32'h4000_0000))
+             PC  (.*, .load(hazard_ctrl.load_pc), .in(pcmux_out), .out(pc_out));
+
+
+
+    /* Pipeline Registers */
+
+    if_id_reg_t if_id_reg_i, if_id_reg_o;
 
     if_id if_id_regs(
         .clk(clk), .rst(rst), .load_if_id(hazard_ctrl.load_if_id),
         .if_id_reg_i(if_id_reg_i), .if_id_reg_o(if_id_reg_o)
     );
-    
 
+    assign imem_address = pc_out;
+    assign if_id_reg_i.pc = pc_out;
+    assign if_id_reg_i.ir = imem_rdata;
+
+
+
+    /* ALU, CMP, MUXes */
+
+    always_comb begin : MUXES
+
+        unique case (pcmux_sel)
+            pcmux::pc_plus4: pcmux_out = pc_out + 4;
+            pcmux::alu_out : pcmux_out = alu_out;
+            pcmux::alu_mod2: pcmux_out = alu_out & 32'hFFFFFFFE;
+            default        : pcmux_out = 'X;
+        endcase
+
+    end
 
 
 endmodule : datapath
