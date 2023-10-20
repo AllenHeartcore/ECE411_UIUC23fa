@@ -1,11 +1,15 @@
-module if_id
 import pipeline_reg_pkg::*;
+
+
+
+module if_id
 (
-    input logic clk, rst,
-    input logic load_if_id,
-    input if_id_reg_t if_id_reg_i,
-    output if_id_reg_t if_id_reg_o
+    input  clk,
+    input  rst,
+    input  load,
+    input  if_id_reg_t in,
+    output if_id_reg_t out
 );
-    register if_id_reg_pc(.clk(clk), .rst(rst), .load(load_if_id), .in(if_id_reg_i.pc), .out(if_id_reg_o.pc));
-    register if_id_reg_ir(.clk(clk), .rst(rst), .load(load_if_id), .in(if_id_reg_i.ir), .out(if_id_reg_o.ir));
+    register if_id_reg_pc(.clk(clk), .rst(rst), .load(load), .in(in.pc), .out(out.pc));
+    register if_id_reg_ir(.clk(clk), .rst(rst), .load(load), .in(in.ir), .out(out.ir));
 endmodule

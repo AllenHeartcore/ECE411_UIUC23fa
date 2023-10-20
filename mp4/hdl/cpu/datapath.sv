@@ -55,8 +55,8 @@ import pipeline_reg_pkg::*;
     if_id_reg_t if_id_reg_i, if_id_reg_o;
 
     if_id if_id_regs(
-        .clk(clk), .rst(rst), .load_if_id(hazard_ctrl.load_if_id),
-        .if_id_reg_i(if_id_reg_i), .if_id_reg_o(if_id_reg_o)
+        .clk(clk), .rst(rst), .load(hazard_ctrl.load_if_id),
+        .in(if_id_reg_i), .out(if_id_reg_o)
     );
 
     assign imem_address = pc_out;
