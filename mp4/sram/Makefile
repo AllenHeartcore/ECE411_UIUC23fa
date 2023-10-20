@@ -28,3 +28,5 @@ all: $(OBJECTS)
 .PHONY: clean
 clean:
 	rm -rf output config/__pycache__
+	mkdir -p output
+	touch output/.gitkeep
