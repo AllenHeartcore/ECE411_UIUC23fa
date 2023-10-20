@@ -13,7 +13,6 @@ import rv32i_types::*;
     output cmpmux::cmpmux_sel_t cmpmux_sel,
     output alu_ops aluop,
     output cmp_ops cmpop,
-    output logic load_pc,
     output logic load_ir,
     output logic load_regfile,
     output logic load_mar,
@@ -36,6 +35,11 @@ import rv32i_types::*;
     output logic imem_read, dmem_read, dmem_write,
     output logic [3:0] dmem_wmask
 );
+    /**
+    * @todo
+    * This unit maps 
+    * [IR, Hazard Control, Memory Signal] -> Control Word 
+    */
 
 
 
