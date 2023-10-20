@@ -59,18 +59,6 @@ module magic_dual_port #(
                 $error("Magic Memory D-Port Error: wmask contains 'x");
                 itf_d.error <= 1'b1;
             end
-            for (int i = 0; i < 4; i++) begin
-                if (itf_d.wmask[i]) begin
-                    if ($isunknown(itf_d.wdata[i*8 +: 8])) begin
-                        $warning("Magic Memory D-Port Error: wdata contains 'x");
-                    end
-                end
-            end
-        end
-        if (itf_d.read && itf_d.resp) begin
-            if ($isunknown(itf_d.rdata)) begin
-                $warning("Magic Memory D-Port Warning: rdata contains 'x");
-            end
         end
     end
 

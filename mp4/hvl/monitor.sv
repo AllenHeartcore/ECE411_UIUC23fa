@@ -95,7 +95,7 @@ module monitor (
 
     initial itf.halt = 1'b0;
     always @(posedge itf.clk) begin
-        if (!itf.rst && itf.valid && itf.pc_rdata == itf.pc_wdata) begin
+        if ((!itf.rst && itf.valid) && ((itf.pc_rdata == itf.pc_wdata) || (itf.inst == 32'h00000063) || (itf.inst == 32'h0000006f))) begin
             itf.halt <= 1'b1;
         end
     end
@@ -105,6 +105,36 @@ module monitor (
         if (errcode != 0) begin
             $error("RVFI Error");
             itf.error <= 1'b1;
+        end
+    end
+
+    longint inst_count = longint'(0);
+    longint cycle_count = longint'(0);
+    bit done_print_ipc = 1'b0;
+    real ipc = real'(0);
+    always @(posedge itf.clk) begin
+        if ((!itf.rst && itf.valid) && (itf.inst == 32'h00102013)) begin
+            inst_count = longint'(0);
+            cycle_count = longint'(0);
+            $display("start time is %t",$time); 
+        end else begin
+            cycle_count += longint'(1);
+            if (!itf.rst && itf.valid) begin
+                inst_count += longint'(1);
+            end
+        end
+        if ((!itf.rst && itf.valid) && (itf.inst == 32'h00202013)) begin
+            $display("stop time is %t",$time); 
+            done_print_ipc = 1'b1;
+            ipc = real'(inst_count) / cycle_count;
+            $display("IPC: %f", ipc);
+        end
+    end
+
+    final begin
+        if (!done_print_ipc) begin
+            ipc = real'(inst_count) / cycle_count;
+            $display("IPC: %f", ipc);
         end
     end
 
