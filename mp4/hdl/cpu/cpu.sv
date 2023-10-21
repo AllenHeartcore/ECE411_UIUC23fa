@@ -32,7 +32,6 @@ import rv32i_types::*;
     rv32i_opcode opcode;
     logic [2:0] funct3;
     logic [6:0] funct7;
-    logic [4:0] rs1, rs2;
     logic br_en;
     logic [1:0] byte_in_word;
 

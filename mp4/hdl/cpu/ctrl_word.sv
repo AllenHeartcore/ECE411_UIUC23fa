@@ -24,8 +24,6 @@ import rv32i_types::*;
     input  logic [2:0] funct3,
     input  logic [6:0] funct7,
     input  logic br_en,
-    input  logic [4:0] rs1,
-    input  logic [4:0] rs2,
     input  logic [1:0] byte_in_word,
 
     // from memory

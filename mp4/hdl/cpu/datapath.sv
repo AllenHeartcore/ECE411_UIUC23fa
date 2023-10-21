@@ -26,8 +26,6 @@ import pipeline_reg_pkg::*;
     output logic [2:0] funct3,
     output logic [6:0] funct7,
     output logic br_en,
-    output logic [4:0] rs1,
-    output logic [4:0] rs2,
     output logic [1:0] byte_in_word,
 
     // from memory
