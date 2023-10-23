@@ -52,11 +52,10 @@ if {$sram_library eq ""} {
 set design_clock_pin clk
 set design_reset_pin rst
 
-analyze -library WORK -format sverilog ../pkg/types.sv
+analyze -library WORK -format sverilog [getenv PKG_SRCS]
 
-set modules [glob -nocomplain ../hdl/*.sv]
+set modules [split [getenv HDL_SRCS] " "]
 foreach module $modules {
-   puts "analyzing $module"
    analyze -library WORK -format sverilog "${module}"
 }
 

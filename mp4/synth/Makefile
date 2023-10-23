@@ -2,6 +2,11 @@ export CLOCK_PERIOD_PS = $(shell cat clock_period.txt)
 
 SHELL=/bin/bash -o pipefail
 
+AREA_LIMIT = 75000
+
+export PKG_SRCS = $(PWD)/../pkg/types.sv
+export HDL_SRCS = $(shell find $(PWD)/../hdl -name '*.sv')
+
 export FREEPDK45=/class/ece411/freepdk-45nm
 export STD_CELL_LIB=$(FREEPDK45)/stdcells.db
 export STD_CELL_ALIB=$(FREEPDK45)/alib
@@ -27,7 +32,7 @@ synth: clean
 	else \
 		echo -e "\033[0;32m Timing Met \033[0m"; \
     fi
-	@if $$([ $$(sed -nr 's/Total cell area: +?([0-9]+?)\.[0-9]+?$$/\1/p' reports/area.rpt) -gt 100000 ]); then \
+	@if $$([ $$(sed -nr 's/Total cell area: +?([0-9]+?)\.[0-9]+?$$/\1/p' reports/area.rpt) -gt $(AREA_LIMIT) ]); then \
 		echo -e "\033[0;31m Area Not Met \033[0m"; \
 		exit 1; \
 	else \
