@@ -22,13 +22,13 @@ run_top_tb: sim/top_tb $(PROG)
 .PHONY: spike
 spike: $(ELF)
 	mkdir -p sim
-	/class/ece411/software/spike_new/bin/spike --isa=rv32i -m0x40000000:0x20000000 --log-commits $(ELF) |& tail -n +6 > sim/golden_spike0.log
+	/class/ece411/software/spike_new/bin/spike --isa=rv32imc -m0x40000000:0x20000000 --log-commits $(ELF) |& tail -n +6 > sim/golden_spike0.log
 	bash -c 'head -n -$$(echo $$(grep -c "$$(tail -n 1 sim/golden_spike0.log)" sim/golden_spike0.log)-1 | bc) sim/golden_spike0.log > sim/golden_spike.log'
 	rm sim/golden_spike0.log
 
 .PHONY: interactive_spike
 interactive_spike: $(ELF)
-	/class/ece411/software/spike_new/bin/spike --isa=rv32i -m0x40000000:0x20000000 --log-commits -d $(ELF)
+	/class/ece411/software/spike_new/bin/spike --isa=rv32imc -m0x40000000:0x20000000 --log-commits -d $(ELF)
 
 .PHONY: clean
 clean: 

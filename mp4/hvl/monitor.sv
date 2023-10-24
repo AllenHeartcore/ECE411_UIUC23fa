@@ -10,7 +10,6 @@ module monitor (
     end
 
     always @(posedge itf.clk iff (!itf.rst && itf.valid)) begin
-        automatic logic [6:0] opcode = itf.inst[6:0];
         if ($isunknown(itf.order)) begin
             $error("RVFI Interface Error: order contains 'x");
             itf.error <= 1'b1;
@@ -174,7 +173,11 @@ module monitor (
             if (itf.order % 1000 == 0) begin
                 $display("dut commit No.%d, rd_s: x%02d, rd: 0x%h", itf.order, itf.rd_addr, itf.rd_addr ? itf.rd_wdata : 5'd0);
             end
-            $fwrite(fd, "core   0: 3 0x%h (0x%h)", itf.pc_rdata, itf.inst);
+            if (itf.inst[1:0] == 2'b11) begin
+                $fwrite(fd, "core   0: 3 0x%h (0x%h)", itf.pc_rdata, itf.inst);
+            end else begin
+                $fwrite(fd, "core   0: 3 0x%h (0x%h)", itf.pc_rdata, itf.inst[15:0]);
+            end
             if (itf.rd_addr != 0) begin
                 if (itf.rd_addr < 10)
                     $fwrite(fd, " x%0d  ", itf.rd_addr);
