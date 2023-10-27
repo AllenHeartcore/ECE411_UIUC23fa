@@ -18,7 +18,6 @@ import rv32i_types::*;
     regfilemux::regfilemux_sel_t regfilemux_sel;
     marmux::marmux_sel_t marmux_sel;
     cmpmux::cmpmux_sel_t cmpmux_sel;
-    hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl;
     alu_ops aluop;
     cmp_ops cmpop;
     logic load_ir;
@@ -27,7 +26,6 @@ import rv32i_types::*;
     logic load_mdr;
     logic load_data_out;
 
-
     // datapath -> ctrl_word
     rv32i_opcode opcode;
     logic [2:0] funct3;
@@ -35,7 +33,11 @@ import rv32i_types::*;
     logic br_en;
     logic [1:0] byte_in_word;
 
+    // hazard_ctrl -> datapath
+    hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl;
+
     datapath  datapath(.*);
     ctrl_word ctrl_word(.*);
+    hazard_ctrl_unit hazard_ctrl_unit(.*);
 
 endmodule : cpu

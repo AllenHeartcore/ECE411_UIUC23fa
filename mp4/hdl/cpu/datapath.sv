@@ -12,7 +12,6 @@ import pipeline_reg_pkg::*;
     input  regfilemux::regfilemux_sel_t regfilemux_sel,
     input  marmux::marmux_sel_t marmux_sel,
     input  cmpmux::cmpmux_sel_t cmpmux_sel,
-    input  hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl,
     input  alu_ops aluop,
     input  cmp_ops cmpop,
     input  logic load_ir,
@@ -27,6 +26,9 @@ import pipeline_reg_pkg::*;
     output logic [6:0] funct7,
     output logic br_en,
     output logic [1:0] byte_in_word,
+
+    // from hazard_ctrl
+    input  hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl,
 
     // from memory
     input  rv32i_word imem_rdata, dmem_rdata,
