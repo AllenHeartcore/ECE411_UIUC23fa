@@ -3,30 +3,13 @@ package pipeline_reg_pkg;
 typedef struct packed {
     logic [31:0] pc;
     logic [31:0] ir;
-} if_id_reg_t;
-
-typedef struct packed {
-    logic [31:0] pc;
     logic [31:0] r1;
     logic [31:0] r2;
-    logic [31:0] ir;
-} id_ex_reg_t;
-
-typedef struct packed {
-    logic [31:0] pc;
     logic [31:0] mdr;
     logic [31:0] uim;
     logic [31:0] alu;
     logic cmp;
-} ex_mem_reg_t;
-
-typedef struct packed {
-    logic [31:0] pc;
-    logic [31:0] mdr;
-    logic [31:0] uim;
-    logic [31:0] alu;
-    logic cmp;
-} mem_wb_reg_t;
+} pipeline_reg_t;
 
 endpackage : pipeline_reg_pkg
 

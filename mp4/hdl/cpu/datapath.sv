@@ -104,19 +104,19 @@ import pipeline_reg_pkg::*;
 
     /* Pipeline Registers */
 
-    if_id if_id_regs(
+    pipeline_reg if_id_regs(
         .*, .load(hazard_ctrl.load_if_id),
         .in(if_id_reg_i), .out(if_id_reg_o)
     );
-    id_ex id_ex_regs(
+    pipeline_reg id_ex_regs(
         .*, .load(hazard_ctrl.load_id_ex),
         .in(id_ex_reg_i), .out(id_ex_reg_o)
     );
-    ex_mem ex_mem_regs(
+    pipeline_reg ex_mem_regs(
         .*, .load(hazard_ctrl.load_ex_mem),
         .in(ex_mem_reg_i), .out(ex_mem_reg_o)
     );
-    mem_wb mem_wb_regs(
+    pipeline_reg mem_wb_regs(
         .*, .load(hazard_ctrl.load_mem_wb),
         .in(mem_wb_reg_i), .out(mem_wb_reg_o)
     );
