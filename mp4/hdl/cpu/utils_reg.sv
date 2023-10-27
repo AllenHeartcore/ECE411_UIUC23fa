@@ -4,16 +4,17 @@ import rv32i_types::*;
 
 module register
 #(
+    parameter width = 32,
     parameter rst_value = '0
 )(
     input  clk,
     input  rst,
     input  load,
-    input  rv32i_word in,
-    output rv32i_word out
+    input  [width-1:0] in,
+    output [width-1:0] out
 );
 
-    rv32i_word data;
+    [width-1:0] data;
 
     always_ff @(posedge clk) begin
         if (rst)
@@ -57,12 +58,9 @@ endmodule : regfile
 
 
 
-module ir
+module ir_translator
 (
-    input  clk,
-    input  rst,
-    input  load,
-    input  rv32i_word in,
+    input  rv32i_word data,
     output [2:0] funct3,
     output [6:0] funct7,
     output rv32i_opcode opcode,
@@ -76,15 +74,6 @@ module ir
     output [4:0] rd
 );
 
-    rv32i_word data;
-
-    always_ff @(posedge clk) begin
-        if (rst)
-            data <= '0;
-        else if (load)
-            data <= in;
-    end
-
     assign funct3 = data[14:12];
     assign funct7 = data[31:25];
     assign opcode = rv32i_opcode'(data[6:0]);
@@ -97,4 +86,4 @@ module ir
     assign rs2 = data[24:20];
     assign rd = data[11:7];
 
-endmodule : ir
+endmodule : ir_translator
