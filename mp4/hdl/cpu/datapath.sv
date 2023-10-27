@@ -39,15 +39,14 @@ import pipeline_reg_pkg::*;
 );
 
     logic [4:0] rs1, rs2, rd;
-    rv32i_word store_data;
     rv32i_word i_imm, s_imm, b_imm, u_imm, j_imm;
     rv32i_word alumux1_out, alumux2_out, cmpmux_out;
     rv32i_word pcmux_out, marmux_out, regfilemux_out;
 
-    if_id_reg_t if_id_reg_i, if_id_reg_o;
-    id_ex_reg_t id_ex_reg_i, id_ex_reg_o;
-    ex_mem_reg_t ex_mem_reg_i, ex_mem_reg_o;
-    mem_wb_reg_t mem_wb_reg_i, mem_wb_reg_o;
+    pipeline_reg_t if_id_reg_i,  if_id_reg_o;
+    pipeline_reg_t id_ex_reg_i,  id_ex_reg_o;
+    pipeline_reg_t ex_mem_reg_i, ex_mem_reg_o;
+    pipeline_reg_t mem_wb_reg_i, mem_wb_reg_o;
 
 
 
@@ -70,7 +69,7 @@ import pipeline_reg_pkg::*;
 
     ir_translator TRANSL_IF_ID(
         .data(if_id_reg_o.ir),
-        .opcode, .funct3, .funct7, .rs1, .rs2
+        .opcode, .funct3, .funct7, .rs1, .rs2, .rd
     );
 
     ir_translator TRANSL_ID_EX(
@@ -78,25 +77,31 @@ import pipeline_reg_pkg::*;
         .i_imm, .s_imm, .b_imm, .u_imm, .j_imm
     );
 
-    assign byte_in_word = mem_address[1:0];
+
+
+    /* Memory Interface */
+
+    assign byte_in_word = dmem_address[1:0];
+    assign imem_address = if_id_reg_i.pc;
+    assign dmem_address = marmux_out;
 
     always_comb begin : CALC_STORE_DATA
         case (store_funct3_t'(funct3))
             sw:
-                store_data = ex_mem_reg_o.mdr;
+                dmem_wdata = ex_mem_reg_o.mdr;
             sh:
                 case (marmux_out[1])
-                    1'b0: store_data = ex_mem_reg_o.mdr;
-                    1'b1: store_data = ex_mem_reg_o.mdr << 16;
+                    1'b0: dmem_wdata = ex_mem_reg_o.mdr;
+                    1'b1: dmem_wdata = ex_mem_reg_o.mdr << 16;
                 endcase
             sb:
                 case (marmux_out[1:0])
-                    2'b00: store_data = ex_mem_reg_o.mdr;
-                    2'b01: store_data = ex_mem_reg_o.mdr << 8;
-                    2'b10: store_data = ex_mem_reg_o.mdr << 16;
-                    2'b11: store_data = ex_mem_reg_o.mdr << 24;
+                    2'b00: dmem_wdata = ex_mem_reg_o.mdr;
+                    2'b01: dmem_wdata = ex_mem_reg_o.mdr << 8;
+                    2'b10: dmem_wdata = ex_mem_reg_o.mdr << 16;
+                    2'b11: dmem_wdata = ex_mem_reg_o.mdr << 24;
                 endcase
-            default: store_data = ex_mem_reg_o.mdr;
+            default: dmem_wdata = ex_mem_reg_o.mdr;
         endcase
     end
 
@@ -121,18 +126,15 @@ import pipeline_reg_pkg::*;
         .in(mem_wb_reg_i), .out(mem_wb_reg_o)
     );
 
-    assign imem_address = if_id_reg_i.pc;
     assign if_id_reg_i.ir = imem_rdata;
     assign id_ex_reg_i.pc = if_id_reg_o.pc;
     assign id_ex_reg_i.ir = if_id_reg_o.ir;
     assign ex_mem_reg_i.pc = id_ex_reg_o.pc;
-    assign ex_mem_reg_i.uim = u_imm;
     assign ex_mem_reg_i.mdr = id_ex_reg_o.r2;
-    assign dmem_address = marmux_out;
-    assign dmem_wdata = ex_mem_reg_o.mdr;
+    assign ex_mem_reg_i.uim = u_imm;
     assign mem_wb_reg_i.mdr = dmem_rdata;
-    assign mem_wb_reg_i.alu = ex_mem_reg_o.alu;
     assign mem_wb_reg_i.uim = ex_mem_reg_o.uim;
+    assign mem_wb_reg_i.alu = ex_mem_reg_o.alu;
     assign mem_wb_reg_i.cmp = ex_mem_reg_o.cmp;
 
 
