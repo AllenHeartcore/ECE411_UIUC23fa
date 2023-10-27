@@ -10,7 +10,6 @@ module monitor (
     end
 
     always @(posedge itf.clk iff (!itf.rst && itf.valid)) begin
-        automatic logic [6:0] opcode = itf.inst[6:0];
         if ($isunknown(itf.order)) begin
             $error("RVFI Interface Error: order contains 'x");
             itf.error <= 1'b1;
@@ -95,7 +94,7 @@ module monitor (
 
     initial itf.halt = 1'b0;
     always @(posedge itf.clk) begin
-        if (!itf.rst && itf.valid && itf.pc_rdata == itf.pc_wdata) begin
+        if ((!itf.rst && itf.valid) && ((itf.pc_rdata == itf.pc_wdata) || (itf.inst == 32'h00000063) || (itf.inst == 32'h0000006f))) begin
             itf.halt <= 1'b1;
         end
     end
@@ -105,6 +104,36 @@ module monitor (
         if (errcode != 0) begin
             $error("RVFI Error");
             itf.error <= 1'b1;
+        end
+    end
+
+    longint inst_count = longint'(0);
+    longint cycle_count = longint'(0);
+    bit done_print_ipc = 1'b0;
+    real ipc = real'(0);
+    always @(posedge itf.clk) begin
+        if ((!itf.rst && itf.valid) && (itf.inst == 32'h00102013)) begin
+            inst_count = longint'(0);
+            cycle_count = longint'(0);
+            $display("start time is %t",$time); 
+        end else begin
+            cycle_count += longint'(1);
+            if (!itf.rst && itf.valid) begin
+                inst_count += longint'(1);
+            end
+        end
+        if ((!itf.rst && itf.valid) && (itf.inst == 32'h00202013)) begin
+            $display("stop time is %t",$time); 
+            done_print_ipc = 1'b1;
+            ipc = real'(inst_count) / cycle_count;
+            $display("IPC: %f", ipc);
+        end
+    end
+
+    final begin
+        if (!done_print_ipc) begin
+            ipc = real'(inst_count) / cycle_count;
+            $display("IPC: %f", ipc);
         end
     end
 
@@ -144,7 +173,11 @@ module monitor (
             if (itf.order % 1000 == 0) begin
                 $display("dut commit No.%d, rd_s: x%02d, rd: 0x%h", itf.order, itf.rd_addr, itf.rd_addr ? itf.rd_wdata : 5'd0);
             end
-            $fwrite(fd, "core   0: 3 0x%h (0x%h)", itf.pc_rdata, itf.inst);
+            if (itf.inst[1:0] == 2'b11) begin
+                $fwrite(fd, "core   0: 3 0x%h (0x%h)", itf.pc_rdata, itf.inst);
+            end else begin
+                $fwrite(fd, "core   0: 3 0x%h (0x%h)", itf.pc_rdata, itf.inst[15:0]);
+            end
             if (itf.rd_addr != 0) begin
                 if (itf.rd_addr < 10)
                     $fwrite(fd, " x%0d  ", itf.rd_addr);

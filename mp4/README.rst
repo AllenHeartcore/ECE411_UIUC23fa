@@ -215,7 +215,7 @@ Checkpoint 3: Advanced Design Options
 
 Note: While the features in CP3 are important for your final design, correctness is infinitely more
 important than performance. In general, you should not move on to CP3 until your code works
-completely on all of the provided test codes. Coremark is required to execute correctly before you
+completely on all of the provided test codes. CoreMark is required to execute correctly before you
 start CP3 to receive any further credit. See the `Grading`_ section for further details on grading
 and consult your mentor TA if you become concerned about your progress.
 
@@ -303,7 +303,7 @@ design options you wish to pursue. Note that the ``+N`` points are extra credit.
 |             | - Arbiter [3]                           | - Progress report [2]                               |
 |             | - Hazard detection & forwarding [8]     | - Roadmap [2]                                       |
 |             | - Static branch predictor [1]           | - Advanced features proposal and designs [5]        |
-|             | - Coremark runs [+3]                    |                                                     |
+|             | - CoreMark runs [+3]                    |                                                     |
 +-------------+-----------------------------------------+-----------------------------------------------------+
 | CP 3 [25+X] | - Advanced design options [20+X]        | - TA Meeting [1]                                    |
 |             |                                         | - Progress report [2]                               |
@@ -374,7 +374,29 @@ A list of advanced design options along with their point values are provided in 
 Design Competition
 ------------------
 
-TBD.
+The design competition will be scored on two metrics using the provided benchmark, CoreMark.
+The first metric is ``PD²`` and the second metric is ``PD³``, where ``P`` is power and ``D`` is delay.
+Minimizing both power and delay is key.
+
+Delay is the simulated time it takes to finish the benchmark. For CoreMark, the start and end time is marked
+by a special instruction and the time will be printed during simulation.
+
+Power is reported by Design Compiler using the activity factor from VCS after
+running the competition code. To get the power, first run the simulation, then goto the ``synth``
+folder and run ``make power``, then check "total power" in ``synth/report/power.rpt``.
+
+For both power and delay, you should put your Fmax in ``synth/clock_period.txt`` (in picoseconds). For best results,
+this should be the smallest possible number that will still meet timing. To check if you pass timing,
+check that "slack" in ``synth/report/timing.rpt`` is "MET".
+
+There is also an area limit of 75000 micrometers squared. See "Total cell area" in ``synth/report/area.rpt`` 
+
+You will be scored on both metrics and the higher of the two scores will be taken.
+For each metric, the score is the linear fit from the TA base reference design and the best design in the class,
+where the TA base reference design is 0 points and and the best design is full points.
+
+Your design must finish the benchmark code without errors and pass synthesis in order to participate in the
+competition. Without these conditions being met, you will receive no points on the design competition.
 
 Group Evaluations
 -----------------
