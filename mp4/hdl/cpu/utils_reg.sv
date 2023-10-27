@@ -1,7 +1,3 @@
-import rv32i_types::*;
-
-
-
 module register
 #(
     parameter width = 32,
@@ -14,7 +10,7 @@ module register
     output [width-1:0] out
 );
 
-    [width-1:0] data;
+    logic [width-1:0] data;
 
     always_ff @(posedge clk) begin
         if (rst)
@@ -30,6 +26,7 @@ endmodule : register
 
 
 module regfile
+import rv32i_types::*;
 (
     input  clk,
     input  rst,
@@ -58,7 +55,31 @@ endmodule : regfile
 
 
 
+module pipeline_reg
+import pipeline_reg_pkg::*;
+(
+    input  clk,
+    input  rst,
+    input  load,
+    input  ex_mem_reg_t in,
+    output ex_mem_reg_t out
+);
+
+    register reg_pc (.*, .in(in.pc),  .out(out.pc));
+    register reg_ir (.*, .in(in.ir),  .out(out.ir));
+    register reg_r1 (.*, .in(in.r1),  .out(out.r1));
+    register reg_r2 (.*, .in(in.r2),  .out(out.r2));
+    register reg_mdr(.*, .in(in.mdr), .out(out.mdr));
+    register reg_uim(.*, .in(in.uim), .out(out.uim));
+    register reg_alu(.*, .in(in.alu), .out(out.alu));
+    register #(width(1)) reg_cmp(.*, .in(in.cmp), .out(out.cmp));
+
+endmodule
+
+
+
 module ir_translator
+import rv32i_types::*;
 (
     input  rv32i_word data,
     output [2:0] funct3,
