@@ -35,6 +35,7 @@ import pipeline_reg_pkg::*;
 
     // to memory
     output rv32i_word imem_address, dmem_address,
+    output logic [3:0] dmem_rmask, dmem_wmask,
     output rv32i_word dmem_wdata
 );
 
@@ -81,7 +82,6 @@ import pipeline_reg_pkg::*;
 
     /* Memory Interface */
 
-    assign byte_in_word = dmem_address[1:0];
     assign imem_address = if_id_reg_i.pc;
     assign dmem_address = marmux_out;
 
@@ -102,6 +102,39 @@ import pipeline_reg_pkg::*;
                     2'b11: dmem_wdata = ex_mem_reg_o.mdr << 24;
                 endcase
             default: dmem_wdata = ex_mem_reg_o.mdr;
+        endcase
+    end
+
+    always_comb begin : CALC_MASKS
+        case (opcode)
+            op_load: case (load_funct3_t'(funct3))
+                lw: dmem_rmask = 4'b1111;
+                lh, lhu: case (marmux_out[1])
+                    1'b0: dmem_rmask = 4'b0011;
+                    1'b1: dmem_rmask = 4'b1100;
+                endcase
+                lb, lbu: case (marmux_out[1:0])
+                    2'b00: dmem_rmask = 4'b0001;
+                    2'b01: dmem_rmask = 4'b0010;
+                    2'b10: dmem_rmask = 4'b0100;
+                    2'b11: dmem_rmask = 4'b1000;
+                endcase
+                default: dmem_rmask = 4'b0000;
+            endcase
+            op_store: case (store_funct3_t'(funct3))
+                sw: dmem_wmask = 4'b1111;
+                sh: case (marmux_out[1])
+                    1'b0: dmem_wmask = 4'b0011;
+                    1'b1: dmem_wmask = 4'b1100;
+                endcase
+                sb: case (marmux_out[1:0])
+                    2'b00: dmem_wmask = 4'b0001;
+                    2'b01: dmem_wmask = 4'b0010;
+                    2'b10: dmem_wmask = 4'b0100;
+                    2'b11: dmem_wmask = 4'b1000;
+                endcase
+                default: dmem_wmask = 4'b0000;
+            endcase
         endcase
     end
 
@@ -192,26 +225,26 @@ import pipeline_reg_pkg::*;
             regfilemux::br_en    : regfilemux_out = {31'b0, mem_wb_reg_o.cmp};
             regfilemux::lw       : regfilemux_out = mem_wb_reg_o.mdr;
             regfilemux::lb       :
-                case (byte_in_word)
+                case (marmux_out[1:0])
                     2'b00: regfilemux_out = {{24{mem_wb_reg_o.mdr[7]}}, mem_wb_reg_o.mdr[7:0]};
                     2'b01: regfilemux_out = {{24{mem_wb_reg_o.mdr[15]}}, mem_wb_reg_o.mdr[15:8]};
                     2'b10: regfilemux_out = {{24{mem_wb_reg_o.mdr[23]}}, mem_wb_reg_o.mdr[23:16]};
                     2'b11: regfilemux_out = {{24{mem_wb_reg_o.mdr[31]}}, mem_wb_reg_o.mdr[31:24]};
                 endcase
             regfilemux::lbu      :
-                case (byte_in_word)
+                case (marmux_out[1:0])
                     2'b00: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[7:0]};
                     2'b01: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[15:8]};
                     2'b10: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[23:16]};
                     2'b11: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[31:24]};
                 endcase
             regfilemux::lh       :
-                case (byte_in_word[1])
+                case (marmux_out[1])
                     1'b0: regfilemux_out = {{16{mem_wb_reg_o.mdr[15]}}, mem_wb_reg_o.mdr[15:0]};
                     1'b1: regfilemux_out = {{16{mem_wb_reg_o.mdr[31]}}, mem_wb_reg_o.mdr[31:16]};
                 endcase
             regfilemux::lhu      :
-                case (byte_in_word[1])
+                case (marmux_out[1])
                     1'b0: regfilemux_out = {16'b0, mem_wb_reg_o.mdr[15:0]};
                     1'b1: regfilemux_out = {16'b0, mem_wb_reg_o.mdr[31:16]};
                 endcase
