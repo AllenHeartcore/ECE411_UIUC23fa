@@ -1,4 +1,10 @@
 package pipeline_reg_pkg;
+import rv32i_types::*;
+import pcmux::*;
+import marmux::*;
+import cmpmux::*;
+import alumux::*;
+import regfilemux::*;
 
 typedef struct packed {
     logic [31:0] pc;
@@ -16,5 +22,7 @@ typedef struct packed {
     logic load_ex_mem;
     logic load_mem_wb;
 } hazard_ctrl_t;
+
+
 
 endpackage : hazard_ctrl_pkg
