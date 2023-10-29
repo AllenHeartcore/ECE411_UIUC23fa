@@ -55,7 +55,7 @@ import rv32i_types::*;
     // Fill this out
     // Only use hierarchical references here for verification
     // **DO NOT** use hierarchical references in the actual design!
-    assign monitor_valid     = cpu.hazard_ctrl.load_mem_wb && rst;
+    assign monitor_valid     = cpu.hazard_ctrl.load_mem_wb && (~rst);
     assign monitor_order     = accumulator;
     assign monitor_inst      = cpu.datapath.mem_wb_reg_o.ir;
     assign monitor_rs1_addr  = cpu.ctrlwb_at_wb.rs1;
