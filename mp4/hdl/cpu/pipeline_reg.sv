@@ -18,6 +18,12 @@ module pipeline_reg
     register reg_alu(.*, .in(in.alu), .out(out.alu));
     register #(.width(1)) reg_cmp(.*, .in(in.cmp), .out(out.cmp));
 
+    register reg_pc_wdata (.*, .in(in._pc_wdata), .out(out._pc_wdata));
+    register reg_mem_addr (.*, .in(in._mem_addr), .out(out._mem_addr));
+    register reg_mem_wdata (.*, .in(in._mem_wdata), .out(out._mem_wdata));
+    register #(.width(4)) reg_mem_rmask (.*, .in(in._mem_rmask), .out(out._mem_rmask));
+    register #(.width(1)) reg_mem_wmask (.*, .in(in._mem_wmask), .out(out._mem_wmask));
+
 endmodule
 
 

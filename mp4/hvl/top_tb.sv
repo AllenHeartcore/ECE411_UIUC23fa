@@ -13,7 +13,7 @@ module top_tb;
 
     bit rst;
 
-    int timeout = 10000000; // in cycles, change according to your needs
+    int timeout = 10000; // in cycles, change according to your needs
 
     // CP1
     mem_itf magic_itf_i(.*);

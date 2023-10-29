@@ -45,6 +45,4 @@ import pipeline_pkg::*;
     ctrlwb_reg  ctrlwb_ex_mem  (.*, .load(hazard_ctrl.load_ex_mem), .in(ctrlwb_at_ex),  .out(ctrlwb_at_mem));
     ctrlwb_reg  ctrlwb_mem_wb  (.*, .load(hazard_ctrl.load_mem_wb), .in(ctrlwb_at_mem), .out(ctrlwb_at_wb));
 
-
-
 endmodule : cpu
