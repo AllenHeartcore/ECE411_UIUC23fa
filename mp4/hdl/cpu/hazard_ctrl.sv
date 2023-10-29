@@ -18,4 +18,11 @@ import hazard_ctrl_pkg::*;
         end
     end
 
+    logic valid_i, valid_o;
+
+    register #(.width(1)) valid_reg(.*, .load(1), .in(valid_i), .out(valid_o));
+
+    assign valid_i = & {hazard_ctrl.load_pc, hazard_ctrl.load_if_id, 
+    hazard_ctrl.load_id_ex, hazard_ctrl.load_ex_mem, hazard_ctrl.load_mem_wb};
+
 endmodule
