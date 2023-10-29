@@ -77,8 +77,12 @@ import rv32i_types::*;
     logic br_en;
     logic [1:0] byte_in_word;
 
+    // hazard_ctrl -> datapath
+    hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl;
+
     datapath  datapath(.*);
     ctrl_word ctrl_word(.*, .rs1_out(rs1), .rs2_out(rs2), .rd_out(rd));
+    hazard_ctrl_unit hazard_ctrl_unit(.*);
     
 
 

@@ -1,8 +1,5 @@
-import rv32i_types::*;
-
-
-
 module alu
+import rv32i_types::*;
 (
     input  alu_ops aluop,
     input  rv32i_word a, b,
@@ -27,6 +24,7 @@ endmodule : alu
 
 
 module cmp
+import rv32i_types::*;
 (
     input  cmp_ops cmpop,
     input  rv32i_word a, b,
