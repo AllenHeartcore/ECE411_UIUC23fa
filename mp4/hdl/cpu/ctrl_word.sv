@@ -16,10 +16,7 @@ import pipeline_pkg::*;
     input  logic [6:0] funct7,
     input  logic [4:0] rd_in,
     input  logic [4:0] rs1_in,
-    input  logic [4:0] rs2_in,
-
-    // to memory
-    output logic imem_read, dmem_read, dmem_write
+    input  logic [4:0] rs2_in
 );
 
 
@@ -71,15 +68,15 @@ import pipeline_pkg::*;
         ctrlex.is_branch = 1'b0;
         ctrlex.aluop = alu_add;
         ctrlex.cmpop = branch_funct3_t'(funct3);
-        imem_read = 1'b1;
-        dmem_read = 1'b0;
-        dmem_write = 1'b0;
+        ctrlmem.dmem_read = 1'b0;
+        ctrlmem.dmem_write = 1'b0;
         ctrlwb.rd = rd_in;
         ctrlwb.rs1 = rs1_in;
         ctrlwb.rs2 = rs2_in;
     endfunction
 
     always_comb begin
+        set_defaults();
         case (opcode)
 
             op_lui: begin
@@ -176,7 +173,7 @@ import pipeline_pkg::*;
             op_load: begin
                 setALU(alumux::rs1_out, alumux::i_imm, alu_add);
                 loadMAR(marmux::alu_out);
-                dmem_read = 1'b1;
+                ctrlmem.dmem_read = 1'b1;
                 case (load_funct3_t'(funct3))
                     lw: begin
                         loadRegfile(regfilemux::lw);
@@ -199,7 +196,7 @@ import pipeline_pkg::*;
             op_store: begin
                 setALU(alumux::rs1_out, alumux::s_imm, alu_add);
                 loadMAR(marmux::alu_out);
-                dmem_write = 1'b1;
+                ctrlmem.dmem_write = 1'b1;
             end
         endcase
 

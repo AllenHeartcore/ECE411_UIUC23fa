@@ -16,6 +16,8 @@ import pipeline_pkg::*;
     ctrlex_reg_t ctrlex_at_id, ctrlex_at_ex;
     ctrlmem_reg_t ctrlmem_at_id, ctrlmem_at_ex, ctrlmem_at_mem;
     ctrlwb_reg_t ctrlwb_at_id, ctrlwb_at_ex, ctrlwb_at_mem, ctrlwb_at_wb;
+    assign dmem_read = ctrlmem_at_mem.dmem_read;
+    assign dmem_write = ctrlmem_at_mem.dmem_write;
 
     // datapath -> ctrl_word
     rv32i_opcode opcode;
