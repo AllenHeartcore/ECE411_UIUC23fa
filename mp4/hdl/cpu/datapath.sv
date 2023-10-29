@@ -166,6 +166,22 @@ import pipeline_pkg::*;
     assign mem_wb_reg_i.alu = ex_mem_reg_o.alu;
     assign mem_wb_reg_i.cmp = ex_mem_reg_o.cmp;
 
+    // for monitor compatibility
+    assign ex_mem_reg_i.ir = id_ex_reg_o.ir;
+    assign mem_wb_reg_i.ir = ex_mem_reg_o.ir;
+    assign mem_wb_reg_i.pc = ex_mem_reg_o.pc;
+    assign ex_mem_reg_i.r1 = id_ex_reg_o.r1;
+    assign mem_wb_reg_i.r1 = ex_mem_reg_o.r1;
+    assign mem_wb_reg_i.r2 = ex_mem_reg_o.mdr;
+    assign if_id_reg_i._pc_wdata = pcmux_out;
+    assign id_ex_reg_i._pc_wdata = if_id_reg_o._pc_wdata;
+    assign ex_mem_reg_i._pc_wdata = id_ex_reg_o._pc_wdata;
+    assign mem_wb_reg_i._pc_wdata = ex_mem_reg_o._pc_wdata;
+    assign mem_wb_reg_i._mem_addr = marmux_out;
+    assign mem_wb_reg_i._mem_rmask = dmem_rmask;
+    assign mem_wb_reg_i._mem_wmask = dmem_wmask;
+    assign mem_wb_reg_i._mem_wdata = dmem_wdata;
+
 
 
     /* ALU, CMP, MUXes */

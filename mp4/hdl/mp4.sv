@@ -43,26 +43,34 @@ import rv32i_types::*;
             logic   [31:0]  monitor_mem_rdata;
             logic   [31:0]  monitor_mem_wdata;
 
+    logic [63:0] accumulator;
+    always_ff @(posedge clk) begin
+        if (rst) begin
+            accumulator <= 64'h0;
+        end else begin
+            accumulator <= accumulator + 64'h1;
+        end
+    end
 
     // Fill this out
     // Only use hierarchical references here for verification
     // **DO NOT** use hierarchical references in the actual design!
-    // assign monitor_valid     = ;
-    // assign monitor_order     = ;
-    // assign monitor_inst      = ;
-    // assign monitor_rs1_addr  = ;
-    // assign monitor_rs2_addr  = ;
-    // assign monitor_rs1_rdata = ;
-    // assign monitor_rs2_rdata = ;
-    // assign monitor_rd_addr   = ;
-    // assign monitor_rd_wdata  = ;
-    // assign monitor_pc_rdata  = ;
-    // assign monitor_pc_wdata  = ;
-    // assign monitor_mem_addr  = ;
-    // assign monitor_mem_rmask = ;
-    // assign monitor_mem_wmask = ;
-    // assign monitor_mem_rdata = ;
-    // assign monitor_mem_wdata = ;
+    assign monitor_valid     = cpu.hazard_ctrl.load_mem_wb;
+    assign monitor_order     = accumulator;
+    assign monitor_inst      = cpu.datapath.mem_wb_reg_o.ir;
+    assign monitor_rs1_addr  = cpu.ctrlwb_at_wb.rs1;
+    assign monitor_rs2_addr  = cpu.ctrlwb_at_wb.rs2;
+    assign monitor_rs1_rdata = cpu.datapath.mem_wb_reg_o.r1;
+    assign monitor_rs2_rdata = cpu.datapath.mem_wb_reg_o.r2;
+    assign monitor_rd_addr   = cpu.ctrlwb_at_wb.rd;
+    assign monitor_rd_wdata  = cpu.datapath.regfilemux_out;
+    assign monitor_pc_rdata  = cpu.datapath.mem_wb_reg_o.pc;
+    assign monitor_pc_wdata  = cpu.datapath.mem_wb_reg_o._pc_wdata;
+    assign monitor_mem_addr  = cpu.datapath.mem_wb_reg_o._mem_addr;
+    assign monitor_mem_rmask = cpu.datapath.mem_wb_reg_o._mem_rmask;
+    assign monitor_mem_wmask = cpu.datapath.mem_wb_reg_o._mem_wmask;
+    assign monitor_mem_rdata = cpu.datapath.mem_wb_reg_o.mdr;
+    assign monitor_mem_wdata = cpu.datapath.mem_wb_reg_o._mem_wdata;
 
     cpu cpu(.*);
 

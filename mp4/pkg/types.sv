@@ -10,6 +10,12 @@ typedef struct packed {
     rv32i_word uim;
     rv32i_word alu;
     logic cmp;
+    // for monitor compatibility
+    rv32i_word _pc_wdata;
+    rv32i_word _mem_addr;
+    rv32i_word _mem_wdata;
+    logic [3:0] _mem_rmask;
+    logic [3:0] _mem_wmask;
 } pipeline_reg_t;
 
 typedef struct packed {
