@@ -4,16 +4,17 @@ import rv32i_types::*;
 
 module register
 #(
-    parameter rst_value = '0
+    parameter rst_value = '0,
+    parameter width = 32
 )(
     input  clk,
     input  rst,
     input  load,
-    input  rv32i_word in,
-    output rv32i_word out
+    input  logic [width-1:0] in,
+    output logic [width-1:0] out
 );
 
-    rv32i_word data;
+    logic [width-1:0] data;
 
     always_ff @(posedge clk) begin
         if (rst)

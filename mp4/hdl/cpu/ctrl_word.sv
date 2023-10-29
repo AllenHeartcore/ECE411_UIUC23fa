@@ -20,7 +20,6 @@ import rv32i_types::*;
     input  rv32i_opcode opcode,
     input  logic [2:0] funct3,
     input  logic [6:0] funct7,
-    input  logic br_en,
     input  logic [4:0] rd_in,
     input  logic [4:0] rs1_in,
     input  logic [4:0] rs2_in,
@@ -41,6 +40,8 @@ import rv32i_types::*;
     assign branch_funct3 = branch_funct3_t'(funct3);
     assign load_funct3 = load_funct3_t'(funct3);
     assign store_funct3 = store_funct3_t'(funct3);
+
+    
 
     /**
     *  Use the next several functions to set the signals needed to
@@ -103,14 +104,14 @@ import rv32i_types::*;
     */
     always_comb begin
         case (opcode)
-            LUI: begin
+            op_lui: begin
                 loadRegfile(regfilemux::u_imm);
             end
-            AUIPC: begin
+            op_auipc: begin
                 setALU(alumux::pc_out, alumux::u_imm, 1'b1, alu_add);
                 loadRegfile(regfilemux::alu_out);
             end 
-            IMM: begin
+            op_imm: begin
                 case (funct3)
                     slt: begin
                         loadRegfile(regfilemux::br_en);
@@ -138,26 +139,26 @@ import rv32i_types::*;
 
                 endcase
             end
-            BR: begin
+            op_br: begin
                 setALU(alumux::pc_out, alumux::b_imm, 1'b1, alu_add);
                 cmpmux_sel = cmpmux::rs2_out;
                 cmpop = branch_funct3_t'(funct3);
                 is_branch = 1'b1;
             end
             
-            JAL: begin
+            op_jal: begin
                 loadRegfile(regfilemux::pc_plus4);
                 setALU(alumux::pc_out, alumux::j_imm, 1'b1, alu_add);
                 pcmux_sel = pcmux::alu_out;
             end
 
-            JALR: begin
+            op_jalr: begin
                 loadRegfile(regfilemux::pc_plus4);
                 setALU(alumux::rs1_out, alumux::i_imm, 1'b1, alu_add);
                 pcmux_sel = pcmux::alu_mod2;
             end
 
-            REGISTER: begin
+            op_reg: begin
                 loadRegfile(regfilemux::alu_out);
                 case (arith_funct3_t'(funct3))
                     add: begin
@@ -192,7 +193,7 @@ import rv32i_types::*;
                 endcase
             end            
 
-            LD: begin
+            op_load: begin
                 setALU(alumux::rs1_out, alumux::i_imm, 1'b1, alu_add);
                 loadMAR(marmux::alu_out);
                 dmem_read = 1'b1;
@@ -215,7 +216,7 @@ import rv32i_types::*;
                 endcase
             end
 
-            ST: begin
+            op_store: begin
                 setALU(alumux::rs1_out, alumux::s_imm, 1'b1, alu_add);
                 loadMAR(marmux::alu_out);
                 dmem_write = 1'b1;
