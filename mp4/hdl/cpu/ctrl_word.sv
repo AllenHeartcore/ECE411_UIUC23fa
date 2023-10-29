@@ -1,5 +1,6 @@
 module ctrl_word
 import rv32i_types::*;
+import pipeline_pkg::*;
 (
     input  clk,
     input  rst,
@@ -18,7 +19,7 @@ import rv32i_types::*;
     input  logic [4:0] rs2_in,
 
     // to memory
-    output logic imem_read, dmem_read, dmem_write,
+    output logic imem_read, dmem_read, dmem_write
 );
 
 

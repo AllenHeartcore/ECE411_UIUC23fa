@@ -39,7 +39,7 @@ import rv32i_types::*;
             bge: f = ($signed(a) >= $signed(b));
             bltu: f = (a < b);
             bgeu: f = (a >= b);
-            default: f = 0;
+            default: f = 1'b0;
         endcase
     end
 

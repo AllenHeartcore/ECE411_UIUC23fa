@@ -16,7 +16,7 @@ module pipeline_reg
     register reg_mdr(.*, .in(in.mdr), .out(out.mdr));
     register reg_uim(.*, .in(in.uim), .out(out.uim));
     register reg_alu(.*, .in(in.alu), .out(out.alu));
-    register #(width(1)) reg_cmp(.*, .in(in.cmp), .out(out.cmp));
+    register #(.width(1)) reg_cmp(.*, .in(in.cmp), .out(out.cmp));
 
 endmodule
 
@@ -26,7 +26,7 @@ module ctrlex_reg
 (
     input clk, rst, load,
     input ctrlex_reg_t in,
-    output ctrlex_reg_t out,
+    output ctrlex_reg_t out
 );
 
     aluop_reg   aluop_reg   (.*, .in(in.aluop),       .out(out.aluop));
@@ -179,6 +179,7 @@ endmodule
 
 
 module aluop_reg
+import rv32i_types::*;
 (
     input clk, rst, load,
     input alu_ops in,
@@ -197,6 +198,7 @@ endmodule
 
 
 module cmpop_reg
+import rv32i_types::*;
 (
     input clk, rst, load,
     input cmp_ops in,

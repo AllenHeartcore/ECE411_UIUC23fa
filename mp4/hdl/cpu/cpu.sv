@@ -1,5 +1,6 @@
 module cpu
 import rv32i_types::*;
+import pipeline_pkg::*;
 (
     input  clk,
     input  rst,
@@ -20,11 +21,15 @@ import rv32i_types::*;
     rv32i_opcode opcode;
     logic [2:0] funct3;
     logic [6:0] funct7;
-    logic br_en;
-    logic [1:0] byte_in_word;
+    logic [4:0] rd_in;
+    logic [4:0] rs1_in;
+    logic [4:0] rs2_in;
 
     // hazard_ctrl -> datapath
     hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl;
+
+    // for monitor
+    logic [3:0] dmem_rmask;
 
     datapath  datapath (.*, .ctrlex(ctrlex_at_ex), .ctrlmem(ctrlmem_at_mem), .ctrlwb(ctrlwb_at_wb));
     ctrl_word ctrl_word(.*, .ctrlex(ctrlex_at_id), .ctrlmem(ctrlmem_at_id),  .ctrlwb(ctrlwb_at_id));

@@ -1,7 +1,7 @@
 module register
 #(
-    parameter rst_value = '0,
-    parameter width = 32
+    parameter width = 32,
+    parameter rst_value = {width{1'b0}}
 )(
     input  clk,
     input  rst,

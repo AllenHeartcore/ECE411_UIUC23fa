@@ -14,8 +14,9 @@ import pipeline_pkg::*;
     output rv32i_opcode opcode,
     output logic [2:0] funct3,
     output logic [6:0] funct7,
-    output logic br_en,
-    output logic [1:0] byte_in_word,
+    output logic [4:0] rd_in,
+    output logic [4:0] rs1_in,
+    output logic [4:0] rs2_in,
 
     // from hazard_ctrl
     input  hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl,
@@ -67,6 +68,10 @@ import pipeline_pkg::*;
         .data(id_ex_reg_o.ir),
         .i_imm, .s_imm, .b_imm, .u_imm, .j_imm
     );
+
+    assign rs1_in = rs1;
+    assign rs2_in = rs2;
+    assign rd_in  = rd;
 
 
 
@@ -167,17 +172,19 @@ import pipeline_pkg::*;
     alu ALU(.*,
         .a(alumux1_out),
         .b(alumux2_out),
-        .f(ex_mem_reg_i.alu)
+        .f(ex_mem_reg_i.alu),
+        .aluop(ctrlex.aluop)
     );
     cmp CMP(.*,
         .a(id_ex_reg_o.r1),
         .b(cmpmux_out),
-        .f(ex_mem_reg_i.cmp)
+        .f(ex_mem_reg_i.cmp),
+        .cmpop(ctrlex.cmpop)
     );
 
     always_comb begin : MUXES
 
-        unique case (ctrlex.pcmux_sel)
+        unique case (ctrlex.is_branch ? pcmux::pcmux_sel_t'({1'b0, ex_mem_reg_i.cmp}) : ctrlex.pcmux_sel)
             pcmux::pc_plus4: pcmux_out = if_id_reg_i.pc + 4;
             pcmux::alu_out : pcmux_out = ex_mem_reg_i.alu;
             pcmux::alu_mod2: pcmux_out = ex_mem_reg_i.alu & 32'hFFFFFFFE;
