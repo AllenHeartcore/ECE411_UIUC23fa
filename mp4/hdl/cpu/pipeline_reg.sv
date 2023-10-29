@@ -49,6 +49,10 @@ module ctrlmem_reg
 );
 
     marmux_reg  marmux_reg  (.*, .in(in.marmux_sel),  .out(out.marmux_sel));
+    opcode_reg  opcode_reg  (.*, .in(in.opcode),      .out(out.opcode));
+    register #(.width(3)) funct3_reg (.*, .in(in.funct3), .out(out.funct3));
+    register #(.width(1)) dmem_read_reg (.*, .in(in.dmem_read), .out(out.dmem_read));
+    register #(.width(1)) dmem_write_reg (.*, .in(in.dmem_write), .out(out.dmem_write));
 
 endmodule
 
@@ -66,6 +70,25 @@ module ctrlwb_reg (
     register #(.width(5)) rs2_reg (.*, .in(in.rs2), .out(out.rs2));
     register #(.width(5)) rd_reg  (.*, .in(in.rd),  .out(out.rd));
 
+endmodule
+
+
+
+module opcode_reg
+import rv32i_types::*;
+(
+    input clk, rst, load,
+    input rv32i_opcode in,
+    output rv32i_opcode out
+);
+    rv32i_opcode data;
+    always_ff @(posedge clk) begin
+        if (rst)
+            data <= rv32i_opcode'(7'b0);
+        else if (load)
+            data <= in;
+    end
+    assign out = data;
 endmodule
 
 

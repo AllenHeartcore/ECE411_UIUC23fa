@@ -131,6 +131,10 @@ import pipeline_pkg::*;
                 endcase
                 default: dmem_wmask = 4'b0000;
             endcase
+            default: begin
+                dmem_rmask = 4'b0000;
+                dmem_wmask = 4'b0000;
+            end
         endcase
     end
 
