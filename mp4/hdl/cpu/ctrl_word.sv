@@ -2,9 +2,6 @@ module ctrl_word
 import rv32i_types::*;
 import pipeline_pkg::*;
 (
-    input  clk,
-    input  rst,
-
     // to datapath
     output ctrlex_reg_t ctrlex,
     output ctrlmem_reg_t ctrlmem,
@@ -73,6 +70,8 @@ import pipeline_pkg::*;
         ctrlwb.rd = rd_in;
         ctrlwb.rs1 = rs1_in;
         ctrlwb.rs2 = rs2_in;
+        ctrlmem.opcode = opcode;
+        ctrlmem.funct3 = funct3;
     endfunction
 
     always_comb begin

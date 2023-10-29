@@ -54,6 +54,7 @@ import pipeline_pkg::*;
 
     regfile REGFILE(.*,
         .load(ctrlwb.load_regfile),
+        .rd(ctrlwb.rd),
         .in(regfilemux_out),
         .rs1_out(id_ex_reg_i.r1),
         .rs2_out(id_ex_reg_i.r2)
@@ -81,7 +82,7 @@ import pipeline_pkg::*;
     assign dmem_address = marmux_out;
 
     always_comb begin : CALC_STORE_DATA
-        case (store_funct3_t'(funct3))
+        case (store_funct3_t'(ctrlmem.funct3))
             sw:
                 dmem_wdata = ex_mem_reg_o.mdr;
             sh:
@@ -101,8 +102,8 @@ import pipeline_pkg::*;
     end
 
     always_comb begin : CALC_MASKS
-        case (opcode)
-            op_load: case (load_funct3_t'(funct3))
+        case (ctrlmem.opcode)
+            op_load: case (load_funct3_t'(ctrlmem.funct3))
                 lw: dmem_rmask = 4'b1111;
                 lh, lhu: case (marmux_out[1])
                     1'b0: dmem_rmask = 4'b0011;
@@ -116,7 +117,7 @@ import pipeline_pkg::*;
                 endcase
                 default: dmem_rmask = 4'b0000;
             endcase
-            op_store: case (store_funct3_t'(funct3))
+            op_store: case (store_funct3_t'(ctrlmem.funct3))
                 sw: dmem_wmask = 4'b1111;
                 sh: case (marmux_out[1])
                     1'b0: dmem_wmask = 4'b0011;

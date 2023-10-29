@@ -24,6 +24,8 @@ typedef struct packed {
 
 typedef struct packed {
     marmux::marmux_sel_t marmux_sel;
+    rv32i_opcode opcode;
+    logic [2:0] funct3;
     logic dmem_read;
     logic dmem_write;
 } ctrlmem_reg_t;
