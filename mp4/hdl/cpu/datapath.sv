@@ -1,24 +1,14 @@
 module datapath
 import rv32i_types::*;
-import pipeline_reg_pkg::*;
+import pipeline_pkg::*;
 (
     input  clk,
     input  rst,
 
     // from ctrl_word
-    input  pcmux::pcmux_sel_t pcmux_sel,
-    input  alumux::alumux1_sel_t alumux1_sel,
-    input  alumux::alumux2_sel_t alumux2_sel,
-    input  regfilemux::regfilemux_sel_t regfilemux_sel,
-    input  marmux::marmux_sel_t marmux_sel,
-    input  cmpmux::cmpmux_sel_t cmpmux_sel,
-    input  alu_ops aluop,
-    input  cmp_ops cmpop,
-    input  logic load_ir,
-    input  logic load_regfile,
-    input  logic load_mar,
-    input  logic load_mdr,
-    input  logic load_data_out,
+    input  ctrlex_reg_t ctrlex,
+    input  ctrlmem_reg_t ctrlmem,
+    input  ctrlwb_reg_t ctrlwb,
 
     // to ctrl_word
     output rv32i_opcode opcode,
@@ -62,7 +52,7 @@ import pipeline_reg_pkg::*;
     );
 
     regfile REGFILE(.*,
-        .load(load_regfile),
+        .load(ctrlwb.load_regfile),
         .in(regfilemux_out),
         .rs1_out(id_ex_reg_i.r1),
         .rs2_out(id_ex_reg_i.r2)
@@ -187,19 +177,19 @@ import pipeline_reg_pkg::*;
 
     always_comb begin : MUXES
 
-        unique case (pcmux_sel)
+        unique case (ctrlex.pcmux_sel)
             pcmux::pc_plus4: pcmux_out = if_id_reg_i.pc + 4;
             pcmux::alu_out : pcmux_out = ex_mem_reg_i.alu;
             pcmux::alu_mod2: pcmux_out = ex_mem_reg_i.alu & 32'hFFFFFFFE;
             default        : pcmux_out = 'X;
         endcase
 
-        unique case (alumux1_sel)
+        unique case (ctrlex.alumux1_sel)
             alumux::rs1_out: alumux1_out = id_ex_reg_o.r1;
             alumux::pc_out : alumux1_out = id_ex_reg_o.pc;
         endcase
 
-        unique case (alumux2_sel)
+        unique case (ctrlex.alumux2_sel)
             alumux::i_imm  : alumux2_out = i_imm;
             alumux::s_imm  : alumux2_out = s_imm;
             alumux::b_imm  : alumux2_out = b_imm;
@@ -208,17 +198,17 @@ import pipeline_reg_pkg::*;
             alumux::rs2_out: alumux2_out = id_ex_reg_o.r2;
         endcase
 
-        unique case (cmpmux_sel)
+        unique case (ctrlex.cmpmux_sel)
             cmpmux::rs2_out: cmpmux_out = id_ex_reg_o.r2;
             cmpmux::i_imm  : cmpmux_out = i_imm;
         endcase
 
-        unique case (marmux_sel)
+        unique case (ctrlmem.marmux_sel)
             marmux::pc_out : marmux_out = ex_mem_reg_o.pc;
             marmux::alu_out: marmux_out = ex_mem_reg_o.alu;
         endcase
 
-        unique case (regfilemux_sel)
+        unique case (ctrlwb.regfilemux_sel)
             regfilemux::pc_plus4 : regfilemux_out = mem_wb_reg_o.pc + 4;
             regfilemux::u_imm    : regfilemux_out = mem_wb_reg_o.uim;
             regfilemux::alu_out  : regfilemux_out = mem_wb_reg_o.alu;
