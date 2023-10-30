@@ -2,7 +2,7 @@ export CLOCK_PERIOD_PS = $(shell cat synth/clock_period.txt)
 
 SHELL=/bin/bash -o pipefail
 
-PKG_SRCS := $(shell find $(PWD)/pkg -name '*.sv')
+PKG_SRCS := $(PWD)/pkg/types.sv
 HDL_SRCS := $(shell find $(PWD)/hdl -name '*.sv')
 HVL_SRCS := $(shell find $(PWD)/hvl -name '*.sv' -o -name '*.v')
 SRAM_SRCS := $(shell find $(PWD)/sram/output -name '*.v')
