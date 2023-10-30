@@ -22,7 +22,7 @@ module pipeline_reg
     register reg_mem_addr (.*, .in(in._mem_addr), .out(out._mem_addr));
     register reg_mem_wdata (.*, .in(in._mem_wdata), .out(out._mem_wdata));
     register #(.width(4)) reg_mem_rmask (.*, .in(in._mem_rmask), .out(out._mem_rmask));
-    register #(.width(1)) reg_mem_wmask (.*, .in(in._mem_wmask), .out(out._mem_wmask));
+    register #(.width(4)) reg_mem_wmask (.*, .in(in._mem_wmask), .out(out._mem_wmask));
 
 endmodule
 

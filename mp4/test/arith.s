@@ -42,60 +42,71 @@ _start:
     nop
     nop
     nop
-    # SLTIU
-    sltiu x5, x1, 0x00000002
-    sltiu x6, x2, 0x00000002
-    # XORI
-    xori x7, x1, 0x00000002
-    xori x8, x2, 0x00000002
-    # ORI
-    ori x9, x1, 0x1ff
-    ori x10, x2, 0x1ff
-    # ANDI
-    andi x11, x1, 0x00000002
-    andi x12, x2, 0x00000002
-    # SLLI
-    slli x13, x1, 0x00000002
-    slli x14, x2, 0x00000002
-    # SRLI
-    srli x15, x1, 0x00000002
-    srli x16, x2, 0x00000002
-    # SRAI
-    srai x17, x1, 0x00000002
-    srai x18, x2, 0x00000002
-    # ADD
-    add x5, x1, x2
-    add x6, x3, x4
-    # SUB
-    sub x7, x1, x2
-    sub x8, x3, x4
-    # SLL
-    sll x9, x1, x2
-    sll x10, x3, x4
-    # SLT
-    slt x11, x1, x2
-    slt x12, x3, x4
-    # SLTU
-    sltu x13, x1, x2
-    sltu x14, x3, x4
-    # XOR
-    xor x15, x1, x2
-    xor x16, x3, x4
-    # SRL
-    srl x17, x1, x2
-    srl x18, x3, x4
-    # SRA
-    sra x19, x1, x2
-    sra x20, x3, x4
-    # OR
-    or x21, x1, x2
-    or x22, x3, x4
-    # AND
-    and x23, x1, x2
-    and x24, x3, x4
+    # # SLTIU
+    # sltiu x5, x1, 0x00000002
+    # sltiu x6, x2, 0x00000002
+    # # XORI
+    # xori x7, x1, 0x00000002
+    # xori x8, x2, 0x00000002
+    # # ORI
+    # ori x9, x1, 0x1ff
+    # ori x10, x2, 0x1ff
+    # # ANDI
+    # andi x11, x1, 0x00000002
+    # andi x12, x2, 0x00000002
+    # # SLLI
+    # slli x13, x1, 0x00000002
+    # slli x14, x2, 0x00000002
+    # # SRLI
+    # srli x15, x1, 0x00000002
+    # srli x16, x2, 0x00000002
+    # # SRAI
+    # srai x17, x1, 0x00000002
+    # srai x18, x2, 0x00000002
+    # # ADD
+    # add x5, x1, x2
+    # add x6, x3, x4
+    # # SUB
+    # sub x7, x1, x2
+    # sub x8, x3, x4
+    # # SLL
+    # sll x9, x1, x2
+    # sll x10, x3, x4
+    # # SLT
+    # slt x11, x1, x2
+    # slt x12, x3, x4
+    # # SLTU
+    # sltu x13, x1, x2
+    # sltu x14, x3, x4
+    # # XOR
+    # xor x15, x1, x2
+    # xor x16, x3, x4
+    # # SRL
+    # srl x17, x1, x2
+    # srl x18, x3, x4
+    # # SRA
+    # sra x19, x1, x2
+    # sra x20, x3, x4
+    # # OR
+    # or x21, x1, x2
+    # or x22, x3, x4
+    # # AND
+    # and x23, x1, x2
+    # and x24, x3, x4
 
 
-
+    li  t0, 1
+    la  t1, tohost
+    nop
+	nop
+	nop
+	nop
+    sw  t0, 0(t1)
+    sw  x0, 4(t1)
+    nop
+	nop
+	nop
+	nop
     
 halt:                 # Infinite loop to keep the processor
     beq x0, x0, halt  # from trying to execute the data below.

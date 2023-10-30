@@ -237,34 +237,34 @@ import pipeline_pkg::*;
         endcase
 
         unique case (ctrlwb.regfilemux_sel)
-            regfilemux::pc_plus4 : regfilemux_out = mem_wb_reg_o.pc + 4;
-            regfilemux::u_imm    : regfilemux_out = mem_wb_reg_o.uim;
-            regfilemux::alu_out  : regfilemux_out = mem_wb_reg_o.alu;
-            regfilemux::br_en    : regfilemux_out = {31'b0, mem_wb_reg_o.cmp};
-            regfilemux::lw       : regfilemux_out = mem_wb_reg_o.mdr;
+            regfilemux::pc_plus4 : regfilemux_out = mem_wb_reg_i.pc + 4;
+            regfilemux::u_imm    : regfilemux_out = mem_wb_reg_i.uim;
+            regfilemux::alu_out  : regfilemux_out = mem_wb_reg_i.alu;
+            regfilemux::br_en    : regfilemux_out = {31'b0, mem_wb_reg_i.cmp};
+            regfilemux::lw       : regfilemux_out = mem_wb_reg_i.mdr;
             regfilemux::lb       :
                 case (marmux_out[1:0])
-                    2'b00: regfilemux_out = {{24{mem_wb_reg_o.mdr[7]}}, mem_wb_reg_o.mdr[7:0]};
-                    2'b01: regfilemux_out = {{24{mem_wb_reg_o.mdr[15]}}, mem_wb_reg_o.mdr[15:8]};
-                    2'b10: regfilemux_out = {{24{mem_wb_reg_o.mdr[23]}}, mem_wb_reg_o.mdr[23:16]};
-                    2'b11: regfilemux_out = {{24{mem_wb_reg_o.mdr[31]}}, mem_wb_reg_o.mdr[31:24]};
+                    2'b00: regfilemux_out = {{24{mem_wb_reg_i.mdr[7]}}, mem_wb_reg_i.mdr[7:0]};
+                    2'b01: regfilemux_out = {{24{mem_wb_reg_i.mdr[15]}}, mem_wb_reg_i.mdr[15:8]};
+                    2'b10: regfilemux_out = {{24{mem_wb_reg_i.mdr[23]}}, mem_wb_reg_i.mdr[23:16]};
+                    2'b11: regfilemux_out = {{24{mem_wb_reg_i.mdr[31]}}, mem_wb_reg_i.mdr[31:24]};
                 endcase
             regfilemux::lbu      :
                 case (marmux_out[1:0])
-                    2'b00: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[7:0]};
-                    2'b01: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[15:8]};
-                    2'b10: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[23:16]};
-                    2'b11: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[31:24]};
+                    2'b00: regfilemux_out = {24'b0, mem_wb_reg_i.mdr[7:0]};
+                    2'b01: regfilemux_out = {24'b0, mem_wb_reg_i.mdr[15:8]};
+                    2'b10: regfilemux_out = {24'b0, mem_wb_reg_i.mdr[23:16]};
+                    2'b11: regfilemux_out = {24'b0, mem_wb_reg_i.mdr[31:24]};
                 endcase
             regfilemux::lh       :
                 case (marmux_out[1])
-                    1'b0: regfilemux_out = {{16{mem_wb_reg_o.mdr[15]}}, mem_wb_reg_o.mdr[15:0]};
-                    1'b1: regfilemux_out = {{16{mem_wb_reg_o.mdr[31]}}, mem_wb_reg_o.mdr[31:16]};
+                    1'b0: regfilemux_out = {{16{mem_wb_reg_i.mdr[15]}}, mem_wb_reg_i.mdr[15:0]};
+                    1'b1: regfilemux_out = {{16{mem_wb_reg_i.mdr[31]}}, mem_wb_reg_i.mdr[31:16]};
                 endcase
             regfilemux::lhu      :
                 case (marmux_out[1])
-                    1'b0: regfilemux_out = {16'b0, mem_wb_reg_o.mdr[15:0]};
-                    1'b1: regfilemux_out = {16'b0, mem_wb_reg_o.mdr[31:16]};
+                    1'b0: regfilemux_out = {16'b0, mem_wb_reg_i.mdr[15:0]};
+                    1'b1: regfilemux_out = {16'b0, mem_wb_reg_i.mdr[31:16]};
                 endcase
         endcase
 
