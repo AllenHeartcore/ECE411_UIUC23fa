@@ -34,6 +34,19 @@ suppress_message OPT-1207
 suppress_message UID-3
 #Design '%s' contains %d high-fanout nets.
 suppress_message TIM-134
+#The trip points for the library named %s differ from those in the library named %s.
+suppress_message TIM-164
+#Design has unannotated black box outputs.
+suppress_message PWR-428
+#Verilog 'assign' or 'tran' statements are written out.
+suppress_message VO-4
+#Verilog writer has added %d nets to module %s using %s as prefix.
+suppress_message VO-11
+
+#%s DEFAULT branch of CASE statement cannot be reached.
+suppress_message ELAB-311
+#Netlist for always_comb block is empty.
+suppress_message ELAB-982
 
 define_design_lib WORK -path ./work
 set alib_library_analysis_path [getenv STD_CELL_ALIB]
