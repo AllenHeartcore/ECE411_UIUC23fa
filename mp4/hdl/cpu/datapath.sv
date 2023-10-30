@@ -103,6 +103,8 @@ import pipeline_pkg::*;
     end
 
     always_comb begin : CALC_MASKS
+        dmem_rmask = 4'b0000;
+        dmem_wmask = 4'b0000;
         case (ctrlmem.opcode)
             op_load: case (load_funct3_t'(ctrlmem.funct3))
                 lw: dmem_rmask = 4'b1111;
@@ -132,10 +134,6 @@ import pipeline_pkg::*;
                 endcase
                 default: dmem_wmask = 4'b0000;
             endcase
-            default: begin
-                dmem_rmask = 4'b0000;
-                dmem_wmask = 4'b0000;
-            end
         endcase
     end
 
@@ -204,7 +202,7 @@ import pipeline_pkg::*;
 
     always_comb begin : MUXES
 
-        assign pcmux_sel = ctrlex.is_branch ? pcmux::pcmux_sel_t'({1'b0, ex_mem_reg_i.cmp}) : ctrlex.pcmux_sel;
+        pcmux_sel = ctrlex.is_branch ? pcmux::pcmux_sel_t'({1'b0, ex_mem_reg_i.cmp}) : ctrlex.pcmux_sel;
 
         unique case (pcmux_sel)
             pcmux::pc_plus4: pcmux_out = if_id_reg_i.pc + 4;

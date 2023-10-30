@@ -135,6 +135,13 @@ import hazard_ctrl_pkg::*;
     end
 
     always_comb begin
+
+        hazard_ctrl.load_pc = 1'b0;
+        hazard_ctrl.load_if_id = 1'b0;
+        hazard_ctrl.load_id_ex = 1'b0;
+        hazard_ctrl.load_ex_mem = 1'b0;
+        imem_read = 1'b1;
+
         case (if_state)
             IF_READY: begin
                 hazard_ctrl.load_pc = 1'b0;
