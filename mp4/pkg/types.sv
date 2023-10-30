@@ -49,7 +49,7 @@ endpackage : pipeline_pkg
 
 
 package hazard_ctrl_pkg;
-
+import rv32i_types::*;
 typedef struct packed {
     logic load_pc;
     logic load_if_id;

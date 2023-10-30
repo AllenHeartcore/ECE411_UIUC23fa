@@ -31,6 +31,7 @@ import pipeline_pkg::*;
 );
 
     logic [4:0] rs1, rs2, rd;
+    pcmux::pcmux_sel_t pcmux_sel;
     rv32i_word i_imm, s_imm, b_imm, u_imm, j_imm;
     rv32i_word alumux1_out, alumux2_out, cmpmux_out;
     rv32i_word pcmux_out, marmux_out, regfilemux_out;
@@ -177,9 +178,7 @@ import pipeline_pkg::*;
     assign ex_mem_reg_i.r1 = id_ex_reg_o.r1;
     assign mem_wb_reg_i.r1 = ex_mem_reg_o.r1;
     assign mem_wb_reg_i.r2 = ex_mem_reg_o.mdr;
-    assign if_id_reg_i._pc_wdata = pcmux_out;
-    assign id_ex_reg_i._pc_wdata = if_id_reg_o._pc_wdata;
-    assign ex_mem_reg_i._pc_wdata = id_ex_reg_o._pc_wdata;
+    assign ex_mem_reg_i._pc_wdata = (ctrlex.is_branch & ex_mem_reg_i.cmp) ? ex_mem_reg_i.alu : (ex_mem_reg_i.pc + 4);
     assign mem_wb_reg_i._pc_wdata = ex_mem_reg_o._pc_wdata;
     assign mem_wb_reg_i._mem_addr = marmux_out;
     assign mem_wb_reg_i._mem_rmask = dmem_rmask;
@@ -205,7 +204,9 @@ import pipeline_pkg::*;
 
     always_comb begin : MUXES
 
-        unique case (ctrlex.is_branch ? pcmux::pcmux_sel_t'({1'b0, ex_mem_reg_i.cmp}) : ctrlex.pcmux_sel)
+        assign pcmux_sel = ctrlex.is_branch ? pcmux::pcmux_sel_t'({1'b0, ex_mem_reg_i.cmp}) : ctrlex.pcmux_sel;
+
+        unique case (pcmux_sel)
             pcmux::pc_plus4: pcmux_out = if_id_reg_i.pc + 4;
             pcmux::alu_out : pcmux_out = ex_mem_reg_i.alu;
             pcmux::alu_mod2: pcmux_out = ex_mem_reg_i.alu & 32'hFFFFFFFE;
