@@ -74,6 +74,4 @@ import rv32i_types::*;
 
     cpu cpu(.*);
 
-    cpu cpu(.*);
-
 endmodule : mp4
