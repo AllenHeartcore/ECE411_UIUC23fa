@@ -12,35 +12,35 @@ _start:
     #   Possibly LUI AUIPC instruction (la).
 
 
-    la  x1, boom
+    li  x1, 0x00002010
 	nop
 	nop
 	nop
 	nop
-    lh  x2, 0(x1)  # X2 <= 0x00002040
-	nop
-	nop
-	nop
-	nop
-    lw x2, threshold
-	nop
-	nop
-	nop
-	nop
-    sh x2, 0(x1)
+    # lh  x2, 0(x1)  # X2 <= 0x00002040
+	# nop
+	# nop
+	# nop
+	# nop
+    # lw x2, threshold
+	# nop
+	# nop
+	# nop
+	# nop
+    # sh x2, 0(x1)
 
-    li  t0, 1
-    la  t1, tohost
-    nop
-	nop
-	nop
-	nop
-    sw  t0, 0(t1)
-    sw  x0, 4(t1)
-    nop
-	nop
-	nop
-	nop
+    # li  t0, 1
+    # la  t1, tohost
+    # nop
+	# nop
+	# nop
+	# nop
+    # sw  t0, 0(t1)
+    # sw  x0, 4(t1)
+    # nop
+	# nop
+	# nop
+	# nop
 halt:                 # Infinite loop to keep the processor
     beq x0, x0, halt  # from trying to execute the data below.
                       # Your own programs should also make use
