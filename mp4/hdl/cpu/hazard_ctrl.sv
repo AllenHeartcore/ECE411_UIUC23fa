@@ -18,9 +18,13 @@ import hazard_ctrl_pkg::*;
 
     logic id_enable;
     logic ex_enable;
-    logic load_mem_i, load_mem_o;
+    logic load_id_ex_i, load_id_ex_o;
+    logic load_ex_mem_i, load_ex_mem_o;
+    logic load_mem_wb_i, load_mem_wb_o;
 
-    register #(.width(1)) load_mem_reg (.*, .load('1), .in(load_mem_i), .out(load_mem_o));
+    register #(.width(1)) load_id_ex_reg (.*, .load('1), .in(load_id_ex_i), .out(load_id_ex_o));
+    register #(.width(1)) load_ex_reg (.*, .load('1), .in(load_ex_mem_i), .out(load_ex_mem_o));
+    register #(.width(1)) load_mem_reg (.*, .load('1), .in(load_mem_wb_i), .out(load_mem_wb_o));
 
     enum int unsigned {
         IF_READY,
@@ -83,6 +87,10 @@ import hazard_ctrl_pkg::*;
         ex_next_state = ex_state;
         mem_next_state = mem_state;
         wb_next_state = wb_state;
+        load_id_ex_i = 1'b0;
+        load_ex_mem_i = 1'b0;
+        load_mem_wb_i = 1'b0;
+        
         case (if_state)
             IF_READY: if_next_state = IF_LOAD;
             IF_LOAD: begin
@@ -97,7 +105,8 @@ import hazard_ctrl_pkg::*;
                     id_next_state = ID_LOAD;
             end
             ID_LOAD: begin
-                    id_next_state = ID_READY;
+                id_next_state = ID_READY;
+                load_id_ex_i = 1'b1;
             end
         endcase
 
@@ -108,10 +117,10 @@ import hazard_ctrl_pkg::*;
             end
             EX_LOAD: begin
                 ex_next_state = EX_READY;
+                load_ex_mem_i = 1'b1;
             end
         endcase
 
-        load_mem_i = 1'b0;
         case (mem_state)
             MEM_READY: begin
                 if ((ex_state == EX_READY) && (ex_enable == 1'b1))
@@ -119,7 +128,7 @@ import hazard_ctrl_pkg::*;
             end
             MEM_LOAD: begin
                 mem_next_state = MEM_READY;
-                load_mem_i = 1'b1;
+                load_mem_wb_i = 1'b1;
             end
         endcase
 
@@ -138,8 +147,6 @@ import hazard_ctrl_pkg::*;
 
         hazard_ctrl.load_pc = 1'b0;
         hazard_ctrl.load_if_id = 1'b0;
-        hazard_ctrl.load_id_ex = 1'b0;
-        hazard_ctrl.load_ex_mem = 1'b0;
         imem_read = 1'b1;
 
         case (if_state)
@@ -155,35 +162,14 @@ import hazard_ctrl_pkg::*;
             end
         endcase
 
-        case (id_state)
-            ID_READY: begin
-                hazard_ctrl.load_id_ex = 1'b0;
-            end
-            ID_LOAD: begin
-                hazard_ctrl.load_id_ex = 1'b1;
-            end
-        endcase
-
-        case (ex_state)
-            EX_READY: 
-                hazard_ctrl.load_ex_mem = 1'b0;
-            EX_LOAD: 
-                hazard_ctrl.load_ex_mem = 1'b1;
-        endcase
-
-        // case (mem_state)
-        //     MEM_READY: 
-        //         hazard_ctrl.load_mem_wb = 1'b0;
-        //     MEM_LOAD: 
-        //         hazard_ctrl.load_mem_wb = 1'b1;
-        // endcase
-
         /* suppress "unused input" warning */
         if (dmem_read || dmem_write || dmem_resp) begin end
 
     end
 
-    assign hazard_ctrl.load_mem_wb = load_mem_o;
+    assign hazard_ctrl.load_mem_wb = load_mem_wb_o;
+    assign hazard_ctrl.load_ex_mem = load_ex_mem_o;
+    assign hazard_ctrl.load_id_ex = load_id_ex_o;
 
 
 
