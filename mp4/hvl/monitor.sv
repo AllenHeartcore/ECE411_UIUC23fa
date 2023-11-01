@@ -102,7 +102,7 @@ module monitor (
     bit [15:0] errcode;
     always @(posedge itf.clk) begin
         if (errcode != 0) begin
-            $error("RVFI Error");
+            $error("RVFI Monitor Error");
             itf.error <= 1'b1;
         end
     end

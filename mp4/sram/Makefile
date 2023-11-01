@@ -1,8 +1,9 @@
 OBJECTS = $(notdir $(basename $(wildcard $(PWD)/config/*.py)))
 
-export CONDA_HOME=/class/ece411/OpenRAM/conda
-export OPENRAM_HOME=/class/ece411/OpenRAM/compiler
-export OPENRAM_TECH=/class/ece411/OpenRAM/technology
+export OPENRAM=/class/ece411/OpenRAM
+export CONDA_HOME=$(OPENRAM)/conda
+export OPENRAM_HOME=$(OPENRAM)/compiler
+export OPENRAM_TECH=$(OPENRAM)/technology
 export PYTHONPATH=$(OPENRAM_HOME)
 
 .PHONY: all
@@ -10,7 +11,7 @@ all: $(OBJECTS)
 	rm -rf config/__pycache__
 
 %:
-	source /class/ece411/OpenRAM/conda/bin/activate ;\
+	source $(CONDA_HOME)/bin/activate ;\
 	python3 $(OPENRAM_HOME)/../sram_compiler.py $(PWD)/config/$@.py ;\
 	python3 $(PWD)/area.py $(PWD)/output/$(basename $@)/$(basename $@).gds > $(PWD)/output/$(basename $@)/$(basename $@)_area.txt
 	cat $(PWD)/output/$(basename $@)/$(basename $@)_area.txt | xargs -I {} sed -i -E 's/area : .*/area : {}/g' $(PWD)/output/$(basename $@)/$(basename $@)_TT_1p0V_25C.lib
