@@ -48,7 +48,7 @@ import rv32i_types::*;
         if (rst) begin
             accumulator <= 64'h0;
         end else begin
-            accumulator <= accumulator + 64'h1;
+            accumulator <= accumulator + monitor_valid;
         end
     end
 
