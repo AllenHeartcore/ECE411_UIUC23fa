@@ -1,8 +1,5 @@
-import pipeline_pkg::*;
-
-
-
 module pipeline_reg
+import pipeline_pkg::*;
 (
     input  clk, rst, load,
     input  pipeline_reg_t in,
@@ -29,6 +26,7 @@ endmodule
 
 
 module ctrlex_reg
+import pipeline_pkg::*;
 (
     input clk, rst, load,
     input ctrlex_reg_t in,
@@ -48,6 +46,7 @@ endmodule
 
 
 module ctrlmem_reg
+import pipeline_pkg::*;
 (
     input clk, rst, load,
     input ctrlmem_reg_t in,
@@ -64,7 +63,9 @@ endmodule
 
 
 
-module ctrlwb_reg (
+module ctrlwb_reg
+import pipeline_pkg::*;
+(
     input clk, rst, load,
     input ctrlwb_reg_t in,
     output ctrlwb_reg_t out
@@ -100,6 +101,7 @@ endmodule
 
 
 module pcmux_reg
+import pcmux::*;
 (
     input clk, rst, load,
     input pcmux::pcmux_sel_t in,
@@ -118,6 +120,7 @@ endmodule
 
 
 module alumux1_reg
+import alumux::*;
 (
     input clk, rst, load,
     input alumux::alumux1_sel_t in,
@@ -136,6 +139,7 @@ endmodule
 
 
 module alumux2_reg
+import alumux::*;
 (
     input clk, rst, load,
     input alumux::alumux2_sel_t in,
@@ -154,6 +158,7 @@ endmodule
 
 
 module regfilemux_reg
+import regfilemux::*;
 (
     input clk, rst, load,
     input regfilemux::regfilemux_sel_t in,
@@ -172,6 +177,7 @@ endmodule
 
 
 module marmux_reg
+import marmux::*;
 (
     input clk, rst, load,
     input marmux::marmux_sel_t in,
@@ -190,6 +196,7 @@ endmodule
 
 
 module cmpmux_reg
+import cmpmux::*;
 (
     input clk, rst, load,
     input cmpmux::cmpmux_sel_t in,

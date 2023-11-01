@@ -178,6 +178,8 @@ import hazard_ctrl_pkg::*;
         //         hazard_ctrl.load_mem_wb = 1'b1;
         // endcase
 
+        /* suppress "unused input" warning */
+        if (dmem_read || dmem_write || dmem_resp) begin end
 
     end
 
