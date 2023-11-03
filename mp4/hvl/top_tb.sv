@@ -16,13 +16,13 @@ module top_tb;
     int timeout = 10000; // in cycles, change according to your needs
 
     // CP1
-    mem_itf magic_itf_i(.*);
-    mem_itf magic_itf_d(.*);
-    magic_dual_port magic_dual_port(.itf_i(magic_itf_i), .itf_d(magic_itf_d));
+    // mem_itf magic_itf_i(.*);
+    // mem_itf magic_itf_d(.*);
+    // magic_dual_port magic_dual_port(.itf_i(magic_itf_i), .itf_d(magic_itf_d));
 
     // CP2
-    // bmem_itf bmem_itf(.*);
-    // burst_memory burst_memory(.itf(bmem_itf));
+    bmem_itf bmem_itf(.*);
+    burst_memory burst_memory(.itf(bmem_itf));
 
     mon_itf mon_itf(.*);    
     monitor monitor(.itf(mon_itf));
@@ -32,25 +32,25 @@ module top_tb;
         .rst          (rst),
 
         // Use these for CP1
-        .imem_address  (magic_itf_i.addr),
-        .imem_read     (magic_itf_i.read),
-        .imem_rdata    (magic_itf_i.rdata),
-        .imem_resp     (magic_itf_i.resp),
-        .dmem_address  (magic_itf_d.addr),
-        .dmem_read     (magic_itf_d.read),
-        .dmem_write    (magic_itf_d.write),
-        .dmem_wmask    (magic_itf_d.wmask),
-        .dmem_rdata    (magic_itf_d.rdata),
-        .dmem_wdata    (magic_itf_d.wdata),
-        .dmem_resp     (magic_itf_d.resp)
+        // .imem_address  (magic_itf_i.addr),
+        // .imem_read     (magic_itf_i.read),
+        // .imem_rdata    (magic_itf_i.rdata),
+        // .imem_resp     (magic_itf_i.resp),
+        // .dmem_address  (magic_itf_d.addr),
+        // .dmem_read     (magic_itf_d.read),
+        // .dmem_write    (magic_itf_d.write),
+        // .dmem_wmask    (magic_itf_d.wmask),
+        // .dmem_rdata    (magic_itf_d.rdata),
+        // .dmem_wdata    (magic_itf_d.wdata),
+        // .dmem_resp     (magic_itf_d.resp)
 
         // Use these for CP2+
-        // .bmem_address (bmem_itf.addr),
-        // .bmem_read    (bmem_itf.read),
-        // .bmem_write   (bmem_itf.write),
-        // .bmem_rdata   (bmem_itf.rdata),
-        // .bmem_wdata   (bmem_itf.wdata),
-        // .bmem_resp    (bmem_itf.resp)
+        .bmem_address (bmem_itf.addr),
+        .bmem_read    (bmem_itf.read),
+        .bmem_write   (bmem_itf.write),
+        .bmem_rdata   (bmem_itf.rdata),
+        .bmem_wdata   (bmem_itf.wdata),
+        .bmem_resp    (bmem_itf.resp)
     );
 
     always_comb begin
@@ -93,15 +93,15 @@ module top_tb;
             $finish;
         end
         // Comment this for CP2+
-        if (magic_itf_i.error != 0 || magic_itf_d.error != 0) begin
-            repeat (5) @(posedge clk);
-            $finish;
-        end
-        // Uncomment this for CP2+
-        // if (bmem_itf.error != 0) begin
+        // if (magic_itf_i.error != 0 || magic_itf_d.error != 0) begin
         //     repeat (5) @(posedge clk);
         //     $finish;
         // end
+        // Uncomment this for CP2+
+        if (bmem_itf.error != 0) begin
+            repeat (5) @(posedge clk);
+            $finish;
+        end
         timeout <= timeout - 1;
     end
 
