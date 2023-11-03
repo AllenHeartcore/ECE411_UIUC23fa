@@ -5,7 +5,7 @@ module top_tb;
     timeunit 1ps;
     timeprecision 1ps;
 
-    int clock_period_ps = getenv("CLOCK_PERIOD_PS").atoi();
+    int clock_period_ps = getenv("CLOCK_PERIOD_PS").atoi() / 2;
 
     bit clk;
     initial clk = 1'b1;
