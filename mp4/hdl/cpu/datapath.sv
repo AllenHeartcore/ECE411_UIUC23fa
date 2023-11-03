@@ -20,6 +20,8 @@ import pipeline_pkg::*;
 
     // from hazard_ctrl
     input  hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl,
+    output logic ex_is_branch,
+    output logic mem_is_branch,
 
     // from memory
     input  rv32i_word imem_rdata, dmem_rdata,
@@ -41,7 +43,9 @@ import pipeline_pkg::*;
     pipeline_reg_t ex_mem_reg_i, ex_mem_reg_o;
     pipeline_reg_t mem_wb_reg_i, mem_wb_reg_o;
 
-
+    /* Branch Feedback (to hazard control) */
+    assign ex_is_branch = ex_mem_reg_i.pcmux_sel != pcmux::pc_plus4; // jump or branch
+    assign mem_is_branch = mem_wb_reg_i.pcmux_sel != pcmux::pc_plus4; // jump or branch
 
     /* Datapath Registers */
 
@@ -164,6 +168,7 @@ import pipeline_pkg::*;
     assign ex_mem_reg_i.pc = id_ex_reg_o.pc;
     assign ex_mem_reg_i.mdr = id_ex_reg_o.r2;
     assign ex_mem_reg_i.uim = u_imm;
+    assign ex_mem_reg_i.pcmux_sel = ctrlex.is_branch ? pcmux::pcmux_sel_t'({1'b0, ex_mem_reg_i.cmp}) : ctrlex.pcmux_sel; // haor2 : add to stablize PC input and pc mux 
     assign mem_wb_reg_i.mdr = dmem_rdata;
     assign mem_wb_reg_i.uim = ex_mem_reg_o.uim;
     assign mem_wb_reg_i.alu = ex_mem_reg_o.alu;
@@ -204,10 +209,10 @@ import pipeline_pkg::*;
 
         pcmux_sel = ctrlex.is_branch ? pcmux::pcmux_sel_t'({1'b0, ex_mem_reg_i.cmp}) : ctrlex.pcmux_sel;
 
-        unique case (pcmux_sel)
+        unique case (ex_mem_reg_o.pcmux_sel)
             pcmux::pc_plus4: pcmux_out = if_id_reg_i.pc + 4;
-            pcmux::alu_out : pcmux_out = ex_mem_reg_i.alu;
-            pcmux::alu_mod2: pcmux_out = ex_mem_reg_i.alu & 32'hFFFFFFFE;
+            pcmux::alu_out : pcmux_out = ex_mem_reg_o.alu;
+            pcmux::alu_mod2: pcmux_out = ex_mem_reg_o.alu & 32'hFFFFFFFE;
             default        : pcmux_out = 'X;
         endcase
 
