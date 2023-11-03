@@ -29,6 +29,10 @@ import pipeline_pkg::*;
     logic [4:0] rs1_in;
     logic [4:0] rs2_in;
 
+    // forwarding_unit -> datapath
+    alumux::alumux1_sel_t fwd1;
+    alumux::alumux2_sel_t fwd2;
+
     // hazard_ctrl -> datapath
     hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl;
 
@@ -37,6 +41,7 @@ import pipeline_pkg::*;
 
     datapath  datapath (.*, .ctrlex(ctrlex_at_ex), .ctrlmem(ctrlmem_at_mem), .ctrlwb(ctrlwb_at_wb));
     ctrl_word ctrl_word(.*, .ctrlex(ctrlex_at_id), .ctrlmem(ctrlmem_at_id),  .ctrlwb(ctrlwb_at_id));
+    forwarding_unit forwarding_unit(.*, .opcode(ctrlmem_at_ex.opcode));
     hazard_ctrl_unit hazard_ctrl_unit(.*);
 
     ctrlex_reg  ctrlex_id_ex   (.*, .load(hazard_ctrl.load_id_ex),  .in(ctrlex_at_id),  .out(ctrlex_at_ex));

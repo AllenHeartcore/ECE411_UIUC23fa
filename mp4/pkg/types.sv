@@ -21,9 +21,11 @@ typedef enum bit {
 endpackage
 
 package alumux;
-typedef enum bit {
-    rs1_out  = 1'b0,
-    pc_out   = 1'b1
+typedef enum bit [1:0] {
+    rs1_out  = 2'b00,
+    pc_out   = 2'b01,
+    fw1_mem  = 2'b10,
+    fw1_wb   = 2'b11
 } alumux1_sel_t;
 
 typedef enum bit [2:0] {
@@ -32,7 +34,9 @@ typedef enum bit [2:0] {
     b_imm    = 3'b010,
     u_imm    = 3'b001,
     j_imm    = 3'b100,
-    rs2_out  = 3'b101
+    rs2_out  = 3'b101,
+    fw2_mem  = 3'b110,
+    fw2_wb   = 3'b111
 } alumux2_sel_t;
 endpackage
 

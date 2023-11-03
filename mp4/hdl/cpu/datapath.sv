@@ -21,6 +21,10 @@ import pipeline_pkg::*;
     // from hazard_ctrl
     input  hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl,
 
+    // from forwarding_unit
+    input  alumux::alumux1_sel_t fwd1,
+    input  alumux::alumux2_sel_t fwd2,
+
     // from memory
     input  rv32i_word imem_rdata, dmem_rdata,
 
@@ -211,18 +215,22 @@ import pipeline_pkg::*;
             default        : pcmux_out = 'X;
         endcase
 
-        unique case (ctrlex.alumux1_sel)
+        unique case (fwd1 == alumux::rs1_out ? ctrlex.alumux1_sel : fwd1)
             alumux::rs1_out: alumux1_out = id_ex_reg_o.r1;
             alumux::pc_out : alumux1_out = id_ex_reg_o.pc;
+            alumux::fw1_mem: alumux1_out = ex_mem_reg_o.alu;
+            alumux::fw1_wb : alumux1_out = regfilemux_out;
         endcase
 
-        unique case (ctrlex.alumux2_sel)
+        unique case (fwd2 == alumux::rs2_out ? ctrlex.alumux2_sel : fwd2)
             alumux::i_imm  : alumux2_out = i_imm;
             alumux::s_imm  : alumux2_out = s_imm;
             alumux::b_imm  : alumux2_out = b_imm;
             alumux::u_imm  : alumux2_out = u_imm;
             alumux::j_imm  : alumux2_out = j_imm;
             alumux::rs2_out: alumux2_out = id_ex_reg_o.r2;
+            alumux::fw2_mem: alumux2_out = ex_mem_reg_o.alu;
+            alumux::fw2_wb : alumux2_out = regfilemux_out;
         endcase
 
         unique case (ctrlex.cmpmux_sel)
