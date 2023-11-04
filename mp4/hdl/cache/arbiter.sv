@@ -26,14 +26,11 @@ module arbiter
 
 
     enum logic [2:0] {
-        IDLE_I, IDLE_D,     // to avoid congestion
-        SERVE_IR, DONE_IR,
-        SERVE_DR, DONE_DR,
-        SERVE_DW, DONE_DW
+        IDLE, SERVE_I, SERVE_D
     } state, next_state;
 
     always_ff @(posedge clk) begin
-        if (rst)    state <= IDLE_I;
+        if (rst)    state <= IDLE;
         else        state <= next_state;
     end
 
@@ -44,20 +41,11 @@ module arbiter
         next_state = state;
 
         case (state)
-            IDLE_I: // priority given to imem
-                if       (ipmem_read)   next_state = SERVE_IR;
-                else  if (dpmem_read)   next_state = SERVE_DR;
-                else  if (dpmem_write)  next_state = SERVE_DW;
-            IDLE_D: // priority given to dmem
-                if       (dpmem_read)   next_state = SERVE_DR;
-                else  if (dpmem_write)  next_state = SERVE_DW;
-                else  if (ipmem_read)   next_state = SERVE_IR;
-            SERVE_IR: if (pmem_resp)    next_state = DONE_IR;
-            SERVE_DR: if (pmem_resp)    next_state = DONE_DR;
-            SERVE_DW: if (pmem_resp)    next_state = DONE_DW;
-            DONE_IR:                    next_state = IDLE_D;
-            DONE_DR:                    next_state = IDLE_I;
-            DONE_DW:                    next_state = IDLE_I;
+            IDLE:
+                if (dpmem_read || dpmem_write) next_state = SERVE_D;
+                else if (ipmem_read) next_state = SERVE_I;
+            SERVE_I: if (pmem_resp)  next_state = IDLE;
+            SERVE_D: if (pmem_resp)  next_state = IDLE;
         endcase
 
     end : NEXT_STATE_LOGIC
@@ -76,31 +64,24 @@ module arbiter
         dpmem_resp   = 1'b0;
 
         case (state)
-            SERVE_IR: begin
+            SERVE_I: begin
                 pmem_address    = ipmem_address;
                 pmem_read       = 1'b1;
-            end
-            DONE_IR: begin
                 ipmem_rdata     = pmem_rdata;
-                ipmem_resp      = 1'b1;
+                ipmem_resp      = pmem_resp;
             end
-            SERVE_DR: begin
+            SERVE_D: begin
                 pmem_address    = dpmem_address;
-                pmem_read       = 1'b1;
+                dpmem_resp      = pmem_resp;
+                if (dpmem_read) begin
+                    pmem_read   = 1'b1;
+                    dpmem_rdata = pmem_rdata;
+                end else begin
+                    pmem_write  = 1'b1;
+                    pmem_wdata  = dpmem_wdata;
+                end
             end
-            DONE_DR: begin
-                dpmem_rdata     = pmem_rdata;
-                dpmem_resp      = 1'b1;
-            end
-            SERVE_DW: begin
-                pmem_address    = dpmem_address;
-                pmem_wdata      = dpmem_wdata;
-                pmem_write      = 1'b1;
-            end
-            DONE_DW: begin
-                dpmem_resp      = 1'b1;
-            end
-            IDLE_I, IDLE_D: ;
+            IDLE: ;
         endcase
 
     end : STATE_ACTIONS
