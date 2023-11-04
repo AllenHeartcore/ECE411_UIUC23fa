@@ -7,13 +7,10 @@ import hazard_ctrl_pkg::*;
     output logic dmem_read, dmem_write, 
     input logic imem_resp, dmem_resp,
     input logic mem_is_branch, ex_is_branch,
+    input logic hazard_exist,
     output logic imem_read,
     output hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl
 );
-
-    // hazard detection unit
-    logic hazard_exist;
-    assign hazard_exist = '0; // current stage @todo
 
     // state definition for each STAGE (not pipeline register)
 
