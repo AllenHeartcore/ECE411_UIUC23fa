@@ -18,8 +18,19 @@ import pipeline_pkg::*;
         logic fwd_from_mem_possible, fwd_from_wb_possible, fwd_to_1_possible, fwd_to_2_possible;
         fwd_from_mem_possible = ctrlwb_at_mem.load_regfile & (ctrlwb_at_mem.rd != 5'b0);
         fwd_from_wb_possible  = ctrlwb_at_wb.load_regfile  & (ctrlwb_at_wb.rd != 5'b0);
-        fwd_to_1_possible = (opcode == op_imm || opcode == op_reg || opcode == op_load);
-        fwd_to_2_possible = (opcode == op_imm);
+        fwd_to_1_possible = (
+            opcode == op_imm ||
+            opcode == op_reg ||
+            opcode == op_load ||
+            opcode == op_store ||
+            opcode == op_jalr ||
+            opcode == op_br
+        );
+        fwd_to_2_possible = (
+            opcode == op_reg ||
+            opcode == op_store ||
+            opcode == op_br
+        );
 
         if      (fwd_from_mem_possible & fwd_to_1_possible & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs1))
             fwdmux1_sel = fwdmux::fwd_mem;
