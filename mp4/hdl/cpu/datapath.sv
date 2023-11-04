@@ -20,6 +20,11 @@ import pipeline_pkg::*;
 
     // from hazard_ctrl
     input  hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl,
+    output logic ex_is_branch,
+    output logic mem_is_branch,
+
+    // from forwarding_unit
+    input  fwdmux::fwdmux_sel_t fwdmux1_sel, fwdmux2_sel,
 
     // from memory
     input  rv32i_word imem_rdata, dmem_rdata,
@@ -35,13 +40,16 @@ import pipeline_pkg::*;
     rv32i_word i_imm, s_imm, b_imm, u_imm, j_imm;
     rv32i_word alumux1_out, alumux2_out, cmpmux_out;
     rv32i_word pcmux_out, marmux_out, regfilemux_out;
+    rv32i_word fwdmux1_out, fwdmux2_out;
 
     pipeline_reg_t if_id_reg_i,  if_id_reg_o;
     pipeline_reg_t id_ex_reg_i,  id_ex_reg_o;
     pipeline_reg_t ex_mem_reg_i, ex_mem_reg_o;
     pipeline_reg_t mem_wb_reg_i, mem_wb_reg_o;
 
-
+    /* Branch Feedback (to hazard control) */
+    assign ex_is_branch = ex_mem_reg_i.pcmux_sel != pcmux::pc_plus4; // jump or branch
+    assign mem_is_branch = mem_wb_reg_i.pcmux_sel != pcmux::pc_plus4; // jump or branch
 
     /* Datapath Registers */
 
@@ -162,8 +170,9 @@ import pipeline_pkg::*;
     assign id_ex_reg_i.pc = if_id_reg_o.pc;
     assign id_ex_reg_i.ir = if_id_reg_o.ir;
     assign ex_mem_reg_i.pc = id_ex_reg_o.pc;
-    assign ex_mem_reg_i.mdr = id_ex_reg_o.r2;
+    assign ex_mem_reg_i.mdr = fwdmux2_out;
     assign ex_mem_reg_i.uim = u_imm;
+    assign ex_mem_reg_i.pcmux_sel = ctrlex.is_branch ? pcmux::pcmux_sel_t'({1'b0, ex_mem_reg_i.cmp}) : ctrlex.pcmux_sel; // haor2 : add to stablize PC input and pc mux 
     assign mem_wb_reg_i.mdr = dmem_rdata;
     assign mem_wb_reg_i.uim = ex_mem_reg_o.uim;
     assign mem_wb_reg_i.alu = ex_mem_reg_o.alu;
@@ -173,7 +182,7 @@ import pipeline_pkg::*;
     assign ex_mem_reg_i.ir = id_ex_reg_o.ir;
     assign mem_wb_reg_i.ir = ex_mem_reg_o.ir;
     assign mem_wb_reg_i.pc = ex_mem_reg_o.pc;
-    assign ex_mem_reg_i.r1 = id_ex_reg_o.r1;
+    assign ex_mem_reg_i.r1 = fwdmux1_out;
     assign mem_wb_reg_i.r1 = ex_mem_reg_o.r1;
     assign mem_wb_reg_i.r2 = ex_mem_reg_o.mdr;
     assign ex_mem_reg_i._pc_wdata = (ctrlex.is_branch & ex_mem_reg_i.cmp) ? ex_mem_reg_i.alu : (ex_mem_reg_i.pc + 4);
@@ -194,7 +203,7 @@ import pipeline_pkg::*;
         .aluop(ctrlex.aluop)
     );
     cmp CMP(.*,
-        .a(id_ex_reg_o.r1),
+        .a(fwdmux1_out),
         .b(cmpmux_out),
         .f(ex_mem_reg_i.cmp),
         .cmpop(ctrlex.cmpop)
@@ -204,15 +213,15 @@ import pipeline_pkg::*;
 
         pcmux_sel = ctrlex.is_branch ? pcmux::pcmux_sel_t'({1'b0, ex_mem_reg_i.cmp}) : ctrlex.pcmux_sel;
 
-        unique case (pcmux_sel)
+        unique case (ex_mem_reg_o.pcmux_sel)
             pcmux::pc_plus4: pcmux_out = if_id_reg_i.pc + 4;
-            pcmux::alu_out : pcmux_out = ex_mem_reg_i.alu;
-            pcmux::alu_mod2: pcmux_out = ex_mem_reg_i.alu & 32'hFFFFFFFE;
+            pcmux::alu_out : pcmux_out = ex_mem_reg_o.alu;
+            pcmux::alu_mod2: pcmux_out = ex_mem_reg_o.alu & 32'hFFFFFFFE;
             default        : pcmux_out = 'X;
         endcase
 
         unique case (ctrlex.alumux1_sel)
-            alumux::rs1_out: alumux1_out = id_ex_reg_o.r1;
+            alumux::rs1_out: alumux1_out = fwdmux1_out;
             alumux::pc_out : alumux1_out = id_ex_reg_o.pc;
         endcase
 
@@ -222,11 +231,11 @@ import pipeline_pkg::*;
             alumux::b_imm  : alumux2_out = b_imm;
             alumux::u_imm  : alumux2_out = u_imm;
             alumux::j_imm  : alumux2_out = j_imm;
-            alumux::rs2_out: alumux2_out = id_ex_reg_o.r2;
+            alumux::rs2_out: alumux2_out = fwdmux2_out;
         endcase
 
         unique case (ctrlex.cmpmux_sel)
-            cmpmux::rs2_out: cmpmux_out = id_ex_reg_o.r2;
+            cmpmux::rs2_out: cmpmux_out = fwdmux2_out;
             cmpmux::i_imm  : cmpmux_out = i_imm;
         endcase
 
@@ -265,6 +274,18 @@ import pipeline_pkg::*;
                     1'b0: regfilemux_out = {16'b0, mem_wb_reg_o.mdr[15:0]};
                     1'b1: regfilemux_out = {16'b0, mem_wb_reg_o.mdr[31:16]};
                 endcase
+        endcase
+
+        unique case (fwdmux1_sel)
+            fwdmux::no_fwd : fwdmux1_out = id_ex_reg_o.r1;
+            fwdmux::fwd_mem: fwdmux1_out = ex_mem_reg_o.alu;
+            fwdmux::fwd_wb : fwdmux1_out = regfilemux_out;
+        endcase
+
+        unique case (fwdmux2_sel)
+            fwdmux::no_fwd : fwdmux2_out = id_ex_reg_o.r2;
+            fwdmux::fwd_mem: fwdmux2_out = ex_mem_reg_o.alu;
+            fwdmux::fwd_wb : fwdmux2_out = regfilemux_out;
         endcase
 
     end

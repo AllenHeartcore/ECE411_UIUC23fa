@@ -50,6 +50,14 @@ typedef enum bit [3:0] {
 } regfilemux_sel_t;
 endpackage
 
+package fwdmux;
+typedef enum bit [1:0] {
+    no_fwd  = 2'b00,
+    fwd_mem = 2'b01,
+    fwd_wb  = 2'b10
+} fwdmux_sel_t;
+endpackage
+
 
 
 package rv32i_types;
@@ -59,6 +67,7 @@ import marmux::*;
 import cmpmux::*;
 import alumux::*;
 import regfilemux::*;
+import fwdmux::*;
 
 typedef logic [31:0] rv32i_word;
 typedef logic [ 4:0] rv32i_reg;
@@ -128,6 +137,27 @@ endpackage : rv32i_types
 
 
 
+package cache_types;
+
+typedef enum bit {
+    W_HIT   = 1'b0, /* WAYHIT */
+    W_LRU   = 1'b1  /* WAYLRU */
+} waymux_t;
+
+typedef enum bit {
+    D_CPU   = 1'b0, /* data[...] = mem_wdata  */
+    D_LLC   = 1'b1  /* data[...] = pmem_rdata */
+} datamux_t;
+
+typedef enum bit {
+    P_CPU   = 1'b0, /* pmem_address = {addr_tag,    9'b0} */
+    P_CACHE = 1'b1  /* pmem_address = {tag[WAYLRU], 9'b0} */
+} pmadmux_t;
+
+endpackage : cache_types
+
+
+
 package pipeline_pkg;
 import rv32i_types::*;
 
@@ -140,6 +170,7 @@ typedef struct packed {
     rv32i_word uim;
     rv32i_word alu;
     logic cmp;
+    pcmux::pcmux_sel_t pcmux_sel; // haor2 : added for branch. PCmux input can't be from EX stage in that it can change over a cycle. 
     // for monitor compatibility
     rv32i_word _pc_wdata;
     rv32i_word _mem_addr;
