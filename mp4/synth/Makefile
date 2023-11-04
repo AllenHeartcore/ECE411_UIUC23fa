@@ -1,6 +1,7 @@
 export CLOCK_PERIOD_PS = $(shell cat clock_period.txt)
 
 SHELL=/bin/bash -o pipefail
+.SHELLFLAGS += -e
 
 export PKG_SRCS = $(PWD)/../pkg/types.sv
 export HDL_SRCS = $(shell find $(PWD)/../hdl -name '*.sv')
