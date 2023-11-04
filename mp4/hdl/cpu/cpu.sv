@@ -16,10 +16,11 @@ import pipeline_pkg::*;
     ctrlex_reg_t ctrlex_at_id, ctrlex_at_ex;
     ctrlmem_reg_t ctrlmem_at_id, ctrlmem_at_ex, ctrlmem_at_mem;
     ctrlwb_reg_t ctrlwb_at_id, ctrlwb_at_ex, ctrlwb_at_mem, ctrlwb_at_wb;
-    // assign imem_read = hazard_ctrl.load_pc && (~rst);
-    // assign imem_read = '1;
-    assign dmem_read = ctrlmem_at_mem.dmem_read && (~rst);
-    assign dmem_write = ctrlmem_at_mem.dmem_write && (~rst);
+    // haor2 : we now move dmem read write control logic into  hazard control.
+    // original bug : when mem unit is idle (ready), there will be extra dmem operations issued.
+    logic dmem_read_i, dmem_write_i;
+    assign dmem_read_i = ctrlmem_at_mem.dmem_read && (~rst);
+    assign dmem_write_i = ctrlmem_at_mem.dmem_write && (~rst);
 
     // datapath -> ctrl_word
     rv32i_opcode opcode;
@@ -28,6 +29,7 @@ import pipeline_pkg::*;
     logic [4:0] rd_in;
     logic [4:0] rs1_in;
     logic [4:0] rs2_in;
+    logic mem_is_branch, ex_is_branch;
 
     // forwarding_unit -> datapath
     fwdmux::fwdmux_sel_t fwdmux1_sel, fwdmux2_sel;

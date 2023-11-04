@@ -170,6 +170,7 @@ typedef struct packed {
     rv32i_word uim;
     rv32i_word alu;
     logic cmp;
+    pcmux::pcmux_sel_t pcmux_sel; // haor2 : added for branch. PCmux input can't be from EX stage in that it can change over a cycle. 
     // for monitor compatibility
     rv32i_word _pc_wdata;
     rv32i_word _mem_addr;

@@ -3,174 +3,201 @@ import hazard_ctrl_pkg::*;
 (
     input logic clk,
     input logic rst,
-    input logic dmem_read, dmem_write,
+    input logic dmem_read_i, dmem_write_i,
+    output logic dmem_read, dmem_write, 
     input logic imem_resp, dmem_resp,
+    input logic mem_is_branch, ex_is_branch,
     output logic imem_read,
     output hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl
 );
 
-    logic valid_o;
+    // hazard detection unit
+    logic hazard_exist;
+    assign hazard_exist = '0; // current stage @todo
 
-
-
-
-    // state IF
-
-    logic id_enable;
-    logic ex_enable;
-    logic load_id_ex_i, load_id_ex_o;
-    logic load_ex_mem_i, load_ex_mem_o;
-    logic load_mem_wb_i, load_mem_wb_o;
-
-    register #(.width(1)) load_id_ex_reg (.*, .load('1), .in(load_id_ex_i), .out(load_id_ex_o));
-    register #(.width(1)) load_ex_reg (.*, .load('1), .in(load_ex_mem_i), .out(load_ex_mem_o));
-    register #(.width(1)) load_mem_reg (.*, .load('1), .in(load_mem_wb_i), .out(load_mem_wb_o));
+    // state definition for each STAGE (not pipeline register)
 
     enum int unsigned {
-        IF_READY,
-        IF_LOAD
-    } if_state, if_next_state;
+        READY,
+        BUSY
+    }   if_state, if_next_state, 
+        id_state, id_next_state, 
+        ex_state, ex_next_state, 
+        mem_state, mem_next_state, 
+        wb_state, wb_next_state;
 
-    enum int unsigned {
-        ID_READY,
-        ID_LOAD
-    } id_state, id_next_state;
+    // commit signals : if asserted, the next posedge pipeline register will be loaded
+    logic if_commit, id_commit, ex_commit, mem_commit, wb_commit;
+    assign if_commit = (if_state == BUSY && if_next_state == READY);
+    assign id_commit = (id_state == BUSY && id_next_state == READY);
+    assign ex_commit = (ex_state == BUSY && ex_next_state == READY);
+    assign mem_commit = (mem_state == BUSY && mem_next_state == READY);
+    assign wb_commit = (wb_state == BUSY && wb_next_state == READY);
 
-    enum int unsigned {
-        EX_READY,
-        EX_LOAD
-    } ex_state, ex_next_state;
+    // ENABLE CONTROL UNIT
+    logic if_enable_i, id_enable_i, ex_enable_i, mem_enable_i;
+    logic if_enable_o, id_enable_o, ex_enable_o, mem_enable_o;
+    // used for branching
+    logic set_invalid_if, set_invalid_id, set_invalid_ex;
 
-    enum int unsigned {
-        MEM_READY,
-        MEM_LOAD
-    } mem_state, mem_next_state;
-
-    enum int unsigned {
-        WB_READY,
-        WB_LOAD
-    } wb_state, wb_next_state;
+    assign set_invalid_if = ex_commit && ex_is_branch;
+    assign set_invalid_id = ex_commit && ex_is_branch;
+    assign set_invalid_ex = mem_state == READY && mem_next_state == BUSY && mem_is_branch;
 
     always_ff @(posedge clk) begin
+        if_enable_i <= 1'b0;
+        id_enable_i <= 1'b0;
+        ex_enable_i <= 1'b0;
+        mem_enable_i <= 1'b0;
+
         if (rst) begin
-            if_state <= IF_READY;
-            id_state <= ID_READY;
-            ex_state <= EX_READY;
-            mem_state <= MEM_READY;
-            wb_state <= WB_READY;
-            id_enable <= 1'b0;
-            ex_enable <= 1'b0;
-            valid_o <= 1'b0;
+            if_enable_i <= 1'b0;
+            id_enable_i <= 1'b0;
+            ex_enable_i <= 1'b0;
+            mem_enable_i <= 1'b0;
         end else begin
-            if_state <= if_next_state;
-            id_state <= id_next_state;
-            ex_state <= ex_next_state;
-            mem_state <= mem_next_state;
-            wb_state <= wb_next_state;
+            if(if_next_state == BUSY)
+                if_enable_i <= 1'b1;
+            else if(set_invalid_if)
+                if_enable_i <= 1'b0;
+            
+            if(id_next_state == BUSY)
+                id_enable_i <= 1'b1;
+            else if(set_invalid_id | (id_commit & (~if_commit)))
+                id_enable_i <= 1'b0;
+            
+            if(ex_next_state == BUSY)
+                ex_enable_i <= 1'b1;
+            else if(set_invalid_ex | (ex_commit & (~id_commit)))
+                ex_enable_i <= 1'b0;
 
-            if (id_next_state == ID_LOAD)
-                id_enable <= 1'b1;
-            if (ex_next_state == EX_LOAD)
-                ex_enable <= 1'b1;
+            if(mem_next_state == BUSY)
+                mem_enable_i <= 1'b1;
+            else if(mem_commit & (~ex_commit))
+                mem_enable_i <= 1'b0;
+        end
+    end
+    register #(.width(1)) if_enable_reg (.*, .load('1), .in(if_enable_i), .out(if_enable_o));
+    register #(.width(1)) id_enable_reg (.*, .load('1), .in(id_enable_i), .out(id_enable_o));
+    register #(.width(1)) ex_enable_reg (.*, .load('1), .in(ex_enable_i), .out(ex_enable_o));
+    register #(.width(1)) mem_enable_reg (.*, .load('1), .in(mem_enable_i), .out(mem_enable_o));
 
-            if (wb_next_state == WB_READY && wb_state == WB_LOAD)
-                valid_o <= 1'b1;
-            else
-                valid_o <= 1'b0;
+
+    // memory control unit
+    logic imem_has_resp, dmem_has_resp;
+    // Q : why do we need these 2 regs ?
+    // A : next stage might block, (i/d)mem_resp can only last for 1 cycle
+    logic dmem_op;
+
+    always_ff @(posedge clk) begin
+        imem_has_resp <= 1'b0;
+        dmem_has_resp <= 1'b0;
+
+        if (rst) begin
+            imem_has_resp <= 1'b0;
+            dmem_has_resp <= 1'b0;
+        end else begin
+            // handling response signals
+            if(imem_resp) imem_has_resp <= 1'b1;
+            else if(if_next_state == READY) imem_has_resp <= 1'b0;
+
+            if(dmem_resp) dmem_has_resp <= 1'b1;
+            else if(mem_next_state == READY) dmem_has_resp <= 1'b0;
         end
     end
 
-    // state transfer
+    assign dmem_op = dmem_read | dmem_write;
+    assign dmem_read = dmem_read_i && mem_state == BUSY;
+    assign dmem_write = dmem_write_i && mem_state == BUSY;
+    assign imem_read = if_state == BUSY;
+
+    // state transfer unit
     always_comb begin
         if_next_state = if_state;
         id_next_state = id_state;
         ex_next_state = ex_state;
         mem_next_state = mem_state;
         wb_next_state = wb_state;
-        load_id_ex_i = 1'b0;
-        load_ex_mem_i = 1'b0;
-        load_mem_wb_i = 1'b0;
         
         case (if_state)
-            IF_READY: if_next_state = IF_LOAD;
-            IF_LOAD: begin
-                if (imem_resp)
-                    if_next_state = IF_READY;
+            READY: 
+                if_next_state = BUSY;
+            BUSY: begin
+                if ((imem_resp | imem_has_resp) && id_next_state == READY)
+                    if_next_state = READY;
             end
         endcase
 
         case (id_state)
-            ID_READY: begin
-                if (imem_resp)
-                    id_next_state = ID_LOAD;
+            READY: begin
+                if (if_enable_o && if_state == READY)
+                    id_next_state = BUSY;
             end
-            ID_LOAD: begin
-                id_next_state = ID_READY;
-                load_id_ex_i = 1'b1;
+            BUSY: begin
+                if(ex_next_state == READY && (~hazard_exist))
+                    id_next_state = READY;
             end
         endcase
 
         case (ex_state) 
-            EX_READY: begin
-                if ((id_state == ID_READY) && (id_enable == 1'b1)) 
-                    ex_next_state = EX_LOAD;
+            READY: begin
+                if (id_enable_o && id_state == READY)
+                    ex_next_state = BUSY;
             end
-            EX_LOAD: begin
-                ex_next_state = EX_READY;
-                load_ex_mem_i = 1'b1;
+            BUSY: begin
+                if (mem_next_state == READY)
+                    ex_next_state = READY;
             end
         endcase
 
         case (mem_state)
-            MEM_READY: begin
-                if ((ex_state == EX_READY) && (ex_enable == 1'b1))
-                    mem_next_state = MEM_LOAD;
+            READY: begin
+                if (ex_enable_o && ex_state == READY)
+                    mem_next_state = BUSY;
             end
-            MEM_LOAD: begin
-                mem_next_state = MEM_READY;
-                load_mem_wb_i = 1'b1;
+            BUSY: begin
+                if(dmem_resp | dmem_has_resp | (~dmem_op))
+                    mem_next_state = READY;
             end
         endcase
 
         case (wb_state)
-            WB_READY: begin
-                if (mem_state == MEM_LOAD)
-                    wb_next_state = WB_LOAD;
+            READY: begin
+                if (mem_enable_o && mem_state == READY)
+                    wb_next_state = BUSY;
             end
-            WB_LOAD: begin
-                wb_next_state = WB_READY;
+            BUSY: begin
+                wb_next_state = READY;
             end
         endcase
     end
 
-    always_comb begin
-
-        hazard_ctrl.load_pc = 1'b0;
-        hazard_ctrl.load_if_id = 1'b0;
-        imem_read = 1'b1;
-
-        case (if_state)
-            IF_READY: begin
-                hazard_ctrl.load_pc = 1'b0;
-                hazard_ctrl.load_if_id = 1'b0;
-                imem_read = 1'b1;
-            end
-            IF_LOAD: begin
-                hazard_ctrl.load_pc = 1'b1;
-                hazard_ctrl.load_if_id = 1'b1;
-                imem_read = 1'b0;
-            end
-        endcase
-
-        /* suppress "unused input" warning */
-        if (dmem_read || dmem_write || dmem_resp) begin end
-
+    // state transition unit
+    always_ff @(posedge clk) begin
+        if (rst) begin
+            if_state <= READY;
+            id_state <= READY;
+            ex_state <= READY;
+            mem_state <= READY;
+            wb_state <= READY;
+        end else begin
+            if_state <= if_next_state;
+            id_state <= id_next_state;
+            ex_state <= ex_next_state;
+            mem_state <= mem_next_state;
+            wb_state <= wb_next_state;
+        end
     end
 
-    assign hazard_ctrl.load_mem_wb = load_mem_wb_o;
-    assign hazard_ctrl.load_ex_mem = load_ex_mem_o;
-    assign hazard_ctrl.load_id_ex = load_id_ex_o;
+    assign hazard_ctrl.load_pc = if_commit;
+    assign hazard_ctrl.load_if_id = if_commit;
+    assign hazard_ctrl.load_id_ex = id_commit;
+    assign hazard_ctrl.load_ex_mem = ex_commit;
+    assign hazard_ctrl.load_mem_wb = mem_commit;
 
-
+    // INSTR COMMIT UNIT
+    logic valid_o;
+    assign valid_o = wb_commit;
+    // register #(.width(1)) instr_commit_reg (.*, .load('1), .in(valid_i), .out(valid_o));
 
 endmodule
