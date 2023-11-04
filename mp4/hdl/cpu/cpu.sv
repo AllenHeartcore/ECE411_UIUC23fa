@@ -30,8 +30,7 @@ import pipeline_pkg::*;
     logic [4:0] rs2_in;
 
     // forwarding_unit -> datapath
-    alumux::alumux1_sel_t fwd1;
-    alumux::alumux2_sel_t fwd2;
+    fwdmux::fwdmux_sel_t fwdmux1_sel, fwdmux2_sel;
 
     // hazard_ctrl -> datapath
     hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl;

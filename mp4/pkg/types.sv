@@ -21,11 +21,9 @@ typedef enum bit {
 endpackage
 
 package alumux;
-typedef enum bit [1:0] {
-    rs1_out  = 2'b00,
-    pc_out   = 2'b01,
-    fw1_mem  = 2'b10,
-    fw1_wb   = 2'b11
+typedef enum bit {
+    rs1_out  = 1'b0,
+    pc_out   = 1'b1
 } alumux1_sel_t;
 
 typedef enum bit [2:0] {
@@ -34,9 +32,7 @@ typedef enum bit [2:0] {
     b_imm    = 3'b010,
     u_imm    = 3'b001,
     j_imm    = 3'b100,
-    rs2_out  = 3'b101,
-    fw2_mem  = 3'b110,
-    fw2_wb   = 3'b111
+    rs2_out  = 3'b101
 } alumux2_sel_t;
 endpackage
 
@@ -54,6 +50,14 @@ typedef enum bit [3:0] {
 } regfilemux_sel_t;
 endpackage
 
+package fwdmux;
+typedef enum bit [1:0] {
+    no_fwd  = 2'b00,
+    fwd_mem = 2'b01,
+    fwd_wb  = 2'b10
+} fwdmux_sel_t;
+endpackage
+
 
 
 package rv32i_types;
@@ -63,6 +67,7 @@ import marmux::*;
 import cmpmux::*;
 import alumux::*;
 import regfilemux::*;
+import fwdmux::*;
 
 typedef logic [31:0] rv32i_word;
 typedef logic [ 4:0] rv32i_reg;

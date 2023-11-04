@@ -7,8 +7,7 @@ import pipeline_pkg::*;
     input   ctrlwb_reg_t ctrlwb_at_mem,
     input   ctrlwb_reg_t ctrlwb_at_wb,
 
-    output  alumux::alumux1_sel_t fwd1,
-    output  alumux::alumux2_sel_t fwd2
+    output  fwdmux::fwdmux_sel_t fwdmux1_sel, fwdmux2_sel
 );
 
     always_comb begin
@@ -23,18 +22,18 @@ import pipeline_pkg::*;
         fwd_to_2_possible = (opcode == op_imm);
 
         if      (fwd_from_mem_possible & fwd_to_1_possible & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs1))
-            fwd1 = alumux::fw1_mem;
+            fwdmux1_sel = fwdmux::fwd_mem;
         else if (fwd_from_wb_possible  & fwd_to_1_possible & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs2))
-            fwd1 = alumux::fw1_wb;
+            fwdmux1_sel = fwdmux::fwd_wb;
         else
-            fwd1 = alumux::rs1_out;
+            fwdmux1_sel = fwdmux::no_fwd;
 
         if      (fwd_from_mem_possible & fwd_to_2_possible & (ctrlwb_at_wb.rd == ctrlwb_at_ex.rs1))
-            fwd2 = alumux::fw2_mem;
+            fwdmux2_sel = fwdmux::fwd_mem;
         else if (fwd_from_wb_possible  & fwd_to_2_possible & (ctrlwb_at_wb.rd == ctrlwb_at_ex.rs2))
-            fwd2 = alumux::fw2_wb;
+            fwdmux2_sel = fwdmux::fwd_wb;
         else
-            fwd2 = alumux::rs2_out;
+            fwdmux2_sel = fwdmux::no_fwd;
 
     end
 
