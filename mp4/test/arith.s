@@ -31,17 +31,9 @@ _start:
     # ADDI
     addi x1, x0, 0x1bc
     addi x2, x0, 0x3ad
-    nop
-    nop
-    nop 
-    nop
     # SLTI
     slti x3, x1, 0x00000002
     slti x4, x2, 0x00000002
-    nop
-    nop
-    nop
-    nop
     # SLTIU
     sltiu x5, x1, 0x00000002
     sltiu x6, x2, 0x00000002

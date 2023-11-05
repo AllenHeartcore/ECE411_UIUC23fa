@@ -13,11 +13,7 @@ _start:
 
 
     li  x1, 0x00002010
-	nop
-	nop
-	nop
-	nop
-    # lh  x2, 0(x1)  # X2 <= 0x00002040
+    lh  x2, 0(x1)  # X2 <= 0x00002040
 	# nop
 	# nop
 	# nop
