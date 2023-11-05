@@ -87,18 +87,10 @@ _start:
     and x24, x3, x4
 
 
-    # li  t0, 1
-    # la  t1, tohost
-    # nop
-	# nop
-	# nop
-	# nop
-    # sw  t0, 0(t1)
-    # sw  x0, 4(t1)
-    # nop
-	# nop
-	# nop
-	# nop
+    li  t0, 1
+    la  t1, tohost
+    sw  t0, 0(t1)
+    sw  x0, 4(t1)
     
 halt:                 # Infinite loop to keep the processor
     beq x0, x0, halt  # from trying to execute the data below.
