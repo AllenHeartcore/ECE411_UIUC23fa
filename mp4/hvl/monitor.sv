@@ -95,6 +95,7 @@ module monitor (
     initial itf.halt = 1'b0;
     always @(posedge itf.clk) begin
         if ((!itf.rst && itf.valid) && ((itf.pc_rdata == itf.pc_wdata) || (itf.inst == 32'h00000063) || (itf.inst == 32'h0000006f))) begin
+            $display("pc_rdata= %h, pc_wdata= %h, inst= %h", itf.pc_rdata, itf.pc_wdata, itf.inst);
             itf.halt <= 1'b1;
         end
     end

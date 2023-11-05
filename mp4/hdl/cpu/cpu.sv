@@ -40,7 +40,7 @@ import hazard_detection_pkg::*;
 
     // hzard_ctrl -> hazard detection
     logic id_commit, ex_commit, mem_commit, wb_commit;
-
+    logic path_hazard_detection;
     // hazard detection -> hazard_ctrl
     logic no_hazard;
 

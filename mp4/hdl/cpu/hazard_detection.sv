@@ -6,6 +6,7 @@ import hazard_detection_pkg::*;
     input logic id_commit, ex_commit, mem_commit, wb_commit,
     input hazard_detection_t ex_dep, mem_dep, wb_dep,
     input hazard_detection_t id_dep,
+    input logic path_hazard_detection,
     output logic no_hazard
 );
     logic ex_no_hazard; 
@@ -19,7 +20,7 @@ import hazard_detection_pkg::*;
             mem_enable <= '0;
             wb_enable <= '0;
         end else begin
-            if(id_commit) ex_enable <= '1;
+            if(path_hazard_detection && id_commit) ex_enable <= '1;
             else if(ex_commit) ex_enable <= '0;
 
             if(ex_commit) begin
