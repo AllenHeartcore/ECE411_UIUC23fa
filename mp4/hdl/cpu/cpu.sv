@@ -39,7 +39,7 @@ import hazard_detection_pkg::*;
     logic [3:0] dmem_rmask;
 
     // hzard_ctrl -> hazard detection
-    logic ex_enable, mem_enable, wb_enable;
+    logic id_commit, ex_commit, mem_commit, wb_commit;
 
     // hazard detection -> hazard_ctrl
     logic no_hazard;
