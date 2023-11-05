@@ -1,6 +1,7 @@
 module cpu
 import rv32i_types::*;
 import pipeline_pkg::*;
+import hazard_detection_pkg::*;
 (
     input  clk,
     input  rst,
@@ -37,9 +38,25 @@ import pipeline_pkg::*;
     // for monitor
     logic [3:0] dmem_rmask;
 
+    // hzard_ctrl -> hazard detection
+    logic ex_enable, mem_enable, wb_enable;
+
+    // hazard detection -> hazard_ctrl
+    logic no_hazard;
+
+    // datapath -> hazard detection
+    hazard_detection_t ex_dep, mem_dep, wb_dep;
+    hazard_detection_t id_dep;
+
+    reg_tuple_2_dep ex_convert(.rs1(ctrlwb_at_ex.rs1), .rs2(ctrlwb_at_ex.rs2), .rd(ctrlwb_at_ex.rd), .dep(ex_dep));
+    reg_tuple_2_dep mem_convert(.rs1(ctrlwb_at_mem.rs1), .rs2(ctrlwb_at_mem.rs2), .rd(ctrlwb_at_mem.rd), .dep(mem_dep));
+    reg_tuple_2_dep wb_convert(.rs1(ctrlwb_at_wb.rs1), .rs2(ctrlwb_at_wb.rs2), .rd(ctrlwb_at_wb.rd), .dep(wb_dep));
+    reg_tuple_2_dep id_convert(.rs1(rs1_in), .rs2(rs2_in), .rd(rd_in), .dep(id_dep));
+
     datapath  datapath (.*, .ctrlex(ctrlex_at_ex), .ctrlmem(ctrlmem_at_mem), .ctrlwb(ctrlwb_at_wb));
     ctrl_word ctrl_word(.*, .ctrlex(ctrlex_at_id), .ctrlmem(ctrlmem_at_id),  .ctrlwb(ctrlwb_at_id));
     hazard_ctrl_unit hazard_ctrl_unit(.*);
+    hazard_detection_unit hazard_detection_unit(.*);
 
     ctrlex_reg  ctrlex_id_ex   (.*, .load(hazard_ctrl.load_id_ex),  .in(ctrlex_at_id),  .out(ctrlex_at_ex));
     ctrlmem_reg ctrlmem_id_ex  (.*, .load(hazard_ctrl.load_id_ex),  .in(ctrlmem_at_id), .out(ctrlmem_at_ex));

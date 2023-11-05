@@ -7,18 +7,20 @@ import hazard_ctrl_pkg::*;
     output logic dmem_read, dmem_write, 
     input logic imem_resp, dmem_resp,
     input logic mem_is_branch, ex_is_branch,
+    input logic no_hazard,
+    output logic ex_enable, mem_enable, wb_enable,
     output logic imem_read,
     output hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl
 );
 
     // hazard detection unit
     logic hazard_exist;
-    assign hazard_exist = '0; // current stage @todo
+    assign hazard_exist = (~no_hazard); // current stage @todo
 
     // state definition for each STAGE (not pipeline register)
 
-    enum int unsigned {
-        READY,
+    enum bit {
+        RDY,
         BUSY
     }   if_state, if_next_state, 
         id_state, id_next_state, 
@@ -28,59 +30,68 @@ import hazard_ctrl_pkg::*;
 
     // commit signals : if asserted, the next posedge pipeline register will be loaded
     logic if_commit, id_commit, ex_commit, mem_commit, wb_commit;
-    assign if_commit = (if_state == BUSY && if_next_state == READY);
-    assign id_commit = (id_state == BUSY && id_next_state == READY);
-    assign ex_commit = (ex_state == BUSY && ex_next_state == READY);
-    assign mem_commit = (mem_state == BUSY && mem_next_state == READY);
-    assign wb_commit = (wb_state == BUSY && wb_next_state == READY);
+    assign if_commit = (if_state == BUSY && if_next_state == RDY);
+    assign id_commit = (id_state == BUSY && id_next_state == RDY);
+    assign ex_commit = (ex_state == BUSY && ex_next_state == RDY);
+    assign mem_commit = (mem_state == BUSY && mem_next_state == RDY);
+    assign wb_commit = (wb_state == BUSY && wb_next_state == RDY);
 
     // ENABLE CONTROL UNIT
-    logic if_enable_i, id_enable_i, ex_enable_i, mem_enable_i;
-    logic if_enable_o, id_enable_o, ex_enable_o, mem_enable_o;
+    logic if_enable_i, id_enable_i, ex_enable_i, mem_enable_i, wb_enable_i;
+    logic if_enable_o, id_enable_o, ex_enable_o, mem_enable_o, wb_enable_o;
+    
+    assign ex_enable = ex_enable_o;
+    assign mem_enable = mem_enable_o;
+    assign wb_enable = wb_enable_o;
+
     // used for branching
     logic set_invalid_if, set_invalid_id, set_invalid_ex;
 
     assign set_invalid_if = ex_commit && ex_is_branch;
     assign set_invalid_id = ex_commit && ex_is_branch;
-    assign set_invalid_ex = mem_state == READY && mem_next_state == BUSY && mem_is_branch;
+    assign set_invalid_ex = mem_state == RDY && mem_next_state == BUSY && mem_is_branch;
+
 
     always_ff @(posedge clk) begin
-        if_enable_i <= 1'b0;
-        id_enable_i <= 1'b0;
-        ex_enable_i <= 1'b0;
-        mem_enable_i <= 1'b0;
 
         if (rst) begin
             if_enable_i <= 1'b0;
             id_enable_i <= 1'b0;
             ex_enable_i <= 1'b0;
             mem_enable_i <= 1'b0;
+            wb_enable_i <= 1'b0;
         end else begin
-            if(if_next_state == BUSY)
+            if(if_state == RDY && if_next_state == BUSY)
                 if_enable_i <= 1'b1;
             else if(set_invalid_if)
                 if_enable_i <= 1'b0;
             
-            if(id_next_state == BUSY)
+            if(id_state == RDY && id_next_state == BUSY)
                 id_enable_i <= 1'b1;
-            else if(set_invalid_id | (id_commit & (~if_commit)))
+            else if(set_invalid_id | (id_commit & ~if_commit) )
                 id_enable_i <= 1'b0;
             
-            if(ex_next_state == BUSY)
+            if(ex_state == RDY && ex_next_state == BUSY)
                 ex_enable_i <= 1'b1;
-            else if(set_invalid_ex | (ex_commit & (~id_commit)))
+            else if(set_invalid_ex | (ex_commit & ~id_commit) )
                 ex_enable_i <= 1'b0;
 
-            if(mem_next_state == BUSY)
+            if(mem_state == RDY && mem_next_state == BUSY)
                 mem_enable_i <= 1'b1;
-            else if(mem_commit & (~ex_commit))
+            else if(mem_commit & ~ex_commit)
                 mem_enable_i <= 1'b0;
+
+            if(wb_state == RDY && wb_next_state == BUSY)
+                wb_enable_i <= 1'b1;
+            else if(wb_commit & ~mem_commit)
+                wb_enable_i <= 1'b0;
         end
     end
     register #(.width(1)) if_enable_reg (.*, .load('1), .in(if_enable_i), .out(if_enable_o));
     register #(.width(1)) id_enable_reg (.*, .load('1), .in(id_enable_i), .out(id_enable_o));
     register #(.width(1)) ex_enable_reg (.*, .load('1), .in(ex_enable_i), .out(ex_enable_o));
     register #(.width(1)) mem_enable_reg (.*, .load('1), .in(mem_enable_i), .out(mem_enable_o));
+    register #(.width(1)) wb_enable_reg (.*, .load('1), .in(wb_enable_i), .out(wb_enable_o));
 
 
     // memory control unit
@@ -90,96 +101,76 @@ import hazard_ctrl_pkg::*;
     logic dmem_op;
 
     always_ff @(posedge clk) begin
-        imem_has_resp <= 1'b0;
-        dmem_has_resp <= 1'b0;
-
         if (rst) begin
             imem_has_resp <= 1'b0;
             dmem_has_resp <= 1'b0;
         end else begin
             // handling response signals
-            if(imem_resp) imem_has_resp <= 1'b1;
-            else if(if_next_state == READY) imem_has_resp <= 1'b0;
-
-            if(dmem_resp) dmem_has_resp <= 1'b1;
-            else if(mem_next_state == READY) dmem_has_resp <= 1'b0;
+            if(if_state == RDY) imem_has_resp <= 1'b0;
+            else if(imem_resp) imem_has_resp <= 1'b1;
+            
+            if(mem_state == RDY) dmem_has_resp <= 1'b0;
+            else if(dmem_resp) dmem_has_resp <= 1'b1;
+            
         end
     end
 
     assign dmem_op = dmem_read | dmem_write;
     assign dmem_read = dmem_read_i && mem_state == BUSY;
     assign dmem_write = dmem_write_i && mem_state == BUSY;
-    assign imem_read = if_state == BUSY;
+    assign imem_read = (if_state == BUSY) && (~imem_has_resp);
 
-    // state transfer unit
+
+    logic dbg_1;
+    assign dbg_1 = if_state == BUSY && ((imem_resp || imem_has_resp) && (id_next_state == RDY));
+    
     always_comb begin
-        if_next_state = if_state;
-        id_next_state = id_state;
-        ex_next_state = ex_state;
-        mem_next_state = mem_state;
-        wb_next_state = wb_state;
-        
-        case (if_state)
-            READY: 
-                if_next_state = BUSY;
-            BUSY: begin
-                if ((imem_resp | imem_has_resp) && id_next_state == READY)
-                    if_next_state = READY;
-            end
-        endcase
 
-        case (id_state)
-            READY: begin
-                if (if_enable_o && if_state == READY)
-                    id_next_state = BUSY;
-            end
-            BUSY: begin
-                if(ex_next_state == READY && (~hazard_exist))
-                    id_next_state = READY;
-            end
-        endcase
+        if(if_state == RDY) begin
+            if_next_state = BUSY;
+        end else if (if_state == BUSY && (imem_resp || imem_has_resp) && (id_next_state == RDY)) begin
+            if_next_state = RDY;
+        end else begin
+            if_next_state = if_state;
+        end
 
-        case (ex_state) 
-            READY: begin
-                if (id_enable_o && id_state == READY)
-                    ex_next_state = BUSY;
-            end
-            BUSY: begin
-                if (mem_next_state == READY)
-                    ex_next_state = READY;
-            end
-        endcase
+        if(id_state == RDY && if_enable_o && if_state == RDY)
+            id_next_state = BUSY;
+        else if(id_state == BUSY && (ex_next_state == RDY) && (~hazard_exist))
+            id_next_state = RDY;
+        else
+            id_next_state = id_state;
 
-        case (mem_state)
-            READY: begin
-                if (ex_enable_o && ex_state == READY)
-                    mem_next_state = BUSY;
-            end
-            BUSY: begin
-                if(dmem_resp | dmem_has_resp | (~dmem_op))
-                    mem_next_state = READY;
-            end
-        endcase
+        if(ex_state == RDY && id_enable_o && id_state == RDY)
+            ex_next_state = BUSY;
+        else if (ex_state == BUSY && (mem_next_state == RDY))
+            ex_next_state = RDY;
+        else
+            ex_next_state = ex_state;
 
-        case (wb_state)
-            READY: begin
-                if (mem_enable_o && mem_state == READY)
-                    wb_next_state = BUSY;
-            end
-            BUSY: begin
-                wb_next_state = READY;
-            end
-        endcase
+        if(mem_state == RDY && ex_enable_o && ex_state == RDY)
+            mem_next_state = BUSY;
+        else if(mem_state == BUSY && (dmem_resp || dmem_has_resp || (~dmem_op)) )
+            mem_next_state = RDY;
+        else
+            mem_next_state = mem_state;
+
+        if(wb_state == RDY && mem_enable_o && mem_state == RDY)
+            wb_next_state = BUSY;
+        else if(wb_state == BUSY)
+            wb_next_state = RDY;
+        else
+            wb_next_state = wb_state;
     end
 
     // state transition unit
     always_ff @(posedge clk) begin
         if (rst) begin
-            if_state <= READY;
-            id_state <= READY;
-            ex_state <= READY;
-            mem_state <= READY;
-            wb_state <= READY;
+            if_state <= RDY;
+            id_state <= RDY;
+            ex_state <= RDY;
+            mem_state <= RDY;
+            wb_state <= RDY;
         end else begin
             if_state <= if_next_state;
             id_state <= id_next_state;
@@ -198,6 +189,5 @@ import hazard_ctrl_pkg::*;
     // INSTR COMMIT UNIT
     logic valid_o;
     assign valid_o = wb_commit;
-    // register #(.width(1)) instr_commit_reg (.*, .load('1), .in(valid_i), .out(valid_o));
 
 endmodule
