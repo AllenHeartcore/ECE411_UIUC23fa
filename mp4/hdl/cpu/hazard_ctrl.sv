@@ -29,9 +29,9 @@ import hazard_ctrl_pkg::*;
         wb_state, wb_next_state,
         if_next_state_1, if_next_state_2,
         id_next_state_1, id_next_state_2,
-        ex_next_stage_1, ex_next_stage_2,
-        mem_next_stage_1, mem_next_stage_2,
-        wb_next_stage_1, wb_next_stage_2;
+        ex_next_state_1, ex_next_state_2,
+        mem_next_state_1, mem_next_state_2,
+        wb_next_state_1, wb_next_state_2;
 
     // commit signals : if asserted, the next posedge pipeline register will be loaded
     logic if_commit;
@@ -131,17 +131,17 @@ import hazard_ctrl_pkg::*;
     assign id_next_state_2 = (ex_next_state == RDY) && (~hazard_exist) ? RDY : id_state;
     assign id_next_state = id_state == RDY ? id_next_state_1 : id_next_state_2;
 
-    assign ex_next_stage_1 = id_enable_o && (id_state == RDY) ?  BUSY : ex_state;
-    assign ex_next_stage_2 = (mem_next_state == RDY) ? RDY : ex_state;
-    assign ex_next_state = ex_state == RDY ? ex_next_stage_1 : ex_next_stage_2;
+    assign ex_next_state_1 = id_enable_o && (id_state == RDY) ?  BUSY : ex_state;
+    assign ex_next_state_2 = (mem_next_state == RDY) ? RDY : ex_state;
+    assign ex_next_state = ex_state == RDY ? ex_next_state_1 : ex_next_state_2;
 
-    assign mem_next_stage_1 = ex_enable_o && (ex_state == RDY) ? BUSY : mem_state;
-    assign mem_next_stage_2 = (dmem_resp || dmem_has_resp || (~dmem_op)) ? RDY : mem_state;
-    assign mem_next_state = mem_state == RDY ? mem_next_stage_1 : mem_next_stage_2;
+    assign mem_next_state_1 = ex_enable_o && (ex_state == RDY) ? BUSY : mem_state;
+    assign mem_next_state_2 = (dmem_resp || dmem_has_resp || (~dmem_op)) ? RDY : mem_state;
+    assign mem_next_state = mem_state == RDY ? mem_next_state_1 : mem_next_state_2;
 
-    assign wb_next_stage_1 = mem_enable_o && (mem_state == RDY) ? BUSY : wb_state;
-    assign wb_next_stage_2 = RDY;
-    assign wb_next_state = wb_state == RDY ? wb_next_stage_1 : wb_next_stage_2;
+    assign wb_next_state_1 = mem_enable_o && (mem_state == RDY) ? BUSY : wb_state;
+    assign wb_next_state_2 = RDY;
+    assign wb_next_state = wb_state == RDY ? wb_next_state_1 : wb_next_state_2;
 
 
     logic dbg_1;
