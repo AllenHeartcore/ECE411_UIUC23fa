@@ -116,8 +116,8 @@ import hazard_ctrl_pkg::*;
     end
 
     assign dmem_op = dmem_read | dmem_write;
-    assign dmem_read = dmem_read_i && mem_state == BUSY;
-    assign dmem_write = dmem_write_i && mem_state == BUSY;
+    assign dmem_read = dmem_read_i && mem_state == BUSY && (~dmem_has_resp);
+    assign dmem_write = dmem_write_i && mem_state == BUSY && (~dmem_has_resp);
     assign imem_read = (if_state == BUSY) && (~imem_has_resp);
 
 
