@@ -98,33 +98,15 @@ import hazard_ctrl_pkg::*;
 
 
     // memory control unit
-    logic imem_has_resp, dmem_has_resp;
-    // Q : why do we need these 2 regs ?
-    // A : next stage might block, (i/d)mem_resp can only last for 1 cycle
     logic dmem_op;
 
-    always_ff @(posedge clk) begin
-        if (rst) begin
-            imem_has_resp <= 1'b0;
-            dmem_has_resp <= 1'b0;
-        end else begin
-            // handling response signals
-            if(if_state == RDY) imem_has_resp <= 1'b0;
-            else if(imem_resp) imem_has_resp <= 1'b1;
-            
-            if(mem_state == RDY) dmem_has_resp <= 1'b0;
-            else if(dmem_resp) dmem_has_resp <= 1'b1;
-            
-        end
-    end
-
     assign dmem_op = dmem_read | dmem_write;
-    assign dmem_read = dmem_read_i && mem_state == BUSY && (~dmem_has_resp);
-    assign dmem_write = dmem_write_i && mem_state == BUSY && (~dmem_has_resp);
-    assign imem_read = (if_state == BUSY) && (~imem_has_resp);
+    assign dmem_read = dmem_read_i && mem_state == BUSY;
+    assign dmem_write = dmem_write_i && mem_state == BUSY;
+    assign imem_read = if_state == BUSY;
 
     assign if_next_state_1 = BUSY;
-    assign if_next_state_2 = (imem_resp || imem_has_resp) && (id_next_state == RDY) ? RDY : if_state;
+    assign if_next_state_2 = (imem_resp) && (id_next_state == RDY) ? RDY : if_state;
     assign if_next_state = if_state == RDY ? if_next_state_1 : if_next_state_2;
 
     assign id_next_state_1 = if_enable_o && if_state == RDY ? BUSY : id_state;
@@ -136,16 +118,12 @@ import hazard_ctrl_pkg::*;
     assign ex_next_state = ex_state == RDY ? ex_next_state_1 : ex_next_state_2;
 
     assign mem_next_state_1 = ex_enable_o && (ex_state == RDY) ? BUSY : mem_state;
-    assign mem_next_state_2 = (dmem_resp || dmem_has_resp || (~dmem_op)) ? RDY : mem_state;
+    assign mem_next_state_2 = (dmem_resp || (~dmem_op)) ? RDY : mem_state;
     assign mem_next_state = mem_state == RDY ? mem_next_state_1 : mem_next_state_2;
 
     assign wb_next_state_1 = mem_enable_o && (mem_state == RDY) ? BUSY : wb_state;
     assign wb_next_state_2 = RDY;
     assign wb_next_state = wb_state == RDY ? wb_next_state_1 : wb_next_state_2;
-
-
-    logic dbg_1;
-    assign dbg_1 = if_state == BUSY && ((imem_resp || imem_has_resp) && (id_next_state == RDY));
     
     // always_comb begin
 
