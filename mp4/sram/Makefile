@@ -26,7 +26,7 @@ output/%.py: config/%.py
 	# sed -i -E 's/!csb1_reg && web1_reg/!csb1_reg/g' ./output/$(basename $(notdir $@))/$(basename $(notdir $@)).v
 	sed -i -E 's/#\(DELAY\)//g' ./output/$(basename $(notdir $@))/$(basename $(notdir $@)).v
 	cd ./output/$(basename $(notdir $@)) ;\
-	lc_shell -x 'read_lib $(basename $(notdir $@))/$(basename $(notdir $@))_TT_1p0V_25C.lib; write_lib $(basename $(notdir $@))_TT_1p0V_25C_lib; exit' ;\
+	lc_shell -x 'read_lib $(basename $(notdir $@))_TT_1p0V_25C.lib; write_lib $(basename $(notdir $@))_TT_1p0V_25C_lib; exit' ;\
 	rm -f lc*.log lc*.txt
 	cp $^ $@
 
