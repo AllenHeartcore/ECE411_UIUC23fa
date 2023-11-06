@@ -13,14 +13,16 @@ import pipeline_pkg::*;
     output  fwdmux::fwdmux_sel_t fwdmux1_sel, fwdmux2_sel
 );
 
-    logic fwd_from_mem_possible, fwd_from_wb_possible, fwd_to_1_possible, fwd_to_2_possible;
-    logic this_instr_is_load;
+    logic instr_at_mem_reads_dmem;
+    logic instr_at_mem_writes_rd, instr_at_wb_writes_rd;
+    logic instr_at_ex_reads_rs1,  instr_at_ex_reads_rs2;
 
     always_comb begin
 
-        fwd_from_mem_possible = ctrlwb_at_mem.load_regfile & (ctrlwb_at_mem.rd != 5'b0);
-        fwd_from_wb_possible  = ctrlwb_at_wb.load_regfile  & (ctrlwb_at_wb.rd != 5'b0);
-        fwd_to_1_possible = (
+        instr_at_mem_reads_dmem = ctrlmem_at_mem.dmem_read   & (ctrlwb_at_mem.rd != 5'b0);
+        instr_at_mem_writes_rd  = ctrlwb_at_mem.load_regfile & (ctrlwb_at_mem.rd != 5'b0);
+        instr_at_wb_writes_rd   = ctrlwb_at_wb.load_regfile  & (ctrlwb_at_wb.rd  != 5'b0);
+        instr_at_ex_reads_rs1 = (
             ctrlmem_at_ex.opcode == op_imm |
             ctrlmem_at_ex.opcode == op_reg |
             ctrlmem_at_ex.opcode == op_load |
@@ -28,31 +30,30 @@ import pipeline_pkg::*;
             ctrlmem_at_ex.opcode == op_jalr |
             ctrlmem_at_ex.opcode == op_br
         );
-        fwd_to_2_possible = (
+        instr_at_ex_reads_rs2 = (
             ctrlmem_at_ex.opcode == op_reg |
             ctrlmem_at_ex.opcode == op_store |
             ctrlmem_at_ex.opcode == op_br
         );
 
-        if      (fwd_from_mem_possible & fwd_to_1_possible & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs1))
+        if      (instr_at_mem_writes_rd & instr_at_ex_reads_rs1 & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs1))
             fwdmux1_sel = fwdmux::fwd_mem;
-        else if (fwd_from_wb_possible  & fwd_to_1_possible & (ctrlwb_at_wb.rd == ctrlwb_at_ex.rs1))
+        else if (instr_at_wb_writes_rd  & instr_at_ex_reads_rs1 & (ctrlwb_at_wb.rd  == ctrlwb_at_ex.rs1))
             fwdmux1_sel = fwdmux::fwd_wb;
         else
             fwdmux1_sel = fwdmux::no_fwd;
 
-        if      (fwd_from_mem_possible & fwd_to_2_possible & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs2))
+        if      (instr_at_mem_writes_rd & instr_at_ex_reads_rs2 & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs2))
             fwdmux2_sel = fwdmux::fwd_mem;
-        else if (fwd_from_wb_possible  & fwd_to_2_possible & (ctrlwb_at_wb.rd == ctrlwb_at_ex.rs2))
+        else if (instr_at_wb_writes_rd  & instr_at_ex_reads_rs2 & (ctrlwb_at_wb.rd  == ctrlwb_at_ex.rs2))
             fwdmux2_sel = fwdmux::fwd_wb;
         else
             fwdmux2_sel = fwdmux::no_fwd;
 
-        this_instr_is_load = (ctrlmem_at_mem.opcode == op_load) & (ctrlwb_at_mem.rd != 5'b0);
         no_hazard = ~(
-            this_instr_is_load & (
-                (fwd_to_1_possible & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs1)) |
-                (fwd_to_2_possible & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs2))
+            instr_at_mem_reads_dmem & (
+                (instr_at_ex_reads_rs1 & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs1)) |
+                (instr_at_ex_reads_rs2 & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs2))
             )
         );
 
