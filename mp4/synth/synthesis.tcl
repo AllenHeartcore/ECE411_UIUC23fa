@@ -51,6 +51,8 @@ suppress_message VO-11
 suppress_message ELAB-311
 #Netlist for always_comb block is empty.
 suppress_message ELAB-982
+#Netlist for always_ff block is empty.
+suppress_message ELAB-984
 
 define_design_lib WORK -path ./work
 set alib_library_analysis_path [getenv STD_CELL_ALIB]
