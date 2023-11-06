@@ -1,7 +1,6 @@
 module cpu
 import rv32i_types::*;
 import pipeline_pkg::*;
-import hazard_detection_pkg::*;
 (
     input  clk,
     input  rst,
