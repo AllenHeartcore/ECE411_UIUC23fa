@@ -40,12 +40,11 @@ import pipeline_pkg::*;
     // forwarding_unit -> hazard_ctrl
     logic no_hazard;
 
+    // hazard_ctrl -> forwarding_unit
+    logic ex_mem_valid_o;
+
     // for monitor
     logic [3:0] dmem_rmask;
-
-    // hzard_ctrl -> hazard detection
-    logic id_commit, ex_commit, mem_commit, wb_commit;
-    logic path_hazard_detection;
 
     datapath  datapath (.*, .ctrlex(ctrlex_at_ex), .ctrlmem(ctrlmem_at_mem), .ctrlwb(ctrlwb_at_wb));
     ctrl_word ctrl_word(.*, .ctrlex(ctrlex_at_id), .ctrlmem(ctrlmem_at_id),  .ctrlwb(ctrlwb_at_id));

@@ -2,12 +2,15 @@ module forwarding_unit
 import rv32i_types::*;
 import pipeline_pkg::*;
 (
+    input   clk,
+    input   rst,
+
     input   ctrlmem_reg_t ctrlmem_at_ex,
     input   ctrlmem_reg_t ctrlmem_at_mem,
-    input   ctrlwb_reg_t ctrlwb_at_id,
     input   ctrlwb_reg_t ctrlwb_at_ex,
     input   ctrlwb_reg_t ctrlwb_at_mem,
     input   ctrlwb_reg_t ctrlwb_at_wb,
+    input   logic ex_mem_valid_o,
 
     output  logic no_hazard,
     output  fwdmux::fwdmux_sel_t fwdmux1_sel, fwdmux2_sel
@@ -50,13 +53,30 @@ import pipeline_pkg::*;
         else
             fwdmux2_sel = fwdmux::no_fwd;
 
-        no_hazard = ~(
-            instr_at_mem_reads_dmem & (
-                (instr_at_ex_reads_rs1 & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs1)) |
-                (instr_at_ex_reads_rs2 & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs2))
-            )
-        );
-
     end
+
+    /*  Signal "no_hazard" goes to module "hazard_ctrl".
+     *  A value of 0 indicates a RAW hazard unresolvable by forwarding (usually an "arith after load").
+     *  Deasserts when RD@MEM matches RS@EX. Asserts at ex_mem_valid_o.
+     */
+
+    enum logic { NO, YES } hazard_state, next_hazard_state;
+
+    always_ff @(posedge clk) begin
+        if (rst) hazard_state <= NO;
+        else hazard_state <= next_hazard_state;
+    end
+
+    always_comb begin : NEXT_STATE_LOGIC
+        next_hazard_state = hazard_state;
+        if      (~ex_mem_valid_o)
+            next_hazard_state = NO;
+        else if (instr_at_mem_reads_dmem & instr_at_ex_reads_rs1 & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs1))
+            next_hazard_state = YES;
+        else if (instr_at_mem_reads_dmem & instr_at_ex_reads_rs2 & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs2))
+            next_hazard_state = YES;
+    end : NEXT_STATE_LOGIC
+
+    assign no_hazard = (hazard_state == NO);
 
 endmodule
