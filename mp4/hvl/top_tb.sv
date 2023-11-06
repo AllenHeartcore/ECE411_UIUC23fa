@@ -97,18 +97,18 @@ module top_tb;
             repeat (5) @(posedge clk);
             $finish;
         end
+        if(dut.cpu.hazard_ctrl_unit.id_state == 0 && dut.cpu.hazard_ctrl_unit.if_state == 0 &&
+            dut.cpu.hazard_ctrl_unit.if_id_valid_o && dut.cpu.hazard_ctrl_unit.if_enable)
+            id_ass_2 : assert(dut.cpu.hazard_ctrl_unit.id_next_state == 1) 
+            else $error("Hazard Control Unit ID STATE TRANSITION ERROR");
+        
         if(dut.cpu.hazard_ctrl_unit.id_state == 1 && dut.cpu.hazard_ctrl_unit.ex_next_state == 0 &&
             ~dut.cpu.hazard_ctrl_unit.hazard_exist)
             id_ass_1 : assert(dut.cpu.hazard_ctrl_unit.id_next_state == 0) 
             else $error("Hazard Control Unit ID STATE TRANSITION ERROR");   
             
-        if(dut.cpu.hazard_ctrl_unit.id_state == 0 &&
-            dut.cpu.hazard_ctrl_unit.if_id_valid_o && dut.cpu.hazard_ctrl_unit.if_enable)
-            id_ass_2 : assert(dut.cpu.hazard_ctrl_unit.id_next_state == 1) 
-            else $error("Hazard Control Unit ID STATE TRANSITION ERROR");
-        
-        if(dut.cpu.hazard_ctrl_unit.ex_state == 0 && dut.cpu.hazard_ctrl_unit.id_enable && 
-        dut.cpu.hazard_ctrl_unit.id_ex_valid_o)
+        if(dut.cpu.hazard_ctrl_unit.ex_state == 0 && dut.cpu.hazard_ctrl_unit.id_state == 0 && 
+        dut.cpu.hazard_ctrl_unit.id_enable && dut.cpu.hazard_ctrl_unit.id_ex_valid_o)
             ex_ass_1 : assert(cpu.hazard_ctrl_unit.ex_next_state == 1)
             else $error("Hazard Control Unit EX STATE TRANSITION ERROR");
         
