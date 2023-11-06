@@ -30,7 +30,7 @@ import hazard_detection_pkg::*;
     logic [4:0] rd_in;
     logic [4:0] rs1_in;
     logic [4:0] rs2_in;
-    logic mem_is_branch, ex_is_branch;
+    logic ex_is_branch;
 
     // hazard_ctrl -> datapath
     hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl;

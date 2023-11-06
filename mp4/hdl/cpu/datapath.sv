@@ -21,7 +21,6 @@ import pipeline_pkg::*;
     // from hazard_ctrl
     input  hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl,
     output logic ex_is_branch,
-    output logic mem_is_branch,
 
     // from memory
     input  rv32i_word imem_rdata, dmem_rdata,
@@ -45,7 +44,6 @@ import pipeline_pkg::*;
 
     /* Branch Feedback (to hazard control) */
     assign ex_is_branch = ex_mem_reg_i.pcmux_sel != pcmux::pc_plus4; // jump or branch
-    assign mem_is_branch = mem_wb_reg_i.pcmux_sel != pcmux::pc_plus4; // jump or branch
 
     /* Datapath Registers */
 

@@ -102,13 +102,13 @@ module top_tb;
             id_ass_1 : assert(dut.cpu.hazard_ctrl_unit.id_next_state == 0) 
             else $error("Hazard Control Unit ID STATE TRANSITION ERROR");   
             
-        if(dut.cpu.hazard_ctrl_unit.id_state == 0 && dut.cpu.hazard_ctrl_unit.if_enable_o &&
-        dut.cpu.hazard_ctrl_unit.if_state == 0)
+        if(dut.cpu.hazard_ctrl_unit.id_state == 0 &&
+            dut.cpu.hazard_ctrl_unit.if_id_valid_o && dut.cpu.hazard_ctrl_unit.if_enable)
             id_ass_2 : assert(dut.cpu.hazard_ctrl_unit.id_next_state == 1) 
             else $error("Hazard Control Unit ID STATE TRANSITION ERROR");
         
-        if(dut.cpu.hazard_ctrl_unit.ex_state == 0 && dut.cpu.hazard_ctrl_unit.id_enable_o && 
-        dut.cpu.hazard_ctrl_unit.id_state == 0)
+        if(dut.cpu.hazard_ctrl_unit.ex_state == 0 && dut.cpu.hazard_ctrl_unit.id_enable && 
+        dut.cpu.hazard_ctrl_unit.id_ex_valid_o)
             ex_ass_1 : assert(cpu.hazard_ctrl_unit.ex_next_state == 1)
             else $error("Hazard Control Unit EX STATE TRANSITION ERROR");
         
@@ -116,11 +116,11 @@ module top_tb;
             ex_ass_2 : assert(cpu.hazard_ctrl_unit.ex_next_state == 0)
             else  $error("Hazard Control Unit EX STATE TRANSITION ERROR");
 
-        if(dut.cpu.hazard_ctrl_unit.mem_state == 0 && dut.cpu.hazard_ctrl_unit.ex_enable_o && 
-        dut.cpu.hazard_ctrl_unit.ex_state == 0)
+        if(dut.cpu.hazard_ctrl_unit.mem_state == 0 && dut.cpu.hazard_ctrl_unit.ex_mem_valid_o)
             mem_ass_1 : assert(dut.cpu.hazard_ctrl_unit.mem_next_state == 1) 
             else $error("Hazard Control Unit MEM STATE TRANSITION ERROR");
-        if(dut.cpu.hazard_ctrl_unit.mem_state == 1 && (dut.cpu.hazard_ctrl_unit.dmem_resp || dut.cpu.hazard_ctrl_unit.dmem_op == 0) )
+        if(dut.cpu.hazard_ctrl_unit.mem_state == 1 && 
+            (dut.cpu.hazard_ctrl_unit.dmem_resp || dut.cpu.hazard_ctrl_unit.dmem_op == 0) )
             mem_ass_2 : assert(dut.cpu.hazard_ctrl_unit.mem_next_state == 0) 
             else $error("Hazard Control Unit MEM STATE TRANSITION ERROR");
 
