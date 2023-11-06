@@ -141,11 +141,11 @@ import hazard_ctrl_pkg::*;
     assign if_next_state = if_state == RDY ? if_next_state_1 : if_next_state_2;
 
     assign id_next_state_1 = if_state == RDY && if_enable && if_id_valid_o ? BUSY : id_state;
-    assign id_next_state_2 = (ex_next_state == RDY) && (~hazard_exist) ? RDY : id_state;
+    assign id_next_state_2 = (ex_next_state == RDY) ? RDY : id_state;
     assign id_next_state = id_state == RDY ? id_next_state_1 : id_next_state_2;
 
     assign ex_next_state_1 = id_state == RDY && id_enable && id_ex_valid_o  ?  BUSY : ex_state;
-    assign ex_next_state_2 = (mem_next_state == RDY) ? RDY : ex_state;
+    assign ex_next_state_2 = (mem_next_state == RDY) && (~hazard_exist) ? RDY : ex_state;
     assign ex_next_state = ex_state == RDY ? ex_next_state_1 : ex_next_state_2;
 
     assign mem_next_state_1 = ex_mem_valid_o ? BUSY : mem_state; // haor2 : anding ex_enable will cause a bug because there is a one cycle lag for mem to transit after ex commit, then branch will be overwritten
