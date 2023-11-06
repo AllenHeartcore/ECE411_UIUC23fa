@@ -9,7 +9,7 @@ import pipeline_pkg::*;
     input   ctrlwb_reg_t ctrlwb_at_mem,
     input   ctrlwb_reg_t ctrlwb_at_wb,
 
-    output  logic hazard_exist,
+    output  logic no_hazard,
     output  fwdmux::fwdmux_sel_t fwdmux1_sel, fwdmux2_sel
 );
 
@@ -62,7 +62,7 @@ import pipeline_pkg::*;
             (ctrlmem_at_id.opcode == op_store) |
             (ctrlmem_at_id.opcode == op_br)
         );
-        hazard_exist = (
+        no_hazard = ~(
             this_instr_is_load & (
                 (next_instr_uses_rs1 & (ctrlwb_at_ex.rd == ctrlwb_at_id.rs1)) |
                 (next_instr_uses_rs2 & (ctrlwb_at_ex.rd == ctrlwb_at_id.rs2))

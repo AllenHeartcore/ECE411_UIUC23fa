@@ -220,3 +220,14 @@ typedef struct packed {
 } hazard_ctrl_t;
 
 endpackage : hazard_ctrl_pkg
+
+
+package hazard_detection_pkg;
+import rv32i_types::*;
+typedef struct packed {
+    logic [4:0] rs1;
+    logic [4:0] rs2;
+    logic [4:0] rd;
+} hazard_detection_t;
+
+endpackage : hazard_detection_pkg
