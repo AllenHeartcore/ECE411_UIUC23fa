@@ -14,113 +14,53 @@ _start:
 
     la  x1, boom
 
-    nop
-    nop
-    nop
-    nop
     lw  x2, 0(x1) # x2 <= 0x00002010
     lw  x3, 4(x1) # x3 <= 0x00002012
 
 loop1:
-	nop
-    nop
-    nop
-    nop
     addi x2, x2, 1
-    nop
-    nop
-    nop
-    nop
     bne x2, x3, loop1
 
-    nop
-    nop
-    nop
-    nop
     
     la x3, op1
     la x4, op2
 
-loop2:
-    nop
-    nop
-    nop
-    nop
-    addi x4, x4, 1
-    nop
-    nop
-    nop
-    nop
-    blt x4, x3, loop2
+# loop2:
+#     addi x4, x4, 1
+#     blt x4, x3, loop2
 
-    nop
-    nop
-    nop
-    nop
-    la x3, op3
-    la x4, op4
+#     la x3, op3
+#     la x4, op4
 
-loop3:
-    nop
-    nop
-    nop
-    nop
-    addi x4, x4, 1
-    nop
-    nop
-    nop
-    nop
-    blt x4, x3, loop3
+# loop3:
+#     addi x4, x4, 1
+#     blt x4, x3, loop3
 
-    nop
-    nop
-    nop
-    nop
-    la x3, op3
-    la x4, op4
+#     la x3, op3
+#     la x4, op4
 
-loop4:
-    nop
-    nop
-    nop
-    nop
-    addi x4, x4, 1
-    nop
-    nop
-    nop
-    nop
-    bltu x4, x3, loop4
+# loop4:
+#     addi x4, x4, 1
+#     bltu x4, x3, loop4
 
-    jal x5, jmp_pt
+#     jal x5, jmp_pt
 
-jmp_pt:
+# jmp_pt:
 
-    la  x2, jmp_pt2
-    nop
-    nop
-    nop
-    nop
+#     la  x2, jmp_pt2
 
-    jalr x6, x2, 0
+#     jalr x6, x2, 0
 
-    add x7, x6, x5
-    add x7, x7, x4
+#     add x7, x6, x5
+#     add x7, x7, x4
 
-jmp_pt2:
+# jmp_pt2:
 
 
     li  t0, 1
     la  t1, tohost
-    nop
-	nop
-	nop
-	nop
     sw  t0, 0(t1)
     sw  x0, 4(t1)
-    nop
-	nop
-	nop
-	nop
 halt:                 # Infinite loop to keep the processor
     beq x0, x0, halt  # from trying to execute the data below.
                       # Your own programs should also make use

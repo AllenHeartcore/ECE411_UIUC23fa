@@ -29,7 +29,7 @@ import pipeline_pkg::*;
     logic [4:0] rd_in;
     logic [4:0] rs1_in;
     logic [4:0] rs2_in;
-    logic mem_is_branch, ex_is_branch;
+    logic ex_is_branch;
 
     // forwarding_unit -> datapath
     fwdmux::fwdmux_sel_t fwdmux1_sel, fwdmux2_sel;
@@ -38,10 +38,14 @@ import pipeline_pkg::*;
     hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl;
 
     // forwarding_unit -> hazard_ctrl
-    logic hazard_exist;
+    logic no_hazard;
 
     // for monitor
     logic [3:0] dmem_rmask;
+
+    // hzard_ctrl -> hazard detection
+    logic id_commit, ex_commit, mem_commit, wb_commit;
+    logic path_hazard_detection;
 
     datapath  datapath (.*, .ctrlex(ctrlex_at_ex), .ctrlmem(ctrlmem_at_mem), .ctrlwb(ctrlwb_at_wb));
     ctrl_word ctrl_word(.*, .ctrlex(ctrlex_at_id), .ctrlmem(ctrlmem_at_id),  .ctrlwb(ctrlwb_at_id));
