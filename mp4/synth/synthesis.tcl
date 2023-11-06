@@ -38,6 +38,10 @@ suppress_message TIM-134
 suppress_message TIM-164
 #Design has unannotated black box outputs.
 suppress_message PWR-428
+#Skipping clock gating on design %s, since there are no registers.
+suppress_message PWR-806
+#Ungrouping hierarchy %s before Pass 1.
+suppress_message OPT-776
 #Verilog 'assign' or 'tran' statements are written out.
 suppress_message VO-4
 #Verilog writer has added %d nets to module %s using %s as prefix.
