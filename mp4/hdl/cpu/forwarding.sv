@@ -2,8 +2,8 @@ module forwarding_unit
 import rv32i_types::*;
 import pipeline_pkg::*;
 (
-    input   ctrlmem_reg_t ctrlmem_at_id,
     input   ctrlmem_reg_t ctrlmem_at_ex,
+    input   ctrlmem_reg_t ctrlmem_at_mem,
     input   ctrlwb_reg_t ctrlwb_at_id,
     input   ctrlwb_reg_t ctrlwb_at_ex,
     input   ctrlwb_reg_t ctrlwb_at_mem,
@@ -14,7 +14,7 @@ import pipeline_pkg::*;
 );
 
     logic fwd_from_mem_possible, fwd_from_wb_possible, fwd_to_1_possible, fwd_to_2_possible;
-    logic this_instr_is_load, next_instr_uses_rs1, next_instr_uses_rs2;
+    logic this_instr_is_load;
 
     always_comb begin
 
@@ -48,24 +48,11 @@ import pipeline_pkg::*;
         else
             fwdmux2_sel = fwdmux::no_fwd;
 
-        this_instr_is_load = (ctrlmem_at_ex.opcode == op_load) & (ctrlwb_at_ex.rd != 5'b0);
-        next_instr_uses_rs1 = (
-            (ctrlmem_at_id.opcode == op_imm) |
-            (ctrlmem_at_id.opcode == op_reg) |
-            (ctrlmem_at_id.opcode == op_load) |
-            (ctrlmem_at_id.opcode == op_store) |
-            (ctrlmem_at_id.opcode == op_jalr) |
-            (ctrlmem_at_id.opcode == op_br)
-        );
-        next_instr_uses_rs2 = (
-            (ctrlmem_at_id.opcode == op_reg) |
-            (ctrlmem_at_id.opcode == op_store) |
-            (ctrlmem_at_id.opcode == op_br)
-        );
+        this_instr_is_load = (ctrlmem_at_mem.opcode == op_load) & (ctrlwb_at_mem.rd != 5'b0);
         no_hazard = ~(
             this_instr_is_load & (
-                (next_instr_uses_rs1 & (ctrlwb_at_ex.rd == ctrlwb_at_id.rs1)) |
-                (next_instr_uses_rs2 & (ctrlwb_at_ex.rd == ctrlwb_at_id.rs2))
+                (fwd_to_1_possible & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs1)) |
+                (fwd_to_2_possible & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs2))
             )
         );
 
