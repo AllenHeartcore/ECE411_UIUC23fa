@@ -10,7 +10,7 @@ import pipeline_pkg::*;
     input   ctrlwb_reg_t ctrlwb_at_ex,
     input   ctrlwb_reg_t ctrlwb_at_mem,
     input   ctrlwb_reg_t ctrlwb_at_wb,
-    input   logic ex_mem_valid_o,
+    input   logic id_ex_valid_o, ex_mem_valid_o, mem_wb_valid_o,
 
     output  logic no_hazard,
     output  fwdmux::fwdmux_sel_t fwdmux1_sel, fwdmux2_sel
@@ -39,16 +39,16 @@ import pipeline_pkg::*;
             ctrlmem_at_ex.opcode == op_br
         );
 
-        if      (instr_at_mem_writes_rd & instr_at_ex_reads_rs1 & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs1))
+        if      (instr_at_mem_writes_rd & instr_at_ex_reads_rs1 & id_ex_valid_o & ex_mem_valid_o & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs1))
             fwdmux1_sel = fwdmux::fwd_mem;
-        else if (instr_at_wb_writes_rd  & instr_at_ex_reads_rs1 & (ctrlwb_at_wb.rd  == ctrlwb_at_ex.rs1))
+        else if (instr_at_wb_writes_rd  & instr_at_ex_reads_rs1 & id_ex_valid_o & mem_wb_valid_o & (ctrlwb_at_wb.rd  == ctrlwb_at_ex.rs1))
             fwdmux1_sel = fwdmux::fwd_wb;
         else
             fwdmux1_sel = fwdmux::no_fwd;
 
-        if      (instr_at_mem_writes_rd & instr_at_ex_reads_rs2 & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs2))
+        if      (instr_at_mem_writes_rd & instr_at_ex_reads_rs2 & id_ex_valid_o & ex_mem_valid_o & (ctrlwb_at_mem.rd == ctrlwb_at_ex.rs2))
             fwdmux2_sel = fwdmux::fwd_mem;
-        else if (instr_at_wb_writes_rd  & instr_at_ex_reads_rs2 & (ctrlwb_at_wb.rd  == ctrlwb_at_ex.rs2))
+        else if (instr_at_wb_writes_rd  & instr_at_ex_reads_rs2 & id_ex_valid_o & mem_wb_valid_o & (ctrlwb_at_wb.rd  == ctrlwb_at_ex.rs2))
             fwdmux2_sel = fwdmux::fwd_wb;
         else
             fwdmux2_sel = fwdmux::no_fwd;

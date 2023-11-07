@@ -10,7 +10,7 @@ import hazard_ctrl_pkg::*;
     input logic no_hazard,
     output logic imem_read,
     output hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl,
-    output logic ex_mem_valid_o
+    output logic id_ex_valid_o, ex_mem_valid_o, mem_wb_valid_o
 );
 
     // hazard detection unit
@@ -73,7 +73,7 @@ import hazard_ctrl_pkg::*;
 
     // PIPELINE REG VALID CONTROL UNIT
     logic if_id_valid_i, id_ex_valid_i, ex_mem_valid_i, mem_wb_valid_i;
-    logic if_id_valid_o, id_ex_valid_o, mem_wb_valid_o;
+    logic if_id_valid_o;
     logic load_if_id_valid, load_id_ex_valid, load_ex_mem_valid, load_mem_wb_valid;
 
     always_comb begin
