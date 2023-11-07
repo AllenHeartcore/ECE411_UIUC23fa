@@ -8,10 +8,9 @@ import hazard_ctrl_pkg::*;
     input logic imem_resp, dmem_resp,
     input logic ex_is_branch,
     input logic no_hazard,
-    output logic id_commit, ex_commit, mem_commit, wb_commit,
     output logic imem_read,
     output hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl,
-    output logic path_hazard_detection // CZY should delete this, this is just a patch for current hazard detection
+    output logic ex_mem_valid_o
 );
 
     // hazard detection unit
@@ -37,9 +36,8 @@ import hazard_ctrl_pkg::*;
     
 
     // commit signals : if asserted, the next posedge pipeline register will be loaded
-    logic if_commit;
-    
-    // logic id_commit, ex_commit, mem_commit, wb_commit;
+    logic if_commit, id_commit, ex_commit, mem_commit, wb_commit;
+
     assign if_commit = (if_state == BUSY && if_next_state == RDY);
     assign id_commit = (id_state == BUSY && id_next_state == RDY);
     assign ex_commit = (ex_state == BUSY && ex_next_state == RDY);
@@ -73,11 +71,9 @@ import hazard_ctrl_pkg::*;
         end
     end
 
-    assign path_hazard_detection = ~(ex_is_branch && ex_commit);
-
     // PIPELINE REG VALID CONTROL UNIT
     logic if_id_valid_i, id_ex_valid_i, ex_mem_valid_i, mem_wb_valid_i;
-    logic if_id_valid_o, id_ex_valid_o, ex_mem_valid_o, mem_wb_valid_o;
+    logic if_id_valid_o, id_ex_valid_o, mem_wb_valid_o;
     logic load_if_id_valid, load_id_ex_valid, load_ex_mem_valid, load_mem_wb_valid;
 
     always_comb begin
@@ -141,11 +137,11 @@ import hazard_ctrl_pkg::*;
     assign if_next_state = if_state == RDY ? if_next_state_1 : if_next_state_2;
 
     assign id_next_state_1 = if_state == RDY && if_enable && if_id_valid_o ? BUSY : id_state;
-    assign id_next_state_2 = (ex_next_state == RDY) && (~hazard_exist) ? RDY : id_state;
+    assign id_next_state_2 = (ex_next_state == RDY) ? RDY : id_state;
     assign id_next_state = id_state == RDY ? id_next_state_1 : id_next_state_2;
 
     assign ex_next_state_1 = id_state == RDY && id_enable && id_ex_valid_o  ?  BUSY : ex_state;
-    assign ex_next_state_2 = (mem_next_state == RDY) ? RDY : ex_state;
+    assign ex_next_state_2 = (mem_next_state == RDY) && (~hazard_exist) ? RDY : ex_state;
     assign ex_next_state = ex_state == RDY ? ex_next_state_1 : ex_next_state_2;
 
     assign mem_next_state_1 = ex_mem_valid_o ? BUSY : mem_state; // haor2 : anding ex_enable will cause a bug because there is a one cycle lag for mem to transit after ex commit, then branch will be overwritten

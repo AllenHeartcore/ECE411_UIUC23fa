@@ -14,7 +14,7 @@ import pipeline_pkg::*;
 
     // ctrl_word -> datapath
     ctrlex_reg_t ctrlex_at_id, ctrlex_at_ex;
-    ctrlmem_reg_t ctrlmem_at_id, ctrlmem_at_ex, ctrlmem_at_mem;
+    ctrlmem_reg_t ctrlmem_at_id, ctrlmem_at_ex, ctrlmem_at_mem, ctrlmem_at_wb;
     ctrlwb_reg_t ctrlwb_at_id, ctrlwb_at_ex, ctrlwb_at_mem, ctrlwb_at_wb;
     // haor2 : we now move dmem read write control logic into  hazard control.
     // original bug : when mem unit is idle (ready), there will be extra dmem operations issued.
@@ -40,12 +40,11 @@ import pipeline_pkg::*;
     // forwarding_unit -> hazard_ctrl
     logic no_hazard;
 
+    // hazard_ctrl -> forwarding_unit
+    logic ex_mem_valid_o;
+
     // for monitor
     logic [3:0] dmem_rmask;
-
-    // hzard_ctrl -> hazard detection
-    logic id_commit, ex_commit, mem_commit, wb_commit;
-    logic path_hazard_detection;
 
     datapath  datapath (.*, .ctrlex(ctrlex_at_ex), .ctrlmem(ctrlmem_at_mem), .ctrlwb(ctrlwb_at_wb));
     ctrl_word ctrl_word(.*, .ctrlex(ctrlex_at_id), .ctrlmem(ctrlmem_at_id),  .ctrlwb(ctrlwb_at_id));
@@ -55,6 +54,7 @@ import pipeline_pkg::*;
     ctrlex_reg  ctrlex_id_ex   (.*, .load(hazard_ctrl.load_id_ex),  .in(ctrlex_at_id),  .out(ctrlex_at_ex));
     ctrlmem_reg ctrlmem_id_ex  (.*, .load(hazard_ctrl.load_id_ex),  .in(ctrlmem_at_id), .out(ctrlmem_at_ex));
     ctrlmem_reg ctrlmem_ex_mem (.*, .load(hazard_ctrl.load_ex_mem), .in(ctrlmem_at_ex), .out(ctrlmem_at_mem));
+    ctrlmem_reg ctrlmem_mem_wb (.*, .load(hazard_ctrl.load_mem_wb), .in(ctrlmem_at_mem), .out(ctrlmem_at_wb));
     ctrlwb_reg  ctrlwb_id_ex   (.*, .load(hazard_ctrl.load_id_ex),  .in(ctrlwb_at_id),  .out(ctrlwb_at_ex));
     ctrlwb_reg  ctrlwb_ex_mem  (.*, .load(hazard_ctrl.load_ex_mem), .in(ctrlwb_at_ex),  .out(ctrlwb_at_mem));
     ctrlwb_reg  ctrlwb_mem_wb  (.*, .load(hazard_ctrl.load_mem_wb), .in(ctrlwb_at_mem), .out(ctrlwb_at_wb));
