@@ -31,6 +31,10 @@ _start:
     # ADDI
     addi x1, x0, 0x1bc
     addi x2, x0, 0x3ad
+    addi x3, x2, 0x1
+    addi x4, x2, 0x2
+    addi x5, x3, 0x3
+    addi x3, x5, 0x4
     # SLTI
     slti x3, x1, 0x00000002
     slti x4, x2, 0x00000002

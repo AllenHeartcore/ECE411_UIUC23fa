@@ -11,7 +11,9 @@ _start:
     #   Load and store instructions w/ different load size (lw, sh, lh).
     #   Possibly LUI AUIPC instruction (la).
     la  x1, boom
-    sw  x0, 4(x1)
+    lw  x2, 0(x1)
+    addi x3, x2, 0x1
+    sw  x6, 4(x1)
     la  x1, boom
     lh  x2, 0(x1)  # X2 <= 0x00002040
     lw  x2, threshold
@@ -21,7 +23,7 @@ _start:
     li  t0, 1
     la  t1, tohost
     sw  t0, 0(t1)
-    sw  x0, 4(t1)
+    sw  x6, 4(t1)
 
 halt:                 # Infinite loop to keep the processor
     beq x0, x0, halt  # from trying to execute the data below.
