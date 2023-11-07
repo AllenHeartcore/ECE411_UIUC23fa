@@ -1,5 +1,5 @@
 # AG Report MP4CP2 2023-11-06T23:59:59-06:00 
-Report generated at 2023-11-07T00:38:40-06:00, using commit ``f82756c26dddd2b5c43524297e3dfc979c25f8cf``
+Report generated at 2023-11-07T01:02:25-06:00, using commit ``f82756c26dddd2b5c43524297e3dfc979c25f8cf``
 
 Autograder Run ID: b78bfa32-794f-4a5d-b39a-d9dcb915ea9a
 
@@ -62,9 +62,9 @@ CoreMark: 0 out of 3
 
  ``` 
  mkdir -p sim
-cd sim && vcs /tmp/dut/pkg/types.sv /tmp/dut/hdl/cache/ff_array.sv /tmp/dut/hdl/cache/cache_datapath.sv /tmp/dut/hdl/cache/cache_control.sv /tmp/dut/hdl/cache/cache.sv /tmp/dut/hdl/cache/arbiter.sv /tmp/dut/hdl/cpu/hazard_ctrl.sv /tmp/dut/hdl/cpu/utils_reg.sv /tmp/dut/hdl/cpu/utils_ex.sv /tmp/dut/hdl/cpu/forwarding.sv /tmp/dut/hdl/cpu/ctrl_word.sv /tmp/dut/hdl/cpu/datapath.sv /tmp/dut/hdl/cpu/pipeline_reg.sv /tmp/dut/hdl/cacheline_adaptor.sv /tmp/dut/hdl/bus_adapter.sv /tmp/dut/hdl/mp4.sv /tmp/dut/hvl/top_tb.sv /tmp/dut/hvl/rvfimon.v /tmp/dut/hvl/monitor.sv /tmp/dut/hvl/mon_itf.sv /tmp/dut/hvl/burst_memory.sv /tmp/dut/hvl/bmem_itf.sv /tmp/dut/sram/output/mp3_data_array/mp3_data_array.v /tmp/dut/sram/output/mp3_tag_array/mp3_tag_array.v -full64 -lca -sverilog +lint=all,noNS -timescale=1ns/1ns -debug_acc+all -kdb -fsdb -suppress=LCA_FEATURES_ENABLED -licqueue -msg_config=../vcs_warn.config -l compile.log -top top_tb -o top_tb
+cd sim && vcs /tmp/dut/pkg/types.sv /tmp/dut/hdl/cache/ff_array.sv /tmp/dut/hdl/cache/cache_datapath.sv /tmp/dut/hdl/cache/cache_control.sv /tmp/dut/hdl/cache/cache.sv /tmp/dut/hdl/cache/arbiter.sv /tmp/dut/hdl/cpu/hazard_ctrl.sv /tmp/dut/hdl/cpu/utils_reg.sv /tmp/dut/hdl/cpu/utils_ex.sv /tmp/dut/hdl/cpu/forwarding.sv /tmp/dut/hdl/cpu/ctrl_word.sv /tmp/dut/hdl/cpu/datapath.sv /tmp/dut/hdl/cpu/pipeline_reg.sv /tmp/dut/hdl/cacheline_adaptor.sv /tmp/dut/hdl/bus_adapter.sv /tmp/dut/hdl/mp4.sv /tmp/dut/hvl/top_tb.sv /tmp/dut/hvl/rvfimon.v /tmp/dut/hvl/monitor.sv /tmp/dut/hvl/mon_itf.sv /tmp/dut/hvl/burst_memory.sv /tmp/dut/hvl/bmem_itf.sv /tmp/dut/sram/output/mp3_tag_array/mp3_tag_array.v /tmp/dut/sram/output/mp3_data_array/mp3_data_array.v -full64 -lca -sverilog +lint=all,noNS -timescale=1ns/1ns -debug_acc+all -kdb -fsdb -suppress=LCA_FEATURES_ENABLED -licqueue -msg_config=../vcs_warn.config -l compile.log -top top_tb -o top_tb
                          Chronologic VCS (TM)
-      Version R-2020.12-SP1-1_Full64 -- Tue Nov  7 00:41:09 2023
+      Version R-2020.12-SP1-1_Full64 -- Tue Nov  7 01:05:02 2023
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -94,8 +94,8 @@ Parsing design file '/tmp/dut/hvl/monitor.sv'
 Parsing design file '/tmp/dut/hvl/mon_itf.sv'
 Parsing design file '/tmp/dut/hvl/burst_memory.sv'
 Parsing design file '/tmp/dut/hvl/bmem_itf.sv'
-Parsing design file '/tmp/dut/sram/output/mp3_data_array/mp3_data_array.v'
 Parsing design file '/tmp/dut/sram/output/mp3_tag_array/mp3_tag_array.v'
+Parsing design file '/tmp/dut/sram/output/mp3_data_array/mp3_data_array.v'
 Top Level Modules:
        top_tb
 TimeScale is 1 ps / 1 ps
@@ -175,14 +175,14 @@ recompiling module mp3_data_array
 All of 68 modules done
 make[1]: Entering directory '/tmp/dut/sim/csrc'
 make[1]: Leaving directory '/tmp/dut/sim/csrc'
-/software/Synopsys-2021_x86_64/vcs-mx/O-2018.09-SP2-3/bin/vcs: line 31361: 11402 Segmentation fault      (core dumped) ${TOOL_HOME}/bin/cfs_ident_exec -f ${XML_INPUT_EXE} -o "${fsearchDir}/idents_tapi.xml" -o_SrcFile "${dirSrcFiles}/src_files_c" ${all_dyn_libs} > tapi_xml_writer.log
+/software/Synopsys-2021_x86_64/vcs-mx/O-2018.09-SP2-3/bin/vcs: line 31361: 24079 Segmentation fault      (core dumped) ${TOOL_HOME}/bin/cfs_ident_exec -f ${XML_INPUT_EXE} -o "${fsearchDir}/idents_tapi.xml" -o_SrcFile "${dirSrcFiles}/src_files_c" ${all_dyn_libs} > tapi_xml_writer.log
 make[1]: Entering directory '/tmp/dut/sim/csrc'
 rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
 if [ -x ../top_tb ]; then chmod a-x ../top_tb; fi
-g++  -o ../top_tb      -rdynamic  -Wl,-rpath='$ORIGIN'/top_tb.daidir -Wl,-rpath=./top_tb.daidir -Wl,-rpath=/software/Synopsys-2021_x86_64/vcs/R-2020.12-SP1-1/linux64/lib -L/software/Synopsys-2021_x86_64/vcs/R-2020.12-SP1-1/linux64/lib  -Wl,-rpath-link=./   objs/amcQw_d.o   _11246_archive_1.so  SIM_l.o       rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative /software/Synopsys-2021_x86_64/vcs/R-2020.12-SP1-1/linux64/lib/vcs_tls.o   -Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive        _vcs_pli_stub_.o   /software/Synopsys-2021_x86_64/vcs/R-2020.12-SP1-1/linux64/lib/vcs_save_restore_new.o /software/Synopsys-2021_x86_64/verdi/R-2020.12-SP1-1/share/PLI/VCS/LINUX64/pli.a -ldl  -lc -lm -lpthread -ldl 
+g++  -o ../top_tb      -rdynamic  -Wl,-rpath='$ORIGIN'/top_tb.daidir -Wl,-rpath=./top_tb.daidir -Wl,-rpath=/software/Synopsys-2021_x86_64/vcs/R-2020.12-SP1-1/linux64/lib -L/software/Synopsys-2021_x86_64/vcs/R-2020.12-SP1-1/linux64/lib  -Wl,-rpath-link=./   objs/amcQw_d.o   _23923_archive_1.so  SIM_l.o       rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative /software/Synopsys-2021_x86_64/vcs/R-2020.12-SP1-1/linux64/lib/vcs_tls.o   -Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive        _vcs_pli_stub_.o   /software/Synopsys-2021_x86_64/vcs/R-2020.12-SP1-1/linux64/lib/vcs_save_restore_new.o /software/Synopsys-2021_x86_64/verdi/R-2020.12-SP1-1/share/PLI/VCS/LINUX64/pli.a -ldl  -lc -lm -lpthread -ldl 
 ../top_tb up to date
 make[1]: Leaving directory '/tmp/dut/sim/csrc'
-CPU time: 2.697 seconds to compile + .521 seconds to elab + .333 seconds to link
+CPU time: 2.716 seconds to compile + .520 seconds to elab + .323 seconds to link
 Verdi KDB elaboration done and the database successfully generated: 0 error(s), 0 warning(s)
  
  ``` 
@@ -289,13 +289,13 @@ dw_foundation.sldb
 set target_library [getenv STD_CELL_LIB]
 /grader/freepdk-45nm/stdcells.db
 set sram_library [getenv SRAM_LIB]
-/tmp/dut/synth/../sram/output/mp3_data_array/mp3_data_array_TT_1p0V_25C_lib.db /tmp/dut/synth/../sram/output/mp3_tag_array/mp3_tag_array_TT_1p0V_25C_lib.db
+/tmp/dut/synth/../sram/output/mp3_tag_array/mp3_tag_array_TT_1p0V_25C_lib.db /tmp/dut/synth/../sram/output/mp3_data_array/mp3_data_array_TT_1p0V_25C_lib.db
 if {$sram_library eq ""} {
    set link_library [list "*" $target_library $synthetic_library]
 } else {
    set link_library [list "*" $target_library $synthetic_library $sram_library]
 }
-* /grader/freepdk-45nm/stdcells.db dw_foundation.sldb {/tmp/dut/synth/../sram/output/mp3_data_array/mp3_data_array_TT_1p0V_25C_lib.db /tmp/dut/synth/../sram/output/mp3_tag_array/mp3_tag_array_TT_1p0V_25C_lib.db}
+* /grader/freepdk-45nm/stdcells.db dw_foundation.sldb {/tmp/dut/synth/../sram/output/mp3_tag_array/mp3_tag_array_TT_1p0V_25C_lib.db /tmp/dut/synth/../sram/output/mp3_data_array/mp3_data_array_TT_1p0V_25C_lib.db}
 set design_clock_pin clk
 clk
 set design_reset_pin rst
@@ -358,13 +358,13 @@ Running PRESTO HDLC
 Compiling source file /tmp/dut/synth/../hdl/mp4.sv
 Presto compilation completed successfully.
 elaborate $design_toplevel
-Loading db file '/tmp/dut/sram/output/mp3_data_array/mp3_data_array_TT_1p0V_25C_lib.db'
 Loading db file '/tmp/dut/sram/output/mp3_tag_array/mp3_tag_array_TT_1p0V_25C_lib.db'
+Loading db file '/tmp/dut/sram/output/mp3_data_array/mp3_data_array_TT_1p0V_25C_lib.db'
 Loading db file '/software/Synopsys-2021_x86_64/syn/R-2020.09-SP4/libraries/syn/gtech.db'
 Loading db file '/software/Synopsys-2021_x86_64/syn/R-2020.09-SP4/libraries/syn/standard.sldb'
   Loading link library 'NangateOpenCellLibrary'
-  Loading link library 'mp3_data_array_TT_1p0V_25C_lib'
   Loading link library 'mp3_tag_array_TT_1p0V_25C_lib'
+  Loading link library 'mp3_data_array_TT_1p0V_25C_lib'
   Loading link library 'gtech'
 Running PRESTO HDLC
 Warning:  /tmp/dut/synth/../hdl/mp4.sv:139: A symbol named 'register' is already defined differently in the receiving scope.   (ELAB-106)
@@ -817,7 +817,7 @@ check_design
 ****************************************
 check_design summary:
 Version:     R-2020.09-SP4
-Date:        Tue Nov  7 00:41:19 2023
+Date:        Tue Nov  7 01:05:12 2023
 ****************************************
 
                    Name                                            Total
@@ -858,10 +858,10 @@ link
                               /grader/freepdk-45nm/stdcells.db
   dw_foundation.sldb (library)
                               /software/Synopsys-2021_x86_64/syn/R-2020.09-SP4/libraries/syn/dw_foundation.sldb
-  mp3_data_array_TT_1p0V_25C_lib (library)
-                              /tmp/dut/sram/output/mp3_data_array/mp3_data_array_TT_1p0V_25C_lib.db
   mp3_tag_array_TT_1p0V_25C_lib (library)
                               /tmp/dut/sram/output/mp3_tag_array/mp3_tag_array_TT_1p0V_25C_lib.db
+  mp3_data_array_TT_1p0V_25C_lib (library)
+                              /tmp/dut/sram/output/mp3_data_array/mp3_data_array_TT_1p0V_25C_lib.db
 
 1
 compile_ultra -gate_clock -retime
@@ -981,13 +981,13 @@ Information: Ungrouping hierarchy imem_cache/datapath 'cache_datapath_1' #insts 
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
   --------- --------- --------- --------- --------- ------------------------- --------- -----------
-    0:01:19  117775.2      0.00       0.0    7434.1                           1305015.5000      0.00  
-    0:01:20  117763.3      0.00       0.0    7434.1                           1304659.2500      0.00  
+    0:01:23  117775.2      0.00       0.0    7434.1                           1305015.5000      0.00  
+    0:01:24  117763.3      0.00       0.0    7434.1                           1304659.2500      0.00  
 
   Beginning Constant Register Removal
   -----------------------------------
-    0:01:21  117855.8      0.00       0.0    7434.1                           1309699.5000      0.00  
-    0:01:22  117855.8      0.00       0.0    7434.1                           1309699.5000      0.00  
+    0:01:25  117855.8      0.00       0.0    7434.1                           1309699.5000      0.00  
+    0:01:26  117855.8      0.00       0.0    7434.1                           1309699.5000      0.00  
 
   Beginning Global Optimizations
   ------------------------------
@@ -1029,37 +1029,37 @@ Information: Ungrouping hierarchy imem_cache/datapath 'cache_datapath_1' #insts 
 
   Beginning Delay Optimization
   ----------------------------
-    0:01:29  102699.4      0.00       0.0    7096.8                           510968.9688      0.00  
-    0:01:29  102699.4      0.00       0.0    7096.8                           510968.9688      0.00  
-    0:01:29  102699.4      0.00       0.0    7096.8                           510968.9688      0.00  
-    0:01:30  102682.7      0.00       0.0    7155.2                           510853.5000      0.00  
-    0:01:32  102681.3      0.00       0.0    7155.2                           510824.7500      0.00  
-    0:01:33  102680.3      0.00       0.0    7155.2                           510802.0312      0.00  
+    0:01:33  102699.4      0.00       0.0    7096.8                           510968.9688      0.00  
+    0:01:33  102699.4      0.00       0.0    7096.8                           510968.9688      0.00  
+    0:01:33  102699.4      0.00       0.0    7096.8                           510968.9688      0.00  
+    0:01:34  102682.7      0.00       0.0    7155.2                           510853.5000      0.00  
+    0:01:36  102681.3      0.00       0.0    7155.2                           510824.7500      0.00  
+    0:01:37  102680.3      0.00       0.0    7155.2                           510802.0312      0.00  
 
   Beginning WLM Backend Optimization
   --------------------------------------
-    0:01:39  102230.5      0.00       0.0    7144.5                           488491.1875      0.00  
-    0:01:39  102230.5      0.00       0.0    7144.5                           488491.1875      0.00  
-    0:01:39  102230.5      0.00       0.0    7144.5                           488491.1875      0.00  
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:43  102230.5      0.00       0.0    7144.5                           488491.1875      0.00  
+    0:01:43  102230.5      0.00       0.0    7144.5                           488491.1875      0.00  
+    0:01:43  102230.5      0.00       0.0    7144.5                           488491.1875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
 
 
   Beginning Design Rule Fixing  (max_transition)  (max_capacitance)
@@ -1069,13 +1069,13 @@ Information: Ungrouping hierarchy imem_cache/datapath 'cache_datapath_1' #insts 
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
   --------- --------- --------- --------- --------- ------------------------- --------- -----------
-    0:01:40  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
+    0:01:44  102147.5      0.00       0.0    7143.0                           480878.6875      0.00  
   Global Optimization (Phase 31)
   Global Optimization (Phase 32)
   Global Optimization (Phase 33)
-    0:01:42  102621.7      0.00       0.0    5645.5 dmem_cache/datapath/data_q[3][77] 493017.0938      0.00  
-    0:01:43  103038.3      0.00       0.0    4725.7                           503731.1250      0.00  
-    0:01:43  103038.3      0.00       0.0    4725.7                           503731.1250      0.00  
+    0:01:46  102621.7      0.00       0.0    5645.5 dmem_cache/datapath/data_q[3][77] 493017.0938      0.00  
+    0:01:47  103038.3      0.00       0.0    4725.7                           503731.1250      0.00  
+    0:01:47  103038.3      0.00       0.0    4725.7                           503731.1250      0.00  
 
 
   Beginning Leakage Power Optimization  (max_leakage_power 0)
@@ -1085,7 +1085,7 @@ Information: Ungrouping hierarchy imem_cache/datapath 'cache_datapath_1' #insts 
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
   --------- --------- --------- --------- --------- ------------------------- --------- -----------
-    0:01:43  103038.3      0.00       0.0    4725.7                           503731.1250      0.00  
+    0:01:47  103038.3      0.00       0.0    4725.7                           503731.1250      0.00  
   Global Optimization (Phase 34)
   Global Optimization (Phase 35)
   Global Optimization (Phase 36)
@@ -1100,49 +1100,49 @@ Information: Ungrouping hierarchy imem_cache/datapath 'cache_datapath_1' #insts 
   Global Optimization (Phase 45)
   Global Optimization (Phase 46)
   Global Optimization (Phase 47)
-    0:01:46  102745.4      0.00       0.0    4342.5                           494903.0312      0.00  
-    0:01:46  102745.4      0.00       0.0    4342.5                           494903.0312      0.00  
-    0:01:46  102745.4      0.00       0.0    4342.5                           494903.0312      0.00  
-    0:01:47  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
-    0:01:47  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
-    0:01:47  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
-    0:01:47  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
-    0:01:47  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
-    0:01:47  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
-    0:01:47  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
-    0:01:47  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
-    0:01:47  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
-    0:01:47  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
-    0:01:47  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
-    0:01:47  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
-    0:01:47  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
-    0:01:47  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
-    0:01:47  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
-    0:01:47  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
-    0:01:47  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
-    0:01:47  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
-    0:01:47  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
+    0:01:50  102745.4      0.00       0.0    4342.5                           494903.0312      0.00  
+    0:01:50  102745.4      0.00       0.0    4342.5                           494903.0312      0.00  
+    0:01:50  102745.4      0.00       0.0    4342.5                           494903.0312      0.00  
+    0:01:51  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
+    0:01:51  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
+    0:01:51  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
+    0:01:51  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
+    0:01:51  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
+    0:01:51  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
+    0:01:51  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
+    0:01:51  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
+    0:01:51  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
+    0:01:51  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
+    0:01:51  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
+    0:01:51  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
+    0:01:51  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
+    0:01:51  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
+    0:01:51  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
+    0:01:51  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
+    0:01:51  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
+    0:01:51  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
+    0:01:51  102686.9      0.00       0.0    4347.2                           491819.7188      0.00  
 
                                   TOTAL                                                            
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
   --------- --------- --------- --------- --------- ------------------------- --------- -----------
-    0:01:48  102575.2      0.00       0.0    4347.2                           490163.8750      0.00  
-    0:01:50  114879.6      0.00       0.0    4367.5                           957745.5625      0.00  
-    0:01:50  114879.6      0.00       0.0    4367.5                           957745.5625      0.00  
-    0:01:50  114879.6      0.00       0.0    4367.5                           957745.5625      0.00  
-    0:01:54  102468.8      0.00       0.0    4370.3                           487372.6250      0.00  
-    0:01:56  102667.2      0.00       0.0    3942.2 dmem_cache/datapath/data_q[1][171] 491636.9375      0.00  
-    0:01:57  103010.1      0.00       0.0    3293.3                           501678.0000      0.00  
-    0:01:57  103010.1      0.00       0.0    3293.3                           501678.0000      0.00  
-    0:01:57  103010.1      0.00       0.0    3293.3                           501678.0000      0.00  
-    0:01:57  103010.1      0.00       0.0    3293.3                           501678.0000      0.00  
-    0:01:57  103010.1      0.00       0.0    3293.3                           501678.0000      0.00  
-    0:01:57  103010.1      0.00       0.0    3293.3                           501678.0000      0.00  
-    0:01:59  102973.4      0.00       0.0    3296.6                           500106.7500      0.00  
+    0:01:52  102575.2      0.00       0.0    4347.2                           490163.8750      0.00  
+    0:01:54  114879.6      0.00       0.0    4367.5                           957745.5625      0.00  
+    0:01:54  114879.6      0.00       0.0    4367.5                           957745.5625      0.00  
+    0:01:54  114879.6      0.00       0.0    4367.5                           957745.5625      0.00  
+    0:01:58  102468.8      0.00       0.0    4370.3                           487372.6250      0.00  
+    0:02:01  102667.2      0.00       0.0    3942.2 dmem_cache/datapath/data_q[1][171] 491636.9375      0.00  
+    0:02:01  103010.1      0.00       0.0    3293.3                           501678.0000      0.00  
+    0:02:01  103010.1      0.00       0.0    3293.3                           501678.0000      0.00  
+    0:02:01  103010.1      0.00       0.0    3293.3                           501678.0000      0.00  
+    0:02:01  103010.1      0.00       0.0    3293.3                           501678.0000      0.00  
+    0:02:01  103010.1      0.00       0.0    3293.3                           501678.0000      0.00  
+    0:02:01  103010.1      0.00       0.0    3293.3                           501678.0000      0.00  
+    0:02:03  102973.4      0.00       0.0    3296.6                           500106.7500      0.00  
 Loading db file '/grader/freepdk-45nm/stdcells.db'
-Loading db file '/tmp/dut/sram/output/mp3_data_array/mp3_data_array_TT_1p0V_25C_lib.db'
 Loading db file '/tmp/dut/sram/output/mp3_tag_array/mp3_tag_array_TT_1p0V_25C_lib.db'
+Loading db file '/tmp/dut/sram/output/mp3_data_array/mp3_data_array_TT_1p0V_25C_lib.db'
 
 
 Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
@@ -1169,8 +1169,8 @@ exit
 
 Memory usage for this session 197 Mbytes.
 Memory usage for this session including child processes 221 Mbytes.
-CPU usage for this session 128 seconds ( 0.04 hours ).
-Elapsed time for this session 132 seconds ( 0.04 hours ).
+CPU usage for this session 129 seconds ( 0.04 hours ).
+Elapsed time for this session 138 seconds ( 0.04 hours ).
 
 Thank you...
 rm -f  *.log
@@ -1189,7 +1189,7 @@ rm -rf work
  cd sim && ./top_tb -l simulation.log
 Chronologic VCS simulator copyright 1991-2020
 Contains Synopsys proprietary information.
-Compiler version R-2020.12-SP1-1_Full64; Runtime version R-2020.12-SP1-1_Full64;  Nov  7 00:43 2023
+Compiler version R-2020.12-SP1-1_Full64; Runtime version R-2020.12-SP1-1_Full64;  Nov  7 01:07 2023
 -------- RVFI Monitor error 131 in reordered channel 0: top_tb.monitor.monitor.ro0_handle_error_r at time 360000 --------
 Error message: mismatch with shadow rs1
 rvfi_valid = 1
@@ -1216,7 +1216,7 @@ $finish at simulation time               440000
            V C S   S i m u l a t i o n   R e p o r t 
 Time: 440000 ps
 CPU Time:      0.430 seconds;       Data structure size:   0.2Mb
-Tue Nov  7 00:43:27 2023
+Tue Nov  7 01:07:25 2023
 4c4
 < core   0: 3 0x4000000c (0x800a0393) x7  0x1ffff800
 ---
