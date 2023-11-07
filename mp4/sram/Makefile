@@ -22,8 +22,8 @@ output/%.py: config/%.py
 	sed -i -E 's/DELAY = [0-9]/DELAY = 0/g' ./output/$(basename $(notdir $@))/$(basename $(notdir $@)).v
 	sed -i -E 's/VERBOSE = [0-9]/VERBOSE = 0/g' ./output/$(basename $(notdir $@))/$(basename $(notdir $@)).v
 	sed -i -E 's/#\(T_HOLD\).*//g' ./output/$(basename $(notdir $@))/$(basename $(notdir $@)).v
-	# sed -i -E 's/!csb0_reg && web0_reg/!csb0_reg/g' ./output/$(basename $(notdir $@))/$(basename $(notdir $@)).v
-	# sed -i -E 's/!csb1_reg && web1_reg/!csb1_reg/g' ./output/$(basename $(notdir $@))/$(basename $(notdir $@)).v
+	sed -i -E 's/!csb0_reg && web0_reg/!csb0_reg/g' ./output/$(basename $(notdir $@))/$(basename $(notdir $@)).v
+	sed -i -E 's/!csb1_reg && web1_reg/!csb1_reg/g' ./output/$(basename $(notdir $@))/$(basename $(notdir $@)).v
 	sed -i -E 's/#\(DELAY\)//g' ./output/$(basename $(notdir $@))/$(basename $(notdir $@)).v
 	cd ./output/$(basename $(notdir $@)) ;\
 	lc_shell -x 'read_lib $(basename $(notdir $@))_TT_1p0V_25C.lib; write_lib $(basename $(notdir $@))_TT_1p0V_25C_lib; exit' ;\
