@@ -1,5 +1,6 @@
 module mp4
 import rv32i_types::*;
+import pipeline_pkg::*;
 (
     input   logic           clk,
     input   logic           rst,
@@ -25,6 +26,46 @@ import rv32i_types::*;
     output  logic   [63:0]  bmem_wdata,
     input   logic           bmem_resp
 );
+
+
+
+    /* CPU signals */
+
+    // ctrl_word -> datapath
+    ctrlex_reg_t ctrlex_at_id, ctrlex_at_ex;
+    ctrlmem_reg_t ctrlmem_at_id, ctrlmem_at_ex, ctrlmem_at_mem, ctrlmem_at_wb;
+    ctrlwb_reg_t ctrlwb_at_id, ctrlwb_at_ex, ctrlwb_at_mem, ctrlwb_at_wb;
+    logic dmem_read_i, dmem_write_i;
+    assign dmem_read_i = ctrlmem_at_mem.dmem_read && (~rst);
+    assign dmem_write_i = ctrlmem_at_mem.dmem_write && (~rst);
+
+    // datapath -> ctrl_word
+    rv32i_opcode opcode;
+    logic [2:0] funct3;
+    logic [6:0] funct7;
+    logic [4:0] rd_in;
+    logic [4:0] rs1_in;
+    logic [4:0] rs2_in;
+    logic ex_is_branch;
+
+    // forwarding_unit -> datapath
+    fwdmux::fwdmux_sel_t fwdmux1_sel, fwdmux2_sel;
+
+    // hazard_ctrl -> datapath
+    hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl;
+
+    // forwarding_unit -> hazard_ctrl
+    logic no_hazard;
+
+    // hazard_ctrl -> forwarding_unit
+    logic ex_mem_valid_o;
+
+    // for monitor
+    logic [3:0] dmem_rmask;
+
+
+
+    /* RVFI Monitor */
 
             logic           monitor_valid;
             logic   [63:0]  monitor_order;
@@ -55,40 +96,57 @@ import rv32i_types::*;
     logic instr_at_wb_uses_rs1, instr_at_wb_uses_rs2;
 
     assign instr_at_wb_uses_rs1 = (
-        cpu.ctrlmem_at_wb.opcode == op_imm |
-        cpu.ctrlmem_at_wb.opcode == op_reg |
-        cpu.ctrlmem_at_wb.opcode == op_load |
-        cpu.ctrlmem_at_wb.opcode == op_store |
-        cpu.ctrlmem_at_wb.opcode == op_jalr |
-        cpu.ctrlmem_at_wb.opcode == op_br
+        ctrlmem_at_wb.opcode == op_imm |
+        ctrlmem_at_wb.opcode == op_reg |
+        ctrlmem_at_wb.opcode == op_load |
+        ctrlmem_at_wb.opcode == op_store |
+        ctrlmem_at_wb.opcode == op_jalr |
+        ctrlmem_at_wb.opcode == op_br
     );
     assign instr_at_wb_uses_rs2 = (
-        cpu.ctrlmem_at_wb.opcode == op_reg |
-        cpu.ctrlmem_at_wb.opcode == op_store |
-        cpu.ctrlmem_at_wb.opcode == op_br
+        ctrlmem_at_wb.opcode == op_reg |
+        ctrlmem_at_wb.opcode == op_store |
+        ctrlmem_at_wb.opcode == op_br
     );
 
     // Fill this out
     // Only use hierarchical references here for verification
     // **DO NOT** use hierarchical references in the actual design!
-    assign monitor_valid     = cpu.hazard_ctrl_unit.valid_o && (~rst);
+    assign monitor_valid     = hazard_ctrl_unit.valid_o && (~rst);
     assign monitor_order     = accumulator;
-    assign monitor_inst      = cpu.datapath.mem_wb_reg_o.ir;
-    assign monitor_rs1_addr  = instr_at_wb_uses_rs1 ? cpu.ctrlwb_at_wb.rs1 : '0;
-    assign monitor_rs2_addr  = instr_at_wb_uses_rs2 ? cpu.ctrlwb_at_wb.rs2 : '0;
-    assign monitor_rs1_rdata = instr_at_wb_uses_rs1 ? cpu.datapath.mem_wb_reg_o.r1 : '0;
-    assign monitor_rs2_rdata = instr_at_wb_uses_rs2 ? cpu.datapath.mem_wb_reg_o.r2 : '0;
-    assign monitor_rd_addr   = cpu.ctrlwb_at_wb.load_regfile ? cpu.ctrlwb_at_wb.rd : '0;
-    assign monitor_rd_wdata  = cpu.ctrlwb_at_wb.load_regfile ? cpu.datapath.regfilemux_out : '0;
-    assign monitor_pc_rdata  = cpu.datapath.mem_wb_reg_o.pc;
-    assign monitor_pc_wdata  = cpu.datapath.mem_wb_reg_o._pc_wdata;
-    assign monitor_mem_addr  = cpu.datapath.mem_wb_reg_o._mem_addr;
-    assign monitor_mem_rmask = cpu.datapath.mem_wb_reg_o._mem_rmask;
-    assign monitor_mem_wmask = cpu.datapath.mem_wb_reg_o._mem_wmask;
-    assign monitor_mem_rdata = cpu.datapath.mem_wb_reg_o.mdr;
-    assign monitor_mem_wdata = cpu.datapath.mem_wb_reg_o._mem_wdata;
+    assign monitor_inst      = datapath.mem_wb_reg_o.ir;
+    assign monitor_rs1_addr  = instr_at_wb_uses_rs1 ? ctrlwb_at_wb.rs1 : '0;
+    assign monitor_rs2_addr  = instr_at_wb_uses_rs2 ? ctrlwb_at_wb.rs2 : '0;
+    assign monitor_rs1_rdata = instr_at_wb_uses_rs1 ? datapath.mem_wb_reg_o.r1 : '0;
+    assign monitor_rs2_rdata = instr_at_wb_uses_rs2 ? datapath.mem_wb_reg_o.r2 : '0;
+    assign monitor_rd_addr   = ctrlwb_at_wb.load_regfile ? ctrlwb_at_wb.rd : '0;
+    assign monitor_rd_wdata  = ctrlwb_at_wb.load_regfile ? datapath.regfilemux_out : '0;
+    assign monitor_pc_rdata  = datapath.mem_wb_reg_o.pc;
+    assign monitor_pc_wdata  = datapath.mem_wb_reg_o._pc_wdata;
+    assign monitor_mem_addr  = datapath.mem_wb_reg_o._mem_addr;
+    assign monitor_mem_rmask = datapath.mem_wb_reg_o._mem_rmask;
+    assign monitor_mem_wmask = datapath.mem_wb_reg_o._mem_wmask;
+    assign monitor_mem_rdata = datapath.mem_wb_reg_o.mdr;
+    assign monitor_mem_wdata = datapath.mem_wb_reg_o._mem_wdata;
 
-    cpu cpu(.*);
+
+
+    /* CPU */
+
+    datapath  datapath (.*, .ctrlex(ctrlex_at_ex), .ctrlmem(ctrlmem_at_mem), .ctrlwb(ctrlwb_at_wb));
+    ctrl_word ctrl_word(.*, .ctrlex(ctrlex_at_id), .ctrlmem(ctrlmem_at_id),  .ctrlwb(ctrlwb_at_id));
+    forwarding_unit forwarding_unit(.*);
+    hazard_ctrl_unit hazard_ctrl_unit(.*);
+
+    ctrlex_reg  ctrlex_id_ex   (.*, .load(hazard_ctrl.load_id_ex),  .in(ctrlex_at_id),  .out(ctrlex_at_ex));
+    ctrlmem_reg ctrlmem_id_ex  (.*, .load(hazard_ctrl.load_id_ex),  .in(ctrlmem_at_id), .out(ctrlmem_at_ex));
+    ctrlmem_reg ctrlmem_ex_mem (.*, .load(hazard_ctrl.load_ex_mem), .in(ctrlmem_at_ex), .out(ctrlmem_at_mem));
+    ctrlmem_reg ctrlmem_mem_wb (.*, .load(hazard_ctrl.load_mem_wb), .in(ctrlmem_at_mem), .out(ctrlmem_at_wb));
+    ctrlwb_reg  ctrlwb_id_ex   (.*, .load(hazard_ctrl.load_id_ex),  .in(ctrlwb_at_id),  .out(ctrlwb_at_ex));
+    ctrlwb_reg  ctrlwb_ex_mem  (.*, .load(hazard_ctrl.load_ex_mem), .in(ctrlwb_at_ex),  .out(ctrlwb_at_mem));
+    ctrlwb_reg  ctrlwb_mem_wb  (.*, .load(hazard_ctrl.load_mem_wb), .in(ctrlwb_at_mem), .out(ctrlwb_at_wb));
+
+
 
     /* Cache Interface */
 
