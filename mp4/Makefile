@@ -23,6 +23,11 @@ run_top_tb: sim/top_tb $(PROG)
 	cd sim && ./top_tb -l simulation.log
 	bash check_sim_error.sh
 
+.PHONY: run_arbiter_tb
+run_arbiter_tb: $(SRCS)
+	mkdir -p sim
+	cd sim && vcs $(SRCS) $(VCS_FLAGS) -msg_config=../vcs_warn.config -l compile_dut.log -top arbiter_tb -o arbiter_tb
+
 .PHONY: spike
 spike: $(ELF)
 	mkdir -p sim
