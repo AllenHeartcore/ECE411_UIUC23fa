@@ -20,6 +20,7 @@ import pipeline_pkg::*;
     register reg_mem_wdata (.*, .in(in._mem_wdata), .out(out._mem_wdata));
     register #(.width(4)) reg_mem_rmask (.*, .in(in._mem_rmask), .out(out._mem_rmask));
     register #(.width(4)) reg_mem_wmask (.*, .in(in._mem_wmask), .out(out._mem_wmask));
+    pcmux_reg reg_pcmux (.*, .in(in.pcmux_sel), .out(out.pcmux_sel)); 
 
 endmodule
 

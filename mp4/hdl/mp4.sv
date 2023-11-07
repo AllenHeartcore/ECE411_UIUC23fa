@@ -52,18 +52,34 @@ import rv32i_types::*;
         end
     end
 
+    logic instr_at_wb_uses_rs1, instr_at_wb_uses_rs2;
+
+    assign instr_at_wb_uses_rs1 = (
+        cpu.ctrlmem_at_wb.opcode == op_imm |
+        cpu.ctrlmem_at_wb.opcode == op_reg |
+        cpu.ctrlmem_at_wb.opcode == op_load |
+        cpu.ctrlmem_at_wb.opcode == op_store |
+        cpu.ctrlmem_at_wb.opcode == op_jalr |
+        cpu.ctrlmem_at_wb.opcode == op_br
+    );
+    assign instr_at_wb_uses_rs2 = (
+        cpu.ctrlmem_at_wb.opcode == op_reg |
+        cpu.ctrlmem_at_wb.opcode == op_store |
+        cpu.ctrlmem_at_wb.opcode == op_br
+    );
+
     // Fill this out
     // Only use hierarchical references here for verification
     // **DO NOT** use hierarchical references in the actual design!
     assign monitor_valid     = cpu.hazard_ctrl_unit.valid_o && (~rst);
     assign monitor_order     = accumulator;
     assign monitor_inst      = cpu.datapath.mem_wb_reg_o.ir;
-    assign monitor_rs1_addr  = cpu.ctrlwb_at_wb.rs1;
-    assign monitor_rs2_addr  = cpu.ctrlwb_at_wb.rs2;
-    assign monitor_rs1_rdata = cpu.datapath.mem_wb_reg_o.r1;
-    assign monitor_rs2_rdata = cpu.datapath.mem_wb_reg_o.r2;
-    assign monitor_rd_addr   = cpu.ctrlwb_at_wb.rd;
-    assign monitor_rd_wdata  = cpu.datapath.regfilemux_out;
+    assign monitor_rs1_addr  = instr_at_wb_uses_rs1 ? cpu.ctrlwb_at_wb.rs1 : '0;
+    assign monitor_rs2_addr  = instr_at_wb_uses_rs2 ? cpu.ctrlwb_at_wb.rs2 : '0;
+    assign monitor_rs1_rdata = instr_at_wb_uses_rs1 ? cpu.datapath.mem_wb_reg_o.r1 : '0;
+    assign monitor_rs2_rdata = instr_at_wb_uses_rs2 ? cpu.datapath.mem_wb_reg_o.r2 : '0;
+    assign monitor_rd_addr   = cpu.ctrlwb_at_wb.load_regfile ? cpu.ctrlwb_at_wb.rd : '0;
+    assign monitor_rd_wdata  = cpu.ctrlwb_at_wb.load_regfile ? cpu.datapath.regfilemux_out : '0;
     assign monitor_pc_rdata  = cpu.datapath.mem_wb_reg_o.pc;
     assign monitor_pc_wdata  = cpu.datapath.mem_wb_reg_o._pc_wdata;
     assign monitor_mem_addr  = cpu.datapath.mem_wb_reg_o._mem_addr;
