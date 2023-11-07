@@ -106,7 +106,7 @@ import cache_types::*;
     logic [2:0] PLRU [num_sets];
 
     always_ff @ (posedge clk) begin : plru_in
-        for (int j = 0; j < num_sets; j++) begin
+        for (logic [31:0] j = 0; j < num_sets; j++) begin
             if (rst)
                 PLRU[j] <= 3'b000;
             else if (LD_PLRU & (addr_index == j[s_index-1:0]))

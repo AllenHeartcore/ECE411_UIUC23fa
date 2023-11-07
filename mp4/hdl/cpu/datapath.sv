@@ -190,6 +190,36 @@ import pipeline_pkg::*;
     assign mem_wb_reg_i._mem_wmask = dmem_wmask;
     assign mem_wb_reg_i._mem_wdata = dmem_wdata;
 
+    // unused defaults, suppress synth warning LINT-58
+    assign if_id_reg_i._mem_wmask = 4'b0;
+    assign if_id_reg_i._mem_rmask = 4'b0;
+    assign if_id_reg_i._mem_wdata = 32'b0;
+    assign if_id_reg_i._mem_addr = 32'b0;
+    assign if_id_reg_i._pc_wdata = 32'b0;
+    assign if_id_reg_i.pcmux_sel = pcmux::pcmux_sel_t'({2'b0});
+    assign if_id_reg_i.cmp = 1'b0;
+    assign if_id_reg_i.alu = 32'b0;
+    assign if_id_reg_i.uim = 32'b0;
+    assign if_id_reg_i.mdr = 32'b0;
+    assign if_id_reg_i.r1 = 32'b0;
+    assign if_id_reg_i.r2 = 32'b0;
+    assign id_ex_reg_i.pcmux_sel = pcmux::pcmux_sel_t'({2'b0});
+    assign id_ex_reg_i._mem_wmask = 4'b0;
+    assign id_ex_reg_i._mem_rmask = 4'b0;
+    assign id_ex_reg_i._mem_wdata = 32'b0;
+    assign id_ex_reg_i._mem_addr = 32'b0;
+    assign id_ex_reg_i._pc_wdata = 32'b0;
+    assign id_ex_reg_i.cmp = 1'b0;
+    assign id_ex_reg_i.alu = 32'b0;
+    assign id_ex_reg_i.uim = 32'b0;
+    assign id_ex_reg_i.mdr = 32'b0;
+    assign ex_mem_reg_i._mem_wmask = 4'b0;
+    assign ex_mem_reg_i._mem_rmask = 4'b0;
+    assign ex_mem_reg_i._mem_wdata = 32'b0;
+    assign ex_mem_reg_i._mem_addr = 32'b0;
+    assign ex_mem_reg_i.r2 = 32'b0;
+    assign mem_wb_reg_i.pcmux_sel = pcmux::pcmux_sel_t'({2'b0});
+
 
 
     /* ALU, CMP, MUXes */
@@ -221,6 +251,7 @@ import pipeline_pkg::*;
         unique case (ctrlex.alumux1_sel)
             alumux::rs1_out: alumux1_out = fwdmux1_out;
             alumux::pc_out : alumux1_out = id_ex_reg_o.pc;
+            default        : alumux1_out = 'X;
         endcase
 
         unique case (ctrlex.alumux2_sel)
@@ -230,16 +261,19 @@ import pipeline_pkg::*;
             alumux::u_imm  : alumux2_out = u_imm;
             alumux::j_imm  : alumux2_out = j_imm;
             alumux::rs2_out: alumux2_out = fwdmux2_out;
+            default        : alumux2_out = 'X;
         endcase
 
         unique case (ctrlex.cmpmux_sel)
             cmpmux::rs2_out: cmpmux_out = fwdmux2_out;
             cmpmux::i_imm  : cmpmux_out = i_imm;
+            default        : cmpmux_out = 'X;
         endcase
 
         unique case (ctrlmem.marmux_sel)
             marmux::pc_out : marmux_out = ex_mem_reg_o.pc;
             marmux::alu_out: marmux_out = ex_mem_reg_o.alu;
+            default        : marmux_out = 'X;
         endcase
 
         unique case (ctrlwb.regfilemux_sel)
@@ -272,18 +306,21 @@ import pipeline_pkg::*;
                     1'b0: regfilemux_out = {16'b0, mem_wb_reg_o.mdr[15:0]};
                     1'b1: regfilemux_out = {16'b0, mem_wb_reg_o.mdr[31:16]};
                 endcase
+            default              : regfilemux_out = 'X;
         endcase
 
         unique case (fwdmux1_sel)
             fwdmux::no_fwd : fwdmux1_out = id_ex_reg_o.r1;
             fwdmux::fwd_mem: fwdmux1_out = ex_mem_reg_o.alu;
             fwdmux::fwd_wb : fwdmux1_out = regfilemux_out;
+            default        : fwdmux1_out = 'X;
         endcase
 
         unique case (fwdmux2_sel)
             fwdmux::no_fwd : fwdmux2_out = id_ex_reg_o.r2;
             fwdmux::fwd_mem: fwdmux2_out = ex_mem_reg_o.alu;
             fwdmux::fwd_wb : fwdmux2_out = regfilemux_out;
+            default        : fwdmux2_out = 'X;
         endcase
 
     end

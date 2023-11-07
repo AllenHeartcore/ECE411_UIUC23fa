@@ -129,6 +129,8 @@ import rv32i_types::*;
     logic         pmem_resp;        // arbiter <- cacheline_adaptor
 
     bus_adapter imem_bus_adapter(
+        .mem_wdata          (32'b0),            // (suppress synth warning LINT-58)
+        .mem_byte_enable    (4'b1111),          // (suppress synth warning LINT-58)
         .address            (imem_address),     // from cpu
         .mem_rdata          (imem_rdata),       // to cpu
         .mem_rdata256       (imem_rdata256)     // from imem_cache
@@ -145,6 +147,9 @@ import rv32i_types::*;
     );
 
     cache imem_cache(.clk, .rst,
+        .mem_write          (1'b0),             // (suppress synth warning LINT-58)
+        .mem_byte_enable    (32'hFFFF_FFFF),    // (suppress synth warning LINT-58)
+        .mem_wdata          (256'b0),           // (suppress synth warning LINT-58)
         .mem_address        (imem_address),     // from cpu
         .mem_read           (imem_read),        // from cpu
         .mem_rdata          (imem_rdata256),    // to imem_bus_adapter
