@@ -1,5 +1,5 @@
 # AG Report MP4CP2 2023-11-07T23:59:59-06:00 
-Report generated at 2023-11-08T00:19:57-06:00, using commit ``03df31315fcbb02ac4036c6cc34b172b481da9b0``
+Report generated at 2023-11-08T02:01:17-06:00, using commit ``03df31315fcbb02ac4036c6cc34b172b481da9b0``
 
 Autograder Run ID: dcc5e269-0e76-4e5d-93e4-d93531a358a9
 
@@ -64,7 +64,7 @@ CoreMark: 0 out of 3
  mkdir -p sim
 cd sim && vcs /tmp/dut/pkg/types.sv /tmp/dut/hdl/cache/ff_array.sv /tmp/dut/hdl/cache/cache_datapath.sv /tmp/dut/hdl/cache/cache_control.sv /tmp/dut/hdl/cache/cache.sv /tmp/dut/hdl/cache/arbiter.sv /tmp/dut/hdl/cpu/hazard_ctrl.sv /tmp/dut/hdl/cpu/utils_reg.sv /tmp/dut/hdl/cpu/utils_ex.sv /tmp/dut/hdl/cpu/forwarding.sv /tmp/dut/hdl/cpu/ctrl_word.sv /tmp/dut/hdl/cpu/datapath.sv /tmp/dut/hdl/cpu/pipeline_reg.sv /tmp/dut/hdl/cacheline_adaptor.sv /tmp/dut/hdl/bus_adapter.sv /tmp/dut/hdl/mp4.sv /tmp/dut/hvl/top_tb.sv /tmp/dut/hvl/rvfimon.v /tmp/dut/hvl/monitor.sv /tmp/dut/hvl/mon_itf.sv /tmp/dut/hvl/burst_memory.sv /tmp/dut/hvl/bmem_itf.sv /tmp/dut/sram/output/mp3_data_array/mp3_data_array.v /tmp/dut/sram/output/mp3_tag_array/mp3_tag_array.v -full64 -lca -sverilog +lint=all,noNS -timescale=1ns/1ns -debug_acc+all -kdb -fsdb -suppress=LCA_FEATURES_ENABLED -licqueue -msg_config=../vcs_warn.config -l compile.log -top top_tb -o top_tb
                          Chronologic VCS (TM)
-      Version R-2020.12-SP1-1_Full64 -- Wed Nov  8 00:22:31 2023
+      Version R-2020.12-SP1-1_Full64 -- Wed Nov  8 02:03:42 2023
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -176,14 +176,14 @@ recompiling module mp3_data_array
 All of 69 modules done
 make[1]: Entering directory '/tmp/dut/sim/csrc'
 make[1]: Leaving directory '/tmp/dut/sim/csrc'
-/software/Synopsys-2021_x86_64/vcs-mx/O-2018.09-SP2-3/bin/vcs: line 31361: 28136 Segmentation fault      (core dumped) ${TOOL_HOME}/bin/cfs_ident_exec -f ${XML_INPUT_EXE} -o "${fsearchDir}/idents_tapi.xml" -o_SrcFile "${dirSrcFiles}/src_files_c" ${all_dyn_libs} > tapi_xml_writer.log
+/software/Synopsys-2021_x86_64/vcs-mx/O-2018.09-SP2-3/bin/vcs: line 31361: 22065 Segmentation fault      (core dumped) ${TOOL_HOME}/bin/cfs_ident_exec -f ${XML_INPUT_EXE} -o "${fsearchDir}/idents_tapi.xml" -o_SrcFile "${dirSrcFiles}/src_files_c" ${all_dyn_libs} > tapi_xml_writer.log
 make[1]: Entering directory '/tmp/dut/sim/csrc'
 rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
 if [ -x ../top_tb ]; then chmod a-x ../top_tb; fi
-g++  -o ../top_tb      -rdynamic  -Wl,-rpath='$ORIGIN'/top_tb.daidir -Wl,-rpath=./top_tb.daidir -Wl,-rpath=/software/Synopsys-2021_x86_64/vcs/R-2020.12-SP1-1/linux64/lib -L/software/Synopsys-2021_x86_64/vcs/R-2020.12-SP1-1/linux64/lib  -Wl,-rpath-link=./   objs/amcQw_d.o   _27980_archive_1.so  SIM_l.o       rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative /software/Synopsys-2021_x86_64/vcs/R-2020.12-SP1-1/linux64/lib/vcs_tls.o   -Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive        _vcs_pli_stub_.o   /software/Synopsys-2021_x86_64/vcs/R-2020.12-SP1-1/linux64/lib/vcs_save_restore_new.o /software/Synopsys-2021_x86_64/verdi/R-2020.12-SP1-1/share/PLI/VCS/LINUX64/pli.a -ldl  -lc -lm -lpthread -ldl 
+g++  -o ../top_tb      -rdynamic  -Wl,-rpath='$ORIGIN'/top_tb.daidir -Wl,-rpath=./top_tb.daidir -Wl,-rpath=/software/Synopsys-2021_x86_64/vcs/R-2020.12-SP1-1/linux64/lib -L/software/Synopsys-2021_x86_64/vcs/R-2020.12-SP1-1/linux64/lib  -Wl,-rpath-link=./   objs/amcQw_d.o   _21909_archive_1.so  SIM_l.o       rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative /software/Synopsys-2021_x86_64/vcs/R-2020.12-SP1-1/linux64/lib/vcs_tls.o   -Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive        _vcs_pli_stub_.o   /software/Synopsys-2021_x86_64/vcs/R-2020.12-SP1-1/linux64/lib/vcs_save_restore_new.o /software/Synopsys-2021_x86_64/verdi/R-2020.12-SP1-1/share/PLI/VCS/LINUX64/pli.a -ldl  -lc -lm -lpthread -ldl 
 ../top_tb up to date
 make[1]: Leaving directory '/tmp/dut/sim/csrc'
-CPU time: 2.631 seconds to compile + .489 seconds to elab + .302 seconds to link
+CPU time: 2.810 seconds to compile + .512 seconds to elab + .336 seconds to link
 Verdi KDB elaboration done and the database successfully generated: 0 error(s), 0 warning(s)
  
  ``` 
@@ -808,7 +808,7 @@ check_design
 ****************************************
 check_design summary:
 Version:     R-2020.09-SP4
-Date:        Wed Nov  8 00:22:41 2023
+Date:        Wed Nov  8 02:03:51 2023
 ****************************************
 
                    Name                                            Total
@@ -972,13 +972,13 @@ Information: Ungrouping hierarchy imem_cache/datapath 'cache_datapath_1' #insts 
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
   --------- --------- --------- --------- --------- ------------------------- --------- -----------
-    0:01:03  117836.1      0.00       0.0    7238.9                           1305650.3750      0.00  
-    0:01:04  117823.9      0.00       0.0    7238.9                           1305296.0000      0.00  
+    0:01:02  117836.1      0.00       0.0    7238.9                           1305650.3750      0.00  
+    0:01:03  117823.9      0.00       0.0    7238.9                           1305296.0000      0.00  
 
   Beginning Constant Register Removal
   -----------------------------------
+    0:01:04  117998.7      0.00       0.0    7238.9                           1314671.1250      0.00  
     0:01:05  117998.7      0.00       0.0    7238.9                           1314671.1250      0.00  
-    0:01:06  117998.7      0.00       0.0    7238.9                           1314671.1250      0.00  
 
   Beginning Global Optimizations
   ------------------------------
@@ -1020,37 +1020,37 @@ Information: Ungrouping hierarchy imem_cache/datapath 'cache_datapath_1' #insts 
 
   Beginning Delay Optimization
   ----------------------------
-    0:01:13  102357.3      0.00       0.0    7202.7                           491683.6250      0.00  
-    0:01:13  102357.3      0.00       0.0    7202.7                           491683.6250      0.00  
-    0:01:13  102357.3      0.00       0.0    7202.7                           491683.6250      0.00  
-    0:01:14  102340.6      0.00       0.0    7299.0                           491612.3438      0.00  
-    0:01:16  102338.5      0.00       0.0    7299.0                           491545.5625      0.00  
-    0:01:17  102337.4      0.00       0.0    7299.0                           491522.8750      0.00  
+    0:01:12  102357.3      0.00       0.0    7202.7                           491683.6250      0.00  
+    0:01:12  102357.3      0.00       0.0    7202.7                           491683.6250      0.00  
+    0:01:12  102357.3      0.00       0.0    7202.7                           491683.6250      0.00  
+    0:01:12  102340.6      0.00       0.0    7299.0                           491612.3438      0.00  
+    0:01:14  102338.5      0.00       0.0    7299.0                           491545.5625      0.00  
+    0:01:15  102337.4      0.00       0.0    7299.0                           491522.8750      0.00  
 
   Beginning WLM Backend Optimization
   --------------------------------------
-    0:01:22  102224.6      0.00       0.0    7259.2                           486958.6250      0.00  
-    0:01:22  102224.6      0.00       0.0    7259.2                           486958.6250      0.00  
-    0:01:22  102224.6      0.00       0.0    7259.2                           486958.6250      0.00  
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:21  102224.6      0.00       0.0    7259.2                           486958.6250      0.00  
+    0:01:21  102224.6      0.00       0.0    7259.2                           486958.6250      0.00  
+    0:01:21  102224.6      0.00       0.0    7259.2                           486958.6250      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
 
 
   Beginning Design Rule Fixing  (max_transition)  (max_fanout)  (max_capacitance)
@@ -1060,7 +1060,7 @@ Information: Ungrouping hierarchy imem_cache/datapath 'cache_datapath_1' #insts 
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
   --------- --------- --------- --------- --------- ------------------------- --------- -----------
-    0:01:23  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
+    0:01:22  102199.6      0.00       0.0    7248.3                           482588.6562      0.00  
   Global Optimization (Phase 31)
   Global Optimization (Phase 32)
   Global Optimization (Phase 33)
@@ -1091,34 +1091,34 @@ Information: Ungrouping hierarchy imem_cache/datapath 'cache_datapath_1' #insts 
   Global Optimization (Phase 45)
   Global Optimization (Phase 46)
   Global Optimization (Phase 47)
-    0:01:29  102778.4      0.00       0.0    4434.5                           496273.6562      0.00  
-    0:01:29  102778.4      0.00       0.0    4434.5                           496273.6562      0.00  
-    0:01:29  102778.4      0.00       0.0    4434.5                           496273.6562      0.00  
-    0:01:30  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
-    0:01:30  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
-    0:01:30  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
-    0:01:30  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
-    0:01:30  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
-    0:01:30  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
-    0:01:30  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
-    0:01:30  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
-    0:01:30  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
-    0:01:30  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
-    0:01:30  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
-    0:01:30  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
-    0:01:30  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
-    0:01:30  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
-    0:01:30  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
-    0:01:30  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
-    0:01:30  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
-    0:01:30  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
-    0:01:30  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
+    0:01:28  102778.4      0.00       0.0    4434.5                           496273.6562      0.00  
+    0:01:28  102778.4      0.00       0.0    4434.5                           496273.6562      0.00  
+    0:01:28  102778.4      0.00       0.0    4434.5                           496273.6562      0.00  
+    0:01:29  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
+    0:01:29  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
+    0:01:29  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
+    0:01:29  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
+    0:01:29  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
+    0:01:29  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
+    0:01:29  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
+    0:01:29  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
+    0:01:29  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
+    0:01:29  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
+    0:01:29  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
+    0:01:29  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
+    0:01:29  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
+    0:01:29  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
+    0:01:29  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
+    0:01:29  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
+    0:01:29  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
+    0:01:29  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
+    0:01:29  102725.7      0.00       0.0    4439.2                           493423.8125      0.00  
 
                                   TOTAL                                                            
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
   --------- --------- --------- --------- --------- ------------------------- --------- -----------
-    0:01:31  102622.0      0.00       0.0    4439.2                           491886.2500      0.00  
+    0:01:30  102622.0      0.00       0.0    4439.2                           491886.2500      0.00  
     0:01:32  114939.4      0.00       0.0    4458.9                           953244.9375      0.00  
     0:01:32  114939.4      0.00       0.0    4458.9                           953244.9375      0.00  
     0:01:32  114939.4      0.00       0.0    4458.9                           953244.9375      0.00  
@@ -1130,7 +1130,7 @@ Information: Ungrouping hierarchy imem_cache/datapath 'cache_datapath_1' #insts 
     0:01:39  103064.6      0.00       0.0    3353.3                           503874.2812      0.00  
     0:01:39  103064.6      0.00       0.0    3353.3                           503874.2812      0.00  
     0:01:39  103064.6      0.00       0.0    3353.3                           503874.2812      0.00  
-    0:01:42  103023.4      0.00       0.0    3355.7                           502015.9688      0.00  
+    0:01:41  103023.4      0.00       0.0    3355.7                           502015.9688      0.00  
 Loading db file '/grader/freepdk-45nm/stdcells.db'
 Loading db file '/tmp/dut/sram/output/mp3_data_array/mp3_data_array_TT_1p0V_25C_lib.db'
 Loading db file '/tmp/dut/sram/output/mp3_tag_array/mp3_tag_array_TT_1p0V_25C_lib.db'
@@ -1161,7 +1161,7 @@ exit
 Memory usage for this session 197 Mbytes.
 Memory usage for this session including child processes 223 Mbytes.
 CPU usage for this session 110 seconds ( 0.03 hours ).
-Elapsed time for this session 117 seconds ( 0.03 hours ).
+Elapsed time for this session 114 seconds ( 0.03 hours ).
 
 Thank you...
 rm -f  *.log
@@ -1180,7 +1180,7 @@ rm -rf work
  cd sim && ./top_tb -l simulation.log
 Chronologic VCS simulator copyright 1991-2020
 Contains Synopsys proprietary information.
-Compiler version R-2020.12-SP1-1_Full64; Runtime version R-2020.12-SP1-1_Full64;  Nov  8 00:24 2023
+Compiler version R-2020.12-SP1-1_Full64; Runtime version R-2020.12-SP1-1_Full64;  Nov  8 02:05 2023
 -------- RVFI Monitor error 131 in reordered channel 0: top_tb.monitor.monitor.ro0_handle_error_r at time 360000 --------
 Error message: mismatch with shadow rs1
 rvfi_valid = 1
@@ -1206,8 +1206,8 @@ IPC: 0.159091
 $finish at simulation time               440000
            V C S   S i m u l a t i o n   R e p o r t 
 Time: 440000 ps
-CPU Time:      0.420 seconds;       Data structure size:   0.2Mb
-Wed Nov  8 00:24:34 2023
+CPU Time:      0.430 seconds;       Data structure size:   0.2Mb
+Wed Nov  8 02:05:42 2023
 4c4
 < core   0: 3 0x4000000c (0x800a0393) x7  0x1ffff800
 ---
