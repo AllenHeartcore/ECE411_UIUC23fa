@@ -53,12 +53,13 @@ import pipeline_pkg::*;
 
     // hazard_ctrl -> datapath
     hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl;
+    logic wb_commit;
 
     // forwarding_unit -> hazard_ctrl
     logic no_hazard;
 
     // hazard_ctrl -> forwarding_unit
-    logic ex_mem_valid_o;
+    logic id_ex_valid_o, ex_mem_valid_o, mem_wb_valid_o;
 
     // for monitor
     logic [3:0] dmem_rmask;
