@@ -239,6 +239,8 @@ import pipeline_pkg::*;
         .cmpop(ctrlex.cmpop)
     );
 
+    assign alumux1_out = ctrlex.alumux1_sel == alumux::pc_out ? id_ex_reg_o.pc : fwdmux1_out;
+
     always_comb begin : MUXES
 
         pcmux_sel = ctrlex.is_branch ? pcmux::pcmux_sel_t'({1'b0, ex_mem_reg_i.cmp}) : ctrlex.pcmux_sel;
@@ -250,10 +252,10 @@ import pipeline_pkg::*;
             default        : pcmux_out = 'X;
         endcase
 
-        unique case (ctrlex.alumux1_sel)
-            alumux::rs1_out: alumux1_out = fwdmux1_out;
-            alumux::pc_out : alumux1_out = id_ex_reg_o.pc;
-        endcase
+        // unique case (ctrlex.alumux1_sel)
+        //     alumux::rs1_out: alumux1_out = fwdmux1_out;
+        //     alumux::pc_out : alumux1_out = id_ex_reg_o.pc;
+        // endcase
 
         unique case (ctrlex.alumux2_sel)
             alumux::i_imm  : alumux2_out = i_imm;

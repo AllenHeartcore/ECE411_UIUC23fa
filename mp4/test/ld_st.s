@@ -23,8 +23,8 @@ _start:
     li  t0, 1
     la  t1, tohost
     sw  t0, 0(t1)
-    sw  x6, 4(t1)
-
+    sw  x0, 4(t1)
+    
 halt:                 # Infinite loop to keep the processor
     beq x0, x0, halt  # from trying to execute the data below.
                       # Your own programs should also make use
