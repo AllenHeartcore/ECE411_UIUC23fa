@@ -10,7 +10,8 @@ import hazard_ctrl_pkg::*;
     input logic no_hazard,
     output logic imem_read,
     output hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl,
-    output logic id_ex_valid_o, ex_mem_valid_o, mem_wb_valid_o
+    output logic id_ex_valid_o, ex_mem_valid_o, mem_wb_valid_o,
+    output logic wb_commit // haor2 : added to load id_ex_rs1, id_ex_rs2 in wb stage
 );
 
     // hazard detection unit
@@ -36,7 +37,7 @@ import hazard_ctrl_pkg::*;
     
 
     // commit signals : if asserted, the next posedge pipeline register will be loaded
-    logic if_commit, id_commit, ex_commit, mem_commit, wb_commit;
+    logic if_commit, id_commit, ex_commit, mem_commit;
 
     assign if_commit = (if_state == BUSY && if_next_state == RDY);
     assign id_commit = (id_state == BUSY && id_next_state == RDY);

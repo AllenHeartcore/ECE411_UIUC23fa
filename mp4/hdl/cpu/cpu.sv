@@ -36,6 +36,7 @@ import pipeline_pkg::*;
 
     // hazard_ctrl -> datapath
     hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl;
+    logic wb_commit;
 
     // forwarding_unit -> hazard_ctrl
     logic no_hazard;

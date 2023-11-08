@@ -9,6 +9,7 @@ import pipeline_pkg::*;
     input  ctrlex_reg_t ctrlex,
     input  ctrlmem_reg_t ctrlmem,
     input  ctrlwb_reg_t ctrlwb,
+    input  ctrlwb_reg_t ctrlwb_at_ex,
 
     // to ctrl_word
     output rv32i_opcode opcode,
@@ -20,6 +21,7 @@ import pipeline_pkg::*;
 
     // from hazard_ctrl
     input  hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl,
+    input  logic wb_commit, 
     output logic ex_is_branch,
 
     // from forwarding_unit
@@ -155,6 +157,36 @@ import pipeline_pkg::*;
         .*, .load(hazard_ctrl.load_id_ex),
         .in(id_ex_reg_i), .out(id_ex_reg_o)
     );
+    // haor2 : these 2 registers are for wb commit
+    rv32i_word id_ex_reg_r1_i, id_ex_reg_r2_i;
+    rv32i_word id_ex_reg_r1_o, id_ex_reg_r2_o;
+
+    logic load_id_ex_r1, load_id_ex_r2;
+    logic wb_update_rs1, wb_update_rs2;
+    // writeback update rs1
+    // when id_commit and wb_commit, we need to use the rs1,rs2 from ID stage
+    // otherwise, since instruction is in id_ex reg, we can use the rs1,rs2 from ctrl word for id_ex (ctrlwb_at_ex)
+    assign wb_update_rs1 = hazard_ctrl.load_id_ex ? (wb_commit && ctrlwb.rd == rs1) : (wb_commit && ctrlwb.rd == ctrlwb_at_ex.rs1);
+    assign wb_update_rs2 = hazard_ctrl.load_id_ex ? (wb_commit && ctrlwb.rd == rs2) : (wb_commit && ctrlwb.rd == ctrlwb_at_ex.rs2);
+
+    assign load_id_ex_r1 = hazard_ctrl.load_id_ex | wb_update_rs1;
+    assign load_id_ex_r2 = hazard_ctrl.load_id_ex | wb_update_rs2;
+
+    assign id_ex_reg_r1_i = wb_update_rs1 ? regfilemux_out : id_ex_reg_i.r1;
+    assign id_ex_reg_r2_i = wb_update_rs2 ? regfilemux_out : id_ex_reg_i.r2;
+
+    register id_ex_regs_r1(
+        .*, .load(load_id_ex_r1),
+        .in(id_ex_reg_r1_i), .out(id_ex_reg_r1_o)
+    );
+
+    register id_ex_regs_r2(
+        .*, .load(load_id_ex_r2),
+        .in(id_ex_reg_r2_i), .out(id_ex_reg_r2_o)
+    );
+
+
+
     pipeline_reg ex_mem_regs(
         .*, .load(hazard_ctrl.load_ex_mem),
         .in(ex_mem_reg_i), .out(ex_mem_reg_o)
@@ -275,13 +307,13 @@ import pipeline_pkg::*;
         endcase
 
         unique case (fwdmux1_sel)
-            fwdmux::no_fwd : fwdmux1_out = id_ex_reg_o.r1;
+            fwdmux::no_fwd : fwdmux1_out = id_ex_reg_r1_o;
             fwdmux::fwd_mem: fwdmux1_out = ex_mem_reg_o.alu;
             fwdmux::fwd_wb : fwdmux1_out = regfilemux_out;
         endcase
 
         unique case (fwdmux2_sel)
-            fwdmux::no_fwd : fwdmux2_out = id_ex_reg_o.r2;
+            fwdmux::no_fwd : fwdmux2_out = id_ex_reg_r2_o;
             fwdmux::fwd_mem: fwdmux2_out = ex_mem_reg_o.alu;
             fwdmux::fwd_wb : fwdmux2_out = regfilemux_out;
         endcase
