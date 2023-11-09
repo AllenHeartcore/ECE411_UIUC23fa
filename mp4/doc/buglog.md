@@ -98,7 +98,7 @@ else
 * **HIGH SEVERITY : FATAL BUG**
 * When instruction does NOT need either of (rs_1, rs_2, rd), corresponding register value MUST be set to 0. 
 * Previous buggy method : masking monitor (stupid method, not going to work)
-* Correct methodology : setting reg value to 0. This is because dependency and R1 R2 IR-EX reg update is value-dependent. Let's say you have an instr. st which doesn't require wb (rd is don't care), you don't want it to be a specific value (like 0x03, if your instruction accidentally has those bits in it). Otherwise you might create dependencies.
+* Correct methodology : setting reg value to 0. This is because forwarding mux select and R1 R2 IR-EX reg update is value-dependent(it doesn't care if the instr. uses it, it just checks the value of rs1_addr, rs2_addr, and rd_addr). Let's say you have an instr. st which doesn't require wb (rd is don't care), you don't want it to be a specific value (like 0x03, if your instruction accidentally has those bits in it). Otherwise you might create dependencies.
 
 ### BUG 0006 : R1 R2 ID-EX REG value load condition
 
@@ -106,6 +106,6 @@ else
 
 * The load is enabled when there is a dependency between wb (rd reg) and rs1 / rs2. However, if wb reg is rd, you don't care, because if they are the same, you don't need to load.
 * If you load, there will be ERRORs (think about why...)
-* The reason is rd is 0 not only when instruction writes to reg 0, it can also be the case when an instruction doesn't want to write to any register (e.x. store instruction).
+* The reason is rd being 0 not only when instruction writes to reg 0, it can also be the case when an instruction doesn't want to write to any register (e.x. store instruction).
 
 
