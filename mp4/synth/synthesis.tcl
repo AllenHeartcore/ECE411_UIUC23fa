@@ -8,7 +8,7 @@ set design_toplevel mp4
 
 # output port '%s' is connected directly to output port '%s'
 suppress_message LINT-31
-# In  design  '%s',  output  port  '%s'  is connected directly to '%s'.
+# In design '%s', output port '%s' is connected directly to '%s'.
 suppress_message LINT-52
 # '%s' is not connected to any nets
 suppress_message LINT-28
@@ -26,27 +26,33 @@ suppress_message LINT-1
 suppress_message LINT-99
 # In design '%s', net '%s' driven by pin '%s' has no loads.
 suppress_message LINT-2
-#The register '' is a constant and will be removed.
+# The register '' is a constant and will be removed.
 suppress_message OPT-1206
-#The register '' will be removed.
+# The register '' will be removed.
 suppress_message OPT-1207
-#Can't read link_library file '%s'
+# Can't read link_library file '%s'
 suppress_message UID-3
-#Design '%s' contains %d high-fanout nets.
+# Design '%s' contains %d high-fanout nets.
 suppress_message TIM-134
-#The trip points for the library named %s differ from those in the library named %s.
+# The trip points for the library named %s differ from those in the library named %s.
 suppress_message TIM-164
-#Design has unannotated black box outputs.
+# Design has unannotated black box outputs.
 suppress_message PWR-428
-#Verilog 'assign' or 'tran' statements are written out.
+# Skipping clock gating on design %s, since there are no registers.
+suppress_message PWR-806
+# Ungrouping hierarchy %s before Pass 1.
+suppress_message OPT-776
+# Verilog 'assign' or 'tran' statements are written out.
 suppress_message VO-4
-#Verilog writer has added %d nets to module %s using %s as prefix.
+# Verilog writer has added %d nets to module %s using %s as prefix.
 suppress_message VO-11
 
-#%s DEFAULT branch of CASE statement cannot be reached.
+# %s DEFAULT branch of CASE statement cannot be reached.
 suppress_message ELAB-311
-#Netlist for always_comb block is empty.
+# Netlist for always_comb block is empty.
 suppress_message ELAB-982
+# Netlist for always_ff block is empty.
+suppress_message ELAB-984
 
 define_design_lib WORK -path ./work
 set alib_library_analysis_path [getenv STD_CELL_ALIB]
@@ -92,8 +98,8 @@ set_fanout_load 8 [all_outputs]
 
 link
 
-compile_ultra -gate_clock -retime
-# compile
+# compile_ultra -gate_clock -retime
+compile
 
 current_design $design_toplevel
 
