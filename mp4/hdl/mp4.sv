@@ -4,21 +4,7 @@ import pipeline_pkg::*;
 (
     input   logic           clk,
     input   logic           rst,
-
-    // Use these for CP1 (magic memory)
-    // output  logic   [31:0]  imem_address,
-    // output  logic           imem_read,
-    // input   logic   [31:0]  imem_rdata,
-    // input   logic           imem_resp,
-    // output  logic   [31:0]  dmem_address,
-    // output  logic           dmem_read,
-    // output  logic           dmem_write,
-    // output  logic   [3:0]   dmem_wmask,
-    // input   logic   [31:0]  dmem_rdata,
-    // output  logic   [31:0]  dmem_wdata,
-    // input   logic           dmem_resp
-
-    // Use these for CP2+ (with caches and burst memory)
+    // Memory Interface
     output  logic   [31:0]  bmem_address,
     output  logic           bmem_read,
     output  logic           bmem_write,
