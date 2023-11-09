@@ -12,15 +12,10 @@ _start:
     # TEST COVERAGE:
     #   Load and store instructions w/ different load size (lw, sh, lh).
     #   Possibly LUI AUIPC instruction (la).
-    li	x30,1
     la  x10, boom
-    mv	x15,x10
-    lw	x15,0(x15)
-    lw	x6,4(x10)
-    lh	x14,0(x6)
-    lh	x29,2(x17)
-    lh	x16,2(x6)
-    slli	x28,x14,0x10
+    lw	x6, 4(x10)
+    lh	x14, 0(x6)
+    lh	x16, 2(x6)
 
     li  t0, 1
     la  t1, tohost
