@@ -22,6 +22,7 @@ import pipeline_pkg::*;
     // from hazard_ctrl
     input  hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl,
     input  logic wb_commit,
+    input  logic ex_enable,
     output logic ex_is_branch,
 
     // from forwarding_unit
@@ -49,7 +50,7 @@ import pipeline_pkg::*;
     pipeline_reg_t mem_wb_reg_i, mem_wb_reg_o;
 
     /* Branch Feedback (to hazard control) */
-    assign ex_is_branch = ex_mem_reg_i.pcmux_sel != pcmux::pc_plus4; // jump or branch
+    assign ex_is_branch = pcmux_sel != pcmux::pc_plus4; // jump or branch
 
     /* Datapath Registers */
 
@@ -78,6 +79,21 @@ import pipeline_pkg::*;
         .data(id_ex_reg_o.ir),
         .i_imm, .s_imm, .b_imm, .u_imm, .j_imm
     );
+
+    // PCMUX REG
+    logic load_pc_mux;
+    pcmux::pcmux_sel_t pc_mux_reg_i, pc_mux_reg_o;
+    // ex enable & ex commit -> load pcmux val
+    // ex not enable & if commit -> load pc plus 4 
+    assign load_pc_mux = (ex_enable && hazard_ctrl.load_ex_mem) || ((~ex_enable) && hazard_ctrl.load_if_id);
+    assign pc_mux_reg_i = (ex_enable && hazard_ctrl.load_ex_mem) ? pcmux_sel : pcmux::pc_plus4;
+
+    pcmux_reg  PCMUX_REG(.*,
+        .load(load_pc_mux),
+        .in(pc_mux_reg_i),
+        .out(pc_mux_reg_o)
+    );
+
 
     assign rs1_in = rs1;
     assign rs2_in = rs2;
@@ -202,7 +218,6 @@ import pipeline_pkg::*;
     assign ex_mem_reg_i.pc = id_ex_reg_o.pc;
     assign ex_mem_reg_i.mdr = fwdmux2_out;
     assign ex_mem_reg_i.uim = u_imm;
-    assign ex_mem_reg_i.pcmux_sel = ctrlex.is_branch ? pcmux::pcmux_sel_t'({1'b0, ex_mem_reg_i.cmp}) : ctrlex.pcmux_sel; // haor2 : add to stablize PC input and pc mux
     assign mem_wb_reg_i.mdr = dmem_rdata;
     assign mem_wb_reg_i.uim = ex_mem_reg_o.uim;
     assign mem_wb_reg_i.alu = ex_mem_reg_o.alu;
@@ -215,7 +230,10 @@ import pipeline_pkg::*;
     assign ex_mem_reg_i.r1 = fwdmux1_out;
     assign mem_wb_reg_i.r1 = ex_mem_reg_o.r1;
     assign mem_wb_reg_i.r2 = ex_mem_reg_o.mdr;
-    assign ex_mem_reg_i._pc_wdata = (ctrlex.is_branch & ex_mem_reg_i.cmp) ? ex_mem_reg_i.alu : (ex_mem_reg_i.pc + 4);
+    // use ex stage pc and pcmux_sel to determine PCMUX's future output
+    logic [31:0] pcmux_i;
+    assign pcmux_i = pcmux_sel == pcmux::alu_out ? ex_mem_reg_i.alu : ex_mem_reg_i.alu & 32'hFFFFFFFE;
+    assign ex_mem_reg_i._pc_wdata = pcmux_sel != pcmux::pc_plus4 ? pcmux_i : (ex_mem_reg_i.pc + 4); // if branch or jump, we need to overwrite wdata, otherwise we need to use pc addr at EX stage (not IF stage, so we can't use pcmux_out directly)
     assign mem_wb_reg_i._pc_wdata = ex_mem_reg_o._pc_wdata;
     assign mem_wb_reg_i._mem_addr = marmux_out;
     assign mem_wb_reg_i._mem_rmask = dmem_rmask;
@@ -228,14 +246,12 @@ import pipeline_pkg::*;
     assign if_id_reg_i._mem_wdata = 32'b0;
     assign if_id_reg_i._mem_addr = 32'b0;
     assign if_id_reg_i._pc_wdata = 32'b0;
-    assign if_id_reg_i.pcmux_sel = pcmux::pcmux_sel_t'({2'b0});
     assign if_id_reg_i.cmp = 1'b0;
     assign if_id_reg_i.alu = 32'b0;
     assign if_id_reg_i.uim = 32'b0;
     assign if_id_reg_i.mdr = 32'b0;
     assign if_id_reg_i.r1 = 32'b0;
     assign if_id_reg_i.r2 = 32'b0;
-    assign id_ex_reg_i.pcmux_sel = pcmux::pcmux_sel_t'({2'b0});
     assign id_ex_reg_i._mem_wmask = 4'b0;
     assign id_ex_reg_i._mem_rmask = 4'b0;
     assign id_ex_reg_i._mem_wdata = 32'b0;
@@ -250,7 +266,6 @@ import pipeline_pkg::*;
     assign ex_mem_reg_i._mem_wdata = 32'b0;
     assign ex_mem_reg_i._mem_addr = 32'b0;
     assign ex_mem_reg_i.r2 = 32'b0;
-    assign mem_wb_reg_i.pcmux_sel = pcmux::pcmux_sel_t'({2'b0});
 
 
 
@@ -361,11 +376,11 @@ import pipeline_pkg::*;
         endcase
     end
 
+    assign pcmux_sel = ctrlex.is_branch ? pcmux::pcmux_sel_t'({1'b0, ex_mem_reg_i.cmp}) : ctrlex.pcmux_sel;
+    
     always_comb begin : PCMUX
 
-        pcmux_sel = ctrlex.is_branch ? pcmux::pcmux_sel_t'({1'b0, ex_mem_reg_i.cmp}) : ctrlex.pcmux_sel;
-
-        unique case (ex_mem_reg_o.pcmux_sel)
+        unique case (pc_mux_reg_o)
             pcmux::pc_plus4: pcmux_out = if_id_reg_i.pc + 4;
             pcmux::alu_out : pcmux_out = ex_mem_reg_o.alu;
             pcmux::alu_mod2: pcmux_out = ex_mem_reg_o.alu & 32'hFFFFFFFE;

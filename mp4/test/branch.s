@@ -25,36 +25,36 @@ loop1:
     la x3, op1
     la x4, op2
 
-# loop2:
-#     addi x4, x4, 1
-#     blt x4, x3, loop2
+loop2:
+    addi x4, x4, 1
+    blt x4, x3, loop2
 
-#     la x3, op3
-#     la x4, op4
+    la x3, op3
+    la x4, op4
 
-# loop3:
-#     addi x4, x4, 1
-#     blt x4, x3, loop3
+loop3:
+    addi x4, x4, 1
+    blt x4, x3, loop3
 
-#     la x3, op3
-#     la x4, op4
+    la x3, op3
+    la x4, op4
 
-# loop4:
-#     addi x4, x4, 1
-#     bltu x4, x3, loop4
+loop4:
+    addi x4, x4, 1
+    bltu x4, x3, loop4
 
-#     jal x5, jmp_pt
+    jal x5, jmp_pt
 
-# jmp_pt:
+jmp_pt:
 
-#     la  x2, jmp_pt2
+    la  x2, jmp_pt2
 
-#     jalr x6, x2, 0
+    jalr x6, x2, 0
 
-#     add x7, x6, x5
-#     add x7, x7, x4
+    add x7, x6, x5
+    add x7, x7, x4
 
-# jmp_pt2:
+jmp_pt2:
 
 
     li  t0, 1

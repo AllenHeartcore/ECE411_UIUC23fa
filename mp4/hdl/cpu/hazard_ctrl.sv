@@ -11,7 +11,8 @@ import hazard_ctrl_pkg::*;
     output logic imem_read,
     output hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl,
     output logic id_ex_valid_o, ex_mem_valid_o, mem_wb_valid_o,
-    output logic wb_commit // haor2 : added to load id_ex_rs1, id_ex_rs2 in wb stage
+    output logic wb_commit, // haor2 : added to load id_ex_rs1, id_ex_rs2 in wb stage
+    output logic ex_enable_o
 );
 
     // hazard detection unit
@@ -45,6 +46,21 @@ import hazard_ctrl_pkg::*;
     assign mem_commit = (mem_state == BUSY && mem_next_state == RDY);
     assign wb_commit = (wb_state == BUSY && wb_next_state == RDY);
 
+    // if mask
+
+    logic if_mask;
+    always_ff @(posedge clk) begin
+        if (rst) begin
+            if_mask <= 1'b1;
+        end else begin
+            if(if_commit && ex_commit) begin
+                if_mask <= 1'b0;
+            end else begin
+                if_mask <= 1'b1;
+            end
+        end
+    end
+
     // ENABLE REGISTERS (IF, ID, EX) for branch
     logic if_enable, id_enable, ex_enable;
 
@@ -56,7 +72,7 @@ import hazard_ctrl_pkg::*;
         end else begin
             if(ex_is_branch && ex_commit) begin  // when branch is in ex stage (ID_EX pipeline reg), we disassert all enable signals
                 if_enable <= 1'b0;
-            end else if(if_state == RDY && if_next_state == BUSY) begin
+            end else if(if_mask && if_state == RDY && if_next_state == BUSY) begin
                 if_enable <= 1'b1;
             end
             if(ex_is_branch && ex_commit) begin 
@@ -71,6 +87,8 @@ import hazard_ctrl_pkg::*;
             end
         end
     end
+
+    assign ex_enable_o = ex_enable;
 
     // PIPELINE REG VALID CONTROL UNIT
     logic if_id_valid_i, id_ex_valid_i, ex_mem_valid_i, mem_wb_valid_i;

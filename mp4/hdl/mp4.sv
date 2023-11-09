@@ -40,6 +40,7 @@ import pipeline_pkg::*;
     // hazard_ctrl -> datapath
     hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl;
     logic wb_commit;
+    logic ex_enable;
 
     // forwarding_unit -> hazard_ctrl
     logic no_hazard;
@@ -123,7 +124,7 @@ import pipeline_pkg::*;
     datapath  datapath (.*, .ctrlex(ctrlex_at_ex), .ctrlmem(ctrlmem_at_mem), .ctrlwb(ctrlwb_at_wb));
     ctrl_word ctrl_word(.*, .ctrlex(ctrlex_at_id), .ctrlmem(ctrlmem_at_id),  .ctrlwb(ctrlwb_at_id));
     forwarding_unit forwarding_unit(.*);
-    hazard_ctrl_unit hazard_ctrl_unit(.*);
+    hazard_ctrl_unit hazard_ctrl_unit(.*, .ex_enable_o(ex_enable));
 
     ctrlex_reg  ctrlex_id_ex   (.*, .load(hazard_ctrl.load_id_ex),  .in(ctrlex_at_id),  .out(ctrlex_at_ex));
     ctrlmem_reg ctrlmem_id_ex  (.*, .load(hazard_ctrl.load_id_ex),  .in(ctrlmem_at_id), .out(ctrlmem_at_ex));
