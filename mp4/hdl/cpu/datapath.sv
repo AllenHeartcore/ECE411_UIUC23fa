@@ -268,154 +268,111 @@ import pipeline_pkg::*;
         .f(ex_mem_reg_i.cmp),
         .cmpop(ctrlex.cmpop)
     );
-    // try to make this shit beautiful
-    assign alumux1_out = ctrlex.alumux1_sel == alumux::pc_out ? id_ex_reg_o.pc : fwdmux1_out;
-    assign pcmux_out =
-        (ex_mem_reg_o.pcmux_sel == pcmux::pc_plus4) ? (if_id_reg_i.pc + 4) :
-        (ex_mem_reg_o.pcmux_sel == pcmux::alu_out)  ? ex_mem_reg_o.alu :
-        (ex_mem_reg_o.pcmux_sel == pcmux::alu_mod2) ? (ex_mem_reg_o.alu & 32'hFFFFFFFE) :
-        'X;
-    assign alumux2_out =
-        (ctrlex.alumux2_sel == alumux::i_imm)   ? i_imm :
-        (ctrlex.alumux2_sel == alumux::s_imm)   ? s_imm :
-        (ctrlex.alumux2_sel == alumux::b_imm)   ? b_imm :
-        (ctrlex.alumux2_sel == alumux::u_imm)   ? u_imm :
-        (ctrlex.alumux2_sel == alumux::j_imm)   ? j_imm :
-        (ctrlex.alumux2_sel == alumux::rs2_out) ? fwdmux2_out :
-        'X;
-    assign cmpmux_out =
-        (ctrlex.cmpmux_sel == cmpmux::rs2_out)  ? fwdmux2_out :
-        (ctrlex.cmpmux_sel == cmpmux::i_imm)    ? i_imm :
-        'X;
+    
+    always_comb begin : ALUMUX1
+        unique case (ctrlex.alumux1_sel)
+            alumux::rs1_out: alumux1_out = fwdmux1_out;
+            alumux::pc_out : alumux1_out = id_ex_reg_o.pc;
+        endcase
+    end
 
-    assign marmux_out =
-        (ctrlmem.marmux_sel == marmux::pc_out)  ? ex_mem_reg_o.pc :
-        (ctrlmem.marmux_sel == marmux::alu_out) ? ex_mem_reg_o.alu :
-        'X;
-    assign regfilemux_out =
-        (ctrlwb.regfilemux_sel == regfilemux::pc_plus4) ? mem_wb_reg_o.pc + 4 :
-        (ctrlwb.regfilemux_sel == regfilemux::u_imm)    ? mem_wb_reg_o.uim :
-        (ctrlwb.regfilemux_sel == regfilemux::alu_out)  ? mem_wb_reg_o.alu :
-        (ctrlwb.regfilemux_sel == regfilemux::br_en)    ? {31'b0, mem_wb_reg_o.cmp} :
-        (ctrlwb.regfilemux_sel == regfilemux::lw)       ? mem_wb_reg_o.mdr :
-        (ctrlwb.regfilemux_sel == regfilemux::lb)       ?
-            (marmux_out[1:0] == 2'b00) ? {{24{mem_wb_reg_o.mdr[7]}},  mem_wb_reg_o.mdr[7:0]} :
-            (marmux_out[1:0] == 2'b01) ? {{24{mem_wb_reg_o.mdr[15]}}, mem_wb_reg_o.mdr[15:8]} :
-            (marmux_out[1:0] == 2'b10) ? {{24{mem_wb_reg_o.mdr[23]}}, mem_wb_reg_o.mdr[23:16]} :
-            (marmux_out[1:0] == 2'b11) ? {{24{mem_wb_reg_o.mdr[31]}}, mem_wb_reg_o.mdr[31:24]} :
-            'X :
-        (ctrlwb.regfilemux_sel == regfilemux::lbu)      ?
-            (marmux_out[1:0] == 2'b00) ? {24'b0, mem_wb_reg_o.mdr[7:0]} :
-            (marmux_out[1:0] == 2'b01) ? {24'b0, mem_wb_reg_o.mdr[15:8]} :
-            (marmux_out[1:0] == 2'b10) ? {24'b0, mem_wb_reg_o.mdr[23:16]} :
-            (marmux_out[1:0] == 2'b11) ? {24'b0, mem_wb_reg_o.mdr[31:24]} :
-            'X :
-        (ctrlwb.regfilemux_sel == regfilemux::lh)       ?
-            (marmux_out[1] == 1'b0) ? {{16{mem_wb_reg_o.mdr[15]}}, mem_wb_reg_o.mdr[15:0]} :
-            (marmux_out[1] == 1'b1) ? {{16{mem_wb_reg_o.mdr[31]}}, mem_wb_reg_o.mdr[31:16]} :
-            'X :
-        (ctrlwb.regfilemux_sel == regfilemux::lhu)      ?
-            (marmux_out[1] == 1'b0) ? {16'b0, mem_wb_reg_o.mdr[15:0]} :
-            (marmux_out[1] == 1'b1) ? {16'b0, mem_wb_reg_o.mdr[31:16]} :
-            'X :
-        'X;
-    assign fwdmux1_out =
-        (fwdmux1_sel == fwdmux::no_fwd)  ? id_ex_reg_r1_o :
-        (fwdmux1_sel == fwdmux::fwd_mem) ? ex_mem_reg_o.alu :
-        (fwdmux1_sel == fwdmux::fwd_wb)  ? regfilemux_out :
-        'X;
-    assign fwdmux2_out =
-        (fwdmux2_sel == fwdmux::no_fwd)  ? id_ex_reg_r2_o :
-        (fwdmux2_sel == fwdmux::fwd_mem) ? ex_mem_reg_o.alu :
-        (fwdmux2_sel == fwdmux::fwd_wb)  ? regfilemux_out :
-        'X;
+    always_comb begin : ALUMUX2 
+        unique case (ctrlex.alumux2_sel)
+            alumux::i_imm  : alumux2_out = i_imm;
+            alumux::s_imm  : alumux2_out = s_imm;
+            alumux::b_imm  : alumux2_out = b_imm;
+            alumux::u_imm  : alumux2_out = u_imm;
+            alumux::j_imm  : alumux2_out = j_imm;
+            alumux::rs2_out: alumux2_out = fwdmux2_out;
+            default        : alumux2_out = 'X;
+        endcase
+    end
 
-    // always_comb begin : MUXES
+    always_comb begin : CMPMUX
+        
+        unique case (ctrlex.cmpmux_sel)
+            cmpmux::rs2_out: cmpmux_out = fwdmux2_out;
+            cmpmux::i_imm  : cmpmux_out = i_imm;
+            default        : cmpmux_out = 'X;
+        endcase
 
-    //     pcmux_sel = ctrlex.is_branch ? pcmux::pcmux_sel_t'({1'b0, ex_mem_reg_i.cmp}) : ctrlex.pcmux_sel;
+    end
 
-    //     unique case (ex_mem_reg_o.pcmux_sel)
-    //         pcmux::pc_plus4: pcmux_out = if_id_reg_i.pc + 4;
-    //         pcmux::alu_out : pcmux_out = ex_mem_reg_o.alu;
-    //         pcmux::alu_mod2: pcmux_out = ex_mem_reg_o.alu & 32'hFFFFFFFE;
-    //         default        : pcmux_out = 'X;
-    //     endcase
+    always_comb begin : MARMUX
+        unique case (ctrlmem.marmux_sel)
+            marmux::pc_out : marmux_out = ex_mem_reg_o.pc;
+            marmux::alu_out: marmux_out = ex_mem_reg_o.alu;
+            default        : marmux_out = 'X;
+        endcase
+    end
 
-    //     unique case (ctrlex.alumux1_sel)
-    //         alumux::rs1_out: alumux1_out = fwdmux1_out;
-    //         alumux::pc_out : alumux1_out = id_ex_reg_o.pc;
-    //     endcase
+    always_comb begin : REGFILEMUX
+        
+        unique case (ctrlwb.regfilemux_sel)
+            regfilemux::pc_plus4 : regfilemux_out = mem_wb_reg_o.pc + 4;
+            regfilemux::u_imm    : regfilemux_out = mem_wb_reg_o.uim;
+            regfilemux::alu_out  : regfilemux_out = mem_wb_reg_o.alu;
+            regfilemux::br_en    : regfilemux_out = {31'b0, mem_wb_reg_o.cmp};
+            regfilemux::lw       : regfilemux_out = mem_wb_reg_o.mdr;
+            regfilemux::lb       :
+                case (marmux_out[1:0])
+                    2'b00: regfilemux_out = {{24{mem_wb_reg_o.mdr[7]}}, mem_wb_reg_o.mdr[7:0]};
+                    2'b01: regfilemux_out = {{24{mem_wb_reg_o.mdr[15]}}, mem_wb_reg_o.mdr[15:8]};
+                    2'b10: regfilemux_out = {{24{mem_wb_reg_o.mdr[23]}}, mem_wb_reg_o.mdr[23:16]};
+                    2'b11: regfilemux_out = {{24{mem_wb_reg_o.mdr[31]}}, mem_wb_reg_o.mdr[31:24]};
+                endcase
+            regfilemux::lbu      :
+                case (marmux_out[1:0])
+                    2'b00: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[7:0]};
+                    2'b01: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[15:8]};
+                    2'b10: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[23:16]};
+                    2'b11: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[31:24]};
+                endcase
+            regfilemux::lh       :
+                case (marmux_out[1])
+                    1'b0: regfilemux_out = {{16{mem_wb_reg_o.mdr[15]}}, mem_wb_reg_o.mdr[15:0]};
+                    1'b1: regfilemux_out = {{16{mem_wb_reg_o.mdr[31]}}, mem_wb_reg_o.mdr[31:16]};
+                endcase
+            regfilemux::lhu      :
+                case (marmux_out[1])
+                    1'b0: regfilemux_out = {16'b0, mem_wb_reg_o.mdr[15:0]};
+                    1'b1: regfilemux_out = {16'b0, mem_wb_reg_o.mdr[31:16]};
+                endcase
+            default              : regfilemux_out = 'X;
+        endcase
+        
+    end
 
-    //     unique case (ctrlex.alumux2_sel)
-    //         alumux::i_imm  : alumux2_out = i_imm;
-    //         alumux::s_imm  : alumux2_out = s_imm;
-    //         alumux::b_imm  : alumux2_out = b_imm;
-    //         alumux::u_imm  : alumux2_out = u_imm;
-    //         alumux::j_imm  : alumux2_out = j_imm;
-    //         alumux::rs2_out: alumux2_out = fwdmux2_out;
-    //         default        : alumux2_out = 'X;
-    //     endcase
+    always_comb begin : FWDMUX1
+        unique case (fwdmux1_sel)
+            fwdmux::no_fwd : fwdmux1_out = id_ex_reg_r1_o;
+            fwdmux::fwd_mem: fwdmux1_out = ex_mem_reg_o.alu;
+            fwdmux::fwd_wb : fwdmux1_out = regfilemux_out;
+            default        : fwdmux1_out = 'X;
+        endcase
+    end
 
-    //     unique case (ctrlex.cmpmux_sel)
-    //         cmpmux::rs2_out: cmpmux_out = fwdmux2_out;
-    //         cmpmux::i_imm  : cmpmux_out = i_imm;
-    //         default        : cmpmux_out = 'X;
-    //     endcase
+    always_comb begin : FWDMUX2
+        unique case (fwdmux2_sel)
+            fwdmux::no_fwd : fwdmux2_out = id_ex_reg_r2_o;
+            fwdmux::fwd_mem: fwdmux2_out = ex_mem_reg_o.alu;
+            fwdmux::fwd_wb : fwdmux2_out = regfilemux_out;
+            default        : fwdmux2_out = 'X;
+        endcase
+    end
 
-    //     unique case (ctrlmem.marmux_sel)
-    //         marmux::pc_out : marmux_out = ex_mem_reg_o.pc;
-    //         marmux::alu_out: marmux_out = ex_mem_reg_o.alu;
-    //         default        : marmux_out = 'X;
-    //     endcase
+    always_comb begin : PCMUX
 
-    //     unique case (ctrlwb.regfilemux_sel)
-    //         regfilemux::pc_plus4 : regfilemux_out = mem_wb_reg_o.pc + 4;
-    //         regfilemux::u_imm    : regfilemux_out = mem_wb_reg_o.uim;
-    //         regfilemux::alu_out  : regfilemux_out = mem_wb_reg_o.alu;
-    //         regfilemux::br_en    : regfilemux_out = {31'b0, mem_wb_reg_o.cmp};
-    //         regfilemux::lw       : regfilemux_out = mem_wb_reg_o.mdr;
-    //         regfilemux::lb       :
-    //             case (marmux_out[1:0])
-    //                 2'b00: regfilemux_out = {{24{mem_wb_reg_o.mdr[7]}}, mem_wb_reg_o.mdr[7:0]};
-    //                 2'b01: regfilemux_out = {{24{mem_wb_reg_o.mdr[15]}}, mem_wb_reg_o.mdr[15:8]};
-    //                 2'b10: regfilemux_out = {{24{mem_wb_reg_o.mdr[23]}}, mem_wb_reg_o.mdr[23:16]};
-    //                 2'b11: regfilemux_out = {{24{mem_wb_reg_o.mdr[31]}}, mem_wb_reg_o.mdr[31:24]};
-    //             endcase
-    //         regfilemux::lbu      :
-    //             case (marmux_out[1:0])
-    //                 2'b00: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[7:0]};
-    //                 2'b01: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[15:8]};
-    //                 2'b10: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[23:16]};
-    //                 2'b11: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[31:24]};
-    //             endcase
-    //         regfilemux::lh       :
-    //             case (marmux_out[1])
-    //                 1'b0: regfilemux_out = {{16{mem_wb_reg_o.mdr[15]}}, mem_wb_reg_o.mdr[15:0]};
-    //                 1'b1: regfilemux_out = {{16{mem_wb_reg_o.mdr[31]}}, mem_wb_reg_o.mdr[31:16]};
-    //             endcase
-    //         regfilemux::lhu      :
-    //             case (marmux_out[1])
-    //                 1'b0: regfilemux_out = {16'b0, mem_wb_reg_o.mdr[15:0]};
-    //                 1'b1: regfilemux_out = {16'b0, mem_wb_reg_o.mdr[31:16]};
-    //             endcase
-    //         default              : regfilemux_out = 'X;
-    //     endcase
+        pcmux_sel = ctrlex.is_branch ? pcmux::pcmux_sel_t'({1'b0, ex_mem_reg_i.cmp}) : ctrlex.pcmux_sel;
 
-    //     unique case (fwdmux1_sel)
-    //         fwdmux::no_fwd : fwdmux1_out = id_ex_reg_r1_o;
-    //         fwdmux::fwd_mem: fwdmux1_out = ex_mem_reg_o.alu;
-    //         fwdmux::fwd_wb : fwdmux1_out = regfilemux_out;
-    //         default        : fwdmux1_out = 'X;
-    //     endcase
+        unique case (ex_mem_reg_o.pcmux_sel)
+            pcmux::pc_plus4: pcmux_out = if_id_reg_i.pc + 4;
+            pcmux::alu_out : pcmux_out = ex_mem_reg_o.alu;
+            pcmux::alu_mod2: pcmux_out = ex_mem_reg_o.alu & 32'hFFFFFFFE;
+            default        : pcmux_out = 'X;
+        endcase
 
-    //     unique case (fwdmux2_sel)
-    //         fwdmux::no_fwd : fwdmux2_out = id_ex_reg_r2_o;
-    //         fwdmux::fwd_mem: fwdmux2_out = ex_mem_reg_o.alu;
-    //         fwdmux::fwd_wb : fwdmux2_out = regfilemux_out;
-    //         default        : fwdmux2_out = 'X;
-    //     endcase
-
-    // end
+    end
 
 
 
