@@ -81,3 +81,16 @@ else
     fwdmux2_sel = fwdmux::no_fwd;
 
 ```
+
+
+### *FATAL* BUG 0004 : ALWAYS COMB DEPENDENCY 
+
+* **HIGH SEVERITY : FATAL BUG**
+* Assignment in `always_comb` will be evaluated sequentially, which creates dependency for comb logic.
+* Solution is to break `always_comb` so that each logical unit can be evaluted independently.
+* Issue has been mitigated without breaking styles : 
+    * Simple logic will be converted to `assign`
+    * Complex logic (e.x. mux) will be breaked into `always_comb`
+
+
+
