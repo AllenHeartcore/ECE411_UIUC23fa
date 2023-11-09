@@ -71,17 +71,44 @@ import rv32i_types::*;
     output [4:0] rs2,
     output [4:0] rd
 );
+    assign opcode = rv32i_opcode'(data[6:0]);
+
+    logic instr_at_wb_uses_rd, instr_at_wb_uses_rs1, instr_at_wb_uses_rs2;
+
+    assign instr_at_wb_uses_rs1 = (
+        opcode == op_imm |
+        opcode == op_reg |
+        opcode == op_load |
+        opcode == op_store |
+        opcode == op_jalr |
+        opcode == op_br
+    );
+    assign instr_at_wb_uses_rs2 = (
+        opcode == op_reg |
+        opcode == op_store |
+        opcode == op_br
+    );
+
+    assign instr_at_wb_uses_rd = (
+        opcode == op_lui |
+        opcode == op_auipc |
+        opcode == op_imm |
+        opcode == op_jal |
+        opcode == op_jalr |
+        opcode == op_reg |
+        opcode == op_load
+    );
+
 
     assign funct3 = data[14:12];
     assign funct7 = data[31:25];
-    assign opcode = rv32i_opcode'(data[6:0]);
     assign i_imm = {{21{data[31]}}, data[30:20]};
     assign s_imm = {{21{data[31]}}, data[30:25], data[11:7]};
     assign b_imm = {{20{data[31]}}, data[7], data[30:25], data[11:8], 1'b0};
     assign u_imm = {data[31:12], 12'h000};
     assign j_imm = {{12{data[31]}}, data[19:12], data[20], data[30:21], 1'b0};
-    assign rs1 = data[19:15];
-    assign rs2 = data[24:20];
-    assign rd = data[11:7];
+    assign rs1 = instr_at_wb_uses_rs1 ? data[19:15] : '0;
+    assign rs2 = instr_at_wb_uses_rs2 ? data[24:20] : '0;
+    assign rd = instr_at_wb_uses_rd ? data[11:7] : '0;
 
 endmodule : ir_translator

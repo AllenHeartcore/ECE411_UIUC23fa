@@ -81,34 +81,18 @@ import pipeline_pkg::*;
         end
     end
 
-    logic instr_at_wb_uses_rs1, instr_at_wb_uses_rs2;
-
-    assign instr_at_wb_uses_rs1 = (
-        ctrlmem_at_wb.opcode == op_imm |
-        ctrlmem_at_wb.opcode == op_reg |
-        ctrlmem_at_wb.opcode == op_load |
-        ctrlmem_at_wb.opcode == op_store |
-        ctrlmem_at_wb.opcode == op_jalr |
-        ctrlmem_at_wb.opcode == op_br
-    );
-    assign instr_at_wb_uses_rs2 = (
-        ctrlmem_at_wb.opcode == op_reg |
-        ctrlmem_at_wb.opcode == op_store |
-        ctrlmem_at_wb.opcode == op_br
-    );
-
     // Fill this out
     // Only use hierarchical references here for verification
     // **DO NOT** use hierarchical references in the actual design!
     assign monitor_valid     = hazard_ctrl_unit.valid_o && (~rst);
     assign monitor_order     = accumulator;
     assign monitor_inst      = datapath.mem_wb_reg_o.ir;
-    assign monitor_rs1_addr  = instr_at_wb_uses_rs1 ? ctrlwb_at_wb.rs1 : '0;
-    assign monitor_rs2_addr  = instr_at_wb_uses_rs2 ? ctrlwb_at_wb.rs2 : '0;
-    assign monitor_rs1_rdata = instr_at_wb_uses_rs1 ? datapath.mem_wb_reg_o.r1 : '0;
-    assign monitor_rs2_rdata = instr_at_wb_uses_rs2 ? datapath.mem_wb_reg_o.r2 : '0;
-    assign monitor_rd_addr   = ctrlwb_at_wb.load_regfile ? ctrlwb_at_wb.rd : '0;
-    assign monitor_rd_wdata  = ctrlwb_at_wb.load_regfile ? datapath.regfilemux_out : '0;
+    assign monitor_rs1_addr  = ctrlwb_at_wb.rs1;
+    assign monitor_rs2_addr  = ctrlwb_at_wb.rs2;
+    assign monitor_rs1_rdata = datapath.mem_wb_reg_o.r1;
+    assign monitor_rs2_rdata = datapath.mem_wb_reg_o.r2;
+    assign monitor_rd_addr   = ctrlwb_at_wb.rd;
+    assign monitor_rd_wdata  = datapath.regfilemux_out;
     assign monitor_pc_rdata  = datapath.mem_wb_reg_o.pc;
     assign monitor_pc_wdata  = datapath.mem_wb_reg_o._pc_wdata;
     assign monitor_mem_addr  = datapath.mem_wb_reg_o._mem_addr;

@@ -10,23 +10,14 @@ _start:
     # TEST COVERAGE:
     #   Load and store instructions w/ different load size (lw, sh, lh).
     #   Possibly LUI AUIPC instruction (la).
-    la  x1, boom
-    lw  x2, 0(x1)
-    addi x3, x2, 0x1
-    sw  x6, 4(x1)
-    la  x1, boom
-    lh  x2, 0(x1)  # X2 <= 0x00002040
-    lw  x2, threshold
-    sh  x2, 0(x1)
-    la  x1, boom
-    sw  x0, 0(x1)
-    sh  x2, 0(x1)
-    sw  x0, 0(x1)
-    sh  x2, 0(x1)
-    sw  x0, 0(x1)
-    sh  x2, 0(x1)
-    sw  x0, 0(x1)
-    sh  x2, 0(x1)
+    la      x2, boom
+    addi	x12,x2,8
+    addi	x11,x2,4
+    addi	x10,x2,78
+    sw	x26,96(x2)
+    sw	x27,92(x2)
+    sw	x0,4(x2)
+    sw	x1,140(x2)
 
     li  t0, 1
     la  t1, tohost
@@ -46,6 +37,7 @@ deadloop:
 .section .data
 
 boom:       .word 0x00002010
+pia:        .word 0x00000001
 op1:        .word 0x00001012
 op2:        .word 0xf4001001
 .section .rodata
