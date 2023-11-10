@@ -330,28 +330,32 @@ import pipeline_pkg::*;
             regfilemux::br_en    : regfilemux_out = {31'b0, mem_wb_reg_o.cmp};
             regfilemux::lw       : regfilemux_out = mem_wb_reg_o.mdr;
             regfilemux::lb       :
-                case (marmux_out[1:0])
-                    2'b00: regfilemux_out = {{24{mem_wb_reg_o.mdr[7]}}, mem_wb_reg_o.mdr[7:0]};
-                    2'b01: regfilemux_out = {{24{mem_wb_reg_o.mdr[15]}}, mem_wb_reg_o.mdr[15:8]};
-                    2'b10: regfilemux_out = {{24{mem_wb_reg_o.mdr[23]}}, mem_wb_reg_o.mdr[23:16]};
-                    2'b11: regfilemux_out = {{24{mem_wb_reg_o.mdr[31]}}, mem_wb_reg_o.mdr[31:24]};
+                case (mem_wb_reg_o._mem_rmask)
+                    4'b0001: regfilemux_out = {{24{mem_wb_reg_o.mdr[7]}}, mem_wb_reg_o.mdr[7:0]};
+                    4'b0010: regfilemux_out = {{24{mem_wb_reg_o.mdr[15]}}, mem_wb_reg_o.mdr[15:8]};
+                    4'b0100: regfilemux_out = {{24{mem_wb_reg_o.mdr[23]}}, mem_wb_reg_o.mdr[23:16]};
+                    4'b1000: regfilemux_out = {{24{mem_wb_reg_o.mdr[31]}}, mem_wb_reg_o.mdr[31:24]};
+                    default : regfilemux_out = 'X;
                 endcase
             regfilemux::lbu      :
-                case (marmux_out[1:0])
-                    2'b00: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[7:0]};
-                    2'b01: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[15:8]};
-                    2'b10: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[23:16]};
-                    2'b11: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[31:24]};
+                case (mem_wb_reg_o._mem_rmask)
+                    4'b0001: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[7:0]};
+                    4'b0010: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[15:8]};
+                    4'b0100: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[23:16]};
+                    4'b1000: regfilemux_out = {24'b0, mem_wb_reg_o.mdr[31:24]};
+                    default : regfilemux_out = 'X;
                 endcase
             regfilemux::lh       :
-                case (marmux_out[1])
-                    1'b0: regfilemux_out = {{16{mem_wb_reg_o.mdr[15]}}, mem_wb_reg_o.mdr[15:0]};
-                    1'b1: regfilemux_out = {{16{mem_wb_reg_o.mdr[31]}}, mem_wb_reg_o.mdr[31:16]};
+                case (mem_wb_reg_o._mem_rmask)
+                    4'b0011: regfilemux_out = {{16{mem_wb_reg_o.mdr[15]}}, mem_wb_reg_o.mdr[15:0]};
+                    4'b1100: regfilemux_out = {{16{mem_wb_reg_o.mdr[31]}}, mem_wb_reg_o.mdr[31:16]};
+                    default : regfilemux_out = 'X;
                 endcase
             regfilemux::lhu      :
-                case (marmux_out[1])
-                    1'b0: regfilemux_out = {16'b0, mem_wb_reg_o.mdr[15:0]};
-                    1'b1: regfilemux_out = {16'b0, mem_wb_reg_o.mdr[31:16]};
+                case (mem_wb_reg_o._mem_rmask)
+                    4'b0011: regfilemux_out = {16'b0, mem_wb_reg_o.mdr[15:0]};
+                    4'b1100: regfilemux_out = {16'b0, mem_wb_reg_o.mdr[31:16]};
+                    default : regfilemux_out = 'X;
                 endcase
             default              : regfilemux_out = 'X;
         endcase
