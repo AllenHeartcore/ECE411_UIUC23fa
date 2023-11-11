@@ -79,6 +79,7 @@ import pipeline_pkg::*;
         case (opcode)
 
             op_lui: begin
+                setALU(alumux::rs1_out, alumux::u_imm, alu_add);
                 loadRegfile(regfilemux::u_imm);
             end
 
