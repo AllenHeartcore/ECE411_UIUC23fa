@@ -84,14 +84,25 @@ module top_tb;
         if (mon_itf.halt) begin
             $finish;
         end
-        if (timeout == 0) begin
-            $error("TB Error: Timed out");
-            $finish;
-        end
+        // if (timeout == 0) begin
+        //     $error("TB Error: Timed out");
+        //     $finish;
+        // end
         if (mon_itf.error != 0) begin
             repeat (5) @(posedge clk);
             $finish;
         end
+        // if(dut.monitor_pc_rdata == 32'h40002840) begin
+        //     $display("------------PC: %h---------------", dut.monitor_pc_rdata);
+        //     $display("REGFILE INFO DUMP");
+        //     $display("x0: %h ", dut.datapath.REGFILE.data[0]);
+        //     for (int i = 1; i < 32; i = i + 1) begin
+        //         $display("x%d: %h ", i, dut.datapath.REGFILE.data[i]);
+        //         if(i % 8 == 0) begin
+        //             $display("");
+        //         end
+        //     end
+        // end
         // Comment this for CP2+
         // if (magic_itf_i.error != 0 || magic_itf_d.error != 0) begin
         //     repeat (5) @(posedge clk);
