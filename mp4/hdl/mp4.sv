@@ -140,16 +140,27 @@ import pipeline_pkg::*;
     logic [255:0] dmem_wdata256;    // dmem_bus_adapter -> dmem_cache
     logic [255:0] dmem_rdata256;    // dmem_bus_adapter <- dmem_cache
 
-    logic [ 31:0] ipmem_address;    // imem_cache -> arbiter
-    logic         ipmem_read;       // imem_cache -> arbiter
-    logic [255:0] ipmem_rdata;      // imem_cache <- arbiter
-    logic         ipmem_resp;       // imem_cache <- arbiter
-    logic [ 31:0] dpmem_address;    // dmem_cache -> arbiter
-    logic [255:0] dpmem_wdata;      // dmem_cache -> arbiter
-    logic         dpmem_write;      // dmem_cache -> arbiter
-    logic         dpmem_read;       // dmem_cache -> arbiter
-    logic [255:0] dpmem_rdata;      // dmem_cache <- arbiter
-    logic         dpmem_resp;       // dmem_cache <- arbiter
+    logic [ 31:0] i2mem_address;    // imem_cache -> i2mem_cache
+    logic         i2mem_read;       // imem_cache -> i2mem_cache
+    logic [255:0] i2mem_rdata;      // imem_cache <- i2mem_cache
+    logic         i2mem_resp;       // imem_cache <- i2mem_cache
+    logic [ 31:0] d2mem_address;    // dmem_cache -> d2mem_cache
+    logic [255:0] d2mem_wdata;      // dmem_cache -> d2mem_cache
+    logic         d2mem_write;      // dmem_cache -> d2mem_cache
+    logic         d2mem_read;       // dmem_cache -> d2mem_cache
+    logic [255:0] d2mem_rdata;      // dmem_cache <- d2mem_cache
+    logic         d2mem_resp;       // dmem_cache <- d2mem_cache
+
+    logic [ 31:0] ipmem_address;    // i2mem_cache -> arbiter
+    logic         ipmem_read;       // i2mem_cache -> arbiter
+    logic [255:0] ipmem_rdata;      // i2mem_cache <- arbiter
+    logic         ipmem_resp;       // i2mem_cache <- arbiter
+    logic [ 31:0] dpmem_address;    // d2mem_cache -> arbiter
+    logic [255:0] dpmem_wdata;      // d2mem_cache -> arbiter
+    logic         dpmem_write;      // d2mem_cache -> arbiter
+    logic         dpmem_read;       // d2mem_cache -> arbiter
+    logic [255:0] dpmem_rdata;      // d2mem_cache <- arbiter
+    logic         dpmem_resp;       // d2mem_cache <- arbiter
 
     logic [ 31:0] pmem_address;     // arbiter -> cacheline_adaptor
     logic [255:0] pmem_wdata;       // arbiter -> cacheline_adaptor
@@ -184,6 +195,20 @@ import pipeline_pkg::*;
         .mem_read           (imem_read),        // from cpu
         .mem_rdata          (imem_rdata256),    // to imem_bus_adapter
         .mem_resp           (imem_resp),        // to cpu
+        .pmem_address       (i2mem_address),    // to i2mem_cache
+        .pmem_read          (i2mem_read),       // to i2mem_cache
+        .pmem_rdata         (i2mem_rdata),      // from i2mem_cache
+        .pmem_resp          (i2mem_resp)        // from i2mem_cache
+    );
+
+    cache i2mem_cache(.clk, .rst,
+        .mem_write          (1'b0),
+        .mem_byte_enable    (32'hFFFF_FFFF),
+        .mem_wdata          (256'b0),
+        .mem_address        (i2mem_address),    // from imem_cache
+        .mem_read           (i2mem_read),       // from imem_cache
+        .mem_rdata          (i2mem_rdata),      // to imem_cache
+        .mem_resp           (i2mem_resp),       // to imem_cache
         .pmem_address       (ipmem_address),    // to arbiter
         .pmem_read          (ipmem_read),       // to arbiter
         .pmem_rdata         (ipmem_rdata),      // from arbiter
@@ -198,6 +223,22 @@ import pipeline_pkg::*;
         .mem_wdata          (dmem_wdata256),    // from dmem_bus_adapter
         .mem_rdata          (dmem_rdata256),    // to dmem_bus_adapter
         .mem_resp           (dmem_resp),        // to cpu
+        .pmem_address       (d2mem_address),    // to d2mem_cache
+        .pmem_wdata         (d2mem_wdata),      // to d2mem_cache
+        .pmem_write         (d2mem_write),      // to d2mem_cache
+        .pmem_read          (d2mem_read),       // to d2mem_cache
+        .pmem_rdata         (d2mem_rdata),      // from d2mem_cache
+        .pmem_resp          (d2mem_resp)        // from d2mem_cache
+    );
+
+    cache d2mem_cache(.clk, .rst,
+        .mem_byte_enable    (32'hFFFF_FFFF),
+        .mem_address        (d2mem_address),    // from dmem_cache
+        .mem_write          (d2mem_write),      // from dmem_cache
+        .mem_read           (d2mem_read),       // from dmem_cache
+        .mem_wdata          (d2mem_wdata),      // from dmem_cache
+        .mem_rdata          (d2mem_rdata),      // to dmem_cache
+        .mem_resp           (d2mem_resp),       // to dmem_cache
         .pmem_address       (dpmem_address),    // to arbiter
         .pmem_wdata         (dpmem_wdata),      // to arbiter
         .pmem_write         (dpmem_write),      // to arbiter
@@ -207,16 +248,16 @@ import pipeline_pkg::*;
     );
 
     arbiter arbiter(.clk, .rst,
-        .ipmem_address      (ipmem_address),    // from imem_cache
-        .ipmem_read         (ipmem_read),       // from imem_cache
-        .ipmem_rdata        (ipmem_rdata),      // to imem_cache
-        .ipmem_resp         (ipmem_resp),       // to imem_cache
-        .dpmem_address      (dpmem_address),    // from dmem_cache
-        .dpmem_wdata        (dpmem_wdata),      // from dmem_cache
-        .dpmem_write        (dpmem_write),      // from dmem_cache
-        .dpmem_read         (dpmem_read),       // from dmem_cache
-        .dpmem_rdata        (dpmem_rdata),      // to dmem_cache
-        .dpmem_resp         (dpmem_resp),       // to dmem_cache
+        .ipmem_address      (ipmem_address),    // from i2mem_cache
+        .ipmem_read         (ipmem_read),       // from i2mem_cache
+        .ipmem_rdata        (ipmem_rdata),      // to i2mem_cache
+        .ipmem_resp         (ipmem_resp),       // to i2mem_cache
+        .dpmem_address      (dpmem_address),    // from d2mem_cache
+        .dpmem_wdata        (dpmem_wdata),      // from d2mem_cache
+        .dpmem_write        (dpmem_write),      // from d2mem_cache
+        .dpmem_read         (dpmem_read),       // from d2mem_cache
+        .dpmem_rdata        (dpmem_rdata),      // to d2mem_cache
+        .dpmem_resp         (dpmem_resp),       // to d2mem_cache
         .pmem_address       (pmem_address),     // to cacheline_adaptor
         .pmem_wdata         (pmem_wdata),       // to cacheline_adaptor
         .pmem_write         (pmem_write),       // to cacheline_adaptor
