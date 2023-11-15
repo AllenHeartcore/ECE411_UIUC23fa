@@ -322,6 +322,8 @@ import pipeline_pkg::*;
         endcase
     end
     
+
+    // SEE BUG 007 in bulog.md
     rv32i_word regfilemux_at_ex_mem; 
 
     always_comb begin : REGFILEMUX_IN // this is the expected reg file mux result at ex_mem stage (so load is don't care)
