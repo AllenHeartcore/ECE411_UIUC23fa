@@ -129,3 +129,9 @@ else
     end
 
 ```
+### BUG 0008 : rs1 rs2 checking zero logic incorrect
+
+* Parent bug : BUG 0001
+* when `wb_commit`, we need to update the corresponding reg in id_ex register (sepearated rs1, rs2 registers)
+* however, when we update, we need to check dependency, when rs1 == 0 or rs2 == 0, we shouldn't update the corresponding register. This is because corresponding fields can be don't care for reg index 0
+* When we check the index == 0 or not, I use the wrong index, fix has been added in this commit.

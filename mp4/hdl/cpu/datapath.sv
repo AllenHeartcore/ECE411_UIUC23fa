@@ -183,8 +183,8 @@ import pipeline_pkg::*;
     // writeback update rs1
     // when id_commit and wb_commit, we need to use the rs1,rs2 from ID stage
     // otherwise, since instruction is in id_ex reg, we can use the rs1,rs2 from ctrl word for id_ex (ctrlwb_at_ex)
-    assign wb_update_rs1 = hazard_ctrl.load_id_ex ? (wb_commit && ctrlwb.rd == rs1 && rs1) : (wb_commit && ctrlwb.rd == ctrlwb_at_ex.rs1 && rs1);
-    assign wb_update_rs2 = hazard_ctrl.load_id_ex ? (wb_commit && ctrlwb.rd == rs2 && rs2) : (wb_commit && ctrlwb.rd == ctrlwb_at_ex.rs2 && rs2);
+    assign wb_update_rs1 = hazard_ctrl.load_id_ex ? (wb_commit && ctrlwb.rd == rs1 && rs1) : (wb_commit && ctrlwb.rd == ctrlwb_at_ex.rs1 && ctrlwb_at_ex.rs1);
+    assign wb_update_rs2 = hazard_ctrl.load_id_ex ? (wb_commit && ctrlwb.rd == rs2 && rs2) : (wb_commit && ctrlwb.rd == ctrlwb_at_ex.rs2 && ctrlwb_at_ex.rs2);
 
     assign load_id_ex_r1 = hazard_ctrl.load_id_ex | wb_update_rs1;
     assign load_id_ex_r2 = hazard_ctrl.load_id_ex | wb_update_rs2;
