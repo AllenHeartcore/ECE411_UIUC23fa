@@ -10,10 +10,7 @@ _start:
     # TEST COVERAGE:
     #   Load and store instructions w/ different load size (lw, sh, lh).
     #   Possibly LUI AUIPC instruction (la).
-    la      x2, boom
-    addi	x12,x2,8
-    addi	x11,x2,4
-    addi	x10,x2,78
+    la  x2, boom
     sw	x26,96(x2)
     sw	x27,92(x2)
     sw	x0,4(x2)
