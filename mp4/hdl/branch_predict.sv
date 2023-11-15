@@ -40,8 +40,6 @@ always_ff @(posedge clk or posedge reset) begin
         if (valid) begin
             BHR <= {BHR[N-2:0], actual_branch_taken};
         end
-        // Make a prediction based on the PHT
-        prediction <= (PHT[BHR] == STRONG_TAKEN || PHT[BHR] == WEAK_TAKEN);
 
         // Update the PHT based on the actual outcome
         if (actual_branch_taken) begin
@@ -51,5 +49,7 @@ always_ff @(posedge clk or posedge reset) begin
         end
     end
 end
+// Make a prediction based on the PHT
+assign prediction = (PHT[BHR] == STRONG_TAKEN || PHT[BHR] == WEAK_TAKEN);
 
 endmodule
