@@ -29,6 +29,11 @@ run_arbiter_tb: $(SRCS)
 	mkdir -p sim
 	cd sim && vcs $(SRCS) $(VCS_FLAGS) -msg_config=../vcs_warn.config -l compile_dut.log -top arbiter_tb -o arbiter_tb
 
+.PHONY: run_bp_tb
+run_bp_tb: $(SRCS)
+	mkdir -p sim
+	cd sim && vcs $(SRCS) $(VCS_FLAGS) -msg_config=../vcs_warn.config -l compile_dut.log -top branch_predictor_tb -o branch_predictor_tb
+
 .PHONY: spike
 spike: $(ELF)
 	mkdir -p sim
