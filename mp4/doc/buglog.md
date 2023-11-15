@@ -109,3 +109,23 @@ else
 * The reason is rd being 0 not only when instruction writes to reg 0, it can also be the case when an instruction doesn't want to write to any register (e.x. store instruction).
 
 
+### *FATAL* BUG 0007 : fowarding mem logic is incorrect
+
+* **HIGH SEVERITY : FATAL BUG**
+* When forwarding is used from mem stage to execute stage, the data path assumes that we will use `alu` result.
+* In fact it should depend on regfilemux select.
+* Namely,
+```sv
+    rv32i_word regfilemux_at_ex_mem; 
+
+    always_comb begin : REGFILEMUX_IN // this is the expected reg file mux result at ex_mem stage (so load is don't care)
+        unique case (ctrlwb_at_mem.regfilemux_sel)
+            regfilemux::pc_plus4 : regfilemux_at_ex_mem = ex_mem_reg_o.pc + 4;
+            regfilemux::u_imm    : regfilemux_at_ex_mem = ex_mem_reg_o.uim;
+            regfilemux::alu_out  : regfilemux_at_ex_mem = ex_mem_reg_o.alu;
+            regfilemux::br_en    : regfilemux_at_ex_mem = {31'b0, ex_mem_reg_o.cmp};
+            default             : regfilemux_at_ex_mem = 'X;
+        endcase
+    end
+
+```
