@@ -10,6 +10,7 @@ import pipeline_pkg::*;
     input  ctrlmem_reg_t ctrlmem,
     input  ctrlwb_reg_t ctrlwb,
     input  ctrlwb_reg_t ctrlwb_at_ex,
+    input  ctrlwb_reg_t ctrlwb_at_mem,
 
     // to ctrl_word
     output rv32i_opcode opcode,
@@ -182,8 +183,8 @@ import pipeline_pkg::*;
     // writeback update rs1
     // when id_commit and wb_commit, we need to use the rs1,rs2 from ID stage
     // otherwise, since instruction is in id_ex reg, we can use the rs1,rs2 from ctrl word for id_ex (ctrlwb_at_ex)
-    assign wb_update_rs1 = hazard_ctrl.load_id_ex ? (wb_commit && ctrlwb.rd == rs1 && rs1) : (wb_commit && ctrlwb.rd == ctrlwb_at_ex.rs1 && rs1);
-    assign wb_update_rs2 = hazard_ctrl.load_id_ex ? (wb_commit && ctrlwb.rd == rs2 && rs2) : (wb_commit && ctrlwb.rd == ctrlwb_at_ex.rs2 && rs2);
+    assign wb_update_rs1 = hazard_ctrl.load_id_ex ? (wb_commit && ctrlwb.rd == rs1 && rs1) : (wb_commit && ctrlwb.rd == ctrlwb_at_ex.rs1 && ctrlwb_at_ex.rs1);
+    assign wb_update_rs2 = hazard_ctrl.load_id_ex ? (wb_commit && ctrlwb.rd == rs2 && rs2) : (wb_commit && ctrlwb.rd == ctrlwb_at_ex.rs2 && ctrlwb_at_ex.rs2);
 
     assign load_id_ex_r1 = hazard_ctrl.load_id_ex | wb_update_rs1;
     assign load_id_ex_r2 = hazard_ctrl.load_id_ex | wb_update_rs2;
@@ -320,6 +321,20 @@ import pipeline_pkg::*;
             default        : marmux_out = 'X;
         endcase
     end
+    
+
+    // SEE BUG 007 in bulog.md
+    rv32i_word regfilemux_at_ex_mem; 
+
+    always_comb begin : REGFILEMUX_IN // this is the expected reg file mux result at ex_mem stage (so load is don't care)
+        unique case (ctrlwb_at_mem.regfilemux_sel)
+            regfilemux::pc_plus4 : regfilemux_at_ex_mem = ex_mem_reg_o.pc + 4;
+            regfilemux::u_imm    : regfilemux_at_ex_mem = ex_mem_reg_o.uim;
+            regfilemux::alu_out  : regfilemux_at_ex_mem = ex_mem_reg_o.alu;
+            regfilemux::br_en    : regfilemux_at_ex_mem = {31'b0, ex_mem_reg_o.cmp};
+            default             : regfilemux_at_ex_mem = 'X;
+        endcase
+    end
 
     always_comb begin : REGFILEMUX
         
@@ -365,7 +380,7 @@ import pipeline_pkg::*;
     always_comb begin : FWDMUX1
         unique case (fwdmux1_sel)
             fwdmux::no_fwd : fwdmux1_out = id_ex_reg_r1_o;
-            fwdmux::fwd_mem: fwdmux1_out = ex_mem_reg_o.alu;
+            fwdmux::fwd_mem: fwdmux1_out = regfilemux_at_ex_mem;
             fwdmux::fwd_wb : fwdmux1_out = regfilemux_out;
             default        : fwdmux1_out = 'X;
         endcase
@@ -374,7 +389,7 @@ import pipeline_pkg::*;
     always_comb begin : FWDMUX2
         unique case (fwdmux2_sel)
             fwdmux::no_fwd : fwdmux2_out = id_ex_reg_r2_o;
-            fwdmux::fwd_mem: fwdmux2_out = ex_mem_reg_o.alu;
+            fwdmux::fwd_mem: fwdmux2_out = regfilemux_at_ex_mem;
             fwdmux::fwd_wb : fwdmux2_out = regfilemux_out;
             default        : fwdmux2_out = 'X;
         endcase

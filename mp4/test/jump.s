@@ -6,15 +6,18 @@ riscv_mp2test.s:
     # the instructions in this test program.
 _start:
     # No data hazards, no control hazards, no structural hazards.
+    jal    x5, test3 
+test1:
+    jal    x4, test2
+test3:
+    lui	    x14,0xffffa
+    la      x1, threshold
+    sw      x14, 0(x1)
+    lw      x2, 0(x1)
+    jal     x3, test1
 
-    # TEST COVERAGE:
-    #   Load and store instructions w/ different load size (lw, sh, lh).
-    #   Possibly LUI AUIPC instruction (la).
-    la  x2, boom
-    sw	x26,96(x2)
-    sw	x27,92(x2)
-    sw	x0,4(x2)
-    sw	x1,140(x2)
+test2:
+    add     x3, x3, x4
 
     li  t0, 1
     la  t1, tohost
@@ -34,11 +37,13 @@ deadloop:
 .section .data
 
 boom:       .word 0x00002010
-pia:        .word 0x00000001
+pia:        .word 0x40000058
 op1:        .word 0x00001012
 op2:        .word 0xf4001001
 .section .rodata
 
+datax10:   .word 0x00003f3f
+datax11:   .word 0x00000000
 bad:        .word 0xdeadbeef
 threshold:  .word 0x03122040
 result:     .word 0x00000000
@@ -50,3 +55,4 @@ tohost: .dword 0
 .section ".fromhost"
 .globl fromhost
 fromhost: .dword 0
+
