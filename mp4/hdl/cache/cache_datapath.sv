@@ -3,10 +3,11 @@ import cache_types::*;
 #(
             parameter       s_offset = 5,
             parameter       s_index  = 4,
+            parameter       s_wayidx = 2,
             parameter       s_tag    = 32 - s_offset - s_index,
-            parameter       s_mask   = 2**s_offset,
-            parameter       s_line   = 8*s_mask,
-            parameter       num_sets = 2**s_index
+            parameter       s_line   = 2**s_offset * 8,
+            parameter       num_sets = 2**s_index,
+            parameter       num_ways = 2**s_wayidx
 )(
     input  clk,
     input  rst,
@@ -28,10 +29,10 @@ import cache_types::*;
 );
 
 
-            logic   [255:0] data_q      [4];
-            logic   [s_tag-1:0] tag_q   [4];
-            logic           valid_q     [4];
-            logic           dirty_q     [4];
+            logic   [255:0] data_q      [num_ways];
+            logic   [s_tag-1:0] tag_q   [num_ways];
+            logic           valid_q     [num_ways];
+            logic           dirty_q     [num_ways];
 
             logic   [s_tag-1:0]     addr_tag;
             logic   [s_index-1:0]   addr_index;
@@ -40,31 +41,31 @@ import cache_types::*;
     assign addr_index  = mem_address[s_offset+s_index-1:s_offset];
     assign addr_offset = mem_address[s_offset-1:0];
 
-            logic   [  1:0] WAYHIT;
-            logic   [  1:0] WAYLRU;
+            logic   [s_wayidx-1:0]  WAYHIT;
+            logic   [s_wayidx-1:0]  WAYLRU;
     assign mem_rdata  = data_q[WAYHIT];
     assign pmem_wdata = data_q[WAYLRU];
     assign pmem_address = {PMADMUX ? tag_q[WAYLRU] : addr_tag, addr_index, {s_offset{1'b0}}};
     assign SIGDIRTY   = valid_q[WAYLRU] & dirty_q[WAYLRU];
 
-            logic   [  3:0] MASKHIT;
-            logic   [  3:0] MASKLRU;
-    assign MASKHIT    = 4'b1 << WAYHIT;
-    assign MASKLRU    = 4'b1 << WAYLRU;
+            logic   [num_ways-1:0]  MASKHIT;
+            logic   [num_ways-1:0]  MASKLRU;
+    assign MASKHIT    = '1 << WAYHIT;
+    assign MASKLRU    = '1 << WAYLRU;
 
     always_comb begin : hit_detection
-        case (addr_tag)
-            tag_q[0]: {SIGHIT, WAYHIT} = 3'b100;
-            tag_q[1]: {SIGHIT, WAYHIT} = 3'b101;
-            tag_q[2]: {SIGHIT, WAYHIT} = 3'b110;
-            tag_q[3]: {SIGHIT, WAYHIT} = 3'b111;
-            default:  {SIGHIT, WAYHIT} = 3'b0XX;
-        endcase
+        SIGHIT = 1'b0;
+        for (logic [s_wayidx-1:0] x = '0; x < num_ways[s_wayidx-1:0]; x += '1) begin
+            if (addr_tag == tag_q[x]) begin
+                SIGHIT = 1'b1;
+                WAYHIT = x;
+            end
+        end
     end : hit_detection
 
 
     genvar i;
-    generate for (i = 0; i < 4; i++) begin : arrays
+    generate for (i = 0; i < num_ways; i++) begin : arrays
         mp3_data_array data_array (
             .clk0       (clk),
             .csb0       (1'b0),
@@ -103,34 +104,53 @@ import cache_types::*;
     end endgenerate
 
 
-    logic [2:0] PLRU [num_sets];
+    /*  PLRU algorithm implementation  */
+    logic [num_ways-1:0] PLRU [num_sets];   // lowest bit unused
+    logic PLRU_signals [num_ways];
 
+    /*  Examples: (s_wayidx = 3, num_ways = 8)
+     *  if (WAYHIT == 3'b011) begin
+     *      PLRU[j][3'b101] <= 1'b1;    // k = 0, {01, 011} >> 1 = 00[101]
+     *      PLRU[j][3'b010] <= 1'b1;    // k = 1, {01, 011} >> 2 = 00[010]
+     *      PLRU[j][3'b001] <= 1'b0;    // k = 2, {01, 011} >> 3 = 00[001]
+     *  end
+     *  if (WAYHIT == 3'b110) begin
+     *      PLRU[j][3'b111] <= 1'b0;    // k = 0, {01, 110} >> 1 = 00[111]
+     *      PLRU[j][3'b011] <= 1'b1;    // k = 1, {01, 110} >> 2 = 00[011]
+     *      PLRU[j][3'b001] <= 1'b1;    // k = 2, {01, 110} >> 3 = 00[001]
+     *  end
+     */
     always_ff @ (posedge clk) begin : plru_in
-        for (logic [31:0] j = 0; j < num_sets; j++) begin
+        for (logic [s_index:0] j = '0; j < num_sets[s_index:0]; j += '1) begin
             if (rst)
-                PLRU[j] <= 3'b000;
-            else if (LD_PLRU & (addr_index == j[s_index-1:0]))
-                case (WAYHIT)
-                    2'b00: PLRU[j] <= {PLRU[j][2], 1'b0, 1'b0};
-                    2'b01: PLRU[j] <= {PLRU[j][2], 1'b1, 1'b0};
-                    2'b10: PLRU[j] <= {1'b0, PLRU[j][1], 1'b1};
-                    2'b11: PLRU[j] <= {1'b1, PLRU[j][1], 1'b1};
-                endcase
-            else PLRU[j] <= PLRU[j];
+                PLRU[j] <= '0;
+            else
+                PLRU[j] <= PLRU[j];
+            if (LD_PLRU & (addr_index == j[s_index-1:0]))
+                for (int k = 0; k < s_wayidx; k++)
+                    PLRU[j][{2'b01, WAYHIT} >> (k+1)] <= WAYHIT[k];
         end
     end : plru_in
 
+    /*  Examples:
+     *  if (
+     *      PLRU[addr_index][3'b101] == 1'b0 &
+     *      PLRU[addr_index][3'b010] == 1'b0 &
+     *      PLRU[addr_index][3'b001] == 1'b1
+     *  ) WAYLRU = 3'b011;
+     *  if (
+     *      PLRU[addr_index][3'b111] == 1'b1 &
+     *      PLRU[addr_index][3'b011] == 1'b0 &
+     *      PLRU[addr_index][3'b001] == 1'b0
+     *  ) WAYLRU = 3'b110;
+     */
     always_comb begin : plru_out
-        if (PLRU[addr_index][0])
-            if (PLRU[addr_index][1])
-                WAYLRU = 2'b00;
-            else
-                WAYLRU = 2'b01;
-        else
-            if (PLRU[addr_index][2])
-                WAYLRU = 2'b10;
-            else
-                WAYLRU = 2'b11;
+        for (logic [s_wayidx-1:0] m = '0; m < num_ways[s_wayidx-1:0]; m += '1) begin
+            for (int n = 0; n < s_wayidx; n++)
+                PLRU_signals[m] &= (PLRU[addr_index][{2'b01, m} >> (n+1)] == m[n]);
+            if (PLRU_signals[m])
+                WAYLRU = m;
+        end
     end : plru_out
 
 
