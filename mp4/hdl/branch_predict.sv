@@ -31,7 +31,6 @@ state_t PHT[2**N-1:0];
 always_ff @(posedge clk or posedge reset) begin
     if (reset) begin
         BHR <= '0;
-        prediction <= '0;
         for (int i = 0; i < 2**N; i++) begin
             PHT[i] <= WEAK_NOT_TAKEN;
         end
@@ -39,13 +38,13 @@ always_ff @(posedge clk or posedge reset) begin
         // Update the BHR
         if (valid) begin
             BHR <= {BHR[N-2:0], actual_branch_taken};
-        end
 
-        // Update the PHT based on the actual outcome
-        if (actual_branch_taken) begin
-            if (PHT[BHR] != STRONG_TAKEN) PHT[BHR] <= PHT[BHR] + 1;
-        end else begin
-            if (PHT[BHR] != STRONG_NOT_TAKEN) PHT[BHR] <= PHT[BHR] - 1;
+            // Update the PHT based on the actual outcome
+            if (actual_branch_taken) begin
+                if (PHT[BHR] != STRONG_TAKEN) PHT[BHR] <= PHT[BHR] + 1;
+            end else begin
+                if (PHT[BHR] != STRONG_NOT_TAKEN) PHT[BHR] <= PHT[BHR] - 1;
+            end
         end
     end
 end
