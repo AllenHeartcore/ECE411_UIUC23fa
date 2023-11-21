@@ -55,6 +55,7 @@ import cache_types::*;
 
     always_comb begin : hit_detection
         SIGHIT = 1'b0;
+        WAYHIT = 'X;
         for (int x = 0; x < num_ways; x += 1) begin
             if (addr_tag == tag_q[x]) begin
                 SIGHIT = 1'b1;
@@ -146,8 +147,9 @@ import cache_types::*;
      */
     always_comb begin : plru_out
         for (int m = 0; m < num_ways; m += 1) begin
+            PLRU_signals[m] = 1'b1;
             for (int n = 0; n < s_wayidx; n++)
-                PLRU_signals[m] &= (PLRU[addr_index][{2'b01, m[s_wayidx-1:0]} >> (n+1)] == m[n]);
+                PLRU_signals[m] &= (PLRU[addr_index][{2'b01, m[s_wayidx-1:0]} >> (n+1)] != m[n]);
             if (PLRU_signals[m])
                 WAYLRU = m[s_wayidx-1:0];
         end
