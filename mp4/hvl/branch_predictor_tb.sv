@@ -7,7 +7,7 @@ localparam int N = 4;
 
 // Testbench signals
 logic clk;
-logic reset;
+logic rst;
 logic valid;
 logic actual_branch_taken;
 logic prediction;
@@ -15,7 +15,7 @@ logic prediction;
 // Instantiate the unit under test (UUT)
 branch_predictor #(.N(N)) uut (
     .clk(clk),
-    .reset(reset),
+    .rst(reset),
     .valid(valid),
     .actual_branch_taken(actual_branch_taken),
     .prediction(prediction)

@@ -27,12 +27,19 @@ run_top_tb: sim/top_tb $(PROG)
 .PHONY: run_arbiter_tb
 run_arbiter_tb: $(SRCS)
 	mkdir -p sim
-	cd sim && vcs $(SRCS) $(VCS_FLAGS) -msg_config=../vcs_warn.config -l compile_dut.log -top arbiter_tb -o arbiter_tb
+	cd sim && vcs $(SRCS) $(VCS_FLAGS) -msg_config=../vcs_warn.config -l compile_arbiter.log -top arbiter_tb -o arbiter_tb
+
+
+.PHONY: run_btb_tb
+run_btb_tb: $(SRCS)
+	mkdir -p sim
+	cd sim && vcs $(SRCS) $(VCS_FLAGS) -msg_config=../vcs_warn.config -l compile_btb.log -top btb_tb -o btb_tb
+
 
 .PHONY: run_bp_tb
 run_bp_tb: $(SRCS)
 	mkdir -p sim
-	cd sim && vcs $(SRCS) $(VCS_FLAGS) -msg_config=../vcs_warn.config -l compile_dut.log -top branch_predictor_tb -o branch_predictor_tb
+	cd sim && vcs $(SRCS) $(VCS_FLAGS) -msg_config=../vcs_warn.config -l compile_bp.log -top branch_predictor_tb -o branch_predictor_tb
 
 .PHONY: spike
 spike: $(ELF)

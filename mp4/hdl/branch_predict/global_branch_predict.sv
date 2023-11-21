@@ -4,7 +4,7 @@ module branch_predictor
 )
 (
     input logic clk,
-    input logic reset,
+    input logic rst,
     input logic valid,
     input logic actual_branch_taken,
     output logic prediction
@@ -28,8 +28,8 @@ state_t PHT[2**N-1:0];
 
 
 // Update BHR and PHT
-always_ff @(posedge clk or posedge reset) begin
-    if (reset) begin
+always_ff @(posedge clk or posedge rst) begin
+    if (rst) begin
         BHR <= '0;
         for (int i = 0; i < 2**N; i++) begin
             PHT[i] <= WEAK_NOT_TAKEN;
