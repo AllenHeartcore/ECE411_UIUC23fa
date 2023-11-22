@@ -20,7 +20,8 @@ module arbiter
     output  logic           pmem_write,
     output  logic           pmem_read,
     input   logic [255:0]   pmem_rdata,
-    input   logic           pmem_resp
+    input   logic           pmem_resp,
+    output  logic           arbiter_idle
 );
 
 
@@ -49,6 +50,8 @@ module arbiter
         endcase
 
     end : NEXT_STATE_LOGIC
+
+    assign arbiter_idle = (state == IDLE);
 
 
 

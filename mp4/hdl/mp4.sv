@@ -140,6 +140,11 @@ import pipeline_pkg::*;
     logic [255:0] dmem_wdata256;    // dmem_bus_adapter -> dmem_cache
     logic [255:0] dmem_rdata256;    // dmem_bus_adapter <- dmem_cache
 
+    logic [ 31:0] icmem_address;    // prefetcher -> imem_cache
+    logic         icmem_read;       // prefetcher -> imem_cache
+    logic [255:0] icmem_rdata256;   // prefetcher <- imem_cache
+    logic         icmem_resp;       // prefetcher <- imem_cache
+
     logic [ 31:0] ipmem_address;    // imem_cache -> arbiter
     logic         ipmem_read;       // imem_cache -> arbiter
     logic [255:0] ipmem_rdata;      // imem_cache <- arbiter
@@ -157,6 +162,8 @@ import pipeline_pkg::*;
     logic         pmem_read;        // arbiter -> cacheline_adaptor
     logic [255:0] pmem_rdata;       // arbiter <- cacheline_adaptor
     logic         pmem_resp;        // arbiter <- cacheline_adaptor
+
+    logic arbiter_idle;             // arbiter -> prefetcher
 
     bus_adapter imem_bus_adapter(
         .mem_wdata          (32'b0),            // (suppress synth warning LINT-58)
@@ -176,14 +183,27 @@ import pipeline_pkg::*;
         .mem_rdata256       (dmem_rdata256)     // from dmem_cache
     );
 
+    next_line_prefetcher prefetcher(.clk, .rst,
+        .imem_address       (imem_address),     // from cpu
+        .imem_read          (imem_read),        // from cpu
+        .imem_rdata256      (imem_rdata256),    // to imem_cache
+        .imem_resp          (imem_resp),        // to cpu
+        .icmem_rdata256     (icmem_rdata256),   // from imem_cache
+        .icmem_resp         (icmem_resp),       // from imem_cache
+        .icmem_address      (icmem_address),    // to imem_cache
+        .icmem_read         (icmem_read),       // to imem_cache
+        .branch_taken       (ex_is_branch), // from datapath
+        .arbiter_idle       (arbiter_idle)    // from arbiter
+    );
+
     cache imem_cache(.clk, .rst,
         .mem_write          (1'b0),             // (suppress synth warning LINT-58)
         .mem_byte_enable    (32'hFFFF_FFFF),    // (suppress synth warning LINT-58)
         .mem_wdata          (256'b0),           // (suppress synth warning LINT-58)
-        .mem_address        (imem_address),     // from cpu
-        .mem_read           (imem_read),        // from cpu
-        .mem_rdata          (imem_rdata256),    // to imem_bus_adapter
-        .mem_resp           (imem_resp),        // to cpu
+        .mem_address        (icmem_address),    // from prefetcher
+        .mem_read           (icmem_read),       // from prefetcher
+        .mem_rdata          (icmem_rdata256),   // to prefetcher
+        .mem_resp           (icmem_resp),       // to prefetcher
         .pmem_address       (ipmem_address),    // to arbiter
         .pmem_read          (ipmem_read),       // to arbiter
         .pmem_rdata         (ipmem_rdata),      // from arbiter
@@ -222,7 +242,8 @@ import pipeline_pkg::*;
         .pmem_write         (pmem_write),       // to cacheline_adaptor
         .pmem_read          (pmem_read),        // to cacheline_adaptor
         .pmem_rdata         (pmem_rdata),       // from cacheline_adaptor
-        .pmem_resp          (pmem_resp)         // from cacheline_adaptor
+        .pmem_resp          (pmem_resp),         // from cacheline_adaptor  
+        .arbiter_idle       (arbiter_idle)      // to prefetcher
     );
 
     cacheline_adaptor cacheline_adaptor(.clk, .reset_n(!rst),
