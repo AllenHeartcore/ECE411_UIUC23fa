@@ -13,9 +13,9 @@ logic actual_branch_taken;
 logic prediction;
 
 // Instantiate the unit under test (UUT)
-branch_predictor #(.N(N)) uut (
+global_branch_predictor #(.N(N)) uut (
     .clk(clk),
-    .rst(reset),
+    .rst(rst),
     .valid(valid),
     .actual_branch_taken(actual_branch_taken),
     .prediction(prediction)
@@ -31,17 +31,17 @@ initial begin
     valid = 0;
     actual_branch_taken = 0;
 
-    // Reset the UUT
-    #10 reset = 0;
-    #10 reset = 1;
-    #10 reset = 0;
+    // rst the UUT
+    #10 rst <= '0;
+    #10 rst <= '1;
+    #10 rst <= '0;
     #10
 
     // Test a sequence of branches
     repeat (2**N) begin
         @(posedge clk); // Wait for the positive edge of the clock
-        valid = 1;
-        actual_branch_taken = $random; // Randomize the actual branch taken signal
+        valid <= 1;
+        actual_branch_taken <= $random; // Randomize the actual branch taken signal
         @(posedge clk); // Wait for the UUT to update its prediction
         valid = 0;
 

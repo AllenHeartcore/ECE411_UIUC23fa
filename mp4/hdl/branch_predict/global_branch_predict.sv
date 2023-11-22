@@ -1,4 +1,4 @@
-module branch_predictor 
+module global_branch_predictor 
 #(
     parameter int N = 4 // Define N as per your requirement
 )

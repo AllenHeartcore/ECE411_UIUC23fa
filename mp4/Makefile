@@ -26,20 +26,22 @@ run_top_tb: sim/top_tb $(PROG)
 
 .PHONY: run_arbiter_tb
 run_arbiter_tb: $(SRCS)
-	mkdir -p sim
-	cd sim && vcs $(SRCS) $(VCS_FLAGS) -msg_config=../vcs_warn.config -l compile_arbiter.log -top arbiter_tb -o arbiter_tb
+	cd sim && vcs $(SRCS) $(VCS_FLAGS) -msg_config=../vcs_warn.config -l compile_arbiter.log -top arbiter_tb -o arbiter_tb && ./arbiter_tb -l arbiter_simulation.log
 
 
 .PHONY: run_btb_tb
 run_btb_tb: $(SRCS)
-	mkdir -p sim
-	cd sim && vcs $(SRCS) $(VCS_FLAGS) -msg_config=../vcs_warn.config -l compile_btb.log -top btb_tb -o btb_tb
+	cd sim && vcs $(SRCS) $(VCS_FLAGS) -msg_config=../vcs_warn.config -l compile_btb.log -top btb_tb -o btb_tb && ./btb_tb -l btb_simulation.log
 
 
 .PHONY: run_bp_tb
 run_bp_tb: $(SRCS)
-	mkdir -p sim
-	cd sim && vcs $(SRCS) $(VCS_FLAGS) -msg_config=../vcs_warn.config -l compile_bp.log -top branch_predictor_tb -o branch_predictor_tb
+	cd sim && vcs $(SRCS) $(VCS_FLAGS) -msg_config=../vcs_warn.config -l compile_bp.log -top branch_predictor_tb -o branch_predictor_tb && ./branch_predictor_tb -l bp_simulation.log
+
+.PHONY: run_local_bp_tb
+run_local_bp_tb: $(SRCS)
+	rm -f sim/dump.fsdb
+	cd sim && vcs $(SRCS) $(VCS_FLAGS) -msg_config=../vcs_warn.config -l compile_local_bp.log -top local_branch_predictor_tb -o local_branch_predictor_tb && ./local_branch_predictor_tb -l local_bp_simulation.log
 
 .PHONY: spike
 spike: $(ELF)
