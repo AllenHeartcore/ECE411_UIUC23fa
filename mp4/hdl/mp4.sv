@@ -262,23 +262,14 @@ import pipeline_pkg::*;
         .resp_i             (bmem_resp)         // from physical memory
     );
 
-    btb branch_target_buffer (.clk, .rst,
-        .predict_pc         (),                     // from pc value of IF stage
-        .update_pc          (),                     // from pc value of EX stage
-        .branch_taken       (),                     // branch, jar, jalr of EX stage
-        .target_pc          (),                     // target address of EX stage
-        .predicted_pc       (),                     // predicted target pc in IF stage
-        .prediction         ()                      // signal that judge whether the predicted target pc is valid
+    branch_predictor branch_predictor(.clk, .rst,
+        .predict_pc         (),                 // from pc value of IF stage
+        .update_pc          (),                 // from pc value of EX stage
+        .valid              (),                 // branch, jar, jalr of EX stage
+        .branch_taken       (),                 // whether branch, jar, jalr take in EX stage
+        .target_pc          (),                 // target pc address of EX stage
+        .predicted_pc       ()                  // predicted target pc in IF stage
     );
-
-    local_branch_predictor_no_bht local_branch_predictor (.clk, .rst,
-        .update_branch_pc   (),                     // from pc value of EX stage
-        .predict_branch_pc  (),                     // predictd pc value of IF stage
-        .valid              (),                     // branch, jar, jalr of EX stage
-        .actual_branch_taken(),                     // branch, jar, jalr of EX stage
-        .prediction         ()                      // signal that predict whether we should take branch for the pc value of IF stage
-    );
-
 
 
 

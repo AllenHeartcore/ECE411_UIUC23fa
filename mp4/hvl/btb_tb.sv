@@ -26,7 +26,7 @@ module btb_tb;
         .rst(reset),
         .predict_pc(predict_pc),
         .update_pc(update_pc),
-        .branch_taken(branch_taken),
+        .valid(branch_taken),
         .target_pc(target_pc),
         .predicted_pc(predicted_pc),
         .prediction(prediction)
@@ -46,7 +46,8 @@ module btb_tb;
         // Initialize Inputs
         clk = 0;
         reset <= 1;
-        pc <= 0;
+        predict_pc <= '0;
+        update_pc <= '0;
         branch_taken <= 0;
         target_pc <= 0;
 
@@ -56,32 +57,32 @@ module btb_tb;
 
         // Add stimulus here
         // Test Case 1: Insert a branch target and verify prediction
-        predict_pc <= 32'h0000_1000;
+        update_pc <= 32'h0000_1000;
         branch_taken <= 1;
         target_pc <= 32'h0000_2000;
         @(posedge clk);
         
         // Check for correct prediction after insert
-        pc <= 32'h0000_1000;
+        predict_pc <= 32'h0000_1000;
         branch_taken <= 0; // No update, just check
         @(posedge clk);
-        assert(prediction == 1 && predicted_pc == 32'h0000_2000) else $error("Prediction failed for PC: %h, Predicted_PC: %h, Prediction: %b", pc, predicted_pc, prediction);
+        assert(prediction == 1 && predicted_pc == 32'h0000_2000) else $error("Prediction failed for PC: %h, Predicted_PC: %h, Prediction: %b", predict_pc, predicted_pc, prediction);
 
         // Test Case 2: No branch taken, prediction should be 0
-        pc <= 32'h0000_3000; // New PC that was never a branch
+        predict_pc <= 32'h0000_3000; // New PC that was never a branch
         @(posedge clk);
-        assert(prediction == 0) else $error("Prediction failed for PC: %h, Predicted_PC: %h, Prediction: %b", pc, predicted_pc, prediction);
+        assert(prediction == 0) else $error("Prediction failed for PC: %h, Predicted_PC: %h, Prediction: %b", predict_pc, predicted_pc, prediction);
         
         // Test Case 3: Update an existing BTB entry
-        pc <= 32'h0000_1000;
+        update_pc <= 32'h0000_1000;
         branch_taken <= 1;
         target_pc <= 32'h0000_4000; // New target
         @(posedge clk);
         
         // Verify the update took place
-        pc <= 32'h0000_1000;
+        predict_pc <= 32'h0000_1000;
         @(posedge clk);
-        assert(prediction == 1 && predicted_pc == 32'h0000_4000) else $error("Prediction failed for PC: %h, Predicted_PC: %h, Prediction: %b", pc, predicted_pc, prediction);
+        assert(prediction == 1 && predicted_pc == 32'h0000_4000) else $error("Prediction failed for PC: %h, Predicted_PC: %h, Prediction: %b", predict_pc, predicted_pc, prediction);
 
         // Add more test cases as needed
 
