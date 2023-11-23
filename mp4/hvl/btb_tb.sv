@@ -8,7 +8,8 @@ module btb_tb;
     // Inputs to the BTB
     logic clk;
     logic reset;
-    logic [ADDR_WIDTH-1:0] pc;
+    logic [ADDR_WIDTH-1:0] predict_pc;
+    logic [ADDR_WIDTH-1:0] update_pc;
     logic branch_taken;
     logic [ADDR_WIDTH-1:0] target_pc;
     
@@ -23,7 +24,8 @@ module btb_tb;
     ) uut (
         .clk(clk),
         .rst(reset),
-        .pc(pc),
+        .predict_pc(predict_pc),
+        .update_pc(update_pc),
         .branch_taken(branch_taken),
         .target_pc(target_pc),
         .predicted_pc(predicted_pc),
@@ -32,6 +34,12 @@ module btb_tb;
 
     // Clock generation
     always #5 clk = ~clk; // 100MHz clock
+
+    initial begin
+        $fsdbDumpfile("dump.fsdb");
+        $fsdbDumpvars(0, "+all");
+    end
+
     
     // Test sequence
     initial begin
@@ -48,7 +56,7 @@ module btb_tb;
 
         // Add stimulus here
         // Test Case 1: Insert a branch target and verify prediction
-        pc <= 32'h0000_1000;
+        predict_pc <= 32'h0000_1000;
         branch_taken <= 1;
         target_pc <= 32'h0000_2000;
         @(posedge clk);

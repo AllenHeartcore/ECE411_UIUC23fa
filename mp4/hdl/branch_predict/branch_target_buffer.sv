@@ -4,7 +4,8 @@ module btb #(
 )(
     input logic clk,
     input logic rst,
-    input logic [ADDR_WIDTH-1:0] pc,                 // Current PC value
+    input logic [ADDR_WIDTH-1:0] predict_pc,                 // Predict PC value
+    input logic [ADDR_WIDTH-1:0] update_pc,                 // Update PC value
     input logic branch_taken,                        // Signal indicating if branch was taken
     input logic [ADDR_WIDTH-1:0] target_pc,          // Target PC if branch is taken
     output logic [ADDR_WIDTH-1:0] predicted_pc,      // Predicted PC from BTB
@@ -31,20 +32,20 @@ always_ff @(posedge clk or posedge rst) begin
         // Update the BTB on a branch instruction
         if (branch_taken) begin
             // Simple replacement policy, evict the entry it belongs to
-            btb_entries[pc % BTB_SIZE].pc <= pc;
-            btb_entries[pc % BTB_SIZE].target <= target_pc;
-            btb_entries[pc % BTB_SIZE].valid <= 1;
+            btb_entries[update_pc % BTB_SIZE].pc <= pc;
+            btb_entries[update_pc % BTB_SIZE].target <= target_pc;
+            btb_entries[update_pc % BTB_SIZE].valid <= 1;
         end
     end
 end
 
 always_comb begin
-    prediction = 0;
+    prediction = 1'b0;
     predicted_pc = '0;
-    if (btb_entries[pc % BTB_SIZE].valid && btb_entries[pc % BTB_SIZE].pc == pc) begin
+    if (btb_entries[predict_pc % BTB_SIZE].valid && btb_entries[predict_pc % BTB_SIZE].pc == pc) begin
         // Match found, output the predicted PC
-        predicted_pc = btb_entries[pc % BTB_SIZE].target;
-        prediction = 1;
+        predicted_pc = btb_entries[predict_pc % BTB_SIZE].target;
+        prediction = 1'b1;
     end
 end
 
