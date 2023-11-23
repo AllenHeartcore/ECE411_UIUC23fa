@@ -33,6 +33,7 @@ import pipeline_pkg::*;
     logic [4:0] rs1_in;
     logic [4:0] rs2_in;
     logic ex_is_branch;
+    logic branch_mispredict;
 
     // forwarding_unit -> datapath
     fwdmux::fwdmux_sel_t fwdmux1_sel, fwdmux2_sel;

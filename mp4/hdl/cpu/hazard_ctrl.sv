@@ -6,7 +6,7 @@ import hazard_ctrl_pkg::*;
     input logic dmem_read_i, dmem_write_i,
     output logic dmem_read, dmem_write, 
     input logic imem_resp, dmem_resp,
-    input logic ex_is_branch,
+    input logic branch_mispredict,
     input logic no_hazard,
     output logic imem_read,
     output hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl,
@@ -70,17 +70,17 @@ import hazard_ctrl_pkg::*;
             id_enable <= 1'b0;
             ex_enable <= 1'b0;
         end else begin
-            if(ex_is_branch && ex_commit) begin  // when branch is in ex stage (ID_EX pipeline reg), we disassert all enable signals
+            if(branch_mispredict && ex_commit) begin  // when branch is in ex stage (ID_EX pipeline reg), we disassert all enable signals
                 if_enable <= 1'b0;
             end else if(if_mask && if_state == RDY && if_next_state == BUSY) begin
                 if_enable <= 1'b1;
             end
-            if(ex_is_branch && ex_commit) begin 
+            if(branch_mispredict && ex_commit) begin 
                 id_enable <= 1'b0;
             end else if(id_state == RDY && id_next_state == BUSY) begin
                 id_enable <= 1'b1;
             end
-            if(ex_is_branch && ex_commit) begin
+            if(branch_mispredict && ex_commit) begin
                 ex_enable <= 1'b0;
             end else if(ex_state == RDY && ex_next_state == BUSY) begin
                 ex_enable <= 1'b1;
