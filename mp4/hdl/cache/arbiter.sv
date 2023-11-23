@@ -84,7 +84,24 @@ module arbiter
                     pmem_wdata  = dpmem_wdata;
                 end
             end
-            IDLE: ;
+            IDLE: begin
+                if(next_state == SERVE_I) begin
+                    pmem_address    = ipmem_address;
+                    pmem_read       = 1'b1;
+                    ipmem_rdata     = pmem_rdata;
+                    ipmem_resp      = pmem_resp;
+                end else if(next_state == SERVE_D) begin
+                    pmem_address    = dpmem_address;
+                    dpmem_resp      = pmem_resp;
+                    if (dpmem_read) begin
+                        pmem_read   = 1'b1;
+                        dpmem_rdata = pmem_rdata;
+                    end else begin
+                        pmem_write  = 1'b1;
+                        pmem_wdata  = dpmem_wdata;
+                    end
+                end
+            end
         endcase
 
     end : STATE_ACTIONS

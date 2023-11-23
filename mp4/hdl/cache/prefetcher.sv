@@ -38,24 +38,26 @@ module next_line_prefetcher #(
     end
 
     always_ff @(posedge clk) begin
-        if(rst || no_prefetch_reg) begin
+        if(rst) begin
             last_cacheline_address <= 'x;
             last_prefetched_cacheline_address <= 'x;
         end
-        else if(state == SERVE_I) last_cacheline_address <= {icmem_address[31:s_offset], {s_offset{1'b0}}};   
-        else if(state == PREFETCH) begin 
+        else if(state == SERVE_I && next_state == IDLE) 
+            last_cacheline_address <= {icmem_address[31:s_offset], {s_offset{1'b0}}};   
+        else if(state == PREFETCH && next_state == IDLE) begin 
             last_cacheline_address <= prefetched_address;
             last_prefetched_cacheline_address <= prefetched_address;
         end
     end
 
     // next-line prefetcher
-    always_comb begin
-        prefetched_address = 'x;
-        if(~no_prefetch_reg) prefetched_address = last_cacheline_address + s_mask;
-    end
+    assign prefetched_address = last_cacheline_address + s_mask;
+
     // if last time we have a branch taken
-    assign flag_no_prefetch =  branch_taken || (last_prefetched_cacheline_address == last_cacheline_address);
+    assign flag_no_prefetch =  (
+                branch_taken || // if branch taken, we wait until next fetch
+                (last_prefetched_cacheline_address == last_cacheline_address) // if we prefetched before
+            );
 
 
 
@@ -95,10 +97,29 @@ module next_line_prefetcher #(
                 imem_rdata256     = 256'hx;
                 imem_resp      = 1'b0; // we must fake it as if there is no memory request at all from CPU's perspective
             end
-            IDLE: ;
+            IDLE: begin
+                if(next_state == SERVE_I) begin
+                    icmem_address    = imem_address;
+                    icmem_read       = 1'b1;
+                    imem_rdata256     = icmem_rdata256;
+                    imem_resp      = icmem_resp;
+                end else if(next_state == PREFETCH) begin
+                    icmem_address    = prefetched_address;
+                    icmem_read       = 1'b1;
+                    imem_rdata256     = 256'hx;
+                    imem_resp      = 1'b0; // we must fake it as if there is no memory request at all from CPU's perspective
+                end
+            end
         endcase
 
     end : STATE_ACTIONS_PREFETCHER
+
+
+
+    always_ff @(posedge clk) begin
+        if (rst)    state <= IDLE;
+        else        state <= next_state;
+    end
 
 
 
