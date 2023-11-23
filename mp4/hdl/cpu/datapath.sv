@@ -11,6 +11,7 @@ import pipeline_pkg::*;
     input  ctrlwb_reg_t ctrlwb,
     input  ctrlwb_reg_t ctrlwb_at_ex,
     input  ctrlwb_reg_t ctrlwb_at_mem,
+    input  ctrlmem_reg_t ctrlmem_at_ex,
 
     // to ctrl_word
     output rv32i_opcode opcode,
@@ -24,11 +25,15 @@ import pipeline_pkg::*;
     input  hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl,
     input  logic wb_commit,
     input  logic ex_enable,
-    output logic ex_is_branch,
     output logic branch_mispredict,
 
     // from branch predictor
     input  logic [31:0] predicted_pc,
+    output logic ex_is_branch,
+    output logic ex_branch_taken,
+    output logic [31:0] if_pc_rdata,
+    output logic [31:0] ex_pc_rdata,
+    output logic [31:0] ex_pc_wdata,
 
     // from forwarding_unit
     input  fwdmux::fwdmux_sel_t fwdmux1_sel, fwdmux2_sel,
@@ -56,7 +61,16 @@ import pipeline_pkg::*;
     pipeline_reg_t mem_wb_reg_i, mem_wb_reg_o;
 
     /* Branch Feedback (to hazard control) */
-    assign ex_is_branch = pcmux_sel_ex != pcmux::pc_plus4; // jump or branch
+    assign ex_branch_taken = pcmux_sel_ex != pcmux::pc_plus4; // jump or branch
+
+    assign ex_is_branch = (ctrlmem_at_ex.opcode == op_jalr) 
+    || (ctrlmem_at_ex.opcode == op_jal) 
+    || (ctrlmem_at_ex.opcode == op_br);
+
+    assign if_pc_rdata = if_id_reg_i.pc;
+    assign ex_pc_rdata = ex_mem_reg_i.pc;
+    assign ex_pc_wdata = ex_mem_reg_i._pc_wdata;
+
     assign branch_mispredict = ex_mem_reg_i._pc_wdata != id_ex_reg_o._pc_wdata; // branch mispredict
 
     /* Datapath Registers */
@@ -263,7 +277,6 @@ import pipeline_pkg::*;
     assign id_ex_reg_i._mem_rmask = 4'b0;
     assign id_ex_reg_i._mem_wdata = 32'b0;
     assign id_ex_reg_i._mem_addr = 32'b0;
-    assign id_ex_reg_i._pc_wdata = 32'b0;
     assign id_ex_reg_i.cmp = 1'b0;
     assign id_ex_reg_i.alu = 32'b0;
     assign id_ex_reg_i.uim = 32'b0;

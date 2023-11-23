@@ -32,8 +32,13 @@ import pipeline_pkg::*;
     logic [4:0] rd_in;
     logic [4:0] rs1_in;
     logic [4:0] rs2_in;
-    logic ex_is_branch;
     logic branch_mispredict;
+    logic ex_is_branch;
+    logic ex_branch_taken;
+    logic [31:0] if_pc_rdata;
+    logic [31:0] ex_pc_rdata;
+    logic [31:0] ex_pc_wdata;
+    logic [31:0] predicted_pc;
 
     // forwarding_unit -> datapath
     fwdmux::fwdmux_sel_t fwdmux1_sel, fwdmux2_sel;
@@ -193,7 +198,7 @@ import pipeline_pkg::*;
         .icmem_resp         (icmem_resp),       // from imem_cache
         .icmem_address      (icmem_address),    // to imem_cache
         .icmem_read         (icmem_read),       // to imem_cache
-        .branch_taken       (ex_is_branch), // from datapath
+        .branch_taken       (ex_branch_taken), // from datapath
         .arbiter_idle       (arbiter_idle)    // from arbiter
     );
 
@@ -263,12 +268,12 @@ import pipeline_pkg::*;
     );
 
     branch_predictor branch_predictor(.clk, .rst,
-        .predict_pc         (),                 // from pc value of IF stage
-        .update_pc          (),                 // from pc value of EX stage
-        .valid              (),                 // branch, jar, jalr of EX stage
-        .branch_taken       (),                 // whether branch, jar, jalr take in EX stage
-        .target_pc          (),                 // target pc address of EX stage
-        .predicted_pc       ()                  // predicted target pc in IF stage
+        .predict_pc         (if_pc_rdata),                 // from pc value of IF stage
+        .update_pc          (ex_pc_rdata),                 // from pc value of EX stage
+        .valid              (ex_is_branch),                // branch, jar, jalr of EX stage
+        .branch_taken       (ex_branch_taken),             // whether branch, jar, jalr take in EX stage
+        .target_pc          (ex_pc_wdata),                 // target pc address of EX stage -> BTB's value
+        .predicted_pc       (predicted_pc)                 // predicted target pc in IF stage
     );
 
 
