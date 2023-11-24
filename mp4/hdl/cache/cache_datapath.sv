@@ -1,7 +1,9 @@
 module cache_datapath
 import cache_types::*;
 #(
-            parameter       s_offset = 5,
+            parameter       s_word   = 256,
+            parameter       s_mask   = s_word / 8,
+            parameter       s_offset = $clog2(s_word) - 3,
             parameter       s_index  = 4,
             parameter       s_wayidx = 2,
             parameter       s_tag    = 32 - s_offset - s_index,
@@ -13,13 +15,13 @@ import cache_types::*;
     input  rst,
 
     input   logic   [31:0]  mem_address,
-    input   logic   [31:0]  mem_byte_enable,
-    input   logic   [255:0] mem_wdata,
-    output  logic   [255:0] mem_rdata,
+    input   logic   [s_mask-1:0] mem_byte_enable,
+    input   logic   [s_word-1:0] mem_wdata,
+    output  logic   [s_word-1:0] mem_rdata,
 
     output  logic   [31:0]  pmem_address,
-    output  logic   [255:0] pmem_wdata,
-    input   logic   [255:0] pmem_rdata,
+    output  logic   [s_word-1:0] pmem_wdata,
+    input   logic   [s_word-1:0] pmem_rdata,
 
     output  logic           SIGHIT, SIGDIRTY,
     input   logic           LD_VALID, LD_DIRTY, LD_TAG, LD_DATA, LD_PLRU, DIRTYVAL,
@@ -29,7 +31,7 @@ import cache_types::*;
 );
 
 
-            logic   [255:0] data_q      [num_ways];
+            logic   [s_word-1:0] data_q [num_ways];
             logic   [s_tag-1:0] tag_q   [num_ways];
             logic           valid_q     [num_ways];
             logic           dirty_q     [num_ways];
@@ -68,12 +70,14 @@ import cache_types::*;
     genvar i;
     generate for (i = 0; i < num_ways; i++) begin : arrays
         mp3_data_array #(
-            .ADDR_WIDTH (s_index)
+            .ADDR_WIDTH (s_index),
+            .DATA_WIDTH (s_word),
+            .NUM_WMASKS (s_mask)
         ) data_array (
             .clk0       (clk),
             .csb0       (1'b0),
             .web0       (!(LD_DATA & (DATAWMUX ? MASKLRU[i] : MASKHIT[i]))),
-            .wmask0     (DATAMUX ? 32'hFFFF_FFFF : mem_byte_enable),
+            .wmask0     (DATAMUX ? '1 : mem_byte_enable),
             .addr0      (addr_index),
             .din0       (DATAMUX ? pmem_rdata : mem_wdata),
             .dout0      (data_q[i])

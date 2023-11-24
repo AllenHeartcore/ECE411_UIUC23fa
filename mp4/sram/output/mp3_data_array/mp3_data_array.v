@@ -63,70 +63,10 @@ module mp3_data_array(
   always @ (negedge clk0)
   begin : MEM_WRITE0
     if ( !csb0_reg && !web0_reg ) begin
-        if (wmask0_reg[0])
-                mem[addr0_reg][7:0] = din0_reg[7:0];
-        if (wmask0_reg[1])
-                mem[addr0_reg][15:8] = din0_reg[15:8];
-        if (wmask0_reg[2])
-                mem[addr0_reg][23:16] = din0_reg[23:16];
-        if (wmask0_reg[3])
-                mem[addr0_reg][31:24] = din0_reg[31:24];
-        if (wmask0_reg[4])
-                mem[addr0_reg][39:32] = din0_reg[39:32];
-        if (wmask0_reg[5])
-                mem[addr0_reg][47:40] = din0_reg[47:40];
-        if (wmask0_reg[6])
-                mem[addr0_reg][55:48] = din0_reg[55:48];
-        if (wmask0_reg[7])
-                mem[addr0_reg][63:56] = din0_reg[63:56];
-        if (wmask0_reg[8])
-                mem[addr0_reg][71:64] = din0_reg[71:64];
-        if (wmask0_reg[9])
-                mem[addr0_reg][79:72] = din0_reg[79:72];
-        if (wmask0_reg[10])
-                mem[addr0_reg][87:80] = din0_reg[87:80];
-        if (wmask0_reg[11])
-                mem[addr0_reg][95:88] = din0_reg[95:88];
-        if (wmask0_reg[12])
-                mem[addr0_reg][103:96] = din0_reg[103:96];
-        if (wmask0_reg[13])
-                mem[addr0_reg][111:104] = din0_reg[111:104];
-        if (wmask0_reg[14])
-                mem[addr0_reg][119:112] = din0_reg[119:112];
-        if (wmask0_reg[15])
-                mem[addr0_reg][127:120] = din0_reg[127:120];
-        if (wmask0_reg[16])
-                mem[addr0_reg][135:128] = din0_reg[135:128];
-        if (wmask0_reg[17])
-                mem[addr0_reg][143:136] = din0_reg[143:136];
-        if (wmask0_reg[18])
-                mem[addr0_reg][151:144] = din0_reg[151:144];
-        if (wmask0_reg[19])
-                mem[addr0_reg][159:152] = din0_reg[159:152];
-        if (wmask0_reg[20])
-                mem[addr0_reg][167:160] = din0_reg[167:160];
-        if (wmask0_reg[21])
-                mem[addr0_reg][175:168] = din0_reg[175:168];
-        if (wmask0_reg[22])
-                mem[addr0_reg][183:176] = din0_reg[183:176];
-        if (wmask0_reg[23])
-                mem[addr0_reg][191:184] = din0_reg[191:184];
-        if (wmask0_reg[24])
-                mem[addr0_reg][199:192] = din0_reg[199:192];
-        if (wmask0_reg[25])
-                mem[addr0_reg][207:200] = din0_reg[207:200];
-        if (wmask0_reg[26])
-                mem[addr0_reg][215:208] = din0_reg[215:208];
-        if (wmask0_reg[27])
-                mem[addr0_reg][223:216] = din0_reg[223:216];
-        if (wmask0_reg[28])
-                mem[addr0_reg][231:224] = din0_reg[231:224];
-        if (wmask0_reg[29])
-                mem[addr0_reg][239:232] = din0_reg[239:232];
-        if (wmask0_reg[30])
-                mem[addr0_reg][247:240] = din0_reg[247:240];
-        if (wmask0_reg[31])
-                mem[addr0_reg][255:248] = din0_reg[255:248];
+        for (int i = 0; i < NUM_WMASKS; i++) begin
+            if (wmask0_reg[i])
+                mem[addr0_reg][i*8 +: 8] = din0_reg[i*8 +: 8];
+        end
     end
   end
 
