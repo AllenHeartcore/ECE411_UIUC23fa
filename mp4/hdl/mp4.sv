@@ -2,11 +2,12 @@ module mp4
 import rv32i_types::*;
 import pipeline_pkg::*;
 #(
+    // these parameters will be overridden by hvl/top_tb.sv
     parameter   CACHE_LOG2_NUMSETS_L1   = 3,
     parameter   CACHE_LOG2_NUMWAYS_L1   = 1,
     parameter   CACHE_LOG2_NUMSETS_L2   = 5,
     parameter   CACHE_LOG2_NUMWAYS_L2   = 4,
-    parameter   CACHE_LOG2_WORDSIZE     = 8     // must be >= 7
+    parameter   CACHE_LOG2_WORDSIZE     = 8
 ) (
     input   logic           clk,
     input   logic           rst,
