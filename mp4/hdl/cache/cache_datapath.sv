@@ -67,7 +67,9 @@ import cache_types::*;
 
     genvar i;
     generate for (i = 0; i < num_ways; i++) begin : arrays
-        mp3_data_array data_array (
+        mp3_data_array #(
+            .ADDR_WIDTH (s_index)
+        ) data_array (
             .clk0       (clk),
             .csb0       (1'b0),
             .web0       (!(LD_DATA & (DATAWMUX ? MASKLRU[i] : MASKHIT[i]))),
@@ -76,7 +78,10 @@ import cache_types::*;
             .din0       (DATAMUX ? pmem_rdata : mem_wdata),
             .dout0      (data_q[i])
         );
-        mp3_tag_array tag_array (
+        mp3_tag_array #(
+            .ADDR_WIDTH (s_index),
+            .DATA_WIDTH (s_tag)
+        ) tag_array (
             .clk0       (clk),
             .csb0       (1'b0),
             .web0       (!(LD_TAG & MASKLRU[i])),
@@ -84,7 +89,9 @@ import cache_types::*;
             .din0       (addr_tag),
             .dout0      (tag_q[i])
         );
-        ff_array valid_array (
+        ff_array #(
+            .s_index (s_index)
+        ) valid_array (
             .clk0       (clk),
             .rst0       (rst),
             .csb0       (1'b0),
@@ -93,7 +100,9 @@ import cache_types::*;
             .din0       (1'b1),
             .dout0      (valid_q[i])
         );
-        ff_array dirty_array (
+        ff_array #(
+            .s_index (s_index)
+        ) dirty_array (
             .clk0       (clk),
             .rst0       (rst),
             .csb0       (1'b0),
