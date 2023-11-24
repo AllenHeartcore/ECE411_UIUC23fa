@@ -3,13 +3,8 @@ import cache_types::*;
 #(
             parameter       s_word   = 256,
             parameter       s_mask   = s_word / 8,
-            parameter       s_offset = $clog2(s_word) - 3,
             parameter       s_index  = 4,
-            parameter       s_wayidx = 2,
-            parameter       s_tag    = 32 - s_offset - s_index,
-            parameter       s_line   = 2**s_offset * 8,
-            parameter       num_sets = 2**s_index,
-            parameter       num_ways = 2**s_wayidx
+            parameter       s_wayidx = 2
 )(
     input  clk,
     input  rst,
@@ -29,6 +24,12 @@ import cache_types::*;
     input   cache_types::datamux_t DATAMUX,
     input   cache_types::pmadmux_t PMADMUX
 );
+
+            localparam      s_offset = $clog2(s_word) - 3;
+            localparam      s_tag    = 32 - s_offset - s_index;
+            localparam      s_line   = 2**s_offset * 8;
+            localparam      num_sets = 2**s_index;
+            localparam      num_ways = 2**s_wayidx;
 
 
             logic   [s_word-1:0] data_q [num_ways];

@@ -1,7 +1,6 @@
 module cache #(
             parameter       s_word   = 256,
             parameter       s_mask   = s_word / 8,
-            parameter       s_offset = $clog2(s_word) - 3,
             parameter       s_index  = 4,   // log2 of #sets
             parameter       s_wayidx = 2    // log2 of #ways
 )(
@@ -25,6 +24,8 @@ module cache #(
     output  logic           pmem_write,
     input   logic           pmem_resp
 );
+
+            localparam      s_offset = $clog2(s_word) - 3;
 
 
     logic SIGHIT, SIGDIRTY;

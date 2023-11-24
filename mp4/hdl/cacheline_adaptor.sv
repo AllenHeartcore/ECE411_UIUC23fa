@@ -1,6 +1,5 @@
 module cacheline_adaptor #(
-    parameter   s_word    = 256,
-    parameter   n_burst   = s_word / 64
+    parameter   s_word    = 256
 ) (
     input clk,
     input reset_n,
@@ -21,6 +20,8 @@ module cacheline_adaptor #(
     output logic write_o,
     input resp_i
 );
+
+    localparam  n_burst   = s_word / 64;
 
 
 int counter;

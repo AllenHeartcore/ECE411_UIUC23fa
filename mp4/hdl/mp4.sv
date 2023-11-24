@@ -6,9 +6,7 @@ import pipeline_pkg::*;
     parameter   CACHE_LOG2_NUMWAYS_L1   = 1,
     parameter   CACHE_LOG2_NUMSETS_L2   = 5,
     parameter   CACHE_LOG2_NUMWAYS_L2   = 4,
-    parameter   CACHE_LOG2_WORDSIZE     = 8,    // must be >= 7
-    parameter   CACHE_WORDSIZE          = 2**CACHE_LOG2_WORDSIZE,
-    parameter   CACHE_MASKSIZE          = CACHE_WORDSIZE / 8
+    parameter   CACHE_LOG2_WORDSIZE     = 8     // must be >= 7
 ) (
     input   logic           clk,
     input   logic           rst,
@@ -20,6 +18,9 @@ import pipeline_pkg::*;
     output  logic   [63:0]  bmem_wdata,
     input   logic           bmem_resp
 );
+
+    localparam  CACHE_WORDSIZE          = 2**CACHE_LOG2_WORDSIZE;
+    localparam  CACHE_MASKSIZE          = CACHE_WORDSIZE / 8;
 
 
 
