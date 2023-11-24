@@ -135,3 +135,13 @@ else
 * when `wb_commit`, we need to update the corresponding reg in id_ex register (sepearated rs1, rs2 registers)
 * however, when we update, we need to check dependency, when rs1 == 0 or rs2 == 0, we shouldn't update the corresponding register. This is because corresponding fields can be don't care for reg index 0
 * When we check the index == 0 or not, I use the wrong index, fix has been added in this commit.
+
+
+### BUG 0009 : branch predictor logic error
+
+* When branch prediction is merged, there are 2 conditions that can cause misprediciton (flush pipeline)
+    * when prediction is not taken, but it's taken
+    * when prediction is taken, but it's not taken
+
+* The first one is the same as static branch prediction
+* The second one is different because we have to use the PC + 4 where PC is at EX stage instead of IF stage
