@@ -50,8 +50,8 @@ import cache_types::*;
 
             logic   [num_ways-1:0]  MASKHIT;
             logic   [num_ways-1:0]  MASKLRU;
-    assign MASKHIT    = '1 << WAYHIT;
-    assign MASKLRU    = '1 << WAYLRU;
+    assign MASKHIT    = {{(num_ways-1){'0}}, 1'b1} << WAYHIT;
+    assign MASKLRU    = {{(num_ways-1){'0}}, 1'b1} << WAYLRU;
 
     always_comb begin : hit_detection
         SIGHIT = 1'b0;
