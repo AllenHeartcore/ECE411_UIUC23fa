@@ -71,7 +71,7 @@ import pipeline_pkg::*;
     assign ex_pc_rdata = ex_mem_reg_i.pc;
     assign ex_pc_wdata = ex_mem_reg_i._pc_wdata;
 
-    assign branch_mispredict = ex_mem_reg_i._pc_wdata != id_ex_reg_o._pc_wdata; // branch mispredict
+    assign branch_mispredict = ex_enable && (ex_mem_reg_i._pc_wdata != id_ex_reg_o._pc_wdata); // branch mispredict
 
     /* Datapath Registers */
 
@@ -103,10 +103,17 @@ import pipeline_pkg::*;
 
     // PCMUX REG
     logic load_pc_mux;
+    logic branch_mispredict_reg;
     pcmux::pcmux_sel_t pc_mux_reg_i, pc_mux_reg_o;
-    assign load_pc_mux = (ex_enable && hazard_ctrl.load_ex_mem && branch_mispredict) || (hazard_ctrl.load_if_id);
-    assign pc_mux_reg_i = (ex_enable && hazard_ctrl.load_ex_mem && branch_mispredict) ? pcmux_sel_ex : pcmux::pc_plus4; 
-    assign pcmux_sel = (pc_mux_reg_o != pcmux::pc_plus4) ? pc_mux_reg_o : pcmux::pc_predict;
+    assign load_pc_mux = (ex_enable && hazard_ctrl.load_ex_mem && branch_mispredict) || ((~ex_enable) && hazard_ctrl.load_if_id);
+    assign pc_mux_reg_i = pcmux_sel_ex;
+    assign pcmux_sel = (branch_mispredict_reg) ? pc_mux_reg_o : pcmux::pc_predict;
+
+    register #(.width(1)) branch_mispredict_register(
+        .*, .load(load_pc_mux),
+        .in(branch_mispredict),
+        .out(branch_mispredict_reg)
+    );
 
     pcmux_reg  PCMUX_REG(.*,
         .load(load_pc_mux),
@@ -419,7 +426,11 @@ import pipeline_pkg::*;
     always_comb begin : PCMUX
 
         unique case (pcmux_sel)
-            pcmux::pc_plus4: pcmux_out = if_id_reg_i.pc + 4;
+            pcmux::pc_plus4: begin 
+                if(branch_mispredict_reg) pcmux_out = ex_mem_reg_o._pc_wdata;
+                else pcmux_out = if_id_reg_i.pc + 4;
+
+            end
             pcmux::alu_out : pcmux_out = ex_mem_reg_o.alu;
             pcmux::alu_mod2: pcmux_out = ex_mem_reg_o.alu & 32'hFFFFFFFE;
             pcmux::pc_predict: pcmux_out = predicted_pc;
