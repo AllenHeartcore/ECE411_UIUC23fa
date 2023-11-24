@@ -1,7 +1,12 @@
 module mp4
 import rv32i_types::*;
 import pipeline_pkg::*;
-(
+#(
+    parameter   CACHE_LOG2_NUMSETS_L1   = 3,
+    parameter   CACHE_LOG2_NUMWAYS_L1   = 1,
+    parameter   CACHE_LOG2_NUMSETS_L2   = 5,
+    parameter   CACHE_LOG2_NUMWAYS_L2   = 4
+) (
     input   logic           clk,
     input   logic           rst,
     // Memory Interface
@@ -187,7 +192,10 @@ import pipeline_pkg::*;
         .mem_rdata256       (dmem_rdata256)     // from dmem_cache
     );
 
-    cache imem_cache(.clk, .rst,
+    cache #(
+        .s_index  (CACHE_LOG2_NUMSETS_L1),
+        .s_wayidx (CACHE_LOG2_NUMWAYS_L1)
+    ) imem_cache (.clk, .rst,
         .mem_write          (1'b0),             // (suppress synth warning LINT-58)
         .mem_byte_enable    (32'hFFFF_FFFF),    // (suppress synth warning LINT-58)
         .mem_wdata          (256'b0),           // (suppress synth warning LINT-58)
@@ -201,7 +209,10 @@ import pipeline_pkg::*;
         .pmem_resp          (i2mem_resp)        // from i2mem_cache
     );
 
-    cache i2mem_cache(.clk, .rst,
+    cache #(
+        .s_index  (CACHE_LOG2_NUMSETS_L2),
+        .s_wayidx (CACHE_LOG2_NUMWAYS_L2)
+    ) i2mem_cache (.clk, .rst,
         .mem_write          (1'b0),
         .mem_byte_enable    (32'hFFFF_FFFF),
         .mem_wdata          (256'b0),
@@ -215,7 +226,10 @@ import pipeline_pkg::*;
         .pmem_resp          (ipmem_resp)        // from arbiter
     );
 
-    cache dmem_cache(.clk, .rst,
+    cache #(
+        .s_index  (CACHE_LOG2_NUMSETS_L1),
+        .s_wayidx (CACHE_LOG2_NUMWAYS_L1)
+    ) dmem_cache (.clk, .rst,
         .mem_address        (dmem_address),     // from cpu
         .mem_write          (dmem_write),       // from cpu
         .mem_read           (dmem_read),        // from cpu
@@ -231,7 +245,10 @@ import pipeline_pkg::*;
         .pmem_resp          (d2mem_resp)        // from d2mem_cache
     );
 
-    cache d2mem_cache(.clk, .rst,
+    cache #(
+        .s_index  (CACHE_LOG2_NUMSETS_L2),
+        .s_wayidx (CACHE_LOG2_NUMWAYS_L2)
+    ) d2mem_cache (.clk, .rst,
         .mem_byte_enable    (32'hFFFF_FFFF),
         .mem_address        (d2mem_address),    // from dmem_cache
         .mem_write          (d2mem_write),      // from dmem_cache
