@@ -2,7 +2,8 @@ module cache #(
             parameter       s_word   = 256,
             parameter       s_mask   = s_word / 8,
             parameter       s_index  = 4,   // log2 of #sets
-            parameter       s_wayidx = 2    // log2 of #ways
+            parameter       s_wayidx = 2,   // log2 of #ways
+            parameter       use_register = 0
 )(
     input                   clk,
     input                   rst,
@@ -38,7 +39,8 @@ module cache #(
     cache_datapath #(
         .s_word(s_word),
         .s_index(s_index),
-        .s_wayidx(s_wayidx)
+        .s_wayidx(s_wayidx),
+        .use_register(use_register)
     ) datapath(.*);
 
 

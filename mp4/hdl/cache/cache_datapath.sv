@@ -4,7 +4,8 @@ import cache_types::*;
             parameter       s_word   = 256,
             parameter       s_mask   = s_word / 8,
             parameter       s_index  = 4,
-            parameter       s_wayidx = 2
+            parameter       s_wayidx = 2,
+            parameter       use_register = 0
 )(
     input  clk,
     input  rst,
@@ -70,6 +71,32 @@ import cache_types::*;
 
     genvar i;
     generate for (i = 0; i < num_ways; i++) begin : arrays
+
+    if (use_register) begin
+        masked_ff_array #(
+            .s_index    (s_index),
+            .width      (s_word)
+        ) data_array (
+            .clk0       (clk),
+            .csb0       (1'b0),
+            .web0       (!(LD_DATA & (DATAWMUX ? MASKLRU[i] : MASKHIT[i]))),
+            .wmask0     (DATAMUX ? '1 : mem_byte_enable),
+            .addr0      (addr_index),
+            .din0       (DATAMUX ? pmem_rdata : mem_wdata),
+            .dout0      (data_q[i])
+        );
+        ff_array #(
+            .s_index    (s_index),
+            .width      (s_tag)
+        ) tag_array (
+            .clk0       (clk),
+            .csb0       (1'b0),
+            .web0       (!(LD_TAG & MASKLRU[i])),
+            .addr0      (addr_index),
+            .din0       (addr_tag),
+            .dout0      (tag_q[i])
+        );
+    end else begin
         mp3_data_array #(
             .ADDR_WIDTH (s_index),
             .DATA_WIDTH (s_word),
@@ -94,6 +121,8 @@ import cache_types::*;
             .din0       (addr_tag),
             .dout0      (tag_q[i])
         );
+    end
+
         ff_array #(
             .s_index (s_index)
         ) valid_array (

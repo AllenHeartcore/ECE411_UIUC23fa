@@ -206,7 +206,8 @@ import pipeline_pkg::*;
         .s_word   (CACHE_WORDSIZE),
         .s_mask   (CACHE_MASKSIZE),
         .s_index  (CACHE_LOG2_NUMSETS_L1),
-        .s_wayidx (CACHE_LOG2_NUMWAYS_L1)
+        .s_wayidx (CACHE_LOG2_NUMWAYS_L1),
+        .use_register(1)
     ) imem_cache (.clk, .rst,
         .mem_write          (1'b0),             // (suppress synth warning LINT-58)
         .mem_byte_enable    ('1),               // (suppress synth warning LINT-58)
@@ -244,7 +245,8 @@ import pipeline_pkg::*;
         .s_word   (CACHE_WORDSIZE),
         .s_mask   (CACHE_MASKSIZE),
         .s_index  (CACHE_LOG2_NUMSETS_L1),
-        .s_wayidx (CACHE_LOG2_NUMWAYS_L1)
+        .s_wayidx (CACHE_LOG2_NUMWAYS_L1),
+        .use_register(1)
     ) dmem_cache (.clk, .rst,
         .mem_address        (dmem_address),     // from cpu
         .mem_write          (dmem_write),       // from cpu
