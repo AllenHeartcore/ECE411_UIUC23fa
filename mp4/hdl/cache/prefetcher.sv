@@ -1,6 +1,5 @@
 module next_line_prefetcher #(
-    parameter       s_offset = 5,
-    parameter       s_mask   = 2**s_offset
+    parameter       s_word   = 256
 )
 (
     input                  clk,
@@ -8,10 +7,10 @@ module next_line_prefetcher #(
     // CPU -> PREFETCHER
     input   logic [31:0]   imem_address,
     input   logic          imem_read,
-    output  logic [255:0]  imem_rdata256,
+    output  logic [s_word-1:0]  imem_rdata_l,
     output  logic          imem_resp,
     // PREFETCHER -> IMEM CACHE
-    input   logic [255:0]   icmem_rdata256,
+    input   logic [s_word-1:0]  icmem_rdata_l,
     input   logic           icmem_resp,
     output  logic [31:0]    icmem_address,
     output  logic           icmem_read, 
@@ -20,6 +19,9 @@ module next_line_prefetcher #(
     // ARBITER -> PREFETCHER
     input   logic           arbiter_idle
 );
+
+    localparam      s_mask   = s_word / 8;
+    localparam      s_offset = $clog2(s_word) - 3;
 
     enum logic [2:0] {
         IDLE, SERVE_I, PREFETCH
@@ -81,32 +83,32 @@ module next_line_prefetcher #(
 
         icmem_address = 32'h0;
         icmem_read    = 1'b0;
-        imem_rdata256  = 256'hx;
+        imem_rdata_l  = 'x;
         imem_resp   = 1'b0;
 
         case (state)
             SERVE_I: begin
                 icmem_address    = imem_address;
                 icmem_read       = 1'b1;
-                imem_rdata256     = icmem_rdata256;
+                imem_rdata_l     = icmem_rdata_l;
                 imem_resp      = icmem_resp;
             end
             PREFETCH: begin
                 icmem_address    = prefetched_address;
                 icmem_read       = 1'b1;
-                imem_rdata256     = 256'hx;
+                imem_rdata_l     = 'x;
                 imem_resp      = 1'b0; // we must fake it as if there is no memory request at all from CPU's perspective
             end
             IDLE: begin
                 if(next_state == SERVE_I) begin
                     icmem_address    = imem_address;
                     icmem_read       = 1'b1;
-                    imem_rdata256     = icmem_rdata256;
+                    imem_rdata_l     = icmem_rdata_l;
                     imem_resp      = icmem_resp;
                 end else if(next_state == PREFETCH) begin
                     icmem_address    = prefetched_address;
                     icmem_read       = 1'b1;
-                    imem_rdata256     = 256'hx;
+                    imem_rdata_l     = 'x;
                     imem_resp      = 1'b0; // we must fake it as if there is no memory request at all from CPU's perspective
                 end
             end

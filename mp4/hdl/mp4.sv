@@ -214,12 +214,14 @@ import pipeline_pkg::*;
         .mem_rdata_l        (dmem_rdata_l)      // from dmem_cache
     );
 
-    next_line_prefetcher prefetcher(.clk, .rst,
+    next_line_prefetcher #(
+        .s_word   (CACHE_WORDSIZE)
+    ) prefetcher (.clk, .rst,
         .imem_address       (imem_address),     // from cpu
         .imem_read          (imem_read),        // from cpu
-        .imem_rdata256      (imem_rdata_l),     // to imem_cache
+        .imem_rdata_l       (imem_rdata_l),     // to imem_cache
         .imem_resp          (imem_resp),        // to cpu
-        .icmem_rdata256     (icmem_rdata_l),    // from imem_cache
+        .icmem_rdata_l      (icmem_rdata_l),    // from imem_cache
         .icmem_resp         (icmem_resp),       // from imem_cache
         .icmem_address      (icmem_address),    // to imem_cache
         .icmem_read         (icmem_read),       // to imem_cache
