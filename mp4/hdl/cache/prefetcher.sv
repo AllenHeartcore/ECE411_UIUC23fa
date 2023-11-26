@@ -126,3 +126,28 @@ module next_line_prefetcher #(
 
 
 endmodule
+
+module next_line_prefetcher #(
+    parameter       s_word   = 256
+)
+(
+    input                  clk,
+    input                  rst,
+    // CPU -> PREFETCHER
+    input   logic [31:0]   imem_address,
+    input   logic          imem_read,
+    output  logic [s_word-1:0]  imem_rdata_l,
+    output  logic          imem_resp,
+    // PREFETCHER -> IMEM CACHE
+    input   logic [s_word-1:0]  icmem_rdata_l,
+    input   logic           icmem_resp,
+    output  logic [31:0]    icmem_address,
+    output  logic           icmem_read, 
+    // CPU -> PREFETCHER
+    input   logic           branch_taken,
+    // ARBITER -> PREFETCHER
+    input   logic           arbiter_idle
+);
+
+
+endmodule
