@@ -214,7 +214,7 @@ import pipeline_pkg::*;
         .mem_rdata_l        (dmem_rdata_l)      // from dmem_cache
     );
 
-    next_line_prefetcher #(
+    convservative_next_line_prefetcher #(
         .s_word   (CACHE_WORDSIZE)
     ) prefetcher (.clk, .rst,
         .imem_address       (imem_address),     // from cpu
@@ -226,7 +226,8 @@ import pipeline_pkg::*;
         .icmem_address      (icmem_address),    // to imem_cache
         .icmem_read         (icmem_read),       // to imem_cache
         .branch_taken       (ex_branch_taken), // from datapath
-        .arbiter_idle       (arbiter_idle)    // from arbiter
+        .arbiter_idle       (arbiter_idle),    // from arbiter
+        .no_hazard          (no_hazard)         // from hazard_ctrl
     );
 
     cache #(
