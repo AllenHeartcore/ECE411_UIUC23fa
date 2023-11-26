@@ -58,7 +58,7 @@ module mp3_tag_array(
   always @ (negedge clk0)
   begin : MEM_WRITE0
     if ( !csb0_reg && !web0_reg ) begin
-        mem[addr0_reg][22:0] = din0_reg[22:0];
+        mem[addr0_reg][DATA_WIDTH-1:0] = din0_reg[DATA_WIDTH-1:0];
     end
   end
 

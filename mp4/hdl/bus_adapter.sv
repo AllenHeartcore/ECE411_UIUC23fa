@@ -1,16 +1,20 @@
-module bus_adapter
-(
+module bus_adapter #(
+            parameter       s_word   = 256,
+            parameter       s_mask   = s_word / 8
+) (
     input   logic   [31:0]  address,
-    output  logic   [255:0] mem_wdata256,
-    input   logic   [255:0] mem_rdata256,
     input   logic   [31:0]  mem_wdata,
     output  logic   [31:0]  mem_rdata,
     input   logic   [3:0]   mem_byte_enable,
-    output  logic   [31:0]  mem_byte_enable256
+    output  logic   [s_word-1:0]  mem_wdata_l,
+    input   logic   [s_word-1:0]  mem_rdata_l,
+    output  logic   [s_mask-1:0]  mem_byte_enable_l
 );
 
-assign mem_wdata256 = {8{mem_wdata}};
-assign mem_rdata = mem_rdata256[(32*address[4:2]) +: 32];
-assign mem_byte_enable256 = {28'h0, mem_byte_enable} << (address[4:2]*4);
+            localparam      s_offset = $clog2(s_word) - 3;
+
+assign mem_wdata_l = {(s_word/32){mem_wdata}};
+assign mem_rdata = mem_rdata_l[(32*address[s_offset-1:2]) +: 32];
+assign mem_byte_enable_l = {{(s_mask-4){1'b0}}, mem_byte_enable} << (address[s_offset-1:2]*4);
 
 endmodule : bus_adapter

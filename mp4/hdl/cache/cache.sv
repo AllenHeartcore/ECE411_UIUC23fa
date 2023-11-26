@@ -1,31 +1,32 @@
 module cache #(
-            parameter       s_offset = 5,
-            parameter       s_index  = 4,
-            parameter       s_tag    = 32 - s_offset - s_index,
-            parameter       s_mask   = 2**s_offset,
-            parameter       s_line   = 8*s_mask,
-            parameter       num_sets = 2**s_index
+            parameter       s_word   = 256,
+            parameter       s_mask   = s_word / 8,
+            parameter       s_index  = 4,   // log2 of #sets
+            parameter       s_wayidx = 2,   // log2 of #ways
+            parameter       use_register = 0
 )(
     input                   clk,
     input                   rst,
 
     /* CPU side signals */
+    input   logic   [s_mask-1:0] mem_byte_enable,
+    output  logic   [s_word-1:0] mem_rdata,
+    input   logic   [s_word-1:0] mem_wdata,
     input   logic   [31:0]  mem_address,
     input   logic           mem_read,
     input   logic           mem_write,
-    input   logic   [31:0]  mem_byte_enable,
-    output  logic   [255:0] mem_rdata,
-    input   logic   [255:0] mem_wdata,
     output  logic           mem_resp,
 
     /* Memory side signals */
+    input   logic   [s_word-1:0] pmem_rdata,
+    output  logic   [s_word-1:0] pmem_wdata,
     output  logic   [31:0]  pmem_address,
     output  logic           pmem_read,
     output  logic           pmem_write,
-    input   logic   [255:0] pmem_rdata,
-    output  logic   [255:0] pmem_wdata,
     input   logic           pmem_resp
 );
+
+            localparam      s_offset = $clog2(s_word) - 3;
 
 
     logic SIGHIT, SIGDIRTY;
@@ -35,7 +36,12 @@ module cache #(
     cache_types::pmadmux_t PMADMUX;
 
     cache_control control(.*);
-    cache_datapath datapath(.*);
+    cache_datapath #(
+        .s_word(s_word),
+        .s_index(s_index),
+        .s_wayidx(s_wayidx),
+        .use_register(use_register)
+    ) datapath(.*);
 
 
 endmodule : cache
