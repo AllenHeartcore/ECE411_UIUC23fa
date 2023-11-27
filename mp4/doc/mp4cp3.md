@@ -82,7 +82,7 @@ bash check_sim_error.sh
 
 Observations:
 
-Can show Global Predictor on Coremark workload is better than baseline
+Can show Local Predictor on Coremark workload is better than baseline
 
 Human Context : 
 
@@ -90,7 +90,7 @@ Default 2 Layer Cache
 
 Conservative Prefetcher
 
-Global Predictor W/ 4Way BTB
+Local Predictor W/ 4Way BTB
 
 Generated Data : 
 
@@ -125,7 +125,7 @@ Default 2 Layer Cache
 
 Conservative Prefetcher
 
-Global Predictor W/ 1Way BTB
+Local Predictor W/ 1Way BTB
 
 
 
