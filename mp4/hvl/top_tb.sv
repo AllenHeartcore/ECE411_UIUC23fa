@@ -96,38 +96,34 @@ module top_tb;
 
     always @(posedge clk) begin
         if (mon_itf.halt || timeout == 0) begin
-            $display("L1 I Cache: %d hits, %d misses, %d accesses, %d cycles",
+            $display("L1 I Cache: %d hits, %d misses, %d cycles, %10.3f penalty",
                 dut.imem_cache._perf_countHit,
                 dut.imem_cache._perf_countMiss,
-                dut.imem_cache._perf_countAccess,
-                dut.imem_cache._perf_countTimer
+                dut.imem_cache._perf_countTimer,
+                dut.imem_cache._perf_countPenalty * 1.0 / dut.imem_cache._perf_countMiss
             );
-            $display("L1 D Cache: %d hits, %d misses, %d accesses, %d cycles",
-                dut.dmem_cache._perf_countHit,
-                dut.dmem_cache._perf_countMiss,
-                dut.dmem_cache._perf_countAccess,
-                dut.dmem_cache._perf_countTimer
-            );
-            $display("L2 I Cache: %d hits, %d misses, %d accesses, %d cycles",
+            $display("L2 I Cache: %d hits, %d misses, %d cycles, %10.3f penalty",
                 dut.i2mem_cache._perf_countHit,
                 dut.i2mem_cache._perf_countMiss,
-                dut.i2mem_cache._perf_countAccess,
-                dut.i2mem_cache._perf_countTimer
+                dut.i2mem_cache._perf_countTimer,
+                dut.i2mem_cache._perf_countPenalty * 1.0 / dut.i2mem_cache._perf_countMiss
             );
-            $display("L2 D Cache: %d hits, %d misses, %d accesses, %d cycles",
+            $display("L1 D Cache: %d hits, %d misses, %d cycles, %10.3f penalty",
+                dut.dmem_cache._perf_countHit,
+                dut.dmem_cache._perf_countMiss,
+                dut.dmem_cache._perf_countTimer,
+                dut.dmem_cache._perf_countPenalty * 1.0 / dut.dmem_cache._perf_countMiss
+            );
+            $display("L2 D Cache: %d hits, %d misses, %d cycles, %10.3f penalty",
                 dut.d2mem_cache._perf_countHit,
                 dut.d2mem_cache._perf_countMiss,
-                dut.d2mem_cache._perf_countAccess,
-                dut.d2mem_cache._perf_countTimer
+                dut.d2mem_cache._perf_countTimer,
+                dut.d2mem_cache._perf_countPenalty * 1.0 / dut.d2mem_cache._perf_countMiss
             );
             if (timeout == 0)
                 $error("TB Error: Timed out");
             $finish;
         end
-        // if (timeout == 0) begin
-        //     $error("TB Error: Timed out");
-        //     $finish;
-        // end
         if (mon_itf.error != 0) begin
             repeat (5) @(posedge clk);
             $finish;

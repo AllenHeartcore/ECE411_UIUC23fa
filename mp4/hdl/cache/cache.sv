@@ -36,10 +36,9 @@ module cache #(
     cache_types::pmadmux_t PMADMUX;
 
     /* Performance counter */
-    logic _perf_sigHit, _perf_sigMiss;
-    logic _perf_sigStart, _perf_sigEnd;
+    logic _perf_sigMiss, _perf_sigStart, _perf_sigEnd;
     logic [31:0] _perf_countHit, _perf_countMiss;
-    logic [31:0] _perf_countAccess, _perf_countTimer;
+    logic [31:0] _perf_countAccess, _perf_countTimer, _perf_countPenalty;
 
     cache_control control(.*);
     cache_datapath #(
@@ -49,6 +48,9 @@ module cache #(
         .use_register(use_register)
     ) datapath(.*);
     CacheCounter perf_counter(.*);
+
+    assign _perf_countHit = _perf_countAccess - _perf_countMiss;
+    assign _perf_countPenalty = _perf_countTimer - _perf_countHit * 2;
 
 
 endmodule : cache

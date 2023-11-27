@@ -37,17 +37,14 @@ endmodule
 module CacheCounter (
     input   logic        clk,
     input   logic        rst,
-    input   logic        _perf_sigHit,      // signals
-    input   logic        _perf_sigMiss,
+    input   logic        _perf_sigMiss,     // signals
     input   logic        _perf_sigStart,
     input   logic        _perf_sigEnd,
-    output  logic [31:0] _perf_countHit,    // counters
     output  logic [31:0] _perf_countMiss,
     output  logic [31:0] _perf_countAccess, // total number of accesses
     output  logic [31:0] _perf_countTimer   // total number of cycles
 );
 
-    logic [31:0] countHit_reg;
     logic [31:0] countMiss_reg;
     logic [31:0] countAccess_reg;
     logic [31:0] countTimer_reg;
@@ -57,19 +54,16 @@ module CacheCounter (
     always_ff @(posedge clk or posedge rst) begin
         if (rst) begin
             state <= IDLE;
-            countHit_reg <= '0;
             countMiss_reg <= '0;
             countAccess_reg <= '0;
             countTimer_reg <= '0;
         end else begin
-            if (_perf_sigHit) begin
-                countHit_reg <= countHit_reg + 1;
-            end
             if (_perf_sigMiss) begin
                 countMiss_reg <= countMiss_reg + 1;
             end
             if (_perf_sigStart) begin
                 countAccess_reg <= countAccess_reg + 1;
+                countTimer_reg <= countTimer_reg + 1;
                 state <= COUNT;
             end
             if (_perf_sigEnd) begin
@@ -81,7 +75,6 @@ module CacheCounter (
         end
     end
 
-    assign _perf_countHit = countHit_reg;
     assign _perf_countMiss = countMiss_reg;
     assign _perf_countAccess = countAccess_reg;
     assign _perf_countTimer = countTimer_reg;
