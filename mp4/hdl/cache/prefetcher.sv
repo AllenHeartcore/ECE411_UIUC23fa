@@ -282,7 +282,8 @@ module no_prefetch_prefetcher #(
     // CPU -> PREFETCHER
     input   logic           branch_taken,
     // ARBITER -> PREFETCHER
-    input   logic           arbiter_idle
+    input   logic           arbiter_idle,
+    input   logic           no_hazard
 );
 
     assign icmem_address = imem_address;
@@ -290,13 +291,19 @@ module no_prefetch_prefetcher #(
     assign imem_rdata_l  = icmem_rdata_l;
     assign imem_resp     = icmem_resp;
 
+    logic end_prefetch;
+
+    assign end_prefetch = 1'b0;
+
+
     // use unused signals to avoid warning
-    logic unused_1, unused_2, unused_3, unused_4;
+    logic unused_1, unused_2, unused_3, unused_4, unused_5;
     
     assign unused_1 = branch_taken;
     assign unused_2 = arbiter_idle;
     assign unused_3 = rst;
     assign unused_4 = clk;
+    assign unused_5 = no_hazard;
 
 
 endmodule

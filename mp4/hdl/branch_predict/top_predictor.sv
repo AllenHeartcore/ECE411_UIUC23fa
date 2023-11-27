@@ -12,7 +12,7 @@ module branch_predictor(
     logic [31:0] predicted_target_pc;
     logic prediction;
     logic target_valid;
-    btb_4way branch_target_buffer (.clk, .rst,
+    btb branch_target_buffer (.clk, .rst,
         .predict_pc         (predict_pc),                     // from pc value of IF stage
         .update_pc          (update_pc),                        // from pc value of EX stage
         .valid              (valid),                          // branch, jar, jalr of EX stage

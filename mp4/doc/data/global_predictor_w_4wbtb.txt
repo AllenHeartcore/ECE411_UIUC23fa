@@ -1,0 +1,25 @@
+Human Context : 
+
+Default 2 Layer Cache 
+
+Conservative Prefetcher
+
+Global Predictor W/ 4Way BTB
+
+Generated Data : 
+
+stop time is          31109120000
+IPC: 0.239635
+L1 I Cache:    1039890 hits,        656 misses,    2085161 cycles,      8.203 penalty
+L2 I Cache:        556 hits,        100 misses,       3414 cycles,     23.020 penalty
+L1 D Cache:      73868 hits,         68 misses,     148678 cycles,     13.853 penalty
+L2 D Cache:         84 hits,         24 misses,        738 cycles,     23.750 penalty
+Predictor :    143462 misses for     211564 branch instr.
+Prefetcher:      5318 prefetches
+$finish called from file "/home/haor2/ece411/fa23_ece411_CRC/mp4/hvl/top_tb.sv", line 173.
+$finish at simulation time          31147180000
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 31147180000 ps
+CPU Time:    649.330 seconds;       Data structure size:  24.8Mb
+Mon Nov 27 09:01:11 2023
+bash check_sim_error.sh

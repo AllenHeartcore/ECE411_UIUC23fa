@@ -214,7 +214,7 @@ import pipeline_pkg::*;
         .mem_rdata_l        (dmem_rdata_l)      // from dmem_cache
     );
 
-    convservative_next_line_prefetcher #(
+    no_prefetch_prefetcher #(
         .s_word   (CACHE_WORDSIZE)
     ) prefetcher (.clk, .rst,
         .imem_address       (imem_address),     // from cpu
