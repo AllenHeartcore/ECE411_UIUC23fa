@@ -21,7 +21,7 @@ module branch_predictor(
         .prediction         (target_valid)                      // signal that judge whether the predicted target pc is valid
     );
 
-    local_branch_predictor_no_bht local_branch_predictor (.clk, .rst,
+    local_branch_predictor local_branch_predictor (.clk, .rst,
         .update_branch_pc   (update_pc),                     // from pc value of EX stage
         .predict_branch_pc  (predict_pc),                     // predictd pc value of IF stage
         .valid              (valid),                     // branch, jar, jalr of EX stage

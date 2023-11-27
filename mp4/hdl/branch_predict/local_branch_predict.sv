@@ -1,7 +1,7 @@
 module local_branch_predictor
 #(
-    parameter int index_bits = 3, // Number of bits for the BHT index
-    parameter int N = 1, // Number of bits for the local history
+    parameter int index_bits = 10, // Number of bits for the BHT index
+    parameter int N = 6, // Number of bits for the local history
     parameter int M = 2**index_bits // Number of entries in the BHT
 )
 (

@@ -1,6 +1,6 @@
 module btb #(
     parameter ADDR_WIDTH = 32,   // Width of the PC address
-    parameter BTB_SIZE = 16      // Number of entries in the BTB
+    parameter BTB_SIZE = 1024      // Number of entries in the BTB
 )(
     input logic clk,
     input logic rst,
