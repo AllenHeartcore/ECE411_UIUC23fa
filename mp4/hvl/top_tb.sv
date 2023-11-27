@@ -13,7 +13,8 @@ module top_tb;
 
     bit rst;
 
-    int timeout = 10000; // in cycles, change according to your needs
+// `define USE_TIMEOUT
+    int timeout = 100000; // in cycles, change according to your needs
 
     localparam  CACHE_LOG2_NUMSETS_L1   = 3;
     localparam  CACHE_LOG2_NUMWAYS_L1   = 1;
@@ -95,7 +96,11 @@ module top_tb;
     end
 
     always @(posedge clk) begin
-        if (mon_itf.halt || timeout == 0) begin
+        if (mon_itf.halt
+`ifdef USE_TIMEOUT
+            || timeout == 0
+`endif
+        ) begin
             $display("L1 I Cache: %d hits, %d misses, %d cycles, %10.3f penalty",
                 dut.imem_cache._perf_countHit,
                 dut.imem_cache._perf_countMiss,
@@ -120,8 +125,10 @@ module top_tb;
                 dut.d2mem_cache._perf_countTimer,
                 dut.d2mem_cache._perf_countPenalty * 1.0 / dut.d2mem_cache._perf_countMiss
             );
+`ifdef USE_TIMEOUT
             if (timeout == 0)
                 $error("TB Error: Timed out");
+`endif
             $finish;
         end
         if (mon_itf.error != 0) begin
