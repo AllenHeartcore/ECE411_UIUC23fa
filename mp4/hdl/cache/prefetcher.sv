@@ -167,16 +167,25 @@ module convservative_next_line_prefetcher #(
         else if(state == IDLE && next_state == SERVE_I) no_prefetch_reg <= 1'b0;
     end
 
+    logic end_prefetch;
+
     always_ff @(posedge clk) begin
         if(rst) begin
+            end_prefetch <= 1'b0;
             last_cacheline_address <= 'x;
             last_prefetched_cacheline_address <= 'x;
         end
-        else if(state == SERVE_I && next_state == IDLE) 
+        else if(state == SERVE_I && next_state == IDLE) begin
+            end_prefetch <= 1'b0;
             last_cacheline_address <= {icmem_address[31:s_offset], {s_offset{1'b0}}};   
+        end
         else if(state == PREFETCH && next_state == IDLE) begin 
             last_cacheline_address <= prefetched_address;
             last_prefetched_cacheline_address <= prefetched_address;
+            end_prefetch <= 1'b1;
+        end
+        else begin
+            end_prefetch <= 1'b0;
         end
     end
 
