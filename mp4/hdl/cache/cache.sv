@@ -35,6 +35,12 @@ module cache #(
     cache_types::datamux_t DATAMUX;
     cache_types::pmadmux_t PMADMUX;
 
+    /* Performance counter */
+    logic _perf_sigHit, _perf_sigMiss;
+    logic _perf_sigStart, _perf_sigEnd;
+    logic [31:0] _perf_countHit, _perf_countMiss;
+    logic [31:0] _perf_countAccess, _perf_countTimer;
+
     cache_control control(.*);
     cache_datapath #(
         .s_word(s_word),
@@ -42,6 +48,7 @@ module cache #(
         .s_wayidx(s_wayidx),
         .use_register(use_register)
     ) datapath(.*);
+    CacheCounter perf_counter(.*);
 
 
 endmodule : cache

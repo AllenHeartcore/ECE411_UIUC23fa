@@ -4,6 +4,12 @@ import cache_types::*;
     input   logic clk,
     input   logic rst,
 
+    /* For performance counter */
+    output  logic _perf_sigHit,
+    output  logic _perf_sigMiss,
+    output  logic _perf_sigStart,
+    output  logic _perf_sigEnd,
+
     input   logic mem_read, mem_write, pmem_resp,
     output  logic mem_resp, pmem_read, pmem_write,
 
@@ -29,6 +35,10 @@ import cache_types::*;
         DATAWMUX = W_HIT;
         DATAMUX = D_CPU;
         PMADMUX = P_CPU;
+        _perf_sigHit = 1'b0;
+        _perf_sigMiss = 1'b0;
+        _perf_sigStart = 1'b0;
+        _perf_sigEnd = 1'b0;
     endfunction
 
     function void loadValid();
@@ -76,8 +86,10 @@ import cache_types::*;
         case (state)
 
             IDLE:
-                if (mem_read || mem_write)
+                if (mem_read || mem_write) begin
                     next_state = CMP;
+                    _perf_sigStart = 1'b1;
+                end
 
             CMP: begin
                 if (SIGHIT) begin
@@ -88,11 +100,16 @@ import cache_types::*;
                     loadPLRU();
                     mem_resp = 1'b1;
                     next_state = IDLE;
+                    _perf_sigHit = 1'b1;
+                    _perf_sigEnd = 1'b1;
                 end
-                else if (SIGDIRTY)
-                    next_state = EVICT;
-                else
-                    next_state = LOAD;
+                else begin
+                    if (SIGDIRTY)
+                        next_state = EVICT;
+                    else
+                        next_state = LOAD;
+                    _perf_sigMiss = 1'b1;
+                end
             end
 
             EVICT: begin

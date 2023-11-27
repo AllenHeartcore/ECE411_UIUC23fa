@@ -34,36 +34,56 @@ endmodule
 
 
 
-module CacheHitMissCounter (
-    input logic clk,           // Clock signal
-    input logic rst,           // Reset signal
-    input logic cacheHit,      // Signal indicating a cache hit occurred
-    input logic cacheMiss,     // Signal indicating a cache miss occurred
-    output logic [31:0] totalHits,   // 32-bit output for total cache hits
-    output logic [31:0] totalMisses  // 32-bit output for total cache misses
+module CacheCounter (
+    input   logic        clk,
+    input   logic        rst,
+    input   logic        _perf_sigHit,      // signals
+    input   logic        _perf_sigMiss,
+    input   logic        _perf_sigStart,
+    input   logic        _perf_sigEnd,
+    output  logic [31:0] _perf_countHit,    // counters
+    output  logic [31:0] _perf_countMiss,
+    output  logic [31:0] _perf_countAccess, // total number of accesses
+    output  logic [31:0] _perf_countTimer   // total number of cycles
 );
 
-    // Internal Counters
-    logic [31:0] totalHits_internal;
-    logic [31:0] totalMisses_internal;
+    logic [31:0] countHit_reg;
+    logic [31:0] countMiss_reg;
+    logic [31:0] countAccess_reg;
+    logic [31:0] countTimer_reg;
 
-    // Counting Logic
+    enum logic {IDLE, COUNT} state;
+
     always_ff @(posedge clk or posedge rst) begin
         if (rst) begin
-            totalHits_internal <= 0;
-            totalMisses_internal <= 0;
+            state <= IDLE;
+            countHit_reg <= '0;
+            countMiss_reg <= '0;
+            countAccess_reg <= '0;
+            countTimer_reg <= '0;
         end else begin
-            if (cacheHit) begin
-                totalHits_internal <= totalHits_internal + 1;
+            if (_perf_sigHit) begin
+                countHit_reg <= countHit_reg + 1;
             end
-            if (cacheMiss) begin
-                totalMisses_internal <= totalMisses_internal + 1;
+            if (_perf_sigMiss) begin
+                countMiss_reg <= countMiss_reg + 1;
+            end
+            if (_perf_sigStart) begin
+                countAccess_reg <= countAccess_reg + 1;
+                state <= COUNT;
+            end
+            if (_perf_sigEnd) begin
+                state <= IDLE;
+            end
+            if (state == COUNT) begin
+                countTimer_reg <= countTimer_reg + 1;
             end
         end
     end
 
-    // Output Assignment
-    assign totalHits = totalHits_internal;
-    assign totalMisses = totalMisses_internal;
+    assign _perf_countHit = countHit_reg;
+    assign _perf_countMiss = countMiss_reg;
+    assign _perf_countAccess = countAccess_reg;
+    assign _perf_countTimer = countTimer_reg;
 
 endmodule

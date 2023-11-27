@@ -95,7 +95,33 @@ module top_tb;
     end
 
     always @(posedge clk) begin
-        if (mon_itf.halt) begin
+        if (mon_itf.halt || timeout == 0) begin
+            $display("L1 I Cache: %d hits, %d misses, %d accesses, %d cycles",
+                dut.imem_cache._perf_countHit,
+                dut.imem_cache._perf_countMiss,
+                dut.imem_cache._perf_countAccess,
+                dut.imem_cache._perf_countTimer
+            );
+            $display("L1 D Cache: %d hits, %d misses, %d accesses, %d cycles",
+                dut.dmem_cache._perf_countHit,
+                dut.dmem_cache._perf_countMiss,
+                dut.dmem_cache._perf_countAccess,
+                dut.dmem_cache._perf_countTimer
+            );
+            $display("L2 I Cache: %d hits, %d misses, %d accesses, %d cycles",
+                dut.i2mem_cache._perf_countHit,
+                dut.i2mem_cache._perf_countMiss,
+                dut.i2mem_cache._perf_countAccess,
+                dut.i2mem_cache._perf_countTimer
+            );
+            $display("L2 D Cache: %d hits, %d misses, %d accesses, %d cycles",
+                dut.d2mem_cache._perf_countHit,
+                dut.d2mem_cache._perf_countMiss,
+                dut.d2mem_cache._perf_countAccess,
+                dut.d2mem_cache._perf_countTimer
+            );
+            if (timeout == 0)
+                $error("TB Error: Timed out");
             $finish;
         end
         // if (timeout == 0) begin
