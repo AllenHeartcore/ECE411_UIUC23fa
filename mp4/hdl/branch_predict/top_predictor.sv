@@ -21,12 +21,20 @@ module branch_predictor(
         .prediction         (target_valid)                      // signal that judge whether the predicted target pc is valid
     );
 
-    local_branch_predictor local_branch_predictor (.clk, .rst,
-        .update_branch_pc   (update_pc),                     // from pc value of EX stage
-        .predict_branch_pc  (predict_pc),                     // predictd pc value of IF stage
-        .valid              (valid),                     // branch, jar, jalr of EX stage
-        .actual_branch_taken(branch_taken),                     // branch, jar, jalr of EX stage
-        .prediction         (prediction)                      // signal that predict whether we should take branch for the pc value of IF stage
+    // local_branch_predictor local_branch_predictor (.clk, .rst,
+    //     .update_branch_pc   (update_pc),                     // from pc value of EX stage
+    //     .predict_branch_pc  (predict_pc),                     // predictd pc value of IF stage
+    //     .valid              (valid),                     // branch, jar, jalr of EX stage
+    //     .actual_branch_taken(branch_taken),                     // branch, jar, jalr of EX stage
+    //     .prediction         (prediction)                      // signal that predict whether we should take branch for the pc value of IF stage
+    // );
+
+    global_branch_predictor global_branch_predictor (
+        .clk                (clk),
+        .rst                (rst),
+        .valid              (valid),
+        .actual_branch_taken(branch_taken),
+        .prediction         (prediction)
     );
 
     assign predicted_pc = (target_valid & prediction) ? predicted_target_pc : (predict_pc + 4);
