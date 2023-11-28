@@ -5,7 +5,7 @@ import pipeline_pkg::*;
     // these parameters will be overridden by hvl/top_tb.sv
     parameter   CACHE_LOG2_NUMSETS_L1   = 3,
     parameter   CACHE_LOG2_NUMWAYS_L1   = 1,
-    parameter   CACHE_LOG2_NUMSETS_L2   = 5,
+    parameter   CACHE_LOG2_NUMSETS_L2   = 4,
     parameter   CACHE_LOG2_NUMWAYS_L2   = 4,
     parameter   CACHE_LOG2_WORDSIZE     = 8
 ) (
@@ -71,51 +71,51 @@ import pipeline_pkg::*;
 
     /* RVFI Monitor */
 
-            logic           monitor_valid;
-            logic   [63:0]  monitor_order;
-            logic   [31:0]  monitor_inst;
-            logic   [4:0]   monitor_rs1_addr;
-            logic   [4:0]   monitor_rs2_addr;
-            logic   [31:0]  monitor_rs1_rdata;
-            logic   [31:0]  monitor_rs2_rdata;
-            logic   [4:0]   monitor_rd_addr;
-            logic   [31:0]  monitor_rd_wdata;
-            logic   [31:0]  monitor_pc_rdata;
-            logic   [31:0]  monitor_pc_wdata;
-            logic   [31:0]  monitor_mem_addr;
-            logic   [3:0]   monitor_mem_rmask;
-            logic   [3:0]   monitor_mem_wmask;
-            logic   [31:0]  monitor_mem_rdata;
-            logic   [31:0]  monitor_mem_wdata;
+    //         logic           monitor_valid;
+    //         logic   [63:0]  monitor_order;
+    //         logic   [31:0]  monitor_inst;
+    //         logic   [4:0]   monitor_rs1_addr;
+    //         logic   [4:0]   monitor_rs2_addr;
+    //         logic   [31:0]  monitor_rs1_rdata;
+    //         logic   [31:0]  monitor_rs2_rdata;
+    //         logic   [4:0]   monitor_rd_addr;
+    //         logic   [31:0]  monitor_rd_wdata;
+    //         logic   [31:0]  monitor_pc_rdata;
+    //         logic   [31:0]  monitor_pc_wdata;
+    //         logic   [31:0]  monitor_mem_addr;
+    //         logic   [3:0]   monitor_mem_rmask;
+    //         logic   [3:0]   monitor_mem_wmask;
+    //         logic   [31:0]  monitor_mem_rdata;
+    //         logic   [31:0]  monitor_mem_wdata;
 
-    logic [63:0] accumulator;
-    always_ff @(posedge clk) begin
-        if (rst) begin
-            accumulator <= 64'h0;
-        end else begin
-            accumulator <= accumulator + monitor_valid;
-        end
-    end
+    // logic [63:0] accumulator;
+    // always_ff @(posedge clk) begin
+    //     if (rst) begin
+    //         accumulator <= 64'h0;
+    //     end else begin
+    //         accumulator <= accumulator + monitor_valid;
+    //     end
+    // end
 
     // Fill this out
     // Only use hierarchical references here for verification
     // **DO NOT** use hierarchical references in the actual design!
-    assign monitor_valid     = hazard_ctrl_unit.valid_o && (~rst);
-    assign monitor_order     = accumulator;
-    assign monitor_inst      = datapath.mem_wb_reg_o.ir;
-    assign monitor_rs1_addr  = ctrlwb_at_wb.rs1;
-    assign monitor_rs2_addr  = ctrlwb_at_wb.rs2;
-    assign monitor_rs1_rdata = datapath.mem_wb_reg_o.r1;
-    assign monitor_rs2_rdata = datapath.mem_wb_reg_o.r2;
-    assign monitor_rd_addr   = ctrlwb_at_wb.rd;
-    assign monitor_rd_wdata  = datapath.regfilemux_out;
-    assign monitor_pc_rdata  = datapath.mem_wb_reg_o.pc;
-    assign monitor_pc_wdata  = datapath.mem_wb_reg_o._pc_wdata;
-    assign monitor_mem_addr  = datapath.mem_wb_reg_o._mem_addr;
-    assign monitor_mem_rmask = datapath.mem_wb_reg_o._mem_rmask;
-    assign monitor_mem_wmask = datapath.mem_wb_reg_o._mem_wmask;
-    assign monitor_mem_rdata = datapath.mem_wb_reg_o.mdr;
-    assign monitor_mem_wdata = datapath.mem_wb_reg_o._mem_wdata;
+    // assign monitor_valid     = hazard_ctrl_unit.valid_o && (~rst);
+    // assign monitor_order     = accumulator;
+    // assign monitor_inst      = datapath.mem_wb_reg_o.ir;
+    // assign monitor_rs1_addr  = ctrlwb_at_wb.rs1;
+    // assign monitor_rs2_addr  = ctrlwb_at_wb.rs2;
+    // assign monitor_rs1_rdata = datapath.mem_wb_reg_o.r1;
+    // assign monitor_rs2_rdata = datapath.mem_wb_reg_o.r2;
+    // assign monitor_rd_addr   = ctrlwb_at_wb.rd;
+    // assign monitor_rd_wdata  = datapath.regfilemux_out;
+    // assign monitor_pc_rdata  = datapath.mem_wb_reg_o.pc;
+    // assign monitor_pc_wdata  = datapath.mem_wb_reg_o._pc_wdata;
+    // assign monitor_mem_addr  = datapath.mem_wb_reg_o._mem_addr;
+    // assign monitor_mem_rmask = datapath.mem_wb_reg_o._mem_rmask;
+    // assign monitor_mem_wmask = datapath.mem_wb_reg_o._mem_wmask;
+    // assign monitor_mem_rdata = datapath.mem_wb_reg_o.mdr;
+    // assign monitor_mem_wdata = datapath.mem_wb_reg_o._mem_wdata;
 
 
 

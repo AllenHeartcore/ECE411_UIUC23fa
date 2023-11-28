@@ -198,6 +198,9 @@ import pipeline_pkg::*;
                 loadMAR(marmux::alu_out);
                 ctrlmem.dmem_write = 1'b1;
             end
+            // do nothing
+            default : begin
+            end
         endcase
 
     end
