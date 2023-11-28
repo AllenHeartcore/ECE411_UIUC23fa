@@ -1,214 +1,208 @@
-# PROGRESS Report for CP3
+# CP3 Progress Report
 
 
-## Devision of Labor
 
-Ziyuan Chen: Fully Parameterized Cache, Multi-level Cache
+## Work Distribution
 
-Hao Ren: Next-line Prefetcher, Integration of Branch Predictor
+- **Ziyuan Chen:** Multi-level cache, Fully customizable cache
 
-Zhirong Chen: Local Branch Predictor, Global Branch Predictor, Branch Target Buffer, 4-way associate Branch Target Buffer  
+- **Hao Ren:** Next-line prefetcher, Integration of branch predictor
+
+- **Zhirong Chen:** Local branch predictor, Global branch predictor, 4-way associated branch target buffer
+
+
+
+## Current Progress
+
+- **[Done]** Pipeline processor w/ static branch prediction
+- **[Done]** Multi-level cache
+- **[Minor Bugs]** Fully customizable cache
+- **[Working]** Branch predictors, BTB, RAS
+- **[Working]** Prefetchers
+
+
 
 ## Statistics & Observations
 
+### Prefetchers and Predictors
+
+Context: Default 2-level cache, Conservative prefetcher, Baseline Predictor
+- Baseline configuration
 ```
-Observations:
-
-Baseline
-
-Human Context : 
-
-Default 2 Layer Cache 
-
-Conservative Prefetcher
-
-Baseline Predictor
-
-Generated Data : 
-
-stop time is          31500260000
-IPC: 0.236838
-L1 I Cache:    1052928 hits,        656 misses,    2111237 cycles,      8.203 penalty
-L2 I Cache:        556 hits,        100 misses,       3414 cycles,     23.020 penalty
-L1 D Cache:      73868 hits,         68 misses,     148678 cycles,     13.853 penalty
-L2 D Cache:         84 hits,         24 misses,        738 cycles,     23.750 penalty
-Predictor :    149981 misses for     211564 branch instr.
-Prefetcher:      5318 prefetches
-$finish called from file "/home/haor2/ece411/fa23_ece411_CRC/mp4/hvl/top_tb.sv", line 173.
-$finish at simulation time          31538320000
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 31538320000 ps
-CPU Time:    639.050 seconds;       Data structure size:   0.7Mb
-Mon Nov 27 08:49:38 2023
-bash check_sim_error.sh
-
+    stop time is          31500260000
+    IPC: 0.236838
+    L1 I Cache:    1052928 hits,        656 misses,    2111237 cycles,      8.203 penalty
+    L2 I Cache:        556 hits,        100 misses,       3414 cycles,     23.020 penalty
+    L1 D Cache:      73868 hits,         68 misses,     148678 cycles,     13.853 penalty
+    L2 D Cache:         84 hits,         24 misses,        738 cycles,     23.750 penalty
+    Predictor :    149981 misses for     211564 branch instr.
+    Prefetcher:      5318 prefetches
+    $finish at simulation time          31538320000
 ```
 
+Context Default 2-level cache, Conservative prefetcher, Global Predictor w/ 1-Way BTB
+- Shows that 1-way BTB is better than **both** Baseline and **and** 4-way BTB on Coremark.
+- Shows that predictors can be beneficial to Coremark.
+```
+    stop time is          27107780000
+    IPC: 0.275292
+    L1 I Cache:     906514 hits,        603 misses,    1818190 cycles,      8.561 penalty
+    L2 I Cache:        501 hits,        102 misses,       3354 cycles,     23.059 penalty
+    L1 D Cache:      73868 hits,         68 misses,     148678 cycles,     13.853 penalty
+    L2 D Cache:         84 hits,         24 misses,        738 cycles,     23.750 penalty
+    Predictor :     76781 misses for     211564 branch instr.
+    Prefetcher:      5290 prefetches
+    $finish at simulation time          27143740000
 ```
 
-Observations:
-
-1. Can show 1 Way BTB is better than baseline and 1 Way BTB is better than 4 Way BTB on Coremark workload
-
-2. Can show predictor can be beneficial to Coremark workload
-
-Human Context : 
-
-Default 2 Layer Cache 
-
-Conservative Prefetcher
-
-Global Predictor W/ 1Way BTB
-
-stop time is          27107780000
-IPC: 0.275292
-L1 I Cache:     906514 hits,        603 misses,    1818190 cycles,      8.561 penalty
-L2 I Cache:        501 hits,        102 misses,       3354 cycles,     23.059 penalty
-L1 D Cache:      73868 hits,         68 misses,     148678 cycles,     13.853 penalty
-L2 D Cache:         84 hits,         24 misses,        738 cycles,     23.750 penalty
-Predictor :     76781 misses for     211564 branch instr.
-Prefetcher:      5290 prefetches
-$finish called from file "/home/haor2/ece411/fa23_ece411_CRC/mp4/hvl/top_tb.sv", line 173.
-$finish at simulation time          27143740000
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 27143740000 ps
-CPU Time:    597.060 seconds;       Data structure size:  25.2Mb
-Mon Nov 27 09:14:31 2023
-bash check_sim_error.sh
-
+Context: Default 2-level cache, Conservative prefetcher, Local predictor w/ 4-way BTB
+- Shows that Local predictor on Coremark is better than Baseline.
+```
+    stop time is          31109120000
+    IPC: 0.239635
+    L1 I Cache:    1039890 hits,        656 misses,    2085161 cycles,      8.203 penalty
+    L2 I Cache:        556 hits,        100 misses,       3414 cycles,     23.020 penalty
+    L1 D Cache:      73868 hits,         68 misses,     148678 cycles,     13.853 penalty
+    L2 D Cache:         84 hits,         24 misses,        738 cycles,     23.750 penalty
+    Predictor :    143462 misses for     211564 branch instr.
+    Prefetcher:      5318 prefetches
+    $finish at simulation time          31147180000
 ```
 
+Context: Default 2-level cache, Conservative prefetcher, Local predictor w/ 1-way BTB
+- Shows that conservative prefetcher is ***worse*** than the case without prefetchers
+- since we have few cache misses and the prefetcher won't positively affect the performance.
+- The degradation is due to additional cache hit latency.
+```
+    stop time is          27055390000
+    IPC: 0.275790
+    L1 I Cache:     901272 hits,        596 misses,    1807650 cycles,      8.567 penalty
+    L2 I Cache:        495 hits,        101 misses,       3319 cycles,     23.059 penalty
+    L1 D Cache:      73868 hits,         68 misses,     148678 cycles,     13.853 penalty
+    L2 D Cache:         84 hits,         24 misses,        738 cycles,     23.750 penalty
+    Predictor :     76782 misses for     211652 branch instr.
+    Prefetcher:         0 prefetches
+    $finish at simulation time          27091310000
 ```
 
-Observations:
+### Parameterized Cache
 
-Can show Local Predictor on Coremark workload is better than baseline
+Parameter search space
+- **Word size:** `{128, 256, 512, 1024}`
+- **L1 cache:** `16` sets, `4` ways (fixed at CP1, CP2 baseline)
+- **L2 cache:** `{16, 32, 64, 128, 256}` sets, `{4, 8, 16}` ways
 
-Human Context : 
+*Important Notes*
+- *IPCs are lower because these experiments use a commit **less optimized** in prefetching and branch prediction.*
+- *Experiments are extensive, so refer to the [appendix](./mp4cp3_appendix.md) for detailed logs.* <br>
+- *Here we only select configurations with a **128KB budget** for **L2 cache**.*
 
-Default 2 Layer Cache 
+<br>
 
-Conservative Prefetcher
-
-Local Predictor W/ 4Way BTB
-
-Generated Data : 
-
-stop time is          31109120000
-IPC: 0.239635
-L1 I Cache:    1039890 hits,        656 misses,    2085161 cycles,      8.203 penalty
-L2 I Cache:        556 hits,        100 misses,       3414 cycles,     23.020 penalty
-L1 D Cache:      73868 hits,         68 misses,     148678 cycles,     13.853 penalty
-L2 D Cache:         84 hits,         24 misses,        738 cycles,     23.750 penalty
-Predictor :    143462 misses for     211564 branch instr.
-Prefetcher:      5318 prefetches
-$finish called from file "/home/haor2/ece411/fa23_ece411_CRC/mp4/hvl/top_tb.sv", line 173.
-$finish at simulation time          31147180000
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 31147180000 ps
-CPU Time:    649.330 seconds;       Data structure size:  24.8Mb
-Mon Nov 27 09:01:11 2023
-bash check_sim_error.sh
-
+128 wordsize, 64 sets, 16 ways
+- Miss penalty is low, but L1 cache miss rate is high.
+```
+    stop time is          32776490000
+    IPC: 0.227675
+    L1 I Cache:    1173862 hits,       8476 misses,    2395276 cycles,      5.610 penalty
+    L2 I Cache:       7740 hits,        736 misses,      22125 cycles,      9.029 penalty
+    L1 D Cache:      73361 hits,        575 misses,     151694 cycles,      8.647 penalty
+    L2 D Cache:        784 hits,        171 misses,       3247 cycles,      9.819 penalty
+    $finish at simulation time          32824340000
 ```
 
+256 wordsize, 128 sets, 4 ways
+- L1 I cache miss is dramatically reduced. **This is the optimal configuration given the budget.**
+- This advantage is gained at the expense of an exceptional number of sets.
+```
+    stop time is          32477390000
+    IPC: 0.229732
+    L1 I Cache:    1173378 hits,       1280 misses,    2356592 cycles,      7.684 penalty
+    L2 I Cache:        900 hits,        380 misses,       5997 cycles,     11.045 penalty
+    L1 D Cache:      73801 hits,        135 misses,     149261 cycles,     12.289 penalty
+    L2 D Cache:        106 hits,         87 misses,       1254 cycles,     11.977 penalty
+    $finish at simulation time          32520420000
 ```
 
-Observation : Can show Conservative Prefetcher is WORSE than no prefetcher
+512 wordsize, 16 sets, 16 ways *OR* 512 wordsize, 32 sets, 8 ways
+- Larger word size introduces heavier miss penalty, which is starting to outweigh the benefit of reducing misses.
+- So we would rather go for the fine-grained approach with smaller words and more sets.
+```
+    stop time is          33299490000
+    IPC: 0.223949
+    L1 I Cache:    1259468 hits,        505 misses,    2524084 cycles,     10.194 penalty
+    L2 I Cache:        305 hits,        200 misses,       3634 cycles,     15.120 penalty
+    L1 D Cache:      73890 hits,         46 misses,     148641 cycles,     18.717 penalty
+    L2 D Cache:          2 hits,         45 misses,        723 cycles,     15.978 penalty
+    $finish at simulation time          33341460000
+```
 
-This is because we have few cache miss and the prefetcher will not have positive effect on the performance.
-The degradation is due to additional cache hit latency.
-
-Human Context : 
-
-Default 2 Layer Cache 
-
-Conservative Prefetcher
-
-Local Predictor W/ 1Way BTB
-
-
-
-stop time is          27055390000
-IPC: 0.275790
-L1 I Cache:     901272 hits,        596 misses,    1807650 cycles,      8.567 penalty
-L2 I Cache:        495 hits,        101 misses,       3319 cycles,     23.059 penalty
-L1 D Cache:      73868 hits,         68 misses,     148678 cycles,     13.853 penalty
-L2 D Cache:         84 hits,         24 misses,        738 cycles,     23.750 penalty
-Predictor :     76782 misses for     211652 branch instr.
-Prefetcher:         0 prefetches
-$finish called from file "/home/haor2/ece411/fa23_ece411_CRC/mp4/hvl/top_tb.sv", line 173.
-$finish at simulation time          27091310000
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 27091310000 ps
-CPU Time:    394.460 seconds;       Data structure size:  25.2Mb
-Mon Nov 27 09:22:52 2023
-bash check_sim_error.sh
+1024 wordsize, 16 sets, 8 ways *OR* 1024 wordsize, 32 sets, 4 ways
+- Penalty is almost doubled and we are worse off!
+- Although the 17252KB Coremark instructions finally seems to fit in the L1 I cache.
+```
+    stop time is          33378390000
+    IPC: 0.223395
+    L1 I Cache:    1269162 hits,        139 misses,    2541183 cycles,     20.568 penalty
+    L2 I Cache:         36 hits,        103 misses,       2443 cycles,     23.019 penalty
+    L1 D Cache:      73912 hits,         24 misses,     148481 cycles,     27.375 penalty
+    L2 D Cache:          0 hits,         24 misses,        585 cycles,     24.375 penalty
+    $finish at simulation time          33419590000
 ```
 
 
-## Current Step
 
-* Pipeline processor has been completed w/ static branch prediction
-* Multi-level cache has been completed.
-* Parameterizable Cache is being worked on.
-* Branch Predictor is being worked on, along with BTB as well as RAS.
-* Prefetcher is being worked on.
+## Leftover Issues from CP2: Branch & Jump Instructions
 
-## PAST STEP : BRANCH & JUMP
+### What's required?
 
-### What's needed ? 
+- PCMUX outside EX MEM pipeline register
+    - load PCMUX if
+        - EX enabled and EX commit : We load pcmux val in EX stage
+        - EX not enabled and IF commit : We load `pcplus4`
 
-* PCMUX outside EX MEM pipeline register
-    * load PCMUX if
-        * EX enabled and EX commit : We load pcmux val in EX stage
-        * EX not enabled and IF commit : We load `pcplus4`
-
-* Disable IF, ID, EX stages when there is a branch committed to PCMUX reg.
-    * Problem ?
-        * When IF, EX committed at the same time, the instruction that's going to propagate to ID is wrong(current PC + 4)
-        * How to fix?
-            * Do not enable IF during the next RDY -> BUSY transition
-            * by using IF_mask register to mask the if_enable signal
+- Disable IF, ID, EX stages when there is a branch committed to PCMUX reg.
+    - Problem ?
+        - When IF, EX committed at the same time, the instruction that's going to propagate to ID is wrong(current PC + 4)
+        - How to fix?
+            - Do not enable IF during the next RDY -> BUSY transition
+            - by using IF_mask register to mask the if_enable signal
 
 ### Steps
 
-1. Remove legacy PC MUX in pipeline register [Done]
-
-2. Create new PCMUX reg, wire the input and output [Done]
-
-3. Wire load PCMUX signal, export `ex_enable` from `hazard_ctrl.sv`  [Done]
- 
-4. Add IF_mask reg, wire the logic [Done]
-
-5. Mask if_enable **transition** if IF_mask is asserted  [Done]
+1. Remove legacy `PCMUX` in pipeline register **[Done]**
+2. Create new `PCMUX` register, wire the input and output **[Done]**
+3. Wire `load_pc_mux` signal, export `ex_enable` from `hazard_ctrl.sv` **[Done]**
+4. Add `IF_mask` reg, wire the logic **[Done]**
+5. Mask `if_enable` *transition- if `IF_mask` is asserted **[Done]**
 
 
-## CURRENT STEP : Next-line Prefetcher
 
-* How can next-line prefetcher improve performance of a processor?
-    * If dmem is idle, if imem is idle, we use this time to prefetch the next cacheline.
-    * We need arbiter to give a status feedback `is_idle`
+## Current Work: Next-line Prefetcher
 
-* Then how can we pre-empt the memory?
-    * Modify arbiter
+- How can next-line prefetcher improve performance of a processor?
+    - If dmem is idle, if imem is idle, we use this time to prefetch the next cacheline.
+    - We need arbiter to give a status feedback `is_idle`
 
-* How do we know what cache-line to pre-fetch?
-    * Record last read imem cacheline
+- Then how can we pre-empt the memory?
+    - Modify arbiter
+
+- How do we know what cache-line to pre-fetch?
+    - Record last read imem cacheline
 
 ### Steps
 1. Know the arbiter implementation (how to preempt the memory)
 
 2. Record the last read imem cacheline
-    * Can incorporate the branch taken signal
-    * If the branch taken signal is high, we can skip the current prefetch.
-    * So we need a storage unit checking if between memory requests, if there is a branch taken signal. 
+    - Can incorporate the branch taken signal
+    - If the branch taken signal is high, we can skip the current prefetch.
+    - So we need a storage unit checking if between memory requests, if there is a branch taken signal.
 
 3. Modify the arbiter to pre-empt the memory
     1. First, we must **NOT expose the cacheline read to the CPU**,
         hence the `ipmem_resp` must not be asserted upon a pre-fetch.
     2. Second, we must modify the state transition
-         * the prefetch state can be visited when the state machine is idle and there is no memory request at the moment
+         - the prefetch state can be visited when the state machine is idle and there is no memory request at the moment
 
 **Test Strategy**
 
@@ -230,14 +224,15 @@ Testing a next-line prefetcher in a processor involves verifying its ability to 
 **Prefetcher Called Counts:**
 
 
+
 ## CURRENT STEP : Branch Predictor
 
 ### Local Branch Predictor
 
-* How to implement a local branch predictor?
-    * We need a pattern history table (PHT) to record the branch history
-    * We need a specific function to index the PHT. For local branch predictor, we use the PC to index the PHT, and the PHT will give us the prediction result.
-    * We need a finite state machine to update the PHT
+- How to implement a local branch predictor?
+    - We need a pattern history table (PHT) to record the branch history
+    - We need a specific function to index the PHT. For local branch predictor, we use the PC to index the PHT, and the PHT will give us the prediction result.
+    - We need a finite state machine to update the PHT
 
 **Test Strategy**: See details in hvl
 
@@ -269,10 +264,10 @@ Testing a next-line prefetcher in a processor involves verifying its ability to 
 
 ### Global Branch Predictor
 
-* How to implement a global branch predictor?
-    * We need a branch history register (BHR) to record the branch history
-    * We need a specific function to index the PHT. For global branch predictor, we use the BHR to index the PHT, and the PHT will give us the prediction result.
-    * We need a finite state machine to update the PHT
+- How to implement a global branch predictor?
+    - We need a branch history register (BHR) to record the branch history
+    - We need a specific function to index the PHT. For global branch predictor, we use the BHR to index the PHT, and the PHT will give us the prediction result.
+    - We need a finite state machine to update the PHT
 
 For testing a global branch predictor in a SystemVerilog environment, the strategy should be focused on thoroughly evaluating its prediction accuracy and response under various scenarios. Here's a detailed testing strategy:
 
@@ -300,11 +295,11 @@ For testing a global branch predictor in a SystemVerilog environment, the strate
 
 ### Branch Target Buffer
 
-* How to implement a branch target buffer?
-    * We need a branch target buffer (BTB) to record the branch target
-    * We need a specific function to index the BTB
-    * We need a finite state machine to update the BTB
-    * For the 4-way associate BTB, we need a specific function to select the BTB way
+- How to implement a branch target buffer?
+    - We need a branch target buffer (BTB) to record the branch target
+    - We need a specific function to index the BTB
+    - We need a finite state machine to update the BTB
+    - For the 4-way associate BTB, we need a specific function to select the BTB way
 
 For branch target buffer, we use the PC to index the BTB, and the BTB will give us the branch target.
 
@@ -315,21 +310,23 @@ For branch target buffer, we use the PC to index the BTB, and the BTB will give 
 
 Only when the predictor predicts the branch is taken, and branch target buffer is valid, we can use the predictor to predict the branch target.
 
-**Misprediction Times:** 
+**Misprediction Times:**
 
 **Total Branches:**
+
+
 
 ## CURRENT STEP : Parameterized and Multi-level Cache
 
 ### Multi-level Cache
 
-A multilevel cache is a hierarchical caching system used in modern computer architectures to improve data access times and overall system performance. It typically consists of several layers of cache, each varying in size, speed, and proximity to the CPU. 
+A multilevel cache is a hierarchical caching system used in modern computer architectures to improve data access times and overall system performance. It typically consists of several layers of cache, each varying in size, speed, and proximity to the CPU.
 
 **Concept and Purpose**
 - **Improved Performance**: The primary objective is to reduce the average time to access data by bridging the speed gap between the fast CPU and the slower main memory.
 
 **Cache Levels**
-1. **L1 Cache (Level 1)**: 
+1. **L1 Cache (Level 1)**:
    - Located on the CPU chip, offering the fastest access speeds.
    - Typically the smallest in size, ranging from a few kilobytes to several tens of kilobytes.
    - Often split into separate instruction and data caches (L1i and L1d).
@@ -364,11 +361,11 @@ A multilevel cache is a hierarchical caching system used in modern computer arch
 
 ![multi-level cache](./figures/multilevel_cache.png)
 
-**Cache Hit**: 
+**Cache Hit**:
 
 **Cache Miss**:
 
-### Fully Parameterized Cache
+### Fully customizable cache
 
 A fully parametrized cache is a versatile and adaptable caching mechanism, designed to be highly configurable based on various parameters. This flexibility allows it to be tailored to specific system requirements or application needs. Here's a concise introduction to the concept:
 
@@ -397,42 +394,37 @@ A fully parametrized cache is a versatile and adaptable caching mechanism, desig
 **Cache Miss**:
 
 
+
+
+
 # Road Map for CP4
 
-## Labor Division
+## Work Distribution
 
-Ziyuan Chen: Fully Parameterized Cache, find the best parameter for the cache
+- **Ziyuan Chen:** Fully customizable cache, optimize cache parameters
 
-Hao Ren: Next-line Prefetcher, find the best strategy for prefetching
+- **Hao Ren:** Next-line prefetcher, optimize prefetching strategy
 
-Zhirong Chen: Local Branch Predictor, Global Branch Predictor, Branch Target Buffer, 4-way associate Branch Target Buffer. Optimize the predictor and BTB. Try to use Tournament Predictor and G-Shore Predictor. 
+- **Zhirong Chen:** LBP, GBP, BTB, 4-way associated BTB; try Tournament Predictor and G-Shore Predictor.
 
-## Feature List & Optimization Direction
+## List of Features & Direction of Optimization
 
-* Fully Parameterized Cache: 
-    * Cache Size
-    * Block Size
-    * Associativity
-    * Replacement Policy
-    * Write Policy
-
-* Next-line Prefetcher
-    * Prefetch Strategy
-    * Prefetch Depth
-
-* Local Branch Predictor
-    * Branch History Table Size
-    * Branch History Table Index Function
-    * Finite State Machine
-
-* Global Branch Predictor
-    * Branch History Register Size
-    * Branch History Register Index Function
-    * Finite State Machine
-
-* Branch Target Buffer  
-    * Branch Target Buffer Size
-    * Branch Target Buffer Index Function
-    * Finite State Machine
-    * 4-way associate Branch Target Buffer
-
+- Fully customizable cache
+    - Word size
+    - Number of sets
+    - Associativity
+    - Replacement policy
+    - Write policy
+- Next-line prefetcher
+    - Prefetch strategy
+    - Prefetch depth
+- Local branch predictor
+    - Branch history table: size & index function
+    - FSM
+- Global branch predictor
+    - Branch history register: size & index function
+    - FSM
+- Branch target buffer
+    - Branch target buffer: size & index function
+    - 4-way associated BTB
+    - FSM
