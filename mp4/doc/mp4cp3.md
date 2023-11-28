@@ -91,6 +91,33 @@ Context: Default 2-level cache, Conservative prefetcher, Local predictor w/ 1-wa
     $finish at simulation time          27091310000
 ```
 
+Context :  Default 2 Layer Cache  Conservative Prefetcher Global Predictor W/ 1Way BTB
+* Show that local predictor is better than baseline but is inferior to global predictor.
+
+```
+Human Context : 
+
+Generated Data : 
+
+stop time is          27831170000
+IPC: 0.268125
+L1 I Cache:     927138 hits,        593 misses,    1859346 cycles,      8.550 penalty
+L2 I Cache:        493 hits,        100 misses,       3292 cycles,     23.060 penalty
+L1 D Cache:      73868 hits,         68 misses,     148678 cycles,     13.853 penalty
+L2 D Cache:         84 hits,         24 misses,        738 cycles,     23.750 penalty
+Predictor :     89694 misses for     211652 branch instr.
+Prefetcher:         0 prefetches
+$finish called from file "/home/haor2/ece411/fa23_ece411_CRC/mp4/hvl/top_tb.sv", line 173.
+$finish at simulation time          27867030000
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 27867030000 ps
+CPU Time:    400.760 seconds;       Data structure size:   1.4Mb
+Mon Nov 27 20:02:42 2023
+bash check_sim_error.sh
+Sim Successful 
+
+```
+
 ### Parameterized Cache
 
 Parameter search space

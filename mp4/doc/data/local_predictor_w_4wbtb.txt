@@ -4,7 +4,7 @@ Default 2 Layer Cache
 
 Conservative Prefetcher
 
-Global Predictor W/ 4Way BTB
+Local Predictor W/ 4Way BTB
 
 Generated Data : 
 

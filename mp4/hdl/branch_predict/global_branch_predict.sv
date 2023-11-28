@@ -122,9 +122,13 @@ always_ff @(posedge clk or posedge rst) begin
 
             // Update the PHT based on the actual outcome
             if (actual_branch_taken) begin
-                if (PHT[BHR] != STRONG_TAKEN) PHT[BHR] <= PHT[BHR] + 1;
+                if (PHT[BHR] == STRONG_NOT_TAKEN) PHT[BHR] <= WEAK_NOT_TAKEN;
+                else if (PHT[BHR] == WEAK_NOT_TAKEN) PHT[BHR] <= WEAK_TAKEN;
+                else if (PHT[BHR] == WEAK_TAKEN) PHT[BHR] <= STRONG_TAKEN;
             end else begin
-                if (PHT[BHR] != STRONG_NOT_TAKEN) PHT[BHR] <= PHT[BHR] - 1;
+                if (PHT[BHR] == STRONG_TAKEN) PHT[BHR] <= WEAK_TAKEN;
+                else if (PHT[BHR] == WEAK_TAKEN) PHT[BHR] <= WEAK_NOT_TAKEN;
+                else if (PHT[BHR] == WEAK_NOT_TAKEN) PHT[BHR] <= STRONG_NOT_TAKEN;
             end
         end
     end
