@@ -87,6 +87,7 @@ Context: Default 2-level cache, Conservative prefetcher, Local predictor w/ 1-wa
 
 Context :  Default 2 Layer Cache  Conservative Prefetcher Global Predictor W/ 1Way BTB
 * Show that local predictor is better than baseline but is inferior to global predictor.
+
 ```
 Human Context : 
 
