@@ -20,9 +20,9 @@
 
 - **[Done]** Pipeline processor w/ static branch prediction
 - **[Done]** Multi-level cache
-- **[In Progress]** Fully customizable cache
-- **[In Progress]** Branch predictors, BTB, RAS
-- **[In Progress]** Prefetchers
+- **[Done]** Fully customizable cache
+- **[Done]** Branch predictors, BTB, RAS
+- **[Done]** Prefetchers
 
 
 
@@ -435,9 +435,9 @@ A fully parametrized cache is a versatile and adaptable caching mechanism, desig
 
 - **Hao Ren:** Next-line prefetcher, optimize prefetching strategy
 
-- **Zhirong Chen:** LBP, GBP, BTB, 4-way associated BTB; try Tournament Predictor and G-Shore Predictor.
+- **Zhirong Chen:**  Optimize LBP, GBP, BTB, 4-way associated BTB; try Tournament Predictor and G-Shore Predictor.
 
-## List of Features & Direction of Optimization
+## Direction of Optimization
 
 - Fully customizable cache
     - Word size
