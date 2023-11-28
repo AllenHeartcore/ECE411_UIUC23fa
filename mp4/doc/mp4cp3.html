@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>CP3 Progress Report</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="cp3-progress-report">CP3 Progress Report</h1>
+<br>
+<h2 id="work-distribution">Work Distribution</h2>
+<ul>
+<li>
+<p><strong>Ziyuan Chen:</strong> Multi-level cache, Fully customizable cache</p>
+</li>
+<li>
+<p><strong>Hao Ren:</strong> Next-line prefetcher, Integration of branch predictor</p>
+</li>
+<li>
+<p><strong>Zhirong Chen:</strong> Local branch predictor, Global branch predictor, 4-way associated branch target buffer</p>
+</li>
+</ul>
+<br>
+<h2 id="current-progress">Current Progress</h2>
+<ul>
+<li><strong>[Done]</strong> Pipeline processor w/ static branch prediction</li>
+<li><strong>[Done]</strong> Multi-level cache</li>
+<li><strong>[Done]</strong> Fully customizable cache</li>
+<li><strong>[Done]</strong> Branch predictors, BTB, RAS</li>
+<li><strong>[Done]</strong> Prefetchers</li>
+</ul>
+<br>
+<h2 id="statistics--observations">Statistics &amp; Observations</h2>
+<h3 id="prefetchers-and-predictors">Prefetchers and Predictors</h3>
+<p>Context: Default 2-level cache, Conservative prefetcher, Baseline Predictor</p>
+<ul>
+<li>Baseline configuration</li>
+</ul>
+<pre><code>    stop time is          31500260000
+    IPC: 0.236838
+    L1 I Cache:    1052928 hits,        656 misses,    2111237 cycles,      8.203 penalty
+    L2 I Cache:        556 hits,        100 misses,       3414 cycles,     23.020 penalty
+    L1 D Cache:      73868 hits,         68 misses,     148678 cycles,     13.853 penalty
+    L2 D Cache:         84 hits,         24 misses,        738 cycles,     23.750 penalty
+    Predictor :    149981 misses for     211564 branch instr.
+    Prefetcher:      5318 prefetches
+    $finish at simulation time          31538320000
+</code></pre>
+<p>Context Default 2-level cache, Conservative prefetcher, Global Predictor w/ 1-Way BTB</p>
+<ul>
+<li>Shows that 1-way BTB is better than <strong>both</strong> Baseline and <strong>and</strong> 4-way BTB on Coremark.</li>
+<li>Shows that predictors can be beneficial to Coremark.</li>
+</ul>
+<pre><code>    stop time is          27107780000
+    IPC: 0.275292
+    L1 I Cache:     906514 hits,        603 misses,    1818190 cycles,      8.561 penalty
+    L2 I Cache:        501 hits,        102 misses,       3354 cycles,     23.059 penalty
+    L1 D Cache:      73868 hits,         68 misses,     148678 cycles,     13.853 penalty
+    L2 D Cache:         84 hits,         24 misses,        738 cycles,     23.750 penalty
+    Predictor :     76781 misses for     211564 branch instr.
+    Prefetcher:      5290 prefetches
+    $finish at simulation time          27143740000
+</code></pre>
+<p>Context: Default 2-level cache, Conservative prefetcher, Local predictor w/ 4-way BTB</p>
+<ul>
+<li>Shows that Local predictor on Coremark is better than Baseline.</li>
+</ul>
+<pre><code>    stop time is          31109120000
+    IPC: 0.239635
+    L1 I Cache:    1039890 hits,        656 misses,    2085161 cycles,      8.203 penalty
+    L2 I Cache:        556 hits,        100 misses,       3414 cycles,     23.020 penalty
+    L1 D Cache:      73868 hits,         68 misses,     148678 cycles,     13.853 penalty
+    L2 D Cache:         84 hits,         24 misses,        738 cycles,     23.750 penalty
+    Predictor :    143462 misses for     211564 branch instr.
+    Prefetcher:      5318 prefetches
+    $finish at simulation time          31147180000
+</code></pre>
+<p>Context: Default 2-level cache, Conservative prefetcher, Local predictor w/ 1-way BTB</p>
+<ul>
+<li>Shows that conservative prefetcher is <em><strong>worse</strong></em> than the case without prefetchers</li>
+<li>since we have few cache misses and the prefetcher won't positively affect the performance.</li>
+<li>The degradation is due to additional cache hit latency.</li>
+</ul>
+<pre><code>    stop time is          27055390000
+    IPC: 0.275790
+    L1 I Cache:     901272 hits,        596 misses,    1807650 cycles,      8.567 penalty
+    L2 I Cache:        495 hits,        101 misses,       3319 cycles,     23.059 penalty
+    L1 D Cache:      73868 hits,         68 misses,     148678 cycles,     13.853 penalty
+    L2 D Cache:         84 hits,         24 misses,        738 cycles,     23.750 penalty
+    Predictor :     76782 misses for     211652 branch instr.
+    Prefetcher:         0 prefetches
+    $finish at simulation time          27091310000
+</code></pre>
+<p>Context: Default 2-level cache, Conservative prefetcher, Global predictor w/ 1-way BTB</p>
+<ul>
+<li>Shows that Local predictor is better than Baseline but is inferior to Global predictor.</li>
+</ul>
+<pre><code>    stop time is          27831170000
+    IPC: 0.268125
+    L1 I Cache:     927138 hits,        593 misses,    1859346 cycles,      8.550 penalty
+    L2 I Cache:        493 hits,        100 misses,       3292 cycles,     23.060 penalty
+    L1 D Cache:      73868 hits,         68 misses,     148678 cycles,     13.853 penalty
+    L2 D Cache:         84 hits,         24 misses,        738 cycles,     23.750 penalty
+    Predictor :     89694 misses for     211652 branch instr.
+    Prefetcher:         0 prefetches
+    $finish at simulation time          27867030000
+</code></pre>
+<div STYLE="page-break-after: always;"></div>
+<h3 id="parameterized-cache">Parameterized Cache</h3>
+<p>Parameter search space</p>
+<ul>
+<li><strong>Word size:</strong> <code>{128, 256, 512, 1024}</code></li>
+<li><strong>L1 cache:</strong> <code>16</code> sets, <code>4</code> ways (fixed at CP1, CP2 baseline)</li>
+<li><strong>L2 cache:</strong> <code>{16, 32, 64, 128, 256}</code> sets, <code>{4, 8, 16}</code> ways</li>
+</ul>
+<p><em>Important Notes</em></p>
+<ul>
+<li><em>IPCs are lower because these experiments use a commit <strong>less optimized</strong> in prefetching and branch prediction.</em></li>
+<li><em>Experiments are extensive, so refer to the <a href="./mp4cp3_appendix.html">appendix</a> for detailed logs.</em> <br></li>
+<li><em>Here we only select configurations with a <strong>128KB budget</strong> for <strong>L2 cache</strong>.</em></li>
+</ul>
+<br>
+<p>Baseline: L1 cache only, 256 wordsize, 16 sets, 4 ways</p>
+<pre><code>    stop time is          32524050000
+    IPC: 0.229373
+    L1 I Cache:    1173571 hits,       1280 misses,    2361298 cycles,     11.059 penalty
+    L1 D Cache:      73801 hits,        135 misses,     149582 cycles,     14.667 penalty
+    $finish at simulation time          32566770000
+</code></pre>
+<p>128 wordsize, 64 sets, 16 ways</p>
+<ul>
+<li>Miss penalty is low, but L1 cache miss rate is high.</li>
+<li>Therefore, performance degrades compared to the baseline.</li>
+</ul>
+<pre><code>    stop time is          32776490000
+    IPC: 0.227675
+    L1 I Cache:    1173862 hits,       8476 misses,    2395276 cycles,      5.610 penalty
+    L2 I Cache:       7740 hits,        736 misses,      22125 cycles,      9.029 penalty
+    L1 D Cache:      73361 hits,        575 misses,     151694 cycles,      8.647 penalty
+    L2 D Cache:        784 hits,        171 misses,       3247 cycles,      9.819 penalty
+    $finish at simulation time          32824340000
+</code></pre>
+<p>256 wordsize, 128 sets, 4 ways</p>
+<ul>
+<li>L1 I cache miss is dramatically reduced. <strong>This is the optimal configuration given the budget.</strong></li>
+<li>This advantage is gained at the expense of an exceptional number of sets.</li>
+</ul>
+<pre><code>    stop time is          32477390000
+    IPC: 0.229732
+    L1 I Cache:    1173378 hits,       1280 misses,    2356592 cycles,      7.684 penalty
+    L2 I Cache:        900 hits,        380 misses,       5997 cycles,     11.045 penalty
+    L1 D Cache:      73801 hits,        135 misses,     149261 cycles,     12.289 penalty
+    L2 D Cache:        106 hits,         87 misses,       1254 cycles,     11.977 penalty
+    $finish at simulation time          32520420000
+</code></pre>
+<p>512 wordsize, 16 sets, 16 ways <em>OR</em> 512 wordsize, 32 sets, 8 ways</p>
+<ul>
+<li>Larger word size introduces heavier miss penalty, which is starting to outweigh the benefit of reducing misses.</li>
+<li>So we would rather go for the fine-grained approach with smaller words and more sets.</li>
+</ul>
+<pre><code>    stop time is          33299490000
+    IPC: 0.223949
+    L1 I Cache:    1259468 hits,        505 misses,    2524084 cycles,     10.194 penalty
+    L2 I Cache:        305 hits,        200 misses,       3634 cycles,     15.120 penalty
+    L1 D Cache:      73890 hits,         46 misses,     148641 cycles,     18.717 penalty
+    L2 D Cache:          2 hits,         45 misses,        723 cycles,     15.978 penalty
+    $finish at simulation time          33341460000
+</code></pre>
+<p>1024 wordsize, 16 sets, 8 ways <em>OR</em> 1024 wordsize, 32 sets, 4 ways</p>
+<ul>
+<li>Penalty is almost doubled and we are worse off!</li>
+<li>Although the 17252KB Coremark instructions finally seems to fit in the L1 I cache.</li>
+</ul>
+<pre><code>    stop time is          33378390000
+    IPC: 0.223395
+    L1 I Cache:    1269162 hits,        139 misses,    2541183 cycles,     20.568 penalty
+    L2 I Cache:         36 hits,        103 misses,       2443 cycles,     23.019 penalty
+    L1 D Cache:      73912 hits,         24 misses,     148481 cycles,     27.375 penalty
+    L2 D Cache:          0 hits,         24 misses,        585 cycles,     24.375 penalty
+    $finish at simulation time          33419590000
+</code></pre>
+<br>
+<h2 id="leftover-issue-from-cp2-branch--jump-instructions">Leftover Issue from CP2: Branch &amp; Jump Instructions</h2>
+<h3 id="whats-required">What's required?</h3>
+<ul>
+<li>
+<p>PCMUX outside EX MEM pipeline register</p>
+<ul>
+<li>EX enabled and EX commit : Load PCMUX in EX stage</li>
+<li>EX disabled and IF commit : Load PCMUX with <code>pcplus4</code></li>
+</ul>
+</li>
+<li>
+<p>Disable IF, ID, EX stages when there is a branch committed to PCMUX register</p>
+<ul>
+<li>When IF, EX are committed at the same time, the instruction propagating to ID is wrong (current PC + 4)</li>
+<li>Fix 1: Do not enable IF during the next <code>RDY -&gt; BUSY</code> transition</li>
+<li>Fix 2: Use <code>IF_mask</code> register to mask the if_enable signal</li>
+</ul>
+</li>
+</ul>
+<h3 id="steps">Steps</h3>
+<ol>
+<li>Remove legacy <code>PCMUX</code> in pipeline register <strong>[Done]</strong></li>
+<li>Create new <code>PCMUX</code> register, wire the input and output <strong>[Done]</strong></li>
+<li>Wire <code>load_pc_mux</code> signal, export <code>ex_enable</code> from <code>hazard_ctrl.sv</code> <strong>[Done]</strong></li>
+<li>Add <code>IF_mask</code> reg, wire the logic <strong>[Done]</strong></li>
+<li>Mask <code>if_enable</code> *transition- if <code>IF_mask</code> is asserted <strong>[Done]</strong></li>
+</ol>
+<br>
+<div STYLE="page-break-after: always;"></div>
+<h2 id="hao-rens-current-work-next-line-prefetcher">Hao Ren's Current Work: Next-Line Prefetcher</h2>
+<ul>
+<li>
+<p>How can the next-line prefetcher improve performance of a processor?</p>
+<ul>
+<li>We use the time when DMEM and IMEM are both idle to prefetch the next cacheline</li>
+<li>We need the arbiter to give a status feedback <code>is_idle</code></li>
+</ul>
+</li>
+<li>
+<p>Then how can we preempt the memory?</p>
+<ul>
+<li>By modifying the arbiter</li>
+</ul>
+</li>
+<li>
+<p>How do we know what cache-line to pre-fetch?</p>
+<ul>
+<li>By recording the last cacheline read from IMEM</li>
+</ul>
+</li>
+</ul>
+<h3 id="steps-1">Steps</h3>
+<ol>
+<li>
+<p>Know the arbiter implementation (how to preempt the memory)</p>
+</li>
+<li>
+<p>Record the last read imem cacheline</p>
+<ul>
+<li>Can incorporate the branch taken signal</li>
+<li>If the branch taken signal is high, we can skip the current prefetch.</li>
+<li>So we need a storage unit checking if between memory requests, if there is a branch taken signal.</li>
+</ul>
+</li>
+<li>
+<p>Modify the arbiter to preempt the memory</p>
+<ol>
+<li>First, we <strong>must NOT expose the cacheline read to CPU</strong>,
+hence the <code>ipmem_resp</code> must not be asserted upon a prefetch.</li>
+<li>Second, we must modify the state transition
+<ul>
+<li>The prefetch state can be reached when the state machine is idle and there is no memory request at the moment</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="testing-strategy">Testing Strategy</h3>
+<p>Testing a next-line prefetcher in a processor involves verifying its ability to improve performance by pre-fetching data, ensuring proper integration with the memory system, and confirming that it behaves correctly under various scenarios. Here’s a concise testing strategy:</p>
+<ol>
+<li>
+<p><strong>Prefetch Functionality Tests</strong></p>
+<ul>
+<li><strong>Basic Prefetch Operation:</strong> Verify that the prefetcher correctly fetches the next cache line when the data memory (<code>dmem</code>) and instruction memory (<code>imem</code>) are idle.</li>
+<li><strong>Integration with Arbiter:</strong> Test the interaction between the prefetcher and the arbiter to ensure the prefetcher can preempt memory correctly and the arbiter provides accurate <code>is_idle</code> status.</li>
+</ul>
+</li>
+<li>
+<p><strong>Branch Prediction Integration</strong></p>
+<ul>
+<li><strong>Branch Taken Signal Handling:</strong> Test how the prefetcher responds to the branch taken signal. Ensure it skips prefetching appropriately when the signal is high.</li>
+<li><strong>Record and Respond to Cache Lines:</strong> Verify the prefetcher correctly records the last read <code>imem</code> cache line and uses this information for subsequent prefetch decisions.</li>
+</ul>
+</li>
+<li>
+<p><strong>State Machine and Control Logic Verification</strong></p>
+<ul>
+<li><strong>State Transition Testing:</strong> Confirm that the state machine transitions correctly, especially the introduction of the prefetch state. Ensure this state is only entered when appropriate (e.g., when the system is idle and there’s no pending memory request).</li>
+<li><strong>Response Suppression:</strong> Verify that cache line reads by the prefetcher are not exposed to the CPU (<code>ipmem_resp</code> should not be asserted for prefetch operations).</li>
+</ul>
+</li>
+</ol>
+<br>
+<div STYLE="page-break-after: always;"></div>
+<h2 id="zhirong-chens-current-work-branch-predictor">Zhirong Chen's Current Work: Branch Predictor</h2>
+<h3 id="local-branch-predictor">Local Branch Predictor</h3>
+<ul>
+<li>How to implement a local branch predictor?
+<ul>
+<li>We need a pattern history table (PHT) to record the branch history</li>
+<li>We need a specific function to index the PHT. For local branch predictor, we use the PC to index the PHT, and the PHT will give us the prediction result.</li>
+<li>We need a finite state machine to update the PHT</li>
+</ul>
+</li>
+</ul>
+<h3 id="lbp-testing-strategy-see-details-in-hvl">LBP Testing Strategy (See details in <code>hvl</code>)</h3>
+<ol>
+<li>
+<p><strong>Initialization and Reset</strong></p>
+<ul>
+<li>Start with initializing all inputs to default values.</li>
+<li>Assert and deassert the reset signal to ensure the branch predictor is in its initial state.</li>
+</ul>
+</li>
+<li>
+<p><strong>Branch Taken Test</strong></p>
+<ul>
+<li>Simulate a branch taken scenario by setting <code>actual_branch_taken</code> to <code>1</code>.</li>
+<li>Update the branch predictor with a specific PC value (<code>update_branch_pc</code>).</li>
+<li>Predict the branch behavior for the same PC and check if the prediction is <code>1</code> (branch taken).</li>
+<li>Verify the state transition of the predictor using assertions.</li>
+</ul>
+</li>
+<li>
+<p><strong>Branch Not Taken Test</strong></p>
+<ul>
+<li>Similar to the branch taken test, but this time simulate a branch not taken scenario by setting <code>actual_branch_taken</code> to <code>0</code>.</li>
+<li>Update the predictor and check if the prediction is <code>0</code> (branch not taken).</li>
+<li>Again, use assertions to verify the state transition.</li>
+</ul>
+</li>
+<li>
+<p><strong>Waveform Analysis</strong></p>
+<ul>
+<li>Use the generated FSDB file to analyze the waveforms in a simulation tool. This helps in visualizing the signal transitions and timing relationships.</li>
+</ul>
+</li>
+<li>
+<p><strong>Monitoring and Logging</strong></p>
+<ul>
+<li>Continuously monitor and log the status of key signals (<code>valid</code>, <code>actual_branch_taken</code>, <code>prediction</code>, <code>expected_state</code>) to debug and verify the behavior of the predictor.</li>
+</ul>
+</li>
+</ol>
+<div style="display: flex; justify-content: center;">
+    <img src="file:///c:\Users\Allen Heartcore\Downloads\figures\local_branch_predictor.png" alt="local branch predictor" width="360">
+</div>
+<h3 id="global-branch-predictor">Global Branch Predictor</h3>
+<ul>
+<li>How to implement a global branch predictor?
+<ul>
+<li>We need a branch history register (BHR) to record the branch history</li>
+<li>We need a specific function to index the PHT. For global branch predictor, we use the BHR to index the PHT, and the PHT will give us the prediction result.</li>
+<li>We need a finite state machine to update the PHT</li>
+</ul>
+</li>
+</ul>
+<h3 id="gbp-testing-strategy">GBP Testing Strategy</h3>
+<p>For testing a global branch predictor in a SystemVerilog environment, the strategy should be focused on thoroughly evaluating its prediction accuracy and response under various scenarios. Here's a detailed testing strategy:</p>
+<ol>
+<li>
+<p><strong>Initialization and Baseline Setup</strong></p>
+<ul>
+<li><strong>Initialize Test Environment:</strong> Start by initializing all inputs and control signals. Ensure that the global branch predictor (GBP) is in a known state before beginning tests.</li>
+<li><strong>Reset Sequence:</strong> Apply a reset to the GBP to verify it returns to its default state correctly. This step is crucial for ensuring consistent test conditions.</li>
+</ul>
+</li>
+<li>
+<p><strong>Test Different Branch Scenarios</strong></p>
+<ul>
+<li><strong>Branch Taken Tests:</strong> Simulate scenarios where branches are predominantly taken. Vary the patterns of branches (like consecutive takens, alternating, etc.) to evaluate how quickly and accurately the GBP adapts its prediction.</li>
+<li><strong>Branch Not Taken Tests:</strong> Similarly, simulate scenarios with mostly not-taken branches, again with varying patterns.</li>
+<li><strong>Mixed Branch Behavior:</strong> Test with a mix of taken and not-taken branches in unpredictable patterns to evaluate the GBP's performance under realistic and complex scenarios.</li>
+</ul>
+</li>
+<li>
+<p><strong>Evaluate Learning and Adaptation</strong></p>
+<ul>
+<li><strong>Testing Learning Ability:</strong> Evaluate how well the GBP learns from historical branch outcomes. This can be done by repeating certain branch patterns and observing if the prediction accuracy improves over time.</li>
+<li><strong>Adaptation to Changing Patterns:</strong> Test the GBP's ability to adapt to changes in branch behavior. For example, after a long sequence of taken branches, switch to not-taken branches and assess how quickly the GBP adjusts its predictions.</li>
+</ul>
+</li>
+<li>
+<p><strong>Stress Testing</strong></p>
+<ul>
+<li><strong>Rapid Changes in Branch Directions:</strong> Apply rapidly changing branch directions to test the GBP's responsiveness and stability.</li>
+<li><strong>High-Frequency Branch Updates:</strong> Test with branch updates at a high frequency to assess the GBP's performance under pressure and its ability to keep up with quick changes.</li>
+</ul>
+</li>
+</ol>
+<div style="display: flex; justify-content: center;">
+    <img src="file:///c:\Users\Allen Heartcore\Downloads\figures\global_branch_predictor.png" alt="local branch predictor" width="360">
+</div>
+<h3 id="branch-target-buffer">Branch Target Buffer</h3>
+<ul>
+<li>How to implement a branch target buffer?
+<ul>
+<li>We need a branch target buffer (BTB) to record the branch target</li>
+<li>We need a specific function to index the BTB</li>
+<li>We need a finite state machine to update the BTB</li>
+<li>For the 4-way associate BTB, we need a specific function to select the BTB way</li>
+</ul>
+</li>
+</ul>
+<p>For branch target buffer, we use the PC to index the BTB, and the BTB will give us the branch target.</p>
+<div style="display: flex; justify-content: center;">
+    <img src="file:///c:\Users\Allen Heartcore\Downloads\figures\branch_target_buffer.png" alt="local branch predictor" width="360">
+</div>
+<h3 id="top-predictor">Top Predictor</h3>
+<p>Only when the predictor predicts the branch is taken, and branch target buffer is valid, we can use the predictor to predict the branch target.</p>
+<br>
+<div STYLE="page-break-after: always;"></div>
+<h2 id="ziyuan-chens-current-work-multi-level-and-parameterized-cache">Ziyuan Chen's Current Work: Multi-Level and Parameterized Cache</h2>
+<h3 id="multi-level-cache">Multi-level Cache</h3>
+<p>A multilevel cache is a hierarchical caching system used in modern computer architectures to improve data access times and overall system performance. It typically consists of several layers of cache, each varying in size, speed, and proximity to the CPU.</p>
+<p><strong>Concept and Purpose</strong></p>
+<ul>
+<li><strong>Improved Performance:</strong> The primary objective is to reduce the average time to access data by bridging the speed gap between the fast CPU and the slower main memory.</li>
+</ul>
+<p><strong>Cache Levels</strong></p>
+<ul>
+<li><strong>L1 Cache</strong>
+<ul>
+<li>Located on the CPU chip, offering the fastest access speeds.</li>
+<li>Typically the smallest in size, ranging from a few kilobytes to several tens of kilobytes.</li>
+<li>Often split into separate instruction and data caches (L1i and L1d).</li>
+</ul>
+</li>
+<li><strong>L2 Cache</strong>
+<ul>
+<li>Can be on the CPU chip (integrated) or on a separate chip close to the CPU.</li>
+<li>Larger than L1, usually ranging from tens to hundreds of kilobytes.</li>
+<li>Serves as an intermediate store between the ultra-fast L1 cache and the larger L3 cache.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Operation Mechanism</strong></p>
+<ul>
+<li><strong>Data Access:</strong> When the CPU needs to access data, it first checks the L1 cache. If the data is not there (a cache miss), it proceeds to the L2 cache, and so on, until the data is found or it reaches the main memory.</li>
+</ul>
+<p><strong>Impact on System Performance</strong></p>
+<ul>
+<li>A well-designed multilevel cache significantly reduces data access times and improves the overall speed and efficiency of a computer system. It plays a critical role in achieving the performance levels expected from modern CPUs.</li>
+</ul>
+<p><strong>Testing Strategy</strong></p>
+<ul>
+<li>
+<p><strong>Cache Hit and Miss Tests:</strong> Test the cache hit and miss logic to ensure it correctly identifies cache hits and misses.</p>
+</li>
+<li>
+<p><strong>Cache Replacement Policy Tests:</strong> Test the cache replacement policy to ensure it correctly identifies the cache line to be replaced when a cache miss occurs.</p>
+</li>
+<li>
+<p><strong>Cache Write Policy Tests:</strong> Test the cache write policy to ensure it correctly handles write requests (write-through or write-back).</p>
+</li>
+<li>
+<p><strong>Cache Coherency Tests:</strong> Test the cache coherency logic to ensure it correctly handles read and write requests from the CPU and memory.</p>
+</li>
+<li>
+<p><strong>Cache Size and Associativity Tests:</strong> Test the cache size and associativity to ensure it meets the design requirements.</p>
+</li>
+<li>
+<p><strong>Cache Latency Tests:</strong> Test the cache latency to ensure it meets the design requirements.</p>
+</li>
+</ul>
+<div style="display: flex; justify-content: center;">
+    <img src="file:///c:\Users\Allen Heartcore\Downloads\figures\multilevel_cache.png" alt="local branch predictor" width="300">
+</div>
+<h3 id="fully-customizable-cache">Fully customizable cache</h3>
+<p>A fully parametrized cache is a versatile and adaptable caching mechanism, designed to be highly configurable based on various parameters. This flexibility allows it to be tailored to specific system requirements or application needs. Here's a concise introduction to the concept:</p>
+<p><strong>Key Features</strong></p>
+<ul>
+<li><strong>Configurable Parameters:</strong> Parameters such as cache size, block size, associativity, replacement policy, and write policy can be dynamically adjusted.</li>
+<li><strong>Adaptable Design:</strong> This approach makes the cache suitable for a wide range of applications, from embedded systems to high-performance computing.</li>
+</ul>
+<p><strong>Design and Implementation</strong></p>
+<ul>
+<li><strong>Generic Structure:</strong> The cache is designed with a generic architecture, allowing parameters to be set at either compile-time or run-time, depending on the implementation.</li>
+<li><strong>Modular Approach:</strong> Often implemented in a modular fashion, enabling easy integration into various systems and processors.</li>
+</ul>
+<p><strong>Advantages</strong></p>
+<ul>
+<li><strong>Flexibility:</strong> Can be optimized for specific workloads or system architectures.</li>
+<li><strong>Scalability:</strong> Easily scalable to different sizes and configurations to meet changing performance and power requirements.</li>
+<li><strong>Reusability:</strong> The parametric design allows for reuse in different system designs, reducing development time and cost.</li>
+</ul>
+<p><strong>Testing Strategy</strong></p>
+<ul>
+<li><strong>Cache Size and Associativity Tests:</strong> Test the cache size and associativity to ensure it meets the design requirements.</li>
+<li><strong>Cache Replacement Policy Tests:</strong> Test the cache replacement policy to ensure it correctly identifies the cache line to be replaced when a cache miss occurs.</li>
+<li><strong>Cache Write Policy Tests:</strong> Test the cache write policy to ensure it correctly handles write requests (write-through or write-back).</li>
+<li><strong>Cache Coherency Tests:</strong> Test the cache coherency logic to ensure it correctly handles read and write requests from the CPU and memory.</li>
+<li><strong>Cache Latency Tests:</strong> Test the cache latency to ensure it meets the design requirements.</li>
+</ul>
+<p><br> <br></p>
+<div STYLE="page-break-after: always;"></div>
+<h1 id="road-map-for-cp4">Road Map for CP4</h1>
+<h2 id="work-distribution-1">Work Distribution</h2>
+<ul>
+<li>
+<p><strong>Ziyuan Chen:</strong> Fully customizable cache, optimize cache parameters</p>
+</li>
+<li>
+<p><strong>Hao Ren:</strong> Next-line prefetcher, optimize prefetching strategy</p>
+</li>
+<li>
+<p><strong>Zhirong Chen:</strong>  Optimize LBP, GBP, BTB, 4-way associated BTB; try Tournament Predictor and G-Shore Predictor.</p>
+</li>
+</ul>
+<h2 id="direction-of-optimization">Direction of Optimization</h2>
+<ul>
+<li>Fully customizable cache
+<ul>
+<li>Word size</li>
+<li>Number of sets</li>
+<li>Associativity</li>
+<li>Replacement policy</li>
+<li>Write policy</li>
+</ul>
+</li>
+<li>Next-line prefetcher
+<ul>
+<li>Prefetch strategy</li>
+<li>Prefetch depth</li>
+</ul>
+</li>
+<li>Local branch predictor
+<ul>
+<li>Branch history table: size &amp; index function</li>
+<li>FSM</li>
+</ul>
+</li>
+<li>Global branch predictor
+<ul>
+<li>Branch history register: size &amp; index function</li>
+<li>FSM</li>
+</ul>
+</li>
+<li>Branch target buffer
+<ul>
+<li>Branch target buffer: size &amp; index function</li>
+<li>4-way associated BTB</li>
+<li>FSM</li>
+</ul>
+</li>
+</ul>
+
+        <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </body>
+    </html>
