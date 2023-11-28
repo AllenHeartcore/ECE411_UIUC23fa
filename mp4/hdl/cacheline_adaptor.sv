@@ -1,11 +1,12 @@
-module cacheline_adaptor
-(
+module cacheline_adaptor #(
+    parameter   s_word    = 256
+) (
     input clk,
     input reset_n,
 
     /* Ports to LLC */
-    input logic [255:0] line_i,
-    output logic [255:0] line_o,
+    input logic [s_word-1:0] line_i,
+    output logic [s_word-1:0] line_o,
     input logic [31:0] address_i,
     input read_i,
     input write_i,
@@ -20,10 +21,13 @@ module cacheline_adaptor
     input resp_i
 );
 
+    localparam  n_burst   = s_word / 64;
 
-logic [63:0] buffer [0:3];
-enum logic [3:0] {
-    IDLE, R1, R2, R3, R4, W1, W2, W3, W4, DONE
+
+int counter;
+logic [s_word-1:0] buffer;
+enum logic [1:0] {
+    IDLE, READ, WRITE, DONE
 } state, next_state;
 
 
@@ -32,9 +36,12 @@ always_ff @(posedge clk or negedge reset_n) begin
         state <= IDLE;
     else begin
         state <= next_state;
-        if (resp_i)
-            {buffer[3], buffer[2], buffer[1], buffer[0]} <=
-            {  burst_i, buffer[3], buffer[2], buffer[1]};
+        if (state == DONE)
+            counter <= 0;
+        else if (resp_i) begin
+            buffer <= {burst_i, buffer[s_word-1:64]};
+            counter <= counter + 1;
+        end
     end
 end
 
@@ -47,29 +54,32 @@ always_comb begin
     burst_o = 64'h0;
     next_state = state;
     address_o = address_i;
-    line_o = {buffer[3], buffer[2], buffer[1], buffer[0]};
+    line_o = buffer;
 
     unique case (state)
 
         IDLE: begin
             if (read_i) begin
-                next_state = R1;
+                next_state = READ;
                 read_o = 1'b1;
             end else if (write_i) begin
-                next_state = W1;
+                next_state = WRITE;
                 write_o = 1'b1;
             end
         end
 
-        R1: begin if (resp_i) next_state = R2;   read_o  = 1'b1; end
-        R2: begin if (resp_i) next_state = R3;   read_o  = 1'b1; end
-        R3: begin if (resp_i) next_state = R4;   read_o  = 1'b1; end
-        R4: begin if (resp_i) next_state = DONE; read_o  = 1'b1; end
+        READ: begin
+            read_o = 1'b1;
+            if (counter == n_burst - 1)
+                next_state = DONE;
+        end
 
-        W1: begin if (resp_i) next_state = W2;   write_o = 1'b1; burst_o = line_i[ 63:  0]; end
-        W2: begin if (resp_i) next_state = W3;   write_o = 1'b1; burst_o = line_i[127: 64]; end
-        W3: begin if (resp_i) next_state = W4;   write_o = 1'b1; burst_o = line_i[191:128]; end
-        W4: begin if (resp_i) next_state = DONE; write_o = 1'b1; burst_o = line_i[255:192]; end
+        WRITE: begin
+            write_o = 1'b1;
+            burst_o = line_i[(counter+1)*64-1 +: 64];
+            if (counter == n_burst - 1)
+                next_state = DONE;
+        end
 
         DONE: begin
             next_state = IDLE;

@@ -11,6 +11,7 @@ import pipeline_pkg::*;
     input  ctrlwb_reg_t ctrlwb,
     input  ctrlwb_reg_t ctrlwb_at_ex,
     input  ctrlwb_reg_t ctrlwb_at_mem,
+    input  ctrlmem_reg_t ctrlmem_at_ex,
 
     // to ctrl_word
     output rv32i_opcode opcode,
@@ -24,7 +25,15 @@ import pipeline_pkg::*;
     input  hazard_ctrl_pkg::hazard_ctrl_t hazard_ctrl,
     input  logic wb_commit,
     input  logic ex_enable,
+    output logic branch_mispredict,
+
+    // from branch predictor
+    input  logic [31:0] predicted_pc,
     output logic ex_is_branch,
+    output logic ex_branch_taken,
+    output logic [31:0] if_pc_rdata,
+    output logic [31:0] ex_pc_rdata,
+    output logic [31:0] ex_pc_wdata,
 
     // from forwarding_unit
     input  fwdmux::fwdmux_sel_t fwdmux1_sel, fwdmux2_sel,
@@ -39,6 +48,7 @@ import pipeline_pkg::*;
 );
 
     logic [4:0] rs1, rs2, rd;
+    pcmux::pcmux_sel_t pcmux_sel_ex;
     pcmux::pcmux_sel_t pcmux_sel;
     rv32i_word i_imm, s_imm, b_imm, u_imm, j_imm;
     rv32i_word alumux1_out, alumux2_out, cmpmux_out;
@@ -51,7 +61,17 @@ import pipeline_pkg::*;
     pipeline_reg_t mem_wb_reg_i, mem_wb_reg_o;
 
     /* Branch Feedback (to hazard control) */
-    assign ex_is_branch = pcmux_sel != pcmux::pc_plus4; // jump or branch
+    assign ex_branch_taken = pcmux_sel_ex != pcmux::pc_plus4; // jump or branch
+
+    assign ex_is_branch = (ctrlmem_at_ex.opcode == op_jalr) 
+    || (ctrlmem_at_ex.opcode == op_jal) 
+    || (ctrlmem_at_ex.opcode == op_br);
+
+    assign if_pc_rdata = if_id_reg_i.pc;
+    assign ex_pc_rdata = ex_mem_reg_i.pc;
+    assign ex_pc_wdata = ex_mem_reg_i._pc_wdata;
+
+    assign branch_mispredict = ex_enable && (ex_mem_reg_i._pc_wdata != id_ex_reg_o._pc_wdata); // branch mispredict
 
     /* Datapath Registers */
 
@@ -83,11 +103,17 @@ import pipeline_pkg::*;
 
     // PCMUX REG
     logic load_pc_mux;
+    logic branch_mispredict_reg;
     pcmux::pcmux_sel_t pc_mux_reg_i, pc_mux_reg_o;
-    // ex enable & ex commit -> load pcmux val
-    // ex not enable & if commit -> load pc plus 4 
-    assign load_pc_mux = (ex_enable && hazard_ctrl.load_ex_mem) || ((~ex_enable) && hazard_ctrl.load_if_id);
-    assign pc_mux_reg_i = (ex_enable && hazard_ctrl.load_ex_mem) ? pcmux_sel : pcmux::pc_plus4;
+    assign load_pc_mux = (ex_enable && hazard_ctrl.load_ex_mem && branch_mispredict) || ((~ex_enable) && hazard_ctrl.load_if_id);
+    assign pc_mux_reg_i = pcmux_sel_ex;
+    assign pcmux_sel = (branch_mispredict_reg) ? pc_mux_reg_o : pcmux::pc_predict;
+
+    register #(.width(1)) branch_mispredict_register(
+        .*, .load(load_pc_mux),
+        .in(branch_mispredict),
+        .out(branch_mispredict_reg)
+    );
 
     pcmux_reg  PCMUX_REG(.*,
         .load(load_pc_mux),
@@ -214,8 +240,10 @@ import pipeline_pkg::*;
     );
 
     assign if_id_reg_i.ir = imem_rdata;
+    assign if_id_reg_i._pc_wdata = pcmux_out; // used to check if branch prediction is correct
     assign id_ex_reg_i.pc = if_id_reg_o.pc;
     assign id_ex_reg_i.ir = if_id_reg_o.ir;
+    assign id_ex_reg_i._pc_wdata = if_id_reg_o._pc_wdata;
     assign ex_mem_reg_i.pc = id_ex_reg_o.pc;
     assign ex_mem_reg_i.mdr = fwdmux2_out;
     assign ex_mem_reg_i.uim = u_imm;
@@ -231,10 +259,10 @@ import pipeline_pkg::*;
     assign ex_mem_reg_i.r1 = fwdmux1_out;
     assign mem_wb_reg_i.r1 = ex_mem_reg_o.r1;
     assign mem_wb_reg_i.r2 = ex_mem_reg_o.mdr;
-    // use ex stage pc and pcmux_sel to determine PCMUX's future output
+    // use ex stage pc and pcmux_sel_ex to determine PCMUX's future output
     logic [31:0] pcmux_i;
-    assign pcmux_i = pcmux_sel == pcmux::alu_out ? ex_mem_reg_i.alu : ex_mem_reg_i.alu & 32'hFFFFFFFE;
-    assign ex_mem_reg_i._pc_wdata = pcmux_sel != pcmux::pc_plus4 ? pcmux_i : (ex_mem_reg_i.pc + 4); // if branch or jump, we need to overwrite wdata, otherwise we need to use pc addr at EX stage (not IF stage, so we can't use pcmux_out directly)
+    assign pcmux_i = pcmux_sel_ex == pcmux::alu_out ? ex_mem_reg_i.alu : ex_mem_reg_i.alu & 32'hFFFFFFFE;
+    assign ex_mem_reg_i._pc_wdata = pcmux_sel_ex != pcmux::pc_plus4 ? pcmux_i : (ex_mem_reg_i.pc + 4); // if branch or jump, we need to overwrite wdata, otherwise we need to use pc addr at EX stage (not IF stage, so we can't use pcmux_out directly)
     assign mem_wb_reg_i._pc_wdata = ex_mem_reg_o._pc_wdata;
     assign mem_wb_reg_i._mem_addr = marmux_out;
     assign mem_wb_reg_i._mem_rmask = dmem_rmask;
@@ -246,7 +274,6 @@ import pipeline_pkg::*;
     assign if_id_reg_i._mem_rmask = 4'b0;
     assign if_id_reg_i._mem_wdata = 32'b0;
     assign if_id_reg_i._mem_addr = 32'b0;
-    assign if_id_reg_i._pc_wdata = 32'b0;
     assign if_id_reg_i.cmp = 1'b0;
     assign if_id_reg_i.alu = 32'b0;
     assign if_id_reg_i.uim = 32'b0;
@@ -257,7 +284,6 @@ import pipeline_pkg::*;
     assign id_ex_reg_i._mem_rmask = 4'b0;
     assign id_ex_reg_i._mem_wdata = 32'b0;
     assign id_ex_reg_i._mem_addr = 32'b0;
-    assign id_ex_reg_i._pc_wdata = 32'b0;
     assign id_ex_reg_i.cmp = 1'b0;
     assign id_ex_reg_i.alu = 32'b0;
     assign id_ex_reg_i.uim = 32'b0;
@@ -395,14 +421,19 @@ import pipeline_pkg::*;
         endcase
     end
 
-    assign pcmux_sel = ctrlex.is_branch ? pcmux::pcmux_sel_t'({1'b0, ex_mem_reg_i.cmp}) : ctrlex.pcmux_sel;
+    assign pcmux_sel_ex = ctrlex.is_branch ? pcmux::pcmux_sel_t'({1'b0, ex_mem_reg_i.cmp}) : ctrlex.pcmux_sel;
     
     always_comb begin : PCMUX
 
-        unique case (pc_mux_reg_o)
-            pcmux::pc_plus4: pcmux_out = if_id_reg_i.pc + 4;
+        unique case (pcmux_sel)
+            pcmux::pc_plus4: begin 
+                if(branch_mispredict_reg) pcmux_out = ex_mem_reg_o._pc_wdata;
+                else pcmux_out = if_id_reg_i.pc + 4;
+
+            end
             pcmux::alu_out : pcmux_out = ex_mem_reg_o.alu;
             pcmux::alu_mod2: pcmux_out = ex_mem_reg_o.alu & 32'hFFFFFFFE;
+            pcmux::pc_predict: pcmux_out = predicted_pc;
             default        : pcmux_out = 'X;
         endcase
 

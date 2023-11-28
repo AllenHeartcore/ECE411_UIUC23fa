@@ -2,13 +2,15 @@
 
 FROM CP3, progress log will be moved here instead of in PPT.
 
-## CURRENT STATUS
+## Current Step
 
-* Pipeline processor w/o/ hazard(dependency handling) has been completed.
-* Forwarding has been completed.
-* Branch hasn't been enabled.
+* Pipeline processor has been completed w/ static branch prediction
+* Multi-level cache has been completed.
+* Parameterizable Cache is being worked on.
+* Branch Predictor is being worked on, along with BTB as well as RAS.
+* Prefetcher is being worked on.
 
-## CURRENT STEP : BRANCH & JUMP
+## PAST STEP : BRANCH & JUMP
 
 ### What's needed ? 
 
@@ -35,4 +37,32 @@ FROM CP3, progress log will be moved here instead of in PPT.
 4. Add IF_mask reg, wire the logic [Done]
 
 5. Mask if_enable **transition** if IF_mask is asserted  [Done]
+
+
+## CURRENT STEP : Next-line Prefetcher
+
+* How can next-line prefetcher improve performance of a processor?
+    * If dmem is idle, if imem is idle, we use this time to prefetch the next cacheline.
+    * We need arbiter to give a status feedback `is_idle`
+
+* Then how can we pre-empt the memory?
+    * Modify arbiter
+
+* How do we know what cache-line to pre-fetch?
+    * Record last read imem cacheline
+
+### Steps
+1. Know the arbiter implementation (how to preempt the memory)
+
+2. Record the last read imem cacheline
+    * Can incorporate the branch taken signal
+    * If the branch taken signal is high, we can skip the current prefetch.
+    * So we need a storage unit checking if between memory requests, if there is a branch taken signal. 
+
+3. Modify the arbiter to pre-empt the memory
+    1. First, we must **NOT expose the cacheline read to the CPU**,
+        hence the `ipmem_resp` must not be asserted upon a pre-fetch.
+    2. Second, we must modify the state transition
+         * the prefetch state can be visited when the state machine is idle and there is no memory request at the moment
+
 

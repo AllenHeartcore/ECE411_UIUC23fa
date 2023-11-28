@@ -13,7 +13,14 @@ module top_tb;
 
     bit rst;
 
-    int timeout = 1000000; // in cycles, change according to your needs
+// `define USE_TIMEOUT
+    int timeout = 100000; // in cycles, change according to your needs
+
+    localparam  CACHE_LOG2_NUMSETS_L1   = 3;
+    localparam  CACHE_LOG2_NUMWAYS_L1   = 1;
+    localparam  CACHE_LOG2_NUMSETS_L2   = 5;
+    localparam  CACHE_LOG2_NUMWAYS_L2   = 4;
+    localparam  CACHE_LOG2_WORDSIZE     = 10;    // must be >= 7
 
     // CP1
     // mem_itf magic_itf_i(.*);
@@ -22,12 +29,20 @@ module top_tb;
 
     // CP2
     bmem_itf bmem_itf(.*);
-    burst_memory burst_memory(.itf(bmem_itf));
+    burst_memory #(
+        .DRAM_PARAM_BURST_LEN (2 ** (CACHE_LOG2_WORDSIZE - 6))
+    ) burst_memory (.itf(bmem_itf));
 
     mon_itf mon_itf(.*);    
     monitor monitor(.itf(mon_itf));
 
-    mp4 dut(
+    mp4 #(
+        .CACHE_LOG2_NUMSETS_L1(CACHE_LOG2_NUMSETS_L1),
+        .CACHE_LOG2_NUMWAYS_L1(CACHE_LOG2_NUMWAYS_L1),
+        .CACHE_LOG2_NUMSETS_L2(CACHE_LOG2_NUMSETS_L2),
+        .CACHE_LOG2_NUMWAYS_L2(CACHE_LOG2_NUMWAYS_L2),
+        .CACHE_LOG2_WORDSIZE  (CACHE_LOG2_WORDSIZE)
+    ) dut (
         .clk          (clk),
         .rst          (rst),
 
@@ -80,14 +95,83 @@ module top_tb;
         rst <= 1'b0;
     end
 
+    // predictor and prefetcher performance counters
+    logic [31:0]   predictor_miss_count;
+    logic  [31:0] is_branch_count;
+    logic  last_is_mispredict;
+    logic  last_is_branch;
     always @(posedge clk) begin
-        if (mon_itf.halt) begin
+        if(rst) begin
+            last_is_branch <= 1'b0;
+            predictor_miss_count <= 0;
+            is_branch_count <= 0;
+            last_is_mispredict <= 1'b0;
+        end else if(dut.datapath.branch_mispredict && dut.datapath.ex_enable && dut.hazard_ctrl.load_ex_mem && (~last_is_mispredict)) begin
+            predictor_miss_count <= predictor_miss_count + 1;
+            last_is_mispredict <= 1'b1;
+        end else begin
+            last_is_mispredict <= 1'b0;
+        end
+        
+        if(!rst) begin
+            last_is_branch <= dut.datapath.ex_is_branch;
+            if(dut.datapath.ex_is_branch && (~last_is_branch)) begin
+                is_branch_count <= is_branch_count + 1;
+            end
+        end
+    end
+
+    logic [31:0]   prefetcher_count;
+    always @(posedge clk) begin
+        if(rst) begin
+            prefetcher_count <= 0;
+        end else if(dut.prefetcher.end_prefetch) begin
+            prefetcher_count <= prefetcher_count + 1;
+        end
+    end
+
+
+
+    always @(posedge clk) begin
+        if (mon_itf.halt
+`ifdef USE_TIMEOUT
+            || timeout == 0
+`endif
+        ) begin
+            $display("L1 I Cache: %d hits, %d misses, %d cycles, %10.3f penalty",
+                dut.imem_cache._perf_countHit,
+                dut.imem_cache._perf_countMiss,
+                dut.imem_cache._perf_countTimer,
+                dut.imem_cache._perf_countPenalty * 1.0 / dut.imem_cache._perf_countMiss
+            );
+            $display("L2 I Cache: %d hits, %d misses, %d cycles, %10.3f penalty",
+                dut.i2mem_cache._perf_countHit,
+                dut.i2mem_cache._perf_countMiss,
+                dut.i2mem_cache._perf_countTimer,
+                dut.i2mem_cache._perf_countPenalty * 1.0 / dut.i2mem_cache._perf_countMiss
+            );
+            $display("L1 D Cache: %d hits, %d misses, %d cycles, %10.3f penalty",
+                dut.dmem_cache._perf_countHit,
+                dut.dmem_cache._perf_countMiss,
+                dut.dmem_cache._perf_countTimer,
+                dut.dmem_cache._perf_countPenalty * 1.0 / dut.dmem_cache._perf_countMiss
+            );
+            $display("L2 D Cache: %d hits, %d misses, %d cycles, %10.3f penalty",
+                dut.d2mem_cache._perf_countHit,
+                dut.d2mem_cache._perf_countMiss,
+                dut.d2mem_cache._perf_countTimer,
+                dut.d2mem_cache._perf_countPenalty * 1.0 / dut.d2mem_cache._perf_countMiss
+            );
+
+            $display("Predictor :%d misses for %d branch instr.", predictor_miss_count, is_branch_count);
+            $display("Prefetcher:%d prefetches", prefetcher_count);
+
+`ifdef USE_TIMEOUT
+            if (timeout == 0)
+                $error("TB Error: Timed out");
+`endif
             $finish;
         end
-        // if (timeout == 0) begin
-        //     $error("TB Error: Timed out");
-        //     $finish;
-        // end
         if (mon_itf.error != 0) begin
             repeat (5) @(posedge clk);
             $finish;

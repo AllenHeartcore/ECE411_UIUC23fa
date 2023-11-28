@@ -1,26 +1,28 @@
-module arbiter
-(
+module arbiter #(
+            parameter       s_word   = 256
+) (
     input           clk,
     input           rst,
 
-    input   logic [ 31:0]   ipmem_address,
-    input   logic           ipmem_read,
-    output  logic [255:0]   ipmem_rdata,
-    output  logic           ipmem_resp,
+    output  logic [s_word-1:0]   ipmem_rdata,
+    input   logic [s_word-1:0]   dpmem_wdata,
+    output  logic [s_word-1:0]   dpmem_rdata,
+    output  logic [s_word-1:0]   pmem_wdata,
+    input   logic [s_word-1:0]   pmem_rdata,
 
+    input   logic [ 31:0]   ipmem_address,
     input   logic [ 31:0]   dpmem_address,
-    input   logic [255:0]   dpmem_wdata,
+    output  logic [ 31:0]   pmem_address,
+
+    input   logic           ipmem_read,
+    output  logic           ipmem_resp,
     input   logic           dpmem_write,
     input   logic           dpmem_read,
-    output  logic [255:0]   dpmem_rdata,
     output  logic           dpmem_resp,
-
-    output  logic [ 31:0]   pmem_address,
-    output  logic [255:0]   pmem_wdata,
     output  logic           pmem_write,
     output  logic           pmem_read,
-    input   logic [255:0]   pmem_rdata,
-    input   logic           pmem_resp
+    input   logic           pmem_resp,
+    output  logic           arbiter_idle
 );
 
 
@@ -50,17 +52,19 @@ module arbiter
 
     end : NEXT_STATE_LOGIC
 
+    assign arbiter_idle = (state == IDLE);
+
 
 
     always_comb begin : STATE_ACTIONS
 
         pmem_address = 32'h0;
-        pmem_wdata   = 256'h0;
+        pmem_wdata   = '0;
         pmem_read    = 1'b0;
         pmem_write   = 1'b0;
-        ipmem_rdata  = 256'h0;
+        ipmem_rdata  = '0;
         ipmem_resp   = 1'b0;
-        dpmem_rdata  = 256'h0;
+        dpmem_rdata  = '0;
         dpmem_resp   = 1'b0;
 
         case (state)
@@ -81,7 +85,24 @@ module arbiter
                     pmem_wdata  = dpmem_wdata;
                 end
             end
-            IDLE: ;
+            IDLE: begin
+                if(next_state == SERVE_I) begin
+                    pmem_address    = ipmem_address;
+                    pmem_read       = 1'b1;
+                    ipmem_rdata     = pmem_rdata;
+                    ipmem_resp      = pmem_resp;
+                end else if(next_state == SERVE_D) begin
+                    pmem_address    = dpmem_address;
+                    dpmem_resp      = pmem_resp;
+                    if (dpmem_read) begin
+                        pmem_read   = 1'b1;
+                        dpmem_rdata = pmem_rdata;
+                    end else begin
+                        pmem_write  = 1'b1;
+                        pmem_wdata  = dpmem_wdata;
+                    end
+                end
+            end
         endcase
 
     end : STATE_ACTIONS
