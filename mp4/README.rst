@@ -310,7 +310,7 @@ design options you wish to pursue. Note that the ``+N`` points are extra credit.
 |             |                                         | - Roadmap [2]                                       |
 +-------------+-----------------------------------------+-----------------------------------------------------+
 | CP 4 [44]   | - Design competition [24]               | - Presentation [10]                                 |
-|             |                                         | - Report [20]                                       |
+|             |                                         | - Report [10]                                       |
 +-------------+-----------------------------------------+-----------------------------------------------------+
 Table 1: MP4 point breakdown. Points for each item are enclosed in brackets. Point numbers after "+" signs are extra credits.
 
