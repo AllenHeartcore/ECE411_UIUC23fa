@@ -20,9 +20,9 @@
 
 - **[Done]** Pipeline processor w/ static branch prediction
 - **[Done]** Multi-level cache
-- **[Minor Bugs]** Fully customizable cache
-- **[Working]** Branch predictors, BTB, RAS
-- **[Working]** Prefetchers
+- **[In Progress]** Fully customizable cache
+- **[In Progress]** Branch predictors, BTB, RAS
+- **[In Progress]** Prefetchers
 
 
 
@@ -132,8 +132,18 @@ Parameter search space
 
 <br>
 
+Baseline: L1 cache only, 256 wordsize, 16 sets, 4 ways
+```
+    stop time is          32524050000
+    IPC: 0.229373
+    L1 I Cache:    1173571 hits,       1280 misses,    2361298 cycles,     11.059 penalty
+    L1 D Cache:      73801 hits,        135 misses,     149582 cycles,     14.667 penalty
+    $finish at simulation time          32566770000
+```
+
 128 wordsize, 64 sets, 16 ways
 - Miss penalty is low, but L1 cache miss rate is high.
+- Therefore, performance degrades compared to the baseline.
 ```
     stop time is          32776490000
     IPC: 0.227675
