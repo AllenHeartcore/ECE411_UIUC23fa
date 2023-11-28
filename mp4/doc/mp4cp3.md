@@ -2,6 +2,8 @@
 
 
 
+<br>
+
 ## Work Distribution
 
 - **Ziyuan Chen:** Multi-level cache, Fully customizable cache
@@ -12,6 +14,8 @@
 
 
 
+<br>
+
 ## Current Progress
 
 - **[Done]** Pipeline processor w/ static branch prediction
@@ -21,6 +25,8 @@
 - **[Working]** Prefetchers
 
 
+
+<br>
 
 ## Statistics & Observations
 
@@ -152,21 +158,20 @@ Parameter search space
 
 
 
-## Leftover Issues from CP2: Branch & Jump Instructions
+<br>
+
+## Leftover Issue from CP2: Branch & Jump Instructions
 
 ### What's required?
 
 - PCMUX outside EX MEM pipeline register
-    - load PCMUX if
-        - EX enabled and EX commit : We load pcmux val in EX stage
-        - EX not enabled and IF commit : We load `pcplus4`
+    - EX enabled and EX commit : Load PCMUX in EX stage
+    - EX disabled and IF commit : Load PCMUX with `pcplus4`
 
-- Disable IF, ID, EX stages when there is a branch committed to PCMUX reg.
-    - Problem ?
-        - When IF, EX committed at the same time, the instruction that's going to propagate to ID is wrong(current PC + 4)
-        - How to fix?
-            - Do not enable IF during the next RDY -> BUSY transition
-            - by using IF_mask register to mask the if_enable signal
+- Disable IF, ID, EX stages when there is a branch committed to PCMUX register
+    - When IF, EX are committed at the same time, the instruction propagating to ID is wrong (current PC + 4)
+    - Fix 1: Do not enable IF during the next `RDY -> BUSY` transition
+    - Fix 2: Use `IF_mask` register to mask the if_enable signal
 
 ### Steps
 
@@ -178,17 +183,19 @@ Parameter search space
 
 
 
-## Current Work: Next-line Prefetcher
+<br>
 
-- How can next-line prefetcher improve performance of a processor?
-    - If dmem is idle, if imem is idle, we use this time to prefetch the next cacheline.
-    - We need arbiter to give a status feedback `is_idle`
+## Hao Ren's Current Work: Next-Line Prefetcher
 
-- Then how can we pre-empt the memory?
-    - Modify arbiter
+- How can the next-line prefetcher improve performance of a processor?
+    - We use the time when DMEM and IMEM are both idle to prefetch the next cacheline
+    - We need the arbiter to give a status feedback `is_idle`
+
+- Then how can we preempt the memory?
+    - By modifying the arbiter
 
 - How do we know what cache-line to pre-fetch?
-    - Record last read imem cacheline
+    - By recording the last cacheline read from IMEM
 
 ### Steps
 1. Know the arbiter implementation (how to preempt the memory)
@@ -198,34 +205,34 @@ Parameter search space
     - If the branch taken signal is high, we can skip the current prefetch.
     - So we need a storage unit checking if between memory requests, if there is a branch taken signal.
 
-3. Modify the arbiter to pre-empt the memory
-    1. First, we must **NOT expose the cacheline read to the CPU**,
-        hence the `ipmem_resp` must not be asserted upon a pre-fetch.
+3. Modify the arbiter to preempt the memory
+    1. First, we **must NOT expose the cacheline read to CPU**,
+        hence the `ipmem_resp` must not be asserted upon a prefetch.
     2. Second, we must modify the state transition
-         - the prefetch state can be visited when the state machine is idle and there is no memory request at the moment
+        - The prefetch state can be reached when the state machine is idle and there is no memory request at the moment
 
-**Test Strategy**
+### Testing Strategy
 
 Testing a next-line prefetcher in a processor involves verifying its ability to improve performance by pre-fetching data, ensuring proper integration with the memory system, and confirming that it behaves correctly under various scenarios. Here’s a concise testing strategy:
 
+1. **Prefetch Functionality Tests**
+    - **Basic Prefetch Operation:** Verify that the prefetcher correctly fetches the next cache line when the data memory (`dmem`) and instruction memory (`imem`) are idle.
+    - **Integration with Arbiter:** Test the interaction between the prefetcher and the arbiter to ensure the prefetcher can preempt memory correctly and the arbiter provides accurate `is_idle` status.
 
-**Prefetch Functionality Tests**:
-- **Basic Prefetch Operation**: Verify that the prefetcher correctly fetches the next cache line when the data memory (`dmem`) and instruction memory (`imem`) are idle.
-- **Integration with Arbiter**: Test the interaction between the prefetcher and the arbiter to ensure the prefetcher can preempt memory correctly and the arbiter provides accurate `is_idle` status.
+2. **Branch Prediction Integration**
+    - **Branch Taken Signal Handling:** Test how the prefetcher responds to the branch taken signal. Ensure it skips prefetching appropriately when the signal is high.
+    - **Record and Respond to Cache Lines:** Verify the prefetcher correctly records the last read `imem` cache line and uses this information for subsequent prefetch decisions.
 
-**Branch Prediction Integration:**
-- **Branch Taken Signal Handling**: Test how the prefetcher responds to the branch taken signal. Ensure it skips prefetching appropriately when the signal is high.
-- **Record and Respond to Cache Lines**: Verify the prefetcher correctly records the last read `imem` cache line and uses this information for subsequent prefetch decisions.
-
-**State Machine and Control Logic Verification:**
-- **State Transition Testing**: Confirm that the state machine transitions correctly, especially the introduction of the prefetch state. Ensure this state is only entered when appropriate (e.g., when the system is idle and there’s no pending memory request).
-- **Response Suppression**: Verify that cache line reads by the prefetcher are not exposed to the CPU (`ipmem_resp` should not be asserted for prefetch operations).
-
-**Prefetcher Called Counts:**
+3. **State Machine and Control Logic Verification**
+    - **State Transition Testing:** Confirm that the state machine transitions correctly, especially the introduction of the prefetch state. Ensure this state is only entered when appropriate (e.g., when the system is idle and there’s no pending memory request).
+    - **Response Suppression:** Verify that cache line reads by the prefetcher are not exposed to the CPU (`ipmem_resp` should not be asserted for prefetch operations).
 
 
 
-## CURRENT STEP : Branch Predictor
+<br>
+
+## Zhirong Chen's Current Work: Branch Predictor
+
 
 ### Local Branch Predictor
 
@@ -234,33 +241,31 @@ Testing a next-line prefetcher in a processor involves verifying its ability to 
     - We need a specific function to index the PHT. For local branch predictor, we use the PC to index the PHT, and the PHT will give us the prediction result.
     - We need a finite state machine to update the PHT
 
-**Test Strategy**: See details in hvl
+### LBP Testing Strategy (See details in `hvl`)
 
-1. **Initialization and Reset**:
-   - Start with initializing all inputs to default values.
-   - Assert and deassert the reset signal to ensure the branch predictor is in its initial state.
+1. **Initialization and Reset**
+    - Start with initializing all inputs to default values.
+    - Assert and deassert the reset signal to ensure the branch predictor is in its initial state.
 
-2. **Branch Taken Test**:
-   - Simulate a branch taken scenario by setting `actual_branch_taken` to `1`.
-   - Update the branch predictor with a specific PC value (`update_branch_pc`).
-   - Predict the branch behavior for the same PC and check if the prediction is `1` (branch taken).
-   - Verify the state transition of the predictor using assertions.
+2. **Branch Taken Test**
+    - Simulate a branch taken scenario by setting `actual_branch_taken` to `1`.
+    - Update the branch predictor with a specific PC value (`update_branch_pc`).
+    - Predict the branch behavior for the same PC and check if the prediction is `1` (branch taken).
+    - Verify the state transition of the predictor using assertions.
 
-3. **Branch Not Taken Test**:
-   - Similar to the branch taken test, but this time simulate a branch not taken scenario by setting `actual_branch_taken` to `0`.
-   - Update the predictor and check if the prediction is `0` (branch not taken).
-   - Again, use assertions to verify the state transition.
+3. **Branch Not Taken Test**
+    - Similar to the branch taken test, but this time simulate a branch not taken scenario by setting `actual_branch_taken` to `0`.
+    - Update the predictor and check if the prediction is `0` (branch not taken).
+    - Again, use assertions to verify the state transition.
 
-4. **Waveform Analysis**:
-   - Use the generated FSDB file to analyze the waveforms in a simulation tool. This helps in visualizing the signal transitions and timing relationships.
+4. **Waveform Analysis**
+    - Use the generated FSDB file to analyze the waveforms in a simulation tool. This helps in visualizing the signal transitions and timing relationships.
 
-5. **Monitoring and Logging**:
-   - Continuously monitor and log the status of key signals (`valid`, `actual_branch_taken`, `prediction`, `expected_state`) to debug and verify the behavior of the predictor.
-
-
-
+5. **Monitoring and Logging**
+    - Continuously monitor and log the status of key signals (`valid`, `actual_branch_taken`, `prediction`, `expected_state`) to debug and verify the behavior of the predictor.
 
 ![local branch predictor](./figures/local_branch_predictor.png)
+
 
 ### Global Branch Predictor
 
@@ -269,26 +274,26 @@ Testing a next-line prefetcher in a processor involves verifying its ability to 
     - We need a specific function to index the PHT. For global branch predictor, we use the BHR to index the PHT, and the PHT will give us the prediction result.
     - We need a finite state machine to update the PHT
 
+### GBP Testing Strategy
+
 For testing a global branch predictor in a SystemVerilog environment, the strategy should be focused on thoroughly evaluating its prediction accuracy and response under various scenarios. Here's a detailed testing strategy:
 
-**Initialization and Baseline Setup:**
-- **Initialize Test Environment**: Start by initializing all inputs and control signals. Ensure that the global branch predictor (GBP) is in a known state before beginning tests.
-- **Reset Sequence**: Apply a reset to the GBP to verify it returns to its default state correctly. This step is crucial for ensuring consistent test conditions.
+1. **Initialization and Baseline Setup**
+    - **Initialize Test Environment:** Start by initializing all inputs and control signals. Ensure that the global branch predictor (GBP) is in a known state before beginning tests.
+    - **Reset Sequence:** Apply a reset to the GBP to verify it returns to its default state correctly. This step is crucial for ensuring consistent test conditions.
 
-**Test Different Branch Scenarios:**
-- **Branch Taken Tests**: Simulate scenarios where branches are predominantly taken. Vary the patterns of branches (like consecutive takens, alternating, etc.) to evaluate how quickly and accurately the GBP adapts its prediction.
-- **Branch Not Taken Tests**: Similarly, simulate scenarios with mostly not-taken branches, again with varying patterns.
-- **Mixed Branch Behavior**: Test with a mix of taken and not-taken branches in unpredictable patterns to evaluate the GBP's performance under realistic and complex scenarios.
+2. **Test Different Branch Scenarios**
+    - **Branch Taken Tests:** Simulate scenarios where branches are predominantly taken. Vary the patterns of branches (like consecutive takens, alternating, etc.) to evaluate how quickly and accurately the GBP adapts its prediction.
+    - **Branch Not Taken Tests:** Similarly, simulate scenarios with mostly not-taken branches, again with varying patterns.
+    - **Mixed Branch Behavior:** Test with a mix of taken and not-taken branches in unpredictable patterns to evaluate the GBP's performance under realistic and complex scenarios.
 
-**Evaluate Learning and Adaptation:**
-- **Testing Learning Ability**: Evaluate how well the GBP learns from historical branch outcomes. This can be done by repeating certain branch patterns and observing if the prediction accuracy improves over time.
-- **Adaptation to Changing Patterns**: Test the GBP's ability to adapt to changes in branch behavior. For example, after a long sequence of taken branches, switch to not-taken branches and assess how quickly the GBP adjusts its predictions.
+3. **Evaluate Learning and Adaptation**
+    - **Testing Learning Ability:** Evaluate how well the GBP learns from historical branch outcomes. This can be done by repeating certain branch patterns and observing if the prediction accuracy improves over time.
+    - **Adaptation to Changing Patterns:** Test the GBP's ability to adapt to changes in branch behavior. For example, after a long sequence of taken branches, switch to not-taken branches and assess how quickly the GBP adjusts its predictions.
 
-**Stress Testing:**
-- **Rapid Changes in Branch Directions**: Apply rapidly changing branch directions to test the GBP's responsiveness and stability.
-- **High-Frequency Branch Updates**: Test with branch updates at a high frequency to assess the GBP's performance under pressure and its ability to keep up with quick changes.
-
-
+4. **Stress Testing**
+    - **Rapid Changes in Branch Directions:** Apply rapidly changing branch directions to test the GBP's responsiveness and stability.
+    - **High-Frequency Branch Updates:** Test with branch updates at a high frequency to assess the GBP's performance under pressure and its ability to keep up with quick changes.
 
 ![global branch predictor](./figures/global_branch_predictor.png)
 
@@ -310,92 +315,80 @@ For branch target buffer, we use the PC to index the BTB, and the BTB will give 
 
 Only when the predictor predicts the branch is taken, and branch target buffer is valid, we can use the predictor to predict the branch target.
 
-**Misprediction Times:**
-
-**Total Branches:**
 
 
+<br>
 
-## CURRENT STEP : Parameterized and Multi-level Cache
+## Ziyuan Chen's Current Work: Multi-Level and Parameterized Cache
 
 ### Multi-level Cache
 
 A multilevel cache is a hierarchical caching system used in modern computer architectures to improve data access times and overall system performance. It typically consists of several layers of cache, each varying in size, speed, and proximity to the CPU.
 
 **Concept and Purpose**
-- **Improved Performance**: The primary objective is to reduce the average time to access data by bridging the speed gap between the fast CPU and the slower main memory.
+- **Improved Performance:** The primary objective is to reduce the average time to access data by bridging the speed gap between the fast CPU and the slower main memory.
 
 **Cache Levels**
-1. **L1 Cache (Level 1)**:
+- **L1 Cache**
    - Located on the CPU chip, offering the fastest access speeds.
    - Typically the smallest in size, ranging from a few kilobytes to several tens of kilobytes.
    - Often split into separate instruction and data caches (L1i and L1d).
-
-2. **L2 Cache (Level 2)**:
+- **L2 Cache**
    - Can be on the CPU chip (integrated) or on a separate chip close to the CPU.
    - Larger than L1, usually ranging from tens to hundreds of kilobytes.
    - Serves as an intermediate store between the ultra-fast L1 cache and the larger L3 cache.
 
-
-
-**Operational Mechanism**
-- **Data Access**: When the CPU needs to access data, it first checks the L1 cache. If the data is not there (a cache miss), it proceeds to the L2 cache, and so on, until the data is found or it reaches the main memory.
-
+**Operation Mechanism**
+- **Data Access:** When the CPU needs to access data, it first checks the L1 cache. If the data is not there (a cache miss), it proceeds to the L2 cache, and so on, until the data is found or it reaches the main memory.
 
 **Impact on System Performance**
 - A well-designed multilevel cache significantly reduces data access times and improves the overall speed and efficiency of a computer system. It plays a critical role in achieving the performance levels expected from modern CPUs.
 
 **Testing Strategy**
-- **Cache Hit and Miss Tests**: Test the cache hit and miss logic to ensure it correctly identifies cache hits and misses.
+- **Cache Hit and Miss Tests:** Test the cache hit and miss logic to ensure it correctly identifies cache hits and misses.
 
-- **Cache Replacement Policy Tests**: Test the cache replacement policy to ensure it correctly identifies the cache line to be replaced when a cache miss occurs.
+- **Cache Replacement Policy Tests:** Test the cache replacement policy to ensure it correctly identifies the cache line to be replaced when a cache miss occurs.
 
-- **Cache Write Policy Tests**: Test the cache write policy to ensure it correctly handles write requests (write-through or write-back).
+- **Cache Write Policy Tests:** Test the cache write policy to ensure it correctly handles write requests (write-through or write-back).
 
-- **Cache Coherency Tests**: Test the cache coherency logic to ensure it correctly handles read and write requests from the CPU and memory.
+- **Cache Coherency Tests:** Test the cache coherency logic to ensure it correctly handles read and write requests from the CPU and memory.
 
-- **Cache Size and Associativity Tests**: Test the cache size and associativity to ensure it meets the design requirements.
+- **Cache Size and Associativity Tests:** Test the cache size and associativity to ensure it meets the design requirements.
 
-- **Cache Latency Tests**: Test the cache latency to ensure it meets the design requirements.
-
+- **Cache Latency Tests:** Test the cache latency to ensure it meets the design requirements.
 
 ![multi-level cache](./figures/multilevel_cache.png)
 
-**Cache Hit**:
-
-**Cache Miss**:
 
 ### Fully customizable cache
 
 A fully parametrized cache is a versatile and adaptable caching mechanism, designed to be highly configurable based on various parameters. This flexibility allows it to be tailored to specific system requirements or application needs. Here's a concise introduction to the concept:
 
 **Key Features**
-- **Configurable Parameters**: Parameters such as cache size, block size, associativity, replacement policy, and write policy can be dynamically adjusted.
-- **Adaptable Design**: This approach makes the cache suitable for a wide range of applications, from embedded systems to high-performance computing.
+- **Configurable Parameters:** Parameters such as cache size, block size, associativity, replacement policy, and write policy can be dynamically adjusted.
+- **Adaptable Design:** This approach makes the cache suitable for a wide range of applications, from embedded systems to high-performance computing.
 
 **Design and Implementation**
-- **Generic Structure**: The cache is designed with a generic architecture, allowing parameters to be set at either compile-time or run-time, depending on the implementation.
-- **Modular Approach**: Often implemented in a modular fashion, enabling easy integration into various systems and processors.
+- **Generic Structure:** The cache is designed with a generic architecture, allowing parameters to be set at either compile-time or run-time, depending on the implementation.
+- **Modular Approach:** Often implemented in a modular fashion, enabling easy integration into various systems and processors.
 
 **Advantages**
-- **Flexibility**: Can be optimized for specific workloads or system architectures.
-- **Scalability**: Easily scalable to different sizes and configurations to meet changing performance and power requirements.
-- **Reusability**: The parametric design allows for reuse in different system designs, reducing development time and cost.
+- **Flexibility:** Can be optimized for specific workloads or system architectures.
+- **Scalability:** Easily scalable to different sizes and configurations to meet changing performance and power requirements.
+- **Reusability:** The parametric design allows for reuse in different system designs, reducing development time and cost.
 
 **Testing Strategy**
-- **Cache Size and Associativity Tests**: Test the cache size and associativity to ensure it meets the design requirements.
-- **Cache Replacement Policy Tests**: Test the cache replacement policy to ensure it correctly identifies the cache line to be replaced when a cache miss occurs.
-- **Cache Write Policy Tests**: Test the cache write policy to ensure it correctly handles write requests (write-through or write-back).
-- **Cache Coherency Tests**: Test the cache coherency logic to ensure it correctly handles read and write requests from the CPU and memory.
-- **Cache Latency Tests**: Test the cache latency to ensure it meets the design requirements.
-
-**Cache Hit**:
-
-**Cache Miss**:
+- **Cache Size and Associativity Tests:** Test the cache size and associativity to ensure it meets the design requirements.
+- **Cache Replacement Policy Tests:** Test the cache replacement policy to ensure it correctly identifies the cache line to be replaced when a cache miss occurs.
+- **Cache Write Policy Tests:** Test the cache write policy to ensure it correctly handles write requests (write-through or write-back).
+- **Cache Coherency Tests:** Test the cache coherency logic to ensure it correctly handles read and write requests from the CPU and memory.
+- **Cache Latency Tests:** Test the cache latency to ensure it meets the design requirements.
 
 
 
 
+
+<br> <br>
 
 # Road Map for CP4
 
