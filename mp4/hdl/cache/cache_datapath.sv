@@ -78,6 +78,7 @@ import cache_types::*;
             .width      (s_word)
         ) data_array (
             .clk0       (clk),
+            .rst0       (rst),
             .csb0       (1'b0),
             .web0       (!(LD_DATA & (DATAWMUX ? MASKLRU[i] : MASKHIT[i]))),
             .wmask0     (DATAMUX ? '1 : mem_byte_enable),
@@ -90,6 +91,7 @@ import cache_types::*;
             .width      (s_tag)
         ) tag_array (
             .clk0       (clk),
+            .rst0       (rst),
             .csb0       (1'b0),
             .web0       (!(LD_TAG & MASKLRU[i])),
             .addr0      (addr_index),
@@ -189,6 +191,7 @@ import cache_types::*;
      *  ) WAYLRU = 3'b110;
      */
     always_comb begin : plru_out
+        WAYLRU = 'x;
         for (int m = 0; m < num_ways; m += 1) begin
             PLRU_signals[m] = 1'b1;
             for (int n = 0; n < s_wayidx; n++)
