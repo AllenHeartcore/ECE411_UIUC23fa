@@ -4,9 +4,9 @@ num_rw_ports = 1
 num_r_ports = 0
 num_w_ports = 0
 
-word_size = 23
+word_size = 22
 # write_size = 23
-num_words = 16
+num_words = 32
 
 nominal_corner_only = True
 process_corners = ["TT"]

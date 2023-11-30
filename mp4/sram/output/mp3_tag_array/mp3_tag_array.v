@@ -1,6 +1,6 @@
 // OpenRAM SRAM model
-// Words: 16
-// Word size: 23
+// Words: 32
+// Word size: 22
 
 module mp3_tag_array(
 `ifdef USE_POWER_PINS
@@ -11,8 +11,8 @@ module mp3_tag_array(
     clk0,csb0,web0,addr0,din0,dout0
   );
 
-  parameter DATA_WIDTH = 23 ;
-  parameter ADDR_WIDTH = 4 ;
+  parameter DATA_WIDTH = 22 ;
+  parameter ADDR_WIDTH = 5 ;
   parameter RAM_DEPTH = 1 << ADDR_WIDTH;
   // FIXME: This delay is arbitrary.
   parameter DELAY = 0 ;

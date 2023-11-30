@@ -1,5 +1,5 @@
 // OpenRAM SRAM model
-// Words: 16
+// Words: 32
 // Word size: 256
 // Write size: 8
 
@@ -14,7 +14,7 @@ module mp3_data_array(
 
   parameter NUM_WMASKS = 32 ;
   parameter DATA_WIDTH = 256 ;
-  parameter ADDR_WIDTH = 4 ;
+  parameter ADDR_WIDTH = 5 ;
   parameter RAM_DEPTH = 1 << ADDR_WIDTH;
   // FIXME: This delay is arbitrary.
   parameter DELAY = 0 ;
