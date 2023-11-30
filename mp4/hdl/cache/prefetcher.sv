@@ -212,6 +212,7 @@ module convservative_next_line_prefetcher #(
                 
             SERVE_I: if (icmem_resp)  next_state = IDLE;
             PREFETCH: if (icmem_resp) next_state = IDLE;
+            default: next_state = IDLE;
         endcase
 
     end : NEXT_STATE_LOGIC_PREFETCHER
@@ -237,17 +238,19 @@ module convservative_next_line_prefetcher #(
                 imem_resp      = 1'b0; // we must fake it as if there is no memory request at all from CPU's perspective
             end
             IDLE: begin
-                if(next_state == SERVE_I) begin
+                if(imem_read) begin
                     icmem_address    = imem_address;
                     icmem_read       = 1'b1;
                     imem_rdata_l     = icmem_rdata_l;
                     imem_resp      = icmem_resp;
-                end else if(next_state == PREFETCH) begin
+                end else if((~no_prefetch_reg) && arbiter_idle && (~no_hazard)) begin
                     icmem_address    = prefetched_address;
                     icmem_read       = 1'b1;
                     imem_rdata_l     = 'x;
                     imem_resp      = 1'b0; // we must fake it as if there is no memory request at all from CPU's perspective
                 end
+            end
+            default: begin
             end
         endcase
 

@@ -105,8 +105,8 @@ function automatic logic [index_bits-1:0] hash(input logic [31:0] pc);
 endfunction
 
 // Index for PHT based on PC
-int update_index;
-int predict_index;
+logic [index_bits-1:0] update_index;
+logic [index_bits-1:0] predict_index;
 
 always_ff @(posedge clk or posedge rst) begin
     if (rst) begin

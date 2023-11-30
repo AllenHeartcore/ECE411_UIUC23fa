@@ -214,7 +214,7 @@ import pipeline_pkg::*;
         .mem_rdata_l        (dmem_rdata_l)      // from dmem_cache
     );
 
-    no_prefetch_prefetcher #(
+    convservative_next_line_prefetcher #(
         .s_word   (CACHE_WORDSIZE)
     ) prefetcher (.clk, .rst,
         .imem_address       (imem_address),     // from cpu
@@ -351,7 +351,7 @@ import pipeline_pkg::*;
         .resp_i             (bmem_resp)         // from physical memory
     );
 
-    branch_predictor branch_predictor(.clk, .rst,
+    branch_predictor_baseline branch_predictor(.clk, .rst,
         .predict_pc         (if_pc_rdata),                 // from pc value of IF stage
         .update_pc          (ex_pc_rdata),                 // from pc value of EX stage
         .valid              (ex_is_branch),                // branch, jar, jalr of EX stage
