@@ -1,3 +1,5 @@
+// file snippet used by apply_cache_params.sh
+
 package pcmux;
 typedef enum bit [1:0] {
     pc_plus4 = 2'b00,
@@ -220,3 +222,11 @@ typedef struct packed {
 } hazard_ctrl_t;
 
 endpackage : hazard_ctrl_pkg
+
+
+
+/*  The following cache parameters are maintained by apply_cache_params.sh.
+ *  Don't edit them in types.sv directly. Instead, rerun the script so that
+ *  the database files in sram/config, which are used by "make lint" and
+ *  "make synth", are updated correctly.
+ */

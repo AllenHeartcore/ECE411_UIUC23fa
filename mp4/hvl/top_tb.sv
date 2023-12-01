@@ -16,11 +16,7 @@ module top_tb;
 // `define USE_TIMEOUT
     int timeout = 100000; // in cycles, change according to your needs
 
-    localparam  CACHE_LOG2_NUMSETS_L1   = 3;
-    localparam  CACHE_LOG2_NUMWAYS_L1   = 1;
-    localparam  CACHE_LOG2_NUMSETS_L2   = 5;
-    localparam  CACHE_LOG2_NUMWAYS_L2   = 4;
-    localparam  CACHE_LOG2_WORDSIZE     = 10;    // must be >= 7
+    import cache_params_pkg::*;
 
     // CP1
     // mem_itf magic_itf_i(.*);
@@ -36,13 +32,7 @@ module top_tb;
     mon_itf mon_itf(.*);    
     monitor monitor(.itf(mon_itf));
 
-    mp4 #(
-        .CACHE_LOG2_NUMSETS_L1(CACHE_LOG2_NUMSETS_L1),
-        .CACHE_LOG2_NUMWAYS_L1(CACHE_LOG2_NUMWAYS_L1),
-        .CACHE_LOG2_NUMSETS_L2(CACHE_LOG2_NUMSETS_L2),
-        .CACHE_LOG2_NUMWAYS_L2(CACHE_LOG2_NUMWAYS_L2),
-        .CACHE_LOG2_WORDSIZE  (CACHE_LOG2_WORDSIZE)
-    ) dut (
+    mp4 dut (
         .clk          (clk),
         .rst          (rst),
 

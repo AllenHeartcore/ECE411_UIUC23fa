@@ -1,14 +1,8 @@
 module mp4
 import rv32i_types::*;
 import pipeline_pkg::*;
-#(
-    // these parameters will be overridden by hvl/top_tb.sv
-    parameter   CACHE_LOG2_NUMSETS_L1   = 3,
-    parameter   CACHE_LOG2_NUMWAYS_L1   = 1,
-    parameter   CACHE_LOG2_NUMSETS_L2   = 4,
-    parameter   CACHE_LOG2_NUMWAYS_L2   = 4,
-    parameter   CACHE_LOG2_WORDSIZE     = 8
-) (
+import cache_params_pkg::*;
+(
     input   logic           clk,
     input   logic           rst,
     // Memory Interface
@@ -235,7 +229,7 @@ import pipeline_pkg::*;
         .s_mask   (CACHE_MASKSIZE),
         .s_index  (CACHE_LOG2_NUMSETS_L1),
         .s_wayidx (CACHE_LOG2_NUMWAYS_L1),
-        .use_register(1)
+        .level    (1)
     ) imem_cache (.clk, .rst,
         .mem_write          (1'b0),             // (suppress synth warning LINT-58)
         .mem_byte_enable    ('1),               // (suppress synth warning LINT-58)
@@ -254,7 +248,8 @@ import pipeline_pkg::*;
         .s_word   (CACHE_WORDSIZE),
         .s_mask   (CACHE_MASKSIZE),
         .s_index  (CACHE_LOG2_NUMSETS_L2),
-        .s_wayidx (CACHE_LOG2_NUMWAYS_L2)
+        .s_wayidx (CACHE_LOG2_NUMWAYS_L2),
+        .level    (2)
     ) i2mem_cache (.clk, .rst,
         .mem_write          (1'b0),
         .mem_byte_enable    ('1),
@@ -274,7 +269,7 @@ import pipeline_pkg::*;
         .s_mask   (CACHE_MASKSIZE),
         .s_index  (CACHE_LOG2_NUMSETS_L1),
         .s_wayidx (CACHE_LOG2_NUMWAYS_L1),
-        .use_register(1)
+        .level    (1)
     ) dmem_cache (.clk, .rst,
         .mem_address        (dmem_address),     // from cpu
         .mem_write          (dmem_write),       // from cpu
@@ -295,7 +290,8 @@ import pipeline_pkg::*;
         .s_word   (CACHE_WORDSIZE),
         .s_mask   (CACHE_MASKSIZE),
         .s_index  (CACHE_LOG2_NUMSETS_L2),
-        .s_wayidx (CACHE_LOG2_NUMWAYS_L2)
+        .s_wayidx (CACHE_LOG2_NUMWAYS_L2),
+        .level    (2)
     ) d2mem_cache (.clk, .rst,
         .mem_byte_enable    ('1),
         .mem_address        (d2mem_address),    // from dmem_cache
