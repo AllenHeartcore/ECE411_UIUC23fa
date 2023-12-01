@@ -76,7 +76,7 @@ always_comb begin
 
         WRITE: begin
             write_o = 1'b1;
-            burst_o = line_i[(counter+1)*64-1 +: 64];
+            burst_o = line_i[counter*64 +: 64];
             if (counter == n_burst - 1)
                 next_state = DONE;
         end
