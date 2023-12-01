@@ -238,6 +238,7 @@ import cache_params_pkg::*;
         .mem_read           (icmem_read),       // from prefetcher
         .mem_rdata          (icmem_rdata_l),    // to prefetcher
         .mem_resp           (icmem_resp),       // to prefetcher
+`ifdef MULTILV_I_CACHE
         .pmem_address       (i2mem_address),    // to i2mem_cache
         .pmem_read          (i2mem_read),       // to i2mem_cache
         .pmem_rdata         (i2mem_rdata),      // from i2mem_cache
@@ -258,6 +259,7 @@ import cache_params_pkg::*;
         .mem_read           (i2mem_read),       // from imem_cache
         .mem_rdata          (i2mem_rdata),      // to imem_cache
         .mem_resp           (i2mem_resp),       // to imem_cache
+`endif
         .pmem_address       (ipmem_address),    // to arbiter
         .pmem_read          (ipmem_read),       // to arbiter
         .pmem_rdata         (ipmem_rdata),      // from arbiter
@@ -278,6 +280,7 @@ import cache_params_pkg::*;
         .mem_wdata          (dmem_wdata_l),     // from dmem_bus_adapter
         .mem_rdata          (dmem_rdata_l),     // to dmem_bus_adapter
         .mem_resp           (dmem_resp),        // to cpu
+`ifdef MULTILV_D_CACHE
         .pmem_address       (d2mem_address),    // to d2mem_cache
         .pmem_wdata         (d2mem_wdata),      // to d2mem_cache
         .pmem_write         (d2mem_write),      // to d2mem_cache
@@ -300,6 +303,7 @@ import cache_params_pkg::*;
         .mem_wdata          (d2mem_wdata),      // from dmem_cache
         .mem_rdata          (d2mem_rdata),      // to dmem_cache
         .mem_resp           (d2mem_resp),       // to dmem_cache
+`endif
         .pmem_address       (dpmem_address),    // to arbiter
         .pmem_wdata         (dpmem_wdata),      // to arbiter
         .pmem_write         (dpmem_write),      // to arbiter
