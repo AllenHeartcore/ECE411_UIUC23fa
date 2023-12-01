@@ -1,4 +1,4 @@
-// file snippet used by test_cache_params.sh; do not modify
+// file snippet used by apply_cache_params.sh and test_cache_params.sh
 
     bmem_itf bmem_itf(.*);
     burst_memory #(
@@ -52,6 +52,43 @@
         rst <= 1'b0;
     end
 
+    // predictor and prefetcher performance counters
+    logic [31:0]   predictor_miss_count;
+    logic  [31:0] is_branch_count;
+    logic  last_is_mispredict;
+    logic  last_is_branch;
+    always @(posedge clk) begin
+        if(rst) begin
+            last_is_branch <= 1'b0;
+            predictor_miss_count <= 0;
+            is_branch_count <= 0;
+            last_is_mispredict <= 1'b0;
+        end else if(dut.datapath.branch_mispredict && dut.datapath.ex_enable && dut.hazard_ctrl.load_ex_mem && (~last_is_mispredict)) begin
+            predictor_miss_count <= predictor_miss_count + 1;
+            last_is_mispredict <= 1'b1;
+        end else begin
+            last_is_mispredict <= 1'b0;
+        end
+        
+        if(!rst) begin
+            last_is_branch <= dut.datapath.ex_is_branch;
+            if(dut.datapath.ex_is_branch && (~last_is_branch)) begin
+                is_branch_count <= is_branch_count + 1;
+            end
+        end
+    end
+
+    logic [31:0]   prefetcher_count;
+    always @(posedge clk) begin
+        if(rst) begin
+            prefetcher_count <= 0;
+        end else if(dut.prefetcher.end_prefetch) begin
+            prefetcher_count <= prefetcher_count + 1;
+        end
+    end
+
+
+
     always @(posedge clk) begin
         if (mon_itf.halt) begin
             $display("L1 I Cache: %d hits, %d misses, %d cycles, %10.3f penalty",
@@ -78,6 +115,8 @@
                 dut.d2mem_cache._perf_countTimer,
                 dut.d2mem_cache._perf_countPenalty * 1.0 / dut.d2mem_cache._perf_countMiss
             );
+            $display("Predictor :%d misses for %d branch instr.", predictor_miss_count, is_branch_count);
+            $display("Prefetcher:%d prefetches", prefetcher_count);
             $finish;
         end
         if (mon_itf.error != 0) begin

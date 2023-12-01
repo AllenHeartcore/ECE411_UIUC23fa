@@ -1,4 +1,4 @@
-// file snippet used by test_cache_params.sh; do not modify
+// file snippet used by apply_cache_params.sh and test_cache_params.sh; do not modify
 
 import "DPI-C" function string getenv(input string env_name);
 
