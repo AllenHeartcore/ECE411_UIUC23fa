@@ -1,6 +1,6 @@
 module local_branch_predictor
 #(
-    parameter int index_bits = 10, // Number of bits for the BHT index
+    parameter int index_bits = 5, // Number of bits for the BHT index
     parameter int N = 6, // Number of bits for the local history
     parameter int M = 2**index_bits // Number of entries in the BHT
 )
@@ -30,7 +30,7 @@ logic [N-1:0] BHT[M-1:0];
 state_t PHT[M-1:0][2**N-1:0]; 
 
 // Hash function to map 32-bit PC to BHT index
-function automatic int hash(input logic [31:0] pc);
+function automatic logic [index_bits-1:0] hash(input logic [31:0] pc);
     // A simple hash could be to use a portion of the PC bits.
     return pc[index_bits-1:0]; 
 endfunction
@@ -100,13 +100,13 @@ typedef enum logic [1:0] {
 state_t PHT[M-1:0]; 
 
 // Hash function to map 32-bit PC to PHT index
-function automatic int hash(input logic [31:0] pc);
+function automatic logic [index_bits-1:0] hash(input logic [31:0] pc);
     return pc[index_bits-1:0];
 endfunction
 
 // Index for PHT based on PC
-int update_index;
-int predict_index;
+logic [index_bits-1:0] update_index;
+logic [index_bits-1:0] predict_index;
 
 always_ff @(posedge clk or posedge rst) begin
     if (rst) begin
