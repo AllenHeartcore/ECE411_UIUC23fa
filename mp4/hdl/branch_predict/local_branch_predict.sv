@@ -75,7 +75,7 @@ endmodule
 
 module local_branch_predictor_no_bht
 #(
-    parameter int index_bits = 3, // Number of bits to index the PHT
+    parameter int index_bits = 8, // Number of bits to index the PHT
     parameter int M = 2**index_bits // Number of entries in the PHT
 )
 (
@@ -101,7 +101,7 @@ state_t PHT[M-1:0];
 
 // Hash function to map 32-bit PC to PHT index
 function automatic logic [index_bits-1:0] hash(input logic [31:0] pc);
-    return pc[index_bits-1:0];
+    return pc[index_bits+1:2];
 endfunction
 
 // Index for PHT based on PC

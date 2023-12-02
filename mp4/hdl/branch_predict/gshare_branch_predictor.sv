@@ -23,7 +23,7 @@ typedef enum logic [1:0] {
 
 
 
-// Branch History Register
+// Branch History Register 
 logic [N-1:0] BHR; 
 // Pattern History Table
 state_t PHT[2**N-1:0]; 
@@ -43,19 +43,19 @@ always_ff @(posedge clk or posedge rst) begin
 
             // Update the PHT based on the actual outcome
             if (actual_branch_taken) begin
-                if (PHT[BHR^update_pc[N-1:0]] == STRONG_NOT_TAKEN) PHT[BHR^update_pc[N-1:0]] <= WEAK_NOT_TAKEN;
-                else if (PHT[BHR^update_pc[N-1:0]] == WEAK_NOT_TAKEN) PHT[BHR^update_pc[N-1:0]] <= WEAK_TAKEN;
-                else if (PHT[BHR^update_pc[N-1:0]] == WEAK_TAKEN) PHT[BHR^update_pc[N-1:0]] <= STRONG_TAKEN;
+                if (PHT[BHR^update_pc[N+1:2]] == STRONG_NOT_TAKEN) PHT[BHR^update_pc[N+1:2]] <= WEAK_NOT_TAKEN;
+                else if (PHT[BHR^update_pc[N+1:2]] == WEAK_NOT_TAKEN) PHT[BHR^update_pc[N+1:2]] <= WEAK_TAKEN;
+                else if (PHT[BHR^update_pc[N+1:2]] == WEAK_TAKEN) PHT[BHR^update_pc[N+1:2]] <= STRONG_TAKEN;
             end else begin
-                if (PHT[BHR^update_pc[N-1:0]] == STRONG_TAKEN) PHT[BHR^update_pc[N-1:0]] <= WEAK_TAKEN;
-                else if (PHT[BHR^update_pc[N-1:0]] == WEAK_TAKEN) PHT[BHR^update_pc[N-1:0]] <= WEAK_NOT_TAKEN;
-                else if (PHT[BHR^update_pc[N-1:0]] == WEAK_NOT_TAKEN) PHT[BHR^update_pc[N-1:0]] <= STRONG_NOT_TAKEN;
+                if (PHT[BHR^update_pc[N+1:2]] == STRONG_TAKEN) PHT[BHR^update_pc[N+1:2]] <= WEAK_TAKEN;
+                else if (PHT[BHR^update_pc[N+1:2]] == WEAK_TAKEN) PHT[BHR^update_pc[N+1:2]] <= WEAK_NOT_TAKEN;
+                else if (PHT[BHR^update_pc[N+1:2]] == WEAK_NOT_TAKEN) PHT[BHR^update_pc[N+1:2]] <= STRONG_NOT_TAKEN;
             end
         end
     end
 end
 // Make a prediction based on the PHT
-assign prediction = (PHT[BHR^predict_pc[N-1:0]] == STRONG_TAKEN || PHT[BHR^predict_pc[N-1:0]] == WEAK_TAKEN);
+assign prediction = (PHT[BHR^predict_pc[N+1:2]] == STRONG_TAKEN || PHT[BHR^predict_pc[N+1:2]] == WEAK_TAKEN);
 
 
 

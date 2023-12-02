@@ -356,7 +356,7 @@ import pipeline_pkg::*;
         .update_pc          (ex_pc_rdata),                 // from pc value of EX stage
         .valid              (ex_is_branch),                // branch, jar, jalr of EX stage
         .branch_taken       (ex_branch_taken),             // whether branch, jar, jalr take in EX stage
-        .target_pc          (ex_pc_wdata),                 // target pc address of EX stage -> BTB's value
+        // .target_pc          (ex_pc_wdata),                 // target pc address of EX stage -> BTB's value
         .predicted_pc       (predicted_pc),                // predicted target pc in IF stage
         .ir                 (imem_rdata)                          // irq signal
     );

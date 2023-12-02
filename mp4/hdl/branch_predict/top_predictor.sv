@@ -30,13 +30,13 @@ import rv32i_types::*;
         .prediction         (target_valid)                      // signal that judge whether the predicted target pc is valid
     );
 
-    // local_branch_predictor local_branch_predictor (.clk, .rst,
-    //     .update_branch_pc   (update_pc),                     // from pc value of EX stage
-    //     .predict_branch_pc  (predict_pc),                     // predictd pc value of IF stage
-    //     .valid              (valid),                     // branch, jar, jalr of EX stage
-    //     .actual_branch_taken(branch_taken),                     // branch, jar, jalr of EX stage
-    //     .prediction         (prediction)                      // signal that predict whether we should take branch for the pc value of IF stage
-    // );
+    local_branch_predictor local_branch_predictor (.clk, .rst,
+        .update_branch_pc   (update_pc),                     // from pc value of EX stage
+        .predict_branch_pc  (predict_pc),                     // predictd pc value of IF stage
+        .valid              (valid),                     // branch, jar, jalr of EX stage
+        .actual_branch_taken(branch_taken),                     // branch, jar, jalr of EX stage
+        .prediction         (prediction)                      // signal that predict whether we should take branch for the pc value of IF stage
+    );
 
     // global_branch_predictor global_branch_predictor (
     //     .clk                (clk),
@@ -47,15 +47,15 @@ import rv32i_types::*;
     // );
 
 
-    gshare_branch_predictor gshare_branch_predictor (
-        .clk                (clk),
-        .rst                (rst),
-        .update_valid              (branch_valid),
-        .actual_branch_taken(branch_taken),
-        .update_pc(update_pc),
-        .predict_pc(predict_pc),
-        .prediction         (prediction)
-    );
+    // gshare_branch_predictor gshare_branch_predictor (
+    //     .clk                (clk),
+    //     .rst                (rst),
+    //     .update_valid              (branch_valid),
+    //     .actual_branch_taken(branch_taken),
+    //     .update_pc(update_pc),
+    //     .predict_pc(predict_pc),
+    //     .prediction         (prediction)
+    // );
 
 
     assign opcode = rv32i_opcode'(predict_pc[6:0]);
@@ -65,7 +65,7 @@ import rv32i_types::*;
     assign branch_target_pc = predict_pc + b_imm;
 
     always_comb begin
-        if (opcode == op_br) begin
+        if ((opcode == op_br) && (prediction == 1)) begin
             predicted_pc = branch_target_pc;
         end
         else if (opcode == op_jalr) begin
@@ -92,7 +92,6 @@ import rv32i_types::*;
     input logic valid,
     input logic branch_taken,
     input logic [31:0] ir,
-    input logic [31:0] target_pc,
     output logic [31:0] predicted_pc
 );
 
@@ -116,6 +115,23 @@ import rv32i_types::*;
         .prediction         (prediction)
     );
 
+    // global_branch_predictor global_branch_predictor (
+    //     .clk                (clk),
+    //     .rst                (rst),
+    //     .valid              (valid),
+    //     .actual_branch_taken(branch_taken),
+    //     .prediction         (prediction)
+    // );
+
+    // local_branch_predictor_no_bht local_branch_predictor_no_bht(
+    //     .clk                (clk),
+    //     .rst                (rst),
+    //     .update_branch_pc   (update_pc),
+    //     .predict_branch_pc  (predict_pc),
+    //     .valid              (valid),
+    //     .actual_branch_taken(branch_taken),
+    //     .prediction         (prediction)
+    // );
 
     assign opcode = rv32i_opcode'(ir[6:0]);
     assign b_imm = {{20{ir[31]}}, ir[7], ir[30:25], ir[11:8], 1'b0};
@@ -124,7 +140,7 @@ import rv32i_types::*;
     assign branch_target_pc = predict_pc + b_imm;
 
     always_comb begin
-        if ((opcode == op_br) && (prediction == 1'b1)) begin
+        if ((opcode == op_br) && (prediction == 1)) begin
             predicted_pc = branch_target_pc;
         end
         else if (opcode == op_jal) begin
