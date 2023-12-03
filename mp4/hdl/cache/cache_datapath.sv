@@ -73,7 +73,7 @@ import cache_types::*;
     generate for (i = 0; i < num_ways; i++) begin : arrays
 
     if (level == 1) begin
-        mp3_data_array_1 #(
+        mp3_data_array #(
             .ADDR_WIDTH (s_index),
             .DATA_WIDTH (s_word),
             .NUM_WMASKS (s_mask)
@@ -86,7 +86,7 @@ import cache_types::*;
             .din0       (DATAMUX ? pmem_rdata : mem_wdata),
             .dout0      (data_q[i])
         );
-        mp3_tag_array_1 #(
+        mp3_tag_array #(
             .ADDR_WIDTH (s_index),
             .DATA_WIDTH (s_tag)
         ) tag_array (

@@ -24,7 +24,7 @@ print_banner = False
 num_threads = 4
 output_extended_config = True
 
-word_size = 23
+word_size = 22
 num_words = 32
 output_name = "mp3_tag_array_2"
 output_path = "output/{}".format(output_name)

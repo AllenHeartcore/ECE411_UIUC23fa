@@ -24,7 +24,7 @@ print_banner = False
 num_threads = 4
 output_extended_config = True
 
-word_size = 128
+word_size = 256
 write_size = 8
 num_words = 32
 output_name = "mp3_data_array_2"

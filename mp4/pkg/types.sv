@@ -233,9 +233,9 @@ endpackage : hazard_ctrl_pkg
 
 package cache_params_pkg;
 parameter   CACHE_LOG2_NUMSETS_L1   = 4;
-parameter   CACHE_LOG2_NUMWAYS_L1   = 1;
+parameter   CACHE_LOG2_NUMWAYS_L1   = 2;
 parameter   CACHE_LOG2_NUMSETS_L2   = 5;
 parameter   CACHE_LOG2_NUMWAYS_L2   = 1;
-parameter   CACHE_LOG2_WORDSIZE     = 7;
+parameter   CACHE_LOG2_WORDSIZE     = 8;
 
 endpackage : cache_params_pkg

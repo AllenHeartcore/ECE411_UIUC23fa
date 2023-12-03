@@ -1,10 +1,10 @@
 #!/bin/bash
 
 NSET1=4
-NWAY1=1
+NWAY1=2
 NSET2=5
 NWAY2=1
-WORDSIZE=7
+WORDSIZE=8
 MULTILV_I_CACHE=0
 MULTILV_D_CACHE=0
 
@@ -45,10 +45,10 @@ then
 word_size = $((2**$WORDSIZE))
 write_size = 8
 num_words = $((2**$NSET1))
-output_name = \"mp3_data_array_1\"
+output_name = \"mp3_data_array\"
 output_path = \"output/{}\".format(output_name)
     " > sram/config/_mp3_array_pt2
-    cat sram/config/_mp3_array_pt* > sram/config/mp3_data_array_1.py
+    cat sram/config/_mp3_array_pt* > sram/config/mp3_data_array.py
 
     echo "
 word_size = $((2**$WORDSIZE))
@@ -62,10 +62,10 @@ output_path = \"output/{}\".format(output_name)
     echo "
 word_size = $((35-$WORDSIZE-$NSET1))
 num_words = $((2**$NSET1))
-output_name = \"mp3_tag_array_1\"
+output_name = \"mp3_tag_array\"
 output_path = \"output/{}\".format(output_name)
     " > sram/config/_mp3_array_pt2
-    cat sram/config/_mp3_array_pt* > sram/config/mp3_tag_array_1.py
+    cat sram/config/_mp3_array_pt* > sram/config/mp3_tag_array.py
 
     echo "
 word_size = $((35-$WORDSIZE-$NSET2))

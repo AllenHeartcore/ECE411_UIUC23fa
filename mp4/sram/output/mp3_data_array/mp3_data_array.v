@@ -1,9 +1,9 @@
 // OpenRAM SRAM model
 // Words: 16
-// Word size: 128
+// Word size: 256
 // Write size: 8
 
-module mp3_data_array_1(
+module mp3_data_array(
 `ifdef USE_POWER_PINS
     vdd,
     gnd,
@@ -12,8 +12,8 @@ module mp3_data_array_1(
     clk0,csb0,web0,wmask0,addr0,din0,dout0
   );
 
-  parameter NUM_WMASKS = 16 ;
-  parameter DATA_WIDTH = 128 ;
+  parameter NUM_WMASKS = 32 ;
+  parameter DATA_WIDTH = 256 ;
   parameter ADDR_WIDTH = 4 ;
   parameter RAM_DEPTH = 1 << ADDR_WIDTH;
   // FIXME: This delay is arbitrary.
@@ -95,6 +95,38 @@ module mp3_data_array_1(
                 mem[addr0_reg][119:112] = din0_reg[119:112];
         if (wmask0_reg[15])
                 mem[addr0_reg][127:120] = din0_reg[127:120];
+        if (wmask0_reg[16])
+                mem[addr0_reg][135:128] = din0_reg[135:128];
+        if (wmask0_reg[17])
+                mem[addr0_reg][143:136] = din0_reg[143:136];
+        if (wmask0_reg[18])
+                mem[addr0_reg][151:144] = din0_reg[151:144];
+        if (wmask0_reg[19])
+                mem[addr0_reg][159:152] = din0_reg[159:152];
+        if (wmask0_reg[20])
+                mem[addr0_reg][167:160] = din0_reg[167:160];
+        if (wmask0_reg[21])
+                mem[addr0_reg][175:168] = din0_reg[175:168];
+        if (wmask0_reg[22])
+                mem[addr0_reg][183:176] = din0_reg[183:176];
+        if (wmask0_reg[23])
+                mem[addr0_reg][191:184] = din0_reg[191:184];
+        if (wmask0_reg[24])
+                mem[addr0_reg][199:192] = din0_reg[199:192];
+        if (wmask0_reg[25])
+                mem[addr0_reg][207:200] = din0_reg[207:200];
+        if (wmask0_reg[26])
+                mem[addr0_reg][215:208] = din0_reg[215:208];
+        if (wmask0_reg[27])
+                mem[addr0_reg][223:216] = din0_reg[223:216];
+        if (wmask0_reg[28])
+                mem[addr0_reg][231:224] = din0_reg[231:224];
+        if (wmask0_reg[29])
+                mem[addr0_reg][239:232] = din0_reg[239:232];
+        if (wmask0_reg[30])
+                mem[addr0_reg][247:240] = din0_reg[247:240];
+        if (wmask0_reg[31])
+                mem[addr0_reg][255:248] = din0_reg[255:248];
     end
   end
 
