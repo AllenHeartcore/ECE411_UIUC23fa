@@ -101,7 +101,7 @@ state_t PHT[M-1:0];
 
 // Hash function to map 32-bit PC to PHT index
 function automatic logic [index_bits-1:0] hash(input logic [31:0] pc);
-    return pc[index_bits+1:2];
+    return pc[index_bits+1:2] ^ pc[index_bits * 2 + 1: index_bits +2];
 endfunction
 
 // Index for PHT based on PC
