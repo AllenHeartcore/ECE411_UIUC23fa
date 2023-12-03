@@ -41,7 +41,7 @@ import rv32i_types::*;
     // global_branch_predictor global_branch_predictor (
     //     .clk                (clk),
     //     .rst                (rst),
-    //     .valid              (valid),
+    //     .valid              (branch_valid),
     //     .actual_branch_taken(branch_taken),
     //     .prediction         (prediction)
     // );

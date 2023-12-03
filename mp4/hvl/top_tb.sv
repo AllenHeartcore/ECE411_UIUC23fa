@@ -14,13 +14,9 @@ module top_tb;
     bit rst;
 
 // `define USE_TIMEOUT
-    int timeout = 100000; // in cycles, change according to your needs
+    int timeout = 1000000; // in cycles, change according to your needs
 
-    localparam  CACHE_LOG2_NUMSETS_L1   = 3;
-    localparam  CACHE_LOG2_NUMWAYS_L1   = 1;
-    localparam  CACHE_LOG2_NUMSETS_L2   = 5;
-    localparam  CACHE_LOG2_NUMWAYS_L2   = 4;
-    localparam  CACHE_LOG2_WORDSIZE     = 10;    // must be >= 7
+    import cache_params_pkg::*;
 
     // CP1
     // mem_itf magic_itf_i(.*);
@@ -36,13 +32,7 @@ module top_tb;
     mon_itf mon_itf(.*);    
     monitor monitor(.itf(mon_itf));
 
-    mp4 #(
-        .CACHE_LOG2_NUMSETS_L1(CACHE_LOG2_NUMSETS_L1),
-        .CACHE_LOG2_NUMWAYS_L1(CACHE_LOG2_NUMWAYS_L1),
-        .CACHE_LOG2_NUMSETS_L2(CACHE_LOG2_NUMSETS_L2),
-        .CACHE_LOG2_NUMWAYS_L2(CACHE_LOG2_NUMWAYS_L2),
-        .CACHE_LOG2_WORDSIZE  (CACHE_LOG2_WORDSIZE)
-    ) dut (
+    mp4 dut (
         .clk          (clk),
         .rst          (rst),
 
@@ -144,24 +134,28 @@ module top_tb;
                 dut.imem_cache._perf_countTimer,
                 dut.imem_cache._perf_countPenalty * 1.0 / dut.imem_cache._perf_countMiss
             );
+`ifdef MULTILV_I_CACHE
             $display("L2 I Cache: %d hits, %d misses, %d cycles, %10.3f penalty",
                 dut.i2mem_cache._perf_countHit,
                 dut.i2mem_cache._perf_countMiss,
                 dut.i2mem_cache._perf_countTimer,
                 dut.i2mem_cache._perf_countPenalty * 1.0 / dut.i2mem_cache._perf_countMiss
             );
+`endif
             $display("L1 D Cache: %d hits, %d misses, %d cycles, %10.3f penalty",
                 dut.dmem_cache._perf_countHit,
                 dut.dmem_cache._perf_countMiss,
                 dut.dmem_cache._perf_countTimer,
                 dut.dmem_cache._perf_countPenalty * 1.0 / dut.dmem_cache._perf_countMiss
             );
+`ifdef MULTILV_D_CACHE
             $display("L2 D Cache: %d hits, %d misses, %d cycles, %10.3f penalty",
                 dut.d2mem_cache._perf_countHit,
                 dut.d2mem_cache._perf_countMiss,
                 dut.d2mem_cache._perf_countTimer,
                 dut.d2mem_cache._perf_countPenalty * 1.0 / dut.d2mem_cache._perf_countMiss
             );
+`endif
 
             $display("Predictor :%d misses for %d branch instr.", predictor_miss_count, is_branch_count);
             $display("Prefetcher:%d prefetches", prefetcher_count);

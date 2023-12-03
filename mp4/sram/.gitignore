@@ -1,2 +1,3 @@
-config/__pycache__
+config
+!config/_mp3_array_pt1
 output
