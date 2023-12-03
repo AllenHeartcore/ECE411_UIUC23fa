@@ -351,13 +351,14 @@ import pipeline_pkg::*;
         .resp_i             (bmem_resp)         // from physical memory
     );
 
-    branch_predictor branch_predictor(.clk, .rst,
+    branch_predictor_branch_only branch_predictor(.clk, .rst,
         .predict_pc         (if_pc_rdata),                 // from pc value of IF stage
         .update_pc          (ex_pc_rdata),                 // from pc value of EX stage
         .valid              (ex_is_branch),                // branch, jar, jalr of EX stage
         .branch_taken       (ex_branch_taken),             // whether branch, jar, jalr take in EX stage
-        .target_pc          (ex_pc_wdata),                 // target pc address of EX stage -> BTB's value
-        .predicted_pc       (predicted_pc)                 // predicted target pc in IF stage
+        // .target_pc          (ex_pc_wdata),                 // target pc address of EX stage -> BTB's value
+        .predicted_pc       (predicted_pc),                // predicted target pc in IF stage
+        .ir                 (imem_rdata)                          // irq signal
     );
 
 
