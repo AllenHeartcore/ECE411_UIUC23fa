@@ -81,7 +81,7 @@ endmodule
 
 module global_branch_predictor 
 #(
-    parameter int N = 10 // Define N as per your requirement
+    parameter int N = 8 // Define N as per your requirement
 )
 (
     input logic clk,
