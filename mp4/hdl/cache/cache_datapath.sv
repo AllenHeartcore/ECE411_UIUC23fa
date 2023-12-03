@@ -60,7 +60,7 @@ import cache_types::*;
     always_comb begin : hit_detection
         SIGHIT = 1'b0;
         WAYHIT = 'X;
-        for (int x = 0; x < num_ways; x += 1) begin
+        for (logic [31:0] x = 0; x < num_ways; x += 1) begin
             if (addr_tag == tag_q[x]) begin
                 SIGHIT = 1'b1;
                 WAYHIT = x[s_wayidx-1:0];
@@ -166,13 +166,13 @@ import cache_types::*;
      *  end
      */
     always_ff @ (posedge clk) begin : plru_in
-        for (int j = 0; j < num_sets; j += 1) begin
+        for (logic [31:0] j = 0; j < num_sets; j += 1) begin
             if (rst)
                 PLRU[j] <= '0;
             else
                 PLRU[j] <= PLRU[j];
             if (LD_PLRU & (addr_index == j[s_index-1:0]))
-                for (int k = 0; k < s_wayidx; k++)
+                for (logic [31:0] k = 0; k < s_wayidx; k++)
                     PLRU[j][{2'b01, WAYHIT} >> (k+1)] <= WAYHIT[k];
         end
     end : plru_in
@@ -191,9 +191,9 @@ import cache_types::*;
      */
     always_comb begin : plru_out
         WAYLRU = 'x;
-        for (int m = 0; m < num_ways; m += 1) begin
+        for (logic [31:0] m = 0; m < num_ways; m += 1) begin
             PLRU_signals[m] = 1'b1;
-            for (int n = 0; n < s_wayidx; n++)
+            for (logic [31:0] n = 0; n < s_wayidx; n++)
                 PLRU_signals[m] &= (PLRU[addr_index][{2'b01, m[s_wayidx-1:0]} >> (n+1)] != m[n]);
             if (PLRU_signals[m])
                 WAYLRU = m[s_wayidx-1:0];
