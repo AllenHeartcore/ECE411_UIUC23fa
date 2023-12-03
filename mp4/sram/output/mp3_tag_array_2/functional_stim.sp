@@ -3,7 +3,7 @@
 * TT process corner
 .include "/class/ece411/OpenRAM/technology/freepdk45/models/tran_models/models_nom/PMOS_VTG.inc"
 .include "/class/ece411/OpenRAM/technology/freepdk45/models/tran_models/models_nom/NMOS_VTG.inc"
-.include "/tmp/openram_haor2_3781737_temp/sram.sp"
+.include "/tmp/openram_haor2_922838_temp/sram.sp"
 
 * Global Power Supplies
 Vvdd vdd 0 1.0
@@ -50,229 +50,216 @@ CD022 dout0_22  0 0.8364f
 
 * Sequence of operations
 *	Idle during cycle 0 (0ns - 5ns)
-*	Writing 00110100100010100110001  to  address 00000 (from port 0) during cycle 1 (5ns - 10ns)
-*	Writing 10110000100001000001110  to  address 11110 (from port 0) during cycle 2 (10ns - 15ns)
-*	Writing 01101000001001000000001  to  address 00000 (from port 0) during cycle 3 (15ns - 20ns)
-*	Reading 01101000001001000000001 from address 00000 (from port 0) during cycle 4 (20ns - 25ns)
-*	Reading 10110000100001000001110 from address 11110 (from port 0) during cycle 5 (25ns - 30ns)
-*	Reading 10110000100001000001110 from address 11110 (from port 0) during cycle 6 (30ns - 35ns)
-*	Writing 11110110100011011111011  to  address 00000 (from port 0) during cycle 8 (40ns - 45ns)
-*	Writing 01000100111001100101100  to  address 11110 (from port 0) during cycle 9 (45ns - 50ns)
-*	Writing 10101010001011010101100  to  address 00000 (from port 0) during cycle 10 (50ns - 55ns)
-*	Reading 01000100111001100101100 from address 11110 (from port 0) during cycle 11 (55ns - 60ns)
-*	Writing 01100111110111001111000  to  address 11110 (from port 0) during cycle 13 (65ns - 70ns)
-*	Reading 10101010001011010101100 from address 00000 (from port 0) during cycle 14 (70ns - 75ns)
-*	Reading 01100111110111001111000 from address 11110 (from port 0) during cycle 15 (75ns - 80ns)
-*	Reading 01100111110111001111000 from address 11110 (from port 0) during cycle 16 (80ns - 85ns)
-*	Writing 11010101001100011111100  to  address 00000 (from port 0) during cycle 17 (85ns - 90ns)
-*	Writing 01111001001110011100000  to  address 00000 (from port 0) during cycle 18 (90ns - 95ns)
-*	Writing 11001100001100000110010  to  address 00000 (from port 0) during cycle 19 (95ns - 100ns)
-*	Writing 11001000101110100110111  to  address 00001 (from port 0) during cycle 22 (110ns - 115ns)
-*	Reading 11001000101110100110111 from address 00001 (from port 0) during cycle 23 (115ns - 120ns)
-*	Reading 01100111110111001111000 from address 11110 (from port 0) during cycle 24 (120ns - 125ns)
-*	Reading 11001000101110100110111 from address 00001 (from port 0) during cycle 25 (125ns - 130ns)
-*	Writing 00101011000001110101010  to  address 11101 (from port 0) during cycle 27 (135ns - 140ns)
-*	Reading 11001000101110100110111 from address 00001 (from port 0) during cycle 29 (145ns - 150ns)
-*	Reading 01100111110111001111000 from address 11110 (from port 0) during cycle 30 (150ns - 155ns)
-*	Reading 01100111110111001111000 from address 11110 (from port 0) during cycle 31 (155ns - 160ns)
-*	Reading 01100111110111001111000 from address 11110 (from port 0) during cycle 32 (160ns - 165ns)
-*	Writing 11111101001000010110101  to  address 11101 (from port 0) during cycle 33 (165ns - 170ns)
-*	Reading 11001100001100000110010 from address 00000 (from port 0) during cycle 34 (170ns - 175ns)
-*	Writing 01001001100100110101110  to  address 00001 (from port 0) during cycle 35 (175ns - 180ns)
-*	Writing 11101110100110011101010  to  address 11110 (from port 0) during cycle 37 (185ns - 190ns)
-*	Writing 01101101000101001011111  to  address 11110 (from port 0) during cycle 38 (190ns - 195ns)
-*	Reading 11001100001100000110010 from address 00000 (from port 0) during cycle 40 (200ns - 205ns)
-*	Writing 10000101001010010001010  to  address 11110 (from port 0) during cycle 41 (205ns - 210ns)
-*	Writing 11011110001010110000000  to  address 00001 (from port 0) during cycle 42 (210ns - 215ns)
-*	Reading 11001100001100000110010 from address 00000 (from port 0) during cycle 44 (220ns - 225ns)
-*	Reading 11111101001000010110101 from address 11101 (from port 0) during cycle 45 (225ns - 230ns)
-*	Writing 10101111110000110100100  to  address 11101 (from port 0) during cycle 46 (230ns - 235ns)
-*	Writing 10101011011110010101001  to  address 11101 (from port 0) during cycle 47 (235ns - 240ns)
-*	Reading 11001100001100000110010 from address 00000 (from port 0) during cycle 48 (240ns - 245ns)
-*	Writing 00010100111100100101100  to  address 11110 (from port 0) during cycle 49 (245ns - 250ns)
-*	Reading 10101011011110010101001 from address 11101 (from port 0) during cycle 50 (250ns - 255ns)
-*	Reading 11011110001010110000000 from address 00001 (from port 0) during cycle 51 (255ns - 260ns)
-*	Writing 00010011110000101101001  to  address 11110 (from port 0) during cycle 52 (260ns - 265ns)
-*	Reading 10101011011110010101001 from address 11101 (from port 0) during cycle 55 (275ns - 280ns)
-*	Reading 10101011011110010101001 from address 11101 (from port 0) during cycle 58 (290ns - 295ns)
-*	Writing 11110000010111000101011  to  address 11101 (from port 0) during cycle 59 (295ns - 300ns)
-*	Writing 01000011101001101110011  to  address 11101 (from port 0) during cycle 62 (310ns - 315ns)
-*	Reading 01000011101001101110011 from address 11101 (from port 0) during cycle 63 (315ns - 320ns)
-*	Reading 11001100001100000110010 from address 00000 (from port 0) during cycle 65 (325ns - 330ns)
-*	Writing 10000111000011001100111  to  address 11110 (from port 0) during cycle 66 (330ns - 335ns)
-*	Reading 10000111000011001100111 from address 11110 (from port 0) during cycle 68 (340ns - 345ns)
-*	Writing 10011110110001101111001  to  address 00000 (from port 0) during cycle 70 (350ns - 355ns)
-*	Reading 10011110110001101111001 from address 00000 (from port 0) during cycle 71 (355ns - 360ns)
-*	Writing 11001101101100110011110  to  address 11101 (from port 0) during cycle 73 (365ns - 370ns)
-*	Writing 01110101111111011101001  to  address 00001 (from port 0) during cycle 74 (370ns - 375ns)
-*	Reading 10011110110001101111001 from address 00000 (from port 0) during cycle 75 (375ns - 380ns)
-*	Reading 11001101101100110011110 from address 11101 (from port 0) during cycle 76 (380ns - 385ns)
-*	Reading 10000111000011001100111 from address 11110 (from port 0) during cycle 77 (385ns - 390ns)
-*	Reading 10000111000011001100111 from address 11110 (from port 0) during cycle 80 (400ns - 405ns)
-*	Writing 00111011110011001101111  to  address 00000 (from port 0) during cycle 81 (405ns - 410ns)
-*	Reading 10000111000011001100111 from address 11110 (from port 0) during cycle 82 (410ns - 415ns)
-*	Reading 11001101101100110011110 from address 11101 (from port 0) during cycle 83 (415ns - 420ns)
-*	Reading 01110101111111011101001 from address 00001 (from port 0) during cycle 84 (420ns - 425ns)
-*	Reading 11001101101100110011110 from address 11101 (from port 0) during cycle 86 (430ns - 435ns)
-*	Writing 00010000110000010101010  to  address 11110 (from port 0) during cycle 87 (435ns - 440ns)
-*	Reading 11001101101100110011110 from address 11101 (from port 0) during cycle 88 (440ns - 445ns)
-*	Reading 11001101101100110011110 from address 11101 (from port 0) during cycle 89 (445ns - 450ns)
-*	Reading 00010000110000010101010 from address 11110 (from port 0) during cycle 90 (450ns - 455ns)
-*	Reading 00111011110011001101111 from address 00000 (from port 0) during cycle 92 (460ns - 465ns)
-*	Reading 00010000110000010101010 from address 11110 (from port 0) during cycle 94 (470ns - 475ns)
-*	Reading 11001101101100110011110 from address 11101 (from port 0) during cycle 95 (475ns - 480ns)
-*	Reading 00010000110000010101010 from address 11110 (from port 0) during cycle 96 (480ns - 485ns)
-*	Reading 01110101111111011101001 from address 00001 (from port 0) during cycle 99 (495ns - 500ns)
-*	Writing 10001000010000001111001  to  address 11110 (from port 0) during cycle 100 (500ns - 505ns)
-*	Reading 01110101111111011101001 from address 00001 (from port 0) during cycle 101 (505ns - 510ns)
-*	Writing 00110000010111100011010  to  address 11110 (from port 0) during cycle 102 (510ns - 515ns)
-*	Reading 01110101111111011101001 from address 00001 (from port 0) during cycle 103 (515ns - 520ns)
-*	Reading 00110000010111100011010 from address 11110 (from port 0) during cycle 104 (520ns - 525ns)
-*	Reading 11001101101100110011110 from address 11101 (from port 0) during cycle 105 (525ns - 530ns)
-*	Reading 11001101101100110011110 from address 11101 (from port 0) during cycle 107 (535ns - 540ns)
-*	Reading 00111011110011001101111 from address 00000 (from port 0) during cycle 108 (540ns - 545ns)
-*	Writing 00111000010100111111011  to  address 11101 (from port 0) during cycle 109 (545ns - 550ns)
-*	Reading 00111011110011001101111 from address 00000 (from port 0) during cycle 111 (555ns - 560ns)
-*	Writing 11110110011111011010110  to  address 00000 (from port 0) during cycle 112 (560ns - 565ns)
-*	Reading 00110000010111100011010 from address 11110 (from port 0) during cycle 113 (565ns - 570ns)
-*	Reading 00110000010111100011010 from address 11110 (from port 0) during cycle 114 (570ns - 575ns)
-*	Writing 00110110110011011001011  to  address 11110 (from port 0) during cycle 115 (575ns - 580ns)
-*	Writing 11111110101001100011100  to  address 00001 (from port 0) during cycle 116 (580ns - 585ns)
-*	Reading 11111110101001100011100 from address 00001 (from port 0) during cycle 118 (590ns - 595ns)
-*	Reading 11111110101001100011100 from address 00001 (from port 0) during cycle 120 (600ns - 605ns)
-*	Reading 00111000010100111111011 from address 11101 (from port 0) during cycle 121 (605ns - 610ns)
-*	Writing 11000110010011001000111  to  address 11110 (from port 0) during cycle 123 (615ns - 620ns)
-*	Writing 00101011100001101101001  to  address 11110 (from port 0) during cycle 124 (620ns - 625ns)
-*	Reading 00111000010100111111011 from address 11101 (from port 0) during cycle 125 (625ns - 630ns)
-*	Reading 11110110011111011010110 from address 00000 (from port 0) during cycle 126 (630ns - 635ns)
-*	Writing 10111101011001100001010  to  address 11101 (from port 0) during cycle 128 (640ns - 645ns)
-*	Writing 00001010001111000011000  to  address 00001 (from port 0) during cycle 129 (645ns - 650ns)
-*	Writing 10000110100001000111001  to  address 00000 (from port 0) during cycle 130 (650ns - 655ns)
-*	Reading 10000110100001000111001 from address 00000 (from port 0) during cycle 131 (655ns - 660ns)
-*	Writing 10011001111100011101110  to  address 00000 (from port 0) during cycle 132 (660ns - 665ns)
-*	Reading 10111101011001100001010 from address 11101 (from port 0) during cycle 133 (665ns - 670ns)
-*	Reading 00101011100001101101001 from address 11110 (from port 0) during cycle 134 (670ns - 675ns)
-*	Reading 00001010001111000011000 from address 00001 (from port 0) during cycle 135 (675ns - 680ns)
-*	Reading 10111101011001100001010 from address 11101 (from port 0) during cycle 136 (680ns - 685ns)
-*	Reading 00101011100001101101001 from address 11110 (from port 0) during cycle 138 (690ns - 695ns)
-*	Reading 10111101011001100001010 from address 11101 (from port 0) during cycle 139 (695ns - 700ns)
-*	Writing 10011110001110100111011  to  address 11101 (from port 0) during cycle 140 (700ns - 705ns)
-*	Reading 10011001111100011101110 from address 00000 (from port 0) during cycle 141 (705ns - 710ns)
-*	Writing 11101101011111110010011  to  address 11101 (from port 0) during cycle 142 (710ns - 715ns)
-*	Writing 00011000110110100010010  to  address 11110 (from port 0) during cycle 143 (715ns - 720ns)
-*	Reading 00001010001111000011000 from address 00001 (from port 0) during cycle 144 (720ns - 725ns)
-*	Reading 10011001111100011101110 from address 00000 (from port 0) during cycle 145 (725ns - 730ns)
-*	Reading 00011000110110100010010 from address 11110 (from port 0) during cycle 147 (735ns - 740ns)
-*	Writing 11110011010101011111001  to  address 00001 (from port 0) during cycle 149 (745ns - 750ns)
-*	Reading 00011000110110100010010 from address 11110 (from port 0) during cycle 150 (750ns - 755ns)
-*	Writing 10111001001111011011100  to  address 00000 (from port 0) during cycle 152 (760ns - 765ns)
-*	Reading 11101101011111110010011 from address 11101 (from port 0) during cycle 153 (765ns - 770ns)
-*	Reading 00011000110110100010010 from address 11110 (from port 0) during cycle 154 (770ns - 775ns)
-*	Reading 11110011010101011111001 from address 00001 (from port 0) during cycle 155 (775ns - 780ns)
-*	Writing 10011101110000111101111  to  address 11101 (from port 0) during cycle 156 (780ns - 785ns)
-*	Reading 00011000110110100010010 from address 11110 (from port 0) during cycle 157 (785ns - 790ns)
-*	Writing 11000000000011011100111  to  address 11110 (from port 0) during cycle 158 (790ns - 795ns)
-*	Reading 11000000000011011100111 from address 11110 (from port 0) during cycle 159 (795ns - 800ns)
-*	Reading 11000000000011011100111 from address 11110 (from port 0) during cycle 160 (800ns - 805ns)
-*	Reading 10011101110000111101111 from address 11101 (from port 0) during cycle 162 (810ns - 815ns)
-*	Reading 11000000000011011100111 from address 11110 (from port 0) during cycle 164 (820ns - 825ns)
-*	Writing 01011011000000101001101  to  address 00000 (from port 0) during cycle 165 (825ns - 830ns)
-*	Reading 11000000000011011100111 from address 11110 (from port 0) during cycle 166 (830ns - 835ns)
-*	Writing 00000010001101010100111  to  address 11101 (from port 0) during cycle 167 (835ns - 840ns)
-*	Writing 01101011101011111011011  to  address 00001 (from port 0) during cycle 169 (845ns - 850ns)
-*	Writing 00000011101110001100001  to  address 11110 (from port 0) during cycle 170 (850ns - 855ns)
-*	Writing 10000110011010101001001  to  address 11101 (from port 0) during cycle 172 (860ns - 865ns)
-*	Reading 01101011101011111011011 from address 00001 (from port 0) during cycle 174 (870ns - 875ns)
-*	Writing 10111000101110111010011  to  address 00000 (from port 0) during cycle 175 (875ns - 880ns)
-*	Reading 00000011101110001100001 from address 11110 (from port 0) during cycle 176 (880ns - 885ns)
-*	Writing 00010100111010000010011  to  address 00001 (from port 0) during cycle 177 (885ns - 890ns)
-*	Writing 00000111011101110001010  to  address 00000 (from port 0) during cycle 178 (890ns - 895ns)
-*	Reading 00010100111010000010011 from address 00001 (from port 0) during cycle 179 (895ns - 900ns)
-*	Writing 11011111000101010000001  to  address 11110 (from port 0) during cycle 181 (905ns - 910ns)
-*	Writing 01001101111101101010010  to  address 00000 (from port 0) during cycle 182 (910ns - 915ns)
-*	Reading 10000110011010101001001 from address 11101 (from port 0) during cycle 183 (915ns - 920ns)
-*	Writing 11000101011111010001100  to  address 11101 (from port 0) during cycle 184 (920ns - 925ns)
-*	Reading 00010100111010000010011 from address 00001 (from port 0) during cycle 185 (925ns - 930ns)
-*	Reading 11011111000101010000001 from address 11110 (from port 0) during cycle 186 (930ns - 935ns)
-*	Reading 01001101111101101010010 from address 00000 (from port 0) during cycle 188 (940ns - 945ns)
-*	Reading 11011111000101010000001 from address 11110 (from port 0) during cycle 190 (950ns - 955ns)
-*	Reading 11000101011111010001100 from address 11101 (from port 0) during cycle 191 (955ns - 960ns)
-*	Reading 11000101011111010001100 from address 11101 (from port 0) during cycle 192 (960ns - 965ns)
-*	Writing 11100101010101101001111  to  address 11110 (from port 0) during cycle 194 (970ns - 975ns)
-*	Reading 11100101010101101001111 from address 11110 (from port 0) during cycle 195 (975ns - 980ns)
-*	Reading 01001101111101101010010 from address 00000 (from port 0) during cycle 196 (980ns - 985ns)
-*	Reading 11100101010101101001111 from address 11110 (from port 0) during cycle 197 (985ns - 990ns)
-*	Reading 01001101111101101010010 from address 00000 (from port 0) during cycle 198 (990ns - 995ns)
-*	Reading 11000101011111010001100 from address 11101 (from port 0) during cycle 199 (995ns - 1000ns)
-*	Reading 00010100111010000010011 from address 00001 (from port 0) during cycle 200 (1000ns - 1005ns)
-*	Reading 01001101111101101010010 from address 00000 (from port 0) during cycle 201 (1005ns - 1010ns)
-*	Reading 00010100111010000010011 from address 00001 (from port 0) during cycle 202 (1010ns - 1015ns)
-*	Reading 11100101010101101001111 from address 11110 (from port 0) during cycle 204 (1020ns - 1025ns)
+*	Writing 11001000101000100101001  to  address 00000 (from port 0) during cycle 1 (5ns - 10ns)
+*	Writing 11010001011011110001001  to  address 11110 (from port 0) during cycle 2 (10ns - 15ns)
+*	Writing 00011001000001000001001  to  address 11101 (from port 0) during cycle 3 (15ns - 20ns)
+*	Reading 11001000101000100101001 from address 00000 (from port 0) during cycle 4 (20ns - 25ns)
+*	Reading 11010001011011110001001 from address 11110 (from port 0) during cycle 5 (25ns - 30ns)
+*	Reading 11001000101000100101001 from address 00000 (from port 0) during cycle 7 (35ns - 40ns)
+*	Writing 01111011010110010001001  to  address 11101 (from port 0) during cycle 8 (40ns - 45ns)
+*	Reading 11010001011011110001001 from address 11110 (from port 0) during cycle 9 (45ns - 50ns)
+*	Writing 01100111101100011011101  to  address 00001 (from port 0) during cycle 11 (55ns - 60ns)
+*	Reading 11010001011011110001001 from address 11110 (from port 0) during cycle 12 (60ns - 65ns)
+*	Reading 01111011010110010001001 from address 11101 (from port 0) during cycle 14 (70ns - 75ns)
+*	Reading 11010001011011110001001 from address 11110 (from port 0) during cycle 15 (75ns - 80ns)
+*	Reading 11001000101000100101001 from address 00000 (from port 0) during cycle 17 (85ns - 90ns)
+*	Writing 11100001000101010101010  to  address 11101 (from port 0) during cycle 20 (100ns - 105ns)
+*	Reading 11100001000101010101010 from address 11101 (from port 0) during cycle 21 (105ns - 110ns)
+*	Writing 10011010001101010010111  to  address 11101 (from port 0) during cycle 22 (110ns - 115ns)
+*	Reading 10011010001101010010111 from address 11101 (from port 0) during cycle 25 (125ns - 130ns)
+*	Reading 01100111101100011011101 from address 00001 (from port 0) during cycle 26 (130ns - 135ns)
+*	Reading 01100111101100011011101 from address 00001 (from port 0) during cycle 27 (135ns - 140ns)
+*	Reading 10011010001101010010111 from address 11101 (from port 0) during cycle 29 (145ns - 150ns)
+*	Reading 11010001011011110001001 from address 11110 (from port 0) during cycle 30 (150ns - 155ns)
+*	Reading 10011010001101010010111 from address 11101 (from port 0) during cycle 31 (155ns - 160ns)
+*	Writing 10101011001101011100110  to  address 11101 (from port 0) during cycle 33 (165ns - 170ns)
+*	Writing 01000001001101000101100  to  address 11101 (from port 0) during cycle 34 (170ns - 175ns)
+*	Reading 01000001001101000101100 from address 11101 (from port 0) during cycle 35 (175ns - 180ns)
+*	Reading 11001000101000100101001 from address 00000 (from port 0) during cycle 36 (180ns - 185ns)
+*	Reading 11010001011011110001001 from address 11110 (from port 0) during cycle 38 (190ns - 195ns)
+*	Writing 10101001000001011100110  to  address 00001 (from port 0) during cycle 39 (195ns - 200ns)
+*	Reading 11001000101000100101001 from address 00000 (from port 0) during cycle 40 (200ns - 205ns)
+*	Reading 11001000101000100101001 from address 00000 (from port 0) during cycle 43 (215ns - 220ns)
+*	Reading 11001000101000100101001 from address 00000 (from port 0) during cycle 44 (220ns - 225ns)
+*	Writing 10011000110101010110111  to  address 00000 (from port 0) during cycle 45 (225ns - 230ns)
+*	Writing 10001000101110101001110  to  address 00000 (from port 0) during cycle 46 (230ns - 235ns)
+*	Writing 00011100000001100000011  to  address 00001 (from port 0) during cycle 47 (235ns - 240ns)
+*	Reading 00011100000001100000011 from address 00001 (from port 0) during cycle 48 (240ns - 245ns)
+*	Reading 01000001001101000101100 from address 11101 (from port 0) during cycle 51 (255ns - 260ns)
+*	Reading 10001000101110101001110 from address 00000 (from port 0) during cycle 53 (265ns - 270ns)
+*	Writing 01110111010110001101110  to  address 11110 (from port 0) during cycle 55 (275ns - 280ns)
+*	Reading 10001000101110101001110 from address 00000 (from port 0) during cycle 56 (280ns - 285ns)
+*	Reading 01000001001101000101100 from address 11101 (from port 0) during cycle 58 (290ns - 295ns)
+*	Writing 11100111001111110100110  to  address 11101 (from port 0) during cycle 59 (295ns - 300ns)
+*	Writing 11001100000111101110010  to  address 11110 (from port 0) during cycle 60 (300ns - 305ns)
+*	Writing 10011011110001100010110  to  address 00000 (from port 0) during cycle 61 (305ns - 310ns)
+*	Reading 00011100000001100000011 from address 00001 (from port 0) during cycle 62 (310ns - 315ns)
+*	Reading 00011100000001100000011 from address 00001 (from port 0) during cycle 63 (315ns - 320ns)
+*	Writing 01000000010100111111101  to  address 11110 (from port 0) during cycle 64 (320ns - 325ns)
+*	Writing 11100111101111100111001  to  address 11110 (from port 0) during cycle 65 (325ns - 330ns)
+*	Reading 00011100000001100000011 from address 00001 (from port 0) during cycle 66 (330ns - 335ns)
+*	Writing 10010101101010111111100  to  address 11110 (from port 0) during cycle 67 (335ns - 340ns)
+*	Writing 00110110111011100101000  to  address 11101 (from port 0) during cycle 68 (340ns - 345ns)
+*	Reading 00110110111011100101000 from address 11101 (from port 0) during cycle 69 (345ns - 350ns)
+*	Writing 11011101111001000001110  to  address 00000 (from port 0) during cycle 70 (350ns - 355ns)
+*	Reading 10010101101010111111100 from address 11110 (from port 0) during cycle 71 (355ns - 360ns)
+*	Writing 01001001111000000110011  to  address 11110 (from port 0) during cycle 74 (370ns - 375ns)
+*	Writing 11111101100001001111111  to  address 11110 (from port 0) during cycle 75 (375ns - 380ns)
+*	Reading 00110110111011100101000 from address 11101 (from port 0) during cycle 76 (380ns - 385ns)
+*	Reading 11011101111001000001110 from address 00000 (from port 0) during cycle 77 (385ns - 390ns)
+*	Reading 00110110111011100101000 from address 11101 (from port 0) during cycle 79 (395ns - 400ns)
+*	Reading 00011100000001100000011 from address 00001 (from port 0) during cycle 82 (410ns - 415ns)
+*	Writing 01101110001110011011111  to  address 11101 (from port 0) during cycle 83 (415ns - 420ns)
+*	Writing 00001111000110101001000  to  address 11110 (from port 0) during cycle 84 (420ns - 425ns)
+*	Reading 01101110001110011011111 from address 11101 (from port 0) during cycle 85 (425ns - 430ns)
+*	Reading 00011100000001100000011 from address 00001 (from port 0) during cycle 86 (430ns - 435ns)
+*	Reading 00001111000110101001000 from address 11110 (from port 0) during cycle 87 (435ns - 440ns)
+*	Reading 11011101111001000001110 from address 00000 (from port 0) during cycle 88 (440ns - 445ns)
+*	Writing 01010001111111010011011  to  address 00000 (from port 0) during cycle 89 (445ns - 450ns)
+*	Reading 00011100000001100000011 from address 00001 (from port 0) during cycle 92 (460ns - 465ns)
+*	Reading 01101110001110011011111 from address 11101 (from port 0) during cycle 93 (465ns - 470ns)
+*	Writing 11010011101111010010100  to  address 00000 (from port 0) during cycle 94 (470ns - 475ns)
+*	Reading 01101110001110011011111 from address 11101 (from port 0) during cycle 98 (490ns - 495ns)
+*	Writing 01101010101101111010000  to  address 11101 (from port 0) during cycle 99 (495ns - 500ns)
+*	Writing 11011011001101100111011  to  address 00001 (from port 0) during cycle 101 (505ns - 510ns)
+*	Writing 10101000010111100000100  to  address 11101 (from port 0) during cycle 102 (510ns - 515ns)
+*	Reading 11011011001101100111011 from address 00001 (from port 0) during cycle 103 (515ns - 520ns)
+*	Writing 10111010100100101001010  to  address 11101 (from port 0) during cycle 105 (525ns - 530ns)
+*	Reading 10111010100100101001010 from address 11101 (from port 0) during cycle 106 (530ns - 535ns)
+*	Reading 11010011101111010010100 from address 00000 (from port 0) during cycle 108 (540ns - 545ns)
+*	Reading 11010011101111010010100 from address 00000 (from port 0) during cycle 109 (545ns - 550ns)
+*	Writing 11101001100011110111110  to  address 00000 (from port 0) during cycle 110 (550ns - 555ns)
+*	Reading 11011011001101100111011 from address 00001 (from port 0) during cycle 112 (560ns - 565ns)
+*	Reading 11101001100011110111110 from address 00000 (from port 0) during cycle 113 (565ns - 570ns)
+*	Reading 00001111000110101001000 from address 11110 (from port 0) during cycle 116 (580ns - 585ns)
+*	Reading 11101001100011110111110 from address 00000 (from port 0) during cycle 117 (585ns - 590ns)
+*	Reading 10111010100100101001010 from address 11101 (from port 0) during cycle 118 (590ns - 595ns)
+*	Reading 00001111000110101001000 from address 11110 (from port 0) during cycle 119 (595ns - 600ns)
+*	Reading 00001111000110101001000 from address 11110 (from port 0) during cycle 120 (600ns - 605ns)
+*	Reading 11011011001101100111011 from address 00001 (from port 0) during cycle 121 (605ns - 610ns)
+*	Writing 11011101101011000001010  to  address 00001 (from port 0) during cycle 122 (610ns - 615ns)
+*	Writing 10010100110100011001111  to  address 00000 (from port 0) during cycle 123 (615ns - 620ns)
+*	Reading 10010100110100011001111 from address 00000 (from port 0) during cycle 124 (620ns - 625ns)
+*	Reading 11011101101011000001010 from address 00001 (from port 0) during cycle 127 (635ns - 640ns)
+*	Writing 00000010110100110110111  to  address 00001 (from port 0) during cycle 128 (640ns - 645ns)
+*	Reading 00000010110100110110111 from address 00001 (from port 0) during cycle 129 (645ns - 650ns)
+*	Reading 10111010100100101001010 from address 11101 (from port 0) during cycle 131 (655ns - 660ns)
+*	Reading 10010100110100011001111 from address 00000 (from port 0) during cycle 132 (660ns - 665ns)
+*	Writing 11000111111001000110111  to  address 11110 (from port 0) during cycle 133 (665ns - 670ns)
+*	Reading 10111010100100101001010 from address 11101 (from port 0) during cycle 134 (670ns - 675ns)
+*	Reading 10010100110100011001111 from address 00000 (from port 0) during cycle 135 (675ns - 680ns)
+*	Writing 11111010011000010110111  to  address 00001 (from port 0) during cycle 137 (685ns - 690ns)
+*	Writing 00101001001001111111011  to  address 00000 (from port 0) during cycle 138 (690ns - 695ns)
+*	Reading 10111010100100101001010 from address 11101 (from port 0) during cycle 140 (700ns - 705ns)
+*	Writing 00111110110010111110110  to  address 00001 (from port 0) during cycle 141 (705ns - 710ns)
+*	Writing 01011011111010110110111  to  address 11110 (from port 0) during cycle 142 (710ns - 715ns)
+*	Writing 01100001010000111011000  to  address 11101 (from port 0) during cycle 145 (725ns - 730ns)
+*	Writing 10010010001100000000000  to  address 00001 (from port 0) during cycle 146 (730ns - 735ns)
+*	Reading 10010010001100000000000 from address 00001 (from port 0) during cycle 147 (735ns - 740ns)
+*	Reading 01011011111010110110111 from address 11110 (from port 0) during cycle 148 (740ns - 745ns)
+*	Reading 00101001001001111111011 from address 00000 (from port 0) during cycle 149 (745ns - 750ns)
+*	Writing 00100000001010101000101  to  address 11101 (from port 0) during cycle 150 (750ns - 755ns)
+*	Reading 00101001001001111111011 from address 00000 (from port 0) during cycle 151 (755ns - 760ns)
+*	Reading 01011011111010110110111 from address 11110 (from port 0) during cycle 154 (770ns - 775ns)
+*	Reading 00101001001001111111011 from address 00000 (from port 0) during cycle 155 (775ns - 780ns)
+*	Writing 00011001101110101011001  to  address 00000 (from port 0) during cycle 157 (785ns - 790ns)
+*	Reading 01011011111010110110111 from address 11110 (from port 0) during cycle 158 (790ns - 795ns)
+*	Reading 00011001101110101011001 from address 00000 (from port 0) during cycle 159 (795ns - 800ns)
+*	Reading 10010010001100000000000 from address 00001 (from port 0) during cycle 160 (800ns - 805ns)
+*	Writing 11001011010000111000011  to  address 00000 (from port 0) during cycle 161 (805ns - 810ns)
+*	Reading 10010010001100000000000 from address 00001 (from port 0) during cycle 162 (810ns - 815ns)
+*	Reading 00100000001010101000101 from address 11101 (from port 0) during cycle 164 (820ns - 825ns)
+*	Writing 01011111111000010000011  to  address 00000 (from port 0) during cycle 165 (825ns - 830ns)
+*	Reading 01011011111010110110111 from address 11110 (from port 0) during cycle 168 (840ns - 845ns)
+*	Reading 01011011111010110110111 from address 11110 (from port 0) during cycle 170 (850ns - 855ns)
+*	Reading 01011111111000010000011 from address 00000 (from port 0) during cycle 171 (855ns - 860ns)
+*	Writing 00010101110001011111000  to  address 11101 (from port 0) during cycle 172 (860ns - 865ns)
+*	Reading 00010101110001011111000 from address 11101 (from port 0) during cycle 173 (865ns - 870ns)
+*	Writing 11100010000011001001110  to  address 00000 (from port 0) during cycle 177 (885ns - 890ns)
+*	Writing 00110001000100001111001  to  address 11101 (from port 0) during cycle 178 (890ns - 895ns)
+*	Reading 01011011111010110110111 from address 11110 (from port 0) during cycle 179 (895ns - 900ns)
+*	Reading 00110001000100001111001 from address 11101 (from port 0) during cycle 181 (905ns - 910ns)
+*	Reading 10010010001100000000000 from address 00001 (from port 0) during cycle 183 (915ns - 920ns)
+*	Writing 00011000011011010111010  to  address 00000 (from port 0) during cycle 184 (920ns - 925ns)
+*	Reading 10010010001100000000000 from address 00001 (from port 0) during cycle 185 (925ns - 930ns)
+*	Writing 01101110100100100001011  to  address 11110 (from port 0) during cycle 187 (935ns - 940ns)
+*	Reading 00110001000100001111001 from address 11101 (from port 0) during cycle 188 (940ns - 945ns)
+*	Reading 01101110100100100001011 from address 11110 (from port 0) during cycle 190 (950ns - 955ns)
+*	Reading 00011000011011010111010 from address 00000 (from port 0) during cycle 191 (955ns - 960ns)
+*	Writing 01111011000010110110001  to  address 11101 (from port 0) during cycle 192 (960ns - 965ns)
+*	Reading 10010010001100000000000 from address 00001 (from port 0) during cycle 193 (965ns - 970ns)
+*	Writing 10100100011100111000010  to  address 11110 (from port 0) during cycle 194 (970ns - 975ns)
+*	Reading 00011000011011010111010 from address 00000 (from port 0) during cycle 197 (985ns - 990ns)
+*	Reading 01111011000010110110001 from address 11101 (from port 0) during cycle 198 (990ns - 995ns)
+*	Writing 01110100011100100001001  to  address 00001 (from port 0) during cycle 200 (1000ns - 1005ns)
+*	Reading 00011000011011010111010 from address 00000 (from port 0) during cycle 201 (1005ns - 1010ns)
+*	Reading 00011000011011010111010 from address 00000 (from port 0) during cycle 203 (1015ns - 1020ns)
+*	Writing 11001010001001010110110  to  address 11101 (from port 0) during cycle 204 (1020ns - 1025ns)
 *	Idle during cycle 205 (1025ns - 1030ns)
 
 * Generation of data and address signals
-* (time, data): [(0, 0), (5, 1), (10, 0), (15, 1), (20, 1), (25, 1), (30, 1), (35, 1), (40, 1), (45, 0), (50, 0), (55, 0), (60, 0), (65, 0), (70, 0), (75, 0), (80, 0), (85, 0), (90, 0), (95, 0), (100, 0), (105, 0), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 1), (170, 1), (175, 0), (180, 0), (185, 0), (190, 1), (195, 1), (200, 1), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 0), (235, 1), (240, 1), (245, 0), (250, 0), (255, 0), (260, 1), (265, 1), (270, 1), (275, 1), (280, 1), (285, 1), (290, 1), (295, 1), (300, 1), (305, 1), (310, 1), (315, 1), (320, 1), (325, 1), (330, 1), (335, 1), (340, 1), (345, 1), (350, 1), (355, 1), (360, 1), (365, 0), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 1), (505, 1), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 1), (550, 1), (555, 1), (560, 0), (565, 0), (570, 0), (575, 1), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 0), (610, 0), (615, 1), (620, 1), (625, 1), (630, 1), (635, 1), (640, 0), (645, 0), (650, 1), (655, 1), (660, 0), (665, 0), (670, 0), (675, 0), (680, 0), (685, 0), (690, 0), (695, 0), (700, 1), (705, 1), (710, 1), (715, 0), (720, 0), (725, 0), (730, 0), (735, 0), (740, 0), (745, 1), (750, 1), (755, 1), (760, 0), (765, 0), (770, 0), (775, 0), (780, 1), (785, 1), (790, 1), (795, 1), (800, 1), (805, 1), (810, 1), (815, 1), (820, 1), (825, 1), (830, 1), (835, 1), (840, 1), (845, 1), (850, 1), (855, 1), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 1), (890, 0), (895, 0), (900, 0), (905, 1), (910, 0), (915, 0), (920, 0), (925, 0), (930, 0), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 0), (965, 0), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 1), (1025, 1)]
-Vdin0_0  din0_0  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 1.0v 9.745n 1.0v 9.755n 0.0v 14.745n 0.0v 14.755n 1.0v 19.745n 1.0v 19.755n 1.0v 24.745n 1.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 1.0v 39.745n 1.0v 39.755n 1.0v 44.745n 1.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 0.0v 369.745n 0.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 1.0v 504.745n 1.0v 504.755n 1.0v 509.745n 1.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 1.0v 579.745n 1.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 0.0v 664.745n 0.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 0.0v 689.745n 0.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 1.0v 749.745n 1.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 1.0v 889.745n 1.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 1.0v 909.745n 1.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
-* (time, data): [(0, 0), (5, 0), (10, 1), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 0), (50, 0), (55, 0), (60, 0), (65, 0), (70, 0), (75, 0), (80, 0), (85, 0), (90, 0), (95, 1), (100, 1), (105, 1), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 0), (170, 0), (175, 1), (180, 1), (185, 1), (190, 1), (195, 1), (200, 1), (205, 1), (210, 0), (215, 0), (220, 0), (225, 0), (230, 0), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 0), (280, 0), (285, 0), (290, 0), (295, 1), (300, 1), (305, 1), (310, 1), (315, 1), (320, 1), (325, 1), (330, 1), (335, 1), (340, 1), (345, 1), (350, 0), (355, 0), (360, 0), (365, 1), (370, 0), (375, 0), (380, 0), (385, 0), (390, 0), (395, 0), (400, 0), (405, 1), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 1), (440, 1), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 1), (500, 0), (505, 0), (510, 1), (515, 1), (520, 1), (525, 1), (530, 1), (535, 1), (540, 1), (545, 1), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 0), (610, 0), (615, 1), (620, 0), (625, 0), (630, 0), (635, 0), (640, 1), (645, 0), (650, 0), (655, 0), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 1), (705, 1), (710, 1), (715, 1), (720, 1), (725, 1), (730, 1), (735, 1), (740, 1), (745, 0), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 1), (785, 1), (790, 1), (795, 1), (800, 1), (805, 1), (810, 1), (815, 1), (820, 1), (825, 0), (830, 0), (835, 1), (840, 1), (845, 1), (850, 0), (855, 0), (860, 0), (865, 0), (870, 0), (875, 1), (880, 1), (885, 1), (890, 1), (895, 1), (900, 1), (905, 0), (910, 1), (915, 1), (920, 0), (925, 0), (930, 0), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 0), (965, 0), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 1), (1025, 1)]
-Vdin0_1  din0_1  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 1.0v 14.745n 1.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 1.0v 99.745n 1.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 1.0v 209.745n 1.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 1.0v 369.745n 1.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 0.0v 384.745n 0.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 0.0v 399.745n 0.0v 399.755n 0.0v 404.745n 0.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 1.0v 619.745n 1.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 1.0v 644.745n 1.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 1.0v 729.745n 1.0v 729.755n 1.0v 734.745n 1.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 1.0v 889.745n 1.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 0.0v 909.745n 0.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
-* (time, data): [(0, 0), (5, 0), (10, 1), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 0), (45, 1), (50, 1), (55, 1), (60, 1), (65, 0), (70, 0), (75, 0), (80, 0), (85, 1), (90, 0), (95, 0), (100, 0), (105, 0), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 1), (170, 1), (175, 1), (180, 1), (185, 0), (190, 1), (195, 1), (200, 1), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 1), (235, 0), (240, 0), (245, 1), (250, 1), (255, 1), (260, 0), (265, 0), (270, 0), (275, 0), (280, 0), (285, 0), (290, 0), (295, 0), (300, 0), (305, 0), (310, 0), (315, 0), (320, 0), (325, 0), (330, 1), (335, 1), (340, 1), (345, 1), (350, 0), (355, 0), (360, 0), (365, 1), (370, 0), (375, 0), (380, 0), (385, 0), (390, 0), (395, 0), (400, 0), (405, 1), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 0), (505, 0), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 0), (555, 0), (560, 1), (565, 1), (570, 1), (575, 0), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 1), (620, 0), (625, 0), (630, 0), (635, 0), (640, 0), (645, 0), (650, 0), (655, 0), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 0), (705, 0), (710, 0), (715, 0), (720, 0), (725, 0), (730, 0), (735, 0), (740, 0), (745, 0), (750, 0), (755, 0), (760, 1), (765, 1), (770, 1), (775, 1), (780, 1), (785, 1), (790, 1), (795, 1), (800, 1), (805, 1), (810, 1), (815, 1), (820, 1), (825, 1), (830, 1), (835, 1), (840, 1), (845, 0), (850, 0), (855, 0), (860, 0), (865, 0), (870, 0), (875, 0), (880, 0), (885, 0), (890, 0), (895, 0), (900, 0), (905, 0), (910, 0), (915, 0), (920, 1), (925, 1), (930, 1), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 1), (965, 1), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 1), (1025, 1)]
-Vdin0_2  din0_2  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 1.0v 14.745n 1.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 0.0v 44.745n 0.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 1.0v 89.745n 1.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 0.0v 189.745n 0.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 1.0v 234.745n 1.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 0.0v 299.745n 0.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 0.0v 324.745n 0.0v 324.755n 0.0v 329.745n 0.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 1.0v 369.745n 1.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 0.0v 384.745n 0.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 0.0v 399.745n 0.0v 399.755n 0.0v 404.745n 0.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 0.0v 579.745n 0.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 1.0v 619.745n 1.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 0.0v 704.745n 0.0v 704.755n 0.0v 709.745n 0.0v 709.755n 0.0v 714.745n 0.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 0.0v 849.745n 0.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
-* (time, data): [(0, 0), (5, 0), (10, 1), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 1), (50, 1), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 0), (95, 0), (100, 0), (105, 0), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 0), (170, 0), (175, 1), (180, 1), (185, 1), (190, 1), (195, 1), (200, 1), (205, 1), (210, 0), (215, 0), (220, 0), (225, 0), (230, 0), (235, 1), (240, 1), (245, 1), (250, 1), (255, 1), (260, 1), (265, 1), (270, 1), (275, 1), (280, 1), (285, 1), (290, 1), (295, 1), (300, 1), (305, 1), (310, 0), (315, 0), (320, 0), (325, 0), (330, 0), (335, 0), (340, 0), (345, 0), (350, 1), (355, 1), (360, 1), (365, 1), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 1), (440, 1), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 1), (500, 1), (505, 1), (510, 1), (515, 1), (520, 1), (525, 1), (530, 1), (535, 1), (540, 1), (545, 1), (550, 1), (555, 1), (560, 0), (565, 0), (570, 0), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 0), (620, 1), (625, 1), (630, 1), (635, 1), (640, 1), (645, 1), (650, 1), (655, 1), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 1), (705, 1), (710, 0), (715, 0), (720, 0), (725, 0), (730, 0), (735, 0), (740, 0), (745, 1), (750, 1), (755, 1), (760, 1), (765, 1), (770, 1), (775, 1), (780, 1), (785, 1), (790, 0), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 0), (825, 1), (830, 1), (835, 0), (840, 0), (845, 1), (850, 0), (855, 0), (860, 1), (865, 1), (870, 1), (875, 0), (880, 0), (885, 0), (890, 1), (895, 1), (900, 1), (905, 0), (910, 0), (915, 0), (920, 1), (925, 1), (930, 1), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 1), (965, 1), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 1), (1025, 1)]
-Vdin0_3  din0_3  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 1.0v 14.745n 1.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 1.0v 209.745n 1.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 0.0v 324.745n 0.0v 324.755n 0.0v 329.745n 0.0v 329.755n 0.0v 334.745n 0.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 1.0v 504.745n 1.0v 504.755n 1.0v 509.745n 1.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 0.0v 619.745n 0.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 1.0v 644.745n 1.0v 644.755n 1.0v 649.745n 1.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 0.0v 714.745n 0.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 1.0v 749.745n 1.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 1.0v 849.745n 1.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 0.0v 889.745n 0.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
-* (time, data): [(0, 0), (5, 1), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 0), (50, 0), (55, 0), (60, 0), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 0), (95, 1), (100, 1), (105, 1), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 1), (170, 1), (175, 0), (180, 0), (185, 0), (190, 1), (195, 1), (200, 1), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 0), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 0), (280, 0), (285, 0), (290, 0), (295, 0), (300, 0), (305, 0), (310, 1), (315, 1), (320, 1), (325, 1), (330, 0), (335, 0), (340, 0), (345, 0), (350, 1), (355, 1), (360, 1), (365, 1), (370, 0), (375, 0), (380, 0), (385, 0), (390, 0), (395, 0), (400, 0), (405, 0), (410, 0), (415, 0), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 1), (505, 1), (510, 1), (515, 1), (520, 1), (525, 1), (530, 1), (535, 1), (540, 1), (545, 1), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 0), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 0), (645, 1), (650, 1), (655, 1), (660, 0), (665, 0), (670, 0), (675, 0), (680, 0), (685, 0), (690, 0), (695, 0), (700, 1), (705, 1), (710, 1), (715, 1), (720, 1), (725, 1), (730, 1), (735, 1), (740, 1), (745, 1), (750, 1), (755, 1), (760, 1), (765, 1), (770, 1), (775, 1), (780, 0), (785, 0), (790, 0), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 0), (825, 0), (830, 0), (835, 0), (840, 0), (845, 1), (850, 0), (855, 0), (860, 0), (865, 0), (870, 0), (875, 1), (880, 1), (885, 1), (890, 0), (895, 0), (900, 0), (905, 0), (910, 1), (915, 1), (920, 0), (925, 0), (930, 0), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 0), (965, 0), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 0), (1025, 0)]
-Vdin0_4  din0_4  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 1.0v 9.745n 1.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 0.0v 94.745n 0.0v 94.755n 1.0v 99.745n 1.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 0.0v 299.745n 0.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 0.0v 334.745n 0.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 0.0v 384.745n 0.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 0.0v 399.745n 0.0v 399.755n 0.0v 404.745n 0.0v 404.755n 0.0v 409.745n 0.0v 409.755n 0.0v 414.745n 0.0v 414.755n 0.0v 419.745n 0.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 1.0v 504.745n 1.0v 504.755n 1.0v 509.745n 1.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 0.0v 579.745n 0.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 0.0v 644.745n 0.0v 644.755n 1.0v 649.745n 1.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 0.0v 664.745n 0.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 0.0v 689.745n 0.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 1.0v 729.745n 1.0v 729.755n 1.0v 734.745n 1.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 1.0v 749.745n 1.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 1.0v 849.745n 1.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 1.0v 889.745n 1.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
-* (time, data): [(0, 0), (5, 1), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 1), (50, 1), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 1), (100, 1), (105, 1), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 1), (170, 1), (175, 1), (180, 1), (185, 1), (190, 0), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 1), (235, 1), (240, 1), (245, 1), (250, 1), (255, 1), (260, 1), (265, 1), (270, 1), (275, 1), (280, 1), (285, 1), (290, 1), (295, 1), (300, 1), (305, 1), (310, 1), (315, 1), (320, 1), (325, 1), (330, 1), (335, 1), (340, 1), (345, 1), (350, 1), (355, 1), (360, 1), (365, 0), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 1), (440, 1), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 1), (500, 1), (505, 1), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 1), (550, 1), (555, 1), (560, 0), (565, 0), (570, 0), (575, 0), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 0), (610, 0), (615, 0), (620, 1), (625, 1), (630, 1), (635, 1), (640, 0), (645, 0), (650, 1), (655, 1), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 1), (705, 1), (710, 0), (715, 0), (720, 0), (725, 0), (730, 0), (735, 0), (740, 0), (745, 1), (750, 1), (755, 1), (760, 0), (765, 0), (770, 0), (775, 0), (780, 1), (785, 1), (790, 1), (795, 1), (800, 1), (805, 1), (810, 1), (815, 1), (820, 1), (825, 0), (830, 0), (835, 1), (840, 1), (845, 0), (850, 1), (855, 1), (860, 0), (865, 0), (870, 0), (875, 0), (880, 0), (885, 0), (890, 0), (895, 0), (900, 0), (905, 0), (910, 0), (915, 0), (920, 0), (925, 0), (930, 0), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 0), (965, 0), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 0), (1025, 0)]
-Vdin0_5  din0_5  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 1.0v 9.745n 1.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 1.0v 189.745n 1.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 1.0v 234.745n 1.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 0.0v 369.745n 0.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 1.0v 504.745n 1.0v 504.755n 1.0v 509.745n 1.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 0.0v 579.745n 0.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 0.0v 619.745n 0.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 0.0v 714.745n 0.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 1.0v 749.745n 1.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 0.0v 849.745n 0.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
-* (time, data): [(0, 0), (5, 0), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 0), (50, 0), (55, 0), (60, 0), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 0), (100, 0), (105, 0), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 0), (170, 0), (175, 0), (180, 0), (185, 1), (190, 1), (195, 1), (200, 1), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 0), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 1), (265, 1), (270, 1), (275, 1), (280, 1), (285, 1), (290, 1), (295, 0), (300, 0), (305, 0), (310, 1), (315, 1), (320, 1), (325, 1), (330, 1), (335, 1), (340, 1), (345, 1), (350, 1), (355, 1), (360, 1), (365, 0), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 1), (505, 1), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 1), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 0), (610, 0), (615, 1), (620, 1), (625, 1), (630, 1), (635, 1), (640, 0), (645, 0), (650, 0), (655, 0), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 0), (705, 0), (710, 0), (715, 0), (720, 0), (725, 0), (730, 0), (735, 0), (740, 0), (745, 1), (750, 1), (755, 1), (760, 1), (765, 1), (770, 1), (775, 1), (780, 1), (785, 1), (790, 1), (795, 1), (800, 1), (805, 1), (810, 1), (815, 1), (820, 1), (825, 1), (830, 1), (835, 0), (840, 0), (845, 1), (850, 1), (855, 1), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 0), (890, 0), (895, 0), (900, 0), (905, 0), (910, 1), (915, 1), (920, 0), (925, 0), (930, 0), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 0), (965, 0), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 1), (1025, 1)]
-Vdin0_6  din0_6  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 0.0v 299.745n 0.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 0.0v 369.745n 0.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 1.0v 504.745n 1.0v 504.755n 1.0v 509.745n 1.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 0.0v 704.745n 0.0v 704.755n 0.0v 709.745n 0.0v 709.755n 0.0v 714.745n 0.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 1.0v 749.745n 1.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
-* (time, data): [(0, 0), (5, 0), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 0), (50, 1), (55, 1), (60, 1), (65, 0), (70, 0), (75, 0), (80, 0), (85, 1), (90, 1), (95, 0), (100, 0), (105, 0), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 1), (170, 1), (175, 1), (180, 1), (185, 1), (190, 0), (195, 0), (200, 0), (205, 1), (210, 1), (215, 1), (220, 1), (225, 1), (230, 1), (235, 1), (240, 1), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 0), (280, 0), (285, 0), (290, 0), (295, 0), (300, 0), (305, 0), (310, 0), (315, 0), (320, 0), (325, 0), (330, 0), (335, 0), (340, 0), (345, 0), (350, 0), (355, 0), (360, 0), (365, 1), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 0), (410, 0), (415, 0), (420, 0), (425, 0), (430, 0), (435, 1), (440, 1), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 1), (500, 0), (505, 0), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 1), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 0), (610, 0), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 0), (645, 0), (650, 0), (655, 0), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 0), (705, 0), (710, 1), (715, 0), (720, 0), (725, 0), (730, 0), (735, 0), (740, 0), (745, 1), (750, 1), (755, 1), (760, 1), (765, 1), (770, 1), (775, 1), (780, 1), (785, 1), (790, 1), (795, 1), (800, 1), (805, 1), (810, 1), (815, 1), (820, 1), (825, 0), (830, 0), (835, 1), (840, 1), (845, 1), (850, 0), (855, 0), (860, 0), (865, 0), (870, 0), (875, 1), (880, 1), (885, 0), (890, 1), (895, 1), (900, 1), (905, 1), (910, 0), (915, 0), (920, 1), (925, 1), (930, 1), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 1), (965, 1), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 0), (1025, 0)]
-Vdin0_7  din0_7  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 0.0v 49.745n 0.0v 49.755n 1.0v 54.745n 1.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 1.0v 189.745n 1.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 1.0v 209.745n 1.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 1.0v 229.745n 1.0v 229.755n 1.0v 234.745n 1.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 0.0v 299.745n 0.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 0.0v 324.745n 0.0v 324.755n 0.0v 329.745n 0.0v 329.755n 0.0v 334.745n 0.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 0.0v 409.745n 0.0v 409.755n 0.0v 414.745n 0.0v 414.755n 0.0v 419.745n 0.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 0.0v 704.745n 0.0v 704.755n 0.0v 709.745n 0.0v 709.755n 1.0v 714.745n 1.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 1.0v 749.745n 1.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 1.0v 909.745n 1.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
-* (time, data): [(0, 0), (5, 1), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 0), (45, 1), (50, 0), (55, 0), (60, 0), (65, 0), (70, 0), (75, 0), (80, 0), (85, 0), (90, 0), (95, 0), (100, 0), (105, 0), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 0), (170, 0), (175, 1), (180, 1), (185, 0), (190, 0), (195, 0), (200, 0), (205, 0), (210, 1), (215, 1), (220, 1), (225, 1), (230, 1), (235, 0), (240, 0), (245, 1), (250, 1), (255, 1), (260, 1), (265, 1), (270, 1), (275, 1), (280, 1), (285, 1), (290, 1), (295, 0), (300, 0), (305, 0), (310, 1), (315, 1), (320, 1), (325, 1), (330, 0), (335, 0), (340, 0), (345, 0), (350, 1), (355, 1), (360, 1), (365, 1), (370, 0), (375, 0), (380, 0), (385, 0), (390, 0), (395, 0), (400, 0), (405, 0), (410, 0), (415, 0), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 0), (505, 0), (510, 1), (515, 1), (520, 1), (525, 1), (530, 1), (535, 1), (540, 1), (545, 1), (550, 1), (555, 1), (560, 0), (565, 0), (570, 0), (575, 0), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 0), (620, 1), (625, 1), (630, 1), (635, 1), (640, 1), (645, 0), (650, 0), (655, 0), (660, 0), (665, 0), (670, 0), (675, 0), (680, 0), (685, 0), (690, 0), (695, 0), (700, 1), (705, 1), (710, 1), (715, 1), (720, 1), (725, 1), (730, 1), (735, 1), (740, 1), (745, 0), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 1), (785, 1), (790, 0), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 0), (825, 1), (830, 1), (835, 0), (840, 0), (845, 1), (850, 0), (855, 0), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 0), (890, 1), (895, 1), (900, 1), (905, 0), (910, 1), (915, 1), (920, 0), (925, 0), (930, 0), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 0), (965, 0), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 1), (1025, 1)]
-Vdin0_8  din0_8  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 1.0v 9.745n 1.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 0.0v 44.745n 0.0v 44.755n 1.0v 49.745n 1.0v 49.755n 0.0v 54.745n 0.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 1.0v 229.745n 1.0v 229.755n 1.0v 234.745n 1.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 0.0v 299.745n 0.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 0.0v 334.745n 0.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 0.0v 384.745n 0.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 0.0v 399.745n 0.0v 399.755n 0.0v 404.745n 0.0v 404.755n 0.0v 409.745n 0.0v 409.755n 0.0v 414.745n 0.0v 414.755n 0.0v 419.745n 0.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 0.0v 579.745n 0.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 0.0v 619.745n 0.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 1.0v 644.745n 1.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 0.0v 689.745n 0.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 1.0v 729.745n 1.0v 729.755n 1.0v 734.745n 1.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 1.0v 849.745n 1.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 0.0v 909.745n 0.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
-* (time, data): [(0, 0), (5, 0), (10, 1), (15, 1), (20, 1), (25, 1), (30, 1), (35, 1), (40, 1), (45, 1), (50, 1), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 0), (90, 0), (95, 0), (100, 0), (105, 0), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 0), (170, 0), (175, 0), (180, 0), (185, 0), (190, 1), (195, 1), (200, 1), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 0), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 0), (280, 0), (285, 0), (290, 0), (295, 1), (300, 1), (305, 1), (310, 1), (315, 1), (320, 1), (325, 1), (330, 1), (335, 1), (340, 1), (345, 1), (350, 1), (355, 1), (360, 1), (365, 0), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 0), (505, 0), (510, 1), (515, 1), (520, 1), (525, 1), (530, 1), (535, 1), (540, 1), (545, 0), (550, 0), (555, 0), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 1), (620, 1), (625, 1), (630, 1), (635, 1), (640, 1), (645, 1), (650, 1), (655, 1), (660, 0), (665, 0), (670, 0), (675, 0), (680, 0), (685, 0), (690, 0), (695, 0), (700, 0), (705, 0), (710, 1), (715, 0), (720, 0), (725, 0), (730, 0), (735, 0), (740, 0), (745, 1), (750, 1), (755, 1), (760, 1), (765, 1), (770, 1), (775, 1), (780, 0), (785, 0), (790, 1), (795, 1), (800, 1), (805, 1), (810, 1), (815, 1), (820, 1), (825, 0), (830, 0), (835, 1), (840, 1), (845, 1), (850, 0), (855, 0), (860, 0), (865, 0), (870, 0), (875, 0), (880, 0), (885, 0), (890, 1), (895, 1), (900, 1), (905, 1), (910, 1), (915, 1), (920, 1), (925, 1), (930, 1), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 1), (965, 1), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 1), (1025, 1)]
-Vdin0_9  din0_9  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 1.0v 14.745n 1.0v 14.755n 1.0v 19.745n 1.0v 19.755n 1.0v 24.745n 1.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 1.0v 39.745n 1.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 0.0v 369.745n 0.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 1.0v 644.745n 1.0v 644.755n 1.0v 649.745n 1.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 0.0v 664.745n 0.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 0.0v 689.745n 0.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 0.0v 704.745n 0.0v 704.755n 0.0v 709.745n 0.0v 709.755n 1.0v 714.745n 1.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 1.0v 749.745n 1.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 0.0v 889.745n 0.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
-* (time, data): [(0, 0), (5, 1), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 0), (50, 1), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 0), (90, 1), (95, 0), (100, 0), (105, 0), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 0), (170, 0), (175, 0), (180, 0), (185, 1), (190, 0), (195, 0), (200, 0), (205, 1), (210, 1), (215, 1), (220, 1), (225, 1), (230, 0), (235, 1), (240, 1), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 0), (280, 0), (285, 0), (290, 0), (295, 1), (300, 1), (305, 1), (310, 0), (315, 0), (320, 0), (325, 0), (330, 1), (335, 1), (340, 1), (345, 1), (350, 0), (355, 0), (360, 0), (365, 0), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 0), (505, 0), (510, 1), (515, 1), (520, 1), (525, 1), (530, 1), (535, 1), (540, 1), (545, 0), (550, 0), (555, 0), (560, 1), (565, 1), (570, 1), (575, 1), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 0), (610, 0), (615, 1), (620, 0), (625, 0), (630, 0), (635, 0), (640, 0), (645, 1), (650, 0), (655, 0), (660, 0), (665, 0), (670, 0), (675, 0), (680, 0), (685, 0), (690, 0), (695, 0), (700, 1), (705, 1), (710, 1), (715, 1), (720, 1), (725, 1), (730, 1), (735, 1), (740, 1), (745, 0), (750, 0), (755, 0), (760, 1), (765, 1), (770, 1), (775, 1), (780, 0), (785, 0), (790, 1), (795, 1), (800, 1), (805, 1), (810, 1), (815, 1), (820, 1), (825, 0), (830, 0), (835, 0), (840, 0), (845, 1), (850, 1), (855, 1), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 1), (890, 0), (895, 0), (900, 0), (905, 0), (910, 0), (915, 0), (920, 1), (925, 1), (930, 1), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 1), (965, 1), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 0), (1025, 0)]
-Vdin0_10  din0_10  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 1.0v 9.745n 1.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 0.0v 49.745n 0.0v 49.755n 1.0v 54.745n 1.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 0.0v 89.745n 0.0v 89.755n 1.0v 94.745n 1.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 1.0v 189.745n 1.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 1.0v 209.745n 1.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 1.0v 229.745n 1.0v 229.755n 0.0v 234.745n 0.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 0.0v 324.745n 0.0v 324.755n 0.0v 329.745n 0.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 0.0v 369.745n 0.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 1.0v 619.745n 1.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 0.0v 644.745n 0.0v 644.755n 1.0v 649.745n 1.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 0.0v 689.745n 0.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 1.0v 729.745n 1.0v 729.755n 1.0v 734.745n 1.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 1.0v 889.745n 1.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
-* (time, data): [(0, 0), (5, 0), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 0), (45, 0), (50, 0), (55, 0), (60, 0), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 1), (100, 1), (105, 1), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 0), (170, 0), (175, 1), (180, 1), (185, 1), (190, 1), (195, 1), (200, 1), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 0), (235, 1), (240, 1), (245, 1), (250, 1), (255, 1), (260, 0), (265, 0), (270, 0), (275, 0), (280, 0), (285, 0), (290, 0), (295, 1), (300, 1), (305, 1), (310, 0), (315, 0), (320, 0), (325, 0), (330, 0), (335, 0), (340, 0), (345, 0), (350, 0), (355, 0), (360, 0), (365, 1), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 0), (410, 0), (415, 0), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 0), (505, 0), (510, 1), (515, 1), (520, 1), (525, 1), (530, 1), (535, 1), (540, 1), (545, 1), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 0), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 0), (610, 0), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 0), (645, 1), (650, 0), (655, 0), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 1), (705, 1), (710, 1), (715, 1), (720, 1), (725, 1), (730, 1), (735, 1), (740, 1), (745, 1), (750, 1), (755, 1), (760, 1), (765, 1), (770, 1), (775, 1), (780, 0), (785, 0), (790, 0), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 0), (825, 0), (830, 0), (835, 1), (840, 1), (845, 0), (850, 1), (855, 1), (860, 0), (865, 0), (870, 0), (875, 1), (880, 1), (885, 0), (890, 1), (895, 1), (900, 1), (905, 1), (910, 1), (915, 1), (920, 1), (925, 1), (930, 1), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 1), (965, 1), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 1), (1025, 1)]
-Vdin0_11  din0_11  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 0.0v 44.745n 0.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 0.0v 324.745n 0.0v 324.755n 0.0v 329.745n 0.0v 329.755n 0.0v 334.745n 0.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 0.0v 409.745n 0.0v 409.755n 0.0v 414.745n 0.0v 414.755n 0.0v 419.745n 0.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 0.0v 579.745n 0.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 0.0v 644.745n 0.0v 644.755n 1.0v 649.745n 1.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 1.0v 729.745n 1.0v 729.755n 1.0v 734.745n 1.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 1.0v 749.745n 1.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 0.0v 849.745n 0.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
-* (time, data): [(0, 0), (5, 0), (10, 0), (15, 1), (20, 1), (25, 1), (30, 1), (35, 1), (40, 0), (45, 1), (50, 1), (55, 1), (60, 1), (65, 0), (70, 0), (75, 0), (80, 0), (85, 1), (90, 1), (95, 1), (100, 1), (105, 1), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 1), (170, 1), (175, 0), (180, 0), (185, 0), (190, 0), (195, 0), (200, 0), (205, 1), (210, 1), (215, 1), (220, 1), (225, 1), (230, 0), (235, 1), (240, 1), (245, 1), (250, 1), (255, 1), (260, 0), (265, 0), (270, 0), (275, 0), (280, 0), (285, 0), (290, 0), (295, 0), (300, 0), (305, 0), (310, 1), (315, 1), (320, 1), (325, 1), (330, 0), (335, 0), (340, 0), (345, 0), (350, 0), (355, 0), (360, 0), (365, 1), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 0), (410, 0), (415, 0), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 0), (505, 0), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 0), (555, 0), (560, 1), (565, 1), (570, 1), (575, 0), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 1), (645, 1), (650, 0), (655, 0), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 1), (705, 1), (710, 1), (715, 0), (720, 0), (725, 0), (730, 0), (735, 0), (740, 0), (745, 0), (750, 0), (755, 0), (760, 1), (765, 1), (770, 1), (775, 1), (780, 0), (785, 0), (790, 0), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 0), (825, 0), (830, 0), (835, 1), (840, 1), (845, 1), (850, 1), (855, 1), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 1), (890, 1), (895, 1), (900, 1), (905, 0), (910, 1), (915, 1), (920, 1), (925, 1), (930, 1), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 1), (965, 1), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 0), (1025, 0)]
-Vdin0_12  din0_12  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 1.0v 19.745n 1.0v 19.755n 1.0v 24.745n 1.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 1.0v 39.745n 1.0v 39.755n 0.0v 44.745n 0.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 1.0v 209.745n 1.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 1.0v 229.745n 1.0v 229.755n 0.0v 234.745n 0.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 0.0v 299.745n 0.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 0.0v 334.745n 0.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 0.0v 409.745n 0.0v 409.755n 0.0v 414.745n 0.0v 414.755n 0.0v 419.745n 0.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 0.0v 579.745n 0.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 1.0v 644.745n 1.0v 644.755n 1.0v 649.745n 1.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 1.0v 889.745n 1.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 0.0v 909.745n 0.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
-* (time, data): [(0, 0), (5, 0), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 0), (45, 1), (50, 0), (55, 0), (60, 0), (65, 1), (70, 1), (75, 1), (80, 1), (85, 0), (90, 0), (95, 0), (100, 0), (105, 0), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 0), (170, 0), (175, 0), (180, 0), (185, 0), (190, 0), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 1), (235, 1), (240, 1), (245, 1), (250, 1), (255, 1), (260, 1), (265, 1), (270, 1), (275, 1), (280, 1), (285, 1), (290, 1), (295, 1), (300, 1), (305, 1), (310, 0), (315, 0), (320, 0), (325, 0), (330, 0), (335, 0), (340, 0), (345, 0), (350, 1), (355, 1), (360, 1), (365, 0), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 1), (440, 1), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 1), (500, 1), (505, 1), (510, 1), (515, 1), (520, 1), (525, 1), (530, 1), (535, 1), (540, 1), (545, 1), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 0), (610, 0), (615, 1), (620, 0), (625, 0), (630, 0), (635, 0), (640, 1), (645, 0), (650, 0), (655, 0), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 0), (705, 0), (710, 1), (715, 1), (720, 1), (725, 1), (730, 1), (735, 1), (740, 1), (745, 1), (750, 1), (755, 1), (760, 0), (765, 0), (770, 0), (775, 0), (780, 1), (785, 1), (790, 0), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 0), (825, 0), (830, 0), (835, 0), (840, 0), (845, 0), (850, 0), (855, 0), (860, 1), (865, 1), (870, 1), (875, 0), (880, 0), (885, 1), (890, 1), (895, 1), (900, 1), (905, 0), (910, 1), (915, 1), (920, 1), (925, 1), (930, 1), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 1), (965, 1), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 1), (1025, 1)]
-Vdin0_13  din0_13  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 0.0v 44.745n 0.0v 44.755n 1.0v 49.745n 1.0v 49.755n 0.0v 54.745n 0.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 1.0v 234.745n 1.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 0.0v 324.745n 0.0v 324.755n 0.0v 329.745n 0.0v 329.755n 0.0v 334.745n 0.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 0.0v 369.745n 0.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 1.0v 504.745n 1.0v 504.755n 1.0v 509.745n 1.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 1.0v 619.745n 1.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 1.0v 644.745n 1.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 0.0v 704.745n 0.0v 704.755n 0.0v 709.745n 0.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 1.0v 729.745n 1.0v 729.755n 1.0v 734.745n 1.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 1.0v 749.745n 1.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 0.0v 849.745n 0.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 1.0v 889.745n 1.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 0.0v 909.745n 0.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
-* (time, data): [(0, 0), (5, 1), (10, 1), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 1), (50, 0), (55, 0), (60, 0), (65, 1), (70, 1), (75, 1), (80, 1), (85, 0), (90, 0), (95, 0), (100, 0), (105, 0), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 0), (170, 0), (175, 1), (180, 1), (185, 1), (190, 0), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 1), (235, 0), (240, 0), (245, 1), (250, 1), (255, 1), (260, 1), (265, 1), (270, 1), (275, 1), (280, 1), (285, 1), (290, 1), (295, 0), (300, 0), (305, 0), (310, 1), (315, 1), (320, 1), (325, 1), (330, 0), (335, 0), (340, 0), (345, 0), (350, 1), (355, 1), (360, 1), (365, 1), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 1), (440, 1), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 1), (500, 0), (505, 0), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 0), (555, 0), (560, 0), (565, 0), (570, 0), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 0), (620, 1), (625, 1), (630, 1), (635, 1), (640, 0), (645, 0), (650, 1), (655, 1), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 0), (705, 0), (710, 0), (715, 1), (720, 1), (725, 1), (730, 1), (735, 1), (740, 1), (745, 0), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 1), (785, 1), (790, 0), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 0), (825, 0), (830, 0), (835, 0), (840, 0), (845, 1), (850, 1), (855, 1), (860, 0), (865, 0), (870, 0), (875, 1), (880, 1), (885, 1), (890, 0), (895, 0), (900, 0), (905, 0), (910, 1), (915, 1), (920, 0), (925, 0), (930, 0), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 0), (965, 0), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 0), (1025, 0)]
-Vdin0_14  din0_14  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 1.0v 9.745n 1.0v 9.755n 1.0v 14.745n 1.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 0.0v 54.745n 0.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 1.0v 189.745n 1.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 1.0v 234.745n 1.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 0.0v 299.745n 0.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 0.0v 334.745n 0.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 0.0v 619.745n 0.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 0.0v 704.745n 0.0v 704.755n 0.0v 709.745n 0.0v 709.755n 0.0v 714.745n 0.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 1.0v 729.745n 1.0v 729.755n 1.0v 734.745n 1.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 1.0v 889.745n 1.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
-* (time, data): [(0, 0), (5, 0), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 0), (45, 0), (50, 0), (55, 0), (60, 0), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 0), (100, 0), (105, 0), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 1), (170, 1), (175, 1), (180, 1), (185, 0), (190, 1), (195, 1), (200, 1), (205, 1), (210, 0), (215, 0), (220, 0), (225, 0), (230, 1), (235, 1), (240, 1), (245, 0), (250, 0), (255, 0), (260, 1), (265, 1), (270, 1), (275, 1), (280, 1), (285, 1), (290, 1), (295, 0), (300, 0), (305, 0), (310, 1), (315, 1), (320, 1), (325, 1), (330, 1), (335, 1), (340, 1), (345, 1), (350, 0), (355, 0), (360, 0), (365, 1), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 0), (505, 0), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 0), (555, 0), (560, 0), (565, 0), (570, 0), (575, 0), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 0), (610, 0), (615, 0), (620, 1), (625, 1), (630, 1), (635, 1), (640, 1), (645, 0), (650, 0), (655, 0), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 0), (705, 0), (710, 1), (715, 0), (720, 0), (725, 0), (730, 0), (735, 0), (740, 0), (745, 1), (750, 1), (755, 1), (760, 1), (765, 1), (770, 1), (775, 1), (780, 1), (785, 1), (790, 0), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 0), (825, 1), (830, 1), (835, 0), (840, 0), (845, 1), (850, 1), (855, 1), (860, 0), (865, 0), (870, 0), (875, 0), (880, 0), (885, 0), (890, 1), (895, 1), (900, 1), (905, 1), (910, 1), (915, 1), (920, 1), (925, 1), (930, 1), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 1), (965, 1), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 1), (1025, 1)]
-Vdin0_15  din0_15  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 0.0v 44.745n 0.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 0.0v 189.745n 0.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 1.0v 209.745n 1.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 1.0v 234.745n 1.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 0.0v 299.745n 0.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 0.0v 579.745n 0.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 0.0v 619.745n 0.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 1.0v 644.745n 1.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 0.0v 704.745n 0.0v 704.755n 0.0v 709.745n 0.0v 709.755n 1.0v 714.745n 1.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 1.0v 749.745n 1.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 0.0v 889.745n 0.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
-* (time, data): [(0, 0), (5, 0), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 0), (50, 1), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 0), (90, 0), (95, 0), (100, 0), (105, 0), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 0), (170, 0), (175, 0), (180, 0), (185, 1), (190, 0), (195, 0), (200, 0), (205, 0), (210, 1), (215, 1), (220, 1), (225, 1), (230, 1), (235, 1), (240, 1), (245, 0), (250, 0), (255, 0), (260, 1), (265, 1), (270, 1), (275, 1), (280, 1), (285, 1), (290, 1), (295, 0), (300, 0), (305, 0), (310, 1), (315, 1), (320, 1), (325, 1), (330, 1), (335, 1), (340, 1), (345, 1), (350, 1), (355, 1), (360, 1), (365, 0), (370, 0), (375, 0), (380, 0), (385, 0), (390, 0), (395, 0), (400, 0), (405, 1), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 0), (505, 0), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 0), (555, 0), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 1), (620, 1), (625, 1), (630, 1), (635, 1), (640, 0), (645, 1), (650, 1), (655, 1), (660, 0), (665, 0), (670, 0), (675, 0), (680, 0), (685, 0), (690, 0), (695, 0), (700, 1), (705, 1), (710, 0), (715, 0), (720, 0), (725, 0), (730, 0), (735, 0), (740, 0), (745, 1), (750, 1), (755, 1), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 0), (790, 0), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 0), (825, 1), (830, 1), (835, 1), (840, 1), (845, 1), (850, 1), (855, 1), (860, 1), (865, 1), (870, 1), (875, 0), (880, 0), (885, 0), (890, 1), (895, 1), (900, 1), (905, 1), (910, 0), (915, 0), (920, 0), (925, 0), (930, 0), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 0), (965, 0), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 0), (1025, 0)]
-Vdin0_16  din0_16  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 0.0v 49.745n 0.0v 49.755n 1.0v 54.745n 1.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 1.0v 189.745n 1.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 1.0v 229.745n 1.0v 229.755n 1.0v 234.745n 1.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 0.0v 299.745n 0.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 0.0v 369.745n 0.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 0.0v 384.745n 0.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 0.0v 399.745n 0.0v 399.755n 0.0v 404.745n 0.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 0.0v 644.745n 0.0v 644.755n 1.0v 649.745n 1.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 0.0v 664.745n 0.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 0.0v 689.745n 0.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 0.0v 714.745n 0.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 1.0v 749.745n 1.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 0.0v 889.745n 0.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 1.0v 909.745n 1.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
-* (time, data): [(0, 0), (5, 1), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 1), (50, 0), (55, 0), (60, 0), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 0), (95, 1), (100, 1), (105, 1), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 1), (170, 1), (175, 0), (180, 0), (185, 1), (190, 1), (195, 1), (200, 1), (205, 1), (210, 1), (215, 1), (220, 1), (225, 1), (230, 1), (235, 0), (240, 0), (245, 1), (250, 1), (255, 1), (260, 0), (265, 0), (270, 0), (275, 0), (280, 0), (285, 0), (290, 0), (295, 0), (300, 0), (305, 0), (310, 0), (315, 0), (320, 0), (325, 0), (330, 1), (335, 1), (340, 1), (345, 1), (350, 1), (355, 1), (360, 1), (365, 1), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 0), (410, 0), (415, 0), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 0), (505, 0), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 0), (555, 0), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 1), (620, 0), (625, 0), (630, 0), (635, 0), (640, 1), (645, 0), (650, 1), (655, 1), (660, 0), (665, 0), (670, 0), (675, 0), (680, 0), (685, 0), (690, 0), (695, 0), (700, 1), (705, 1), (710, 1), (715, 0), (720, 0), (725, 0), (730, 0), (735, 0), (740, 0), (745, 0), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 1), (785, 1), (790, 0), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 0), (825, 0), (830, 0), (835, 0), (840, 0), (845, 0), (850, 0), (855, 0), (860, 1), (865, 1), (870, 1), (875, 0), (880, 0), (885, 1), (890, 1), (895, 1), (900, 1), (905, 1), (910, 1), (915, 1), (920, 1), (925, 1), (930, 1), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 1), (965, 1), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 1), (1025, 1)]
-Vdin0_17  din0_17  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 1.0v 9.745n 1.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 0.0v 54.745n 0.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 0.0v 94.745n 0.0v 94.755n 1.0v 99.745n 1.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 1.0v 209.745n 1.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 1.0v 229.745n 1.0v 229.755n 1.0v 234.745n 1.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 0.0v 299.745n 0.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 0.0v 324.745n 0.0v 324.755n 0.0v 329.745n 0.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 0.0v 409.745n 0.0v 409.755n 0.0v 414.745n 0.0v 414.755n 0.0v 419.745n 0.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 1.0v 619.745n 1.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 1.0v 644.745n 1.0v 644.755n 0.0v 649.745n 0.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 0.0v 664.745n 0.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 0.0v 689.745n 0.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 0.0v 849.745n 0.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 1.0v 889.745n 1.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
-* (time, data): [(0, 0), (5, 0), (10, 0), (15, 1), (20, 1), (25, 1), (30, 1), (35, 1), (40, 0), (45, 0), (50, 1), (55, 1), (60, 1), (65, 0), (70, 0), (75, 0), (80, 0), (85, 0), (90, 1), (95, 1), (100, 1), (105, 1), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 1), (170, 1), (175, 1), (180, 1), (185, 1), (190, 1), (195, 1), (200, 1), (205, 0), (210, 1), (215, 1), (220, 1), (225, 1), (230, 1), (235, 1), (240, 1), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 0), (280, 0), (285, 0), (290, 0), (295, 0), (300, 0), (305, 0), (310, 0), (315, 0), (320, 0), (325, 0), (330, 0), (335, 0), (340, 0), (345, 0), (350, 1), (355, 1), (360, 1), (365, 1), (370, 0), (375, 0), (380, 0), (385, 0), (390, 0), (395, 0), (400, 0), (405, 1), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 1), (505, 1), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 1), (550, 1), (555, 1), (560, 0), (565, 0), (570, 0), (575, 0), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 0), (620, 1), (625, 1), (630, 1), (635, 1), (640, 1), (645, 1), (650, 0), (655, 0), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 1), (705, 1), (710, 1), (715, 1), (720, 1), (725, 1), (730, 1), (735, 1), (740, 1), (745, 0), (750, 0), (755, 0), (760, 1), (765, 1), (770, 1), (775, 1), (780, 1), (785, 1), (790, 0), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 0), (825, 1), (830, 1), (835, 0), (840, 0), (845, 1), (850, 0), (855, 0), (860, 0), (865, 0), (870, 0), (875, 1), (880, 1), (885, 0), (890, 0), (895, 0), (900, 0), (905, 1), (910, 1), (915, 1), (920, 0), (925, 0), (930, 0), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 0), (965, 0), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 0), (1025, 0)]
-Vdin0_18  din0_18  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 1.0v 19.745n 1.0v 19.755n 1.0v 24.745n 1.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 1.0v 39.745n 1.0v 39.755n 0.0v 44.745n 0.0v 44.755n 0.0v 49.745n 0.0v 49.755n 1.0v 54.745n 1.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 0.0v 89.745n 0.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 0.0v 209.745n 0.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 1.0v 229.745n 1.0v 229.755n 1.0v 234.745n 1.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 0.0v 299.745n 0.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 0.0v 324.745n 0.0v 324.755n 0.0v 329.745n 0.0v 329.755n 0.0v 334.745n 0.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 0.0v 384.745n 0.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 0.0v 399.745n 0.0v 399.755n 0.0v 404.745n 0.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 1.0v 504.745n 1.0v 504.755n 1.0v 509.745n 1.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 0.0v 579.745n 0.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 0.0v 619.745n 0.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 1.0v 644.745n 1.0v 644.755n 1.0v 649.745n 1.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 1.0v 729.745n 1.0v 729.755n 1.0v 734.745n 1.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 1.0v 849.745n 1.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
-* (time, data): [(0, 0), (5, 1), (10, 1), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 0), (50, 0), (55, 0), (60, 0), (65, 0), (70, 0), (75, 0), (80, 0), (85, 1), (90, 1), (95, 0), (100, 0), (105, 0), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 1), (170, 1), (175, 0), (180, 0), (185, 0), (190, 0), (195, 0), (200, 0), (205, 0), (210, 1), (215, 1), (220, 1), (225, 1), (230, 0), (235, 0), (240, 0), (245, 1), (250, 1), (255, 1), (260, 1), (265, 1), (270, 1), (275, 1), (280, 1), (285, 1), (290, 1), (295, 1), (300, 1), (305, 1), (310, 0), (315, 0), (320, 0), (325, 0), (330, 0), (335, 0), (340, 0), (345, 0), (350, 1), (355, 1), (360, 1), (365, 0), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 1), (440, 1), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 1), (500, 0), (505, 0), (510, 1), (515, 1), (520, 1), (525, 1), (530, 1), (535, 1), (540, 1), (545, 1), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 1), (645, 0), (650, 0), (655, 0), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 1), (705, 1), (710, 0), (715, 1), (720, 1), (725, 1), (730, 1), (735, 1), (740, 1), (745, 1), (750, 1), (755, 1), (760, 1), (765, 1), (770, 1), (775, 1), (780, 1), (785, 1), (790, 0), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 0), (825, 1), (830, 1), (835, 0), (840, 0), (845, 0), (850, 0), (855, 0), (860, 0), (865, 0), (870, 0), (875, 1), (880, 1), (885, 1), (890, 0), (895, 0), (900, 0), (905, 1), (910, 0), (915, 0), (920, 0), (925, 0), (930, 0), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 0), (965, 0), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 0), (1025, 0)]
-Vdin0_19  din0_19  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 1.0v 9.745n 1.0v 9.755n 1.0v 14.745n 1.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 1.0v 229.745n 1.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 0.0v 324.745n 0.0v 324.755n 0.0v 329.745n 0.0v 329.755n 0.0v 334.745n 0.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 0.0v 369.745n 0.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 1.0v 644.745n 1.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 0.0v 714.745n 0.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 1.0v 729.745n 1.0v 729.755n 1.0v 734.745n 1.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 1.0v 749.745n 1.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 0.0v 849.745n 0.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 1.0v 889.745n 1.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 1.0v 909.745n 1.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
-* (time, data): [(0, 0), (5, 1), (10, 1), (15, 1), (20, 1), (25, 1), (30, 1), (35, 1), (40, 1), (45, 0), (50, 1), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 0), (90, 1), (95, 0), (100, 0), (105, 0), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 1), (170, 1), (175, 0), (180, 0), (185, 1), (190, 1), (195, 1), (200, 1), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 1), (235, 1), (240, 1), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 0), (280, 0), (285, 0), (290, 0), (295, 1), (300, 1), (305, 1), (310, 0), (315, 0), (320, 0), (325, 0), (330, 0), (335, 0), (340, 0), (345, 0), (350, 0), (355, 0), (360, 0), (365, 0), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 0), (505, 0), (510, 1), (515, 1), (520, 1), (525, 1), (530, 1), (535, 1), (540, 1), (545, 1), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 0), (620, 1), (625, 1), (630, 1), (635, 1), (640, 1), (645, 0), (650, 0), (655, 0), (660, 0), (665, 0), (670, 0), (675, 0), (680, 0), (685, 0), (690, 0), (695, 0), (700, 0), (705, 0), (710, 1), (715, 0), (720, 0), (725, 0), (730, 0), (735, 0), (740, 0), (745, 1), (750, 1), (755, 1), (760, 1), (765, 1), (770, 1), (775, 1), (780, 0), (785, 0), (790, 0), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 0), (825, 0), (830, 0), (835, 0), (840, 0), (845, 1), (850, 0), (855, 0), (860, 0), (865, 0), (870, 0), (875, 1), (880, 1), (885, 0), (890, 0), (895, 0), (900, 0), (905, 0), (910, 0), (915, 0), (920, 0), (925, 0), (930, 0), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 0), (965, 0), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 1), (1025, 1)]
-Vdin0_20  din0_20  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 1.0v 9.745n 1.0v 9.755n 1.0v 14.745n 1.0v 14.755n 1.0v 19.745n 1.0v 19.755n 1.0v 24.745n 1.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 1.0v 39.745n 1.0v 39.755n 1.0v 44.745n 1.0v 44.755n 0.0v 49.745n 0.0v 49.755n 1.0v 54.745n 1.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 0.0v 89.745n 0.0v 89.755n 1.0v 94.745n 1.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 1.0v 234.745n 1.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 0.0v 324.745n 0.0v 324.755n 0.0v 329.745n 0.0v 329.755n 0.0v 334.745n 0.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 0.0v 369.745n 0.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 0.0v 619.745n 0.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 1.0v 644.745n 1.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 0.0v 689.745n 0.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 0.0v 704.745n 0.0v 704.755n 0.0v 709.745n 0.0v 709.755n 1.0v 714.745n 1.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 1.0v 749.745n 1.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 1.0v 849.745n 1.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
-* (time, data): [(0, 0), (5, 0), (10, 0), (15, 1), (20, 1), (25, 1), (30, 1), (35, 1), (40, 1), (45, 1), (50, 0), (55, 0), (60, 0), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 1), (100, 1), (105, 1), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 1), (170, 1), (175, 1), (180, 1), (185, 1), (190, 1), (195, 1), (200, 1), (205, 0), (210, 1), (215, 1), (220, 1), (225, 1), (230, 0), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 0), (280, 0), (285, 0), (290, 0), (295, 1), (300, 1), (305, 1), (310, 1), (315, 1), (320, 1), (325, 1), (330, 0), (335, 0), (340, 0), (345, 0), (350, 0), (355, 0), (360, 0), (365, 1), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 0), (410, 0), (415, 0), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 0), (505, 0), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 0), (555, 0), (560, 1), (565, 1), (570, 1), (575, 0), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 1), (620, 0), (625, 0), (630, 0), (635, 0), (640, 0), (645, 0), (650, 0), (655, 0), (660, 0), (665, 0), (670, 0), (675, 0), (680, 0), (685, 0), (690, 0), (695, 0), (700, 0), (705, 0), (710, 1), (715, 0), (720, 0), (725, 0), (730, 0), (735, 0), (740, 0), (745, 1), (750, 1), (755, 1), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 0), (790, 1), (795, 1), (800, 1), (805, 1), (810, 1), (815, 1), (820, 1), (825, 1), (830, 1), (835, 0), (840, 0), (845, 1), (850, 0), (855, 0), (860, 0), (865, 0), (870, 0), (875, 0), (880, 0), (885, 0), (890, 0), (895, 0), (900, 0), (905, 1), (910, 1), (915, 1), (920, 1), (925, 1), (930, 1), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 1), (965, 1), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 1), (1025, 1)]
-Vdin0_21  din0_21  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 1.0v 19.745n 1.0v 19.755n 1.0v 24.745n 1.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 1.0v 39.745n 1.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 0.0v 54.745n 0.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 0.0v 209.745n 0.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 1.0v 229.745n 1.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 0.0v 334.745n 0.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 0.0v 409.745n 0.0v 409.755n 0.0v 414.745n 0.0v 414.755n 0.0v 419.745n 0.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 0.0v 579.745n 0.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 1.0v 619.745n 1.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 0.0v 689.745n 0.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 0.0v 704.745n 0.0v 704.755n 0.0v 709.745n 0.0v 709.755n 1.0v 714.745n 1.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 1.0v 749.745n 1.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 1.0v 849.745n 1.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
-* (time, data): [(0, 0), (5, 0), (10, 1), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 0), (50, 1), (55, 1), (60, 1), (65, 0), (70, 0), (75, 0), (80, 0), (85, 1), (90, 0), (95, 1), (100, 1), (105, 1), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 1), (170, 1), (175, 0), (180, 0), (185, 1), (190, 0), (195, 0), (200, 0), (205, 1), (210, 1), (215, 1), (220, 1), (225, 1), (230, 1), (235, 1), (240, 1), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 0), (280, 0), (285, 0), (290, 0), (295, 1), (300, 1), (305, 1), (310, 0), (315, 0), (320, 0), (325, 0), (330, 1), (335, 1), (340, 1), (345, 1), (350, 1), (355, 1), (360, 1), (365, 1), (370, 0), (375, 0), (380, 0), (385, 0), (390, 0), (395, 0), (400, 0), (405, 0), (410, 0), (415, 0), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 1), (505, 1), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 0), (555, 0), (560, 1), (565, 1), (570, 1), (575, 0), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 1), (620, 0), (625, 0), (630, 0), (635, 0), (640, 1), (645, 0), (650, 1), (655, 1), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 1), (705, 1), (710, 1), (715, 0), (720, 0), (725, 0), (730, 0), (735, 0), (740, 0), (745, 1), (750, 1), (755, 1), (760, 1), (765, 1), (770, 1), (775, 1), (780, 1), (785, 1), (790, 1), (795, 1), (800, 1), (805, 1), (810, 1), (815, 1), (820, 1), (825, 0), (830, 0), (835, 0), (840, 0), (845, 0), (850, 0), (855, 0), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 0), (890, 0), (895, 0), (900, 0), (905, 1), (910, 0), (915, 0), (920, 1), (925, 1), (930, 1), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 1), (965, 1), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 1), (1025, 1)]
-Vdin0_22  din0_22  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 1.0v 14.745n 1.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 0.0v 49.745n 0.0v 49.755n 1.0v 54.745n 1.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 1.0v 89.745n 1.0v 89.755n 0.0v 94.745n 0.0v 94.755n 1.0v 99.745n 1.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 1.0v 189.745n 1.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 1.0v 209.745n 1.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 1.0v 229.745n 1.0v 229.755n 1.0v 234.745n 1.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 0.0v 324.745n 0.0v 324.755n 0.0v 329.745n 0.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 0.0v 384.745n 0.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 0.0v 399.745n 0.0v 399.755n 0.0v 404.745n 0.0v 404.755n 0.0v 409.745n 0.0v 409.755n 0.0v 414.745n 0.0v 414.755n 0.0v 419.745n 0.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 1.0v 504.745n 1.0v 504.755n 1.0v 509.745n 1.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 0.0v 579.745n 0.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 1.0v 619.745n 1.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 1.0v 644.745n 1.0v 644.755n 0.0v 649.745n 0.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 1.0v 749.745n 1.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 0.0v 849.745n 0.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 1.0v 909.745n 1.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
-* (time, data): [(0, 0), (5, 0), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 0), (45, 0), (50, 0), (55, 0), (60, 0), (65, 0), (70, 0), (75, 0), (80, 0), (85, 0), (90, 0), (95, 0), (100, 0), (105, 0), (110, 1), (115, 1), (120, 0), (125, 1), (130, 1), (135, 1), (140, 1), (145, 1), (150, 0), (155, 0), (160, 0), (165, 1), (170, 0), (175, 1), (180, 1), (185, 0), (190, 0), (195, 0), (200, 0), (205, 0), (210, 1), (215, 1), (220, 0), (225, 1), (230, 1), (235, 1), (240, 0), (245, 0), (250, 1), (255, 1), (260, 0), (265, 0), (270, 0), (275, 1), (280, 1), (285, 1), (290, 1), (295, 1), (300, 1), (305, 1), (310, 1), (315, 1), (320, 1), (325, 0), (330, 0), (335, 0), (340, 0), (345, 0), (350, 0), (355, 0), (360, 0), (365, 1), (370, 1), (375, 0), (380, 1), (385, 0), (390, 0), (395, 0), (400, 0), (405, 0), (410, 0), (415, 1), (420, 1), (425, 1), (430, 1), (435, 0), (440, 1), (445, 1), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 1), (480, 0), (485, 0), (490, 0), (495, 1), (500, 0), (505, 1), (510, 0), (515, 1), (520, 0), (525, 1), (530, 1), (535, 1), (540, 0), (545, 1), (550, 1), (555, 0), (560, 0), (565, 0), (570, 0), (575, 0), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 0), (620, 0), (625, 1), (630, 0), (635, 0), (640, 1), (645, 1), (650, 0), (655, 0), (660, 0), (665, 1), (670, 0), (675, 1), (680, 1), (685, 1), (690, 0), (695, 1), (700, 1), (705, 0), (710, 1), (715, 0), (720, 1), (725, 0), (730, 0), (735, 0), (740, 0), (745, 1), (750, 0), (755, 0), (760, 0), (765, 1), (770, 0), (775, 1), (780, 1), (785, 0), (790, 0), (795, 0), (800, 0), (805, 0), (810, 1), (815, 1), (820, 0), (825, 0), (830, 0), (835, 1), (840, 1), (845, 1), (850, 0), (855, 0), (860, 1), (865, 1), (870, 1), (875, 0), (880, 0), (885, 1), (890, 0), (895, 1), (900, 1), (905, 0), (910, 0), (915, 1), (920, 1), (925, 1), (930, 0), (935, 0), (940, 0), (945, 0), (950, 0), (955, 1), (960, 1), (965, 1), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 1), (1000, 1), (1005, 0), (1010, 1), (1015, 1), (1020, 0), (1025, 0)]
-Va0_0  a0_0  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 0.0v 44.745n 0.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 0.0v 124.745n 0.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 1.0v 169.745n 1.0v 169.755n 0.0v 174.745n 0.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 0.0v 224.745n 0.0v 224.755n 1.0v 229.745n 1.0v 229.755n 1.0v 234.745n 1.0v 234.755n 1.0v 239.745n 1.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 0.0v 329.745n 0.0v 329.755n 0.0v 334.745n 0.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 0.0v 379.745n 0.0v 379.755n 1.0v 384.745n 1.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 0.0v 399.745n 0.0v 399.755n 0.0v 404.745n 0.0v 404.755n 0.0v 409.745n 0.0v 409.755n 0.0v 414.745n 0.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 0.0v 439.745n 0.0v 439.755n 1.0v 444.745n 1.0v 444.755n 1.0v 449.745n 1.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 1.0v 479.745n 1.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 1.0v 499.745n 1.0v 499.755n 0.0v 504.745n 0.0v 504.755n 1.0v 509.745n 1.0v 509.755n 0.0v 514.745n 0.0v 514.755n 1.0v 519.745n 1.0v 519.755n 0.0v 524.745n 0.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 0.0v 544.745n 0.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 0.0v 579.745n 0.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 1.0v 629.745n 1.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 1.0v 644.745n 1.0v 644.755n 1.0v 649.745n 1.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 1.0v 669.745n 1.0v 669.755n 0.0v 674.745n 0.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 0.0v 694.745n 0.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 0.0v 709.745n 0.0v 709.755n 1.0v 714.745n 1.0v 714.755n 0.0v 719.745n 0.0v 719.755n 1.0v 724.745n 1.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 1.0v 749.745n 1.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 1.0v 769.745n 1.0v 769.755n 0.0v 774.745n 0.0v 774.755n 1.0v 779.745n 1.0v 779.755n 1.0v 784.745n 1.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 0.0v 824.745n 0.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 1.0v 889.745n 1.0v 889.755n 0.0v 894.745n 0.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 1.0v 919.745n 1.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 0.0v 934.745n 0.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
-* (time, data): [(0, 0), (5, 0), (10, 1), (15, 0), (20, 0), (25, 1), (30, 1), (35, 1), (40, 0), (45, 1), (50, 0), (55, 1), (60, 1), (65, 1), (70, 0), (75, 1), (80, 1), (85, 0), (90, 0), (95, 0), (100, 0), (105, 0), (110, 0), (115, 0), (120, 1), (125, 0), (130, 0), (135, 0), (140, 0), (145, 0), (150, 1), (155, 1), (160, 1), (165, 0), (170, 0), (175, 0), (180, 0), (185, 1), (190, 1), (195, 1), (200, 0), (205, 1), (210, 0), (215, 0), (220, 0), (225, 0), (230, 0), (235, 0), (240, 0), (245, 1), (250, 0), (255, 0), (260, 1), (265, 1), (270, 1), (275, 0), (280, 0), (285, 0), (290, 0), (295, 0), (300, 0), (305, 0), (310, 0), (315, 0), (320, 0), (325, 0), (330, 1), (335, 1), (340, 1), (345, 1), (350, 0), (355, 0), (360, 0), (365, 0), (370, 0), (375, 0), (380, 0), (385, 1), (390, 1), (395, 1), (400, 1), (405, 0), (410, 1), (415, 0), (420, 0), (425, 0), (430, 0), (435, 1), (440, 0), (445, 0), (450, 1), (455, 1), (460, 0), (465, 0), (470, 1), (475, 0), (480, 1), (485, 1), (490, 1), (495, 0), (500, 1), (505, 0), (510, 1), (515, 0), (520, 1), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 0), (555, 0), (560, 0), (565, 1), (570, 1), (575, 1), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 0), (610, 0), (615, 1), (620, 1), (625, 0), (630, 0), (635, 0), (640, 0), (645, 0), (650, 0), (655, 0), (660, 0), (665, 0), (670, 1), (675, 0), (680, 0), (685, 0), (690, 1), (695, 0), (700, 0), (705, 0), (710, 0), (715, 1), (720, 0), (725, 0), (730, 0), (735, 1), (740, 1), (745, 0), (750, 1), (755, 1), (760, 0), (765, 0), (770, 1), (775, 0), (780, 0), (785, 1), (790, 1), (795, 1), (800, 1), (805, 1), (810, 0), (815, 0), (820, 1), (825, 0), (830, 1), (835, 0), (840, 0), (845, 0), (850, 1), (855, 1), (860, 0), (865, 0), (870, 0), (875, 0), (880, 1), (885, 0), (890, 0), (895, 0), (900, 0), (905, 1), (910, 0), (915, 0), (920, 0), (925, 0), (930, 1), (935, 1), (940, 0), (945, 0), (950, 1), (955, 0), (960, 0), (965, 0), (970, 1), (975, 1), (980, 0), (985, 1), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 1), (1025, 1)]
-Va0_1  a0_1  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 1.0v 14.745n 1.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 1.0v 39.745n 1.0v 39.755n 0.0v 44.745n 0.0v 44.755n 1.0v 49.745n 1.0v 49.755n 0.0v 54.745n 0.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 0.0v 74.745n 0.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 1.0v 124.745n 1.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 0.0v 204.745n 0.0v 204.755n 1.0v 209.745n 1.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 1.0v 249.745n 1.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 0.0v 299.745n 0.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 0.0v 324.745n 0.0v 324.755n 0.0v 329.745n 0.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 0.0v 369.745n 0.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 0.0v 384.745n 0.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 0.0v 409.745n 0.0v 409.755n 1.0v 414.745n 1.0v 414.755n 0.0v 419.745n 0.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 1.0v 439.745n 1.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 1.0v 474.745n 1.0v 474.755n 0.0v 479.745n 0.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 0.0v 499.745n 0.0v 499.755n 1.0v 504.745n 1.0v 504.755n 0.0v 509.745n 0.0v 509.755n 1.0v 514.745n 1.0v 514.755n 0.0v 519.745n 0.0v 519.755n 1.0v 524.745n 1.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 0.0v 669.745n 0.0v 669.755n 1.0v 674.745n 1.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 0.0v 689.745n 0.0v 689.755n 1.0v 694.745n 1.0v 694.755n 0.0v 699.745n 0.0v 699.755n 0.0v 704.745n 0.0v 704.755n 0.0v 709.745n 0.0v 709.755n 0.0v 714.745n 0.0v 714.755n 1.0v 719.745n 1.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 0.0v 749.745n 0.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 1.0v 774.745n 1.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 1.0v 824.745n 1.0v 824.755n 0.0v 829.745n 0.0v 829.755n 1.0v 834.745n 1.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 0.0v 849.745n 0.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 1.0v 909.745n 1.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 1.0v 954.745n 1.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 0.0v 984.745n 0.0v 984.755n 1.0v 989.745n 1.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
-* (time, data): [(0, 0), (5, 0), (10, 1), (15, 0), (20, 0), (25, 1), (30, 1), (35, 1), (40, 0), (45, 1), (50, 0), (55, 1), (60, 1), (65, 1), (70, 0), (75, 1), (80, 1), (85, 0), (90, 0), (95, 0), (100, 0), (105, 0), (110, 0), (115, 0), (120, 1), (125, 0), (130, 0), (135, 1), (140, 1), (145, 0), (150, 1), (155, 1), (160, 1), (165, 1), (170, 0), (175, 0), (180, 0), (185, 1), (190, 1), (195, 1), (200, 0), (205, 1), (210, 0), (215, 0), (220, 0), (225, 1), (230, 1), (235, 1), (240, 0), (245, 1), (250, 1), (255, 0), (260, 1), (265, 1), (270, 1), (275, 1), (280, 1), (285, 1), (290, 1), (295, 1), (300, 1), (305, 1), (310, 1), (315, 1), (320, 1), (325, 0), (330, 1), (335, 1), (340, 1), (345, 1), (350, 0), (355, 0), (360, 0), (365, 1), (370, 0), (375, 0), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 0), (410, 1), (415, 1), (420, 0), (425, 0), (430, 1), (435, 1), (440, 1), (445, 1), (450, 1), (455, 1), (460, 0), (465, 0), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 0), (500, 1), (505, 0), (510, 1), (515, 0), (520, 1), (525, 1), (530, 1), (535, 1), (540, 0), (545, 1), (550, 1), (555, 0), (560, 0), (565, 1), (570, 1), (575, 1), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 1), (610, 1), (615, 1), (620, 1), (625, 1), (630, 0), (635, 0), (640, 1), (645, 0), (650, 0), (655, 0), (660, 0), (665, 1), (670, 1), (675, 0), (680, 1), (685, 1), (690, 1), (695, 1), (700, 1), (705, 0), (710, 1), (715, 1), (720, 0), (725, 0), (730, 0), (735, 1), (740, 1), (745, 0), (750, 1), (755, 1), (760, 0), (765, 1), (770, 1), (775, 0), (780, 1), (785, 1), (790, 1), (795, 1), (800, 1), (805, 1), (810, 1), (815, 1), (820, 1), (825, 0), (830, 1), (835, 1), (840, 1), (845, 0), (850, 1), (855, 1), (860, 1), (865, 1), (870, 0), (875, 0), (880, 1), (885, 0), (890, 0), (895, 0), (900, 0), (905, 1), (910, 0), (915, 1), (920, 1), (925, 0), (930, 1), (935, 1), (940, 0), (945, 0), (950, 1), (955, 1), (960, 1), (965, 1), (970, 1), (975, 1), (980, 0), (985, 1), (990, 0), (995, 1), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 1), (1025, 1)]
-Va0_2  a0_2  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 1.0v 14.745n 1.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 1.0v 39.745n 1.0v 39.755n 0.0v 44.745n 0.0v 44.755n 1.0v 49.745n 1.0v 49.755n 0.0v 54.745n 0.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 0.0v 74.745n 0.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 1.0v 124.745n 1.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 0.0v 149.745n 0.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 0.0v 204.745n 0.0v 204.755n 1.0v 209.745n 1.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 1.0v 229.745n 1.0v 229.755n 1.0v 234.745n 1.0v 234.755n 1.0v 239.745n 1.0v 239.755n 0.0v 244.745n 0.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 0.0v 259.745n 0.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 0.0v 329.745n 0.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 1.0v 369.745n 1.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 0.0v 409.745n 0.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 1.0v 434.745n 1.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 0.0v 499.745n 0.0v 499.755n 1.0v 504.745n 1.0v 504.755n 0.0v 509.745n 0.0v 509.755n 1.0v 514.745n 1.0v 514.755n 0.0v 519.745n 0.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 0.0v 544.745n 0.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 1.0v 644.745n 1.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 0.0v 679.745n 0.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 0.0v 709.745n 0.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 0.0v 749.745n 0.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 0.0v 764.745n 0.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 0.0v 779.745n 0.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 0.0v 829.745n 0.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 0.0v 849.745n 0.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 1.0v 909.745n 1.0v 909.755n 0.0v 914.745n 0.0v 914.755n 1.0v 919.745n 1.0v 919.755n 1.0v 924.745n 1.0v 924.755n 0.0v 929.745n 0.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 0.0v 984.745n 0.0v 984.755n 1.0v 989.745n 1.0v 989.755n 0.0v 994.745n 0.0v 994.755n 1.0v 999.745n 1.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
-* (time, data): [(0, 0), (5, 0), (10, 1), (15, 0), (20, 0), (25, 1), (30, 1), (35, 1), (40, 0), (45, 1), (50, 0), (55, 1), (60, 1), (65, 1), (70, 0), (75, 1), (80, 1), (85, 0), (90, 0), (95, 0), (100, 0), (105, 0), (110, 0), (115, 0), (120, 1), (125, 0), (130, 0), (135, 1), (140, 1), (145, 0), (150, 1), (155, 1), (160, 1), (165, 1), (170, 0), (175, 0), (180, 0), (185, 1), (190, 1), (195, 1), (200, 0), (205, 1), (210, 0), (215, 0), (220, 0), (225, 1), (230, 1), (235, 1), (240, 0), (245, 1), (250, 1), (255, 0), (260, 1), (265, 1), (270, 1), (275, 1), (280, 1), (285, 1), (290, 1), (295, 1), (300, 1), (305, 1), (310, 1), (315, 1), (320, 1), (325, 0), (330, 1), (335, 1), (340, 1), (345, 1), (350, 0), (355, 0), (360, 0), (365, 1), (370, 0), (375, 0), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 0), (410, 1), (415, 1), (420, 0), (425, 0), (430, 1), (435, 1), (440, 1), (445, 1), (450, 1), (455, 1), (460, 0), (465, 0), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 0), (500, 1), (505, 0), (510, 1), (515, 0), (520, 1), (525, 1), (530, 1), (535, 1), (540, 0), (545, 1), (550, 1), (555, 0), (560, 0), (565, 1), (570, 1), (575, 1), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 1), (610, 1), (615, 1), (620, 1), (625, 1), (630, 0), (635, 0), (640, 1), (645, 0), (650, 0), (655, 0), (660, 0), (665, 1), (670, 1), (675, 0), (680, 1), (685, 1), (690, 1), (695, 1), (700, 1), (705, 0), (710, 1), (715, 1), (720, 0), (725, 0), (730, 0), (735, 1), (740, 1), (745, 0), (750, 1), (755, 1), (760, 0), (765, 1), (770, 1), (775, 0), (780, 1), (785, 1), (790, 1), (795, 1), (800, 1), (805, 1), (810, 1), (815, 1), (820, 1), (825, 0), (830, 1), (835, 1), (840, 1), (845, 0), (850, 1), (855, 1), (860, 1), (865, 1), (870, 0), (875, 0), (880, 1), (885, 0), (890, 0), (895, 0), (900, 0), (905, 1), (910, 0), (915, 1), (920, 1), (925, 0), (930, 1), (935, 1), (940, 0), (945, 0), (950, 1), (955, 1), (960, 1), (965, 1), (970, 1), (975, 1), (980, 0), (985, 1), (990, 0), (995, 1), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 1), (1025, 1)]
-Va0_3  a0_3  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 1.0v 14.745n 1.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 1.0v 39.745n 1.0v 39.755n 0.0v 44.745n 0.0v 44.755n 1.0v 49.745n 1.0v 49.755n 0.0v 54.745n 0.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 0.0v 74.745n 0.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 1.0v 124.745n 1.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 0.0v 149.745n 0.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 0.0v 204.745n 0.0v 204.755n 1.0v 209.745n 1.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 1.0v 229.745n 1.0v 229.755n 1.0v 234.745n 1.0v 234.755n 1.0v 239.745n 1.0v 239.755n 0.0v 244.745n 0.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 0.0v 259.745n 0.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 0.0v 329.745n 0.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 1.0v 369.745n 1.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 0.0v 409.745n 0.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 1.0v 434.745n 1.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 0.0v 499.745n 0.0v 499.755n 1.0v 504.745n 1.0v 504.755n 0.0v 509.745n 0.0v 509.755n 1.0v 514.745n 1.0v 514.755n 0.0v 519.745n 0.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 0.0v 544.745n 0.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 1.0v 644.745n 1.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 0.0v 679.745n 0.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 0.0v 709.745n 0.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 0.0v 749.745n 0.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 0.0v 764.745n 0.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 0.0v 779.745n 0.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 0.0v 829.745n 0.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 0.0v 849.745n 0.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 1.0v 909.745n 1.0v 909.755n 0.0v 914.745n 0.0v 914.755n 1.0v 919.745n 1.0v 919.755n 1.0v 924.745n 1.0v 924.755n 0.0v 929.745n 0.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 0.0v 984.745n 0.0v 984.755n 1.0v 989.745n 1.0v 989.755n 0.0v 994.745n 0.0v 994.755n 1.0v 999.745n 1.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
-* (time, data): [(0, 0), (5, 0), (10, 1), (15, 0), (20, 0), (25, 1), (30, 1), (35, 1), (40, 0), (45, 1), (50, 0), (55, 1), (60, 1), (65, 1), (70, 0), (75, 1), (80, 1), (85, 0), (90, 0), (95, 0), (100, 0), (105, 0), (110, 0), (115, 0), (120, 1), (125, 0), (130, 0), (135, 1), (140, 1), (145, 0), (150, 1), (155, 1), (160, 1), (165, 1), (170, 0), (175, 0), (180, 0), (185, 1), (190, 1), (195, 1), (200, 0), (205, 1), (210, 0), (215, 0), (220, 0), (225, 1), (230, 1), (235, 1), (240, 0), (245, 1), (250, 1), (255, 0), (260, 1), (265, 1), (270, 1), (275, 1), (280, 1), (285, 1), (290, 1), (295, 1), (300, 1), (305, 1), (310, 1), (315, 1), (320, 1), (325, 0), (330, 1), (335, 1), (340, 1), (345, 1), (350, 0), (355, 0), (360, 0), (365, 1), (370, 0), (375, 0), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 0), (410, 1), (415, 1), (420, 0), (425, 0), (430, 1), (435, 1), (440, 1), (445, 1), (450, 1), (455, 1), (460, 0), (465, 0), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 0), (500, 1), (505, 0), (510, 1), (515, 0), (520, 1), (525, 1), (530, 1), (535, 1), (540, 0), (545, 1), (550, 1), (555, 0), (560, 0), (565, 1), (570, 1), (575, 1), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 1), (610, 1), (615, 1), (620, 1), (625, 1), (630, 0), (635, 0), (640, 1), (645, 0), (650, 0), (655, 0), (660, 0), (665, 1), (670, 1), (675, 0), (680, 1), (685, 1), (690, 1), (695, 1), (700, 1), (705, 0), (710, 1), (715, 1), (720, 0), (725, 0), (730, 0), (735, 1), (740, 1), (745, 0), (750, 1), (755, 1), (760, 0), (765, 1), (770, 1), (775, 0), (780, 1), (785, 1), (790, 1), (795, 1), (800, 1), (805, 1), (810, 1), (815, 1), (820, 1), (825, 0), (830, 1), (835, 1), (840, 1), (845, 0), (850, 1), (855, 1), (860, 1), (865, 1), (870, 0), (875, 0), (880, 1), (885, 0), (890, 0), (895, 0), (900, 0), (905, 1), (910, 0), (915, 1), (920, 1), (925, 0), (930, 1), (935, 1), (940, 0), (945, 0), (950, 1), (955, 1), (960, 1), (965, 1), (970, 1), (975, 1), (980, 0), (985, 1), (990, 0), (995, 1), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 1), (1025, 1)]
-Va0_4  a0_4  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 1.0v 14.745n 1.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 1.0v 39.745n 1.0v 39.755n 0.0v 44.745n 0.0v 44.755n 1.0v 49.745n 1.0v 49.755n 0.0v 54.745n 0.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 0.0v 74.745n 0.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 1.0v 124.745n 1.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 0.0v 149.745n 0.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 0.0v 204.745n 0.0v 204.755n 1.0v 209.745n 1.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 1.0v 229.745n 1.0v 229.755n 1.0v 234.745n 1.0v 234.755n 1.0v 239.745n 1.0v 239.755n 0.0v 244.745n 0.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 0.0v 259.745n 0.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 0.0v 329.745n 0.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 1.0v 369.745n 1.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 0.0v 409.745n 0.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 1.0v 434.745n 1.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 0.0v 499.745n 0.0v 499.755n 1.0v 504.745n 1.0v 504.755n 0.0v 509.745n 0.0v 509.755n 1.0v 514.745n 1.0v 514.755n 0.0v 519.745n 0.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 0.0v 544.745n 0.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 1.0v 644.745n 1.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 0.0v 679.745n 0.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 0.0v 709.745n 0.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 0.0v 749.745n 0.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 0.0v 764.745n 0.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 0.0v 779.745n 0.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 0.0v 829.745n 0.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 0.0v 849.745n 0.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 1.0v 909.745n 1.0v 909.755n 0.0v 914.745n 0.0v 914.755n 1.0v 919.745n 1.0v 919.755n 1.0v 924.745n 1.0v 924.755n 0.0v 929.745n 0.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 0.0v 984.745n 0.0v 984.755n 1.0v 989.745n 1.0v 989.755n 0.0v 994.745n 0.0v 994.755n 1.0v 999.745n 1.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
+* (time, data): [(0, 0), (5, 1), (10, 1), (15, 1), (20, 1), (25, 1), (30, 1), (35, 1), (40, 1), (45, 1), (50, 1), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 1), (100, 0), (105, 0), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 0), (170, 0), (175, 0), (180, 0), (185, 0), (190, 0), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 1), (230, 0), (235, 1), (240, 1), (245, 1), (250, 1), (255, 1), (260, 1), (265, 1), (270, 1), (275, 0), (280, 0), (285, 0), (290, 0), (295, 0), (300, 0), (305, 0), (310, 0), (315, 0), (320, 1), (325, 1), (330, 1), (335, 0), (340, 0), (345, 0), (350, 0), (355, 0), (360, 0), (365, 0), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 0), (505, 1), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 0), (555, 0), (560, 0), (565, 0), (570, 0), (575, 0), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 0), (610, 0), (615, 1), (620, 1), (625, 1), (630, 1), (635, 1), (640, 1), (645, 1), (650, 1), (655, 1), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 1), (705, 0), (710, 1), (715, 1), (720, 1), (725, 0), (730, 0), (735, 0), (740, 0), (745, 0), (750, 1), (755, 1), (760, 1), (765, 1), (770, 1), (775, 1), (780, 1), (785, 1), (790, 1), (795, 1), (800, 1), (805, 1), (810, 1), (815, 1), (820, 1), (825, 1), (830, 1), (835, 1), (840, 1), (845, 1), (850, 1), (855, 1), (860, 0), (865, 0), (870, 0), (875, 0), (880, 0), (885, 0), (890, 1), (895, 1), (900, 1), (905, 1), (910, 1), (915, 1), (920, 0), (925, 0), (930, 0), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 1), (965, 1), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 0), (1025, 0)]
+Vdin0_0  din0_0  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 1.0v 9.745n 1.0v 9.755n 1.0v 14.745n 1.0v 14.755n 1.0v 19.745n 1.0v 19.755n 1.0v 24.745n 1.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 1.0v 39.745n 1.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 1.0v 229.745n 1.0v 229.755n 0.0v 234.745n 0.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 0.0v 299.745n 0.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 0.0v 369.745n 0.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 1.0v 509.745n 1.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 0.0v 579.745n 0.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 1.0v 644.745n 1.0v 644.755n 1.0v 649.745n 1.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 0.0v 709.745n 0.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 0.0v 889.745n 0.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
+* (time, data): [(0, 0), (5, 0), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 0), (45, 0), (50, 0), (55, 0), (60, 0), (65, 0), (70, 0), (75, 0), (80, 0), (85, 0), (90, 0), (95, 0), (100, 1), (105, 1), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 1), (170, 0), (175, 0), (180, 0), (185, 0), (190, 0), (195, 1), (200, 1), (205, 1), (210, 1), (215, 1), (220, 1), (225, 1), (230, 1), (235, 1), (240, 1), (245, 1), (250, 1), (255, 1), (260, 1), (265, 1), (270, 1), (275, 1), (280, 1), (285, 1), (290, 1), (295, 1), (300, 1), (305, 1), (310, 1), (315, 1), (320, 0), (325, 0), (330, 0), (335, 0), (340, 0), (345, 0), (350, 1), (355, 1), (360, 1), (365, 1), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 0), (505, 1), (510, 0), (515, 0), (520, 0), (525, 1), (530, 1), (535, 1), (540, 1), (545, 1), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 1), (620, 1), (625, 1), (630, 1), (635, 1), (640, 1), (645, 1), (650, 1), (655, 1), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 1), (705, 1), (710, 1), (715, 1), (720, 1), (725, 0), (730, 0), (735, 0), (740, 0), (745, 0), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 0), (790, 0), (795, 0), (800, 0), (805, 1), (810, 1), (815, 1), (820, 1), (825, 1), (830, 1), (835, 1), (840, 1), (845, 1), (850, 1), (855, 1), (860, 0), (865, 0), (870, 0), (875, 0), (880, 0), (885, 1), (890, 0), (895, 0), (900, 0), (905, 0), (910, 0), (915, 0), (920, 1), (925, 1), (930, 1), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 0), (965, 0), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 1), (1025, 1)]
+Vdin0_1  din0_1  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 0.0v 44.745n 0.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 1.0v 209.745n 1.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 1.0v 229.745n 1.0v 229.755n 1.0v 234.745n 1.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 0.0v 324.745n 0.0v 324.755n 0.0v 329.745n 0.0v 329.755n 0.0v 334.745n 0.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 1.0v 509.745n 1.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 1.0v 644.745n 1.0v 644.755n 1.0v 649.745n 1.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 1.0v 889.745n 1.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
+* (time, data): [(0, 0), (5, 0), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 0), (45, 0), (50, 0), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 1), (100, 0), (105, 0), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 1), (170, 1), (175, 1), (180, 1), (185, 1), (190, 1), (195, 1), (200, 1), (205, 1), (210, 1), (215, 1), (220, 1), (225, 1), (230, 1), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 1), (280, 1), (285, 1), (290, 1), (295, 1), (300, 0), (305, 1), (310, 1), (315, 1), (320, 1), (325, 0), (330, 0), (335, 1), (340, 0), (345, 0), (350, 1), (355, 1), (360, 1), (365, 1), (370, 0), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 0), (500, 0), (505, 0), (510, 1), (515, 1), (520, 1), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 0), (615, 1), (620, 1), (625, 1), (630, 1), (635, 1), (640, 1), (645, 1), (650, 1), (655, 1), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 0), (695, 0), (700, 0), (705, 1), (710, 1), (715, 1), (720, 1), (725, 0), (730, 0), (735, 0), (740, 0), (745, 0), (750, 1), (755, 1), (760, 1), (765, 1), (770, 1), (775, 1), (780, 1), (785, 0), (790, 0), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 0), (825, 0), (830, 0), (835, 0), (840, 0), (845, 0), (850, 0), (855, 0), (860, 0), (865, 0), (870, 0), (875, 0), (880, 0), (885, 1), (890, 0), (895, 0), (900, 0), (905, 0), (910, 0), (915, 0), (920, 0), (925, 0), (930, 0), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 0), (965, 0), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 1), (1025, 1)]
+Vdin0_2  din0_2  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 0.0v 44.745n 0.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 1.0v 209.745n 1.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 1.0v 229.745n 1.0v 229.755n 1.0v 234.745n 1.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 0.0v 304.745n 0.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 0.0v 329.745n 0.0v 329.755n 0.0v 334.745n 0.0v 334.755n 1.0v 339.745n 1.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 0.0v 374.745n 0.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 0.0v 614.745n 0.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 1.0v 644.745n 1.0v 644.755n 1.0v 649.745n 1.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 0.0v 704.745n 0.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 1.0v 784.745n 1.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 0.0v 849.745n 0.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 1.0v 889.745n 1.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
+* (time, data): [(0, 0), (5, 1), (10, 1), (15, 1), (20, 1), (25, 1), (30, 1), (35, 1), (40, 1), (45, 1), (50, 1), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 1), (100, 1), (105, 1), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 0), (170, 1), (175, 1), (180, 1), (185, 1), (190, 1), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 1), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 1), (280, 1), (285, 1), (290, 1), (295, 0), (300, 0), (305, 0), (310, 0), (315, 0), (320, 1), (325, 1), (330, 1), (335, 1), (340, 1), (345, 1), (350, 1), (355, 1), (360, 1), (365, 1), (370, 0), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 1), (440, 1), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 0), (505, 1), (510, 0), (515, 0), (520, 0), (525, 1), (530, 1), (535, 1), (540, 1), (545, 1), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 1), (620, 1), (625, 1), (630, 1), (635, 1), (640, 0), (645, 0), (650, 0), (655, 0), (660, 0), (665, 0), (670, 0), (675, 0), (680, 0), (685, 0), (690, 1), (695, 1), (700, 1), (705, 0), (710, 0), (715, 0), (720, 0), (725, 1), (730, 0), (735, 0), (740, 0), (745, 0), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 1), (790, 1), (795, 1), (800, 1), (805, 0), (810, 0), (815, 0), (820, 0), (825, 0), (830, 0), (835, 0), (840, 0), (845, 0), (850, 0), (855, 0), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 1), (890, 1), (895, 1), (900, 1), (905, 1), (910, 1), (915, 1), (920, 1), (925, 1), (930, 1), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 0), (965, 0), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 0), (1025, 0)]
+Vdin0_3  din0_3  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 1.0v 9.745n 1.0v 9.755n 1.0v 14.745n 1.0v 14.755n 1.0v 19.745n 1.0v 19.755n 1.0v 24.745n 1.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 1.0v 39.745n 1.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 0.0v 169.745n 0.0v 169.755n 1.0v 174.745n 1.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 1.0v 234.745n 1.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 0.0v 299.745n 0.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 0.0v 374.745n 0.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 1.0v 509.745n 1.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 0.0v 689.745n 0.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 0.0v 709.745n 0.0v 709.755n 0.0v 714.745n 0.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 1.0v 729.745n 1.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 0.0v 849.745n 0.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 1.0v 889.745n 1.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
+* (time, data): [(0, 0), (5, 0), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 0), (45, 0), (50, 0), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 1), (100, 0), (105, 0), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 0), (170, 0), (175, 0), (180, 0), (185, 0), (190, 0), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 1), (230, 0), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 0), (280, 0), (285, 0), (290, 0), (295, 0), (300, 1), (305, 1), (310, 1), (315, 1), (320, 1), (325, 1), (330, 1), (335, 1), (340, 0), (345, 0), (350, 0), (355, 0), (360, 0), (365, 0), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 1), (500, 1), (505, 1), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 0), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 1), (645, 1), (650, 1), (655, 1), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 1), (705, 1), (710, 1), (715, 1), (720, 1), (725, 1), (730, 0), (735, 0), (740, 0), (745, 0), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 1), (790, 1), (795, 1), (800, 1), (805, 0), (810, 0), (815, 0), (820, 0), (825, 0), (830, 0), (835, 0), (840, 0), (845, 0), (850, 0), (855, 0), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 0), (890, 1), (895, 1), (900, 1), (905, 1), (910, 1), (915, 1), (920, 1), (925, 1), (930, 1), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 1), (965, 1), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 1), (1025, 1)]
+Vdin0_4  din0_4  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 0.0v 44.745n 0.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 1.0v 229.745n 1.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 0.0v 299.745n 0.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 0.0v 369.745n 0.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 1.0v 504.745n 1.0v 504.755n 1.0v 509.745n 1.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 0.0v 614.745n 0.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 1.0v 644.745n 1.0v 644.755n 1.0v 649.745n 1.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 1.0v 729.745n 1.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 0.0v 849.745n 0.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
+* (time, data): [(0, 0), (5, 1), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 0), (45, 0), (50, 0), (55, 0), (60, 0), (65, 0), (70, 0), (75, 0), (80, 0), (85, 0), (90, 0), (95, 0), (100, 1), (105, 1), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 1), (170, 1), (175, 1), (180, 1), (185, 1), (190, 1), (195, 1), (200, 1), (205, 1), (210, 1), (215, 1), (220, 1), (225, 1), (230, 0), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 1), (280, 1), (285, 1), (290, 1), (295, 1), (300, 1), (305, 0), (310, 0), (315, 0), (320, 1), (325, 1), (330, 1), (335, 1), (340, 1), (345, 1), (350, 0), (355, 0), (360, 0), (365, 0), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 0), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 0), (505, 1), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 0), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 1), (645, 1), (650, 1), (655, 1), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 1), (705, 1), (710, 1), (715, 1), (720, 1), (725, 0), (730, 0), (735, 0), (740, 0), (745, 0), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 0), (790, 0), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 0), (825, 0), (830, 0), (835, 0), (840, 0), (845, 0), (850, 0), (855, 0), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 0), (890, 1), (895, 1), (900, 1), (905, 1), (910, 1), (915, 1), (920, 1), (925, 1), (930, 1), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 1), (965, 1), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 1), (1025, 1)]
+Vdin0_5  din0_5  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 1.0v 9.745n 1.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 0.0v 44.745n 0.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 1.0v 209.745n 1.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 1.0v 229.745n 1.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 0.0v 369.745n 0.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 0.0v 419.745n 0.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 1.0v 509.745n 1.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 0.0v 614.745n 0.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 1.0v 644.745n 1.0v 644.755n 1.0v 649.745n 1.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 0.0v 849.745n 0.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
+* (time, data): [(0, 0), (5, 0), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 0), (45, 0), (50, 0), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 1), (100, 0), (105, 0), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 1), (170, 0), (175, 0), (180, 0), (185, 0), (190, 0), (195, 1), (200, 1), (205, 1), (210, 1), (215, 1), (220, 1), (225, 0), (230, 1), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 1), (280, 1), (285, 1), (290, 1), (295, 0), (300, 1), (305, 0), (310, 0), (315, 0), (320, 1), (325, 0), (330, 0), (335, 1), (340, 0), (345, 0), (350, 0), (355, 0), (360, 0), (365, 0), (370, 0), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 1), (440, 1), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 1), (500, 1), (505, 0), (510, 0), (515, 0), (520, 0), (525, 1), (530, 1), (535, 1), (540, 1), (545, 1), (550, 0), (555, 0), (560, 0), (565, 0), (570, 0), (575, 0), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 0), (610, 0), (615, 1), (620, 1), (625, 1), (630, 1), (635, 1), (640, 0), (645, 0), (650, 0), (655, 0), (660, 0), (665, 0), (670, 0), (675, 0), (680, 0), (685, 0), (690, 1), (695, 1), (700, 1), (705, 1), (710, 0), (715, 0), (720, 0), (725, 1), (730, 0), (735, 0), (740, 0), (745, 0), (750, 1), (755, 1), (760, 1), (765, 1), (770, 1), (775, 1), (780, 1), (785, 1), (790, 1), (795, 1), (800, 1), (805, 1), (810, 1), (815, 1), (820, 1), (825, 0), (830, 0), (835, 0), (840, 0), (845, 0), (850, 0), (855, 0), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 1), (890, 1), (895, 1), (900, 1), (905, 1), (910, 1), (915, 1), (920, 0), (925, 0), (930, 0), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 0), (965, 0), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 0), (1025, 0)]
+Vdin0_6  din0_6  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 0.0v 44.745n 0.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 1.0v 169.745n 1.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 1.0v 209.745n 1.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 0.0v 229.745n 0.0v 229.755n 1.0v 234.745n 1.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 0.0v 299.745n 0.0v 299.755n 1.0v 304.745n 1.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 1.0v 324.745n 1.0v 324.755n 0.0v 329.745n 0.0v 329.755n 0.0v 334.745n 0.0v 334.755n 1.0v 339.745n 1.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 0.0v 369.745n 0.0v 369.755n 0.0v 374.745n 0.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 1.0v 499.745n 1.0v 499.755n 1.0v 504.745n 1.0v 504.755n 0.0v 509.745n 0.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 0.0v 579.745n 0.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 0.0v 689.745n 0.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 0.0v 714.745n 0.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 1.0v 729.745n 1.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 0.0v 849.745n 0.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 1.0v 889.745n 1.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
+* (time, data): [(0, 0), (5, 0), (10, 1), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 1), (50, 1), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 1), (100, 1), (105, 1), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 1), (170, 0), (175, 0), (180, 0), (185, 0), (190, 0), (195, 1), (200, 1), (205, 1), (210, 1), (215, 1), (220, 1), (225, 1), (230, 0), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 0), (280, 0), (285, 0), (290, 0), (295, 1), (300, 0), (305, 0), (310, 0), (315, 0), (320, 1), (325, 0), (330, 0), (335, 1), (340, 0), (345, 0), (350, 0), (355, 0), (360, 0), (365, 0), (370, 0), (375, 0), (380, 0), (385, 0), (390, 0), (395, 0), (400, 0), (405, 0), (410, 0), (415, 1), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 1), (500, 1), (505, 0), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 0), (615, 1), (620, 1), (625, 1), (630, 1), (635, 1), (640, 1), (645, 1), (650, 1), (655, 1), (660, 1), (665, 0), (670, 0), (675, 0), (680, 0), (685, 1), (690, 1), (695, 1), (700, 1), (705, 1), (710, 1), (715, 1), (720, 1), (725, 1), (730, 0), (735, 0), (740, 0), (745, 0), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 0), (790, 0), (795, 0), (800, 0), (805, 1), (810, 1), (815, 1), (820, 1), (825, 1), (830, 1), (835, 1), (840, 1), (845, 1), (850, 1), (855, 1), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 0), (890, 0), (895, 0), (900, 0), (905, 0), (910, 0), (915, 0), (920, 1), (925, 1), (930, 1), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 1), (965, 1), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 1), (1025, 1)]
+Vdin0_7  din0_7  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 1.0v 14.745n 1.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 1.0v 209.745n 1.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 1.0v 229.745n 1.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 1.0v 299.745n 1.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 1.0v 324.745n 1.0v 324.755n 0.0v 329.745n 0.0v 329.755n 0.0v 334.745n 0.0v 334.755n 1.0v 339.745n 1.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 0.0v 369.745n 0.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 0.0v 384.745n 0.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 0.0v 399.745n 0.0v 399.755n 0.0v 404.745n 0.0v 404.755n 0.0v 409.745n 0.0v 409.755n 0.0v 414.745n 0.0v 414.755n 1.0v 419.745n 1.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 1.0v 504.745n 1.0v 504.755n 0.0v 509.745n 0.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 0.0v 614.745n 0.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 1.0v 644.745n 1.0v 644.755n 1.0v 649.745n 1.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 1.0v 664.745n 1.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 1.0v 729.745n 1.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
+* (time, data): [(0, 0), (5, 1), (10, 1), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 0), (45, 0), (50, 0), (55, 0), (60, 0), (65, 0), (70, 0), (75, 0), (80, 0), (85, 0), (90, 0), (95, 0), (100, 0), (105, 0), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 0), (170, 0), (175, 0), (180, 0), (185, 0), (190, 0), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 1), (235, 1), (240, 1), (245, 1), (250, 1), (255, 1), (260, 1), (265, 1), (270, 1), (275, 0), (280, 0), (285, 0), (290, 0), (295, 1), (300, 1), (305, 1), (310, 1), (315, 1), (320, 1), (325, 1), (330, 1), (335, 1), (340, 1), (345, 1), (350, 0), (355, 0), (360, 0), (365, 0), (370, 0), (375, 0), (380, 0), (385, 0), (390, 0), (395, 0), (400, 0), (405, 0), (410, 0), (415, 0), (420, 1), (425, 1), (430, 1), (435, 1), (440, 1), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 1), (500, 1), (505, 1), (510, 1), (515, 1), (520, 1), (525, 1), (530, 1), (535, 1), (540, 1), (545, 1), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 0), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 1), (645, 1), (650, 1), (655, 1), (660, 1), (665, 0), (670, 0), (675, 0), (680, 0), (685, 0), (690, 1), (695, 1), (700, 1), (705, 1), (710, 1), (715, 1), (720, 1), (725, 1), (730, 0), (735, 0), (740, 0), (745, 0), (750, 1), (755, 1), (760, 1), (765, 1), (770, 1), (775, 1), (780, 1), (785, 1), (790, 1), (795, 1), (800, 1), (805, 1), (810, 1), (815, 1), (820, 1), (825, 0), (830, 0), (835, 0), (840, 0), (845, 0), (850, 0), (855, 0), (860, 0), (865, 0), (870, 0), (875, 0), (880, 0), (885, 0), (890, 0), (895, 0), (900, 0), (905, 0), (910, 0), (915, 0), (920, 0), (925, 0), (930, 0), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 1), (965, 1), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 0), (1025, 0)]
+Vdin0_8  din0_8  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 1.0v 9.745n 1.0v 9.755n 1.0v 14.745n 1.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 0.0v 44.745n 0.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 1.0v 234.745n 1.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 0.0v 369.745n 0.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 0.0v 384.745n 0.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 0.0v 399.745n 0.0v 399.755n 0.0v 404.745n 0.0v 404.755n 0.0v 409.745n 0.0v 409.755n 0.0v 414.745n 0.0v 414.755n 0.0v 419.745n 0.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 1.0v 499.745n 1.0v 499.755n 1.0v 504.745n 1.0v 504.755n 1.0v 509.745n 1.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 0.0v 614.745n 0.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 1.0v 644.745n 1.0v 644.755n 1.0v 649.745n 1.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 1.0v 664.745n 1.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 0.0v 689.745n 0.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 1.0v 729.745n 1.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 0.0v 849.745n 0.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
+* (time, data): [(0, 0), (5, 0), (10, 1), (15, 1), (20, 1), (25, 1), (30, 1), (35, 1), (40, 0), (45, 0), (50, 0), (55, 0), (60, 0), (65, 0), (70, 0), (75, 0), (80, 0), (85, 0), (90, 0), (95, 0), (100, 1), (105, 1), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 1), (170, 1), (175, 1), (180, 1), (185, 1), (190, 1), (195, 1), (200, 1), (205, 1), (210, 1), (215, 1), (220, 1), (225, 1), (230, 0), (235, 1), (240, 1), (245, 1), (250, 1), (255, 1), (260, 1), (265, 1), (270, 1), (275, 0), (280, 0), (285, 0), (290, 0), (295, 1), (300, 1), (305, 1), (310, 1), (315, 1), (320, 0), (325, 1), (330, 1), (335, 0), (340, 1), (345, 1), (350, 1), (355, 1), (360, 1), (365, 1), (370, 0), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 0), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 1), (500, 1), (505, 1), (510, 1), (515, 1), (520, 1), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 0), (645, 0), (650, 0), (655, 0), (660, 0), (665, 1), (670, 1), (675, 1), (680, 1), (685, 0), (690, 1), (695, 1), (700, 1), (705, 0), (710, 0), (715, 0), (720, 0), (725, 0), (730, 0), (735, 0), (740, 0), (745, 0), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 0), (790, 0), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 0), (825, 0), (830, 0), (835, 0), (840, 0), (845, 0), (850, 0), (855, 0), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 1), (890, 0), (895, 0), (900, 0), (905, 0), (910, 0), (915, 0), (920, 1), (925, 1), (930, 1), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 0), (965, 0), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 1), (1025, 1)]
+Vdin0_9  din0_9  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 1.0v 14.745n 1.0v 14.755n 1.0v 19.745n 1.0v 19.755n 1.0v 24.745n 1.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 1.0v 39.745n 1.0v 39.755n 0.0v 44.745n 0.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 1.0v 209.745n 1.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 1.0v 229.745n 1.0v 229.755n 0.0v 234.745n 0.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 0.0v 324.745n 0.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 0.0v 339.745n 0.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 0.0v 374.745n 0.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 0.0v 419.745n 0.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 1.0v 504.745n 1.0v 504.755n 1.0v 509.745n 1.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 0.0v 689.745n 0.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 0.0v 709.745n 0.0v 709.755n 0.0v 714.745n 0.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 0.0v 849.745n 0.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 1.0v 889.745n 1.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
+* (time, data): [(0, 0), (5, 0), (10, 1), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 1), (50, 1), (55, 0), (60, 0), (65, 0), (70, 0), (75, 0), (80, 0), (85, 0), (90, 0), (95, 0), (100, 0), (105, 0), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 0), (170, 0), (175, 0), (180, 0), (185, 0), (190, 0), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 1), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 1), (280, 1), (285, 1), (290, 1), (295, 1), (300, 1), (305, 0), (310, 0), (315, 0), (320, 0), (325, 1), (330, 1), (335, 1), (340, 1), (345, 1), (350, 0), (355, 0), (360, 0), (365, 0), (370, 0), (375, 0), (380, 0), (385, 0), (390, 0), (395, 0), (400, 0), (405, 0), (410, 0), (415, 1), (420, 1), (425, 1), (430, 1), (435, 1), (440, 1), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 0), (500, 0), (505, 0), (510, 1), (515, 1), (520, 1), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 0), (645, 0), (650, 0), (655, 0), (660, 0), (665, 0), (670, 0), (675, 0), (680, 0), (685, 0), (690, 0), (695, 0), (700, 0), (705, 1), (710, 1), (715, 1), (720, 1), (725, 0), (730, 0), (735, 0), (740, 0), (745, 0), (750, 1), (755, 1), (760, 1), (765, 1), (770, 1), (775, 1), (780, 1), (785, 1), (790, 1), (795, 1), (800, 1), (805, 0), (810, 0), (815, 0), (820, 0), (825, 0), (830, 0), (835, 0), (840, 0), (845, 0), (850, 0), (855, 0), (860, 0), (865, 0), (870, 0), (875, 0), (880, 0), (885, 1), (890, 0), (895, 0), (900, 0), (905, 0), (910, 0), (915, 0), (920, 1), (925, 1), (930, 1), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 1), (965, 1), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 0), (1025, 0)]
+Vdin0_10  din0_10  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 1.0v 14.745n 1.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 1.0v 234.745n 1.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 0.0v 324.745n 0.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 0.0v 369.745n 0.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 0.0v 384.745n 0.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 0.0v 399.745n 0.0v 399.755n 0.0v 404.745n 0.0v 404.755n 0.0v 409.745n 0.0v 409.755n 0.0v 414.745n 0.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 0.0v 689.745n 0.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 0.0v 704.745n 0.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 0.0v 849.745n 0.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 1.0v 889.745n 1.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
+* (time, data): [(0, 0), (5, 0), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 1), (50, 1), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 1), (100, 1), (105, 1), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 1), (170, 1), (175, 1), (180, 1), (185, 1), (190, 1), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 1), (230, 1), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 1), (280, 1), (285, 1), (290, 1), (295, 1), (300, 1), (305, 0), (310, 0), (315, 0), (320, 1), (325, 1), (330, 1), (335, 0), (340, 0), (345, 0), (350, 0), (355, 0), (360, 0), (365, 0), (370, 0), (375, 0), (380, 0), (385, 0), (390, 0), (395, 0), (400, 0), (405, 0), (410, 0), (415, 1), (420, 1), (425, 1), (430, 1), (435, 1), (440, 1), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 1), (500, 1), (505, 1), (510, 1), (515, 1), (520, 1), (525, 1), (530, 1), (535, 1), (540, 1), (545, 1), (550, 0), (555, 0), (560, 0), (565, 0), (570, 0), (575, 0), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 0), (610, 0), (615, 1), (620, 1), (625, 1), (630, 1), (635, 1), (640, 1), (645, 1), (650, 1), (655, 1), (660, 1), (665, 0), (670, 0), (675, 0), (680, 0), (685, 0), (690, 0), (695, 0), (700, 0), (705, 0), (710, 0), (715, 0), (720, 0), (725, 0), (730, 1), (735, 1), (740, 1), (745, 1), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 1), (790, 1), (795, 1), (800, 1), (805, 0), (810, 0), (815, 0), (820, 0), (825, 0), (830, 0), (835, 0), (840, 0), (845, 0), (850, 0), (855, 0), (860, 0), (865, 0), (870, 0), (875, 0), (880, 0), (885, 0), (890, 1), (895, 1), (900, 1), (905, 1), (910, 1), (915, 1), (920, 0), (925, 0), (930, 0), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 0), (965, 0), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 0), (1025, 0)]
+Vdin0_11  din0_11  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 1.0v 229.745n 1.0v 229.755n 1.0v 234.745n 1.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 0.0v 369.745n 0.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 0.0v 384.745n 0.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 0.0v 399.745n 0.0v 399.755n 0.0v 404.745n 0.0v 404.755n 0.0v 409.745n 0.0v 409.755n 0.0v 414.745n 0.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 1.0v 504.745n 1.0v 504.755n 1.0v 509.745n 1.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 0.0v 579.745n 0.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 1.0v 644.745n 1.0v 644.755n 1.0v 649.745n 1.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 1.0v 664.745n 1.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 0.0v 689.745n 0.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 0.0v 704.745n 0.0v 704.755n 0.0v 709.745n 0.0v 709.755n 0.0v 714.745n 0.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 1.0v 734.745n 1.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 1.0v 749.745n 1.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 0.0v 849.745n 0.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 0.0v 889.745n 0.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
+* (time, data): [(0, 0), (5, 1), (10, 1), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 0), (45, 0), (50, 0), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 1), (100, 0), (105, 0), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 1), (170, 1), (175, 1), (180, 1), (185, 1), (190, 1), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 1), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 0), (280, 0), (285, 0), (290, 0), (295, 1), (300, 0), (305, 0), (310, 0), (315, 0), (320, 0), (325, 1), (330, 1), (335, 1), (340, 1), (345, 1), (350, 1), (355, 1), (360, 1), (365, 1), (370, 1), (375, 0), (380, 0), (385, 0), (390, 0), (395, 0), (400, 0), (405, 0), (410, 0), (415, 1), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 1), (500, 1), (505, 1), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 0), (555, 0), (560, 0), (565, 0), (570, 0), (575, 0), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 0), (610, 1), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 0), (645, 0), (650, 0), (655, 0), (660, 0), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 1), (705, 0), (710, 1), (715, 1), (720, 1), (725, 0), (730, 1), (735, 1), (740, 1), (745, 1), (750, 1), (755, 1), (760, 1), (765, 1), (770, 1), (775, 1), (780, 1), (785, 1), (790, 1), (795, 1), (800, 1), (805, 0), (810, 0), (815, 0), (820, 0), (825, 1), (830, 1), (835, 1), (840, 1), (845, 1), (850, 1), (855, 1), (860, 0), (865, 0), (870, 0), (875, 0), (880, 0), (885, 0), (890, 0), (895, 0), (900, 0), (905, 0), (910, 0), (915, 0), (920, 1), (925, 1), (930, 1), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 0), (965, 0), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 1), (1025, 1)]
+Vdin0_12  din0_12  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 1.0v 9.745n 1.0v 9.755n 1.0v 14.745n 1.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 0.0v 44.745n 0.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 1.0v 234.745n 1.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 1.0v 299.745n 1.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 0.0v 324.745n 0.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 0.0v 379.745n 0.0v 379.755n 0.0v 384.745n 0.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 0.0v 399.745n 0.0v 399.755n 0.0v 404.745n 0.0v 404.755n 0.0v 409.745n 0.0v 409.755n 0.0v 414.745n 0.0v 414.755n 1.0v 419.745n 1.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 1.0v 504.745n 1.0v 504.755n 1.0v 509.745n 1.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 0.0v 579.745n 0.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 1.0v 614.745n 1.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 0.0v 709.745n 0.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 0.0v 729.745n 0.0v 729.755n 1.0v 734.745n 1.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 1.0v 749.745n 1.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 1.0v 784.745n 1.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
+* (time, data): [(0, 0), (5, 0), (10, 1), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 1), (50, 1), (55, 0), (60, 0), (65, 0), (70, 0), (75, 0), (80, 0), (85, 0), (90, 0), (95, 0), (100, 0), (105, 0), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 0), (170, 0), (175, 0), (180, 0), (185, 0), (190, 0), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 1), (230, 0), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 1), (280, 1), (285, 1), (290, 1), (295, 0), (300, 0), (305, 1), (310, 1), (315, 1), (320, 1), (325, 0), (330, 0), (335, 0), (340, 1), (345, 1), (350, 1), (355, 1), (360, 1), (365, 1), (370, 1), (375, 0), (380, 0), (385, 0), (390, 0), (395, 0), (400, 0), (405, 0), (410, 0), (415, 0), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 0), (505, 0), (510, 1), (515, 1), (520, 1), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 0), (555, 0), (560, 0), (565, 0), (570, 0), (575, 0), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 0), (610, 0), (615, 1), (620, 1), (625, 1), (630, 1), (635, 1), (640, 1), (645, 1), (650, 1), (655, 1), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 0), (695, 0), (700, 0), (705, 1), (710, 1), (715, 1), (720, 1), (725, 1), (730, 0), (735, 0), (740, 0), (745, 0), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 0), (790, 0), (795, 0), (800, 0), (805, 1), (810, 1), (815, 1), (820, 1), (825, 1), (830, 1), (835, 1), (840, 1), (845, 1), (850, 1), (855, 1), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 0), (890, 0), (895, 0), (900, 0), (905, 0), (910, 0), (915, 0), (920, 1), (925, 1), (930, 1), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 0), (965, 0), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 0), (1025, 0)]
+Vdin0_13  din0_13  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 1.0v 14.745n 1.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 1.0v 229.745n 1.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 0.0v 299.745n 0.0v 299.755n 0.0v 304.745n 0.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 0.0v 329.745n 0.0v 329.755n 0.0v 334.745n 0.0v 334.755n 0.0v 339.745n 0.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 0.0v 379.745n 0.0v 379.755n 0.0v 384.745n 0.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 0.0v 399.745n 0.0v 399.755n 0.0v 404.745n 0.0v 404.755n 0.0v 409.745n 0.0v 409.755n 0.0v 414.745n 0.0v 414.755n 0.0v 419.745n 0.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 0.0v 579.745n 0.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 1.0v 644.745n 1.0v 644.755n 1.0v 649.745n 1.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 0.0v 704.745n 0.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 1.0v 729.745n 1.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
+* (time, data): [(0, 0), (5, 1), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 0), (45, 0), (50, 0), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 1), (100, 0), (105, 0), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 0), (170, 0), (175, 0), (180, 0), (185, 0), (190, 0), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 1), (230, 1), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 0), (280, 0), (285, 0), (290, 0), (295, 0), (300, 0), (305, 1), (310, 1), (315, 1), (320, 0), (325, 1), (330, 1), (335, 1), (340, 1), (345, 1), (350, 1), (355, 1), (360, 1), (365, 1), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 0), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 1), (500, 1), (505, 0), (510, 0), (515, 0), (520, 0), (525, 1), (530, 1), (535, 1), (540, 1), (545, 1), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 1), (620, 1), (625, 1), (630, 1), (635, 1), (640, 1), (645, 1), (650, 1), (655, 1), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 0), (690, 0), (695, 0), (700, 0), (705, 1), (710, 1), (715, 1), (720, 1), (725, 0), (730, 0), (735, 0), (740, 0), (745, 0), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 1), (790, 1), (795, 1), (800, 1), (805, 0), (810, 0), (815, 0), (820, 0), (825, 1), (830, 1), (835, 1), (840, 1), (845, 1), (850, 1), (855, 1), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 0), (890, 0), (895, 0), (900, 0), (905, 0), (910, 0), (915, 0), (920, 0), (925, 0), (930, 0), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 0), (965, 0), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 0), (1025, 0)]
+Vdin0_14  din0_14  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 1.0v 9.745n 1.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 0.0v 44.745n 0.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 1.0v 229.745n 1.0v 229.755n 1.0v 234.745n 1.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 0.0v 299.745n 0.0v 299.755n 0.0v 304.745n 0.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 0.0v 324.745n 0.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 0.0v 419.745n 0.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 1.0v 504.745n 1.0v 504.755n 0.0v 509.745n 0.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 1.0v 644.745n 1.0v 644.755n 1.0v 649.745n 1.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 0.0v 689.745n 0.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 0.0v 704.745n 0.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
+* (time, data): [(0, 0), (5, 0), (10, 1), (15, 1), (20, 1), (25, 1), (30, 1), (35, 1), (40, 1), (45, 1), (50, 1), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 1), (100, 1), (105, 1), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 1), (170, 1), (175, 1), (180, 1), (185, 1), (190, 1), (195, 1), (200, 1), (205, 1), (210, 1), (215, 1), (220, 1), (225, 0), (230, 0), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 1), (280, 1), (285, 1), (290, 1), (295, 1), (300, 0), (305, 1), (310, 1), (315, 1), (320, 0), (325, 1), (330, 1), (335, 1), (340, 0), (345, 0), (350, 1), (355, 1), (360, 1), (365, 1), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 0), (420, 1), (425, 1), (430, 1), (435, 1), (440, 1), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 0), (500, 0), (505, 1), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 0), (645, 0), (650, 0), (655, 0), (660, 0), (665, 1), (670, 1), (675, 1), (680, 1), (685, 0), (690, 1), (695, 1), (700, 1), (705, 0), (710, 1), (715, 1), (720, 1), (725, 1), (730, 0), (735, 0), (740, 0), (745, 0), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 1), (790, 1), (795, 1), (800, 1), (805, 1), (810, 1), (815, 1), (820, 1), (825, 1), (830, 1), (835, 1), (840, 1), (845, 1), (850, 1), (855, 1), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 0), (890, 1), (895, 1), (900, 1), (905, 1), (910, 1), (915, 1), (920, 0), (925, 0), (930, 0), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 1), (965, 1), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 0), (1025, 0)]
+Vdin0_15  din0_15  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 1.0v 14.745n 1.0v 14.755n 1.0v 19.745n 1.0v 19.755n 1.0v 24.745n 1.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 1.0v 39.745n 1.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 1.0v 209.745n 1.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 0.0v 304.745n 0.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 0.0v 324.745n 0.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 0.0v 419.745n 0.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 1.0v 509.745n 1.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 0.0v 689.745n 0.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 0.0v 709.745n 0.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 1.0v 729.745n 1.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
+* (time, data): [(0, 0), (5, 0), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 1), (50, 1), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 1), (100, 0), (105, 0), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 1), (170, 0), (175, 0), (180, 0), (185, 0), (190, 0), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 0), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 1), (280, 1), (285, 1), (290, 1), (295, 1), (300, 0), (305, 1), (310, 1), (315, 1), (320, 0), (325, 1), (330, 1), (335, 0), (340, 1), (345, 1), (350, 0), (355, 0), (360, 0), (365, 0), (370, 0), (375, 0), (380, 0), (385, 0), (390, 0), (395, 0), (400, 0), (405, 0), (410, 0), (415, 1), (420, 1), (425, 1), (430, 1), (435, 1), (440, 1), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 1), (500, 1), (505, 1), (510, 0), (515, 0), (520, 0), (525, 1), (530, 1), (535, 1), (540, 1), (545, 1), (550, 0), (555, 0), (560, 0), (565, 0), (570, 0), (575, 0), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 0), (610, 0), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 1), (645, 1), (650, 1), (655, 1), (660, 1), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 0), (695, 0), (700, 0), (705, 1), (710, 1), (715, 1), (720, 1), (725, 0), (730, 1), (735, 1), (740, 1), (745, 1), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 0), (790, 0), (795, 0), (800, 0), (805, 1), (810, 1), (815, 1), (820, 1), (825, 1), (830, 1), (835, 1), (840, 1), (845, 1), (850, 1), (855, 1), (860, 0), (865, 0), (870, 0), (875, 0), (880, 0), (885, 1), (890, 0), (895, 0), (900, 0), (905, 0), (910, 0), (915, 0), (920, 0), (925, 0), (930, 0), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 1), (965, 1), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 1), (1025, 1)]
+Vdin0_16  din0_16  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 0.0v 304.745n 0.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 0.0v 324.745n 0.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 0.0v 339.745n 0.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 0.0v 369.745n 0.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 0.0v 384.745n 0.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 0.0v 399.745n 0.0v 399.755n 0.0v 404.745n 0.0v 404.755n 0.0v 409.745n 0.0v 409.755n 0.0v 414.745n 0.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 1.0v 504.745n 1.0v 504.755n 1.0v 509.745n 1.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 0.0v 579.745n 0.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 1.0v 644.745n 1.0v 644.755n 1.0v 649.745n 1.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 1.0v 664.745n 1.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 0.0v 704.745n 0.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 0.0v 729.745n 0.0v 729.755n 1.0v 734.745n 1.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 1.0v 749.745n 1.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 1.0v 889.745n 1.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
+* (time, data): [(0, 0), (5, 0), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 0), (45, 0), (50, 0), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 1), (100, 0), (105, 0), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 0), (170, 0), (175, 0), (180, 0), (185, 0), (190, 0), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 0), (235, 1), (240, 1), (245, 1), (250, 1), (255, 1), (260, 1), (265, 1), (270, 1), (275, 1), (280, 1), (285, 1), (290, 1), (295, 1), (300, 1), (305, 0), (310, 0), (315, 0), (320, 0), (325, 1), (330, 1), (335, 1), (340, 1), (345, 1), (350, 1), (355, 1), (360, 1), (365, 1), (370, 0), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 1), (440, 1), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 0), (505, 0), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 0), (555, 0), (560, 0), (565, 0), (570, 0), (575, 0), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 0), (610, 1), (615, 1), (620, 1), (625, 1), (630, 1), (635, 1), (640, 0), (645, 0), (650, 0), (655, 0), (660, 0), (665, 1), (670, 1), (675, 1), (680, 1), (685, 0), (690, 0), (695, 0), (700, 0), (705, 1), (710, 0), (715, 0), (720, 0), (725, 0), (730, 0), (735, 0), (740, 0), (745, 0), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 0), (790, 0), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 0), (825, 1), (830, 1), (835, 1), (840, 1), (845, 1), (850, 1), (855, 1), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 0), (890, 0), (895, 0), (900, 0), (905, 0), (910, 0), (915, 0), (920, 0), (925, 0), (930, 0), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 0), (965, 0), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 0), (1025, 0)]
+Vdin0_17  din0_17  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 0.0v 44.745n 0.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 0.0v 324.745n 0.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 0.0v 374.745n 0.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 0.0v 579.745n 0.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 1.0v 614.745n 1.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 0.0v 689.745n 0.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 0.0v 704.745n 0.0v 704.755n 1.0v 709.745n 1.0v 709.755n 0.0v 714.745n 0.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
+* (time, data): [(0, 0), (5, 1), (10, 0), (15, 1), (20, 1), (25, 1), (30, 1), (35, 1), (40, 1), (45, 1), (50, 1), (55, 0), (60, 0), (65, 0), (70, 0), (75, 0), (80, 0), (85, 0), (90, 0), (95, 0), (100, 0), (105, 0), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 1), (170, 0), (175, 0), (180, 0), (185, 0), (190, 0), (195, 1), (200, 1), (205, 1), (210, 1), (215, 1), (220, 1), (225, 1), (230, 1), (235, 1), (240, 1), (245, 1), (250, 1), (255, 1), (260, 1), (265, 1), (270, 1), (275, 0), (280, 0), (285, 0), (290, 0), (295, 0), (300, 1), (305, 1), (310, 1), (315, 1), (320, 0), (325, 0), (330, 0), (335, 0), (340, 0), (345, 0), (350, 1), (355, 1), (360, 1), (365, 1), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 1), (440, 1), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 1), (500, 1), (505, 1), (510, 1), (515, 1), (520, 1), (525, 1), (530, 1), (535, 1), (540, 1), (545, 1), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 0), (645, 0), (650, 0), (655, 0), (660, 0), (665, 0), (670, 0), (675, 0), (680, 0), (685, 1), (690, 1), (695, 1), (700, 1), (705, 1), (710, 1), (715, 1), (720, 1), (725, 0), (730, 0), (735, 0), (740, 0), (745, 0), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 1), (790, 1), (795, 1), (800, 1), (805, 1), (810, 1), (815, 1), (820, 1), (825, 1), (830, 1), (835, 1), (840, 1), (845, 1), (850, 1), (855, 1), (860, 0), (865, 0), (870, 0), (875, 0), (880, 0), (885, 0), (890, 0), (895, 0), (900, 0), (905, 0), (910, 0), (915, 0), (920, 1), (925, 1), (930, 1), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 1), (965, 1), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 1), (1025, 1)]
+Vdin0_18  din0_18  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 1.0v 9.745n 1.0v 9.755n 0.0v 14.745n 0.0v 14.755n 1.0v 19.745n 1.0v 19.755n 1.0v 24.745n 1.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 1.0v 39.745n 1.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 1.0v 209.745n 1.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 1.0v 229.745n 1.0v 229.755n 1.0v 234.745n 1.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 0.0v 299.745n 0.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 0.0v 324.745n 0.0v 324.755n 0.0v 329.745n 0.0v 329.755n 0.0v 334.745n 0.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 1.0v 499.745n 1.0v 499.755n 1.0v 504.745n 1.0v 504.755n 1.0v 509.745n 1.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
+* (time, data): [(0, 0), (5, 0), (10, 1), (15, 1), (20, 1), (25, 1), (30, 1), (35, 1), (40, 1), (45, 1), (50, 1), (55, 0), (60, 0), (65, 0), (70, 0), (75, 0), (80, 0), (85, 0), (90, 0), (95, 0), (100, 0), (105, 0), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 0), (170, 0), (175, 0), (180, 0), (185, 0), (190, 0), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 1), (230, 0), (235, 1), (240, 1), (245, 1), (250, 1), (255, 1), (260, 1), (265, 1), (270, 1), (275, 1), (280, 1), (285, 1), (290, 1), (295, 0), (300, 0), (305, 1), (310, 1), (315, 1), (320, 0), (325, 0), (330, 0), (335, 1), (340, 1), (345, 1), (350, 1), (355, 1), (360, 1), (365, 1), (370, 0), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 0), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 0), (500, 0), (505, 1), (510, 0), (515, 0), (520, 0), (525, 1), (530, 1), (535, 1), (540, 1), (545, 1), (550, 0), (555, 0), (560, 0), (565, 0), (570, 0), (575, 0), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 0), (610, 1), (615, 1), (620, 1), (625, 1), (630, 1), (635, 1), (640, 0), (645, 0), (650, 0), (655, 0), (660, 0), (665, 0), (670, 0), (675, 0), (680, 0), (685, 1), (690, 0), (695, 0), (700, 0), (705, 1), (710, 1), (715, 1), (720, 1), (725, 0), (730, 1), (735, 1), (740, 1), (745, 1), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 1), (790, 1), (795, 1), (800, 1), (805, 0), (810, 0), (815, 0), (820, 0), (825, 1), (830, 1), (835, 1), (840, 1), (845, 1), (850, 1), (855, 1), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 0), (890, 1), (895, 1), (900, 1), (905, 1), (910, 1), (915, 1), (920, 1), (925, 1), (930, 1), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 1), (965, 1), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 0), (1025, 0)]
+Vdin0_19  din0_19  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 1.0v 14.745n 1.0v 14.755n 1.0v 19.745n 1.0v 19.755n 1.0v 24.745n 1.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 1.0v 39.745n 1.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 1.0v 229.745n 1.0v 229.755n 0.0v 234.745n 0.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 0.0v 299.745n 0.0v 299.755n 0.0v 304.745n 0.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 0.0v 324.745n 0.0v 324.755n 0.0v 329.745n 0.0v 329.755n 0.0v 334.745n 0.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 0.0v 374.745n 0.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 0.0v 419.745n 0.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 1.0v 509.745n 1.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 0.0v 579.745n 0.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 1.0v 614.745n 1.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 1.0v 689.745n 1.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 0.0v 704.745n 0.0v 704.755n 1.0v 709.745n 1.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 0.0v 729.745n 0.0v 729.755n 1.0v 734.745n 1.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 1.0v 749.745n 1.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 1.0v 789.745n 1.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 1.0v 924.745n 1.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
+* (time, data): [(0, 0), (5, 0), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 1), (50, 1), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 1), (100, 1), (105, 1), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 1), (170, 0), (175, 0), (180, 0), (185, 0), (190, 0), (195, 1), (200, 1), (205, 1), (210, 1), (215, 1), (220, 1), (225, 0), (230, 0), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 1), (280, 1), (285, 1), (290, 1), (295, 1), (300, 0), (305, 0), (310, 0), (315, 0), (320, 0), (325, 1), (330, 1), (335, 0), (340, 1), (345, 1), (350, 0), (355, 0), (360, 0), (365, 0), (370, 0), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 1), (500, 1), (505, 0), (510, 1), (515, 1), (520, 1), (525, 1), (530, 1), (535, 1), (540, 1), (545, 1), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 0), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 0), (645, 0), (650, 0), (655, 0), (660, 0), (665, 0), (670, 0), (675, 0), (680, 0), (685, 1), (690, 1), (695, 1), (700, 1), (705, 1), (710, 0), (715, 0), (720, 0), (725, 1), (730, 0), (735, 0), (740, 0), (745, 0), (750, 1), (755, 1), (760, 1), (765, 1), (770, 1), (775, 1), (780, 1), (785, 0), (790, 0), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 0), (825, 0), (830, 0), (835, 0), (840, 0), (845, 0), (850, 0), (855, 0), (860, 0), (865, 0), (870, 0), (875, 0), (880, 0), (885, 1), (890, 1), (895, 1), (900, 1), (905, 1), (910, 1), (915, 1), (920, 0), (925, 0), (930, 0), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 1), (965, 1), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 0), (1025, 0)]
+Vdin0_20  din0_20  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 1.0v 169.745n 1.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 1.0v 209.745n 1.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 0.0v 324.745n 0.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 0.0v 339.745n 0.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 0.0v 369.745n 0.0v 369.755n 0.0v 374.745n 0.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 1.0v 499.745n 1.0v 499.755n 1.0v 504.745n 1.0v 504.755n 0.0v 509.745n 0.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 0.0v 614.745n 0.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 0.0v 714.745n 0.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 1.0v 729.745n 1.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 1.0v 784.745n 1.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 0.0v 849.745n 0.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 1.0v 889.745n 1.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
+* (time, data): [(0, 0), (5, 1), (10, 1), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 1), (50, 1), (55, 1), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 1), (100, 1), (105, 1), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 0), (140, 0), (145, 0), (150, 0), (155, 0), (160, 0), (165, 0), (170, 1), (175, 1), (180, 1), (185, 1), (190, 1), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 0), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 1), (280, 1), (285, 1), (290, 1), (295, 1), (300, 1), (305, 0), (310, 0), (315, 0), (320, 1), (325, 1), (330, 1), (335, 0), (340, 0), (345, 0), (350, 1), (355, 1), (360, 1), (365, 1), (370, 1), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 1), (500, 1), (505, 1), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 0), (645, 0), (650, 0), (655, 0), (660, 0), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 0), (695, 0), (700, 0), (705, 0), (710, 1), (715, 1), (720, 1), (725, 1), (730, 0), (735, 0), (740, 0), (745, 0), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 0), (790, 0), (795, 0), (800, 0), (805, 1), (810, 1), (815, 1), (820, 1), (825, 1), (830, 1), (835, 1), (840, 1), (845, 1), (850, 1), (855, 1), (860, 0), (865, 0), (870, 0), (875, 0), (880, 0), (885, 1), (890, 0), (895, 0), (900, 0), (905, 0), (910, 0), (915, 0), (920, 0), (925, 0), (930, 0), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 1), (965, 1), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 1), (1025, 1)]
+Vdin0_21  din0_21  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 1.0v 9.745n 1.0v 9.755n 1.0v 14.745n 1.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 0.0v 169.745n 0.0v 169.755n 1.0v 174.745n 1.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 1.0v 504.745n 1.0v 504.755n 1.0v 509.745n 1.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 0.0v 704.745n 0.0v 704.755n 0.0v 709.745n 0.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 1.0v 729.745n 1.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 1.0v 829.745n 1.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 1.0v 889.745n 1.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
+* (time, data): [(0, 0), (5, 1), (10, 1), (15, 0), (20, 0), (25, 0), (30, 0), (35, 0), (40, 0), (45, 0), (50, 0), (55, 0), (60, 0), (65, 0), (70, 0), (75, 0), (80, 0), (85, 0), (90, 0), (95, 0), (100, 1), (105, 1), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 1), (170, 0), (175, 0), (180, 0), (185, 0), (190, 0), (195, 1), (200, 1), (205, 1), (210, 1), (215, 1), (220, 1), (225, 1), (230, 1), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 0), (280, 0), (285, 0), (290, 0), (295, 1), (300, 1), (305, 1), (310, 1), (315, 1), (320, 0), (325, 1), (330, 1), (335, 1), (340, 0), (345, 0), (350, 1), (355, 1), (360, 1), (365, 1), (370, 0), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 0), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 0), (500, 0), (505, 1), (510, 1), (515, 1), (520, 1), (525, 1), (530, 1), (535, 1), (540, 1), (545, 1), (550, 1), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 1), (620, 1), (625, 1), (630, 1), (635, 1), (640, 0), (645, 0), (650, 0), (655, 0), (660, 0), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 0), (695, 0), (700, 0), (705, 0), (710, 0), (715, 0), (720, 0), (725, 0), (730, 1), (735, 1), (740, 1), (745, 1), (750, 0), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 0), (790, 0), (795, 0), (800, 0), (805, 1), (810, 1), (815, 1), (820, 1), (825, 0), (830, 0), (835, 0), (840, 0), (845, 0), (850, 0), (855, 0), (860, 0), (865, 0), (870, 0), (875, 0), (880, 0), (885, 1), (890, 0), (895, 0), (900, 0), (905, 0), (910, 0), (915, 0), (920, 0), (925, 0), (930, 0), (935, 0), (940, 0), (945, 0), (950, 0), (955, 0), (960, 0), (965, 0), (970, 1), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 1), (1025, 1)]
+Vdin0_22  din0_22  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 1.0v 9.745n 1.0v 9.755n 1.0v 14.745n 1.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 0.0v 44.745n 0.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 1.0v 209.745n 1.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 1.0v 229.745n 1.0v 229.755n 1.0v 234.745n 1.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 0.0v 324.745n 0.0v 324.755n 1.0v 329.745n 1.0v 329.755n 1.0v 334.745n 1.0v 334.755n 1.0v 339.745n 1.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 1.0v 354.745n 1.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 0.0v 374.745n 0.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 0.0v 419.745n 0.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 1.0v 509.745n 1.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 1.0v 619.745n 1.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 0.0v 704.745n 0.0v 704.755n 0.0v 709.745n 0.0v 709.755n 0.0v 714.745n 0.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 1.0v 734.745n 1.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 1.0v 749.745n 1.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 0.0v 849.745n 0.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 1.0v 889.745n 1.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
+* (time, data): [(0, 0), (5, 0), (10, 0), (15, 1), (20, 0), (25, 0), (30, 0), (35, 0), (40, 1), (45, 0), (50, 0), (55, 1), (60, 0), (65, 0), (70, 1), (75, 0), (80, 0), (85, 0), (90, 0), (95, 0), (100, 1), (105, 1), (110, 1), (115, 1), (120, 1), (125, 1), (130, 1), (135, 1), (140, 1), (145, 1), (150, 0), (155, 1), (160, 1), (165, 1), (170, 1), (175, 1), (180, 0), (185, 0), (190, 0), (195, 1), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 0), (235, 1), (240, 1), (245, 1), (250, 1), (255, 1), (260, 1), (265, 0), (270, 0), (275, 0), (280, 0), (285, 0), (290, 1), (295, 1), (300, 0), (305, 0), (310, 1), (315, 1), (320, 0), (325, 0), (330, 1), (335, 0), (340, 1), (345, 1), (350, 0), (355, 0), (360, 0), (365, 0), (370, 0), (375, 0), (380, 1), (385, 0), (390, 0), (395, 1), (400, 1), (405, 1), (410, 1), (415, 1), (420, 0), (425, 1), (430, 1), (435, 0), (440, 0), (445, 0), (450, 0), (455, 0), (460, 1), (465, 1), (470, 0), (475, 0), (480, 0), (485, 0), (490, 1), (495, 1), (500, 1), (505, 1), (510, 1), (515, 1), (520, 1), (525, 1), (530, 1), (535, 1), (540, 0), (545, 0), (550, 0), (555, 0), (560, 1), (565, 0), (570, 0), (575, 0), (580, 0), (585, 0), (590, 1), (595, 0), (600, 0), (605, 1), (610, 1), (615, 0), (620, 0), (625, 0), (630, 0), (635, 1), (640, 1), (645, 1), (650, 1), (655, 1), (660, 0), (665, 0), (670, 1), (675, 0), (680, 0), (685, 1), (690, 0), (695, 0), (700, 1), (705, 1), (710, 0), (715, 0), (720, 0), (725, 1), (730, 1), (735, 1), (740, 0), (745, 0), (750, 1), (755, 0), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 0), (790, 0), (795, 0), (800, 1), (805, 0), (810, 1), (815, 1), (820, 1), (825, 0), (830, 0), (835, 0), (840, 0), (845, 0), (850, 0), (855, 0), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 0), (890, 1), (895, 0), (900, 0), (905, 1), (910, 1), (915, 1), (920, 0), (925, 1), (930, 1), (935, 0), (940, 1), (945, 1), (950, 0), (955, 0), (960, 1), (965, 1), (970, 0), (975, 0), (980, 0), (985, 0), (990, 1), (995, 1), (1000, 1), (1005, 0), (1010, 0), (1015, 0), (1020, 1), (1025, 1)]
+Va0_0  a0_0  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 1.0v 19.745n 1.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 1.0v 59.745n 1.0v 59.755n 0.0v 64.745n 0.0v 64.755n 0.0v 69.745n 0.0v 69.755n 1.0v 74.745n 1.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 0.0v 154.745n 0.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 1.0v 179.745n 1.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 1.0v 199.745n 1.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 1.0v 239.745n 1.0v 239.755n 1.0v 244.745n 1.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 1.0v 264.745n 1.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 0.0v 324.745n 0.0v 324.755n 0.0v 329.745n 0.0v 329.755n 1.0v 334.745n 1.0v 334.755n 0.0v 339.745n 0.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 0.0v 364.745n 0.0v 364.755n 0.0v 369.745n 0.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 1.0v 384.745n 1.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 0.0v 424.745n 0.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 1.0v 504.745n 1.0v 504.755n 1.0v 509.745n 1.0v 509.755n 1.0v 514.745n 1.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 1.0v 564.745n 1.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 0.0v 579.745n 0.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 1.0v 594.745n 1.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 1.0v 639.745n 1.0v 639.755n 1.0v 644.745n 1.0v 644.755n 1.0v 649.745n 1.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 0.0v 664.745n 0.0v 664.755n 0.0v 669.745n 0.0v 669.755n 1.0v 674.745n 1.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 1.0v 689.745n 1.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 1.0v 704.745n 1.0v 704.755n 1.0v 709.745n 1.0v 709.755n 0.0v 714.745n 0.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 1.0v 729.745n 1.0v 729.755n 1.0v 734.745n 1.0v 734.755n 1.0v 739.745n 1.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 1.0v 754.745n 1.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 1.0v 804.745n 1.0v 804.755n 0.0v 809.745n 0.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 0.0v 844.745n 0.0v 844.755n 0.0v 849.745n 0.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 1.0v 894.745n 1.0v 894.755n 0.0v 899.745n 0.0v 899.755n 0.0v 904.745n 0.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 0.0v 924.745n 0.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 0.0v 939.745n 0.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
+* (time, data): [(0, 0), (5, 0), (10, 1), (15, 0), (20, 0), (25, 1), (30, 1), (35, 0), (40, 0), (45, 1), (50, 1), (55, 0), (60, 1), (65, 1), (70, 0), (75, 1), (80, 1), (85, 0), (90, 0), (95, 0), (100, 0), (105, 0), (110, 0), (115, 0), (120, 0), (125, 0), (130, 0), (135, 0), (140, 0), (145, 0), (150, 1), (155, 0), (160, 0), (165, 0), (170, 0), (175, 0), (180, 0), (185, 0), (190, 1), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 0), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 0), (270, 0), (275, 1), (280, 0), (285, 0), (290, 0), (295, 0), (300, 1), (305, 0), (310, 0), (315, 0), (320, 1), (325, 1), (330, 0), (335, 1), (340, 0), (345, 0), (350, 0), (355, 1), (360, 1), (365, 1), (370, 1), (375, 1), (380, 0), (385, 0), (390, 0), (395, 0), (400, 0), (405, 0), (410, 0), (415, 0), (420, 1), (425, 0), (430, 0), (435, 1), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 0), (470, 0), (475, 0), (480, 0), (485, 0), (490, 0), (495, 0), (500, 0), (505, 0), (510, 0), (515, 0), (520, 0), (525, 0), (530, 0), (535, 0), (540, 0), (545, 0), (550, 0), (555, 0), (560, 0), (565, 0), (570, 0), (575, 0), (580, 1), (585, 0), (590, 0), (595, 1), (600, 1), (605, 0), (610, 0), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 0), (645, 0), (650, 0), (655, 0), (660, 0), (665, 1), (670, 0), (675, 0), (680, 0), (685, 0), (690, 0), (695, 0), (700, 0), (705, 0), (710, 1), (715, 1), (720, 1), (725, 0), (730, 0), (735, 0), (740, 1), (745, 0), (750, 0), (755, 0), (760, 0), (765, 0), (770, 1), (775, 0), (780, 0), (785, 0), (790, 1), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 0), (825, 0), (830, 0), (835, 0), (840, 1), (845, 1), (850, 1), (855, 0), (860, 0), (865, 0), (870, 0), (875, 0), (880, 0), (885, 0), (890, 0), (895, 1), (900, 1), (905, 0), (910, 0), (915, 0), (920, 0), (925, 0), (930, 0), (935, 1), (940, 0), (945, 0), (950, 1), (955, 0), (960, 0), (965, 0), (970, 1), (975, 1), (980, 1), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 0), (1025, 0)]
+Va0_1  a0_1  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 1.0v 14.745n 1.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 0.0v 39.745n 0.0v 39.755n 0.0v 44.745n 0.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 0.0v 59.745n 0.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 0.0v 74.745n 0.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 0.0v 149.745n 0.0v 149.755n 1.0v 154.745n 1.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 1.0v 194.745n 1.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 1.0v 279.745n 1.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 0.0v 294.745n 0.0v 294.755n 0.0v 299.745n 0.0v 299.755n 1.0v 304.745n 1.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 0.0v 334.745n 0.0v 334.755n 1.0v 339.745n 1.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 0.0v 354.745n 0.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 0.0v 384.745n 0.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 0.0v 399.745n 0.0v 399.755n 0.0v 404.745n 0.0v 404.755n 0.0v 409.745n 0.0v 409.755n 0.0v 414.745n 0.0v 414.755n 0.0v 419.745n 0.0v 419.755n 1.0v 424.745n 1.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 1.0v 439.745n 1.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 0.0v 579.745n 0.0v 579.755n 1.0v 584.745n 1.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 1.0v 669.745n 1.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 0.0v 689.745n 0.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 0.0v 704.745n 0.0v 704.755n 0.0v 709.745n 0.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 1.0v 744.745n 1.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 1.0v 774.745n 1.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 1.0v 794.745n 1.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 0.0v 824.745n 0.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 0.0v 859.745n 0.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 1.0v 939.745n 1.0v 939.755n 0.0v 944.745n 0.0v 944.755n 0.0v 949.745n 0.0v 949.755n 1.0v 954.745n 1.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 0.0v )
+* (time, data): [(0, 0), (5, 0), (10, 1), (15, 1), (20, 0), (25, 1), (30, 1), (35, 0), (40, 1), (45, 1), (50, 1), (55, 0), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 0), (90, 0), (95, 0), (100, 1), (105, 1), (110, 1), (115, 1), (120, 1), (125, 1), (130, 0), (135, 0), (140, 0), (145, 1), (150, 1), (155, 1), (160, 1), (165, 1), (170, 1), (175, 1), (180, 0), (185, 0), (190, 1), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 0), (235, 0), (240, 0), (245, 0), (250, 0), (255, 1), (260, 1), (265, 0), (270, 0), (275, 1), (280, 0), (285, 0), (290, 1), (295, 1), (300, 1), (305, 0), (310, 0), (315, 0), (320, 1), (325, 1), (330, 0), (335, 1), (340, 1), (345, 1), (350, 0), (355, 1), (360, 1), (365, 1), (370, 1), (375, 1), (380, 1), (385, 0), (390, 0), (395, 1), (400, 1), (405, 1), (410, 0), (415, 1), (420, 1), (425, 1), (430, 0), (435, 1), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 1), (470, 0), (475, 0), (480, 0), (485, 0), (490, 1), (495, 1), (500, 1), (505, 0), (510, 1), (515, 0), (520, 0), (525, 1), (530, 1), (535, 1), (540, 0), (545, 0), (550, 0), (555, 0), (560, 0), (565, 0), (570, 0), (575, 0), (580, 1), (585, 0), (590, 1), (595, 1), (600, 1), (605, 0), (610, 0), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 0), (645, 0), (650, 0), (655, 1), (660, 0), (665, 1), (670, 1), (675, 0), (680, 0), (685, 0), (690, 0), (695, 0), (700, 1), (705, 0), (710, 1), (715, 1), (720, 1), (725, 1), (730, 0), (735, 0), (740, 1), (745, 0), (750, 1), (755, 0), (760, 0), (765, 0), (770, 1), (775, 0), (780, 0), (785, 0), (790, 1), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 1), (825, 0), (830, 0), (835, 0), (840, 1), (845, 1), (850, 1), (855, 0), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 0), (890, 1), (895, 1), (900, 1), (905, 1), (910, 1), (915, 0), (920, 0), (925, 0), (930, 0), (935, 1), (940, 1), (945, 1), (950, 1), (955, 0), (960, 1), (965, 0), (970, 1), (975, 1), (980, 1), (985, 0), (990, 1), (995, 1), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 1), (1025, 1)]
+Va0_2  a0_2  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 1.0v 14.745n 1.0v 14.755n 1.0v 19.745n 1.0v 19.755n 0.0v 24.745n 0.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 0.0v 59.745n 0.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 1.0v 179.745n 1.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 1.0v 194.745n 1.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 1.0v 259.745n 1.0v 259.755n 1.0v 264.745n 1.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 1.0v 279.745n 1.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 0.0v 334.745n 0.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 0.0v 414.745n 0.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 0.0v 434.745n 0.0v 434.755n 1.0v 439.745n 1.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 1.0v 469.745n 1.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 1.0v 504.745n 1.0v 504.755n 0.0v 509.745n 0.0v 509.755n 1.0v 514.745n 1.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 0.0v 579.745n 0.0v 579.755n 1.0v 584.745n 1.0v 584.755n 0.0v 589.745n 0.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 1.0v 659.745n 1.0v 659.755n 0.0v 664.745n 0.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 0.0v 689.745n 0.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 1.0v 704.745n 1.0v 704.755n 0.0v 709.745n 0.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 1.0v 729.745n 1.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 1.0v 744.745n 1.0v 744.755n 0.0v 749.745n 0.0v 749.755n 1.0v 754.745n 1.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 1.0v 774.745n 1.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 1.0v 794.745n 1.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 1.0v 824.745n 1.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 0.0v 859.745n 0.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 0.0v 919.745n 0.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 0.0v 959.745n 0.0v 959.755n 1.0v 964.745n 1.0v 964.755n 0.0v 969.745n 0.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 0.0v 989.745n 0.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
+* (time, data): [(0, 0), (5, 0), (10, 1), (15, 1), (20, 0), (25, 1), (30, 1), (35, 0), (40, 1), (45, 1), (50, 1), (55, 0), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 0), (90, 0), (95, 0), (100, 1), (105, 1), (110, 1), (115, 1), (120, 1), (125, 1), (130, 0), (135, 0), (140, 0), (145, 1), (150, 1), (155, 1), (160, 1), (165, 1), (170, 1), (175, 1), (180, 0), (185, 0), (190, 1), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 0), (235, 0), (240, 0), (245, 0), (250, 0), (255, 1), (260, 1), (265, 0), (270, 0), (275, 1), (280, 0), (285, 0), (290, 1), (295, 1), (300, 1), (305, 0), (310, 0), (315, 0), (320, 1), (325, 1), (330, 0), (335, 1), (340, 1), (345, 1), (350, 0), (355, 1), (360, 1), (365, 1), (370, 1), (375, 1), (380, 1), (385, 0), (390, 0), (395, 1), (400, 1), (405, 1), (410, 0), (415, 1), (420, 1), (425, 1), (430, 0), (435, 1), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 1), (470, 0), (475, 0), (480, 0), (485, 0), (490, 1), (495, 1), (500, 1), (505, 0), (510, 1), (515, 0), (520, 0), (525, 1), (530, 1), (535, 1), (540, 0), (545, 0), (550, 0), (555, 0), (560, 0), (565, 0), (570, 0), (575, 0), (580, 1), (585, 0), (590, 1), (595, 1), (600, 1), (605, 0), (610, 0), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 0), (645, 0), (650, 0), (655, 1), (660, 0), (665, 1), (670, 1), (675, 0), (680, 0), (685, 0), (690, 0), (695, 0), (700, 1), (705, 0), (710, 1), (715, 1), (720, 1), (725, 1), (730, 0), (735, 0), (740, 1), (745, 0), (750, 1), (755, 0), (760, 0), (765, 0), (770, 1), (775, 0), (780, 0), (785, 0), (790, 1), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 1), (825, 0), (830, 0), (835, 0), (840, 1), (845, 1), (850, 1), (855, 0), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 0), (890, 1), (895, 1), (900, 1), (905, 1), (910, 1), (915, 0), (920, 0), (925, 0), (930, 0), (935, 1), (940, 1), (945, 1), (950, 1), (955, 0), (960, 1), (965, 0), (970, 1), (975, 1), (980, 1), (985, 0), (990, 1), (995, 1), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 1), (1025, 1)]
+Va0_3  a0_3  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 1.0v 14.745n 1.0v 14.755n 1.0v 19.745n 1.0v 19.755n 0.0v 24.745n 0.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 0.0v 59.745n 0.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 1.0v 179.745n 1.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 1.0v 194.745n 1.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 1.0v 259.745n 1.0v 259.755n 1.0v 264.745n 1.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 1.0v 279.745n 1.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 0.0v 334.745n 0.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 0.0v 414.745n 0.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 0.0v 434.745n 0.0v 434.755n 1.0v 439.745n 1.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 1.0v 469.745n 1.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 1.0v 504.745n 1.0v 504.755n 0.0v 509.745n 0.0v 509.755n 1.0v 514.745n 1.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 0.0v 579.745n 0.0v 579.755n 1.0v 584.745n 1.0v 584.755n 0.0v 589.745n 0.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 1.0v 659.745n 1.0v 659.755n 0.0v 664.745n 0.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 0.0v 689.745n 0.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 1.0v 704.745n 1.0v 704.755n 0.0v 709.745n 0.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 1.0v 729.745n 1.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 1.0v 744.745n 1.0v 744.755n 0.0v 749.745n 0.0v 749.755n 1.0v 754.745n 1.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 1.0v 774.745n 1.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 1.0v 794.745n 1.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 1.0v 824.745n 1.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 0.0v 859.745n 0.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 0.0v 919.745n 0.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 0.0v 959.745n 0.0v 959.755n 1.0v 964.745n 1.0v 964.755n 0.0v 969.745n 0.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 0.0v 989.745n 0.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
+* (time, data): [(0, 0), (5, 0), (10, 1), (15, 1), (20, 0), (25, 1), (30, 1), (35, 0), (40, 1), (45, 1), (50, 1), (55, 0), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 0), (90, 0), (95, 0), (100, 1), (105, 1), (110, 1), (115, 1), (120, 1), (125, 1), (130, 0), (135, 0), (140, 0), (145, 1), (150, 1), (155, 1), (160, 1), (165, 1), (170, 1), (175, 1), (180, 0), (185, 0), (190, 1), (195, 0), (200, 0), (205, 0), (210, 0), (215, 0), (220, 0), (225, 0), (230, 0), (235, 0), (240, 0), (245, 0), (250, 0), (255, 1), (260, 1), (265, 0), (270, 0), (275, 1), (280, 0), (285, 0), (290, 1), (295, 1), (300, 1), (305, 0), (310, 0), (315, 0), (320, 1), (325, 1), (330, 0), (335, 1), (340, 1), (345, 1), (350, 0), (355, 1), (360, 1), (365, 1), (370, 1), (375, 1), (380, 1), (385, 0), (390, 0), (395, 1), (400, 1), (405, 1), (410, 0), (415, 1), (420, 1), (425, 1), (430, 0), (435, 1), (440, 0), (445, 0), (450, 0), (455, 0), (460, 0), (465, 1), (470, 0), (475, 0), (480, 0), (485, 0), (490, 1), (495, 1), (500, 1), (505, 0), (510, 1), (515, 0), (520, 0), (525, 1), (530, 1), (535, 1), (540, 0), (545, 0), (550, 0), (555, 0), (560, 0), (565, 0), (570, 0), (575, 0), (580, 1), (585, 0), (590, 1), (595, 1), (600, 1), (605, 0), (610, 0), (615, 0), (620, 0), (625, 0), (630, 0), (635, 0), (640, 0), (645, 0), (650, 0), (655, 1), (660, 0), (665, 1), (670, 1), (675, 0), (680, 0), (685, 0), (690, 0), (695, 0), (700, 1), (705, 0), (710, 1), (715, 1), (720, 1), (725, 1), (730, 0), (735, 0), (740, 1), (745, 0), (750, 1), (755, 0), (760, 0), (765, 0), (770, 1), (775, 0), (780, 0), (785, 0), (790, 1), (795, 0), (800, 0), (805, 0), (810, 0), (815, 0), (820, 1), (825, 0), (830, 0), (835, 0), (840, 1), (845, 1), (850, 1), (855, 0), (860, 1), (865, 1), (870, 1), (875, 1), (880, 1), (885, 0), (890, 1), (895, 1), (900, 1), (905, 1), (910, 1), (915, 0), (920, 0), (925, 0), (930, 0), (935, 1), (940, 1), (945, 1), (950, 1), (955, 0), (960, 1), (965, 0), (970, 1), (975, 1), (980, 1), (985, 0), (990, 1), (995, 1), (1000, 0), (1005, 0), (1010, 0), (1015, 0), (1020, 1), (1025, 1)]
+Va0_4  a0_4  0 PWL (0n 0.0v 4.745n 0.0v 4.755n 0.0v 9.745n 0.0v 9.755n 1.0v 14.745n 1.0v 14.755n 1.0v 19.745n 1.0v 19.755n 0.0v 24.745n 0.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 0.0v 39.745n 0.0v 39.755n 1.0v 44.745n 1.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 0.0v 59.745n 0.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 1.0v 114.745n 1.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 0.0v 144.745n 0.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 1.0v 169.745n 1.0v 169.755n 1.0v 174.745n 1.0v 174.755n 1.0v 179.745n 1.0v 179.755n 0.0v 184.745n 0.0v 184.755n 0.0v 189.745n 0.0v 189.755n 1.0v 194.745n 1.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 1.0v 259.745n 1.0v 259.755n 1.0v 264.745n 1.0v 264.755n 0.0v 269.745n 0.0v 269.755n 0.0v 274.745n 0.0v 274.755n 1.0v 279.745n 1.0v 279.755n 0.0v 284.745n 0.0v 284.755n 0.0v 289.745n 0.0v 289.755n 1.0v 294.745n 1.0v 294.755n 1.0v 299.745n 1.0v 299.755n 1.0v 304.745n 1.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 0.0v 334.745n 0.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 1.0v 374.745n 1.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 0.0v 389.745n 0.0v 389.755n 0.0v 394.745n 0.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 0.0v 414.745n 0.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 0.0v 434.745n 0.0v 434.755n 1.0v 439.745n 1.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 0.0v 459.745n 0.0v 459.755n 0.0v 464.745n 0.0v 464.755n 1.0v 469.745n 1.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 0.0v 489.745n 0.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 1.0v 504.745n 1.0v 504.755n 0.0v 509.745n 0.0v 509.755n 1.0v 514.745n 1.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 0.0v 579.745n 0.0v 579.755n 1.0v 584.745n 1.0v 584.755n 0.0v 589.745n 0.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 0.0v 639.745n 0.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 1.0v 659.745n 1.0v 659.755n 0.0v 664.745n 0.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 0.0v 689.745n 0.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 1.0v 704.745n 1.0v 704.755n 0.0v 709.745n 0.0v 709.755n 1.0v 714.745n 1.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 1.0v 729.745n 1.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 1.0v 744.745n 1.0v 744.755n 0.0v 749.745n 0.0v 749.755n 1.0v 754.745n 1.0v 754.755n 0.0v 759.745n 0.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 1.0v 774.745n 1.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 1.0v 794.745n 1.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 0.0v 819.745n 0.0v 819.755n 1.0v 824.745n 1.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 0.0v 859.745n 0.0v 859.755n 1.0v 864.745n 1.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 1.0v 894.745n 1.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 0.0v 919.745n 0.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 0.0v 959.745n 0.0v 959.755n 1.0v 964.745n 1.0v 964.755n 0.0v 969.745n 0.0v 969.755n 1.0v 974.745n 1.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 0.0v 989.745n 0.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
 
  * Generation of control signals
-* (time, data): [(0, 1), (5, 0), (10, 0), (15, 0), (20, 0), (25, 0), (30, 0), (35, 1), (40, 0), (45, 0), (50, 0), (55, 0), (60, 1), (65, 0), (70, 0), (75, 0), (80, 0), (85, 0), (90, 0), (95, 0), (100, 1), (105, 1), (110, 0), (115, 0), (120, 0), (125, 0), (130, 1), (135, 0), (140, 1), (145, 0), (150, 0), (155, 0), (160, 0), (165, 0), (170, 0), (175, 0), (180, 1), (185, 0), (190, 0), (195, 1), (200, 0), (205, 0), (210, 0), (215, 1), (220, 0), (225, 0), (230, 0), (235, 0), (240, 0), (245, 0), (250, 0), (255, 0), (260, 0), (265, 1), (270, 1), (275, 0), (280, 1), (285, 1), (290, 0), (295, 0), (300, 1), (305, 1), (310, 0), (315, 0), (320, 1), (325, 0), (330, 0), (335, 1), (340, 0), (345, 1), (350, 0), (355, 0), (360, 1), (365, 0), (370, 0), (375, 0), (380, 0), (385, 0), (390, 1), (395, 1), (400, 0), (405, 0), (410, 0), (415, 0), (420, 0), (425, 1), (430, 0), (435, 0), (440, 0), (445, 0), (450, 0), (455, 1), (460, 0), (465, 1), (470, 0), (475, 0), (480, 0), (485, 1), (490, 1), (495, 0), (500, 0), (505, 0), (510, 0), (515, 0), (520, 0), (525, 0), (530, 1), (535, 0), (540, 0), (545, 0), (550, 1), (555, 0), (560, 0), (565, 0), (570, 0), (575, 0), (580, 0), (585, 1), (590, 0), (595, 1), (600, 0), (605, 0), (610, 1), (615, 0), (620, 0), (625, 0), (630, 0), (635, 1), (640, 0), (645, 0), (650, 0), (655, 0), (660, 0), (665, 0), (670, 0), (675, 0), (680, 0), (685, 1), (690, 0), (695, 0), (700, 0), (705, 0), (710, 0), (715, 0), (720, 0), (725, 0), (730, 1), (735, 0), (740, 1), (745, 0), (750, 0), (755, 1), (760, 0), (765, 0), (770, 0), (775, 0), (780, 0), (785, 0), (790, 0), (795, 0), (800, 0), (805, 1), (810, 0), (815, 1), (820, 0), (825, 0), (830, 0), (835, 0), (840, 1), (845, 0), (850, 0), (855, 1), (860, 0), (865, 1), (870, 0), (875, 0), (880, 0), (885, 0), (890, 0), (895, 0), (900, 1), (905, 0), (910, 0), (915, 0), (920, 0), (925, 0), (930, 0), (935, 1), (940, 0), (945, 1), (950, 0), (955, 0), (960, 0), (965, 1), (970, 0), (975, 0), (980, 0), (985, 0), (990, 0), (995, 0), (1000, 0), (1005, 0), (1010, 0), (1015, 1), (1020, 0), (1025, 1)]
-VCSB0 CSB0 0 PWL (0n 1.0v 4.745n 1.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 0.0v 34.745n 0.0v 34.755n 1.0v 39.745n 1.0v 39.755n 0.0v 44.745n 0.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 0.0v 59.745n 0.0v 59.755n 1.0v 64.745n 1.0v 64.755n 0.0v 69.745n 0.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 0.0v 84.745n 0.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 0.0v 114.745n 0.0v 114.755n 0.0v 119.745n 0.0v 119.755n 0.0v 124.745n 0.0v 124.755n 0.0v 129.745n 0.0v 129.755n 1.0v 134.745n 1.0v 134.755n 0.0v 139.745n 0.0v 139.755n 1.0v 144.745n 1.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 0.0v 164.745n 0.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 1.0v 184.745n 1.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 1.0v 199.745n 1.0v 199.755n 0.0v 204.745n 0.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 1.0v 219.745n 1.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 0.0v 249.745n 0.0v 249.755n 0.0v 254.745n 0.0v 254.755n 0.0v 259.745n 0.0v 259.755n 0.0v 264.745n 0.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 0.0v 279.745n 0.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 0.0v 294.745n 0.0v 294.755n 0.0v 299.745n 0.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 1.0v 324.745n 1.0v 324.755n 0.0v 329.745n 0.0v 329.755n 0.0v 334.745n 0.0v 334.755n 1.0v 339.745n 1.0v 339.755n 0.0v 344.745n 0.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 1.0v 364.745n 1.0v 364.755n 0.0v 369.745n 0.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 0.0v 384.745n 0.0v 384.755n 0.0v 389.745n 0.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 0.0v 404.745n 0.0v 404.755n 0.0v 409.745n 0.0v 409.755n 0.0v 414.745n 0.0v 414.755n 0.0v 419.745n 0.0v 419.755n 0.0v 424.745n 0.0v 424.755n 1.0v 429.745n 1.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 0.0v 454.745n 0.0v 454.755n 1.0v 459.745n 1.0v 459.755n 0.0v 464.745n 0.0v 464.755n 1.0v 469.745n 1.0v 469.755n 0.0v 474.745n 0.0v 474.755n 0.0v 479.745n 0.0v 479.755n 0.0v 484.745n 0.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 0.0v 499.745n 0.0v 499.755n 0.0v 504.745n 0.0v 504.755n 0.0v 509.745n 0.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 0.0v 524.745n 0.0v 524.755n 0.0v 529.745n 0.0v 529.755n 1.0v 534.745n 1.0v 534.755n 0.0v 539.745n 0.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 1.0v 554.745n 1.0v 554.755n 0.0v 559.745n 0.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 0.0v 574.745n 0.0v 574.755n 0.0v 579.745n 0.0v 579.755n 0.0v 584.745n 0.0v 584.755n 1.0v 589.745n 1.0v 589.755n 0.0v 594.745n 0.0v 594.755n 1.0v 599.745n 1.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 1.0v 614.745n 1.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 0.0v 629.745n 0.0v 629.755n 0.0v 634.745n 0.0v 634.755n 1.0v 639.745n 1.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 0.0v 684.745n 0.0v 684.755n 1.0v 689.745n 1.0v 689.755n 0.0v 694.745n 0.0v 694.755n 0.0v 699.745n 0.0v 699.755n 0.0v 704.745n 0.0v 704.755n 0.0v 709.745n 0.0v 709.755n 0.0v 714.745n 0.0v 714.755n 0.0v 719.745n 0.0v 719.755n 0.0v 724.745n 0.0v 724.755n 0.0v 729.745n 0.0v 729.755n 1.0v 734.745n 1.0v 734.755n 0.0v 739.745n 0.0v 739.755n 1.0v 744.745n 1.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 1.0v 759.745n 1.0v 759.755n 0.0v 764.745n 0.0v 764.755n 0.0v 769.745n 0.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 0.0v 784.745n 0.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 1.0v 809.745n 1.0v 809.755n 0.0v 814.745n 0.0v 814.755n 1.0v 819.745n 1.0v 819.755n 0.0v 824.745n 0.0v 824.755n 0.0v 829.745n 0.0v 829.755n 0.0v 834.745n 0.0v 834.755n 0.0v 839.745n 0.0v 839.755n 1.0v 844.745n 1.0v 844.755n 0.0v 849.745n 0.0v 849.755n 0.0v 854.745n 0.0v 854.755n 1.0v 859.745n 1.0v 859.755n 0.0v 864.745n 0.0v 864.755n 1.0v 869.745n 1.0v 869.755n 0.0v 874.745n 0.0v 874.755n 0.0v 879.745n 0.0v 879.755n 0.0v 884.745n 0.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 1.0v 904.745n 1.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 0.0v 919.745n 0.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 0.0v 934.745n 0.0v 934.755n 1.0v 939.745n 1.0v 939.755n 0.0v 944.745n 0.0v 944.755n 1.0v 949.745n 1.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 1.0v 969.745n 1.0v 969.755n 0.0v 974.745n 0.0v 974.755n 0.0v 979.745n 0.0v 979.755n 0.0v 984.745n 0.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 0.0v 999.745n 0.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 0.0v 1014.745n 0.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 1.0v )
-* (time, data): [(0, 1), (5, 0), (10, 0), (15, 0), (20, 1), (25, 1), (30, 1), (35, 1), (40, 0), (45, 0), (50, 0), (55, 1), (60, 1), (65, 0), (70, 1), (75, 1), (80, 1), (85, 0), (90, 0), (95, 0), (100, 1), (105, 1), (110, 0), (115, 1), (120, 1), (125, 1), (130, 1), (135, 0), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 0), (170, 1), (175, 0), (180, 1), (185, 0), (190, 0), (195, 1), (200, 1), (205, 0), (210, 0), (215, 1), (220, 1), (225, 1), (230, 0), (235, 0), (240, 1), (245, 0), (250, 1), (255, 1), (260, 0), (265, 1), (270, 1), (275, 1), (280, 1), (285, 1), (290, 1), (295, 0), (300, 1), (305, 1), (310, 0), (315, 1), (320, 1), (325, 1), (330, 0), (335, 1), (340, 1), (345, 1), (350, 0), (355, 1), (360, 1), (365, 0), (370, 0), (375, 1), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 0), (410, 1), (415, 1), (420, 1), (425, 1), (430, 1), (435, 0), (440, 1), (445, 1), (450, 1), (455, 1), (460, 1), (465, 1), (470, 1), (475, 1), (480, 1), (485, 1), (490, 1), (495, 1), (500, 0), (505, 1), (510, 0), (515, 1), (520, 1), (525, 1), (530, 1), (535, 1), (540, 1), (545, 0), (550, 1), (555, 1), (560, 0), (565, 1), (570, 1), (575, 0), (580, 0), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 1), (615, 0), (620, 0), (625, 1), (630, 1), (635, 1), (640, 0), (645, 0), (650, 0), (655, 1), (660, 0), (665, 1), (670, 1), (675, 1), (680, 1), (685, 1), (690, 1), (695, 1), (700, 0), (705, 1), (710, 0), (715, 0), (720, 1), (725, 1), (730, 1), (735, 1), (740, 1), (745, 0), (750, 1), (755, 1), (760, 0), (765, 1), (770, 1), (775, 1), (780, 0), (785, 1), (790, 0), (795, 1), (800, 1), (805, 1), (810, 1), (815, 1), (820, 1), (825, 0), (830, 1), (835, 0), (840, 1), (845, 0), (850, 0), (855, 1), (860, 0), (865, 1), (870, 1), (875, 0), (880, 1), (885, 0), (890, 0), (895, 1), (900, 1), (905, 0), (910, 0), (915, 1), (920, 0), (925, 1), (930, 1), (935, 1), (940, 1), (945, 1), (950, 1), (955, 1), (960, 1), (965, 1), (970, 0), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 1), (1005, 1), (1010, 1), (1015, 1), (1020, 1), (1025, 1)]
-VWEB0 WEB0 0 PWL (0n 1.0v 4.745n 1.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 1.0v 24.745n 1.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 1.0v 39.745n 1.0v 39.755n 0.0v 44.745n 0.0v 44.755n 0.0v 49.745n 0.0v 49.755n 0.0v 54.745n 0.0v 54.755n 1.0v 59.745n 1.0v 59.755n 1.0v 64.745n 1.0v 64.755n 0.0v 69.745n 0.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 0.0v 89.745n 0.0v 89.755n 0.0v 94.745n 0.0v 94.755n 0.0v 99.745n 0.0v 99.755n 1.0v 104.745n 1.0v 104.755n 1.0v 109.745n 1.0v 109.755n 0.0v 114.745n 0.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 0.0v 139.745n 0.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 0.0v 169.745n 0.0v 169.755n 1.0v 174.745n 1.0v 174.755n 0.0v 179.745n 0.0v 179.755n 1.0v 184.745n 1.0v 184.755n 0.0v 189.745n 0.0v 189.755n 0.0v 194.745n 0.0v 194.755n 1.0v 199.745n 1.0v 199.755n 1.0v 204.745n 1.0v 204.755n 0.0v 209.745n 0.0v 209.755n 0.0v 214.745n 0.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 1.0v 229.745n 1.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 1.0v 244.745n 1.0v 244.755n 0.0v 249.745n 0.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 0.0v 264.745n 0.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 1.0v 279.745n 1.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 0.0v 299.745n 0.0v 299.755n 1.0v 304.745n 1.0v 304.755n 1.0v 309.745n 1.0v 309.755n 0.0v 314.745n 0.0v 314.755n 1.0v 319.745n 1.0v 319.755n 1.0v 324.745n 1.0v 324.755n 1.0v 329.745n 1.0v 329.755n 0.0v 334.745n 0.0v 334.755n 1.0v 339.745n 1.0v 339.755n 1.0v 344.745n 1.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 0.0v 369.745n 0.0v 369.755n 0.0v 374.745n 0.0v 374.755n 1.0v 379.745n 1.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 0.0v 409.745n 0.0v 409.755n 1.0v 414.745n 1.0v 414.755n 1.0v 419.745n 1.0v 419.755n 1.0v 424.745n 1.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 0.0v 439.745n 0.0v 439.755n 1.0v 444.745n 1.0v 444.755n 1.0v 449.745n 1.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 1.0v 474.745n 1.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 1.0v 499.745n 1.0v 499.755n 0.0v 504.745n 0.0v 504.755n 1.0v 509.745n 1.0v 509.755n 0.0v 514.745n 0.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 1.0v 529.745n 1.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 0.0v 549.745n 0.0v 549.755n 1.0v 554.745n 1.0v 554.755n 1.0v 559.745n 1.0v 559.755n 0.0v 564.745n 0.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 0.0v 579.745n 0.0v 579.755n 0.0v 584.745n 0.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 1.0v 614.745n 1.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 0.0v 654.745n 0.0v 654.755n 1.0v 659.745n 1.0v 659.755n 0.0v 664.745n 0.0v 664.755n 1.0v 669.745n 1.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 1.0v 689.745n 1.0v 689.755n 1.0v 694.745n 1.0v 694.755n 1.0v 699.745n 1.0v 699.755n 0.0v 704.745n 0.0v 704.755n 1.0v 709.745n 1.0v 709.755n 0.0v 714.745n 0.0v 714.755n 0.0v 719.745n 0.0v 719.755n 1.0v 724.745n 1.0v 724.755n 1.0v 729.745n 1.0v 729.755n 1.0v 734.745n 1.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 0.0v 749.745n 0.0v 749.755n 1.0v 754.745n 1.0v 754.755n 1.0v 759.745n 1.0v 759.755n 0.0v 764.745n 0.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 0.0v 784.745n 0.0v 784.755n 1.0v 789.745n 1.0v 789.755n 0.0v 794.745n 0.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 1.0v 809.745n 1.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 0.0v 829.745n 0.0v 829.755n 1.0v 834.745n 1.0v 834.755n 0.0v 839.745n 0.0v 839.755n 1.0v 844.745n 1.0v 844.755n 0.0v 849.745n 0.0v 849.755n 0.0v 854.745n 0.0v 854.755n 1.0v 859.745n 1.0v 859.755n 0.0v 864.745n 0.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 0.0v 879.745n 0.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 0.0v 909.745n 0.0v 909.755n 0.0v 914.745n 0.0v 914.755n 1.0v 919.745n 1.0v 919.755n 0.0v 924.745n 0.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 1.0v 939.745n 1.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 1.0v 964.745n 1.0v 964.755n 1.0v 969.745n 1.0v 969.755n 0.0v 974.745n 0.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 1.0v 1004.745n 1.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 1.0v 1024.745n 1.0v 1024.755n 1.0v )
+* (time, data): [(0, 1), (5, 0), (10, 0), (15, 0), (20, 0), (25, 0), (30, 1), (35, 0), (40, 0), (45, 0), (50, 1), (55, 0), (60, 0), (65, 1), (70, 0), (75, 0), (80, 1), (85, 0), (90, 1), (95, 1), (100, 0), (105, 0), (110, 0), (115, 1), (120, 1), (125, 0), (130, 0), (135, 0), (140, 1), (145, 0), (150, 0), (155, 0), (160, 1), (165, 0), (170, 0), (175, 0), (180, 0), (185, 1), (190, 0), (195, 0), (200, 0), (205, 1), (210, 1), (215, 0), (220, 0), (225, 0), (230, 0), (235, 0), (240, 0), (245, 1), (250, 1), (255, 0), (260, 1), (265, 0), (270, 1), (275, 0), (280, 0), (285, 1), (290, 0), (295, 0), (300, 0), (305, 0), (310, 0), (315, 0), (320, 0), (325, 0), (330, 0), (335, 0), (340, 0), (345, 0), (350, 0), (355, 0), (360, 1), (365, 1), (370, 0), (375, 0), (380, 0), (385, 0), (390, 1), (395, 0), (400, 1), (405, 1), (410, 0), (415, 0), (420, 0), (425, 0), (430, 0), (435, 0), (440, 0), (445, 0), (450, 1), (455, 1), (460, 0), (465, 0), (470, 0), (475, 1), (480, 1), (485, 1), (490, 0), (495, 0), (500, 1), (505, 0), (510, 0), (515, 0), (520, 1), (525, 0), (530, 0), (535, 1), (540, 0), (545, 0), (550, 0), (555, 1), (560, 0), (565, 0), (570, 1), (575, 1), (580, 0), (585, 0), (590, 0), (595, 0), (600, 0), (605, 0), (610, 0), (615, 0), (620, 0), (625, 1), (630, 1), (635, 0), (640, 0), (645, 0), (650, 1), (655, 0), (660, 0), (665, 0), (670, 0), (675, 0), (680, 1), (685, 0), (690, 0), (695, 1), (700, 0), (705, 0), (710, 0), (715, 1), (720, 1), (725, 0), (730, 0), (735, 0), (740, 0), (745, 0), (750, 0), (755, 0), (760, 1), (765, 1), (770, 0), (775, 0), (780, 1), (785, 0), (790, 0), (795, 0), (800, 0), (805, 0), (810, 0), (815, 1), (820, 0), (825, 0), (830, 1), (835, 1), (840, 0), (845, 1), (850, 0), (855, 0), (860, 0), (865, 0), (870, 1), (875, 1), (880, 1), (885, 0), (890, 0), (895, 0), (900, 1), (905, 0), (910, 1), (915, 0), (920, 0), (925, 0), (930, 1), (935, 0), (940, 0), (945, 1), (950, 0), (955, 0), (960, 0), (965, 0), (970, 0), (975, 1), (980, 1), (985, 0), (990, 0), (995, 1), (1000, 0), (1005, 0), (1010, 1), (1015, 0), (1020, 0), (1025, 1)]
+VCSB0 CSB0 0 PWL (0n 1.0v 4.745n 1.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 0.0v 24.745n 0.0v 24.755n 0.0v 29.745n 0.0v 29.755n 1.0v 34.745n 1.0v 34.755n 0.0v 39.745n 0.0v 39.755n 0.0v 44.745n 0.0v 44.755n 0.0v 49.745n 0.0v 49.755n 1.0v 54.745n 1.0v 54.755n 0.0v 59.745n 0.0v 59.755n 0.0v 64.745n 0.0v 64.755n 1.0v 69.745n 1.0v 69.755n 0.0v 74.745n 0.0v 74.755n 0.0v 79.745n 0.0v 79.755n 1.0v 84.745n 1.0v 84.755n 0.0v 89.745n 0.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 0.0v 104.745n 0.0v 104.755n 0.0v 109.745n 0.0v 109.755n 0.0v 114.745n 0.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 0.0v 129.745n 0.0v 129.755n 0.0v 134.745n 0.0v 134.755n 0.0v 139.745n 0.0v 139.755n 1.0v 144.745n 1.0v 144.755n 0.0v 149.745n 0.0v 149.755n 0.0v 154.745n 0.0v 154.755n 0.0v 159.745n 0.0v 159.755n 1.0v 164.745n 1.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 0.0v 179.745n 0.0v 179.755n 0.0v 184.745n 0.0v 184.755n 1.0v 189.745n 1.0v 189.755n 0.0v 194.745n 0.0v 194.755n 0.0v 199.745n 0.0v 199.755n 0.0v 204.745n 0.0v 204.755n 1.0v 209.745n 1.0v 209.755n 1.0v 214.745n 1.0v 214.755n 0.0v 219.745n 0.0v 219.755n 0.0v 224.745n 0.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 0.0v 244.745n 0.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 0.0v 259.745n 0.0v 259.755n 1.0v 264.745n 1.0v 264.755n 0.0v 269.745n 0.0v 269.755n 1.0v 274.745n 1.0v 274.755n 0.0v 279.745n 0.0v 279.755n 0.0v 284.745n 0.0v 284.755n 1.0v 289.745n 1.0v 289.755n 0.0v 294.745n 0.0v 294.755n 0.0v 299.745n 0.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 0.0v 314.745n 0.0v 314.755n 0.0v 319.745n 0.0v 319.755n 0.0v 324.745n 0.0v 324.755n 0.0v 329.745n 0.0v 329.755n 0.0v 334.745n 0.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 0.0v 349.745n 0.0v 349.755n 0.0v 354.745n 0.0v 354.755n 0.0v 359.745n 0.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 0.0v 384.745n 0.0v 384.755n 0.0v 389.745n 0.0v 389.755n 1.0v 394.745n 1.0v 394.755n 0.0v 399.745n 0.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 0.0v 414.745n 0.0v 414.755n 0.0v 419.745n 0.0v 419.755n 0.0v 424.745n 0.0v 424.755n 0.0v 429.745n 0.0v 429.755n 0.0v 434.745n 0.0v 434.755n 0.0v 439.745n 0.0v 439.755n 0.0v 444.745n 0.0v 444.755n 0.0v 449.745n 0.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 0.0v 464.745n 0.0v 464.755n 0.0v 469.745n 0.0v 469.755n 0.0v 474.745n 0.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 0.0v 494.745n 0.0v 494.755n 0.0v 499.745n 0.0v 499.755n 1.0v 504.745n 1.0v 504.755n 0.0v 509.745n 0.0v 509.755n 0.0v 514.745n 0.0v 514.755n 0.0v 519.745n 0.0v 519.755n 1.0v 524.745n 1.0v 524.755n 0.0v 529.745n 0.0v 529.755n 0.0v 534.745n 0.0v 534.755n 1.0v 539.745n 1.0v 539.755n 0.0v 544.745n 0.0v 544.755n 0.0v 549.745n 0.0v 549.755n 0.0v 554.745n 0.0v 554.755n 1.0v 559.745n 1.0v 559.755n 0.0v 564.745n 0.0v 564.755n 0.0v 569.745n 0.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 0.0v 584.745n 0.0v 584.755n 0.0v 589.745n 0.0v 589.755n 0.0v 594.745n 0.0v 594.755n 0.0v 599.745n 0.0v 599.755n 0.0v 604.745n 0.0v 604.755n 0.0v 609.745n 0.0v 609.755n 0.0v 614.745n 0.0v 614.755n 0.0v 619.745n 0.0v 619.755n 0.0v 624.745n 0.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 0.0v 639.745n 0.0v 639.755n 0.0v 644.745n 0.0v 644.755n 0.0v 649.745n 0.0v 649.755n 1.0v 654.745n 1.0v 654.755n 0.0v 659.745n 0.0v 659.755n 0.0v 664.745n 0.0v 664.755n 0.0v 669.745n 0.0v 669.755n 0.0v 674.745n 0.0v 674.755n 0.0v 679.745n 0.0v 679.755n 1.0v 684.745n 1.0v 684.755n 0.0v 689.745n 0.0v 689.755n 0.0v 694.745n 0.0v 694.755n 1.0v 699.745n 1.0v 699.755n 0.0v 704.745n 0.0v 704.755n 0.0v 709.745n 0.0v 709.755n 0.0v 714.745n 0.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 0.0v 739.745n 0.0v 739.755n 0.0v 744.745n 0.0v 744.755n 0.0v 749.745n 0.0v 749.755n 0.0v 754.745n 0.0v 754.755n 0.0v 759.745n 0.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 0.0v 774.745n 0.0v 774.755n 0.0v 779.745n 0.0v 779.755n 1.0v 784.745n 1.0v 784.755n 0.0v 789.745n 0.0v 789.755n 0.0v 794.745n 0.0v 794.755n 0.0v 799.745n 0.0v 799.755n 0.0v 804.745n 0.0v 804.755n 0.0v 809.745n 0.0v 809.755n 0.0v 814.745n 0.0v 814.755n 1.0v 819.745n 1.0v 819.755n 0.0v 824.745n 0.0v 824.755n 0.0v 829.745n 0.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 0.0v 844.745n 0.0v 844.755n 1.0v 849.745n 1.0v 849.755n 0.0v 854.745n 0.0v 854.755n 0.0v 859.745n 0.0v 859.755n 0.0v 864.745n 0.0v 864.755n 0.0v 869.745n 0.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 0.0v 899.745n 0.0v 899.755n 1.0v 904.745n 1.0v 904.755n 0.0v 909.745n 0.0v 909.755n 1.0v 914.745n 1.0v 914.755n 0.0v 919.745n 0.0v 919.755n 0.0v 924.745n 0.0v 924.755n 0.0v 929.745n 0.0v 929.755n 1.0v 934.745n 1.0v 934.755n 0.0v 939.745n 0.0v 939.755n 0.0v 944.745n 0.0v 944.755n 1.0v 949.745n 1.0v 949.755n 0.0v 954.745n 0.0v 954.755n 0.0v 959.745n 0.0v 959.755n 0.0v 964.745n 0.0v 964.755n 0.0v 969.745n 0.0v 969.755n 0.0v 974.745n 0.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 0.0v 989.745n 0.0v 989.755n 0.0v 994.745n 0.0v 994.755n 1.0v 999.745n 1.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 0.0v 1009.745n 0.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 0.0v 1019.745n 0.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 1.0v )
+* (time, data): [(0, 1), (5, 0), (10, 0), (15, 0), (20, 1), (25, 1), (30, 1), (35, 1), (40, 0), (45, 1), (50, 1), (55, 0), (60, 1), (65, 1), (70, 1), (75, 1), (80, 1), (85, 1), (90, 1), (95, 1), (100, 0), (105, 1), (110, 0), (115, 1), (120, 1), (125, 1), (130, 1), (135, 1), (140, 1), (145, 1), (150, 1), (155, 1), (160, 1), (165, 0), (170, 0), (175, 1), (180, 1), (185, 1), (190, 1), (195, 0), (200, 1), (205, 1), (210, 1), (215, 1), (220, 1), (225, 0), (230, 0), (235, 0), (240, 1), (245, 1), (250, 1), (255, 1), (260, 1), (265, 1), (270, 1), (275, 0), (280, 1), (285, 1), (290, 1), (295, 0), (300, 0), (305, 0), (310, 1), (315, 1), (320, 0), (325, 0), (330, 1), (335, 0), (340, 0), (345, 1), (350, 0), (355, 1), (360, 1), (365, 1), (370, 0), (375, 0), (380, 1), (385, 1), (390, 1), (395, 1), (400, 1), (405, 1), (410, 1), (415, 0), (420, 0), (425, 1), (430, 1), (435, 1), (440, 1), (445, 0), (450, 1), (455, 1), (460, 1), (465, 1), (470, 0), (475, 1), (480, 1), (485, 1), (490, 1), (495, 0), (500, 1), (505, 0), (510, 0), (515, 1), (520, 1), (525, 0), (530, 1), (535, 1), (540, 1), (545, 1), (550, 0), (555, 1), (560, 1), (565, 1), (570, 1), (575, 1), (580, 1), (585, 1), (590, 1), (595, 1), (600, 1), (605, 1), (610, 0), (615, 0), (620, 1), (625, 1), (630, 1), (635, 1), (640, 0), (645, 1), (650, 1), (655, 1), (660, 1), (665, 0), (670, 1), (675, 1), (680, 1), (685, 0), (690, 0), (695, 1), (700, 1), (705, 0), (710, 0), (715, 1), (720, 1), (725, 0), (730, 0), (735, 1), (740, 1), (745, 1), (750, 0), (755, 1), (760, 1), (765, 1), (770, 1), (775, 1), (780, 1), (785, 0), (790, 1), (795, 1), (800, 1), (805, 0), (810, 1), (815, 1), (820, 1), (825, 0), (830, 1), (835, 1), (840, 1), (845, 1), (850, 1), (855, 1), (860, 0), (865, 1), (870, 1), (875, 1), (880, 1), (885, 0), (890, 0), (895, 1), (900, 1), (905, 1), (910, 1), (915, 1), (920, 0), (925, 1), (930, 1), (935, 0), (940, 1), (945, 1), (950, 1), (955, 1), (960, 0), (965, 1), (970, 0), (975, 1), (980, 1), (985, 1), (990, 1), (995, 1), (1000, 0), (1005, 1), (1010, 1), (1015, 1), (1020, 0), (1025, 1)]
+VWEB0 WEB0 0 PWL (0n 1.0v 4.745n 1.0v 4.755n 0.0v 9.745n 0.0v 9.755n 0.0v 14.745n 0.0v 14.755n 0.0v 19.745n 0.0v 19.755n 1.0v 24.745n 1.0v 24.755n 1.0v 29.745n 1.0v 29.755n 1.0v 34.745n 1.0v 34.755n 1.0v 39.745n 1.0v 39.755n 0.0v 44.745n 0.0v 44.755n 1.0v 49.745n 1.0v 49.755n 1.0v 54.745n 1.0v 54.755n 0.0v 59.745n 0.0v 59.755n 1.0v 64.745n 1.0v 64.755n 1.0v 69.745n 1.0v 69.755n 1.0v 74.745n 1.0v 74.755n 1.0v 79.745n 1.0v 79.755n 1.0v 84.745n 1.0v 84.755n 1.0v 89.745n 1.0v 89.755n 1.0v 94.745n 1.0v 94.755n 1.0v 99.745n 1.0v 99.755n 0.0v 104.745n 0.0v 104.755n 1.0v 109.745n 1.0v 109.755n 0.0v 114.745n 0.0v 114.755n 1.0v 119.745n 1.0v 119.755n 1.0v 124.745n 1.0v 124.755n 1.0v 129.745n 1.0v 129.755n 1.0v 134.745n 1.0v 134.755n 1.0v 139.745n 1.0v 139.755n 1.0v 144.745n 1.0v 144.755n 1.0v 149.745n 1.0v 149.755n 1.0v 154.745n 1.0v 154.755n 1.0v 159.745n 1.0v 159.755n 1.0v 164.745n 1.0v 164.755n 0.0v 169.745n 0.0v 169.755n 0.0v 174.745n 0.0v 174.755n 1.0v 179.745n 1.0v 179.755n 1.0v 184.745n 1.0v 184.755n 1.0v 189.745n 1.0v 189.755n 1.0v 194.745n 1.0v 194.755n 0.0v 199.745n 0.0v 199.755n 1.0v 204.745n 1.0v 204.755n 1.0v 209.745n 1.0v 209.755n 1.0v 214.745n 1.0v 214.755n 1.0v 219.745n 1.0v 219.755n 1.0v 224.745n 1.0v 224.755n 0.0v 229.745n 0.0v 229.755n 0.0v 234.745n 0.0v 234.755n 0.0v 239.745n 0.0v 239.755n 1.0v 244.745n 1.0v 244.755n 1.0v 249.745n 1.0v 249.755n 1.0v 254.745n 1.0v 254.755n 1.0v 259.745n 1.0v 259.755n 1.0v 264.745n 1.0v 264.755n 1.0v 269.745n 1.0v 269.755n 1.0v 274.745n 1.0v 274.755n 0.0v 279.745n 0.0v 279.755n 1.0v 284.745n 1.0v 284.755n 1.0v 289.745n 1.0v 289.755n 1.0v 294.745n 1.0v 294.755n 0.0v 299.745n 0.0v 299.755n 0.0v 304.745n 0.0v 304.755n 0.0v 309.745n 0.0v 309.755n 1.0v 314.745n 1.0v 314.755n 1.0v 319.745n 1.0v 319.755n 0.0v 324.745n 0.0v 324.755n 0.0v 329.745n 0.0v 329.755n 1.0v 334.745n 1.0v 334.755n 0.0v 339.745n 0.0v 339.755n 0.0v 344.745n 0.0v 344.755n 1.0v 349.745n 1.0v 349.755n 0.0v 354.745n 0.0v 354.755n 1.0v 359.745n 1.0v 359.755n 1.0v 364.745n 1.0v 364.755n 1.0v 369.745n 1.0v 369.755n 0.0v 374.745n 0.0v 374.755n 0.0v 379.745n 0.0v 379.755n 1.0v 384.745n 1.0v 384.755n 1.0v 389.745n 1.0v 389.755n 1.0v 394.745n 1.0v 394.755n 1.0v 399.745n 1.0v 399.755n 1.0v 404.745n 1.0v 404.755n 1.0v 409.745n 1.0v 409.755n 1.0v 414.745n 1.0v 414.755n 0.0v 419.745n 0.0v 419.755n 0.0v 424.745n 0.0v 424.755n 1.0v 429.745n 1.0v 429.755n 1.0v 434.745n 1.0v 434.755n 1.0v 439.745n 1.0v 439.755n 1.0v 444.745n 1.0v 444.755n 0.0v 449.745n 0.0v 449.755n 1.0v 454.745n 1.0v 454.755n 1.0v 459.745n 1.0v 459.755n 1.0v 464.745n 1.0v 464.755n 1.0v 469.745n 1.0v 469.755n 0.0v 474.745n 0.0v 474.755n 1.0v 479.745n 1.0v 479.755n 1.0v 484.745n 1.0v 484.755n 1.0v 489.745n 1.0v 489.755n 1.0v 494.745n 1.0v 494.755n 0.0v 499.745n 0.0v 499.755n 1.0v 504.745n 1.0v 504.755n 0.0v 509.745n 0.0v 509.755n 0.0v 514.745n 0.0v 514.755n 1.0v 519.745n 1.0v 519.755n 1.0v 524.745n 1.0v 524.755n 0.0v 529.745n 0.0v 529.755n 1.0v 534.745n 1.0v 534.755n 1.0v 539.745n 1.0v 539.755n 1.0v 544.745n 1.0v 544.755n 1.0v 549.745n 1.0v 549.755n 0.0v 554.745n 0.0v 554.755n 1.0v 559.745n 1.0v 559.755n 1.0v 564.745n 1.0v 564.755n 1.0v 569.745n 1.0v 569.755n 1.0v 574.745n 1.0v 574.755n 1.0v 579.745n 1.0v 579.755n 1.0v 584.745n 1.0v 584.755n 1.0v 589.745n 1.0v 589.755n 1.0v 594.745n 1.0v 594.755n 1.0v 599.745n 1.0v 599.755n 1.0v 604.745n 1.0v 604.755n 1.0v 609.745n 1.0v 609.755n 0.0v 614.745n 0.0v 614.755n 0.0v 619.745n 0.0v 619.755n 1.0v 624.745n 1.0v 624.755n 1.0v 629.745n 1.0v 629.755n 1.0v 634.745n 1.0v 634.755n 1.0v 639.745n 1.0v 639.755n 0.0v 644.745n 0.0v 644.755n 1.0v 649.745n 1.0v 649.755n 1.0v 654.745n 1.0v 654.755n 1.0v 659.745n 1.0v 659.755n 1.0v 664.745n 1.0v 664.755n 0.0v 669.745n 0.0v 669.755n 1.0v 674.745n 1.0v 674.755n 1.0v 679.745n 1.0v 679.755n 1.0v 684.745n 1.0v 684.755n 0.0v 689.745n 0.0v 689.755n 0.0v 694.745n 0.0v 694.755n 1.0v 699.745n 1.0v 699.755n 1.0v 704.745n 1.0v 704.755n 0.0v 709.745n 0.0v 709.755n 0.0v 714.745n 0.0v 714.755n 1.0v 719.745n 1.0v 719.755n 1.0v 724.745n 1.0v 724.755n 0.0v 729.745n 0.0v 729.755n 0.0v 734.745n 0.0v 734.755n 1.0v 739.745n 1.0v 739.755n 1.0v 744.745n 1.0v 744.755n 1.0v 749.745n 1.0v 749.755n 0.0v 754.745n 0.0v 754.755n 1.0v 759.745n 1.0v 759.755n 1.0v 764.745n 1.0v 764.755n 1.0v 769.745n 1.0v 769.755n 1.0v 774.745n 1.0v 774.755n 1.0v 779.745n 1.0v 779.755n 1.0v 784.745n 1.0v 784.755n 0.0v 789.745n 0.0v 789.755n 1.0v 794.745n 1.0v 794.755n 1.0v 799.745n 1.0v 799.755n 1.0v 804.745n 1.0v 804.755n 0.0v 809.745n 0.0v 809.755n 1.0v 814.745n 1.0v 814.755n 1.0v 819.745n 1.0v 819.755n 1.0v 824.745n 1.0v 824.755n 0.0v 829.745n 0.0v 829.755n 1.0v 834.745n 1.0v 834.755n 1.0v 839.745n 1.0v 839.755n 1.0v 844.745n 1.0v 844.755n 1.0v 849.745n 1.0v 849.755n 1.0v 854.745n 1.0v 854.755n 1.0v 859.745n 1.0v 859.755n 0.0v 864.745n 0.0v 864.755n 1.0v 869.745n 1.0v 869.755n 1.0v 874.745n 1.0v 874.755n 1.0v 879.745n 1.0v 879.755n 1.0v 884.745n 1.0v 884.755n 0.0v 889.745n 0.0v 889.755n 0.0v 894.745n 0.0v 894.755n 1.0v 899.745n 1.0v 899.755n 1.0v 904.745n 1.0v 904.755n 1.0v 909.745n 1.0v 909.755n 1.0v 914.745n 1.0v 914.755n 1.0v 919.745n 1.0v 919.755n 0.0v 924.745n 0.0v 924.755n 1.0v 929.745n 1.0v 929.755n 1.0v 934.745n 1.0v 934.755n 0.0v 939.745n 0.0v 939.755n 1.0v 944.745n 1.0v 944.755n 1.0v 949.745n 1.0v 949.755n 1.0v 954.745n 1.0v 954.755n 1.0v 959.745n 1.0v 959.755n 0.0v 964.745n 0.0v 964.755n 1.0v 969.745n 1.0v 969.755n 0.0v 974.745n 0.0v 974.755n 1.0v 979.745n 1.0v 979.755n 1.0v 984.745n 1.0v 984.755n 1.0v 989.745n 1.0v 989.755n 1.0v 994.745n 1.0v 994.755n 1.0v 999.745n 1.0v 999.755n 0.0v 1004.745n 0.0v 1004.755n 1.0v 1009.745n 1.0v 1009.755n 1.0v 1014.745n 1.0v 1014.755n 1.0v 1019.745n 1.0v 1019.755n 0.0v 1024.745n 0.0v 1024.755n 1.0v )
 * PULSE: period=5
 Vclk0 clk0 0 PULSE (0 1.0 4.995n 0.01n 0.01n 2.49n 5n)
 
@@ -280,1764 +267,1672 @@ Vclk0 clk0 0 PULSE (0 1.0 4.995n 0.01n 0.01n 2.49n 5n)
 * CHECK dout0_0 vdout0_0ck4 = 1.0 time = 25
 * CHECK dout0_1 vdout0_1ck4 = 0 time = 25
 * CHECK dout0_2 vdout0_2ck4 = 0 time = 25
-* CHECK dout0_3 vdout0_3ck4 = 0 time = 25
+* CHECK dout0_3 vdout0_3ck4 = 1.0 time = 25
 * CHECK dout0_4 vdout0_4ck4 = 0 time = 25
-* CHECK dout0_5 vdout0_5ck4 = 0 time = 25
+* CHECK dout0_5 vdout0_5ck4 = 1.0 time = 25
 * CHECK dout0_6 vdout0_6ck4 = 0 time = 25
 * CHECK dout0_7 vdout0_7ck4 = 0 time = 25
-* CHECK dout0_8 vdout0_8ck4 = 0 time = 25
-* CHECK dout0_9 vdout0_9ck4 = 1.0 time = 25
+* CHECK dout0_8 vdout0_8ck4 = 1.0 time = 25
+* CHECK dout0_9 vdout0_9ck4 = 0 time = 25
 * CHECK dout0_10 vdout0_10ck4 = 0 time = 25
 * CHECK dout0_11 vdout0_11ck4 = 0 time = 25
 * CHECK dout0_12 vdout0_12ck4 = 1.0 time = 25
 * CHECK dout0_13 vdout0_13ck4 = 0 time = 25
-* CHECK dout0_14 vdout0_14ck4 = 0 time = 25
+* CHECK dout0_14 vdout0_14ck4 = 1.0 time = 25
 * CHECK dout0_15 vdout0_15ck4 = 0 time = 25
 * CHECK dout0_16 vdout0_16ck4 = 0 time = 25
 * CHECK dout0_17 vdout0_17ck4 = 0 time = 25
 * CHECK dout0_18 vdout0_18ck4 = 1.0 time = 25
 * CHECK dout0_19 vdout0_19ck4 = 0 time = 25
-* CHECK dout0_20 vdout0_20ck4 = 1.0 time = 25
+* CHECK dout0_20 vdout0_20ck4 = 0 time = 25
 * CHECK dout0_21 vdout0_21ck4 = 1.0 time = 25
-* CHECK dout0_22 vdout0_22ck4 = 0 time = 25
-* CHECK dout0_0 vdout0_0ck5 = 0 time = 30
-* CHECK dout0_1 vdout0_1ck5 = 1.0 time = 30
-* CHECK dout0_2 vdout0_2ck5 = 1.0 time = 30
+* CHECK dout0_22 vdout0_22ck4 = 1.0 time = 25
+* CHECK dout0_0 vdout0_0ck5 = 1.0 time = 30
+* CHECK dout0_1 vdout0_1ck5 = 0 time = 30
+* CHECK dout0_2 vdout0_2ck5 = 0 time = 30
 * CHECK dout0_3 vdout0_3ck5 = 1.0 time = 30
 * CHECK dout0_4 vdout0_4ck5 = 0 time = 30
 * CHECK dout0_5 vdout0_5ck5 = 0 time = 30
 * CHECK dout0_6 vdout0_6ck5 = 0 time = 30
-* CHECK dout0_7 vdout0_7ck5 = 0 time = 30
-* CHECK dout0_8 vdout0_8ck5 = 0 time = 30
+* CHECK dout0_7 vdout0_7ck5 = 1.0 time = 30
+* CHECK dout0_8 vdout0_8ck5 = 1.0 time = 30
 * CHECK dout0_9 vdout0_9ck5 = 1.0 time = 30
-* CHECK dout0_10 vdout0_10ck5 = 0 time = 30
+* CHECK dout0_10 vdout0_10ck5 = 1.0 time = 30
 * CHECK dout0_11 vdout0_11ck5 = 0 time = 30
-* CHECK dout0_12 vdout0_12ck5 = 0 time = 30
-* CHECK dout0_13 vdout0_13ck5 = 0 time = 30
-* CHECK dout0_14 vdout0_14ck5 = 1.0 time = 30
-* CHECK dout0_15 vdout0_15ck5 = 0 time = 30
+* CHECK dout0_12 vdout0_12ck5 = 1.0 time = 30
+* CHECK dout0_13 vdout0_13ck5 = 1.0 time = 30
+* CHECK dout0_14 vdout0_14ck5 = 0 time = 30
+* CHECK dout0_15 vdout0_15ck5 = 1.0 time = 30
 * CHECK dout0_16 vdout0_16ck5 = 0 time = 30
 * CHECK dout0_17 vdout0_17ck5 = 0 time = 30
 * CHECK dout0_18 vdout0_18ck5 = 0 time = 30
 * CHECK dout0_19 vdout0_19ck5 = 1.0 time = 30
-* CHECK dout0_20 vdout0_20ck5 = 1.0 time = 30
-* CHECK dout0_21 vdout0_21ck5 = 0 time = 30
+* CHECK dout0_20 vdout0_20ck5 = 0 time = 30
+* CHECK dout0_21 vdout0_21ck5 = 1.0 time = 30
 * CHECK dout0_22 vdout0_22ck5 = 1.0 time = 30
-* CHECK dout0_0 vdout0_0ck6 = 0 time = 35
-* CHECK dout0_1 vdout0_1ck6 = 1.0 time = 35
-* CHECK dout0_2 vdout0_2ck6 = 1.0 time = 35
-* CHECK dout0_3 vdout0_3ck6 = 1.0 time = 35
-* CHECK dout0_4 vdout0_4ck6 = 0 time = 35
-* CHECK dout0_5 vdout0_5ck6 = 0 time = 35
-* CHECK dout0_6 vdout0_6ck6 = 0 time = 35
-* CHECK dout0_7 vdout0_7ck6 = 0 time = 35
-* CHECK dout0_8 vdout0_8ck6 = 0 time = 35
-* CHECK dout0_9 vdout0_9ck6 = 1.0 time = 35
-* CHECK dout0_10 vdout0_10ck6 = 0 time = 35
-* CHECK dout0_11 vdout0_11ck6 = 0 time = 35
-* CHECK dout0_12 vdout0_12ck6 = 0 time = 35
-* CHECK dout0_13 vdout0_13ck6 = 0 time = 35
-* CHECK dout0_14 vdout0_14ck6 = 1.0 time = 35
-* CHECK dout0_15 vdout0_15ck6 = 0 time = 35
-* CHECK dout0_16 vdout0_16ck6 = 0 time = 35
-* CHECK dout0_17 vdout0_17ck6 = 0 time = 35
-* CHECK dout0_18 vdout0_18ck6 = 0 time = 35
-* CHECK dout0_19 vdout0_19ck6 = 1.0 time = 35
-* CHECK dout0_20 vdout0_20ck6 = 1.0 time = 35
-* CHECK dout0_21 vdout0_21ck6 = 0 time = 35
-* CHECK dout0_22 vdout0_22ck6 = 1.0 time = 35
-* CHECK dout0_0 vdout0_0ck11 = 0 time = 60
-* CHECK dout0_1 vdout0_1ck11 = 0 time = 60
-* CHECK dout0_2 vdout0_2ck11 = 1.0 time = 60
-* CHECK dout0_3 vdout0_3ck11 = 1.0 time = 60
-* CHECK dout0_4 vdout0_4ck11 = 0 time = 60
-* CHECK dout0_5 vdout0_5ck11 = 1.0 time = 60
-* CHECK dout0_6 vdout0_6ck11 = 0 time = 60
-* CHECK dout0_7 vdout0_7ck11 = 0 time = 60
-* CHECK dout0_8 vdout0_8ck11 = 1.0 time = 60
-* CHECK dout0_9 vdout0_9ck11 = 1.0 time = 60
-* CHECK dout0_10 vdout0_10ck11 = 0 time = 60
-* CHECK dout0_11 vdout0_11ck11 = 0 time = 60
-* CHECK dout0_12 vdout0_12ck11 = 1.0 time = 60
-* CHECK dout0_13 vdout0_13ck11 = 1.0 time = 60
-* CHECK dout0_14 vdout0_14ck11 = 1.0 time = 60
-* CHECK dout0_15 vdout0_15ck11 = 0 time = 60
-* CHECK dout0_16 vdout0_16ck11 = 0 time = 60
-* CHECK dout0_17 vdout0_17ck11 = 1.0 time = 60
-* CHECK dout0_18 vdout0_18ck11 = 0 time = 60
-* CHECK dout0_19 vdout0_19ck11 = 0 time = 60
-* CHECK dout0_20 vdout0_20ck11 = 0 time = 60
-* CHECK dout0_21 vdout0_21ck11 = 1.0 time = 60
-* CHECK dout0_22 vdout0_22ck11 = 0 time = 60
-* CHECK dout0_0 vdout0_0ck14 = 0 time = 75
+* CHECK dout0_0 vdout0_0ck7 = 1.0 time = 40
+* CHECK dout0_1 vdout0_1ck7 = 0 time = 40
+* CHECK dout0_2 vdout0_2ck7 = 0 time = 40
+* CHECK dout0_3 vdout0_3ck7 = 1.0 time = 40
+* CHECK dout0_4 vdout0_4ck7 = 0 time = 40
+* CHECK dout0_5 vdout0_5ck7 = 1.0 time = 40
+* CHECK dout0_6 vdout0_6ck7 = 0 time = 40
+* CHECK dout0_7 vdout0_7ck7 = 0 time = 40
+* CHECK dout0_8 vdout0_8ck7 = 1.0 time = 40
+* CHECK dout0_9 vdout0_9ck7 = 0 time = 40
+* CHECK dout0_10 vdout0_10ck7 = 0 time = 40
+* CHECK dout0_11 vdout0_11ck7 = 0 time = 40
+* CHECK dout0_12 vdout0_12ck7 = 1.0 time = 40
+* CHECK dout0_13 vdout0_13ck7 = 0 time = 40
+* CHECK dout0_14 vdout0_14ck7 = 1.0 time = 40
+* CHECK dout0_15 vdout0_15ck7 = 0 time = 40
+* CHECK dout0_16 vdout0_16ck7 = 0 time = 40
+* CHECK dout0_17 vdout0_17ck7 = 0 time = 40
+* CHECK dout0_18 vdout0_18ck7 = 1.0 time = 40
+* CHECK dout0_19 vdout0_19ck7 = 0 time = 40
+* CHECK dout0_20 vdout0_20ck7 = 0 time = 40
+* CHECK dout0_21 vdout0_21ck7 = 1.0 time = 40
+* CHECK dout0_22 vdout0_22ck7 = 1.0 time = 40
+* CHECK dout0_0 vdout0_0ck9 = 1.0 time = 50
+* CHECK dout0_1 vdout0_1ck9 = 0 time = 50
+* CHECK dout0_2 vdout0_2ck9 = 0 time = 50
+* CHECK dout0_3 vdout0_3ck9 = 1.0 time = 50
+* CHECK dout0_4 vdout0_4ck9 = 0 time = 50
+* CHECK dout0_5 vdout0_5ck9 = 0 time = 50
+* CHECK dout0_6 vdout0_6ck9 = 0 time = 50
+* CHECK dout0_7 vdout0_7ck9 = 1.0 time = 50
+* CHECK dout0_8 vdout0_8ck9 = 1.0 time = 50
+* CHECK dout0_9 vdout0_9ck9 = 1.0 time = 50
+* CHECK dout0_10 vdout0_10ck9 = 1.0 time = 50
+* CHECK dout0_11 vdout0_11ck9 = 0 time = 50
+* CHECK dout0_12 vdout0_12ck9 = 1.0 time = 50
+* CHECK dout0_13 vdout0_13ck9 = 1.0 time = 50
+* CHECK dout0_14 vdout0_14ck9 = 0 time = 50
+* CHECK dout0_15 vdout0_15ck9 = 1.0 time = 50
+* CHECK dout0_16 vdout0_16ck9 = 0 time = 50
+* CHECK dout0_17 vdout0_17ck9 = 0 time = 50
+* CHECK dout0_18 vdout0_18ck9 = 0 time = 50
+* CHECK dout0_19 vdout0_19ck9 = 1.0 time = 50
+* CHECK dout0_20 vdout0_20ck9 = 0 time = 50
+* CHECK dout0_21 vdout0_21ck9 = 1.0 time = 50
+* CHECK dout0_22 vdout0_22ck9 = 1.0 time = 50
+* CHECK dout0_0 vdout0_0ck12 = 1.0 time = 65
+* CHECK dout0_1 vdout0_1ck12 = 0 time = 65
+* CHECK dout0_2 vdout0_2ck12 = 0 time = 65
+* CHECK dout0_3 vdout0_3ck12 = 1.0 time = 65
+* CHECK dout0_4 vdout0_4ck12 = 0 time = 65
+* CHECK dout0_5 vdout0_5ck12 = 0 time = 65
+* CHECK dout0_6 vdout0_6ck12 = 0 time = 65
+* CHECK dout0_7 vdout0_7ck12 = 1.0 time = 65
+* CHECK dout0_8 vdout0_8ck12 = 1.0 time = 65
+* CHECK dout0_9 vdout0_9ck12 = 1.0 time = 65
+* CHECK dout0_10 vdout0_10ck12 = 1.0 time = 65
+* CHECK dout0_11 vdout0_11ck12 = 0 time = 65
+* CHECK dout0_12 vdout0_12ck12 = 1.0 time = 65
+* CHECK dout0_13 vdout0_13ck12 = 1.0 time = 65
+* CHECK dout0_14 vdout0_14ck12 = 0 time = 65
+* CHECK dout0_15 vdout0_15ck12 = 1.0 time = 65
+* CHECK dout0_16 vdout0_16ck12 = 0 time = 65
+* CHECK dout0_17 vdout0_17ck12 = 0 time = 65
+* CHECK dout0_18 vdout0_18ck12 = 0 time = 65
+* CHECK dout0_19 vdout0_19ck12 = 1.0 time = 65
+* CHECK dout0_20 vdout0_20ck12 = 0 time = 65
+* CHECK dout0_21 vdout0_21ck12 = 1.0 time = 65
+* CHECK dout0_22 vdout0_22ck12 = 1.0 time = 65
+* CHECK dout0_0 vdout0_0ck14 = 1.0 time = 75
 * CHECK dout0_1 vdout0_1ck14 = 0 time = 75
-* CHECK dout0_2 vdout0_2ck14 = 1.0 time = 75
+* CHECK dout0_2 vdout0_2ck14 = 0 time = 75
 * CHECK dout0_3 vdout0_3ck14 = 1.0 time = 75
 * CHECK dout0_4 vdout0_4ck14 = 0 time = 75
-* CHECK dout0_5 vdout0_5ck14 = 1.0 time = 75
+* CHECK dout0_5 vdout0_5ck14 = 0 time = 75
 * CHECK dout0_6 vdout0_6ck14 = 0 time = 75
 * CHECK dout0_7 vdout0_7ck14 = 1.0 time = 75
 * CHECK dout0_8 vdout0_8ck14 = 0 time = 75
-* CHECK dout0_9 vdout0_9ck14 = 1.0 time = 75
+* CHECK dout0_9 vdout0_9ck14 = 0 time = 75
 * CHECK dout0_10 vdout0_10ck14 = 1.0 time = 75
-* CHECK dout0_11 vdout0_11ck14 = 0 time = 75
-* CHECK dout0_12 vdout0_12ck14 = 1.0 time = 75
-* CHECK dout0_13 vdout0_13ck14 = 0 time = 75
+* CHECK dout0_11 vdout0_11ck14 = 1.0 time = 75
+* CHECK dout0_12 vdout0_12ck14 = 0 time = 75
+* CHECK dout0_13 vdout0_13ck14 = 1.0 time = 75
 * CHECK dout0_14 vdout0_14ck14 = 0 time = 75
-* CHECK dout0_15 vdout0_15ck14 = 0 time = 75
+* CHECK dout0_15 vdout0_15ck14 = 1.0 time = 75
 * CHECK dout0_16 vdout0_16ck14 = 1.0 time = 75
 * CHECK dout0_17 vdout0_17ck14 = 0 time = 75
 * CHECK dout0_18 vdout0_18ck14 = 1.0 time = 75
-* CHECK dout0_19 vdout0_19ck14 = 0 time = 75
+* CHECK dout0_19 vdout0_19ck14 = 1.0 time = 75
 * CHECK dout0_20 vdout0_20ck14 = 1.0 time = 75
-* CHECK dout0_21 vdout0_21ck14 = 0 time = 75
-* CHECK dout0_22 vdout0_22ck14 = 1.0 time = 75
-* CHECK dout0_0 vdout0_0ck15 = 0 time = 80
+* CHECK dout0_21 vdout0_21ck14 = 1.0 time = 75
+* CHECK dout0_22 vdout0_22ck14 = 0 time = 75
+* CHECK dout0_0 vdout0_0ck15 = 1.0 time = 80
 * CHECK dout0_1 vdout0_1ck15 = 0 time = 80
 * CHECK dout0_2 vdout0_2ck15 = 0 time = 80
 * CHECK dout0_3 vdout0_3ck15 = 1.0 time = 80
-* CHECK dout0_4 vdout0_4ck15 = 1.0 time = 80
-* CHECK dout0_5 vdout0_5ck15 = 1.0 time = 80
-* CHECK dout0_6 vdout0_6ck15 = 1.0 time = 80
-* CHECK dout0_7 vdout0_7ck15 = 0 time = 80
-* CHECK dout0_8 vdout0_8ck15 = 0 time = 80
+* CHECK dout0_4 vdout0_4ck15 = 0 time = 80
+* CHECK dout0_5 vdout0_5ck15 = 0 time = 80
+* CHECK dout0_6 vdout0_6ck15 = 0 time = 80
+* CHECK dout0_7 vdout0_7ck15 = 1.0 time = 80
+* CHECK dout0_8 vdout0_8ck15 = 1.0 time = 80
 * CHECK dout0_9 vdout0_9ck15 = 1.0 time = 80
 * CHECK dout0_10 vdout0_10ck15 = 1.0 time = 80
-* CHECK dout0_11 vdout0_11ck15 = 1.0 time = 80
-* CHECK dout0_12 vdout0_12ck15 = 0 time = 80
+* CHECK dout0_11 vdout0_11ck15 = 0 time = 80
+* CHECK dout0_12 vdout0_12ck15 = 1.0 time = 80
 * CHECK dout0_13 vdout0_13ck15 = 1.0 time = 80
-* CHECK dout0_14 vdout0_14ck15 = 1.0 time = 80
+* CHECK dout0_14 vdout0_14ck15 = 0 time = 80
 * CHECK dout0_15 vdout0_15ck15 = 1.0 time = 80
-* CHECK dout0_16 vdout0_16ck15 = 1.0 time = 80
-* CHECK dout0_17 vdout0_17ck15 = 1.0 time = 80
+* CHECK dout0_16 vdout0_16ck15 = 0 time = 80
+* CHECK dout0_17 vdout0_17ck15 = 0 time = 80
 * CHECK dout0_18 vdout0_18ck15 = 0 time = 80
-* CHECK dout0_19 vdout0_19ck15 = 0 time = 80
-* CHECK dout0_20 vdout0_20ck15 = 1.0 time = 80
+* CHECK dout0_19 vdout0_19ck15 = 1.0 time = 80
+* CHECK dout0_20 vdout0_20ck15 = 0 time = 80
 * CHECK dout0_21 vdout0_21ck15 = 1.0 time = 80
-* CHECK dout0_22 vdout0_22ck15 = 0 time = 80
-* CHECK dout0_0 vdout0_0ck16 = 0 time = 85
-* CHECK dout0_1 vdout0_1ck16 = 0 time = 85
-* CHECK dout0_2 vdout0_2ck16 = 0 time = 85
-* CHECK dout0_3 vdout0_3ck16 = 1.0 time = 85
-* CHECK dout0_4 vdout0_4ck16 = 1.0 time = 85
-* CHECK dout0_5 vdout0_5ck16 = 1.0 time = 85
-* CHECK dout0_6 vdout0_6ck16 = 1.0 time = 85
-* CHECK dout0_7 vdout0_7ck16 = 0 time = 85
-* CHECK dout0_8 vdout0_8ck16 = 0 time = 85
-* CHECK dout0_9 vdout0_9ck16 = 1.0 time = 85
-* CHECK dout0_10 vdout0_10ck16 = 1.0 time = 85
-* CHECK dout0_11 vdout0_11ck16 = 1.0 time = 85
-* CHECK dout0_12 vdout0_12ck16 = 0 time = 85
-* CHECK dout0_13 vdout0_13ck16 = 1.0 time = 85
-* CHECK dout0_14 vdout0_14ck16 = 1.0 time = 85
-* CHECK dout0_15 vdout0_15ck16 = 1.0 time = 85
-* CHECK dout0_16 vdout0_16ck16 = 1.0 time = 85
-* CHECK dout0_17 vdout0_17ck16 = 1.0 time = 85
-* CHECK dout0_18 vdout0_18ck16 = 0 time = 85
-* CHECK dout0_19 vdout0_19ck16 = 0 time = 85
-* CHECK dout0_20 vdout0_20ck16 = 1.0 time = 85
-* CHECK dout0_21 vdout0_21ck16 = 1.0 time = 85
-* CHECK dout0_22 vdout0_22ck16 = 0 time = 85
-* CHECK dout0_0 vdout0_0ck23 = 1.0 time = 120
-* CHECK dout0_1 vdout0_1ck23 = 1.0 time = 120
-* CHECK dout0_2 vdout0_2ck23 = 1.0 time = 120
-* CHECK dout0_3 vdout0_3ck23 = 0 time = 120
-* CHECK dout0_4 vdout0_4ck23 = 1.0 time = 120
-* CHECK dout0_5 vdout0_5ck23 = 1.0 time = 120
-* CHECK dout0_6 vdout0_6ck23 = 0 time = 120
-* CHECK dout0_7 vdout0_7ck23 = 0 time = 120
-* CHECK dout0_8 vdout0_8ck23 = 1.0 time = 120
-* CHECK dout0_9 vdout0_9ck23 = 0 time = 120
-* CHECK dout0_10 vdout0_10ck23 = 1.0 time = 120
-* CHECK dout0_11 vdout0_11ck23 = 1.0 time = 120
-* CHECK dout0_12 vdout0_12ck23 = 1.0 time = 120
-* CHECK dout0_13 vdout0_13ck23 = 0 time = 120
-* CHECK dout0_14 vdout0_14ck23 = 1.0 time = 120
-* CHECK dout0_15 vdout0_15ck23 = 0 time = 120
-* CHECK dout0_16 vdout0_16ck23 = 0 time = 120
-* CHECK dout0_17 vdout0_17ck23 = 0 time = 120
-* CHECK dout0_18 vdout0_18ck23 = 1.0 time = 120
-* CHECK dout0_19 vdout0_19ck23 = 0 time = 120
-* CHECK dout0_20 vdout0_20ck23 = 0 time = 120
-* CHECK dout0_21 vdout0_21ck23 = 1.0 time = 120
-* CHECK dout0_22 vdout0_22ck23 = 1.0 time = 120
-* CHECK dout0_0 vdout0_0ck24 = 0 time = 125
-* CHECK dout0_1 vdout0_1ck24 = 0 time = 125
-* CHECK dout0_2 vdout0_2ck24 = 0 time = 125
-* CHECK dout0_3 vdout0_3ck24 = 1.0 time = 125
-* CHECK dout0_4 vdout0_4ck24 = 1.0 time = 125
-* CHECK dout0_5 vdout0_5ck24 = 1.0 time = 125
-* CHECK dout0_6 vdout0_6ck24 = 1.0 time = 125
-* CHECK dout0_7 vdout0_7ck24 = 0 time = 125
-* CHECK dout0_8 vdout0_8ck24 = 0 time = 125
-* CHECK dout0_9 vdout0_9ck24 = 1.0 time = 125
-* CHECK dout0_10 vdout0_10ck24 = 1.0 time = 125
-* CHECK dout0_11 vdout0_11ck24 = 1.0 time = 125
-* CHECK dout0_12 vdout0_12ck24 = 0 time = 125
-* CHECK dout0_13 vdout0_13ck24 = 1.0 time = 125
-* CHECK dout0_14 vdout0_14ck24 = 1.0 time = 125
-* CHECK dout0_15 vdout0_15ck24 = 1.0 time = 125
-* CHECK dout0_16 vdout0_16ck24 = 1.0 time = 125
-* CHECK dout0_17 vdout0_17ck24 = 1.0 time = 125
-* CHECK dout0_18 vdout0_18ck24 = 0 time = 125
-* CHECK dout0_19 vdout0_19ck24 = 0 time = 125
-* CHECK dout0_20 vdout0_20ck24 = 1.0 time = 125
-* CHECK dout0_21 vdout0_21ck24 = 1.0 time = 125
-* CHECK dout0_22 vdout0_22ck24 = 0 time = 125
+* CHECK dout0_22 vdout0_22ck15 = 1.0 time = 80
+* CHECK dout0_0 vdout0_0ck17 = 1.0 time = 90
+* CHECK dout0_1 vdout0_1ck17 = 0 time = 90
+* CHECK dout0_2 vdout0_2ck17 = 0 time = 90
+* CHECK dout0_3 vdout0_3ck17 = 1.0 time = 90
+* CHECK dout0_4 vdout0_4ck17 = 0 time = 90
+* CHECK dout0_5 vdout0_5ck17 = 1.0 time = 90
+* CHECK dout0_6 vdout0_6ck17 = 0 time = 90
+* CHECK dout0_7 vdout0_7ck17 = 0 time = 90
+* CHECK dout0_8 vdout0_8ck17 = 1.0 time = 90
+* CHECK dout0_9 vdout0_9ck17 = 0 time = 90
+* CHECK dout0_10 vdout0_10ck17 = 0 time = 90
+* CHECK dout0_11 vdout0_11ck17 = 0 time = 90
+* CHECK dout0_12 vdout0_12ck17 = 1.0 time = 90
+* CHECK dout0_13 vdout0_13ck17 = 0 time = 90
+* CHECK dout0_14 vdout0_14ck17 = 1.0 time = 90
+* CHECK dout0_15 vdout0_15ck17 = 0 time = 90
+* CHECK dout0_16 vdout0_16ck17 = 0 time = 90
+* CHECK dout0_17 vdout0_17ck17 = 0 time = 90
+* CHECK dout0_18 vdout0_18ck17 = 1.0 time = 90
+* CHECK dout0_19 vdout0_19ck17 = 0 time = 90
+* CHECK dout0_20 vdout0_20ck17 = 0 time = 90
+* CHECK dout0_21 vdout0_21ck17 = 1.0 time = 90
+* CHECK dout0_22 vdout0_22ck17 = 1.0 time = 90
+* CHECK dout0_0 vdout0_0ck21 = 0 time = 110
+* CHECK dout0_1 vdout0_1ck21 = 1.0 time = 110
+* CHECK dout0_2 vdout0_2ck21 = 0 time = 110
+* CHECK dout0_3 vdout0_3ck21 = 1.0 time = 110
+* CHECK dout0_4 vdout0_4ck21 = 0 time = 110
+* CHECK dout0_5 vdout0_5ck21 = 1.0 time = 110
+* CHECK dout0_6 vdout0_6ck21 = 0 time = 110
+* CHECK dout0_7 vdout0_7ck21 = 1.0 time = 110
+* CHECK dout0_8 vdout0_8ck21 = 0 time = 110
+* CHECK dout0_9 vdout0_9ck21 = 1.0 time = 110
+* CHECK dout0_10 vdout0_10ck21 = 0 time = 110
+* CHECK dout0_11 vdout0_11ck21 = 1.0 time = 110
+* CHECK dout0_12 vdout0_12ck21 = 0 time = 110
+* CHECK dout0_13 vdout0_13ck21 = 0 time = 110
+* CHECK dout0_14 vdout0_14ck21 = 0 time = 110
+* CHECK dout0_15 vdout0_15ck21 = 1.0 time = 110
+* CHECK dout0_16 vdout0_16ck21 = 0 time = 110
+* CHECK dout0_17 vdout0_17ck21 = 0 time = 110
+* CHECK dout0_18 vdout0_18ck21 = 0 time = 110
+* CHECK dout0_19 vdout0_19ck21 = 0 time = 110
+* CHECK dout0_20 vdout0_20ck21 = 1.0 time = 110
+* CHECK dout0_21 vdout0_21ck21 = 1.0 time = 110
+* CHECK dout0_22 vdout0_22ck21 = 1.0 time = 110
 * CHECK dout0_0 vdout0_0ck25 = 1.0 time = 130
 * CHECK dout0_1 vdout0_1ck25 = 1.0 time = 130
 * CHECK dout0_2 vdout0_2ck25 = 1.0 time = 130
 * CHECK dout0_3 vdout0_3ck25 = 0 time = 130
 * CHECK dout0_4 vdout0_4ck25 = 1.0 time = 130
-* CHECK dout0_5 vdout0_5ck25 = 1.0 time = 130
+* CHECK dout0_5 vdout0_5ck25 = 0 time = 130
 * CHECK dout0_6 vdout0_6ck25 = 0 time = 130
-* CHECK dout0_7 vdout0_7ck25 = 0 time = 130
-* CHECK dout0_8 vdout0_8ck25 = 1.0 time = 130
-* CHECK dout0_9 vdout0_9ck25 = 0 time = 130
-* CHECK dout0_10 vdout0_10ck25 = 1.0 time = 130
+* CHECK dout0_7 vdout0_7ck25 = 1.0 time = 130
+* CHECK dout0_8 vdout0_8ck25 = 0 time = 130
+* CHECK dout0_9 vdout0_9ck25 = 1.0 time = 130
+* CHECK dout0_10 vdout0_10ck25 = 0 time = 130
 * CHECK dout0_11 vdout0_11ck25 = 1.0 time = 130
 * CHECK dout0_12 vdout0_12ck25 = 1.0 time = 130
 * CHECK dout0_13 vdout0_13ck25 = 0 time = 130
-* CHECK dout0_14 vdout0_14ck25 = 1.0 time = 130
+* CHECK dout0_14 vdout0_14ck25 = 0 time = 130
 * CHECK dout0_15 vdout0_15ck25 = 0 time = 130
-* CHECK dout0_16 vdout0_16ck25 = 0 time = 130
+* CHECK dout0_16 vdout0_16ck25 = 1.0 time = 130
 * CHECK dout0_17 vdout0_17ck25 = 0 time = 130
 * CHECK dout0_18 vdout0_18ck25 = 1.0 time = 130
-* CHECK dout0_19 vdout0_19ck25 = 0 time = 130
+* CHECK dout0_19 vdout0_19ck25 = 1.0 time = 130
 * CHECK dout0_20 vdout0_20ck25 = 0 time = 130
-* CHECK dout0_21 vdout0_21ck25 = 1.0 time = 130
+* CHECK dout0_21 vdout0_21ck25 = 0 time = 130
 * CHECK dout0_22 vdout0_22ck25 = 1.0 time = 130
+* CHECK dout0_0 vdout0_0ck26 = 1.0 time = 135
+* CHECK dout0_1 vdout0_1ck26 = 0 time = 135
+* CHECK dout0_2 vdout0_2ck26 = 1.0 time = 135
+* CHECK dout0_3 vdout0_3ck26 = 1.0 time = 135
+* CHECK dout0_4 vdout0_4ck26 = 1.0 time = 135
+* CHECK dout0_5 vdout0_5ck26 = 0 time = 135
+* CHECK dout0_6 vdout0_6ck26 = 1.0 time = 135
+* CHECK dout0_7 vdout0_7ck26 = 1.0 time = 135
+* CHECK dout0_8 vdout0_8ck26 = 0 time = 135
+* CHECK dout0_9 vdout0_9ck26 = 0 time = 135
+* CHECK dout0_10 vdout0_10ck26 = 0 time = 135
+* CHECK dout0_11 vdout0_11ck26 = 1.0 time = 135
+* CHECK dout0_12 vdout0_12ck26 = 1.0 time = 135
+* CHECK dout0_13 vdout0_13ck26 = 0 time = 135
+* CHECK dout0_14 vdout0_14ck26 = 1.0 time = 135
+* CHECK dout0_15 vdout0_15ck26 = 1.0 time = 135
+* CHECK dout0_16 vdout0_16ck26 = 1.0 time = 135
+* CHECK dout0_17 vdout0_17ck26 = 1.0 time = 135
+* CHECK dout0_18 vdout0_18ck26 = 0 time = 135
+* CHECK dout0_19 vdout0_19ck26 = 0 time = 135
+* CHECK dout0_20 vdout0_20ck26 = 1.0 time = 135
+* CHECK dout0_21 vdout0_21ck26 = 1.0 time = 135
+* CHECK dout0_22 vdout0_22ck26 = 0 time = 135
+* CHECK dout0_0 vdout0_0ck27 = 1.0 time = 140
+* CHECK dout0_1 vdout0_1ck27 = 0 time = 140
+* CHECK dout0_2 vdout0_2ck27 = 1.0 time = 140
+* CHECK dout0_3 vdout0_3ck27 = 1.0 time = 140
+* CHECK dout0_4 vdout0_4ck27 = 1.0 time = 140
+* CHECK dout0_5 vdout0_5ck27 = 0 time = 140
+* CHECK dout0_6 vdout0_6ck27 = 1.0 time = 140
+* CHECK dout0_7 vdout0_7ck27 = 1.0 time = 140
+* CHECK dout0_8 vdout0_8ck27 = 0 time = 140
+* CHECK dout0_9 vdout0_9ck27 = 0 time = 140
+* CHECK dout0_10 vdout0_10ck27 = 0 time = 140
+* CHECK dout0_11 vdout0_11ck27 = 1.0 time = 140
+* CHECK dout0_12 vdout0_12ck27 = 1.0 time = 140
+* CHECK dout0_13 vdout0_13ck27 = 0 time = 140
+* CHECK dout0_14 vdout0_14ck27 = 1.0 time = 140
+* CHECK dout0_15 vdout0_15ck27 = 1.0 time = 140
+* CHECK dout0_16 vdout0_16ck27 = 1.0 time = 140
+* CHECK dout0_17 vdout0_17ck27 = 1.0 time = 140
+* CHECK dout0_18 vdout0_18ck27 = 0 time = 140
+* CHECK dout0_19 vdout0_19ck27 = 0 time = 140
+* CHECK dout0_20 vdout0_20ck27 = 1.0 time = 140
+* CHECK dout0_21 vdout0_21ck27 = 1.0 time = 140
+* CHECK dout0_22 vdout0_22ck27 = 0 time = 140
 * CHECK dout0_0 vdout0_0ck29 = 1.0 time = 150
 * CHECK dout0_1 vdout0_1ck29 = 1.0 time = 150
 * CHECK dout0_2 vdout0_2ck29 = 1.0 time = 150
 * CHECK dout0_3 vdout0_3ck29 = 0 time = 150
 * CHECK dout0_4 vdout0_4ck29 = 1.0 time = 150
-* CHECK dout0_5 vdout0_5ck29 = 1.0 time = 150
+* CHECK dout0_5 vdout0_5ck29 = 0 time = 150
 * CHECK dout0_6 vdout0_6ck29 = 0 time = 150
-* CHECK dout0_7 vdout0_7ck29 = 0 time = 150
-* CHECK dout0_8 vdout0_8ck29 = 1.0 time = 150
-* CHECK dout0_9 vdout0_9ck29 = 0 time = 150
-* CHECK dout0_10 vdout0_10ck29 = 1.0 time = 150
+* CHECK dout0_7 vdout0_7ck29 = 1.0 time = 150
+* CHECK dout0_8 vdout0_8ck29 = 0 time = 150
+* CHECK dout0_9 vdout0_9ck29 = 1.0 time = 150
+* CHECK dout0_10 vdout0_10ck29 = 0 time = 150
 * CHECK dout0_11 vdout0_11ck29 = 1.0 time = 150
 * CHECK dout0_12 vdout0_12ck29 = 1.0 time = 150
 * CHECK dout0_13 vdout0_13ck29 = 0 time = 150
-* CHECK dout0_14 vdout0_14ck29 = 1.0 time = 150
+* CHECK dout0_14 vdout0_14ck29 = 0 time = 150
 * CHECK dout0_15 vdout0_15ck29 = 0 time = 150
-* CHECK dout0_16 vdout0_16ck29 = 0 time = 150
+* CHECK dout0_16 vdout0_16ck29 = 1.0 time = 150
 * CHECK dout0_17 vdout0_17ck29 = 0 time = 150
 * CHECK dout0_18 vdout0_18ck29 = 1.0 time = 150
-* CHECK dout0_19 vdout0_19ck29 = 0 time = 150
+* CHECK dout0_19 vdout0_19ck29 = 1.0 time = 150
 * CHECK dout0_20 vdout0_20ck29 = 0 time = 150
-* CHECK dout0_21 vdout0_21ck29 = 1.0 time = 150
+* CHECK dout0_21 vdout0_21ck29 = 0 time = 150
 * CHECK dout0_22 vdout0_22ck29 = 1.0 time = 150
-* CHECK dout0_0 vdout0_0ck30 = 0 time = 155
+* CHECK dout0_0 vdout0_0ck30 = 1.0 time = 155
 * CHECK dout0_1 vdout0_1ck30 = 0 time = 155
 * CHECK dout0_2 vdout0_2ck30 = 0 time = 155
 * CHECK dout0_3 vdout0_3ck30 = 1.0 time = 155
-* CHECK dout0_4 vdout0_4ck30 = 1.0 time = 155
-* CHECK dout0_5 vdout0_5ck30 = 1.0 time = 155
-* CHECK dout0_6 vdout0_6ck30 = 1.0 time = 155
-* CHECK dout0_7 vdout0_7ck30 = 0 time = 155
-* CHECK dout0_8 vdout0_8ck30 = 0 time = 155
+* CHECK dout0_4 vdout0_4ck30 = 0 time = 155
+* CHECK dout0_5 vdout0_5ck30 = 0 time = 155
+* CHECK dout0_6 vdout0_6ck30 = 0 time = 155
+* CHECK dout0_7 vdout0_7ck30 = 1.0 time = 155
+* CHECK dout0_8 vdout0_8ck30 = 1.0 time = 155
 * CHECK dout0_9 vdout0_9ck30 = 1.0 time = 155
 * CHECK dout0_10 vdout0_10ck30 = 1.0 time = 155
-* CHECK dout0_11 vdout0_11ck30 = 1.0 time = 155
-* CHECK dout0_12 vdout0_12ck30 = 0 time = 155
+* CHECK dout0_11 vdout0_11ck30 = 0 time = 155
+* CHECK dout0_12 vdout0_12ck30 = 1.0 time = 155
 * CHECK dout0_13 vdout0_13ck30 = 1.0 time = 155
-* CHECK dout0_14 vdout0_14ck30 = 1.0 time = 155
+* CHECK dout0_14 vdout0_14ck30 = 0 time = 155
 * CHECK dout0_15 vdout0_15ck30 = 1.0 time = 155
-* CHECK dout0_16 vdout0_16ck30 = 1.0 time = 155
-* CHECK dout0_17 vdout0_17ck30 = 1.0 time = 155
+* CHECK dout0_16 vdout0_16ck30 = 0 time = 155
+* CHECK dout0_17 vdout0_17ck30 = 0 time = 155
 * CHECK dout0_18 vdout0_18ck30 = 0 time = 155
-* CHECK dout0_19 vdout0_19ck30 = 0 time = 155
-* CHECK dout0_20 vdout0_20ck30 = 1.0 time = 155
+* CHECK dout0_19 vdout0_19ck30 = 1.0 time = 155
+* CHECK dout0_20 vdout0_20ck30 = 0 time = 155
 * CHECK dout0_21 vdout0_21ck30 = 1.0 time = 155
-* CHECK dout0_22 vdout0_22ck30 = 0 time = 155
-* CHECK dout0_0 vdout0_0ck31 = 0 time = 160
-* CHECK dout0_1 vdout0_1ck31 = 0 time = 160
-* CHECK dout0_2 vdout0_2ck31 = 0 time = 160
-* CHECK dout0_3 vdout0_3ck31 = 1.0 time = 160
+* CHECK dout0_22 vdout0_22ck30 = 1.0 time = 155
+* CHECK dout0_0 vdout0_0ck31 = 1.0 time = 160
+* CHECK dout0_1 vdout0_1ck31 = 1.0 time = 160
+* CHECK dout0_2 vdout0_2ck31 = 1.0 time = 160
+* CHECK dout0_3 vdout0_3ck31 = 0 time = 160
 * CHECK dout0_4 vdout0_4ck31 = 1.0 time = 160
-* CHECK dout0_5 vdout0_5ck31 = 1.0 time = 160
-* CHECK dout0_6 vdout0_6ck31 = 1.0 time = 160
-* CHECK dout0_7 vdout0_7ck31 = 0 time = 160
+* CHECK dout0_5 vdout0_5ck31 = 0 time = 160
+* CHECK dout0_6 vdout0_6ck31 = 0 time = 160
+* CHECK dout0_7 vdout0_7ck31 = 1.0 time = 160
 * CHECK dout0_8 vdout0_8ck31 = 0 time = 160
 * CHECK dout0_9 vdout0_9ck31 = 1.0 time = 160
-* CHECK dout0_10 vdout0_10ck31 = 1.0 time = 160
+* CHECK dout0_10 vdout0_10ck31 = 0 time = 160
 * CHECK dout0_11 vdout0_11ck31 = 1.0 time = 160
-* CHECK dout0_12 vdout0_12ck31 = 0 time = 160
-* CHECK dout0_13 vdout0_13ck31 = 1.0 time = 160
-* CHECK dout0_14 vdout0_14ck31 = 1.0 time = 160
-* CHECK dout0_15 vdout0_15ck31 = 1.0 time = 160
+* CHECK dout0_12 vdout0_12ck31 = 1.0 time = 160
+* CHECK dout0_13 vdout0_13ck31 = 0 time = 160
+* CHECK dout0_14 vdout0_14ck31 = 0 time = 160
+* CHECK dout0_15 vdout0_15ck31 = 0 time = 160
 * CHECK dout0_16 vdout0_16ck31 = 1.0 time = 160
-* CHECK dout0_17 vdout0_17ck31 = 1.0 time = 160
-* CHECK dout0_18 vdout0_18ck31 = 0 time = 160
-* CHECK dout0_19 vdout0_19ck31 = 0 time = 160
-* CHECK dout0_20 vdout0_20ck31 = 1.0 time = 160
-* CHECK dout0_21 vdout0_21ck31 = 1.0 time = 160
-* CHECK dout0_22 vdout0_22ck31 = 0 time = 160
-* CHECK dout0_0 vdout0_0ck32 = 0 time = 165
-* CHECK dout0_1 vdout0_1ck32 = 0 time = 165
-* CHECK dout0_2 vdout0_2ck32 = 0 time = 165
-* CHECK dout0_3 vdout0_3ck32 = 1.0 time = 165
-* CHECK dout0_4 vdout0_4ck32 = 1.0 time = 165
-* CHECK dout0_5 vdout0_5ck32 = 1.0 time = 165
-* CHECK dout0_6 vdout0_6ck32 = 1.0 time = 165
-* CHECK dout0_7 vdout0_7ck32 = 0 time = 165
-* CHECK dout0_8 vdout0_8ck32 = 0 time = 165
-* CHECK dout0_9 vdout0_9ck32 = 1.0 time = 165
-* CHECK dout0_10 vdout0_10ck32 = 1.0 time = 165
-* CHECK dout0_11 vdout0_11ck32 = 1.0 time = 165
-* CHECK dout0_12 vdout0_12ck32 = 0 time = 165
-* CHECK dout0_13 vdout0_13ck32 = 1.0 time = 165
-* CHECK dout0_14 vdout0_14ck32 = 1.0 time = 165
-* CHECK dout0_15 vdout0_15ck32 = 1.0 time = 165
-* CHECK dout0_16 vdout0_16ck32 = 1.0 time = 165
-* CHECK dout0_17 vdout0_17ck32 = 1.0 time = 165
-* CHECK dout0_18 vdout0_18ck32 = 0 time = 165
-* CHECK dout0_19 vdout0_19ck32 = 0 time = 165
-* CHECK dout0_20 vdout0_20ck32 = 1.0 time = 165
-* CHECK dout0_21 vdout0_21ck32 = 1.0 time = 165
-* CHECK dout0_22 vdout0_22ck32 = 0 time = 165
-* CHECK dout0_0 vdout0_0ck34 = 0 time = 175
-* CHECK dout0_1 vdout0_1ck34 = 1.0 time = 175
-* CHECK dout0_2 vdout0_2ck34 = 0 time = 175
-* CHECK dout0_3 vdout0_3ck34 = 0 time = 175
-* CHECK dout0_4 vdout0_4ck34 = 1.0 time = 175
-* CHECK dout0_5 vdout0_5ck34 = 1.0 time = 175
-* CHECK dout0_6 vdout0_6ck34 = 0 time = 175
-* CHECK dout0_7 vdout0_7ck34 = 0 time = 175
-* CHECK dout0_8 vdout0_8ck34 = 0 time = 175
-* CHECK dout0_9 vdout0_9ck34 = 0 time = 175
-* CHECK dout0_10 vdout0_10ck34 = 0 time = 175
-* CHECK dout0_11 vdout0_11ck34 = 1.0 time = 175
-* CHECK dout0_12 vdout0_12ck34 = 1.0 time = 175
-* CHECK dout0_13 vdout0_13ck34 = 0 time = 175
-* CHECK dout0_14 vdout0_14ck34 = 0 time = 175
-* CHECK dout0_15 vdout0_15ck34 = 0 time = 175
-* CHECK dout0_16 vdout0_16ck34 = 0 time = 175
-* CHECK dout0_17 vdout0_17ck34 = 1.0 time = 175
-* CHECK dout0_18 vdout0_18ck34 = 1.0 time = 175
-* CHECK dout0_19 vdout0_19ck34 = 0 time = 175
-* CHECK dout0_20 vdout0_20ck34 = 0 time = 175
-* CHECK dout0_21 vdout0_21ck34 = 1.0 time = 175
-* CHECK dout0_22 vdout0_22ck34 = 1.0 time = 175
-* CHECK dout0_0 vdout0_0ck40 = 0 time = 205
-* CHECK dout0_1 vdout0_1ck40 = 1.0 time = 205
+* CHECK dout0_17 vdout0_17ck31 = 0 time = 160
+* CHECK dout0_18 vdout0_18ck31 = 1.0 time = 160
+* CHECK dout0_19 vdout0_19ck31 = 1.0 time = 160
+* CHECK dout0_20 vdout0_20ck31 = 0 time = 160
+* CHECK dout0_21 vdout0_21ck31 = 0 time = 160
+* CHECK dout0_22 vdout0_22ck31 = 1.0 time = 160
+* CHECK dout0_0 vdout0_0ck35 = 0 time = 180
+* CHECK dout0_1 vdout0_1ck35 = 0 time = 180
+* CHECK dout0_2 vdout0_2ck35 = 1.0 time = 180
+* CHECK dout0_3 vdout0_3ck35 = 1.0 time = 180
+* CHECK dout0_4 vdout0_4ck35 = 0 time = 180
+* CHECK dout0_5 vdout0_5ck35 = 1.0 time = 180
+* CHECK dout0_6 vdout0_6ck35 = 0 time = 180
+* CHECK dout0_7 vdout0_7ck35 = 0 time = 180
+* CHECK dout0_8 vdout0_8ck35 = 0 time = 180
+* CHECK dout0_9 vdout0_9ck35 = 1.0 time = 180
+* CHECK dout0_10 vdout0_10ck35 = 0 time = 180
+* CHECK dout0_11 vdout0_11ck35 = 1.0 time = 180
+* CHECK dout0_12 vdout0_12ck35 = 1.0 time = 180
+* CHECK dout0_13 vdout0_13ck35 = 0 time = 180
+* CHECK dout0_14 vdout0_14ck35 = 0 time = 180
+* CHECK dout0_15 vdout0_15ck35 = 1.0 time = 180
+* CHECK dout0_16 vdout0_16ck35 = 0 time = 180
+* CHECK dout0_17 vdout0_17ck35 = 0 time = 180
+* CHECK dout0_18 vdout0_18ck35 = 0 time = 180
+* CHECK dout0_19 vdout0_19ck35 = 0 time = 180
+* CHECK dout0_20 vdout0_20ck35 = 0 time = 180
+* CHECK dout0_21 vdout0_21ck35 = 1.0 time = 180
+* CHECK dout0_22 vdout0_22ck35 = 0 time = 180
+* CHECK dout0_0 vdout0_0ck36 = 1.0 time = 185
+* CHECK dout0_1 vdout0_1ck36 = 0 time = 185
+* CHECK dout0_2 vdout0_2ck36 = 0 time = 185
+* CHECK dout0_3 vdout0_3ck36 = 1.0 time = 185
+* CHECK dout0_4 vdout0_4ck36 = 0 time = 185
+* CHECK dout0_5 vdout0_5ck36 = 1.0 time = 185
+* CHECK dout0_6 vdout0_6ck36 = 0 time = 185
+* CHECK dout0_7 vdout0_7ck36 = 0 time = 185
+* CHECK dout0_8 vdout0_8ck36 = 1.0 time = 185
+* CHECK dout0_9 vdout0_9ck36 = 0 time = 185
+* CHECK dout0_10 vdout0_10ck36 = 0 time = 185
+* CHECK dout0_11 vdout0_11ck36 = 0 time = 185
+* CHECK dout0_12 vdout0_12ck36 = 1.0 time = 185
+* CHECK dout0_13 vdout0_13ck36 = 0 time = 185
+* CHECK dout0_14 vdout0_14ck36 = 1.0 time = 185
+* CHECK dout0_15 vdout0_15ck36 = 0 time = 185
+* CHECK dout0_16 vdout0_16ck36 = 0 time = 185
+* CHECK dout0_17 vdout0_17ck36 = 0 time = 185
+* CHECK dout0_18 vdout0_18ck36 = 1.0 time = 185
+* CHECK dout0_19 vdout0_19ck36 = 0 time = 185
+* CHECK dout0_20 vdout0_20ck36 = 0 time = 185
+* CHECK dout0_21 vdout0_21ck36 = 1.0 time = 185
+* CHECK dout0_22 vdout0_22ck36 = 1.0 time = 185
+* CHECK dout0_0 vdout0_0ck38 = 1.0 time = 195
+* CHECK dout0_1 vdout0_1ck38 = 0 time = 195
+* CHECK dout0_2 vdout0_2ck38 = 0 time = 195
+* CHECK dout0_3 vdout0_3ck38 = 1.0 time = 195
+* CHECK dout0_4 vdout0_4ck38 = 0 time = 195
+* CHECK dout0_5 vdout0_5ck38 = 0 time = 195
+* CHECK dout0_6 vdout0_6ck38 = 0 time = 195
+* CHECK dout0_7 vdout0_7ck38 = 1.0 time = 195
+* CHECK dout0_8 vdout0_8ck38 = 1.0 time = 195
+* CHECK dout0_9 vdout0_9ck38 = 1.0 time = 195
+* CHECK dout0_10 vdout0_10ck38 = 1.0 time = 195
+* CHECK dout0_11 vdout0_11ck38 = 0 time = 195
+* CHECK dout0_12 vdout0_12ck38 = 1.0 time = 195
+* CHECK dout0_13 vdout0_13ck38 = 1.0 time = 195
+* CHECK dout0_14 vdout0_14ck38 = 0 time = 195
+* CHECK dout0_15 vdout0_15ck38 = 1.0 time = 195
+* CHECK dout0_16 vdout0_16ck38 = 0 time = 195
+* CHECK dout0_17 vdout0_17ck38 = 0 time = 195
+* CHECK dout0_18 vdout0_18ck38 = 0 time = 195
+* CHECK dout0_19 vdout0_19ck38 = 1.0 time = 195
+* CHECK dout0_20 vdout0_20ck38 = 0 time = 195
+* CHECK dout0_21 vdout0_21ck38 = 1.0 time = 195
+* CHECK dout0_22 vdout0_22ck38 = 1.0 time = 195
+* CHECK dout0_0 vdout0_0ck40 = 1.0 time = 205
+* CHECK dout0_1 vdout0_1ck40 = 0 time = 205
 * CHECK dout0_2 vdout0_2ck40 = 0 time = 205
-* CHECK dout0_3 vdout0_3ck40 = 0 time = 205
-* CHECK dout0_4 vdout0_4ck40 = 1.0 time = 205
+* CHECK dout0_3 vdout0_3ck40 = 1.0 time = 205
+* CHECK dout0_4 vdout0_4ck40 = 0 time = 205
 * CHECK dout0_5 vdout0_5ck40 = 1.0 time = 205
 * CHECK dout0_6 vdout0_6ck40 = 0 time = 205
 * CHECK dout0_7 vdout0_7ck40 = 0 time = 205
-* CHECK dout0_8 vdout0_8ck40 = 0 time = 205
+* CHECK dout0_8 vdout0_8ck40 = 1.0 time = 205
 * CHECK dout0_9 vdout0_9ck40 = 0 time = 205
 * CHECK dout0_10 vdout0_10ck40 = 0 time = 205
-* CHECK dout0_11 vdout0_11ck40 = 1.0 time = 205
+* CHECK dout0_11 vdout0_11ck40 = 0 time = 205
 * CHECK dout0_12 vdout0_12ck40 = 1.0 time = 205
 * CHECK dout0_13 vdout0_13ck40 = 0 time = 205
-* CHECK dout0_14 vdout0_14ck40 = 0 time = 205
+* CHECK dout0_14 vdout0_14ck40 = 1.0 time = 205
 * CHECK dout0_15 vdout0_15ck40 = 0 time = 205
 * CHECK dout0_16 vdout0_16ck40 = 0 time = 205
-* CHECK dout0_17 vdout0_17ck40 = 1.0 time = 205
+* CHECK dout0_17 vdout0_17ck40 = 0 time = 205
 * CHECK dout0_18 vdout0_18ck40 = 1.0 time = 205
 * CHECK dout0_19 vdout0_19ck40 = 0 time = 205
 * CHECK dout0_20 vdout0_20ck40 = 0 time = 205
 * CHECK dout0_21 vdout0_21ck40 = 1.0 time = 205
 * CHECK dout0_22 vdout0_22ck40 = 1.0 time = 205
-* CHECK dout0_0 vdout0_0ck44 = 0 time = 225
-* CHECK dout0_1 vdout0_1ck44 = 1.0 time = 225
+* CHECK dout0_0 vdout0_0ck43 = 1.0 time = 220
+* CHECK dout0_1 vdout0_1ck43 = 0 time = 220
+* CHECK dout0_2 vdout0_2ck43 = 0 time = 220
+* CHECK dout0_3 vdout0_3ck43 = 1.0 time = 220
+* CHECK dout0_4 vdout0_4ck43 = 0 time = 220
+* CHECK dout0_5 vdout0_5ck43 = 1.0 time = 220
+* CHECK dout0_6 vdout0_6ck43 = 0 time = 220
+* CHECK dout0_7 vdout0_7ck43 = 0 time = 220
+* CHECK dout0_8 vdout0_8ck43 = 1.0 time = 220
+* CHECK dout0_9 vdout0_9ck43 = 0 time = 220
+* CHECK dout0_10 vdout0_10ck43 = 0 time = 220
+* CHECK dout0_11 vdout0_11ck43 = 0 time = 220
+* CHECK dout0_12 vdout0_12ck43 = 1.0 time = 220
+* CHECK dout0_13 vdout0_13ck43 = 0 time = 220
+* CHECK dout0_14 vdout0_14ck43 = 1.0 time = 220
+* CHECK dout0_15 vdout0_15ck43 = 0 time = 220
+* CHECK dout0_16 vdout0_16ck43 = 0 time = 220
+* CHECK dout0_17 vdout0_17ck43 = 0 time = 220
+* CHECK dout0_18 vdout0_18ck43 = 1.0 time = 220
+* CHECK dout0_19 vdout0_19ck43 = 0 time = 220
+* CHECK dout0_20 vdout0_20ck43 = 0 time = 220
+* CHECK dout0_21 vdout0_21ck43 = 1.0 time = 220
+* CHECK dout0_22 vdout0_22ck43 = 1.0 time = 220
+* CHECK dout0_0 vdout0_0ck44 = 1.0 time = 225
+* CHECK dout0_1 vdout0_1ck44 = 0 time = 225
 * CHECK dout0_2 vdout0_2ck44 = 0 time = 225
-* CHECK dout0_3 vdout0_3ck44 = 0 time = 225
-* CHECK dout0_4 vdout0_4ck44 = 1.0 time = 225
+* CHECK dout0_3 vdout0_3ck44 = 1.0 time = 225
+* CHECK dout0_4 vdout0_4ck44 = 0 time = 225
 * CHECK dout0_5 vdout0_5ck44 = 1.0 time = 225
 * CHECK dout0_6 vdout0_6ck44 = 0 time = 225
 * CHECK dout0_7 vdout0_7ck44 = 0 time = 225
-* CHECK dout0_8 vdout0_8ck44 = 0 time = 225
+* CHECK dout0_8 vdout0_8ck44 = 1.0 time = 225
 * CHECK dout0_9 vdout0_9ck44 = 0 time = 225
 * CHECK dout0_10 vdout0_10ck44 = 0 time = 225
-* CHECK dout0_11 vdout0_11ck44 = 1.0 time = 225
+* CHECK dout0_11 vdout0_11ck44 = 0 time = 225
 * CHECK dout0_12 vdout0_12ck44 = 1.0 time = 225
 * CHECK dout0_13 vdout0_13ck44 = 0 time = 225
-* CHECK dout0_14 vdout0_14ck44 = 0 time = 225
+* CHECK dout0_14 vdout0_14ck44 = 1.0 time = 225
 * CHECK dout0_15 vdout0_15ck44 = 0 time = 225
 * CHECK dout0_16 vdout0_16ck44 = 0 time = 225
-* CHECK dout0_17 vdout0_17ck44 = 1.0 time = 225
+* CHECK dout0_17 vdout0_17ck44 = 0 time = 225
 * CHECK dout0_18 vdout0_18ck44 = 1.0 time = 225
 * CHECK dout0_19 vdout0_19ck44 = 0 time = 225
 * CHECK dout0_20 vdout0_20ck44 = 0 time = 225
 * CHECK dout0_21 vdout0_21ck44 = 1.0 time = 225
 * CHECK dout0_22 vdout0_22ck44 = 1.0 time = 225
-* CHECK dout0_0 vdout0_0ck45 = 1.0 time = 230
-* CHECK dout0_1 vdout0_1ck45 = 0 time = 230
-* CHECK dout0_2 vdout0_2ck45 = 1.0 time = 230
-* CHECK dout0_3 vdout0_3ck45 = 0 time = 230
-* CHECK dout0_4 vdout0_4ck45 = 1.0 time = 230
-* CHECK dout0_5 vdout0_5ck45 = 1.0 time = 230
-* CHECK dout0_6 vdout0_6ck45 = 0 time = 230
-* CHECK dout0_7 vdout0_7ck45 = 1.0 time = 230
-* CHECK dout0_8 vdout0_8ck45 = 0 time = 230
-* CHECK dout0_9 vdout0_9ck45 = 0 time = 230
-* CHECK dout0_10 vdout0_10ck45 = 0 time = 230
-* CHECK dout0_11 vdout0_11ck45 = 0 time = 230
-* CHECK dout0_12 vdout0_12ck45 = 1.0 time = 230
-* CHECK dout0_13 vdout0_13ck45 = 0 time = 230
-* CHECK dout0_14 vdout0_14ck45 = 0 time = 230
-* CHECK dout0_15 vdout0_15ck45 = 1.0 time = 230
-* CHECK dout0_16 vdout0_16ck45 = 0 time = 230
-* CHECK dout0_17 vdout0_17ck45 = 1.0 time = 230
-* CHECK dout0_18 vdout0_18ck45 = 1.0 time = 230
-* CHECK dout0_19 vdout0_19ck45 = 1.0 time = 230
-* CHECK dout0_20 vdout0_20ck45 = 1.0 time = 230
-* CHECK dout0_21 vdout0_21ck45 = 1.0 time = 230
-* CHECK dout0_22 vdout0_22ck45 = 1.0 time = 230
-* CHECK dout0_0 vdout0_0ck48 = 0 time = 245
+* CHECK dout0_0 vdout0_0ck48 = 1.0 time = 245
 * CHECK dout0_1 vdout0_1ck48 = 1.0 time = 245
 * CHECK dout0_2 vdout0_2ck48 = 0 time = 245
 * CHECK dout0_3 vdout0_3ck48 = 0 time = 245
-* CHECK dout0_4 vdout0_4ck48 = 1.0 time = 245
-* CHECK dout0_5 vdout0_5ck48 = 1.0 time = 245
+* CHECK dout0_4 vdout0_4ck48 = 0 time = 245
+* CHECK dout0_5 vdout0_5ck48 = 0 time = 245
 * CHECK dout0_6 vdout0_6ck48 = 0 time = 245
 * CHECK dout0_7 vdout0_7ck48 = 0 time = 245
-* CHECK dout0_8 vdout0_8ck48 = 0 time = 245
-* CHECK dout0_9 vdout0_9ck48 = 0 time = 245
+* CHECK dout0_8 vdout0_8ck48 = 1.0 time = 245
+* CHECK dout0_9 vdout0_9ck48 = 1.0 time = 245
 * CHECK dout0_10 vdout0_10ck48 = 0 time = 245
-* CHECK dout0_11 vdout0_11ck48 = 1.0 time = 245
-* CHECK dout0_12 vdout0_12ck48 = 1.0 time = 245
+* CHECK dout0_11 vdout0_11ck48 = 0 time = 245
+* CHECK dout0_12 vdout0_12ck48 = 0 time = 245
 * CHECK dout0_13 vdout0_13ck48 = 0 time = 245
 * CHECK dout0_14 vdout0_14ck48 = 0 time = 245
 * CHECK dout0_15 vdout0_15ck48 = 0 time = 245
 * CHECK dout0_16 vdout0_16ck48 = 0 time = 245
 * CHECK dout0_17 vdout0_17ck48 = 1.0 time = 245
 * CHECK dout0_18 vdout0_18ck48 = 1.0 time = 245
-* CHECK dout0_19 vdout0_19ck48 = 0 time = 245
+* CHECK dout0_19 vdout0_19ck48 = 1.0 time = 245
 * CHECK dout0_20 vdout0_20ck48 = 0 time = 245
-* CHECK dout0_21 vdout0_21ck48 = 1.0 time = 245
-* CHECK dout0_22 vdout0_22ck48 = 1.0 time = 245
-* CHECK dout0_0 vdout0_0ck50 = 1.0 time = 255
-* CHECK dout0_1 vdout0_1ck50 = 0 time = 255
-* CHECK dout0_2 vdout0_2ck50 = 0 time = 255
-* CHECK dout0_3 vdout0_3ck50 = 1.0 time = 255
-* CHECK dout0_4 vdout0_4ck50 = 0 time = 255
-* CHECK dout0_5 vdout0_5ck50 = 1.0 time = 255
-* CHECK dout0_6 vdout0_6ck50 = 0 time = 255
-* CHECK dout0_7 vdout0_7ck50 = 1.0 time = 255
-* CHECK dout0_8 vdout0_8ck50 = 0 time = 255
-* CHECK dout0_9 vdout0_9ck50 = 0 time = 255
-* CHECK dout0_10 vdout0_10ck50 = 1.0 time = 255
-* CHECK dout0_11 vdout0_11ck50 = 1.0 time = 255
-* CHECK dout0_12 vdout0_12ck50 = 1.0 time = 255
-* CHECK dout0_13 vdout0_13ck50 = 1.0 time = 255
-* CHECK dout0_14 vdout0_14ck50 = 0 time = 255
-* CHECK dout0_15 vdout0_15ck50 = 1.0 time = 255
-* CHECK dout0_16 vdout0_16ck50 = 1.0 time = 255
-* CHECK dout0_17 vdout0_17ck50 = 0 time = 255
-* CHECK dout0_18 vdout0_18ck50 = 1.0 time = 255
-* CHECK dout0_19 vdout0_19ck50 = 0 time = 255
-* CHECK dout0_20 vdout0_20ck50 = 1.0 time = 255
-* CHECK dout0_21 vdout0_21ck50 = 0 time = 255
-* CHECK dout0_22 vdout0_22ck50 = 1.0 time = 255
+* CHECK dout0_21 vdout0_21ck48 = 0 time = 245
+* CHECK dout0_22 vdout0_22ck48 = 0 time = 245
 * CHECK dout0_0 vdout0_0ck51 = 0 time = 260
 * CHECK dout0_1 vdout0_1ck51 = 0 time = 260
-* CHECK dout0_2 vdout0_2ck51 = 0 time = 260
-* CHECK dout0_3 vdout0_3ck51 = 0 time = 260
+* CHECK dout0_2 vdout0_2ck51 = 1.0 time = 260
+* CHECK dout0_3 vdout0_3ck51 = 1.0 time = 260
 * CHECK dout0_4 vdout0_4ck51 = 0 time = 260
-* CHECK dout0_5 vdout0_5ck51 = 0 time = 260
+* CHECK dout0_5 vdout0_5ck51 = 1.0 time = 260
 * CHECK dout0_6 vdout0_6ck51 = 0 time = 260
-* CHECK dout0_7 vdout0_7ck51 = 1.0 time = 260
-* CHECK dout0_8 vdout0_8ck51 = 1.0 time = 260
-* CHECK dout0_9 vdout0_9ck51 = 0 time = 260
-* CHECK dout0_10 vdout0_10ck51 = 1.0 time = 260
-* CHECK dout0_11 vdout0_11ck51 = 0 time = 260
+* CHECK dout0_7 vdout0_7ck51 = 0 time = 260
+* CHECK dout0_8 vdout0_8ck51 = 0 time = 260
+* CHECK dout0_9 vdout0_9ck51 = 1.0 time = 260
+* CHECK dout0_10 vdout0_10ck51 = 0 time = 260
+* CHECK dout0_11 vdout0_11ck51 = 1.0 time = 260
 * CHECK dout0_12 vdout0_12ck51 = 1.0 time = 260
 * CHECK dout0_13 vdout0_13ck51 = 0 time = 260
 * CHECK dout0_14 vdout0_14ck51 = 0 time = 260
-* CHECK dout0_15 vdout0_15ck51 = 0 time = 260
-* CHECK dout0_16 vdout0_16ck51 = 1.0 time = 260
-* CHECK dout0_17 vdout0_17ck51 = 1.0 time = 260
-* CHECK dout0_18 vdout0_18ck51 = 1.0 time = 260
-* CHECK dout0_19 vdout0_19ck51 = 1.0 time = 260
+* CHECK dout0_15 vdout0_15ck51 = 1.0 time = 260
+* CHECK dout0_16 vdout0_16ck51 = 0 time = 260
+* CHECK dout0_17 vdout0_17ck51 = 0 time = 260
+* CHECK dout0_18 vdout0_18ck51 = 0 time = 260
+* CHECK dout0_19 vdout0_19ck51 = 0 time = 260
 * CHECK dout0_20 vdout0_20ck51 = 0 time = 260
 * CHECK dout0_21 vdout0_21ck51 = 1.0 time = 260
-* CHECK dout0_22 vdout0_22ck51 = 1.0 time = 260
-* CHECK dout0_0 vdout0_0ck55 = 1.0 time = 280
-* CHECK dout0_1 vdout0_1ck55 = 0 time = 280
-* CHECK dout0_2 vdout0_2ck55 = 0 time = 280
-* CHECK dout0_3 vdout0_3ck55 = 1.0 time = 280
-* CHECK dout0_4 vdout0_4ck55 = 0 time = 280
-* CHECK dout0_5 vdout0_5ck55 = 1.0 time = 280
-* CHECK dout0_6 vdout0_6ck55 = 0 time = 280
-* CHECK dout0_7 vdout0_7ck55 = 1.0 time = 280
-* CHECK dout0_8 vdout0_8ck55 = 0 time = 280
-* CHECK dout0_9 vdout0_9ck55 = 0 time = 280
-* CHECK dout0_10 vdout0_10ck55 = 1.0 time = 280
-* CHECK dout0_11 vdout0_11ck55 = 1.0 time = 280
-* CHECK dout0_12 vdout0_12ck55 = 1.0 time = 280
-* CHECK dout0_13 vdout0_13ck55 = 1.0 time = 280
-* CHECK dout0_14 vdout0_14ck55 = 0 time = 280
-* CHECK dout0_15 vdout0_15ck55 = 1.0 time = 280
-* CHECK dout0_16 vdout0_16ck55 = 1.0 time = 280
-* CHECK dout0_17 vdout0_17ck55 = 0 time = 280
-* CHECK dout0_18 vdout0_18ck55 = 1.0 time = 280
-* CHECK dout0_19 vdout0_19ck55 = 0 time = 280
-* CHECK dout0_20 vdout0_20ck55 = 1.0 time = 280
-* CHECK dout0_21 vdout0_21ck55 = 0 time = 280
-* CHECK dout0_22 vdout0_22ck55 = 1.0 time = 280
-* CHECK dout0_0 vdout0_0ck58 = 1.0 time = 295
+* CHECK dout0_22 vdout0_22ck51 = 0 time = 260
+* CHECK dout0_0 vdout0_0ck53 = 0 time = 270
+* CHECK dout0_1 vdout0_1ck53 = 1.0 time = 270
+* CHECK dout0_2 vdout0_2ck53 = 1.0 time = 270
+* CHECK dout0_3 vdout0_3ck53 = 1.0 time = 270
+* CHECK dout0_4 vdout0_4ck53 = 0 time = 270
+* CHECK dout0_5 vdout0_5ck53 = 0 time = 270
+* CHECK dout0_6 vdout0_6ck53 = 1.0 time = 270
+* CHECK dout0_7 vdout0_7ck53 = 0 time = 270
+* CHECK dout0_8 vdout0_8ck53 = 1.0 time = 270
+* CHECK dout0_9 vdout0_9ck53 = 0 time = 270
+* CHECK dout0_10 vdout0_10ck53 = 1.0 time = 270
+* CHECK dout0_11 vdout0_11ck53 = 1.0 time = 270
+* CHECK dout0_12 vdout0_12ck53 = 1.0 time = 270
+* CHECK dout0_13 vdout0_13ck53 = 0 time = 270
+* CHECK dout0_14 vdout0_14ck53 = 1.0 time = 270
+* CHECK dout0_15 vdout0_15ck53 = 0 time = 270
+* CHECK dout0_16 vdout0_16ck53 = 0 time = 270
+* CHECK dout0_17 vdout0_17ck53 = 0 time = 270
+* CHECK dout0_18 vdout0_18ck53 = 1.0 time = 270
+* CHECK dout0_19 vdout0_19ck53 = 0 time = 270
+* CHECK dout0_20 vdout0_20ck53 = 0 time = 270
+* CHECK dout0_21 vdout0_21ck53 = 0 time = 270
+* CHECK dout0_22 vdout0_22ck53 = 1.0 time = 270
+* CHECK dout0_0 vdout0_0ck56 = 0 time = 285
+* CHECK dout0_1 vdout0_1ck56 = 1.0 time = 285
+* CHECK dout0_2 vdout0_2ck56 = 1.0 time = 285
+* CHECK dout0_3 vdout0_3ck56 = 1.0 time = 285
+* CHECK dout0_4 vdout0_4ck56 = 0 time = 285
+* CHECK dout0_5 vdout0_5ck56 = 0 time = 285
+* CHECK dout0_6 vdout0_6ck56 = 1.0 time = 285
+* CHECK dout0_7 vdout0_7ck56 = 0 time = 285
+* CHECK dout0_8 vdout0_8ck56 = 1.0 time = 285
+* CHECK dout0_9 vdout0_9ck56 = 0 time = 285
+* CHECK dout0_10 vdout0_10ck56 = 1.0 time = 285
+* CHECK dout0_11 vdout0_11ck56 = 1.0 time = 285
+* CHECK dout0_12 vdout0_12ck56 = 1.0 time = 285
+* CHECK dout0_13 vdout0_13ck56 = 0 time = 285
+* CHECK dout0_14 vdout0_14ck56 = 1.0 time = 285
+* CHECK dout0_15 vdout0_15ck56 = 0 time = 285
+* CHECK dout0_16 vdout0_16ck56 = 0 time = 285
+* CHECK dout0_17 vdout0_17ck56 = 0 time = 285
+* CHECK dout0_18 vdout0_18ck56 = 1.0 time = 285
+* CHECK dout0_19 vdout0_19ck56 = 0 time = 285
+* CHECK dout0_20 vdout0_20ck56 = 0 time = 285
+* CHECK dout0_21 vdout0_21ck56 = 0 time = 285
+* CHECK dout0_22 vdout0_22ck56 = 1.0 time = 285
+* CHECK dout0_0 vdout0_0ck58 = 0 time = 295
 * CHECK dout0_1 vdout0_1ck58 = 0 time = 295
-* CHECK dout0_2 vdout0_2ck58 = 0 time = 295
+* CHECK dout0_2 vdout0_2ck58 = 1.0 time = 295
 * CHECK dout0_3 vdout0_3ck58 = 1.0 time = 295
 * CHECK dout0_4 vdout0_4ck58 = 0 time = 295
 * CHECK dout0_5 vdout0_5ck58 = 1.0 time = 295
 * CHECK dout0_6 vdout0_6ck58 = 0 time = 295
-* CHECK dout0_7 vdout0_7ck58 = 1.0 time = 295
+* CHECK dout0_7 vdout0_7ck58 = 0 time = 295
 * CHECK dout0_8 vdout0_8ck58 = 0 time = 295
-* CHECK dout0_9 vdout0_9ck58 = 0 time = 295
-* CHECK dout0_10 vdout0_10ck58 = 1.0 time = 295
+* CHECK dout0_9 vdout0_9ck58 = 1.0 time = 295
+* CHECK dout0_10 vdout0_10ck58 = 0 time = 295
 * CHECK dout0_11 vdout0_11ck58 = 1.0 time = 295
 * CHECK dout0_12 vdout0_12ck58 = 1.0 time = 295
-* CHECK dout0_13 vdout0_13ck58 = 1.0 time = 295
+* CHECK dout0_13 vdout0_13ck58 = 0 time = 295
 * CHECK dout0_14 vdout0_14ck58 = 0 time = 295
 * CHECK dout0_15 vdout0_15ck58 = 1.0 time = 295
-* CHECK dout0_16 vdout0_16ck58 = 1.0 time = 295
+* CHECK dout0_16 vdout0_16ck58 = 0 time = 295
 * CHECK dout0_17 vdout0_17ck58 = 0 time = 295
-* CHECK dout0_18 vdout0_18ck58 = 1.0 time = 295
+* CHECK dout0_18 vdout0_18ck58 = 0 time = 295
 * CHECK dout0_19 vdout0_19ck58 = 0 time = 295
-* CHECK dout0_20 vdout0_20ck58 = 1.0 time = 295
-* CHECK dout0_21 vdout0_21ck58 = 0 time = 295
-* CHECK dout0_22 vdout0_22ck58 = 1.0 time = 295
+* CHECK dout0_20 vdout0_20ck58 = 0 time = 295
+* CHECK dout0_21 vdout0_21ck58 = 1.0 time = 295
+* CHECK dout0_22 vdout0_22ck58 = 0 time = 295
+* CHECK dout0_0 vdout0_0ck62 = 1.0 time = 315
+* CHECK dout0_1 vdout0_1ck62 = 1.0 time = 315
+* CHECK dout0_2 vdout0_2ck62 = 0 time = 315
+* CHECK dout0_3 vdout0_3ck62 = 0 time = 315
+* CHECK dout0_4 vdout0_4ck62 = 0 time = 315
+* CHECK dout0_5 vdout0_5ck62 = 0 time = 315
+* CHECK dout0_6 vdout0_6ck62 = 0 time = 315
+* CHECK dout0_7 vdout0_7ck62 = 0 time = 315
+* CHECK dout0_8 vdout0_8ck62 = 1.0 time = 315
+* CHECK dout0_9 vdout0_9ck62 = 1.0 time = 315
+* CHECK dout0_10 vdout0_10ck62 = 0 time = 315
+* CHECK dout0_11 vdout0_11ck62 = 0 time = 315
+* CHECK dout0_12 vdout0_12ck62 = 0 time = 315
+* CHECK dout0_13 vdout0_13ck62 = 0 time = 315
+* CHECK dout0_14 vdout0_14ck62 = 0 time = 315
+* CHECK dout0_15 vdout0_15ck62 = 0 time = 315
+* CHECK dout0_16 vdout0_16ck62 = 0 time = 315
+* CHECK dout0_17 vdout0_17ck62 = 1.0 time = 315
+* CHECK dout0_18 vdout0_18ck62 = 1.0 time = 315
+* CHECK dout0_19 vdout0_19ck62 = 1.0 time = 315
+* CHECK dout0_20 vdout0_20ck62 = 0 time = 315
+* CHECK dout0_21 vdout0_21ck62 = 0 time = 315
+* CHECK dout0_22 vdout0_22ck62 = 0 time = 315
 * CHECK dout0_0 vdout0_0ck63 = 1.0 time = 320
 * CHECK dout0_1 vdout0_1ck63 = 1.0 time = 320
 * CHECK dout0_2 vdout0_2ck63 = 0 time = 320
 * CHECK dout0_3 vdout0_3ck63 = 0 time = 320
-* CHECK dout0_4 vdout0_4ck63 = 1.0 time = 320
-* CHECK dout0_5 vdout0_5ck63 = 1.0 time = 320
-* CHECK dout0_6 vdout0_6ck63 = 1.0 time = 320
+* CHECK dout0_4 vdout0_4ck63 = 0 time = 320
+* CHECK dout0_5 vdout0_5ck63 = 0 time = 320
+* CHECK dout0_6 vdout0_6ck63 = 0 time = 320
 * CHECK dout0_7 vdout0_7ck63 = 0 time = 320
 * CHECK dout0_8 vdout0_8ck63 = 1.0 time = 320
 * CHECK dout0_9 vdout0_9ck63 = 1.0 time = 320
 * CHECK dout0_10 vdout0_10ck63 = 0 time = 320
 * CHECK dout0_11 vdout0_11ck63 = 0 time = 320
-* CHECK dout0_12 vdout0_12ck63 = 1.0 time = 320
+* CHECK dout0_12 vdout0_12ck63 = 0 time = 320
 * CHECK dout0_13 vdout0_13ck63 = 0 time = 320
-* CHECK dout0_14 vdout0_14ck63 = 1.0 time = 320
-* CHECK dout0_15 vdout0_15ck63 = 1.0 time = 320
-* CHECK dout0_16 vdout0_16ck63 = 1.0 time = 320
-* CHECK dout0_17 vdout0_17ck63 = 0 time = 320
-* CHECK dout0_18 vdout0_18ck63 = 0 time = 320
-* CHECK dout0_19 vdout0_19ck63 = 0 time = 320
+* CHECK dout0_14 vdout0_14ck63 = 0 time = 320
+* CHECK dout0_15 vdout0_15ck63 = 0 time = 320
+* CHECK dout0_16 vdout0_16ck63 = 0 time = 320
+* CHECK dout0_17 vdout0_17ck63 = 1.0 time = 320
+* CHECK dout0_18 vdout0_18ck63 = 1.0 time = 320
+* CHECK dout0_19 vdout0_19ck63 = 1.0 time = 320
 * CHECK dout0_20 vdout0_20ck63 = 0 time = 320
-* CHECK dout0_21 vdout0_21ck63 = 1.0 time = 320
+* CHECK dout0_21 vdout0_21ck63 = 0 time = 320
 * CHECK dout0_22 vdout0_22ck63 = 0 time = 320
-* CHECK dout0_0 vdout0_0ck65 = 0 time = 330
-* CHECK dout0_1 vdout0_1ck65 = 1.0 time = 330
-* CHECK dout0_2 vdout0_2ck65 = 0 time = 330
-* CHECK dout0_3 vdout0_3ck65 = 0 time = 330
-* CHECK dout0_4 vdout0_4ck65 = 1.0 time = 330
-* CHECK dout0_5 vdout0_5ck65 = 1.0 time = 330
-* CHECK dout0_6 vdout0_6ck65 = 0 time = 330
-* CHECK dout0_7 vdout0_7ck65 = 0 time = 330
-* CHECK dout0_8 vdout0_8ck65 = 0 time = 330
-* CHECK dout0_9 vdout0_9ck65 = 0 time = 330
-* CHECK dout0_10 vdout0_10ck65 = 0 time = 330
-* CHECK dout0_11 vdout0_11ck65 = 1.0 time = 330
-* CHECK dout0_12 vdout0_12ck65 = 1.0 time = 330
-* CHECK dout0_13 vdout0_13ck65 = 0 time = 330
-* CHECK dout0_14 vdout0_14ck65 = 0 time = 330
-* CHECK dout0_15 vdout0_15ck65 = 0 time = 330
-* CHECK dout0_16 vdout0_16ck65 = 0 time = 330
-* CHECK dout0_17 vdout0_17ck65 = 1.0 time = 330
-* CHECK dout0_18 vdout0_18ck65 = 1.0 time = 330
-* CHECK dout0_19 vdout0_19ck65 = 0 time = 330
-* CHECK dout0_20 vdout0_20ck65 = 0 time = 330
-* CHECK dout0_21 vdout0_21ck65 = 1.0 time = 330
-* CHECK dout0_22 vdout0_22ck65 = 1.0 time = 330
-* CHECK dout0_0 vdout0_0ck68 = 1.0 time = 345
-* CHECK dout0_1 vdout0_1ck68 = 1.0 time = 345
-* CHECK dout0_2 vdout0_2ck68 = 1.0 time = 345
-* CHECK dout0_3 vdout0_3ck68 = 0 time = 345
-* CHECK dout0_4 vdout0_4ck68 = 0 time = 345
-* CHECK dout0_5 vdout0_5ck68 = 1.0 time = 345
-* CHECK dout0_6 vdout0_6ck68 = 1.0 time = 345
-* CHECK dout0_7 vdout0_7ck68 = 0 time = 345
-* CHECK dout0_8 vdout0_8ck68 = 0 time = 345
-* CHECK dout0_9 vdout0_9ck68 = 1.0 time = 345
-* CHECK dout0_10 vdout0_10ck68 = 1.0 time = 345
-* CHECK dout0_11 vdout0_11ck68 = 0 time = 345
-* CHECK dout0_12 vdout0_12ck68 = 0 time = 345
-* CHECK dout0_13 vdout0_13ck68 = 0 time = 345
-* CHECK dout0_14 vdout0_14ck68 = 0 time = 345
-* CHECK dout0_15 vdout0_15ck68 = 1.0 time = 345
-* CHECK dout0_16 vdout0_16ck68 = 1.0 time = 345
-* CHECK dout0_17 vdout0_17ck68 = 1.0 time = 345
-* CHECK dout0_18 vdout0_18ck68 = 0 time = 345
-* CHECK dout0_19 vdout0_19ck68 = 0 time = 345
-* CHECK dout0_20 vdout0_20ck68 = 0 time = 345
-* CHECK dout0_21 vdout0_21ck68 = 0 time = 345
-* CHECK dout0_22 vdout0_22ck68 = 1.0 time = 345
-* CHECK dout0_0 vdout0_0ck71 = 1.0 time = 360
+* CHECK dout0_0 vdout0_0ck66 = 1.0 time = 335
+* CHECK dout0_1 vdout0_1ck66 = 1.0 time = 335
+* CHECK dout0_2 vdout0_2ck66 = 0 time = 335
+* CHECK dout0_3 vdout0_3ck66 = 0 time = 335
+* CHECK dout0_4 vdout0_4ck66 = 0 time = 335
+* CHECK dout0_5 vdout0_5ck66 = 0 time = 335
+* CHECK dout0_6 vdout0_6ck66 = 0 time = 335
+* CHECK dout0_7 vdout0_7ck66 = 0 time = 335
+* CHECK dout0_8 vdout0_8ck66 = 1.0 time = 335
+* CHECK dout0_9 vdout0_9ck66 = 1.0 time = 335
+* CHECK dout0_10 vdout0_10ck66 = 0 time = 335
+* CHECK dout0_11 vdout0_11ck66 = 0 time = 335
+* CHECK dout0_12 vdout0_12ck66 = 0 time = 335
+* CHECK dout0_13 vdout0_13ck66 = 0 time = 335
+* CHECK dout0_14 vdout0_14ck66 = 0 time = 335
+* CHECK dout0_15 vdout0_15ck66 = 0 time = 335
+* CHECK dout0_16 vdout0_16ck66 = 0 time = 335
+* CHECK dout0_17 vdout0_17ck66 = 1.0 time = 335
+* CHECK dout0_18 vdout0_18ck66 = 1.0 time = 335
+* CHECK dout0_19 vdout0_19ck66 = 1.0 time = 335
+* CHECK dout0_20 vdout0_20ck66 = 0 time = 335
+* CHECK dout0_21 vdout0_21ck66 = 0 time = 335
+* CHECK dout0_22 vdout0_22ck66 = 0 time = 335
+* CHECK dout0_0 vdout0_0ck69 = 0 time = 350
+* CHECK dout0_1 vdout0_1ck69 = 0 time = 350
+* CHECK dout0_2 vdout0_2ck69 = 0 time = 350
+* CHECK dout0_3 vdout0_3ck69 = 1.0 time = 350
+* CHECK dout0_4 vdout0_4ck69 = 0 time = 350
+* CHECK dout0_5 vdout0_5ck69 = 1.0 time = 350
+* CHECK dout0_6 vdout0_6ck69 = 0 time = 350
+* CHECK dout0_7 vdout0_7ck69 = 0 time = 350
+* CHECK dout0_8 vdout0_8ck69 = 1.0 time = 350
+* CHECK dout0_9 vdout0_9ck69 = 1.0 time = 350
+* CHECK dout0_10 vdout0_10ck69 = 1.0 time = 350
+* CHECK dout0_11 vdout0_11ck69 = 0 time = 350
+* CHECK dout0_12 vdout0_12ck69 = 1.0 time = 350
+* CHECK dout0_13 vdout0_13ck69 = 1.0 time = 350
+* CHECK dout0_14 vdout0_14ck69 = 1.0 time = 350
+* CHECK dout0_15 vdout0_15ck69 = 0 time = 350
+* CHECK dout0_16 vdout0_16ck69 = 1.0 time = 350
+* CHECK dout0_17 vdout0_17ck69 = 1.0 time = 350
+* CHECK dout0_18 vdout0_18ck69 = 0 time = 350
+* CHECK dout0_19 vdout0_19ck69 = 1.0 time = 350
+* CHECK dout0_20 vdout0_20ck69 = 1.0 time = 350
+* CHECK dout0_21 vdout0_21ck69 = 0 time = 350
+* CHECK dout0_22 vdout0_22ck69 = 0 time = 350
+* CHECK dout0_0 vdout0_0ck71 = 0 time = 360
 * CHECK dout0_1 vdout0_1ck71 = 0 time = 360
-* CHECK dout0_2 vdout0_2ck71 = 0 time = 360
+* CHECK dout0_2 vdout0_2ck71 = 1.0 time = 360
 * CHECK dout0_3 vdout0_3ck71 = 1.0 time = 360
 * CHECK dout0_4 vdout0_4ck71 = 1.0 time = 360
 * CHECK dout0_5 vdout0_5ck71 = 1.0 time = 360
 * CHECK dout0_6 vdout0_6ck71 = 1.0 time = 360
-* CHECK dout0_7 vdout0_7ck71 = 0 time = 360
+* CHECK dout0_7 vdout0_7ck71 = 1.0 time = 360
 * CHECK dout0_8 vdout0_8ck71 = 1.0 time = 360
-* CHECK dout0_9 vdout0_9ck71 = 1.0 time = 360
-* CHECK dout0_10 vdout0_10ck71 = 0 time = 360
+* CHECK dout0_9 vdout0_9ck71 = 0 time = 360
+* CHECK dout0_10 vdout0_10ck71 = 1.0 time = 360
 * CHECK dout0_11 vdout0_11ck71 = 0 time = 360
-* CHECK dout0_12 vdout0_12ck71 = 0 time = 360
-* CHECK dout0_13 vdout0_13ck71 = 1.0 time = 360
+* CHECK dout0_12 vdout0_12ck71 = 1.0 time = 360
+* CHECK dout0_13 vdout0_13ck71 = 0 time = 360
 * CHECK dout0_14 vdout0_14ck71 = 1.0 time = 360
-* CHECK dout0_15 vdout0_15ck71 = 0 time = 360
-* CHECK dout0_16 vdout0_16ck71 = 1.0 time = 360
+* CHECK dout0_15 vdout0_15ck71 = 1.0 time = 360
+* CHECK dout0_16 vdout0_16ck71 = 0 time = 360
 * CHECK dout0_17 vdout0_17ck71 = 1.0 time = 360
-* CHECK dout0_18 vdout0_18ck71 = 1.0 time = 360
+* CHECK dout0_18 vdout0_18ck71 = 0 time = 360
 * CHECK dout0_19 vdout0_19ck71 = 1.0 time = 360
 * CHECK dout0_20 vdout0_20ck71 = 0 time = 360
 * CHECK dout0_21 vdout0_21ck71 = 0 time = 360
 * CHECK dout0_22 vdout0_22ck71 = 1.0 time = 360
-* CHECK dout0_0 vdout0_0ck75 = 1.0 time = 380
-* CHECK dout0_1 vdout0_1ck75 = 0 time = 380
-* CHECK dout0_2 vdout0_2ck75 = 0 time = 380
-* CHECK dout0_3 vdout0_3ck75 = 1.0 time = 380
-* CHECK dout0_4 vdout0_4ck75 = 1.0 time = 380
-* CHECK dout0_5 vdout0_5ck75 = 1.0 time = 380
-* CHECK dout0_6 vdout0_6ck75 = 1.0 time = 380
-* CHECK dout0_7 vdout0_7ck75 = 0 time = 380
-* CHECK dout0_8 vdout0_8ck75 = 1.0 time = 380
-* CHECK dout0_9 vdout0_9ck75 = 1.0 time = 380
-* CHECK dout0_10 vdout0_10ck75 = 0 time = 380
-* CHECK dout0_11 vdout0_11ck75 = 0 time = 380
-* CHECK dout0_12 vdout0_12ck75 = 0 time = 380
-* CHECK dout0_13 vdout0_13ck75 = 1.0 time = 380
-* CHECK dout0_14 vdout0_14ck75 = 1.0 time = 380
-* CHECK dout0_15 vdout0_15ck75 = 0 time = 380
-* CHECK dout0_16 vdout0_16ck75 = 1.0 time = 380
-* CHECK dout0_17 vdout0_17ck75 = 1.0 time = 380
-* CHECK dout0_18 vdout0_18ck75 = 1.0 time = 380
-* CHECK dout0_19 vdout0_19ck75 = 1.0 time = 380
-* CHECK dout0_20 vdout0_20ck75 = 0 time = 380
-* CHECK dout0_21 vdout0_21ck75 = 0 time = 380
-* CHECK dout0_22 vdout0_22ck75 = 1.0 time = 380
 * CHECK dout0_0 vdout0_0ck76 = 0 time = 385
-* CHECK dout0_1 vdout0_1ck76 = 1.0 time = 385
-* CHECK dout0_2 vdout0_2ck76 = 1.0 time = 385
+* CHECK dout0_1 vdout0_1ck76 = 0 time = 385
+* CHECK dout0_2 vdout0_2ck76 = 0 time = 385
 * CHECK dout0_3 vdout0_3ck76 = 1.0 time = 385
-* CHECK dout0_4 vdout0_4ck76 = 1.0 time = 385
-* CHECK dout0_5 vdout0_5ck76 = 0 time = 385
+* CHECK dout0_4 vdout0_4ck76 = 0 time = 385
+* CHECK dout0_5 vdout0_5ck76 = 1.0 time = 385
 * CHECK dout0_6 vdout0_6ck76 = 0 time = 385
-* CHECK dout0_7 vdout0_7ck76 = 1.0 time = 385
+* CHECK dout0_7 vdout0_7ck76 = 0 time = 385
 * CHECK dout0_8 vdout0_8ck76 = 1.0 time = 385
-* CHECK dout0_9 vdout0_9ck76 = 0 time = 385
-* CHECK dout0_10 vdout0_10ck76 = 0 time = 385
-* CHECK dout0_11 vdout0_11ck76 = 1.0 time = 385
+* CHECK dout0_9 vdout0_9ck76 = 1.0 time = 385
+* CHECK dout0_10 vdout0_10ck76 = 1.0 time = 385
+* CHECK dout0_11 vdout0_11ck76 = 0 time = 385
 * CHECK dout0_12 vdout0_12ck76 = 1.0 time = 385
-* CHECK dout0_13 vdout0_13ck76 = 0 time = 385
+* CHECK dout0_13 vdout0_13ck76 = 1.0 time = 385
 * CHECK dout0_14 vdout0_14ck76 = 1.0 time = 385
-* CHECK dout0_15 vdout0_15ck76 = 1.0 time = 385
-* CHECK dout0_16 vdout0_16ck76 = 0 time = 385
+* CHECK dout0_15 vdout0_15ck76 = 0 time = 385
+* CHECK dout0_16 vdout0_16ck76 = 1.0 time = 385
 * CHECK dout0_17 vdout0_17ck76 = 1.0 time = 385
-* CHECK dout0_18 vdout0_18ck76 = 1.0 time = 385
-* CHECK dout0_19 vdout0_19ck76 = 0 time = 385
-* CHECK dout0_20 vdout0_20ck76 = 0 time = 385
-* CHECK dout0_21 vdout0_21ck76 = 1.0 time = 385
-* CHECK dout0_22 vdout0_22ck76 = 1.0 time = 385
-* CHECK dout0_0 vdout0_0ck77 = 1.0 time = 390
+* CHECK dout0_18 vdout0_18ck76 = 0 time = 385
+* CHECK dout0_19 vdout0_19ck76 = 1.0 time = 385
+* CHECK dout0_20 vdout0_20ck76 = 1.0 time = 385
+* CHECK dout0_21 vdout0_21ck76 = 0 time = 385
+* CHECK dout0_22 vdout0_22ck76 = 0 time = 385
+* CHECK dout0_0 vdout0_0ck77 = 0 time = 390
 * CHECK dout0_1 vdout0_1ck77 = 1.0 time = 390
 * CHECK dout0_2 vdout0_2ck77 = 1.0 time = 390
-* CHECK dout0_3 vdout0_3ck77 = 0 time = 390
+* CHECK dout0_3 vdout0_3ck77 = 1.0 time = 390
 * CHECK dout0_4 vdout0_4ck77 = 0 time = 390
-* CHECK dout0_5 vdout0_5ck77 = 1.0 time = 390
-* CHECK dout0_6 vdout0_6ck77 = 1.0 time = 390
+* CHECK dout0_5 vdout0_5ck77 = 0 time = 390
+* CHECK dout0_6 vdout0_6ck77 = 0 time = 390
 * CHECK dout0_7 vdout0_7ck77 = 0 time = 390
 * CHECK dout0_8 vdout0_8ck77 = 0 time = 390
 * CHECK dout0_9 vdout0_9ck77 = 1.0 time = 390
-* CHECK dout0_10 vdout0_10ck77 = 1.0 time = 390
+* CHECK dout0_10 vdout0_10ck77 = 0 time = 390
 * CHECK dout0_11 vdout0_11ck77 = 0 time = 390
-* CHECK dout0_12 vdout0_12ck77 = 0 time = 390
-* CHECK dout0_13 vdout0_13ck77 = 0 time = 390
-* CHECK dout0_14 vdout0_14ck77 = 0 time = 390
+* CHECK dout0_12 vdout0_12ck77 = 1.0 time = 390
+* CHECK dout0_13 vdout0_13ck77 = 1.0 time = 390
+* CHECK dout0_14 vdout0_14ck77 = 1.0 time = 390
 * CHECK dout0_15 vdout0_15ck77 = 1.0 time = 390
-* CHECK dout0_16 vdout0_16ck77 = 1.0 time = 390
+* CHECK dout0_16 vdout0_16ck77 = 0 time = 390
 * CHECK dout0_17 vdout0_17ck77 = 1.0 time = 390
-* CHECK dout0_18 vdout0_18ck77 = 0 time = 390
-* CHECK dout0_19 vdout0_19ck77 = 0 time = 390
+* CHECK dout0_18 vdout0_18ck77 = 1.0 time = 390
+* CHECK dout0_19 vdout0_19ck77 = 1.0 time = 390
 * CHECK dout0_20 vdout0_20ck77 = 0 time = 390
-* CHECK dout0_21 vdout0_21ck77 = 0 time = 390
+* CHECK dout0_21 vdout0_21ck77 = 1.0 time = 390
 * CHECK dout0_22 vdout0_22ck77 = 1.0 time = 390
-* CHECK dout0_0 vdout0_0ck80 = 1.0 time = 405
-* CHECK dout0_1 vdout0_1ck80 = 1.0 time = 405
-* CHECK dout0_2 vdout0_2ck80 = 1.0 time = 405
-* CHECK dout0_3 vdout0_3ck80 = 0 time = 405
-* CHECK dout0_4 vdout0_4ck80 = 0 time = 405
-* CHECK dout0_5 vdout0_5ck80 = 1.0 time = 405
-* CHECK dout0_6 vdout0_6ck80 = 1.0 time = 405
-* CHECK dout0_7 vdout0_7ck80 = 0 time = 405
-* CHECK dout0_8 vdout0_8ck80 = 0 time = 405
-* CHECK dout0_9 vdout0_9ck80 = 1.0 time = 405
-* CHECK dout0_10 vdout0_10ck80 = 1.0 time = 405
-* CHECK dout0_11 vdout0_11ck80 = 0 time = 405
-* CHECK dout0_12 vdout0_12ck80 = 0 time = 405
-* CHECK dout0_13 vdout0_13ck80 = 0 time = 405
-* CHECK dout0_14 vdout0_14ck80 = 0 time = 405
-* CHECK dout0_15 vdout0_15ck80 = 1.0 time = 405
-* CHECK dout0_16 vdout0_16ck80 = 1.0 time = 405
-* CHECK dout0_17 vdout0_17ck80 = 1.0 time = 405
-* CHECK dout0_18 vdout0_18ck80 = 0 time = 405
-* CHECK dout0_19 vdout0_19ck80 = 0 time = 405
-* CHECK dout0_20 vdout0_20ck80 = 0 time = 405
-* CHECK dout0_21 vdout0_21ck80 = 0 time = 405
-* CHECK dout0_22 vdout0_22ck80 = 1.0 time = 405
+* CHECK dout0_0 vdout0_0ck79 = 0 time = 400
+* CHECK dout0_1 vdout0_1ck79 = 0 time = 400
+* CHECK dout0_2 vdout0_2ck79 = 0 time = 400
+* CHECK dout0_3 vdout0_3ck79 = 1.0 time = 400
+* CHECK dout0_4 vdout0_4ck79 = 0 time = 400
+* CHECK dout0_5 vdout0_5ck79 = 1.0 time = 400
+* CHECK dout0_6 vdout0_6ck79 = 0 time = 400
+* CHECK dout0_7 vdout0_7ck79 = 0 time = 400
+* CHECK dout0_8 vdout0_8ck79 = 1.0 time = 400
+* CHECK dout0_9 vdout0_9ck79 = 1.0 time = 400
+* CHECK dout0_10 vdout0_10ck79 = 1.0 time = 400
+* CHECK dout0_11 vdout0_11ck79 = 0 time = 400
+* CHECK dout0_12 vdout0_12ck79 = 1.0 time = 400
+* CHECK dout0_13 vdout0_13ck79 = 1.0 time = 400
+* CHECK dout0_14 vdout0_14ck79 = 1.0 time = 400
+* CHECK dout0_15 vdout0_15ck79 = 0 time = 400
+* CHECK dout0_16 vdout0_16ck79 = 1.0 time = 400
+* CHECK dout0_17 vdout0_17ck79 = 1.0 time = 400
+* CHECK dout0_18 vdout0_18ck79 = 0 time = 400
+* CHECK dout0_19 vdout0_19ck79 = 1.0 time = 400
+* CHECK dout0_20 vdout0_20ck79 = 1.0 time = 400
+* CHECK dout0_21 vdout0_21ck79 = 0 time = 400
+* CHECK dout0_22 vdout0_22ck79 = 0 time = 400
 * CHECK dout0_0 vdout0_0ck82 = 1.0 time = 415
 * CHECK dout0_1 vdout0_1ck82 = 1.0 time = 415
-* CHECK dout0_2 vdout0_2ck82 = 1.0 time = 415
+* CHECK dout0_2 vdout0_2ck82 = 0 time = 415
 * CHECK dout0_3 vdout0_3ck82 = 0 time = 415
 * CHECK dout0_4 vdout0_4ck82 = 0 time = 415
-* CHECK dout0_5 vdout0_5ck82 = 1.0 time = 415
-* CHECK dout0_6 vdout0_6ck82 = 1.0 time = 415
+* CHECK dout0_5 vdout0_5ck82 = 0 time = 415
+* CHECK dout0_6 vdout0_6ck82 = 0 time = 415
 * CHECK dout0_7 vdout0_7ck82 = 0 time = 415
-* CHECK dout0_8 vdout0_8ck82 = 0 time = 415
+* CHECK dout0_8 vdout0_8ck82 = 1.0 time = 415
 * CHECK dout0_9 vdout0_9ck82 = 1.0 time = 415
-* CHECK dout0_10 vdout0_10ck82 = 1.0 time = 415
+* CHECK dout0_10 vdout0_10ck82 = 0 time = 415
 * CHECK dout0_11 vdout0_11ck82 = 0 time = 415
 * CHECK dout0_12 vdout0_12ck82 = 0 time = 415
 * CHECK dout0_13 vdout0_13ck82 = 0 time = 415
 * CHECK dout0_14 vdout0_14ck82 = 0 time = 415
-* CHECK dout0_15 vdout0_15ck82 = 1.0 time = 415
-* CHECK dout0_16 vdout0_16ck82 = 1.0 time = 415
+* CHECK dout0_15 vdout0_15ck82 = 0 time = 415
+* CHECK dout0_16 vdout0_16ck82 = 0 time = 415
 * CHECK dout0_17 vdout0_17ck82 = 1.0 time = 415
-* CHECK dout0_18 vdout0_18ck82 = 0 time = 415
-* CHECK dout0_19 vdout0_19ck82 = 0 time = 415
+* CHECK dout0_18 vdout0_18ck82 = 1.0 time = 415
+* CHECK dout0_19 vdout0_19ck82 = 1.0 time = 415
 * CHECK dout0_20 vdout0_20ck82 = 0 time = 415
 * CHECK dout0_21 vdout0_21ck82 = 0 time = 415
-* CHECK dout0_22 vdout0_22ck82 = 1.0 time = 415
-* CHECK dout0_0 vdout0_0ck83 = 0 time = 420
-* CHECK dout0_1 vdout0_1ck83 = 1.0 time = 420
-* CHECK dout0_2 vdout0_2ck83 = 1.0 time = 420
-* CHECK dout0_3 vdout0_3ck83 = 1.0 time = 420
-* CHECK dout0_4 vdout0_4ck83 = 1.0 time = 420
-* CHECK dout0_5 vdout0_5ck83 = 0 time = 420
-* CHECK dout0_6 vdout0_6ck83 = 0 time = 420
-* CHECK dout0_7 vdout0_7ck83 = 1.0 time = 420
-* CHECK dout0_8 vdout0_8ck83 = 1.0 time = 420
-* CHECK dout0_9 vdout0_9ck83 = 0 time = 420
-* CHECK dout0_10 vdout0_10ck83 = 0 time = 420
-* CHECK dout0_11 vdout0_11ck83 = 1.0 time = 420
-* CHECK dout0_12 vdout0_12ck83 = 1.0 time = 420
-* CHECK dout0_13 vdout0_13ck83 = 0 time = 420
-* CHECK dout0_14 vdout0_14ck83 = 1.0 time = 420
-* CHECK dout0_15 vdout0_15ck83 = 1.0 time = 420
-* CHECK dout0_16 vdout0_16ck83 = 0 time = 420
-* CHECK dout0_17 vdout0_17ck83 = 1.0 time = 420
-* CHECK dout0_18 vdout0_18ck83 = 1.0 time = 420
-* CHECK dout0_19 vdout0_19ck83 = 0 time = 420
-* CHECK dout0_20 vdout0_20ck83 = 0 time = 420
-* CHECK dout0_21 vdout0_21ck83 = 1.0 time = 420
-* CHECK dout0_22 vdout0_22ck83 = 1.0 time = 420
-* CHECK dout0_0 vdout0_0ck84 = 1.0 time = 425
-* CHECK dout0_1 vdout0_1ck84 = 0 time = 425
-* CHECK dout0_2 vdout0_2ck84 = 0 time = 425
-* CHECK dout0_3 vdout0_3ck84 = 1.0 time = 425
-* CHECK dout0_4 vdout0_4ck84 = 0 time = 425
-* CHECK dout0_5 vdout0_5ck84 = 1.0 time = 425
-* CHECK dout0_6 vdout0_6ck84 = 1.0 time = 425
-* CHECK dout0_7 vdout0_7ck84 = 1.0 time = 425
-* CHECK dout0_8 vdout0_8ck84 = 0 time = 425
-* CHECK dout0_9 vdout0_9ck84 = 1.0 time = 425
-* CHECK dout0_10 vdout0_10ck84 = 1.0 time = 425
-* CHECK dout0_11 vdout0_11ck84 = 1.0 time = 425
-* CHECK dout0_12 vdout0_12ck84 = 1.0 time = 425
-* CHECK dout0_13 vdout0_13ck84 = 1.0 time = 425
-* CHECK dout0_14 vdout0_14ck84 = 1.0 time = 425
-* CHECK dout0_15 vdout0_15ck84 = 1.0 time = 425
-* CHECK dout0_16 vdout0_16ck84 = 0 time = 425
-* CHECK dout0_17 vdout0_17ck84 = 1.0 time = 425
-* CHECK dout0_18 vdout0_18ck84 = 0 time = 425
-* CHECK dout0_19 vdout0_19ck84 = 1.0 time = 425
-* CHECK dout0_20 vdout0_20ck84 = 1.0 time = 425
-* CHECK dout0_21 vdout0_21ck84 = 1.0 time = 425
-* CHECK dout0_22 vdout0_22ck84 = 0 time = 425
-* CHECK dout0_0 vdout0_0ck86 = 0 time = 435
+* CHECK dout0_22 vdout0_22ck82 = 0 time = 415
+* CHECK dout0_0 vdout0_0ck85 = 1.0 time = 430
+* CHECK dout0_1 vdout0_1ck85 = 1.0 time = 430
+* CHECK dout0_2 vdout0_2ck85 = 1.0 time = 430
+* CHECK dout0_3 vdout0_3ck85 = 1.0 time = 430
+* CHECK dout0_4 vdout0_4ck85 = 1.0 time = 430
+* CHECK dout0_5 vdout0_5ck85 = 0 time = 430
+* CHECK dout0_6 vdout0_6ck85 = 1.0 time = 430
+* CHECK dout0_7 vdout0_7ck85 = 1.0 time = 430
+* CHECK dout0_8 vdout0_8ck85 = 0 time = 430
+* CHECK dout0_9 vdout0_9ck85 = 0 time = 430
+* CHECK dout0_10 vdout0_10ck85 = 1.0 time = 430
+* CHECK dout0_11 vdout0_11ck85 = 1.0 time = 430
+* CHECK dout0_12 vdout0_12ck85 = 1.0 time = 430
+* CHECK dout0_13 vdout0_13ck85 = 0 time = 430
+* CHECK dout0_14 vdout0_14ck85 = 0 time = 430
+* CHECK dout0_15 vdout0_15ck85 = 0 time = 430
+* CHECK dout0_16 vdout0_16ck85 = 1.0 time = 430
+* CHECK dout0_17 vdout0_17ck85 = 1.0 time = 430
+* CHECK dout0_18 vdout0_18ck85 = 1.0 time = 430
+* CHECK dout0_19 vdout0_19ck85 = 0 time = 430
+* CHECK dout0_20 vdout0_20ck85 = 1.0 time = 430
+* CHECK dout0_21 vdout0_21ck85 = 1.0 time = 430
+* CHECK dout0_22 vdout0_22ck85 = 0 time = 430
+* CHECK dout0_0 vdout0_0ck86 = 1.0 time = 435
 * CHECK dout0_1 vdout0_1ck86 = 1.0 time = 435
-* CHECK dout0_2 vdout0_2ck86 = 1.0 time = 435
-* CHECK dout0_3 vdout0_3ck86 = 1.0 time = 435
-* CHECK dout0_4 vdout0_4ck86 = 1.0 time = 435
+* CHECK dout0_2 vdout0_2ck86 = 0 time = 435
+* CHECK dout0_3 vdout0_3ck86 = 0 time = 435
+* CHECK dout0_4 vdout0_4ck86 = 0 time = 435
 * CHECK dout0_5 vdout0_5ck86 = 0 time = 435
 * CHECK dout0_6 vdout0_6ck86 = 0 time = 435
-* CHECK dout0_7 vdout0_7ck86 = 1.0 time = 435
+* CHECK dout0_7 vdout0_7ck86 = 0 time = 435
 * CHECK dout0_8 vdout0_8ck86 = 1.0 time = 435
-* CHECK dout0_9 vdout0_9ck86 = 0 time = 435
+* CHECK dout0_9 vdout0_9ck86 = 1.0 time = 435
 * CHECK dout0_10 vdout0_10ck86 = 0 time = 435
-* CHECK dout0_11 vdout0_11ck86 = 1.0 time = 435
-* CHECK dout0_12 vdout0_12ck86 = 1.0 time = 435
+* CHECK dout0_11 vdout0_11ck86 = 0 time = 435
+* CHECK dout0_12 vdout0_12ck86 = 0 time = 435
 * CHECK dout0_13 vdout0_13ck86 = 0 time = 435
-* CHECK dout0_14 vdout0_14ck86 = 1.0 time = 435
-* CHECK dout0_15 vdout0_15ck86 = 1.0 time = 435
+* CHECK dout0_14 vdout0_14ck86 = 0 time = 435
+* CHECK dout0_15 vdout0_15ck86 = 0 time = 435
 * CHECK dout0_16 vdout0_16ck86 = 0 time = 435
 * CHECK dout0_17 vdout0_17ck86 = 1.0 time = 435
 * CHECK dout0_18 vdout0_18ck86 = 1.0 time = 435
-* CHECK dout0_19 vdout0_19ck86 = 0 time = 435
+* CHECK dout0_19 vdout0_19ck86 = 1.0 time = 435
 * CHECK dout0_20 vdout0_20ck86 = 0 time = 435
-* CHECK dout0_21 vdout0_21ck86 = 1.0 time = 435
-* CHECK dout0_22 vdout0_22ck86 = 1.0 time = 435
+* CHECK dout0_21 vdout0_21ck86 = 0 time = 435
+* CHECK dout0_22 vdout0_22ck86 = 0 time = 435
+* CHECK dout0_0 vdout0_0ck87 = 0 time = 440
+* CHECK dout0_1 vdout0_1ck87 = 0 time = 440
+* CHECK dout0_2 vdout0_2ck87 = 0 time = 440
+* CHECK dout0_3 vdout0_3ck87 = 1.0 time = 440
+* CHECK dout0_4 vdout0_4ck87 = 0 time = 440
+* CHECK dout0_5 vdout0_5ck87 = 0 time = 440
+* CHECK dout0_6 vdout0_6ck87 = 1.0 time = 440
+* CHECK dout0_7 vdout0_7ck87 = 0 time = 440
+* CHECK dout0_8 vdout0_8ck87 = 1.0 time = 440
+* CHECK dout0_9 vdout0_9ck87 = 0 time = 440
+* CHECK dout0_10 vdout0_10ck87 = 1.0 time = 440
+* CHECK dout0_11 vdout0_11ck87 = 1.0 time = 440
+* CHECK dout0_12 vdout0_12ck87 = 0 time = 440
+* CHECK dout0_13 vdout0_13ck87 = 0 time = 440
+* CHECK dout0_14 vdout0_14ck87 = 0 time = 440
+* CHECK dout0_15 vdout0_15ck87 = 1.0 time = 440
+* CHECK dout0_16 vdout0_16ck87 = 1.0 time = 440
+* CHECK dout0_17 vdout0_17ck87 = 1.0 time = 440
+* CHECK dout0_18 vdout0_18ck87 = 1.0 time = 440
+* CHECK dout0_19 vdout0_19ck87 = 0 time = 440
+* CHECK dout0_20 vdout0_20ck87 = 0 time = 440
+* CHECK dout0_21 vdout0_21ck87 = 0 time = 440
+* CHECK dout0_22 vdout0_22ck87 = 0 time = 440
 * CHECK dout0_0 vdout0_0ck88 = 0 time = 445
 * CHECK dout0_1 vdout0_1ck88 = 1.0 time = 445
 * CHECK dout0_2 vdout0_2ck88 = 1.0 time = 445
 * CHECK dout0_3 vdout0_3ck88 = 1.0 time = 445
-* CHECK dout0_4 vdout0_4ck88 = 1.0 time = 445
+* CHECK dout0_4 vdout0_4ck88 = 0 time = 445
 * CHECK dout0_5 vdout0_5ck88 = 0 time = 445
 * CHECK dout0_6 vdout0_6ck88 = 0 time = 445
-* CHECK dout0_7 vdout0_7ck88 = 1.0 time = 445
-* CHECK dout0_8 vdout0_8ck88 = 1.0 time = 445
-* CHECK dout0_9 vdout0_9ck88 = 0 time = 445
+* CHECK dout0_7 vdout0_7ck88 = 0 time = 445
+* CHECK dout0_8 vdout0_8ck88 = 0 time = 445
+* CHECK dout0_9 vdout0_9ck88 = 1.0 time = 445
 * CHECK dout0_10 vdout0_10ck88 = 0 time = 445
-* CHECK dout0_11 vdout0_11ck88 = 1.0 time = 445
+* CHECK dout0_11 vdout0_11ck88 = 0 time = 445
 * CHECK dout0_12 vdout0_12ck88 = 1.0 time = 445
-* CHECK dout0_13 vdout0_13ck88 = 0 time = 445
+* CHECK dout0_13 vdout0_13ck88 = 1.0 time = 445
 * CHECK dout0_14 vdout0_14ck88 = 1.0 time = 445
 * CHECK dout0_15 vdout0_15ck88 = 1.0 time = 445
 * CHECK dout0_16 vdout0_16ck88 = 0 time = 445
 * CHECK dout0_17 vdout0_17ck88 = 1.0 time = 445
 * CHECK dout0_18 vdout0_18ck88 = 1.0 time = 445
-* CHECK dout0_19 vdout0_19ck88 = 0 time = 445
+* CHECK dout0_19 vdout0_19ck88 = 1.0 time = 445
 * CHECK dout0_20 vdout0_20ck88 = 0 time = 445
 * CHECK dout0_21 vdout0_21ck88 = 1.0 time = 445
 * CHECK dout0_22 vdout0_22ck88 = 1.0 time = 445
-* CHECK dout0_0 vdout0_0ck89 = 0 time = 450
-* CHECK dout0_1 vdout0_1ck89 = 1.0 time = 450
-* CHECK dout0_2 vdout0_2ck89 = 1.0 time = 450
-* CHECK dout0_3 vdout0_3ck89 = 1.0 time = 450
-* CHECK dout0_4 vdout0_4ck89 = 1.0 time = 450
-* CHECK dout0_5 vdout0_5ck89 = 0 time = 450
-* CHECK dout0_6 vdout0_6ck89 = 0 time = 450
-* CHECK dout0_7 vdout0_7ck89 = 1.0 time = 450
-* CHECK dout0_8 vdout0_8ck89 = 1.0 time = 450
-* CHECK dout0_9 vdout0_9ck89 = 0 time = 450
-* CHECK dout0_10 vdout0_10ck89 = 0 time = 450
-* CHECK dout0_11 vdout0_11ck89 = 1.0 time = 450
-* CHECK dout0_12 vdout0_12ck89 = 1.0 time = 450
-* CHECK dout0_13 vdout0_13ck89 = 0 time = 450
-* CHECK dout0_14 vdout0_14ck89 = 1.0 time = 450
-* CHECK dout0_15 vdout0_15ck89 = 1.0 time = 450
-* CHECK dout0_16 vdout0_16ck89 = 0 time = 450
-* CHECK dout0_17 vdout0_17ck89 = 1.0 time = 450
-* CHECK dout0_18 vdout0_18ck89 = 1.0 time = 450
-* CHECK dout0_19 vdout0_19ck89 = 0 time = 450
-* CHECK dout0_20 vdout0_20ck89 = 0 time = 450
-* CHECK dout0_21 vdout0_21ck89 = 1.0 time = 450
-* CHECK dout0_22 vdout0_22ck89 = 1.0 time = 450
-* CHECK dout0_0 vdout0_0ck90 = 0 time = 455
-* CHECK dout0_1 vdout0_1ck90 = 1.0 time = 455
-* CHECK dout0_2 vdout0_2ck90 = 0 time = 455
-* CHECK dout0_3 vdout0_3ck90 = 1.0 time = 455
-* CHECK dout0_4 vdout0_4ck90 = 0 time = 455
-* CHECK dout0_5 vdout0_5ck90 = 1.0 time = 455
-* CHECK dout0_6 vdout0_6ck90 = 0 time = 455
-* CHECK dout0_7 vdout0_7ck90 = 1.0 time = 455
-* CHECK dout0_8 vdout0_8ck90 = 0 time = 455
-* CHECK dout0_9 vdout0_9ck90 = 0 time = 455
-* CHECK dout0_10 vdout0_10ck90 = 0 time = 455
-* CHECK dout0_11 vdout0_11ck90 = 0 time = 455
-* CHECK dout0_12 vdout0_12ck90 = 0 time = 455
-* CHECK dout0_13 vdout0_13ck90 = 1.0 time = 455
-* CHECK dout0_14 vdout0_14ck90 = 1.0 time = 455
-* CHECK dout0_15 vdout0_15ck90 = 0 time = 455
-* CHECK dout0_16 vdout0_16ck90 = 0 time = 455
-* CHECK dout0_17 vdout0_17ck90 = 0 time = 455
-* CHECK dout0_18 vdout0_18ck90 = 0 time = 455
-* CHECK dout0_19 vdout0_19ck90 = 1.0 time = 455
-* CHECK dout0_20 vdout0_20ck90 = 0 time = 455
-* CHECK dout0_21 vdout0_21ck90 = 0 time = 455
-* CHECK dout0_22 vdout0_22ck90 = 0 time = 455
 * CHECK dout0_0 vdout0_0ck92 = 1.0 time = 465
 * CHECK dout0_1 vdout0_1ck92 = 1.0 time = 465
-* CHECK dout0_2 vdout0_2ck92 = 1.0 time = 465
-* CHECK dout0_3 vdout0_3ck92 = 1.0 time = 465
+* CHECK dout0_2 vdout0_2ck92 = 0 time = 465
+* CHECK dout0_3 vdout0_3ck92 = 0 time = 465
 * CHECK dout0_4 vdout0_4ck92 = 0 time = 465
-* CHECK dout0_5 vdout0_5ck92 = 1.0 time = 465
-* CHECK dout0_6 vdout0_6ck92 = 1.0 time = 465
+* CHECK dout0_5 vdout0_5ck92 = 0 time = 465
+* CHECK dout0_6 vdout0_6ck92 = 0 time = 465
 * CHECK dout0_7 vdout0_7ck92 = 0 time = 465
-* CHECK dout0_8 vdout0_8ck92 = 0 time = 465
+* CHECK dout0_8 vdout0_8ck92 = 1.0 time = 465
 * CHECK dout0_9 vdout0_9ck92 = 1.0 time = 465
-* CHECK dout0_10 vdout0_10ck92 = 1.0 time = 465
+* CHECK dout0_10 vdout0_10ck92 = 0 time = 465
 * CHECK dout0_11 vdout0_11ck92 = 0 time = 465
 * CHECK dout0_12 vdout0_12ck92 = 0 time = 465
-* CHECK dout0_13 vdout0_13ck92 = 1.0 time = 465
-* CHECK dout0_14 vdout0_14ck92 = 1.0 time = 465
-* CHECK dout0_15 vdout0_15ck92 = 1.0 time = 465
-* CHECK dout0_16 vdout0_16ck92 = 1.0 time = 465
-* CHECK dout0_17 vdout0_17ck92 = 0 time = 465
+* CHECK dout0_13 vdout0_13ck92 = 0 time = 465
+* CHECK dout0_14 vdout0_14ck92 = 0 time = 465
+* CHECK dout0_15 vdout0_15ck92 = 0 time = 465
+* CHECK dout0_16 vdout0_16ck92 = 0 time = 465
+* CHECK dout0_17 vdout0_17ck92 = 1.0 time = 465
 * CHECK dout0_18 vdout0_18ck92 = 1.0 time = 465
 * CHECK dout0_19 vdout0_19ck92 = 1.0 time = 465
-* CHECK dout0_20 vdout0_20ck92 = 1.0 time = 465
+* CHECK dout0_20 vdout0_20ck92 = 0 time = 465
 * CHECK dout0_21 vdout0_21ck92 = 0 time = 465
 * CHECK dout0_22 vdout0_22ck92 = 0 time = 465
-* CHECK dout0_0 vdout0_0ck94 = 0 time = 475
-* CHECK dout0_1 vdout0_1ck94 = 1.0 time = 475
-* CHECK dout0_2 vdout0_2ck94 = 0 time = 475
-* CHECK dout0_3 vdout0_3ck94 = 1.0 time = 475
-* CHECK dout0_4 vdout0_4ck94 = 0 time = 475
-* CHECK dout0_5 vdout0_5ck94 = 1.0 time = 475
-* CHECK dout0_6 vdout0_6ck94 = 0 time = 475
-* CHECK dout0_7 vdout0_7ck94 = 1.0 time = 475
-* CHECK dout0_8 vdout0_8ck94 = 0 time = 475
-* CHECK dout0_9 vdout0_9ck94 = 0 time = 475
-* CHECK dout0_10 vdout0_10ck94 = 0 time = 475
-* CHECK dout0_11 vdout0_11ck94 = 0 time = 475
-* CHECK dout0_12 vdout0_12ck94 = 0 time = 475
-* CHECK dout0_13 vdout0_13ck94 = 1.0 time = 475
-* CHECK dout0_14 vdout0_14ck94 = 1.0 time = 475
-* CHECK dout0_15 vdout0_15ck94 = 0 time = 475
-* CHECK dout0_16 vdout0_16ck94 = 0 time = 475
-* CHECK dout0_17 vdout0_17ck94 = 0 time = 475
-* CHECK dout0_18 vdout0_18ck94 = 0 time = 475
-* CHECK dout0_19 vdout0_19ck94 = 1.0 time = 475
-* CHECK dout0_20 vdout0_20ck94 = 0 time = 475
-* CHECK dout0_21 vdout0_21ck94 = 0 time = 475
-* CHECK dout0_22 vdout0_22ck94 = 0 time = 475
-* CHECK dout0_0 vdout0_0ck95 = 0 time = 480
-* CHECK dout0_1 vdout0_1ck95 = 1.0 time = 480
-* CHECK dout0_2 vdout0_2ck95 = 1.0 time = 480
-* CHECK dout0_3 vdout0_3ck95 = 1.0 time = 480
-* CHECK dout0_4 vdout0_4ck95 = 1.0 time = 480
-* CHECK dout0_5 vdout0_5ck95 = 0 time = 480
-* CHECK dout0_6 vdout0_6ck95 = 0 time = 480
-* CHECK dout0_7 vdout0_7ck95 = 1.0 time = 480
-* CHECK dout0_8 vdout0_8ck95 = 1.0 time = 480
-* CHECK dout0_9 vdout0_9ck95 = 0 time = 480
-* CHECK dout0_10 vdout0_10ck95 = 0 time = 480
-* CHECK dout0_11 vdout0_11ck95 = 1.0 time = 480
-* CHECK dout0_12 vdout0_12ck95 = 1.0 time = 480
-* CHECK dout0_13 vdout0_13ck95 = 0 time = 480
-* CHECK dout0_14 vdout0_14ck95 = 1.0 time = 480
-* CHECK dout0_15 vdout0_15ck95 = 1.0 time = 480
-* CHECK dout0_16 vdout0_16ck95 = 0 time = 480
-* CHECK dout0_17 vdout0_17ck95 = 1.0 time = 480
-* CHECK dout0_18 vdout0_18ck95 = 1.0 time = 480
-* CHECK dout0_19 vdout0_19ck95 = 0 time = 480
-* CHECK dout0_20 vdout0_20ck95 = 0 time = 480
-* CHECK dout0_21 vdout0_21ck95 = 1.0 time = 480
-* CHECK dout0_22 vdout0_22ck95 = 1.0 time = 480
-* CHECK dout0_0 vdout0_0ck96 = 0 time = 485
-* CHECK dout0_1 vdout0_1ck96 = 1.0 time = 485
-* CHECK dout0_2 vdout0_2ck96 = 0 time = 485
-* CHECK dout0_3 vdout0_3ck96 = 1.0 time = 485
-* CHECK dout0_4 vdout0_4ck96 = 0 time = 485
-* CHECK dout0_5 vdout0_5ck96 = 1.0 time = 485
-* CHECK dout0_6 vdout0_6ck96 = 0 time = 485
-* CHECK dout0_7 vdout0_7ck96 = 1.0 time = 485
-* CHECK dout0_8 vdout0_8ck96 = 0 time = 485
-* CHECK dout0_9 vdout0_9ck96 = 0 time = 485
-* CHECK dout0_10 vdout0_10ck96 = 0 time = 485
-* CHECK dout0_11 vdout0_11ck96 = 0 time = 485
-* CHECK dout0_12 vdout0_12ck96 = 0 time = 485
-* CHECK dout0_13 vdout0_13ck96 = 1.0 time = 485
-* CHECK dout0_14 vdout0_14ck96 = 1.0 time = 485
-* CHECK dout0_15 vdout0_15ck96 = 0 time = 485
-* CHECK dout0_16 vdout0_16ck96 = 0 time = 485
-* CHECK dout0_17 vdout0_17ck96 = 0 time = 485
-* CHECK dout0_18 vdout0_18ck96 = 0 time = 485
-* CHECK dout0_19 vdout0_19ck96 = 1.0 time = 485
-* CHECK dout0_20 vdout0_20ck96 = 0 time = 485
-* CHECK dout0_21 vdout0_21ck96 = 0 time = 485
-* CHECK dout0_22 vdout0_22ck96 = 0 time = 485
-* CHECK dout0_0 vdout0_0ck99 = 1.0 time = 500
-* CHECK dout0_1 vdout0_1ck99 = 0 time = 500
-* CHECK dout0_2 vdout0_2ck99 = 0 time = 500
-* CHECK dout0_3 vdout0_3ck99 = 1.0 time = 500
-* CHECK dout0_4 vdout0_4ck99 = 0 time = 500
-* CHECK dout0_5 vdout0_5ck99 = 1.0 time = 500
-* CHECK dout0_6 vdout0_6ck99 = 1.0 time = 500
-* CHECK dout0_7 vdout0_7ck99 = 1.0 time = 500
-* CHECK dout0_8 vdout0_8ck99 = 0 time = 500
-* CHECK dout0_9 vdout0_9ck99 = 1.0 time = 500
-* CHECK dout0_10 vdout0_10ck99 = 1.0 time = 500
-* CHECK dout0_11 vdout0_11ck99 = 1.0 time = 500
-* CHECK dout0_12 vdout0_12ck99 = 1.0 time = 500
-* CHECK dout0_13 vdout0_13ck99 = 1.0 time = 500
-* CHECK dout0_14 vdout0_14ck99 = 1.0 time = 500
-* CHECK dout0_15 vdout0_15ck99 = 1.0 time = 500
-* CHECK dout0_16 vdout0_16ck99 = 0 time = 500
-* CHECK dout0_17 vdout0_17ck99 = 1.0 time = 500
-* CHECK dout0_18 vdout0_18ck99 = 0 time = 500
-* CHECK dout0_19 vdout0_19ck99 = 1.0 time = 500
-* CHECK dout0_20 vdout0_20ck99 = 1.0 time = 500
-* CHECK dout0_21 vdout0_21ck99 = 1.0 time = 500
-* CHECK dout0_22 vdout0_22ck99 = 0 time = 500
-* CHECK dout0_0 vdout0_0ck101 = 1.0 time = 510
-* CHECK dout0_1 vdout0_1ck101 = 0 time = 510
-* CHECK dout0_2 vdout0_2ck101 = 0 time = 510
-* CHECK dout0_3 vdout0_3ck101 = 1.0 time = 510
-* CHECK dout0_4 vdout0_4ck101 = 0 time = 510
-* CHECK dout0_5 vdout0_5ck101 = 1.0 time = 510
-* CHECK dout0_6 vdout0_6ck101 = 1.0 time = 510
-* CHECK dout0_7 vdout0_7ck101 = 1.0 time = 510
-* CHECK dout0_8 vdout0_8ck101 = 0 time = 510
-* CHECK dout0_9 vdout0_9ck101 = 1.0 time = 510
-* CHECK dout0_10 vdout0_10ck101 = 1.0 time = 510
-* CHECK dout0_11 vdout0_11ck101 = 1.0 time = 510
-* CHECK dout0_12 vdout0_12ck101 = 1.0 time = 510
-* CHECK dout0_13 vdout0_13ck101 = 1.0 time = 510
-* CHECK dout0_14 vdout0_14ck101 = 1.0 time = 510
-* CHECK dout0_15 vdout0_15ck101 = 1.0 time = 510
-* CHECK dout0_16 vdout0_16ck101 = 0 time = 510
-* CHECK dout0_17 vdout0_17ck101 = 1.0 time = 510
-* CHECK dout0_18 vdout0_18ck101 = 0 time = 510
-* CHECK dout0_19 vdout0_19ck101 = 1.0 time = 510
-* CHECK dout0_20 vdout0_20ck101 = 1.0 time = 510
-* CHECK dout0_21 vdout0_21ck101 = 1.0 time = 510
-* CHECK dout0_22 vdout0_22ck101 = 0 time = 510
+* CHECK dout0_0 vdout0_0ck93 = 1.0 time = 470
+* CHECK dout0_1 vdout0_1ck93 = 1.0 time = 470
+* CHECK dout0_2 vdout0_2ck93 = 1.0 time = 470
+* CHECK dout0_3 vdout0_3ck93 = 1.0 time = 470
+* CHECK dout0_4 vdout0_4ck93 = 1.0 time = 470
+* CHECK dout0_5 vdout0_5ck93 = 0 time = 470
+* CHECK dout0_6 vdout0_6ck93 = 1.0 time = 470
+* CHECK dout0_7 vdout0_7ck93 = 1.0 time = 470
+* CHECK dout0_8 vdout0_8ck93 = 0 time = 470
+* CHECK dout0_9 vdout0_9ck93 = 0 time = 470
+* CHECK dout0_10 vdout0_10ck93 = 1.0 time = 470
+* CHECK dout0_11 vdout0_11ck93 = 1.0 time = 470
+* CHECK dout0_12 vdout0_12ck93 = 1.0 time = 470
+* CHECK dout0_13 vdout0_13ck93 = 0 time = 470
+* CHECK dout0_14 vdout0_14ck93 = 0 time = 470
+* CHECK dout0_15 vdout0_15ck93 = 0 time = 470
+* CHECK dout0_16 vdout0_16ck93 = 1.0 time = 470
+* CHECK dout0_17 vdout0_17ck93 = 1.0 time = 470
+* CHECK dout0_18 vdout0_18ck93 = 1.0 time = 470
+* CHECK dout0_19 vdout0_19ck93 = 0 time = 470
+* CHECK dout0_20 vdout0_20ck93 = 1.0 time = 470
+* CHECK dout0_21 vdout0_21ck93 = 1.0 time = 470
+* CHECK dout0_22 vdout0_22ck93 = 0 time = 470
+* CHECK dout0_0 vdout0_0ck98 = 1.0 time = 495
+* CHECK dout0_1 vdout0_1ck98 = 1.0 time = 495
+* CHECK dout0_2 vdout0_2ck98 = 1.0 time = 495
+* CHECK dout0_3 vdout0_3ck98 = 1.0 time = 495
+* CHECK dout0_4 vdout0_4ck98 = 1.0 time = 495
+* CHECK dout0_5 vdout0_5ck98 = 0 time = 495
+* CHECK dout0_6 vdout0_6ck98 = 1.0 time = 495
+* CHECK dout0_7 vdout0_7ck98 = 1.0 time = 495
+* CHECK dout0_8 vdout0_8ck98 = 0 time = 495
+* CHECK dout0_9 vdout0_9ck98 = 0 time = 495
+* CHECK dout0_10 vdout0_10ck98 = 1.0 time = 495
+* CHECK dout0_11 vdout0_11ck98 = 1.0 time = 495
+* CHECK dout0_12 vdout0_12ck98 = 1.0 time = 495
+* CHECK dout0_13 vdout0_13ck98 = 0 time = 495
+* CHECK dout0_14 vdout0_14ck98 = 0 time = 495
+* CHECK dout0_15 vdout0_15ck98 = 0 time = 495
+* CHECK dout0_16 vdout0_16ck98 = 1.0 time = 495
+* CHECK dout0_17 vdout0_17ck98 = 1.0 time = 495
+* CHECK dout0_18 vdout0_18ck98 = 1.0 time = 495
+* CHECK dout0_19 vdout0_19ck98 = 0 time = 495
+* CHECK dout0_20 vdout0_20ck98 = 1.0 time = 495
+* CHECK dout0_21 vdout0_21ck98 = 1.0 time = 495
+* CHECK dout0_22 vdout0_22ck98 = 0 time = 495
 * CHECK dout0_0 vdout0_0ck103 = 1.0 time = 520
-* CHECK dout0_1 vdout0_1ck103 = 0 time = 520
+* CHECK dout0_1 vdout0_1ck103 = 1.0 time = 520
 * CHECK dout0_2 vdout0_2ck103 = 0 time = 520
 * CHECK dout0_3 vdout0_3ck103 = 1.0 time = 520
-* CHECK dout0_4 vdout0_4ck103 = 0 time = 520
+* CHECK dout0_4 vdout0_4ck103 = 1.0 time = 520
 * CHECK dout0_5 vdout0_5ck103 = 1.0 time = 520
-* CHECK dout0_6 vdout0_6ck103 = 1.0 time = 520
-* CHECK dout0_7 vdout0_7ck103 = 1.0 time = 520
-* CHECK dout0_8 vdout0_8ck103 = 0 time = 520
+* CHECK dout0_6 vdout0_6ck103 = 0 time = 520
+* CHECK dout0_7 vdout0_7ck103 = 0 time = 520
+* CHECK dout0_8 vdout0_8ck103 = 1.0 time = 520
 * CHECK dout0_9 vdout0_9ck103 = 1.0 time = 520
-* CHECK dout0_10 vdout0_10ck103 = 1.0 time = 520
+* CHECK dout0_10 vdout0_10ck103 = 0 time = 520
 * CHECK dout0_11 vdout0_11ck103 = 1.0 time = 520
 * CHECK dout0_12 vdout0_12ck103 = 1.0 time = 520
-* CHECK dout0_13 vdout0_13ck103 = 1.0 time = 520
-* CHECK dout0_14 vdout0_14ck103 = 1.0 time = 520
+* CHECK dout0_13 vdout0_13ck103 = 0 time = 520
+* CHECK dout0_14 vdout0_14ck103 = 0 time = 520
 * CHECK dout0_15 vdout0_15ck103 = 1.0 time = 520
-* CHECK dout0_16 vdout0_16ck103 = 0 time = 520
-* CHECK dout0_17 vdout0_17ck103 = 1.0 time = 520
-* CHECK dout0_18 vdout0_18ck103 = 0 time = 520
+* CHECK dout0_16 vdout0_16ck103 = 1.0 time = 520
+* CHECK dout0_17 vdout0_17ck103 = 0 time = 520
+* CHECK dout0_18 vdout0_18ck103 = 1.0 time = 520
 * CHECK dout0_19 vdout0_19ck103 = 1.0 time = 520
-* CHECK dout0_20 vdout0_20ck103 = 1.0 time = 520
+* CHECK dout0_20 vdout0_20ck103 = 0 time = 520
 * CHECK dout0_21 vdout0_21ck103 = 1.0 time = 520
-* CHECK dout0_22 vdout0_22ck103 = 0 time = 520
-* CHECK dout0_0 vdout0_0ck104 = 0 time = 525
-* CHECK dout0_1 vdout0_1ck104 = 1.0 time = 525
-* CHECK dout0_2 vdout0_2ck104 = 0 time = 525
-* CHECK dout0_3 vdout0_3ck104 = 1.0 time = 525
-* CHECK dout0_4 vdout0_4ck104 = 1.0 time = 525
-* CHECK dout0_5 vdout0_5ck104 = 0 time = 525
-* CHECK dout0_6 vdout0_6ck104 = 0 time = 525
-* CHECK dout0_7 vdout0_7ck104 = 0 time = 525
-* CHECK dout0_8 vdout0_8ck104 = 1.0 time = 525
-* CHECK dout0_9 vdout0_9ck104 = 1.0 time = 525
-* CHECK dout0_10 vdout0_10ck104 = 1.0 time = 525
-* CHECK dout0_11 vdout0_11ck104 = 1.0 time = 525
-* CHECK dout0_12 vdout0_12ck104 = 0 time = 525
-* CHECK dout0_13 vdout0_13ck104 = 1.0 time = 525
-* CHECK dout0_14 vdout0_14ck104 = 0 time = 525
-* CHECK dout0_15 vdout0_15ck104 = 0 time = 525
-* CHECK dout0_16 vdout0_16ck104 = 0 time = 525
-* CHECK dout0_17 vdout0_17ck104 = 0 time = 525
-* CHECK dout0_18 vdout0_18ck104 = 0 time = 525
-* CHECK dout0_19 vdout0_19ck104 = 1.0 time = 525
-* CHECK dout0_20 vdout0_20ck104 = 1.0 time = 525
-* CHECK dout0_21 vdout0_21ck104 = 0 time = 525
-* CHECK dout0_22 vdout0_22ck104 = 0 time = 525
-* CHECK dout0_0 vdout0_0ck105 = 0 time = 530
-* CHECK dout0_1 vdout0_1ck105 = 1.0 time = 530
-* CHECK dout0_2 vdout0_2ck105 = 1.0 time = 530
-* CHECK dout0_3 vdout0_3ck105 = 1.0 time = 530
-* CHECK dout0_4 vdout0_4ck105 = 1.0 time = 530
-* CHECK dout0_5 vdout0_5ck105 = 0 time = 530
-* CHECK dout0_6 vdout0_6ck105 = 0 time = 530
-* CHECK dout0_7 vdout0_7ck105 = 1.0 time = 530
-* CHECK dout0_8 vdout0_8ck105 = 1.0 time = 530
-* CHECK dout0_9 vdout0_9ck105 = 0 time = 530
-* CHECK dout0_10 vdout0_10ck105 = 0 time = 530
-* CHECK dout0_11 vdout0_11ck105 = 1.0 time = 530
-* CHECK dout0_12 vdout0_12ck105 = 1.0 time = 530
-* CHECK dout0_13 vdout0_13ck105 = 0 time = 530
-* CHECK dout0_14 vdout0_14ck105 = 1.0 time = 530
-* CHECK dout0_15 vdout0_15ck105 = 1.0 time = 530
-* CHECK dout0_16 vdout0_16ck105 = 0 time = 530
-* CHECK dout0_17 vdout0_17ck105 = 1.0 time = 530
-* CHECK dout0_18 vdout0_18ck105 = 1.0 time = 530
-* CHECK dout0_19 vdout0_19ck105 = 0 time = 530
-* CHECK dout0_20 vdout0_20ck105 = 0 time = 530
-* CHECK dout0_21 vdout0_21ck105 = 1.0 time = 530
-* CHECK dout0_22 vdout0_22ck105 = 1.0 time = 530
-* CHECK dout0_0 vdout0_0ck107 = 0 time = 540
-* CHECK dout0_1 vdout0_1ck107 = 1.0 time = 540
-* CHECK dout0_2 vdout0_2ck107 = 1.0 time = 540
-* CHECK dout0_3 vdout0_3ck107 = 1.0 time = 540
-* CHECK dout0_4 vdout0_4ck107 = 1.0 time = 540
-* CHECK dout0_5 vdout0_5ck107 = 0 time = 540
-* CHECK dout0_6 vdout0_6ck107 = 0 time = 540
-* CHECK dout0_7 vdout0_7ck107 = 1.0 time = 540
-* CHECK dout0_8 vdout0_8ck107 = 1.0 time = 540
-* CHECK dout0_9 vdout0_9ck107 = 0 time = 540
-* CHECK dout0_10 vdout0_10ck107 = 0 time = 540
-* CHECK dout0_11 vdout0_11ck107 = 1.0 time = 540
-* CHECK dout0_12 vdout0_12ck107 = 1.0 time = 540
-* CHECK dout0_13 vdout0_13ck107 = 0 time = 540
-* CHECK dout0_14 vdout0_14ck107 = 1.0 time = 540
-* CHECK dout0_15 vdout0_15ck107 = 1.0 time = 540
-* CHECK dout0_16 vdout0_16ck107 = 0 time = 540
-* CHECK dout0_17 vdout0_17ck107 = 1.0 time = 540
-* CHECK dout0_18 vdout0_18ck107 = 1.0 time = 540
-* CHECK dout0_19 vdout0_19ck107 = 0 time = 540
-* CHECK dout0_20 vdout0_20ck107 = 0 time = 540
-* CHECK dout0_21 vdout0_21ck107 = 1.0 time = 540
-* CHECK dout0_22 vdout0_22ck107 = 1.0 time = 540
-* CHECK dout0_0 vdout0_0ck108 = 1.0 time = 545
-* CHECK dout0_1 vdout0_1ck108 = 1.0 time = 545
+* CHECK dout0_22 vdout0_22ck103 = 1.0 time = 520
+* CHECK dout0_0 vdout0_0ck106 = 0 time = 535
+* CHECK dout0_1 vdout0_1ck106 = 1.0 time = 535
+* CHECK dout0_2 vdout0_2ck106 = 0 time = 535
+* CHECK dout0_3 vdout0_3ck106 = 1.0 time = 535
+* CHECK dout0_4 vdout0_4ck106 = 0 time = 535
+* CHECK dout0_5 vdout0_5ck106 = 0 time = 535
+* CHECK dout0_6 vdout0_6ck106 = 1.0 time = 535
+* CHECK dout0_7 vdout0_7ck106 = 0 time = 535
+* CHECK dout0_8 vdout0_8ck106 = 1.0 time = 535
+* CHECK dout0_9 vdout0_9ck106 = 0 time = 535
+* CHECK dout0_10 vdout0_10ck106 = 0 time = 535
+* CHECK dout0_11 vdout0_11ck106 = 1.0 time = 535
+* CHECK dout0_12 vdout0_12ck106 = 0 time = 535
+* CHECK dout0_13 vdout0_13ck106 = 0 time = 535
+* CHECK dout0_14 vdout0_14ck106 = 1.0 time = 535
+* CHECK dout0_15 vdout0_15ck106 = 0 time = 535
+* CHECK dout0_16 vdout0_16ck106 = 1.0 time = 535
+* CHECK dout0_17 vdout0_17ck106 = 0 time = 535
+* CHECK dout0_18 vdout0_18ck106 = 1.0 time = 535
+* CHECK dout0_19 vdout0_19ck106 = 1.0 time = 535
+* CHECK dout0_20 vdout0_20ck106 = 1.0 time = 535
+* CHECK dout0_21 vdout0_21ck106 = 0 time = 535
+* CHECK dout0_22 vdout0_22ck106 = 1.0 time = 535
+* CHECK dout0_0 vdout0_0ck108 = 0 time = 545
+* CHECK dout0_1 vdout0_1ck108 = 0 time = 545
 * CHECK dout0_2 vdout0_2ck108 = 1.0 time = 545
-* CHECK dout0_3 vdout0_3ck108 = 1.0 time = 545
-* CHECK dout0_4 vdout0_4ck108 = 0 time = 545
-* CHECK dout0_5 vdout0_5ck108 = 1.0 time = 545
-* CHECK dout0_6 vdout0_6ck108 = 1.0 time = 545
-* CHECK dout0_7 vdout0_7ck108 = 0 time = 545
+* CHECK dout0_3 vdout0_3ck108 = 0 time = 545
+* CHECK dout0_4 vdout0_4ck108 = 1.0 time = 545
+* CHECK dout0_5 vdout0_5ck108 = 0 time = 545
+* CHECK dout0_6 vdout0_6ck108 = 0 time = 545
+* CHECK dout0_7 vdout0_7ck108 = 1.0 time = 545
 * CHECK dout0_8 vdout0_8ck108 = 0 time = 545
 * CHECK dout0_9 vdout0_9ck108 = 1.0 time = 545
 * CHECK dout0_10 vdout0_10ck108 = 1.0 time = 545
-* CHECK dout0_11 vdout0_11ck108 = 0 time = 545
-* CHECK dout0_12 vdout0_12ck108 = 0 time = 545
-* CHECK dout0_13 vdout0_13ck108 = 1.0 time = 545
+* CHECK dout0_11 vdout0_11ck108 = 1.0 time = 545
+* CHECK dout0_12 vdout0_12ck108 = 1.0 time = 545
+* CHECK dout0_13 vdout0_13ck108 = 0 time = 545
 * CHECK dout0_14 vdout0_14ck108 = 1.0 time = 545
 * CHECK dout0_15 vdout0_15ck108 = 1.0 time = 545
 * CHECK dout0_16 vdout0_16ck108 = 1.0 time = 545
 * CHECK dout0_17 vdout0_17ck108 = 0 time = 545
-* CHECK dout0_18 vdout0_18ck108 = 1.0 time = 545
+* CHECK dout0_18 vdout0_18ck108 = 0 time = 545
 * CHECK dout0_19 vdout0_19ck108 = 1.0 time = 545
-* CHECK dout0_20 vdout0_20ck108 = 1.0 time = 545
-* CHECK dout0_21 vdout0_21ck108 = 0 time = 545
-* CHECK dout0_22 vdout0_22ck108 = 0 time = 545
-* CHECK dout0_0 vdout0_0ck111 = 1.0 time = 560
-* CHECK dout0_1 vdout0_1ck111 = 1.0 time = 560
-* CHECK dout0_2 vdout0_2ck111 = 1.0 time = 560
-* CHECK dout0_3 vdout0_3ck111 = 1.0 time = 560
-* CHECK dout0_4 vdout0_4ck111 = 0 time = 560
-* CHECK dout0_5 vdout0_5ck111 = 1.0 time = 560
-* CHECK dout0_6 vdout0_6ck111 = 1.0 time = 560
-* CHECK dout0_7 vdout0_7ck111 = 0 time = 560
-* CHECK dout0_8 vdout0_8ck111 = 0 time = 560
-* CHECK dout0_9 vdout0_9ck111 = 1.0 time = 560
-* CHECK dout0_10 vdout0_10ck111 = 1.0 time = 560
-* CHECK dout0_11 vdout0_11ck111 = 0 time = 560
-* CHECK dout0_12 vdout0_12ck111 = 0 time = 560
-* CHECK dout0_13 vdout0_13ck111 = 1.0 time = 560
-* CHECK dout0_14 vdout0_14ck111 = 1.0 time = 560
-* CHECK dout0_15 vdout0_15ck111 = 1.0 time = 560
-* CHECK dout0_16 vdout0_16ck111 = 1.0 time = 560
-* CHECK dout0_17 vdout0_17ck111 = 0 time = 560
-* CHECK dout0_18 vdout0_18ck111 = 1.0 time = 560
-* CHECK dout0_19 vdout0_19ck111 = 1.0 time = 560
-* CHECK dout0_20 vdout0_20ck111 = 1.0 time = 560
-* CHECK dout0_21 vdout0_21ck111 = 0 time = 560
-* CHECK dout0_22 vdout0_22ck111 = 0 time = 560
+* CHECK dout0_20 vdout0_20ck108 = 0 time = 545
+* CHECK dout0_21 vdout0_21ck108 = 1.0 time = 545
+* CHECK dout0_22 vdout0_22ck108 = 1.0 time = 545
+* CHECK dout0_0 vdout0_0ck109 = 0 time = 550
+* CHECK dout0_1 vdout0_1ck109 = 0 time = 550
+* CHECK dout0_2 vdout0_2ck109 = 1.0 time = 550
+* CHECK dout0_3 vdout0_3ck109 = 0 time = 550
+* CHECK dout0_4 vdout0_4ck109 = 1.0 time = 550
+* CHECK dout0_5 vdout0_5ck109 = 0 time = 550
+* CHECK dout0_6 vdout0_6ck109 = 0 time = 550
+* CHECK dout0_7 vdout0_7ck109 = 1.0 time = 550
+* CHECK dout0_8 vdout0_8ck109 = 0 time = 550
+* CHECK dout0_9 vdout0_9ck109 = 1.0 time = 550
+* CHECK dout0_10 vdout0_10ck109 = 1.0 time = 550
+* CHECK dout0_11 vdout0_11ck109 = 1.0 time = 550
+* CHECK dout0_12 vdout0_12ck109 = 1.0 time = 550
+* CHECK dout0_13 vdout0_13ck109 = 0 time = 550
+* CHECK dout0_14 vdout0_14ck109 = 1.0 time = 550
+* CHECK dout0_15 vdout0_15ck109 = 1.0 time = 550
+* CHECK dout0_16 vdout0_16ck109 = 1.0 time = 550
+* CHECK dout0_17 vdout0_17ck109 = 0 time = 550
+* CHECK dout0_18 vdout0_18ck109 = 0 time = 550
+* CHECK dout0_19 vdout0_19ck109 = 1.0 time = 550
+* CHECK dout0_20 vdout0_20ck109 = 0 time = 550
+* CHECK dout0_21 vdout0_21ck109 = 1.0 time = 550
+* CHECK dout0_22 vdout0_22ck109 = 1.0 time = 550
+* CHECK dout0_0 vdout0_0ck112 = 1.0 time = 565
+* CHECK dout0_1 vdout0_1ck112 = 1.0 time = 565
+* CHECK dout0_2 vdout0_2ck112 = 0 time = 565
+* CHECK dout0_3 vdout0_3ck112 = 1.0 time = 565
+* CHECK dout0_4 vdout0_4ck112 = 1.0 time = 565
+* CHECK dout0_5 vdout0_5ck112 = 1.0 time = 565
+* CHECK dout0_6 vdout0_6ck112 = 0 time = 565
+* CHECK dout0_7 vdout0_7ck112 = 0 time = 565
+* CHECK dout0_8 vdout0_8ck112 = 1.0 time = 565
+* CHECK dout0_9 vdout0_9ck112 = 1.0 time = 565
+* CHECK dout0_10 vdout0_10ck112 = 0 time = 565
+* CHECK dout0_11 vdout0_11ck112 = 1.0 time = 565
+* CHECK dout0_12 vdout0_12ck112 = 1.0 time = 565
+* CHECK dout0_13 vdout0_13ck112 = 0 time = 565
+* CHECK dout0_14 vdout0_14ck112 = 0 time = 565
+* CHECK dout0_15 vdout0_15ck112 = 1.0 time = 565
+* CHECK dout0_16 vdout0_16ck112 = 1.0 time = 565
+* CHECK dout0_17 vdout0_17ck112 = 0 time = 565
+* CHECK dout0_18 vdout0_18ck112 = 1.0 time = 565
+* CHECK dout0_19 vdout0_19ck112 = 1.0 time = 565
+* CHECK dout0_20 vdout0_20ck112 = 0 time = 565
+* CHECK dout0_21 vdout0_21ck112 = 1.0 time = 565
+* CHECK dout0_22 vdout0_22ck112 = 1.0 time = 565
 * CHECK dout0_0 vdout0_0ck113 = 0 time = 570
 * CHECK dout0_1 vdout0_1ck113 = 1.0 time = 570
-* CHECK dout0_2 vdout0_2ck113 = 0 time = 570
+* CHECK dout0_2 vdout0_2ck113 = 1.0 time = 570
 * CHECK dout0_3 vdout0_3ck113 = 1.0 time = 570
 * CHECK dout0_4 vdout0_4ck113 = 1.0 time = 570
-* CHECK dout0_5 vdout0_5ck113 = 0 time = 570
+* CHECK dout0_5 vdout0_5ck113 = 1.0 time = 570
 * CHECK dout0_6 vdout0_6ck113 = 0 time = 570
-* CHECK dout0_7 vdout0_7ck113 = 0 time = 570
+* CHECK dout0_7 vdout0_7ck113 = 1.0 time = 570
 * CHECK dout0_8 vdout0_8ck113 = 1.0 time = 570
 * CHECK dout0_9 vdout0_9ck113 = 1.0 time = 570
 * CHECK dout0_10 vdout0_10ck113 = 1.0 time = 570
-* CHECK dout0_11 vdout0_11ck113 = 1.0 time = 570
+* CHECK dout0_11 vdout0_11ck113 = 0 time = 570
 * CHECK dout0_12 vdout0_12ck113 = 0 time = 570
-* CHECK dout0_13 vdout0_13ck113 = 1.0 time = 570
-* CHECK dout0_14 vdout0_14ck113 = 0 time = 570
-* CHECK dout0_15 vdout0_15ck113 = 0 time = 570
+* CHECK dout0_13 vdout0_13ck113 = 0 time = 570
+* CHECK dout0_14 vdout0_14ck113 = 1.0 time = 570
+* CHECK dout0_15 vdout0_15ck113 = 1.0 time = 570
 * CHECK dout0_16 vdout0_16ck113 = 0 time = 570
 * CHECK dout0_17 vdout0_17ck113 = 0 time = 570
-* CHECK dout0_18 vdout0_18ck113 = 0 time = 570
-* CHECK dout0_19 vdout0_19ck113 = 1.0 time = 570
+* CHECK dout0_18 vdout0_18ck113 = 1.0 time = 570
+* CHECK dout0_19 vdout0_19ck113 = 0 time = 570
 * CHECK dout0_20 vdout0_20ck113 = 1.0 time = 570
-* CHECK dout0_21 vdout0_21ck113 = 0 time = 570
-* CHECK dout0_22 vdout0_22ck113 = 0 time = 570
-* CHECK dout0_0 vdout0_0ck114 = 0 time = 575
-* CHECK dout0_1 vdout0_1ck114 = 1.0 time = 575
-* CHECK dout0_2 vdout0_2ck114 = 0 time = 575
-* CHECK dout0_3 vdout0_3ck114 = 1.0 time = 575
-* CHECK dout0_4 vdout0_4ck114 = 1.0 time = 575
-* CHECK dout0_5 vdout0_5ck114 = 0 time = 575
-* CHECK dout0_6 vdout0_6ck114 = 0 time = 575
-* CHECK dout0_7 vdout0_7ck114 = 0 time = 575
-* CHECK dout0_8 vdout0_8ck114 = 1.0 time = 575
-* CHECK dout0_9 vdout0_9ck114 = 1.0 time = 575
-* CHECK dout0_10 vdout0_10ck114 = 1.0 time = 575
-* CHECK dout0_11 vdout0_11ck114 = 1.0 time = 575
-* CHECK dout0_12 vdout0_12ck114 = 0 time = 575
-* CHECK dout0_13 vdout0_13ck114 = 1.0 time = 575
-* CHECK dout0_14 vdout0_14ck114 = 0 time = 575
-* CHECK dout0_15 vdout0_15ck114 = 0 time = 575
-* CHECK dout0_16 vdout0_16ck114 = 0 time = 575
-* CHECK dout0_17 vdout0_17ck114 = 0 time = 575
-* CHECK dout0_18 vdout0_18ck114 = 0 time = 575
-* CHECK dout0_19 vdout0_19ck114 = 1.0 time = 575
-* CHECK dout0_20 vdout0_20ck114 = 1.0 time = 575
-* CHECK dout0_21 vdout0_21ck114 = 0 time = 575
-* CHECK dout0_22 vdout0_22ck114 = 0 time = 575
+* CHECK dout0_21 vdout0_21ck113 = 1.0 time = 570
+* CHECK dout0_22 vdout0_22ck113 = 1.0 time = 570
+* CHECK dout0_0 vdout0_0ck116 = 0 time = 585
+* CHECK dout0_1 vdout0_1ck116 = 0 time = 585
+* CHECK dout0_2 vdout0_2ck116 = 0 time = 585
+* CHECK dout0_3 vdout0_3ck116 = 1.0 time = 585
+* CHECK dout0_4 vdout0_4ck116 = 0 time = 585
+* CHECK dout0_5 vdout0_5ck116 = 0 time = 585
+* CHECK dout0_6 vdout0_6ck116 = 1.0 time = 585
+* CHECK dout0_7 vdout0_7ck116 = 0 time = 585
+* CHECK dout0_8 vdout0_8ck116 = 1.0 time = 585
+* CHECK dout0_9 vdout0_9ck116 = 0 time = 585
+* CHECK dout0_10 vdout0_10ck116 = 1.0 time = 585
+* CHECK dout0_11 vdout0_11ck116 = 1.0 time = 585
+* CHECK dout0_12 vdout0_12ck116 = 0 time = 585
+* CHECK dout0_13 vdout0_13ck116 = 0 time = 585
+* CHECK dout0_14 vdout0_14ck116 = 0 time = 585
+* CHECK dout0_15 vdout0_15ck116 = 1.0 time = 585
+* CHECK dout0_16 vdout0_16ck116 = 1.0 time = 585
+* CHECK dout0_17 vdout0_17ck116 = 1.0 time = 585
+* CHECK dout0_18 vdout0_18ck116 = 1.0 time = 585
+* CHECK dout0_19 vdout0_19ck116 = 0 time = 585
+* CHECK dout0_20 vdout0_20ck116 = 0 time = 585
+* CHECK dout0_21 vdout0_21ck116 = 0 time = 585
+* CHECK dout0_22 vdout0_22ck116 = 0 time = 585
+* CHECK dout0_0 vdout0_0ck117 = 0 time = 590
+* CHECK dout0_1 vdout0_1ck117 = 1.0 time = 590
+* CHECK dout0_2 vdout0_2ck117 = 1.0 time = 590
+* CHECK dout0_3 vdout0_3ck117 = 1.0 time = 590
+* CHECK dout0_4 vdout0_4ck117 = 1.0 time = 590
+* CHECK dout0_5 vdout0_5ck117 = 1.0 time = 590
+* CHECK dout0_6 vdout0_6ck117 = 0 time = 590
+* CHECK dout0_7 vdout0_7ck117 = 1.0 time = 590
+* CHECK dout0_8 vdout0_8ck117 = 1.0 time = 590
+* CHECK dout0_9 vdout0_9ck117 = 1.0 time = 590
+* CHECK dout0_10 vdout0_10ck117 = 1.0 time = 590
+* CHECK dout0_11 vdout0_11ck117 = 0 time = 590
+* CHECK dout0_12 vdout0_12ck117 = 0 time = 590
+* CHECK dout0_13 vdout0_13ck117 = 0 time = 590
+* CHECK dout0_14 vdout0_14ck117 = 1.0 time = 590
+* CHECK dout0_15 vdout0_15ck117 = 1.0 time = 590
+* CHECK dout0_16 vdout0_16ck117 = 0 time = 590
+* CHECK dout0_17 vdout0_17ck117 = 0 time = 590
+* CHECK dout0_18 vdout0_18ck117 = 1.0 time = 590
+* CHECK dout0_19 vdout0_19ck117 = 0 time = 590
+* CHECK dout0_20 vdout0_20ck117 = 1.0 time = 590
+* CHECK dout0_21 vdout0_21ck117 = 1.0 time = 590
+* CHECK dout0_22 vdout0_22ck117 = 1.0 time = 590
 * CHECK dout0_0 vdout0_0ck118 = 0 time = 595
-* CHECK dout0_1 vdout0_1ck118 = 0 time = 595
-* CHECK dout0_2 vdout0_2ck118 = 1.0 time = 595
+* CHECK dout0_1 vdout0_1ck118 = 1.0 time = 595
+* CHECK dout0_2 vdout0_2ck118 = 0 time = 595
 * CHECK dout0_3 vdout0_3ck118 = 1.0 time = 595
-* CHECK dout0_4 vdout0_4ck118 = 1.0 time = 595
+* CHECK dout0_4 vdout0_4ck118 = 0 time = 595
 * CHECK dout0_5 vdout0_5ck118 = 0 time = 595
-* CHECK dout0_6 vdout0_6ck118 = 0 time = 595
+* CHECK dout0_6 vdout0_6ck118 = 1.0 time = 595
 * CHECK dout0_7 vdout0_7ck118 = 0 time = 595
 * CHECK dout0_8 vdout0_8ck118 = 1.0 time = 595
-* CHECK dout0_9 vdout0_9ck118 = 1.0 time = 595
+* CHECK dout0_9 vdout0_9ck118 = 0 time = 595
 * CHECK dout0_10 vdout0_10ck118 = 0 time = 595
-* CHECK dout0_11 vdout0_11ck118 = 0 time = 595
-* CHECK dout0_12 vdout0_12ck118 = 1.0 time = 595
+* CHECK dout0_11 vdout0_11ck118 = 1.0 time = 595
+* CHECK dout0_12 vdout0_12ck118 = 0 time = 595
 * CHECK dout0_13 vdout0_13ck118 = 0 time = 595
 * CHECK dout0_14 vdout0_14ck118 = 1.0 time = 595
 * CHECK dout0_15 vdout0_15ck118 = 0 time = 595
 * CHECK dout0_16 vdout0_16ck118 = 1.0 time = 595
-* CHECK dout0_17 vdout0_17ck118 = 1.0 time = 595
+* CHECK dout0_17 vdout0_17ck118 = 0 time = 595
 * CHECK dout0_18 vdout0_18ck118 = 1.0 time = 595
 * CHECK dout0_19 vdout0_19ck118 = 1.0 time = 595
 * CHECK dout0_20 vdout0_20ck118 = 1.0 time = 595
-* CHECK dout0_21 vdout0_21ck118 = 1.0 time = 595
+* CHECK dout0_21 vdout0_21ck118 = 0 time = 595
 * CHECK dout0_22 vdout0_22ck118 = 1.0 time = 595
+* CHECK dout0_0 vdout0_0ck119 = 0 time = 600
+* CHECK dout0_1 vdout0_1ck119 = 0 time = 600
+* CHECK dout0_2 vdout0_2ck119 = 0 time = 600
+* CHECK dout0_3 vdout0_3ck119 = 1.0 time = 600
+* CHECK dout0_4 vdout0_4ck119 = 0 time = 600
+* CHECK dout0_5 vdout0_5ck119 = 0 time = 600
+* CHECK dout0_6 vdout0_6ck119 = 1.0 time = 600
+* CHECK dout0_7 vdout0_7ck119 = 0 time = 600
+* CHECK dout0_8 vdout0_8ck119 = 1.0 time = 600
+* CHECK dout0_9 vdout0_9ck119 = 0 time = 600
+* CHECK dout0_10 vdout0_10ck119 = 1.0 time = 600
+* CHECK dout0_11 vdout0_11ck119 = 1.0 time = 600
+* CHECK dout0_12 vdout0_12ck119 = 0 time = 600
+* CHECK dout0_13 vdout0_13ck119 = 0 time = 600
+* CHECK dout0_14 vdout0_14ck119 = 0 time = 600
+* CHECK dout0_15 vdout0_15ck119 = 1.0 time = 600
+* CHECK dout0_16 vdout0_16ck119 = 1.0 time = 600
+* CHECK dout0_17 vdout0_17ck119 = 1.0 time = 600
+* CHECK dout0_18 vdout0_18ck119 = 1.0 time = 600
+* CHECK dout0_19 vdout0_19ck119 = 0 time = 600
+* CHECK dout0_20 vdout0_20ck119 = 0 time = 600
+* CHECK dout0_21 vdout0_21ck119 = 0 time = 600
+* CHECK dout0_22 vdout0_22ck119 = 0 time = 600
 * CHECK dout0_0 vdout0_0ck120 = 0 time = 605
 * CHECK dout0_1 vdout0_1ck120 = 0 time = 605
-* CHECK dout0_2 vdout0_2ck120 = 1.0 time = 605
+* CHECK dout0_2 vdout0_2ck120 = 0 time = 605
 * CHECK dout0_3 vdout0_3ck120 = 1.0 time = 605
-* CHECK dout0_4 vdout0_4ck120 = 1.0 time = 605
+* CHECK dout0_4 vdout0_4ck120 = 0 time = 605
 * CHECK dout0_5 vdout0_5ck120 = 0 time = 605
-* CHECK dout0_6 vdout0_6ck120 = 0 time = 605
+* CHECK dout0_6 vdout0_6ck120 = 1.0 time = 605
 * CHECK dout0_7 vdout0_7ck120 = 0 time = 605
 * CHECK dout0_8 vdout0_8ck120 = 1.0 time = 605
-* CHECK dout0_9 vdout0_9ck120 = 1.0 time = 605
-* CHECK dout0_10 vdout0_10ck120 = 0 time = 605
-* CHECK dout0_11 vdout0_11ck120 = 0 time = 605
-* CHECK dout0_12 vdout0_12ck120 = 1.0 time = 605
+* CHECK dout0_9 vdout0_9ck120 = 0 time = 605
+* CHECK dout0_10 vdout0_10ck120 = 1.0 time = 605
+* CHECK dout0_11 vdout0_11ck120 = 1.0 time = 605
+* CHECK dout0_12 vdout0_12ck120 = 0 time = 605
 * CHECK dout0_13 vdout0_13ck120 = 0 time = 605
-* CHECK dout0_14 vdout0_14ck120 = 1.0 time = 605
-* CHECK dout0_15 vdout0_15ck120 = 0 time = 605
+* CHECK dout0_14 vdout0_14ck120 = 0 time = 605
+* CHECK dout0_15 vdout0_15ck120 = 1.0 time = 605
 * CHECK dout0_16 vdout0_16ck120 = 1.0 time = 605
 * CHECK dout0_17 vdout0_17ck120 = 1.0 time = 605
 * CHECK dout0_18 vdout0_18ck120 = 1.0 time = 605
-* CHECK dout0_19 vdout0_19ck120 = 1.0 time = 605
-* CHECK dout0_20 vdout0_20ck120 = 1.0 time = 605
-* CHECK dout0_21 vdout0_21ck120 = 1.0 time = 605
-* CHECK dout0_22 vdout0_22ck120 = 1.0 time = 605
+* CHECK dout0_19 vdout0_19ck120 = 0 time = 605
+* CHECK dout0_20 vdout0_20ck120 = 0 time = 605
+* CHECK dout0_21 vdout0_21ck120 = 0 time = 605
+* CHECK dout0_22 vdout0_22ck120 = 0 time = 605
 * CHECK dout0_0 vdout0_0ck121 = 1.0 time = 610
 * CHECK dout0_1 vdout0_1ck121 = 1.0 time = 610
 * CHECK dout0_2 vdout0_2ck121 = 0 time = 610
 * CHECK dout0_3 vdout0_3ck121 = 1.0 time = 610
 * CHECK dout0_4 vdout0_4ck121 = 1.0 time = 610
 * CHECK dout0_5 vdout0_5ck121 = 1.0 time = 610
-* CHECK dout0_6 vdout0_6ck121 = 1.0 time = 610
-* CHECK dout0_7 vdout0_7ck121 = 1.0 time = 610
+* CHECK dout0_6 vdout0_6ck121 = 0 time = 610
+* CHECK dout0_7 vdout0_7ck121 = 0 time = 610
 * CHECK dout0_8 vdout0_8ck121 = 1.0 time = 610
-* CHECK dout0_9 vdout0_9ck121 = 0 time = 610
+* CHECK dout0_9 vdout0_9ck121 = 1.0 time = 610
 * CHECK dout0_10 vdout0_10ck121 = 0 time = 610
 * CHECK dout0_11 vdout0_11ck121 = 1.0 time = 610
-* CHECK dout0_12 vdout0_12ck121 = 0 time = 610
-* CHECK dout0_13 vdout0_13ck121 = 1.0 time = 610
+* CHECK dout0_12 vdout0_12ck121 = 1.0 time = 610
+* CHECK dout0_13 vdout0_13ck121 = 0 time = 610
 * CHECK dout0_14 vdout0_14ck121 = 0 time = 610
-* CHECK dout0_15 vdout0_15ck121 = 0 time = 610
-* CHECK dout0_16 vdout0_16ck121 = 0 time = 610
+* CHECK dout0_15 vdout0_15ck121 = 1.0 time = 610
+* CHECK dout0_16 vdout0_16ck121 = 1.0 time = 610
 * CHECK dout0_17 vdout0_17ck121 = 0 time = 610
 * CHECK dout0_18 vdout0_18ck121 = 1.0 time = 610
 * CHECK dout0_19 vdout0_19ck121 = 1.0 time = 610
-* CHECK dout0_20 vdout0_20ck121 = 1.0 time = 610
-* CHECK dout0_21 vdout0_21ck121 = 0 time = 610
-* CHECK dout0_22 vdout0_22ck121 = 0 time = 610
-* CHECK dout0_0 vdout0_0ck125 = 1.0 time = 630
-* CHECK dout0_1 vdout0_1ck125 = 1.0 time = 630
-* CHECK dout0_2 vdout0_2ck125 = 0 time = 630
-* CHECK dout0_3 vdout0_3ck125 = 1.0 time = 630
-* CHECK dout0_4 vdout0_4ck125 = 1.0 time = 630
-* CHECK dout0_5 vdout0_5ck125 = 1.0 time = 630
-* CHECK dout0_6 vdout0_6ck125 = 1.0 time = 630
-* CHECK dout0_7 vdout0_7ck125 = 1.0 time = 630
-* CHECK dout0_8 vdout0_8ck125 = 1.0 time = 630
-* CHECK dout0_9 vdout0_9ck125 = 0 time = 630
-* CHECK dout0_10 vdout0_10ck125 = 0 time = 630
-* CHECK dout0_11 vdout0_11ck125 = 1.0 time = 630
-* CHECK dout0_12 vdout0_12ck125 = 0 time = 630
-* CHECK dout0_13 vdout0_13ck125 = 1.0 time = 630
-* CHECK dout0_14 vdout0_14ck125 = 0 time = 630
-* CHECK dout0_15 vdout0_15ck125 = 0 time = 630
-* CHECK dout0_16 vdout0_16ck125 = 0 time = 630
-* CHECK dout0_17 vdout0_17ck125 = 0 time = 630
-* CHECK dout0_18 vdout0_18ck125 = 1.0 time = 630
-* CHECK dout0_19 vdout0_19ck125 = 1.0 time = 630
-* CHECK dout0_20 vdout0_20ck125 = 1.0 time = 630
-* CHECK dout0_21 vdout0_21ck125 = 0 time = 630
-* CHECK dout0_22 vdout0_22ck125 = 0 time = 630
-* CHECK dout0_0 vdout0_0ck126 = 0 time = 635
-* CHECK dout0_1 vdout0_1ck126 = 1.0 time = 635
-* CHECK dout0_2 vdout0_2ck126 = 1.0 time = 635
-* CHECK dout0_3 vdout0_3ck126 = 0 time = 635
-* CHECK dout0_4 vdout0_4ck126 = 1.0 time = 635
-* CHECK dout0_5 vdout0_5ck126 = 0 time = 635
-* CHECK dout0_6 vdout0_6ck126 = 1.0 time = 635
-* CHECK dout0_7 vdout0_7ck126 = 1.0 time = 635
-* CHECK dout0_8 vdout0_8ck126 = 0 time = 635
-* CHECK dout0_9 vdout0_9ck126 = 1.0 time = 635
-* CHECK dout0_10 vdout0_10ck126 = 1.0 time = 635
-* CHECK dout0_11 vdout0_11ck126 = 1.0 time = 635
-* CHECK dout0_12 vdout0_12ck126 = 1.0 time = 635
-* CHECK dout0_13 vdout0_13ck126 = 1.0 time = 635
-* CHECK dout0_14 vdout0_14ck126 = 0 time = 635
-* CHECK dout0_15 vdout0_15ck126 = 0 time = 635
-* CHECK dout0_16 vdout0_16ck126 = 1.0 time = 635
-* CHECK dout0_17 vdout0_17ck126 = 1.0 time = 635
-* CHECK dout0_18 vdout0_18ck126 = 0 time = 635
-* CHECK dout0_19 vdout0_19ck126 = 1.0 time = 635
-* CHECK dout0_20 vdout0_20ck126 = 1.0 time = 635
-* CHECK dout0_21 vdout0_21ck126 = 1.0 time = 635
-* CHECK dout0_22 vdout0_22ck126 = 1.0 time = 635
-* CHECK dout0_0 vdout0_0ck131 = 1.0 time = 660
-* CHECK dout0_1 vdout0_1ck131 = 0 time = 660
+* CHECK dout0_20 vdout0_20ck121 = 0 time = 610
+* CHECK dout0_21 vdout0_21ck121 = 1.0 time = 610
+* CHECK dout0_22 vdout0_22ck121 = 1.0 time = 610
+* CHECK dout0_0 vdout0_0ck124 = 1.0 time = 625
+* CHECK dout0_1 vdout0_1ck124 = 1.0 time = 625
+* CHECK dout0_2 vdout0_2ck124 = 1.0 time = 625
+* CHECK dout0_3 vdout0_3ck124 = 1.0 time = 625
+* CHECK dout0_4 vdout0_4ck124 = 0 time = 625
+* CHECK dout0_5 vdout0_5ck124 = 0 time = 625
+* CHECK dout0_6 vdout0_6ck124 = 1.0 time = 625
+* CHECK dout0_7 vdout0_7ck124 = 1.0 time = 625
+* CHECK dout0_8 vdout0_8ck124 = 0 time = 625
+* CHECK dout0_9 vdout0_9ck124 = 0 time = 625
+* CHECK dout0_10 vdout0_10ck124 = 0 time = 625
+* CHECK dout0_11 vdout0_11ck124 = 1.0 time = 625
+* CHECK dout0_12 vdout0_12ck124 = 0 time = 625
+* CHECK dout0_13 vdout0_13ck124 = 1.0 time = 625
+* CHECK dout0_14 vdout0_14ck124 = 1.0 time = 625
+* CHECK dout0_15 vdout0_15ck124 = 0 time = 625
+* CHECK dout0_16 vdout0_16ck124 = 0 time = 625
+* CHECK dout0_17 vdout0_17ck124 = 1.0 time = 625
+* CHECK dout0_18 vdout0_18ck124 = 0 time = 625
+* CHECK dout0_19 vdout0_19ck124 = 1.0 time = 625
+* CHECK dout0_20 vdout0_20ck124 = 0 time = 625
+* CHECK dout0_21 vdout0_21ck124 = 0 time = 625
+* CHECK dout0_22 vdout0_22ck124 = 1.0 time = 625
+* CHECK dout0_0 vdout0_0ck127 = 0 time = 640
+* CHECK dout0_1 vdout0_1ck127 = 1.0 time = 640
+* CHECK dout0_2 vdout0_2ck127 = 0 time = 640
+* CHECK dout0_3 vdout0_3ck127 = 1.0 time = 640
+* CHECK dout0_4 vdout0_4ck127 = 0 time = 640
+* CHECK dout0_5 vdout0_5ck127 = 0 time = 640
+* CHECK dout0_6 vdout0_6ck127 = 0 time = 640
+* CHECK dout0_7 vdout0_7ck127 = 0 time = 640
+* CHECK dout0_8 vdout0_8ck127 = 0 time = 640
+* CHECK dout0_9 vdout0_9ck127 = 1.0 time = 640
+* CHECK dout0_10 vdout0_10ck127 = 1.0 time = 640
+* CHECK dout0_11 vdout0_11ck127 = 0 time = 640
+* CHECK dout0_12 vdout0_12ck127 = 1.0 time = 640
+* CHECK dout0_13 vdout0_13ck127 = 0 time = 640
+* CHECK dout0_14 vdout0_14ck127 = 1.0 time = 640
+* CHECK dout0_15 vdout0_15ck127 = 1.0 time = 640
+* CHECK dout0_16 vdout0_16ck127 = 0 time = 640
+* CHECK dout0_17 vdout0_17ck127 = 1.0 time = 640
+* CHECK dout0_18 vdout0_18ck127 = 1.0 time = 640
+* CHECK dout0_19 vdout0_19ck127 = 1.0 time = 640
+* CHECK dout0_20 vdout0_20ck127 = 0 time = 640
+* CHECK dout0_21 vdout0_21ck127 = 1.0 time = 640
+* CHECK dout0_22 vdout0_22ck127 = 1.0 time = 640
+* CHECK dout0_0 vdout0_0ck129 = 1.0 time = 650
+* CHECK dout0_1 vdout0_1ck129 = 1.0 time = 650
+* CHECK dout0_2 vdout0_2ck129 = 1.0 time = 650
+* CHECK dout0_3 vdout0_3ck129 = 0 time = 650
+* CHECK dout0_4 vdout0_4ck129 = 1.0 time = 650
+* CHECK dout0_5 vdout0_5ck129 = 1.0 time = 650
+* CHECK dout0_6 vdout0_6ck129 = 0 time = 650
+* CHECK dout0_7 vdout0_7ck129 = 1.0 time = 650
+* CHECK dout0_8 vdout0_8ck129 = 1.0 time = 650
+* CHECK dout0_9 vdout0_9ck129 = 0 time = 650
+* CHECK dout0_10 vdout0_10ck129 = 0 time = 650
+* CHECK dout0_11 vdout0_11ck129 = 1.0 time = 650
+* CHECK dout0_12 vdout0_12ck129 = 0 time = 650
+* CHECK dout0_13 vdout0_13ck129 = 1.0 time = 650
+* CHECK dout0_14 vdout0_14ck129 = 1.0 time = 650
+* CHECK dout0_15 vdout0_15ck129 = 0 time = 650
+* CHECK dout0_16 vdout0_16ck129 = 1.0 time = 650
+* CHECK dout0_17 vdout0_17ck129 = 0 time = 650
+* CHECK dout0_18 vdout0_18ck129 = 0 time = 650
+* CHECK dout0_19 vdout0_19ck129 = 0 time = 650
+* CHECK dout0_20 vdout0_20ck129 = 0 time = 650
+* CHECK dout0_21 vdout0_21ck129 = 0 time = 650
+* CHECK dout0_22 vdout0_22ck129 = 0 time = 650
+* CHECK dout0_0 vdout0_0ck131 = 0 time = 660
+* CHECK dout0_1 vdout0_1ck131 = 1.0 time = 660
 * CHECK dout0_2 vdout0_2ck131 = 0 time = 660
 * CHECK dout0_3 vdout0_3ck131 = 1.0 time = 660
-* CHECK dout0_4 vdout0_4ck131 = 1.0 time = 660
-* CHECK dout0_5 vdout0_5ck131 = 1.0 time = 660
-* CHECK dout0_6 vdout0_6ck131 = 0 time = 660
+* CHECK dout0_4 vdout0_4ck131 = 0 time = 660
+* CHECK dout0_5 vdout0_5ck131 = 0 time = 660
+* CHECK dout0_6 vdout0_6ck131 = 1.0 time = 660
 * CHECK dout0_7 vdout0_7ck131 = 0 time = 660
-* CHECK dout0_8 vdout0_8ck131 = 0 time = 660
-* CHECK dout0_9 vdout0_9ck131 = 1.0 time = 660
+* CHECK dout0_8 vdout0_8ck131 = 1.0 time = 660
+* CHECK dout0_9 vdout0_9ck131 = 0 time = 660
 * CHECK dout0_10 vdout0_10ck131 = 0 time = 660
-* CHECK dout0_11 vdout0_11ck131 = 0 time = 660
+* CHECK dout0_11 vdout0_11ck131 = 1.0 time = 660
 * CHECK dout0_12 vdout0_12ck131 = 0 time = 660
 * CHECK dout0_13 vdout0_13ck131 = 0 time = 660
 * CHECK dout0_14 vdout0_14ck131 = 1.0 time = 660
 * CHECK dout0_15 vdout0_15ck131 = 0 time = 660
 * CHECK dout0_16 vdout0_16ck131 = 1.0 time = 660
-* CHECK dout0_17 vdout0_17ck131 = 1.0 time = 660
-* CHECK dout0_18 vdout0_18ck131 = 0 time = 660
-* CHECK dout0_19 vdout0_19ck131 = 0 time = 660
-* CHECK dout0_20 vdout0_20ck131 = 0 time = 660
+* CHECK dout0_17 vdout0_17ck131 = 0 time = 660
+* CHECK dout0_18 vdout0_18ck131 = 1.0 time = 660
+* CHECK dout0_19 vdout0_19ck131 = 1.0 time = 660
+* CHECK dout0_20 vdout0_20ck131 = 1.0 time = 660
 * CHECK dout0_21 vdout0_21ck131 = 0 time = 660
 * CHECK dout0_22 vdout0_22ck131 = 1.0 time = 660
-* CHECK dout0_0 vdout0_0ck133 = 0 time = 670
-* CHECK dout0_1 vdout0_1ck133 = 1.0 time = 670
-* CHECK dout0_2 vdout0_2ck133 = 0 time = 670
-* CHECK dout0_3 vdout0_3ck133 = 1.0 time = 670
-* CHECK dout0_4 vdout0_4ck133 = 0 time = 670
-* CHECK dout0_5 vdout0_5ck133 = 0 time = 670
-* CHECK dout0_6 vdout0_6ck133 = 0 time = 670
-* CHECK dout0_7 vdout0_7ck133 = 0 time = 670
-* CHECK dout0_8 vdout0_8ck133 = 1.0 time = 670
-* CHECK dout0_9 vdout0_9ck133 = 1.0 time = 670
-* CHECK dout0_10 vdout0_10ck133 = 0 time = 670
-* CHECK dout0_11 vdout0_11ck133 = 0 time = 670
-* CHECK dout0_12 vdout0_12ck133 = 1.0 time = 670
-* CHECK dout0_13 vdout0_13ck133 = 1.0 time = 670
-* CHECK dout0_14 vdout0_14ck133 = 0 time = 670
-* CHECK dout0_15 vdout0_15ck133 = 1.0 time = 670
-* CHECK dout0_16 vdout0_16ck133 = 0 time = 670
-* CHECK dout0_17 vdout0_17ck133 = 1.0 time = 670
-* CHECK dout0_18 vdout0_18ck133 = 1.0 time = 670
-* CHECK dout0_19 vdout0_19ck133 = 1.0 time = 670
-* CHECK dout0_20 vdout0_20ck133 = 1.0 time = 670
-* CHECK dout0_21 vdout0_21ck133 = 0 time = 670
-* CHECK dout0_22 vdout0_22ck133 = 1.0 time = 670
-* CHECK dout0_0 vdout0_0ck134 = 1.0 time = 675
-* CHECK dout0_1 vdout0_1ck134 = 0 time = 675
+* CHECK dout0_0 vdout0_0ck132 = 1.0 time = 665
+* CHECK dout0_1 vdout0_1ck132 = 1.0 time = 665
+* CHECK dout0_2 vdout0_2ck132 = 1.0 time = 665
+* CHECK dout0_3 vdout0_3ck132 = 1.0 time = 665
+* CHECK dout0_4 vdout0_4ck132 = 0 time = 665
+* CHECK dout0_5 vdout0_5ck132 = 0 time = 665
+* CHECK dout0_6 vdout0_6ck132 = 1.0 time = 665
+* CHECK dout0_7 vdout0_7ck132 = 1.0 time = 665
+* CHECK dout0_8 vdout0_8ck132 = 0 time = 665
+* CHECK dout0_9 vdout0_9ck132 = 0 time = 665
+* CHECK dout0_10 vdout0_10ck132 = 0 time = 665
+* CHECK dout0_11 vdout0_11ck132 = 1.0 time = 665
+* CHECK dout0_12 vdout0_12ck132 = 0 time = 665
+* CHECK dout0_13 vdout0_13ck132 = 1.0 time = 665
+* CHECK dout0_14 vdout0_14ck132 = 1.0 time = 665
+* CHECK dout0_15 vdout0_15ck132 = 0 time = 665
+* CHECK dout0_16 vdout0_16ck132 = 0 time = 665
+* CHECK dout0_17 vdout0_17ck132 = 1.0 time = 665
+* CHECK dout0_18 vdout0_18ck132 = 0 time = 665
+* CHECK dout0_19 vdout0_19ck132 = 1.0 time = 665
+* CHECK dout0_20 vdout0_20ck132 = 0 time = 665
+* CHECK dout0_21 vdout0_21ck132 = 0 time = 665
+* CHECK dout0_22 vdout0_22ck132 = 1.0 time = 665
+* CHECK dout0_0 vdout0_0ck134 = 0 time = 675
+* CHECK dout0_1 vdout0_1ck134 = 1.0 time = 675
 * CHECK dout0_2 vdout0_2ck134 = 0 time = 675
 * CHECK dout0_3 vdout0_3ck134 = 1.0 time = 675
 * CHECK dout0_4 vdout0_4ck134 = 0 time = 675
-* CHECK dout0_5 vdout0_5ck134 = 1.0 time = 675
+* CHECK dout0_5 vdout0_5ck134 = 0 time = 675
 * CHECK dout0_6 vdout0_6ck134 = 1.0 time = 675
 * CHECK dout0_7 vdout0_7ck134 = 0 time = 675
 * CHECK dout0_8 vdout0_8ck134 = 1.0 time = 675
-* CHECK dout0_9 vdout0_9ck134 = 1.0 time = 675
+* CHECK dout0_9 vdout0_9ck134 = 0 time = 675
 * CHECK dout0_10 vdout0_10ck134 = 0 time = 675
-* CHECK dout0_11 vdout0_11ck134 = 0 time = 675
+* CHECK dout0_11 vdout0_11ck134 = 1.0 time = 675
 * CHECK dout0_12 vdout0_12ck134 = 0 time = 675
 * CHECK dout0_13 vdout0_13ck134 = 0 time = 675
 * CHECK dout0_14 vdout0_14ck134 = 1.0 time = 675
-* CHECK dout0_15 vdout0_15ck134 = 1.0 time = 675
+* CHECK dout0_15 vdout0_15ck134 = 0 time = 675
 * CHECK dout0_16 vdout0_16ck134 = 1.0 time = 675
 * CHECK dout0_17 vdout0_17ck134 = 0 time = 675
 * CHECK dout0_18 vdout0_18ck134 = 1.0 time = 675
-* CHECK dout0_19 vdout0_19ck134 = 0 time = 675
+* CHECK dout0_19 vdout0_19ck134 = 1.0 time = 675
 * CHECK dout0_20 vdout0_20ck134 = 1.0 time = 675
 * CHECK dout0_21 vdout0_21ck134 = 0 time = 675
-* CHECK dout0_22 vdout0_22ck134 = 0 time = 675
-* CHECK dout0_0 vdout0_0ck135 = 0 time = 680
-* CHECK dout0_1 vdout0_1ck135 = 0 time = 680
-* CHECK dout0_2 vdout0_2ck135 = 0 time = 680
+* CHECK dout0_22 vdout0_22ck134 = 1.0 time = 675
+* CHECK dout0_0 vdout0_0ck135 = 1.0 time = 680
+* CHECK dout0_1 vdout0_1ck135 = 1.0 time = 680
+* CHECK dout0_2 vdout0_2ck135 = 1.0 time = 680
 * CHECK dout0_3 vdout0_3ck135 = 1.0 time = 680
-* CHECK dout0_4 vdout0_4ck135 = 1.0 time = 680
+* CHECK dout0_4 vdout0_4ck135 = 0 time = 680
 * CHECK dout0_5 vdout0_5ck135 = 0 time = 680
-* CHECK dout0_6 vdout0_6ck135 = 0 time = 680
-* CHECK dout0_7 vdout0_7ck135 = 0 time = 680
+* CHECK dout0_6 vdout0_6ck135 = 1.0 time = 680
+* CHECK dout0_7 vdout0_7ck135 = 1.0 time = 680
 * CHECK dout0_8 vdout0_8ck135 = 0 time = 680
-* CHECK dout0_9 vdout0_9ck135 = 1.0 time = 680
-* CHECK dout0_10 vdout0_10ck135 = 1.0 time = 680
+* CHECK dout0_9 vdout0_9ck135 = 0 time = 680
+* CHECK dout0_10 vdout0_10ck135 = 0 time = 680
 * CHECK dout0_11 vdout0_11ck135 = 1.0 time = 680
-* CHECK dout0_12 vdout0_12ck135 = 1.0 time = 680
-* CHECK dout0_13 vdout0_13ck135 = 0 time = 680
-* CHECK dout0_14 vdout0_14ck135 = 0 time = 680
+* CHECK dout0_12 vdout0_12ck135 = 0 time = 680
+* CHECK dout0_13 vdout0_13ck135 = 1.0 time = 680
+* CHECK dout0_14 vdout0_14ck135 = 1.0 time = 680
 * CHECK dout0_15 vdout0_15ck135 = 0 time = 680
-* CHECK dout0_16 vdout0_16ck135 = 1.0 time = 680
-* CHECK dout0_17 vdout0_17ck135 = 0 time = 680
-* CHECK dout0_18 vdout0_18ck135 = 1.0 time = 680
-* CHECK dout0_19 vdout0_19ck135 = 0 time = 680
+* CHECK dout0_16 vdout0_16ck135 = 0 time = 680
+* CHECK dout0_17 vdout0_17ck135 = 1.0 time = 680
+* CHECK dout0_18 vdout0_18ck135 = 0 time = 680
+* CHECK dout0_19 vdout0_19ck135 = 1.0 time = 680
 * CHECK dout0_20 vdout0_20ck135 = 0 time = 680
 * CHECK dout0_21 vdout0_21ck135 = 0 time = 680
-* CHECK dout0_22 vdout0_22ck135 = 0 time = 680
-* CHECK dout0_0 vdout0_0ck136 = 0 time = 685
-* CHECK dout0_1 vdout0_1ck136 = 1.0 time = 685
-* CHECK dout0_2 vdout0_2ck136 = 0 time = 685
-* CHECK dout0_3 vdout0_3ck136 = 1.0 time = 685
-* CHECK dout0_4 vdout0_4ck136 = 0 time = 685
-* CHECK dout0_5 vdout0_5ck136 = 0 time = 685
-* CHECK dout0_6 vdout0_6ck136 = 0 time = 685
-* CHECK dout0_7 vdout0_7ck136 = 0 time = 685
-* CHECK dout0_8 vdout0_8ck136 = 1.0 time = 685
-* CHECK dout0_9 vdout0_9ck136 = 1.0 time = 685
-* CHECK dout0_10 vdout0_10ck136 = 0 time = 685
-* CHECK dout0_11 vdout0_11ck136 = 0 time = 685
-* CHECK dout0_12 vdout0_12ck136 = 1.0 time = 685
-* CHECK dout0_13 vdout0_13ck136 = 1.0 time = 685
-* CHECK dout0_14 vdout0_14ck136 = 0 time = 685
-* CHECK dout0_15 vdout0_15ck136 = 1.0 time = 685
-* CHECK dout0_16 vdout0_16ck136 = 0 time = 685
-* CHECK dout0_17 vdout0_17ck136 = 1.0 time = 685
-* CHECK dout0_18 vdout0_18ck136 = 1.0 time = 685
-* CHECK dout0_19 vdout0_19ck136 = 1.0 time = 685
-* CHECK dout0_20 vdout0_20ck136 = 1.0 time = 685
-* CHECK dout0_21 vdout0_21ck136 = 0 time = 685
-* CHECK dout0_22 vdout0_22ck136 = 1.0 time = 685
-* CHECK dout0_0 vdout0_0ck138 = 1.0 time = 695
-* CHECK dout0_1 vdout0_1ck138 = 0 time = 695
-* CHECK dout0_2 vdout0_2ck138 = 0 time = 695
-* CHECK dout0_3 vdout0_3ck138 = 1.0 time = 695
-* CHECK dout0_4 vdout0_4ck138 = 0 time = 695
-* CHECK dout0_5 vdout0_5ck138 = 1.0 time = 695
-* CHECK dout0_6 vdout0_6ck138 = 1.0 time = 695
-* CHECK dout0_7 vdout0_7ck138 = 0 time = 695
-* CHECK dout0_8 vdout0_8ck138 = 1.0 time = 695
-* CHECK dout0_9 vdout0_9ck138 = 1.0 time = 695
-* CHECK dout0_10 vdout0_10ck138 = 0 time = 695
-* CHECK dout0_11 vdout0_11ck138 = 0 time = 695
-* CHECK dout0_12 vdout0_12ck138 = 0 time = 695
-* CHECK dout0_13 vdout0_13ck138 = 0 time = 695
-* CHECK dout0_14 vdout0_14ck138 = 1.0 time = 695
-* CHECK dout0_15 vdout0_15ck138 = 1.0 time = 695
-* CHECK dout0_16 vdout0_16ck138 = 1.0 time = 695
-* CHECK dout0_17 vdout0_17ck138 = 0 time = 695
-* CHECK dout0_18 vdout0_18ck138 = 1.0 time = 695
-* CHECK dout0_19 vdout0_19ck138 = 0 time = 695
-* CHECK dout0_20 vdout0_20ck138 = 1.0 time = 695
-* CHECK dout0_21 vdout0_21ck138 = 0 time = 695
-* CHECK dout0_22 vdout0_22ck138 = 0 time = 695
-* CHECK dout0_0 vdout0_0ck139 = 0 time = 700
-* CHECK dout0_1 vdout0_1ck139 = 1.0 time = 700
-* CHECK dout0_2 vdout0_2ck139 = 0 time = 700
-* CHECK dout0_3 vdout0_3ck139 = 1.0 time = 700
-* CHECK dout0_4 vdout0_4ck139 = 0 time = 700
-* CHECK dout0_5 vdout0_5ck139 = 0 time = 700
-* CHECK dout0_6 vdout0_6ck139 = 0 time = 700
-* CHECK dout0_7 vdout0_7ck139 = 0 time = 700
-* CHECK dout0_8 vdout0_8ck139 = 1.0 time = 700
-* CHECK dout0_9 vdout0_9ck139 = 1.0 time = 700
-* CHECK dout0_10 vdout0_10ck139 = 0 time = 700
-* CHECK dout0_11 vdout0_11ck139 = 0 time = 700
-* CHECK dout0_12 vdout0_12ck139 = 1.0 time = 700
-* CHECK dout0_13 vdout0_13ck139 = 1.0 time = 700
-* CHECK dout0_14 vdout0_14ck139 = 0 time = 700
-* CHECK dout0_15 vdout0_15ck139 = 1.0 time = 700
-* CHECK dout0_16 vdout0_16ck139 = 0 time = 700
-* CHECK dout0_17 vdout0_17ck139 = 1.0 time = 700
-* CHECK dout0_18 vdout0_18ck139 = 1.0 time = 700
-* CHECK dout0_19 vdout0_19ck139 = 1.0 time = 700
-* CHECK dout0_20 vdout0_20ck139 = 1.0 time = 700
-* CHECK dout0_21 vdout0_21ck139 = 0 time = 700
-* CHECK dout0_22 vdout0_22ck139 = 1.0 time = 700
-* CHECK dout0_0 vdout0_0ck141 = 0 time = 710
-* CHECK dout0_1 vdout0_1ck141 = 1.0 time = 710
-* CHECK dout0_2 vdout0_2ck141 = 1.0 time = 710
-* CHECK dout0_3 vdout0_3ck141 = 1.0 time = 710
-* CHECK dout0_4 vdout0_4ck141 = 0 time = 710
-* CHECK dout0_5 vdout0_5ck141 = 1.0 time = 710
-* CHECK dout0_6 vdout0_6ck141 = 1.0 time = 710
-* CHECK dout0_7 vdout0_7ck141 = 1.0 time = 710
-* CHECK dout0_8 vdout0_8ck141 = 0 time = 710
-* CHECK dout0_9 vdout0_9ck141 = 0 time = 710
-* CHECK dout0_10 vdout0_10ck141 = 0 time = 710
-* CHECK dout0_11 vdout0_11ck141 = 1.0 time = 710
-* CHECK dout0_12 vdout0_12ck141 = 1.0 time = 710
-* CHECK dout0_13 vdout0_13ck141 = 1.0 time = 710
-* CHECK dout0_14 vdout0_14ck141 = 1.0 time = 710
-* CHECK dout0_15 vdout0_15ck141 = 1.0 time = 710
-* CHECK dout0_16 vdout0_16ck141 = 0 time = 710
-* CHECK dout0_17 vdout0_17ck141 = 0 time = 710
-* CHECK dout0_18 vdout0_18ck141 = 1.0 time = 710
-* CHECK dout0_19 vdout0_19ck141 = 1.0 time = 710
-* CHECK dout0_20 vdout0_20ck141 = 0 time = 710
-* CHECK dout0_21 vdout0_21ck141 = 0 time = 710
-* CHECK dout0_22 vdout0_22ck141 = 1.0 time = 710
-* CHECK dout0_0 vdout0_0ck144 = 0 time = 725
-* CHECK dout0_1 vdout0_1ck144 = 0 time = 725
-* CHECK dout0_2 vdout0_2ck144 = 0 time = 725
-* CHECK dout0_3 vdout0_3ck144 = 1.0 time = 725
-* CHECK dout0_4 vdout0_4ck144 = 1.0 time = 725
-* CHECK dout0_5 vdout0_5ck144 = 0 time = 725
-* CHECK dout0_6 vdout0_6ck144 = 0 time = 725
-* CHECK dout0_7 vdout0_7ck144 = 0 time = 725
-* CHECK dout0_8 vdout0_8ck144 = 0 time = 725
-* CHECK dout0_9 vdout0_9ck144 = 1.0 time = 725
-* CHECK dout0_10 vdout0_10ck144 = 1.0 time = 725
-* CHECK dout0_11 vdout0_11ck144 = 1.0 time = 725
-* CHECK dout0_12 vdout0_12ck144 = 1.0 time = 725
-* CHECK dout0_13 vdout0_13ck144 = 0 time = 725
-* CHECK dout0_14 vdout0_14ck144 = 0 time = 725
-* CHECK dout0_15 vdout0_15ck144 = 0 time = 725
-* CHECK dout0_16 vdout0_16ck144 = 1.0 time = 725
-* CHECK dout0_17 vdout0_17ck144 = 0 time = 725
-* CHECK dout0_18 vdout0_18ck144 = 1.0 time = 725
-* CHECK dout0_19 vdout0_19ck144 = 0 time = 725
-* CHECK dout0_20 vdout0_20ck144 = 0 time = 725
-* CHECK dout0_21 vdout0_21ck144 = 0 time = 725
-* CHECK dout0_22 vdout0_22ck144 = 0 time = 725
-* CHECK dout0_0 vdout0_0ck145 = 0 time = 730
-* CHECK dout0_1 vdout0_1ck145 = 1.0 time = 730
-* CHECK dout0_2 vdout0_2ck145 = 1.0 time = 730
-* CHECK dout0_3 vdout0_3ck145 = 1.0 time = 730
-* CHECK dout0_4 vdout0_4ck145 = 0 time = 730
-* CHECK dout0_5 vdout0_5ck145 = 1.0 time = 730
-* CHECK dout0_6 vdout0_6ck145 = 1.0 time = 730
-* CHECK dout0_7 vdout0_7ck145 = 1.0 time = 730
-* CHECK dout0_8 vdout0_8ck145 = 0 time = 730
-* CHECK dout0_9 vdout0_9ck145 = 0 time = 730
-* CHECK dout0_10 vdout0_10ck145 = 0 time = 730
-* CHECK dout0_11 vdout0_11ck145 = 1.0 time = 730
-* CHECK dout0_12 vdout0_12ck145 = 1.0 time = 730
-* CHECK dout0_13 vdout0_13ck145 = 1.0 time = 730
-* CHECK dout0_14 vdout0_14ck145 = 1.0 time = 730
-* CHECK dout0_15 vdout0_15ck145 = 1.0 time = 730
-* CHECK dout0_16 vdout0_16ck145 = 0 time = 730
-* CHECK dout0_17 vdout0_17ck145 = 0 time = 730
-* CHECK dout0_18 vdout0_18ck145 = 1.0 time = 730
-* CHECK dout0_19 vdout0_19ck145 = 1.0 time = 730
-* CHECK dout0_20 vdout0_20ck145 = 0 time = 730
-* CHECK dout0_21 vdout0_21ck145 = 0 time = 730
-* CHECK dout0_22 vdout0_22ck145 = 1.0 time = 730
+* CHECK dout0_22 vdout0_22ck135 = 1.0 time = 680
+* CHECK dout0_0 vdout0_0ck140 = 0 time = 705
+* CHECK dout0_1 vdout0_1ck140 = 1.0 time = 705
+* CHECK dout0_2 vdout0_2ck140 = 0 time = 705
+* CHECK dout0_3 vdout0_3ck140 = 1.0 time = 705
+* CHECK dout0_4 vdout0_4ck140 = 0 time = 705
+* CHECK dout0_5 vdout0_5ck140 = 0 time = 705
+* CHECK dout0_6 vdout0_6ck140 = 1.0 time = 705
+* CHECK dout0_7 vdout0_7ck140 = 0 time = 705
+* CHECK dout0_8 vdout0_8ck140 = 1.0 time = 705
+* CHECK dout0_9 vdout0_9ck140 = 0 time = 705
+* CHECK dout0_10 vdout0_10ck140 = 0 time = 705
+* CHECK dout0_11 vdout0_11ck140 = 1.0 time = 705
+* CHECK dout0_12 vdout0_12ck140 = 0 time = 705
+* CHECK dout0_13 vdout0_13ck140 = 0 time = 705
+* CHECK dout0_14 vdout0_14ck140 = 1.0 time = 705
+* CHECK dout0_15 vdout0_15ck140 = 0 time = 705
+* CHECK dout0_16 vdout0_16ck140 = 1.0 time = 705
+* CHECK dout0_17 vdout0_17ck140 = 0 time = 705
+* CHECK dout0_18 vdout0_18ck140 = 1.0 time = 705
+* CHECK dout0_19 vdout0_19ck140 = 1.0 time = 705
+* CHECK dout0_20 vdout0_20ck140 = 1.0 time = 705
+* CHECK dout0_21 vdout0_21ck140 = 0 time = 705
+* CHECK dout0_22 vdout0_22ck140 = 1.0 time = 705
 * CHECK dout0_0 vdout0_0ck147 = 0 time = 740
-* CHECK dout0_1 vdout0_1ck147 = 1.0 time = 740
+* CHECK dout0_1 vdout0_1ck147 = 0 time = 740
 * CHECK dout0_2 vdout0_2ck147 = 0 time = 740
 * CHECK dout0_3 vdout0_3ck147 = 0 time = 740
-* CHECK dout0_4 vdout0_4ck147 = 1.0 time = 740
+* CHECK dout0_4 vdout0_4ck147 = 0 time = 740
 * CHECK dout0_5 vdout0_5ck147 = 0 time = 740
 * CHECK dout0_6 vdout0_6ck147 = 0 time = 740
 * CHECK dout0_7 vdout0_7ck147 = 0 time = 740
-* CHECK dout0_8 vdout0_8ck147 = 1.0 time = 740
+* CHECK dout0_8 vdout0_8ck147 = 0 time = 740
 * CHECK dout0_9 vdout0_9ck147 = 0 time = 740
-* CHECK dout0_10 vdout0_10ck147 = 1.0 time = 740
+* CHECK dout0_10 vdout0_10ck147 = 0 time = 740
 * CHECK dout0_11 vdout0_11ck147 = 1.0 time = 740
-* CHECK dout0_12 vdout0_12ck147 = 0 time = 740
-* CHECK dout0_13 vdout0_13ck147 = 1.0 time = 740
-* CHECK dout0_14 vdout0_14ck147 = 1.0 time = 740
+* CHECK dout0_12 vdout0_12ck147 = 1.0 time = 740
+* CHECK dout0_13 vdout0_13ck147 = 0 time = 740
+* CHECK dout0_14 vdout0_14ck147 = 0 time = 740
 * CHECK dout0_15 vdout0_15ck147 = 0 time = 740
-* CHECK dout0_16 vdout0_16ck147 = 0 time = 740
+* CHECK dout0_16 vdout0_16ck147 = 1.0 time = 740
 * CHECK dout0_17 vdout0_17ck147 = 0 time = 740
-* CHECK dout0_18 vdout0_18ck147 = 1.0 time = 740
+* CHECK dout0_18 vdout0_18ck147 = 0 time = 740
 * CHECK dout0_19 vdout0_19ck147 = 1.0 time = 740
 * CHECK dout0_20 vdout0_20ck147 = 0 time = 740
 * CHECK dout0_21 vdout0_21ck147 = 0 time = 740
-* CHECK dout0_22 vdout0_22ck147 = 0 time = 740
-* CHECK dout0_0 vdout0_0ck150 = 0 time = 755
-* CHECK dout0_1 vdout0_1ck150 = 1.0 time = 755
-* CHECK dout0_2 vdout0_2ck150 = 0 time = 755
-* CHECK dout0_3 vdout0_3ck150 = 0 time = 755
-* CHECK dout0_4 vdout0_4ck150 = 1.0 time = 755
-* CHECK dout0_5 vdout0_5ck150 = 0 time = 755
-* CHECK dout0_6 vdout0_6ck150 = 0 time = 755
-* CHECK dout0_7 vdout0_7ck150 = 0 time = 755
-* CHECK dout0_8 vdout0_8ck150 = 1.0 time = 755
-* CHECK dout0_9 vdout0_9ck150 = 0 time = 755
-* CHECK dout0_10 vdout0_10ck150 = 1.0 time = 755
-* CHECK dout0_11 vdout0_11ck150 = 1.0 time = 755
-* CHECK dout0_12 vdout0_12ck150 = 0 time = 755
-* CHECK dout0_13 vdout0_13ck150 = 1.0 time = 755
-* CHECK dout0_14 vdout0_14ck150 = 1.0 time = 755
-* CHECK dout0_15 vdout0_15ck150 = 0 time = 755
-* CHECK dout0_16 vdout0_16ck150 = 0 time = 755
-* CHECK dout0_17 vdout0_17ck150 = 0 time = 755
-* CHECK dout0_18 vdout0_18ck150 = 1.0 time = 755
-* CHECK dout0_19 vdout0_19ck150 = 1.0 time = 755
-* CHECK dout0_20 vdout0_20ck150 = 0 time = 755
-* CHECK dout0_21 vdout0_21ck150 = 0 time = 755
-* CHECK dout0_22 vdout0_22ck150 = 0 time = 755
-* CHECK dout0_0 vdout0_0ck153 = 1.0 time = 770
-* CHECK dout0_1 vdout0_1ck153 = 1.0 time = 770
-* CHECK dout0_2 vdout0_2ck153 = 0 time = 770
-* CHECK dout0_3 vdout0_3ck153 = 0 time = 770
-* CHECK dout0_4 vdout0_4ck153 = 1.0 time = 770
-* CHECK dout0_5 vdout0_5ck153 = 0 time = 770
-* CHECK dout0_6 vdout0_6ck153 = 0 time = 770
-* CHECK dout0_7 vdout0_7ck153 = 1.0 time = 770
-* CHECK dout0_8 vdout0_8ck153 = 1.0 time = 770
-* CHECK dout0_9 vdout0_9ck153 = 1.0 time = 770
-* CHECK dout0_10 vdout0_10ck153 = 1.0 time = 770
-* CHECK dout0_11 vdout0_11ck153 = 1.0 time = 770
-* CHECK dout0_12 vdout0_12ck153 = 1.0 time = 770
-* CHECK dout0_13 vdout0_13ck153 = 1.0 time = 770
-* CHECK dout0_14 vdout0_14ck153 = 0 time = 770
-* CHECK dout0_15 vdout0_15ck153 = 1.0 time = 770
-* CHECK dout0_16 vdout0_16ck153 = 0 time = 770
-* CHECK dout0_17 vdout0_17ck153 = 1.0 time = 770
-* CHECK dout0_18 vdout0_18ck153 = 1.0 time = 770
-* CHECK dout0_19 vdout0_19ck153 = 0 time = 770
-* CHECK dout0_20 vdout0_20ck153 = 1.0 time = 770
-* CHECK dout0_21 vdout0_21ck153 = 1.0 time = 770
-* CHECK dout0_22 vdout0_22ck153 = 1.0 time = 770
-* CHECK dout0_0 vdout0_0ck154 = 0 time = 775
+* CHECK dout0_22 vdout0_22ck147 = 1.0 time = 740
+* CHECK dout0_0 vdout0_0ck148 = 1.0 time = 745
+* CHECK dout0_1 vdout0_1ck148 = 1.0 time = 745
+* CHECK dout0_2 vdout0_2ck148 = 1.0 time = 745
+* CHECK dout0_3 vdout0_3ck148 = 0 time = 745
+* CHECK dout0_4 vdout0_4ck148 = 1.0 time = 745
+* CHECK dout0_5 vdout0_5ck148 = 1.0 time = 745
+* CHECK dout0_6 vdout0_6ck148 = 0 time = 745
+* CHECK dout0_7 vdout0_7ck148 = 1.0 time = 745
+* CHECK dout0_8 vdout0_8ck148 = 1.0 time = 745
+* CHECK dout0_9 vdout0_9ck148 = 0 time = 745
+* CHECK dout0_10 vdout0_10ck148 = 1.0 time = 745
+* CHECK dout0_11 vdout0_11ck148 = 0 time = 745
+* CHECK dout0_12 vdout0_12ck148 = 1.0 time = 745
+* CHECK dout0_13 vdout0_13ck148 = 1.0 time = 745
+* CHECK dout0_14 vdout0_14ck148 = 1.0 time = 745
+* CHECK dout0_15 vdout0_15ck148 = 1.0 time = 745
+* CHECK dout0_16 vdout0_16ck148 = 1.0 time = 745
+* CHECK dout0_17 vdout0_17ck148 = 0 time = 745
+* CHECK dout0_18 vdout0_18ck148 = 1.0 time = 745
+* CHECK dout0_19 vdout0_19ck148 = 1.0 time = 745
+* CHECK dout0_20 vdout0_20ck148 = 0 time = 745
+* CHECK dout0_21 vdout0_21ck148 = 1.0 time = 745
+* CHECK dout0_22 vdout0_22ck148 = 0 time = 745
+* CHECK dout0_0 vdout0_0ck149 = 1.0 time = 750
+* CHECK dout0_1 vdout0_1ck149 = 1.0 time = 750
+* CHECK dout0_2 vdout0_2ck149 = 0 time = 750
+* CHECK dout0_3 vdout0_3ck149 = 1.0 time = 750
+* CHECK dout0_4 vdout0_4ck149 = 1.0 time = 750
+* CHECK dout0_5 vdout0_5ck149 = 1.0 time = 750
+* CHECK dout0_6 vdout0_6ck149 = 1.0 time = 750
+* CHECK dout0_7 vdout0_7ck149 = 1.0 time = 750
+* CHECK dout0_8 vdout0_8ck149 = 1.0 time = 750
+* CHECK dout0_9 vdout0_9ck149 = 1.0 time = 750
+* CHECK dout0_10 vdout0_10ck149 = 0 time = 750
+* CHECK dout0_11 vdout0_11ck149 = 0 time = 750
+* CHECK dout0_12 vdout0_12ck149 = 1.0 time = 750
+* CHECK dout0_13 vdout0_13ck149 = 0 time = 750
+* CHECK dout0_14 vdout0_14ck149 = 0 time = 750
+* CHECK dout0_15 vdout0_15ck149 = 1.0 time = 750
+* CHECK dout0_16 vdout0_16ck149 = 0 time = 750
+* CHECK dout0_17 vdout0_17ck149 = 0 time = 750
+* CHECK dout0_18 vdout0_18ck149 = 1.0 time = 750
+* CHECK dout0_19 vdout0_19ck149 = 0 time = 750
+* CHECK dout0_20 vdout0_20ck149 = 1.0 time = 750
+* CHECK dout0_21 vdout0_21ck149 = 0 time = 750
+* CHECK dout0_22 vdout0_22ck149 = 0 time = 750
+* CHECK dout0_0 vdout0_0ck151 = 1.0 time = 760
+* CHECK dout0_1 vdout0_1ck151 = 1.0 time = 760
+* CHECK dout0_2 vdout0_2ck151 = 0 time = 760
+* CHECK dout0_3 vdout0_3ck151 = 1.0 time = 760
+* CHECK dout0_4 vdout0_4ck151 = 1.0 time = 760
+* CHECK dout0_5 vdout0_5ck151 = 1.0 time = 760
+* CHECK dout0_6 vdout0_6ck151 = 1.0 time = 760
+* CHECK dout0_7 vdout0_7ck151 = 1.0 time = 760
+* CHECK dout0_8 vdout0_8ck151 = 1.0 time = 760
+* CHECK dout0_9 vdout0_9ck151 = 1.0 time = 760
+* CHECK dout0_10 vdout0_10ck151 = 0 time = 760
+* CHECK dout0_11 vdout0_11ck151 = 0 time = 760
+* CHECK dout0_12 vdout0_12ck151 = 1.0 time = 760
+* CHECK dout0_13 vdout0_13ck151 = 0 time = 760
+* CHECK dout0_14 vdout0_14ck151 = 0 time = 760
+* CHECK dout0_15 vdout0_15ck151 = 1.0 time = 760
+* CHECK dout0_16 vdout0_16ck151 = 0 time = 760
+* CHECK dout0_17 vdout0_17ck151 = 0 time = 760
+* CHECK dout0_18 vdout0_18ck151 = 1.0 time = 760
+* CHECK dout0_19 vdout0_19ck151 = 0 time = 760
+* CHECK dout0_20 vdout0_20ck151 = 1.0 time = 760
+* CHECK dout0_21 vdout0_21ck151 = 0 time = 760
+* CHECK dout0_22 vdout0_22ck151 = 0 time = 760
+* CHECK dout0_0 vdout0_0ck154 = 1.0 time = 775
 * CHECK dout0_1 vdout0_1ck154 = 1.0 time = 775
-* CHECK dout0_2 vdout0_2ck154 = 0 time = 775
+* CHECK dout0_2 vdout0_2ck154 = 1.0 time = 775
 * CHECK dout0_3 vdout0_3ck154 = 0 time = 775
 * CHECK dout0_4 vdout0_4ck154 = 1.0 time = 775
-* CHECK dout0_5 vdout0_5ck154 = 0 time = 775
+* CHECK dout0_5 vdout0_5ck154 = 1.0 time = 775
 * CHECK dout0_6 vdout0_6ck154 = 0 time = 775
-* CHECK dout0_7 vdout0_7ck154 = 0 time = 775
+* CHECK dout0_7 vdout0_7ck154 = 1.0 time = 775
 * CHECK dout0_8 vdout0_8ck154 = 1.0 time = 775
 * CHECK dout0_9 vdout0_9ck154 = 0 time = 775
 * CHECK dout0_10 vdout0_10ck154 = 1.0 time = 775
-* CHECK dout0_11 vdout0_11ck154 = 1.0 time = 775
-* CHECK dout0_12 vdout0_12ck154 = 0 time = 775
+* CHECK dout0_11 vdout0_11ck154 = 0 time = 775
+* CHECK dout0_12 vdout0_12ck154 = 1.0 time = 775
 * CHECK dout0_13 vdout0_13ck154 = 1.0 time = 775
 * CHECK dout0_14 vdout0_14ck154 = 1.0 time = 775
-* CHECK dout0_15 vdout0_15ck154 = 0 time = 775
-* CHECK dout0_16 vdout0_16ck154 = 0 time = 775
+* CHECK dout0_15 vdout0_15ck154 = 1.0 time = 775
+* CHECK dout0_16 vdout0_16ck154 = 1.0 time = 775
 * CHECK dout0_17 vdout0_17ck154 = 0 time = 775
 * CHECK dout0_18 vdout0_18ck154 = 1.0 time = 775
 * CHECK dout0_19 vdout0_19ck154 = 1.0 time = 775
 * CHECK dout0_20 vdout0_20ck154 = 0 time = 775
-* CHECK dout0_21 vdout0_21ck154 = 0 time = 775
+* CHECK dout0_21 vdout0_21ck154 = 1.0 time = 775
 * CHECK dout0_22 vdout0_22ck154 = 0 time = 775
 * CHECK dout0_0 vdout0_0ck155 = 1.0 time = 780
-* CHECK dout0_1 vdout0_1ck155 = 0 time = 780
+* CHECK dout0_1 vdout0_1ck155 = 1.0 time = 780
 * CHECK dout0_2 vdout0_2ck155 = 0 time = 780
 * CHECK dout0_3 vdout0_3ck155 = 1.0 time = 780
 * CHECK dout0_4 vdout0_4ck155 = 1.0 time = 780
 * CHECK dout0_5 vdout0_5ck155 = 1.0 time = 780
 * CHECK dout0_6 vdout0_6ck155 = 1.0 time = 780
 * CHECK dout0_7 vdout0_7ck155 = 1.0 time = 780
-* CHECK dout0_8 vdout0_8ck155 = 0 time = 780
+* CHECK dout0_8 vdout0_8ck155 = 1.0 time = 780
 * CHECK dout0_9 vdout0_9ck155 = 1.0 time = 780
 * CHECK dout0_10 vdout0_10ck155 = 0 time = 780
-* CHECK dout0_11 vdout0_11ck155 = 1.0 time = 780
-* CHECK dout0_12 vdout0_12ck155 = 0 time = 780
-* CHECK dout0_13 vdout0_13ck155 = 1.0 time = 780
+* CHECK dout0_11 vdout0_11ck155 = 0 time = 780
+* CHECK dout0_12 vdout0_12ck155 = 1.0 time = 780
+* CHECK dout0_13 vdout0_13ck155 = 0 time = 780
 * CHECK dout0_14 vdout0_14ck155 = 0 time = 780
 * CHECK dout0_15 vdout0_15ck155 = 1.0 time = 780
-* CHECK dout0_16 vdout0_16ck155 = 1.0 time = 780
+* CHECK dout0_16 vdout0_16ck155 = 0 time = 780
 * CHECK dout0_17 vdout0_17ck155 = 0 time = 780
-* CHECK dout0_18 vdout0_18ck155 = 0 time = 780
-* CHECK dout0_19 vdout0_19ck155 = 1.0 time = 780
+* CHECK dout0_18 vdout0_18ck155 = 1.0 time = 780
+* CHECK dout0_19 vdout0_19ck155 = 0 time = 780
 * CHECK dout0_20 vdout0_20ck155 = 1.0 time = 780
-* CHECK dout0_21 vdout0_21ck155 = 1.0 time = 780
-* CHECK dout0_22 vdout0_22ck155 = 1.0 time = 780
-* CHECK dout0_0 vdout0_0ck157 = 0 time = 790
-* CHECK dout0_1 vdout0_1ck157 = 1.0 time = 790
-* CHECK dout0_2 vdout0_2ck157 = 0 time = 790
-* CHECK dout0_3 vdout0_3ck157 = 0 time = 790
-* CHECK dout0_4 vdout0_4ck157 = 1.0 time = 790
-* CHECK dout0_5 vdout0_5ck157 = 0 time = 790
-* CHECK dout0_6 vdout0_6ck157 = 0 time = 790
-* CHECK dout0_7 vdout0_7ck157 = 0 time = 790
-* CHECK dout0_8 vdout0_8ck157 = 1.0 time = 790
-* CHECK dout0_9 vdout0_9ck157 = 0 time = 790
-* CHECK dout0_10 vdout0_10ck157 = 1.0 time = 790
-* CHECK dout0_11 vdout0_11ck157 = 1.0 time = 790
-* CHECK dout0_12 vdout0_12ck157 = 0 time = 790
-* CHECK dout0_13 vdout0_13ck157 = 1.0 time = 790
-* CHECK dout0_14 vdout0_14ck157 = 1.0 time = 790
-* CHECK dout0_15 vdout0_15ck157 = 0 time = 790
-* CHECK dout0_16 vdout0_16ck157 = 0 time = 790
-* CHECK dout0_17 vdout0_17ck157 = 0 time = 790
-* CHECK dout0_18 vdout0_18ck157 = 1.0 time = 790
-* CHECK dout0_19 vdout0_19ck157 = 1.0 time = 790
-* CHECK dout0_20 vdout0_20ck157 = 0 time = 790
-* CHECK dout0_21 vdout0_21ck157 = 0 time = 790
-* CHECK dout0_22 vdout0_22ck157 = 0 time = 790
+* CHECK dout0_21 vdout0_21ck155 = 0 time = 780
+* CHECK dout0_22 vdout0_22ck155 = 0 time = 780
+* CHECK dout0_0 vdout0_0ck158 = 1.0 time = 795
+* CHECK dout0_1 vdout0_1ck158 = 1.0 time = 795
+* CHECK dout0_2 vdout0_2ck158 = 1.0 time = 795
+* CHECK dout0_3 vdout0_3ck158 = 0 time = 795
+* CHECK dout0_4 vdout0_4ck158 = 1.0 time = 795
+* CHECK dout0_5 vdout0_5ck158 = 1.0 time = 795
+* CHECK dout0_6 vdout0_6ck158 = 0 time = 795
+* CHECK dout0_7 vdout0_7ck158 = 1.0 time = 795
+* CHECK dout0_8 vdout0_8ck158 = 1.0 time = 795
+* CHECK dout0_9 vdout0_9ck158 = 0 time = 795
+* CHECK dout0_10 vdout0_10ck158 = 1.0 time = 795
+* CHECK dout0_11 vdout0_11ck158 = 0 time = 795
+* CHECK dout0_12 vdout0_12ck158 = 1.0 time = 795
+* CHECK dout0_13 vdout0_13ck158 = 1.0 time = 795
+* CHECK dout0_14 vdout0_14ck158 = 1.0 time = 795
+* CHECK dout0_15 vdout0_15ck158 = 1.0 time = 795
+* CHECK dout0_16 vdout0_16ck158 = 1.0 time = 795
+* CHECK dout0_17 vdout0_17ck158 = 0 time = 795
+* CHECK dout0_18 vdout0_18ck158 = 1.0 time = 795
+* CHECK dout0_19 vdout0_19ck158 = 1.0 time = 795
+* CHECK dout0_20 vdout0_20ck158 = 0 time = 795
+* CHECK dout0_21 vdout0_21ck158 = 1.0 time = 795
+* CHECK dout0_22 vdout0_22ck158 = 0 time = 795
 * CHECK dout0_0 vdout0_0ck159 = 1.0 time = 800
-* CHECK dout0_1 vdout0_1ck159 = 1.0 time = 800
-* CHECK dout0_2 vdout0_2ck159 = 1.0 time = 800
-* CHECK dout0_3 vdout0_3ck159 = 0 time = 800
-* CHECK dout0_4 vdout0_4ck159 = 0 time = 800
-* CHECK dout0_5 vdout0_5ck159 = 1.0 time = 800
+* CHECK dout0_1 vdout0_1ck159 = 0 time = 800
+* CHECK dout0_2 vdout0_2ck159 = 0 time = 800
+* CHECK dout0_3 vdout0_3ck159 = 1.0 time = 800
+* CHECK dout0_4 vdout0_4ck159 = 1.0 time = 800
+* CHECK dout0_5 vdout0_5ck159 = 0 time = 800
 * CHECK dout0_6 vdout0_6ck159 = 1.0 time = 800
-* CHECK dout0_7 vdout0_7ck159 = 1.0 time = 800
-* CHECK dout0_8 vdout0_8ck159 = 0 time = 800
-* CHECK dout0_9 vdout0_9ck159 = 1.0 time = 800
+* CHECK dout0_7 vdout0_7ck159 = 0 time = 800
+* CHECK dout0_8 vdout0_8ck159 = 1.0 time = 800
+* CHECK dout0_9 vdout0_9ck159 = 0 time = 800
 * CHECK dout0_10 vdout0_10ck159 = 1.0 time = 800
-* CHECK dout0_11 vdout0_11ck159 = 0 time = 800
-* CHECK dout0_12 vdout0_12ck159 = 0 time = 800
+* CHECK dout0_11 vdout0_11ck159 = 1.0 time = 800
+* CHECK dout0_12 vdout0_12ck159 = 1.0 time = 800
 * CHECK dout0_13 vdout0_13ck159 = 0 time = 800
-* CHECK dout0_14 vdout0_14ck159 = 0 time = 800
-* CHECK dout0_15 vdout0_15ck159 = 0 time = 800
+* CHECK dout0_14 vdout0_14ck159 = 1.0 time = 800
+* CHECK dout0_15 vdout0_15ck159 = 1.0 time = 800
 * CHECK dout0_16 vdout0_16ck159 = 0 time = 800
 * CHECK dout0_17 vdout0_17ck159 = 0 time = 800
-* CHECK dout0_18 vdout0_18ck159 = 0 time = 800
-* CHECK dout0_19 vdout0_19ck159 = 0 time = 800
+* CHECK dout0_18 vdout0_18ck159 = 1.0 time = 800
+* CHECK dout0_19 vdout0_19ck159 = 1.0 time = 800
 * CHECK dout0_20 vdout0_20ck159 = 0 time = 800
-* CHECK dout0_21 vdout0_21ck159 = 1.0 time = 800
-* CHECK dout0_22 vdout0_22ck159 = 1.0 time = 800
-* CHECK dout0_0 vdout0_0ck160 = 1.0 time = 805
-* CHECK dout0_1 vdout0_1ck160 = 1.0 time = 805
-* CHECK dout0_2 vdout0_2ck160 = 1.0 time = 805
+* CHECK dout0_21 vdout0_21ck159 = 0 time = 800
+* CHECK dout0_22 vdout0_22ck159 = 0 time = 800
+* CHECK dout0_0 vdout0_0ck160 = 0 time = 805
+* CHECK dout0_1 vdout0_1ck160 = 0 time = 805
+* CHECK dout0_2 vdout0_2ck160 = 0 time = 805
 * CHECK dout0_3 vdout0_3ck160 = 0 time = 805
 * CHECK dout0_4 vdout0_4ck160 = 0 time = 805
-* CHECK dout0_5 vdout0_5ck160 = 1.0 time = 805
-* CHECK dout0_6 vdout0_6ck160 = 1.0 time = 805
-* CHECK dout0_7 vdout0_7ck160 = 1.0 time = 805
+* CHECK dout0_5 vdout0_5ck160 = 0 time = 805
+* CHECK dout0_6 vdout0_6ck160 = 0 time = 805
+* CHECK dout0_7 vdout0_7ck160 = 0 time = 805
 * CHECK dout0_8 vdout0_8ck160 = 0 time = 805
-* CHECK dout0_9 vdout0_9ck160 = 1.0 time = 805
-* CHECK dout0_10 vdout0_10ck160 = 1.0 time = 805
-* CHECK dout0_11 vdout0_11ck160 = 0 time = 805
-* CHECK dout0_12 vdout0_12ck160 = 0 time = 805
+* CHECK dout0_9 vdout0_9ck160 = 0 time = 805
+* CHECK dout0_10 vdout0_10ck160 = 0 time = 805
+* CHECK dout0_11 vdout0_11ck160 = 1.0 time = 805
+* CHECK dout0_12 vdout0_12ck160 = 1.0 time = 805
 * CHECK dout0_13 vdout0_13ck160 = 0 time = 805
 * CHECK dout0_14 vdout0_14ck160 = 0 time = 805
 * CHECK dout0_15 vdout0_15ck160 = 0 time = 805
-* CHECK dout0_16 vdout0_16ck160 = 0 time = 805
+* CHECK dout0_16 vdout0_16ck160 = 1.0 time = 805
 * CHECK dout0_17 vdout0_17ck160 = 0 time = 805
 * CHECK dout0_18 vdout0_18ck160 = 0 time = 805
-* CHECK dout0_19 vdout0_19ck160 = 0 time = 805
+* CHECK dout0_19 vdout0_19ck160 = 1.0 time = 805
 * CHECK dout0_20 vdout0_20ck160 = 0 time = 805
-* CHECK dout0_21 vdout0_21ck160 = 1.0 time = 805
+* CHECK dout0_21 vdout0_21ck160 = 0 time = 805
 * CHECK dout0_22 vdout0_22ck160 = 1.0 time = 805
-* CHECK dout0_0 vdout0_0ck162 = 1.0 time = 815
-* CHECK dout0_1 vdout0_1ck162 = 1.0 time = 815
-* CHECK dout0_2 vdout0_2ck162 = 1.0 time = 815
-* CHECK dout0_3 vdout0_3ck162 = 1.0 time = 815
+* CHECK dout0_0 vdout0_0ck162 = 0 time = 815
+* CHECK dout0_1 vdout0_1ck162 = 0 time = 815
+* CHECK dout0_2 vdout0_2ck162 = 0 time = 815
+* CHECK dout0_3 vdout0_3ck162 = 0 time = 815
 * CHECK dout0_4 vdout0_4ck162 = 0 time = 815
-* CHECK dout0_5 vdout0_5ck162 = 1.0 time = 815
-* CHECK dout0_6 vdout0_6ck162 = 1.0 time = 815
-* CHECK dout0_7 vdout0_7ck162 = 1.0 time = 815
-* CHECK dout0_8 vdout0_8ck162 = 1.0 time = 815
+* CHECK dout0_5 vdout0_5ck162 = 0 time = 815
+* CHECK dout0_6 vdout0_6ck162 = 0 time = 815
+* CHECK dout0_7 vdout0_7ck162 = 0 time = 815
+* CHECK dout0_8 vdout0_8ck162 = 0 time = 815
 * CHECK dout0_9 vdout0_9ck162 = 0 time = 815
 * CHECK dout0_10 vdout0_10ck162 = 0 time = 815
-* CHECK dout0_11 vdout0_11ck162 = 0 time = 815
-* CHECK dout0_12 vdout0_12ck162 = 0 time = 815
-* CHECK dout0_13 vdout0_13ck162 = 1.0 time = 815
-* CHECK dout0_14 vdout0_14ck162 = 1.0 time = 815
-* CHECK dout0_15 vdout0_15ck162 = 1.0 time = 815
-* CHECK dout0_16 vdout0_16ck162 = 0 time = 815
-* CHECK dout0_17 vdout0_17ck162 = 1.0 time = 815
-* CHECK dout0_18 vdout0_18ck162 = 1.0 time = 815
+* CHECK dout0_11 vdout0_11ck162 = 1.0 time = 815
+* CHECK dout0_12 vdout0_12ck162 = 1.0 time = 815
+* CHECK dout0_13 vdout0_13ck162 = 0 time = 815
+* CHECK dout0_14 vdout0_14ck162 = 0 time = 815
+* CHECK dout0_15 vdout0_15ck162 = 0 time = 815
+* CHECK dout0_16 vdout0_16ck162 = 1.0 time = 815
+* CHECK dout0_17 vdout0_17ck162 = 0 time = 815
+* CHECK dout0_18 vdout0_18ck162 = 0 time = 815
 * CHECK dout0_19 vdout0_19ck162 = 1.0 time = 815
 * CHECK dout0_20 vdout0_20ck162 = 0 time = 815
 * CHECK dout0_21 vdout0_21ck162 = 0 time = 815
 * CHECK dout0_22 vdout0_22ck162 = 1.0 time = 815
 * CHECK dout0_0 vdout0_0ck164 = 1.0 time = 825
-* CHECK dout0_1 vdout0_1ck164 = 1.0 time = 825
+* CHECK dout0_1 vdout0_1ck164 = 0 time = 825
 * CHECK dout0_2 vdout0_2ck164 = 1.0 time = 825
 * CHECK dout0_3 vdout0_3ck164 = 0 time = 825
 * CHECK dout0_4 vdout0_4ck164 = 0 time = 825
-* CHECK dout0_5 vdout0_5ck164 = 1.0 time = 825
+* CHECK dout0_5 vdout0_5ck164 = 0 time = 825
 * CHECK dout0_6 vdout0_6ck164 = 1.0 time = 825
-* CHECK dout0_7 vdout0_7ck164 = 1.0 time = 825
-* CHECK dout0_8 vdout0_8ck164 = 0 time = 825
-* CHECK dout0_9 vdout0_9ck164 = 1.0 time = 825
+* CHECK dout0_7 vdout0_7ck164 = 0 time = 825
+* CHECK dout0_8 vdout0_8ck164 = 1.0 time = 825
+* CHECK dout0_9 vdout0_9ck164 = 0 time = 825
 * CHECK dout0_10 vdout0_10ck164 = 1.0 time = 825
 * CHECK dout0_11 vdout0_11ck164 = 0 time = 825
-* CHECK dout0_12 vdout0_12ck164 = 0 time = 825
+* CHECK dout0_12 vdout0_12ck164 = 1.0 time = 825
 * CHECK dout0_13 vdout0_13ck164 = 0 time = 825
 * CHECK dout0_14 vdout0_14ck164 = 0 time = 825
 * CHECK dout0_15 vdout0_15ck164 = 0 time = 825
@@ -2045,469 +1940,377 @@ Vclk0 clk0 0 PULSE (0 1.0 4.995n 0.01n 0.01n 2.49n 5n)
 * CHECK dout0_17 vdout0_17ck164 = 0 time = 825
 * CHECK dout0_18 vdout0_18ck164 = 0 time = 825
 * CHECK dout0_19 vdout0_19ck164 = 0 time = 825
-* CHECK dout0_20 vdout0_20ck164 = 0 time = 825
-* CHECK dout0_21 vdout0_21ck164 = 1.0 time = 825
-* CHECK dout0_22 vdout0_22ck164 = 1.0 time = 825
-* CHECK dout0_0 vdout0_0ck166 = 1.0 time = 835
-* CHECK dout0_1 vdout0_1ck166 = 1.0 time = 835
-* CHECK dout0_2 vdout0_2ck166 = 1.0 time = 835
-* CHECK dout0_3 vdout0_3ck166 = 0 time = 835
-* CHECK dout0_4 vdout0_4ck166 = 0 time = 835
-* CHECK dout0_5 vdout0_5ck166 = 1.0 time = 835
-* CHECK dout0_6 vdout0_6ck166 = 1.0 time = 835
-* CHECK dout0_7 vdout0_7ck166 = 1.0 time = 835
-* CHECK dout0_8 vdout0_8ck166 = 0 time = 835
-* CHECK dout0_9 vdout0_9ck166 = 1.0 time = 835
-* CHECK dout0_10 vdout0_10ck166 = 1.0 time = 835
-* CHECK dout0_11 vdout0_11ck166 = 0 time = 835
-* CHECK dout0_12 vdout0_12ck166 = 0 time = 835
-* CHECK dout0_13 vdout0_13ck166 = 0 time = 835
-* CHECK dout0_14 vdout0_14ck166 = 0 time = 835
-* CHECK dout0_15 vdout0_15ck166 = 0 time = 835
-* CHECK dout0_16 vdout0_16ck166 = 0 time = 835
-* CHECK dout0_17 vdout0_17ck166 = 0 time = 835
-* CHECK dout0_18 vdout0_18ck166 = 0 time = 835
-* CHECK dout0_19 vdout0_19ck166 = 0 time = 835
-* CHECK dout0_20 vdout0_20ck166 = 0 time = 835
-* CHECK dout0_21 vdout0_21ck166 = 1.0 time = 835
-* CHECK dout0_22 vdout0_22ck166 = 1.0 time = 835
-* CHECK dout0_0 vdout0_0ck174 = 1.0 time = 875
-* CHECK dout0_1 vdout0_1ck174 = 1.0 time = 875
-* CHECK dout0_2 vdout0_2ck174 = 0 time = 875
-* CHECK dout0_3 vdout0_3ck174 = 1.0 time = 875
-* CHECK dout0_4 vdout0_4ck174 = 1.0 time = 875
-* CHECK dout0_5 vdout0_5ck174 = 0 time = 875
-* CHECK dout0_6 vdout0_6ck174 = 1.0 time = 875
-* CHECK dout0_7 vdout0_7ck174 = 1.0 time = 875
-* CHECK dout0_8 vdout0_8ck174 = 1.0 time = 875
-* CHECK dout0_9 vdout0_9ck174 = 1.0 time = 875
-* CHECK dout0_10 vdout0_10ck174 = 1.0 time = 875
-* CHECK dout0_11 vdout0_11ck174 = 0 time = 875
-* CHECK dout0_12 vdout0_12ck174 = 1.0 time = 875
-* CHECK dout0_13 vdout0_13ck174 = 0 time = 875
-* CHECK dout0_14 vdout0_14ck174 = 1.0 time = 875
-* CHECK dout0_15 vdout0_15ck174 = 1.0 time = 875
-* CHECK dout0_16 vdout0_16ck174 = 1.0 time = 875
-* CHECK dout0_17 vdout0_17ck174 = 0 time = 875
-* CHECK dout0_18 vdout0_18ck174 = 1.0 time = 875
-* CHECK dout0_19 vdout0_19ck174 = 0 time = 875
-* CHECK dout0_20 vdout0_20ck174 = 1.0 time = 875
-* CHECK dout0_21 vdout0_21ck174 = 1.0 time = 875
-* CHECK dout0_22 vdout0_22ck174 = 0 time = 875
-* CHECK dout0_0 vdout0_0ck176 = 1.0 time = 885
-* CHECK dout0_1 vdout0_1ck176 = 0 time = 885
-* CHECK dout0_2 vdout0_2ck176 = 0 time = 885
-* CHECK dout0_3 vdout0_3ck176 = 0 time = 885
-* CHECK dout0_4 vdout0_4ck176 = 0 time = 885
-* CHECK dout0_5 vdout0_5ck176 = 1.0 time = 885
-* CHECK dout0_6 vdout0_6ck176 = 1.0 time = 885
-* CHECK dout0_7 vdout0_7ck176 = 0 time = 885
-* CHECK dout0_8 vdout0_8ck176 = 0 time = 885
-* CHECK dout0_9 vdout0_9ck176 = 0 time = 885
-* CHECK dout0_10 vdout0_10ck176 = 1.0 time = 885
-* CHECK dout0_11 vdout0_11ck176 = 1.0 time = 885
-* CHECK dout0_12 vdout0_12ck176 = 1.0 time = 885
-* CHECK dout0_13 vdout0_13ck176 = 0 time = 885
-* CHECK dout0_14 vdout0_14ck176 = 1.0 time = 885
-* CHECK dout0_15 vdout0_15ck176 = 1.0 time = 885
-* CHECK dout0_16 vdout0_16ck176 = 1.0 time = 885
-* CHECK dout0_17 vdout0_17ck176 = 0 time = 885
-* CHECK dout0_18 vdout0_18ck176 = 0 time = 885
-* CHECK dout0_19 vdout0_19ck176 = 0 time = 885
-* CHECK dout0_20 vdout0_20ck176 = 0 time = 885
-* CHECK dout0_21 vdout0_21ck176 = 0 time = 885
-* CHECK dout0_22 vdout0_22ck176 = 0 time = 885
+* CHECK dout0_20 vdout0_20ck164 = 1.0 time = 825
+* CHECK dout0_21 vdout0_21ck164 = 0 time = 825
+* CHECK dout0_22 vdout0_22ck164 = 0 time = 825
+* CHECK dout0_0 vdout0_0ck168 = 1.0 time = 845
+* CHECK dout0_1 vdout0_1ck168 = 1.0 time = 845
+* CHECK dout0_2 vdout0_2ck168 = 1.0 time = 845
+* CHECK dout0_3 vdout0_3ck168 = 0 time = 845
+* CHECK dout0_4 vdout0_4ck168 = 1.0 time = 845
+* CHECK dout0_5 vdout0_5ck168 = 1.0 time = 845
+* CHECK dout0_6 vdout0_6ck168 = 0 time = 845
+* CHECK dout0_7 vdout0_7ck168 = 1.0 time = 845
+* CHECK dout0_8 vdout0_8ck168 = 1.0 time = 845
+* CHECK dout0_9 vdout0_9ck168 = 0 time = 845
+* CHECK dout0_10 vdout0_10ck168 = 1.0 time = 845
+* CHECK dout0_11 vdout0_11ck168 = 0 time = 845
+* CHECK dout0_12 vdout0_12ck168 = 1.0 time = 845
+* CHECK dout0_13 vdout0_13ck168 = 1.0 time = 845
+* CHECK dout0_14 vdout0_14ck168 = 1.0 time = 845
+* CHECK dout0_15 vdout0_15ck168 = 1.0 time = 845
+* CHECK dout0_16 vdout0_16ck168 = 1.0 time = 845
+* CHECK dout0_17 vdout0_17ck168 = 0 time = 845
+* CHECK dout0_18 vdout0_18ck168 = 1.0 time = 845
+* CHECK dout0_19 vdout0_19ck168 = 1.0 time = 845
+* CHECK dout0_20 vdout0_20ck168 = 0 time = 845
+* CHECK dout0_21 vdout0_21ck168 = 1.0 time = 845
+* CHECK dout0_22 vdout0_22ck168 = 0 time = 845
+* CHECK dout0_0 vdout0_0ck170 = 1.0 time = 855
+* CHECK dout0_1 vdout0_1ck170 = 1.0 time = 855
+* CHECK dout0_2 vdout0_2ck170 = 1.0 time = 855
+* CHECK dout0_3 vdout0_3ck170 = 0 time = 855
+* CHECK dout0_4 vdout0_4ck170 = 1.0 time = 855
+* CHECK dout0_5 vdout0_5ck170 = 1.0 time = 855
+* CHECK dout0_6 vdout0_6ck170 = 0 time = 855
+* CHECK dout0_7 vdout0_7ck170 = 1.0 time = 855
+* CHECK dout0_8 vdout0_8ck170 = 1.0 time = 855
+* CHECK dout0_9 vdout0_9ck170 = 0 time = 855
+* CHECK dout0_10 vdout0_10ck170 = 1.0 time = 855
+* CHECK dout0_11 vdout0_11ck170 = 0 time = 855
+* CHECK dout0_12 vdout0_12ck170 = 1.0 time = 855
+* CHECK dout0_13 vdout0_13ck170 = 1.0 time = 855
+* CHECK dout0_14 vdout0_14ck170 = 1.0 time = 855
+* CHECK dout0_15 vdout0_15ck170 = 1.0 time = 855
+* CHECK dout0_16 vdout0_16ck170 = 1.0 time = 855
+* CHECK dout0_17 vdout0_17ck170 = 0 time = 855
+* CHECK dout0_18 vdout0_18ck170 = 1.0 time = 855
+* CHECK dout0_19 vdout0_19ck170 = 1.0 time = 855
+* CHECK dout0_20 vdout0_20ck170 = 0 time = 855
+* CHECK dout0_21 vdout0_21ck170 = 1.0 time = 855
+* CHECK dout0_22 vdout0_22ck170 = 0 time = 855
+* CHECK dout0_0 vdout0_0ck171 = 1.0 time = 860
+* CHECK dout0_1 vdout0_1ck171 = 1.0 time = 860
+* CHECK dout0_2 vdout0_2ck171 = 0 time = 860
+* CHECK dout0_3 vdout0_3ck171 = 0 time = 860
+* CHECK dout0_4 vdout0_4ck171 = 0 time = 860
+* CHECK dout0_5 vdout0_5ck171 = 0 time = 860
+* CHECK dout0_6 vdout0_6ck171 = 0 time = 860
+* CHECK dout0_7 vdout0_7ck171 = 1.0 time = 860
+* CHECK dout0_8 vdout0_8ck171 = 0 time = 860
+* CHECK dout0_9 vdout0_9ck171 = 0 time = 860
+* CHECK dout0_10 vdout0_10ck171 = 0 time = 860
+* CHECK dout0_11 vdout0_11ck171 = 0 time = 860
+* CHECK dout0_12 vdout0_12ck171 = 1.0 time = 860
+* CHECK dout0_13 vdout0_13ck171 = 1.0 time = 860
+* CHECK dout0_14 vdout0_14ck171 = 1.0 time = 860
+* CHECK dout0_15 vdout0_15ck171 = 1.0 time = 860
+* CHECK dout0_16 vdout0_16ck171 = 1.0 time = 860
+* CHECK dout0_17 vdout0_17ck171 = 1.0 time = 860
+* CHECK dout0_18 vdout0_18ck171 = 1.0 time = 860
+* CHECK dout0_19 vdout0_19ck171 = 1.0 time = 860
+* CHECK dout0_20 vdout0_20ck171 = 0 time = 860
+* CHECK dout0_21 vdout0_21ck171 = 1.0 time = 860
+* CHECK dout0_22 vdout0_22ck171 = 0 time = 860
+* CHECK dout0_0 vdout0_0ck173 = 0 time = 870
+* CHECK dout0_1 vdout0_1ck173 = 0 time = 870
+* CHECK dout0_2 vdout0_2ck173 = 0 time = 870
+* CHECK dout0_3 vdout0_3ck173 = 1.0 time = 870
+* CHECK dout0_4 vdout0_4ck173 = 1.0 time = 870
+* CHECK dout0_5 vdout0_5ck173 = 1.0 time = 870
+* CHECK dout0_6 vdout0_6ck173 = 1.0 time = 870
+* CHECK dout0_7 vdout0_7ck173 = 1.0 time = 870
+* CHECK dout0_8 vdout0_8ck173 = 0 time = 870
+* CHECK dout0_9 vdout0_9ck173 = 1.0 time = 870
+* CHECK dout0_10 vdout0_10ck173 = 0 time = 870
+* CHECK dout0_11 vdout0_11ck173 = 0 time = 870
+* CHECK dout0_12 vdout0_12ck173 = 0 time = 870
+* CHECK dout0_13 vdout0_13ck173 = 1.0 time = 870
+* CHECK dout0_14 vdout0_14ck173 = 1.0 time = 870
+* CHECK dout0_15 vdout0_15ck173 = 1.0 time = 870
+* CHECK dout0_16 vdout0_16ck173 = 0 time = 870
+* CHECK dout0_17 vdout0_17ck173 = 1.0 time = 870
+* CHECK dout0_18 vdout0_18ck173 = 0 time = 870
+* CHECK dout0_19 vdout0_19ck173 = 1.0 time = 870
+* CHECK dout0_20 vdout0_20ck173 = 0 time = 870
+* CHECK dout0_21 vdout0_21ck173 = 0 time = 870
+* CHECK dout0_22 vdout0_22ck173 = 0 time = 870
 * CHECK dout0_0 vdout0_0ck179 = 1.0 time = 900
 * CHECK dout0_1 vdout0_1ck179 = 1.0 time = 900
-* CHECK dout0_2 vdout0_2ck179 = 0 time = 900
+* CHECK dout0_2 vdout0_2ck179 = 1.0 time = 900
 * CHECK dout0_3 vdout0_3ck179 = 0 time = 900
 * CHECK dout0_4 vdout0_4ck179 = 1.0 time = 900
-* CHECK dout0_5 vdout0_5ck179 = 0 time = 900
+* CHECK dout0_5 vdout0_5ck179 = 1.0 time = 900
 * CHECK dout0_6 vdout0_6ck179 = 0 time = 900
-* CHECK dout0_7 vdout0_7ck179 = 0 time = 900
-* CHECK dout0_8 vdout0_8ck179 = 0 time = 900
+* CHECK dout0_7 vdout0_7ck179 = 1.0 time = 900
+* CHECK dout0_8 vdout0_8ck179 = 1.0 time = 900
 * CHECK dout0_9 vdout0_9ck179 = 0 time = 900
 * CHECK dout0_10 vdout0_10ck179 = 1.0 time = 900
 * CHECK dout0_11 vdout0_11ck179 = 0 time = 900
 * CHECK dout0_12 vdout0_12ck179 = 1.0 time = 900
 * CHECK dout0_13 vdout0_13ck179 = 1.0 time = 900
 * CHECK dout0_14 vdout0_14ck179 = 1.0 time = 900
-* CHECK dout0_15 vdout0_15ck179 = 0 time = 900
-* CHECK dout0_16 vdout0_16ck179 = 0 time = 900
-* CHECK dout0_17 vdout0_17ck179 = 1.0 time = 900
-* CHECK dout0_18 vdout0_18ck179 = 0 time = 900
+* CHECK dout0_15 vdout0_15ck179 = 1.0 time = 900
+* CHECK dout0_16 vdout0_16ck179 = 1.0 time = 900
+* CHECK dout0_17 vdout0_17ck179 = 0 time = 900
+* CHECK dout0_18 vdout0_18ck179 = 1.0 time = 900
 * CHECK dout0_19 vdout0_19ck179 = 1.0 time = 900
 * CHECK dout0_20 vdout0_20ck179 = 0 time = 900
-* CHECK dout0_21 vdout0_21ck179 = 0 time = 900
+* CHECK dout0_21 vdout0_21ck179 = 1.0 time = 900
 * CHECK dout0_22 vdout0_22ck179 = 0 time = 900
-* CHECK dout0_0 vdout0_0ck183 = 1.0 time = 920
+* CHECK dout0_0 vdout0_0ck181 = 1.0 time = 910
+* CHECK dout0_1 vdout0_1ck181 = 0 time = 910
+* CHECK dout0_2 vdout0_2ck181 = 0 time = 910
+* CHECK dout0_3 vdout0_3ck181 = 1.0 time = 910
+* CHECK dout0_4 vdout0_4ck181 = 1.0 time = 910
+* CHECK dout0_5 vdout0_5ck181 = 1.0 time = 910
+* CHECK dout0_6 vdout0_6ck181 = 1.0 time = 910
+* CHECK dout0_7 vdout0_7ck181 = 0 time = 910
+* CHECK dout0_8 vdout0_8ck181 = 0 time = 910
+* CHECK dout0_9 vdout0_9ck181 = 0 time = 910
+* CHECK dout0_10 vdout0_10ck181 = 0 time = 910
+* CHECK dout0_11 vdout0_11ck181 = 1.0 time = 910
+* CHECK dout0_12 vdout0_12ck181 = 0 time = 910
+* CHECK dout0_13 vdout0_13ck181 = 0 time = 910
+* CHECK dout0_14 vdout0_14ck181 = 0 time = 910
+* CHECK dout0_15 vdout0_15ck181 = 1.0 time = 910
+* CHECK dout0_16 vdout0_16ck181 = 0 time = 910
+* CHECK dout0_17 vdout0_17ck181 = 0 time = 910
+* CHECK dout0_18 vdout0_18ck181 = 0 time = 910
+* CHECK dout0_19 vdout0_19ck181 = 1.0 time = 910
+* CHECK dout0_20 vdout0_20ck181 = 1.0 time = 910
+* CHECK dout0_21 vdout0_21ck181 = 0 time = 910
+* CHECK dout0_22 vdout0_22ck181 = 0 time = 910
+* CHECK dout0_0 vdout0_0ck183 = 0 time = 920
 * CHECK dout0_1 vdout0_1ck183 = 0 time = 920
 * CHECK dout0_2 vdout0_2ck183 = 0 time = 920
-* CHECK dout0_3 vdout0_3ck183 = 1.0 time = 920
+* CHECK dout0_3 vdout0_3ck183 = 0 time = 920
 * CHECK dout0_4 vdout0_4ck183 = 0 time = 920
 * CHECK dout0_5 vdout0_5ck183 = 0 time = 920
-* CHECK dout0_6 vdout0_6ck183 = 1.0 time = 920
+* CHECK dout0_6 vdout0_6ck183 = 0 time = 920
 * CHECK dout0_7 vdout0_7ck183 = 0 time = 920
-* CHECK dout0_8 vdout0_8ck183 = 1.0 time = 920
+* CHECK dout0_8 vdout0_8ck183 = 0 time = 920
 * CHECK dout0_9 vdout0_9ck183 = 0 time = 920
-* CHECK dout0_10 vdout0_10ck183 = 1.0 time = 920
-* CHECK dout0_11 vdout0_11ck183 = 0 time = 920
+* CHECK dout0_10 vdout0_10ck183 = 0 time = 920
+* CHECK dout0_11 vdout0_11ck183 = 1.0 time = 920
 * CHECK dout0_12 vdout0_12ck183 = 1.0 time = 920
-* CHECK dout0_13 vdout0_13ck183 = 1.0 time = 920
+* CHECK dout0_13 vdout0_13ck183 = 0 time = 920
 * CHECK dout0_14 vdout0_14ck183 = 0 time = 920
 * CHECK dout0_15 vdout0_15ck183 = 0 time = 920
 * CHECK dout0_16 vdout0_16ck183 = 1.0 time = 920
-* CHECK dout0_17 vdout0_17ck183 = 1.0 time = 920
+* CHECK dout0_17 vdout0_17ck183 = 0 time = 920
 * CHECK dout0_18 vdout0_18ck183 = 0 time = 920
-* CHECK dout0_19 vdout0_19ck183 = 0 time = 920
+* CHECK dout0_19 vdout0_19ck183 = 1.0 time = 920
 * CHECK dout0_20 vdout0_20ck183 = 0 time = 920
 * CHECK dout0_21 vdout0_21ck183 = 0 time = 920
 * CHECK dout0_22 vdout0_22ck183 = 1.0 time = 920
-* CHECK dout0_0 vdout0_0ck185 = 1.0 time = 930
-* CHECK dout0_1 vdout0_1ck185 = 1.0 time = 930
+* CHECK dout0_0 vdout0_0ck185 = 0 time = 930
+* CHECK dout0_1 vdout0_1ck185 = 0 time = 930
 * CHECK dout0_2 vdout0_2ck185 = 0 time = 930
 * CHECK dout0_3 vdout0_3ck185 = 0 time = 930
-* CHECK dout0_4 vdout0_4ck185 = 1.0 time = 930
+* CHECK dout0_4 vdout0_4ck185 = 0 time = 930
 * CHECK dout0_5 vdout0_5ck185 = 0 time = 930
 * CHECK dout0_6 vdout0_6ck185 = 0 time = 930
 * CHECK dout0_7 vdout0_7ck185 = 0 time = 930
 * CHECK dout0_8 vdout0_8ck185 = 0 time = 930
 * CHECK dout0_9 vdout0_9ck185 = 0 time = 930
-* CHECK dout0_10 vdout0_10ck185 = 1.0 time = 930
-* CHECK dout0_11 vdout0_11ck185 = 0 time = 930
+* CHECK dout0_10 vdout0_10ck185 = 0 time = 930
+* CHECK dout0_11 vdout0_11ck185 = 1.0 time = 930
 * CHECK dout0_12 vdout0_12ck185 = 1.0 time = 930
-* CHECK dout0_13 vdout0_13ck185 = 1.0 time = 930
-* CHECK dout0_14 vdout0_14ck185 = 1.0 time = 930
+* CHECK dout0_13 vdout0_13ck185 = 0 time = 930
+* CHECK dout0_14 vdout0_14ck185 = 0 time = 930
 * CHECK dout0_15 vdout0_15ck185 = 0 time = 930
-* CHECK dout0_16 vdout0_16ck185 = 0 time = 930
-* CHECK dout0_17 vdout0_17ck185 = 1.0 time = 930
+* CHECK dout0_16 vdout0_16ck185 = 1.0 time = 930
+* CHECK dout0_17 vdout0_17ck185 = 0 time = 930
 * CHECK dout0_18 vdout0_18ck185 = 0 time = 930
 * CHECK dout0_19 vdout0_19ck185 = 1.0 time = 930
 * CHECK dout0_20 vdout0_20ck185 = 0 time = 930
 * CHECK dout0_21 vdout0_21ck185 = 0 time = 930
-* CHECK dout0_22 vdout0_22ck185 = 0 time = 930
-* CHECK dout0_0 vdout0_0ck186 = 1.0 time = 935
-* CHECK dout0_1 vdout0_1ck186 = 0 time = 935
-* CHECK dout0_2 vdout0_2ck186 = 0 time = 935
-* CHECK dout0_3 vdout0_3ck186 = 0 time = 935
-* CHECK dout0_4 vdout0_4ck186 = 0 time = 935
-* CHECK dout0_5 vdout0_5ck186 = 0 time = 935
-* CHECK dout0_6 vdout0_6ck186 = 0 time = 935
-* CHECK dout0_7 vdout0_7ck186 = 1.0 time = 935
-* CHECK dout0_8 vdout0_8ck186 = 0 time = 935
-* CHECK dout0_9 vdout0_9ck186 = 1.0 time = 935
-* CHECK dout0_10 vdout0_10ck186 = 0 time = 935
-* CHECK dout0_11 vdout0_11ck186 = 1.0 time = 935
-* CHECK dout0_12 vdout0_12ck186 = 0 time = 935
-* CHECK dout0_13 vdout0_13ck186 = 0 time = 935
-* CHECK dout0_14 vdout0_14ck186 = 0 time = 935
-* CHECK dout0_15 vdout0_15ck186 = 1.0 time = 935
-* CHECK dout0_16 vdout0_16ck186 = 1.0 time = 935
-* CHECK dout0_17 vdout0_17ck186 = 1.0 time = 935
-* CHECK dout0_18 vdout0_18ck186 = 1.0 time = 935
-* CHECK dout0_19 vdout0_19ck186 = 1.0 time = 935
-* CHECK dout0_20 vdout0_20ck186 = 0 time = 935
-* CHECK dout0_21 vdout0_21ck186 = 1.0 time = 935
-* CHECK dout0_22 vdout0_22ck186 = 1.0 time = 935
-* CHECK dout0_0 vdout0_0ck188 = 0 time = 945
-* CHECK dout0_1 vdout0_1ck188 = 1.0 time = 945
+* CHECK dout0_22 vdout0_22ck185 = 1.0 time = 930
+* CHECK dout0_0 vdout0_0ck188 = 1.0 time = 945
+* CHECK dout0_1 vdout0_1ck188 = 0 time = 945
 * CHECK dout0_2 vdout0_2ck188 = 0 time = 945
-* CHECK dout0_3 vdout0_3ck188 = 0 time = 945
+* CHECK dout0_3 vdout0_3ck188 = 1.0 time = 945
 * CHECK dout0_4 vdout0_4ck188 = 1.0 time = 945
-* CHECK dout0_5 vdout0_5ck188 = 0 time = 945
+* CHECK dout0_5 vdout0_5ck188 = 1.0 time = 945
 * CHECK dout0_6 vdout0_6ck188 = 1.0 time = 945
 * CHECK dout0_7 vdout0_7ck188 = 0 time = 945
-* CHECK dout0_8 vdout0_8ck188 = 1.0 time = 945
-* CHECK dout0_9 vdout0_9ck188 = 1.0 time = 945
+* CHECK dout0_8 vdout0_8ck188 = 0 time = 945
+* CHECK dout0_9 vdout0_9ck188 = 0 time = 945
 * CHECK dout0_10 vdout0_10ck188 = 0 time = 945
 * CHECK dout0_11 vdout0_11ck188 = 1.0 time = 945
-* CHECK dout0_12 vdout0_12ck188 = 1.0 time = 945
-* CHECK dout0_13 vdout0_13ck188 = 1.0 time = 945
-* CHECK dout0_14 vdout0_14ck188 = 1.0 time = 945
+* CHECK dout0_12 vdout0_12ck188 = 0 time = 945
+* CHECK dout0_13 vdout0_13ck188 = 0 time = 945
+* CHECK dout0_14 vdout0_14ck188 = 0 time = 945
 * CHECK dout0_15 vdout0_15ck188 = 1.0 time = 945
 * CHECK dout0_16 vdout0_16ck188 = 0 time = 945
-* CHECK dout0_17 vdout0_17ck188 = 1.0 time = 945
-* CHECK dout0_18 vdout0_18ck188 = 1.0 time = 945
-* CHECK dout0_19 vdout0_19ck188 = 0 time = 945
-* CHECK dout0_20 vdout0_20ck188 = 0 time = 945
-* CHECK dout0_21 vdout0_21ck188 = 1.0 time = 945
+* CHECK dout0_17 vdout0_17ck188 = 0 time = 945
+* CHECK dout0_18 vdout0_18ck188 = 0 time = 945
+* CHECK dout0_19 vdout0_19ck188 = 1.0 time = 945
+* CHECK dout0_20 vdout0_20ck188 = 1.0 time = 945
+* CHECK dout0_21 vdout0_21ck188 = 0 time = 945
 * CHECK dout0_22 vdout0_22ck188 = 0 time = 945
 * CHECK dout0_0 vdout0_0ck190 = 1.0 time = 955
-* CHECK dout0_1 vdout0_1ck190 = 0 time = 955
+* CHECK dout0_1 vdout0_1ck190 = 1.0 time = 955
 * CHECK dout0_2 vdout0_2ck190 = 0 time = 955
-* CHECK dout0_3 vdout0_3ck190 = 0 time = 955
+* CHECK dout0_3 vdout0_3ck190 = 1.0 time = 955
 * CHECK dout0_4 vdout0_4ck190 = 0 time = 955
 * CHECK dout0_5 vdout0_5ck190 = 0 time = 955
 * CHECK dout0_6 vdout0_6ck190 = 0 time = 955
-* CHECK dout0_7 vdout0_7ck190 = 1.0 time = 955
-* CHECK dout0_8 vdout0_8ck190 = 0 time = 955
-* CHECK dout0_9 vdout0_9ck190 = 1.0 time = 955
+* CHECK dout0_7 vdout0_7ck190 = 0 time = 955
+* CHECK dout0_8 vdout0_8ck190 = 1.0 time = 955
+* CHECK dout0_9 vdout0_9ck190 = 0 time = 955
 * CHECK dout0_10 vdout0_10ck190 = 0 time = 955
 * CHECK dout0_11 vdout0_11ck190 = 1.0 time = 955
 * CHECK dout0_12 vdout0_12ck190 = 0 time = 955
 * CHECK dout0_13 vdout0_13ck190 = 0 time = 955
-* CHECK dout0_14 vdout0_14ck190 = 0 time = 955
-* CHECK dout0_15 vdout0_15ck190 = 1.0 time = 955
+* CHECK dout0_14 vdout0_14ck190 = 1.0 time = 955
+* CHECK dout0_15 vdout0_15ck190 = 0 time = 955
 * CHECK dout0_16 vdout0_16ck190 = 1.0 time = 955
 * CHECK dout0_17 vdout0_17ck190 = 1.0 time = 955
 * CHECK dout0_18 vdout0_18ck190 = 1.0 time = 955
-* CHECK dout0_19 vdout0_19ck190 = 1.0 time = 955
-* CHECK dout0_20 vdout0_20ck190 = 0 time = 955
+* CHECK dout0_19 vdout0_19ck190 = 0 time = 955
+* CHECK dout0_20 vdout0_20ck190 = 1.0 time = 955
 * CHECK dout0_21 vdout0_21ck190 = 1.0 time = 955
-* CHECK dout0_22 vdout0_22ck190 = 1.0 time = 955
+* CHECK dout0_22 vdout0_22ck190 = 0 time = 955
 * CHECK dout0_0 vdout0_0ck191 = 0 time = 960
-* CHECK dout0_1 vdout0_1ck191 = 0 time = 960
-* CHECK dout0_2 vdout0_2ck191 = 1.0 time = 960
+* CHECK dout0_1 vdout0_1ck191 = 1.0 time = 960
+* CHECK dout0_2 vdout0_2ck191 = 0 time = 960
 * CHECK dout0_3 vdout0_3ck191 = 1.0 time = 960
-* CHECK dout0_4 vdout0_4ck191 = 0 time = 960
-* CHECK dout0_5 vdout0_5ck191 = 0 time = 960
+* CHECK dout0_4 vdout0_4ck191 = 1.0 time = 960
+* CHECK dout0_5 vdout0_5ck191 = 1.0 time = 960
 * CHECK dout0_6 vdout0_6ck191 = 0 time = 960
 * CHECK dout0_7 vdout0_7ck191 = 1.0 time = 960
 * CHECK dout0_8 vdout0_8ck191 = 0 time = 960
 * CHECK dout0_9 vdout0_9ck191 = 1.0 time = 960
 * CHECK dout0_10 vdout0_10ck191 = 1.0 time = 960
-* CHECK dout0_11 vdout0_11ck191 = 1.0 time = 960
+* CHECK dout0_11 vdout0_11ck191 = 0 time = 960
 * CHECK dout0_12 vdout0_12ck191 = 1.0 time = 960
 * CHECK dout0_13 vdout0_13ck191 = 1.0 time = 960
 * CHECK dout0_14 vdout0_14ck191 = 0 time = 960
-* CHECK dout0_15 vdout0_15ck191 = 1.0 time = 960
+* CHECK dout0_15 vdout0_15ck191 = 0 time = 960
 * CHECK dout0_16 vdout0_16ck191 = 0 time = 960
-* CHECK dout0_17 vdout0_17ck191 = 1.0 time = 960
-* CHECK dout0_18 vdout0_18ck191 = 0 time = 960
-* CHECK dout0_19 vdout0_19ck191 = 0 time = 960
+* CHECK dout0_17 vdout0_17ck191 = 0 time = 960
+* CHECK dout0_18 vdout0_18ck191 = 1.0 time = 960
+* CHECK dout0_19 vdout0_19ck191 = 1.0 time = 960
 * CHECK dout0_20 vdout0_20ck191 = 0 time = 960
-* CHECK dout0_21 vdout0_21ck191 = 1.0 time = 960
-* CHECK dout0_22 vdout0_22ck191 = 1.0 time = 960
-* CHECK dout0_0 vdout0_0ck192 = 0 time = 965
-* CHECK dout0_1 vdout0_1ck192 = 0 time = 965
-* CHECK dout0_2 vdout0_2ck192 = 1.0 time = 965
-* CHECK dout0_3 vdout0_3ck192 = 1.0 time = 965
-* CHECK dout0_4 vdout0_4ck192 = 0 time = 965
-* CHECK dout0_5 vdout0_5ck192 = 0 time = 965
-* CHECK dout0_6 vdout0_6ck192 = 0 time = 965
-* CHECK dout0_7 vdout0_7ck192 = 1.0 time = 965
-* CHECK dout0_8 vdout0_8ck192 = 0 time = 965
-* CHECK dout0_9 vdout0_9ck192 = 1.0 time = 965
-* CHECK dout0_10 vdout0_10ck192 = 1.0 time = 965
-* CHECK dout0_11 vdout0_11ck192 = 1.0 time = 965
-* CHECK dout0_12 vdout0_12ck192 = 1.0 time = 965
-* CHECK dout0_13 vdout0_13ck192 = 1.0 time = 965
-* CHECK dout0_14 vdout0_14ck192 = 0 time = 965
-* CHECK dout0_15 vdout0_15ck192 = 1.0 time = 965
-* CHECK dout0_16 vdout0_16ck192 = 0 time = 965
-* CHECK dout0_17 vdout0_17ck192 = 1.0 time = 965
-* CHECK dout0_18 vdout0_18ck192 = 0 time = 965
-* CHECK dout0_19 vdout0_19ck192 = 0 time = 965
-* CHECK dout0_20 vdout0_20ck192 = 0 time = 965
-* CHECK dout0_21 vdout0_21ck192 = 1.0 time = 965
-* CHECK dout0_22 vdout0_22ck192 = 1.0 time = 965
-* CHECK dout0_0 vdout0_0ck195 = 1.0 time = 980
-* CHECK dout0_1 vdout0_1ck195 = 1.0 time = 980
-* CHECK dout0_2 vdout0_2ck195 = 1.0 time = 980
-* CHECK dout0_3 vdout0_3ck195 = 1.0 time = 980
-* CHECK dout0_4 vdout0_4ck195 = 0 time = 980
-* CHECK dout0_5 vdout0_5ck195 = 0 time = 980
-* CHECK dout0_6 vdout0_6ck195 = 1.0 time = 980
-* CHECK dout0_7 vdout0_7ck195 = 0 time = 980
-* CHECK dout0_8 vdout0_8ck195 = 1.0 time = 980
-* CHECK dout0_9 vdout0_9ck195 = 1.0 time = 980
-* CHECK dout0_10 vdout0_10ck195 = 0 time = 980
-* CHECK dout0_11 vdout0_11ck195 = 1.0 time = 980
-* CHECK dout0_12 vdout0_12ck195 = 0 time = 980
-* CHECK dout0_13 vdout0_13ck195 = 1.0 time = 980
-* CHECK dout0_14 vdout0_14ck195 = 0 time = 980
-* CHECK dout0_15 vdout0_15ck195 = 1.0 time = 980
-* CHECK dout0_16 vdout0_16ck195 = 0 time = 980
-* CHECK dout0_17 vdout0_17ck195 = 1.0 time = 980
-* CHECK dout0_18 vdout0_18ck195 = 0 time = 980
-* CHECK dout0_19 vdout0_19ck195 = 0 time = 980
-* CHECK dout0_20 vdout0_20ck195 = 1.0 time = 980
-* CHECK dout0_21 vdout0_21ck195 = 1.0 time = 980
-* CHECK dout0_22 vdout0_22ck195 = 1.0 time = 980
-* CHECK dout0_0 vdout0_0ck196 = 0 time = 985
-* CHECK dout0_1 vdout0_1ck196 = 1.0 time = 985
-* CHECK dout0_2 vdout0_2ck196 = 0 time = 985
-* CHECK dout0_3 vdout0_3ck196 = 0 time = 985
-* CHECK dout0_4 vdout0_4ck196 = 1.0 time = 985
-* CHECK dout0_5 vdout0_5ck196 = 0 time = 985
-* CHECK dout0_6 vdout0_6ck196 = 1.0 time = 985
-* CHECK dout0_7 vdout0_7ck196 = 0 time = 985
-* CHECK dout0_8 vdout0_8ck196 = 1.0 time = 985
-* CHECK dout0_9 vdout0_9ck196 = 1.0 time = 985
-* CHECK dout0_10 vdout0_10ck196 = 0 time = 985
-* CHECK dout0_11 vdout0_11ck196 = 1.0 time = 985
-* CHECK dout0_12 vdout0_12ck196 = 1.0 time = 985
-* CHECK dout0_13 vdout0_13ck196 = 1.0 time = 985
-* CHECK dout0_14 vdout0_14ck196 = 1.0 time = 985
-* CHECK dout0_15 vdout0_15ck196 = 1.0 time = 985
-* CHECK dout0_16 vdout0_16ck196 = 0 time = 985
-* CHECK dout0_17 vdout0_17ck196 = 1.0 time = 985
-* CHECK dout0_18 vdout0_18ck196 = 1.0 time = 985
-* CHECK dout0_19 vdout0_19ck196 = 0 time = 985
-* CHECK dout0_20 vdout0_20ck196 = 0 time = 985
-* CHECK dout0_21 vdout0_21ck196 = 1.0 time = 985
-* CHECK dout0_22 vdout0_22ck196 = 0 time = 985
-* CHECK dout0_0 vdout0_0ck197 = 1.0 time = 990
+* CHECK dout0_21 vdout0_21ck191 = 0 time = 960
+* CHECK dout0_22 vdout0_22ck191 = 0 time = 960
+* CHECK dout0_0 vdout0_0ck193 = 0 time = 970
+* CHECK dout0_1 vdout0_1ck193 = 0 time = 970
+* CHECK dout0_2 vdout0_2ck193 = 0 time = 970
+* CHECK dout0_3 vdout0_3ck193 = 0 time = 970
+* CHECK dout0_4 vdout0_4ck193 = 0 time = 970
+* CHECK dout0_5 vdout0_5ck193 = 0 time = 970
+* CHECK dout0_6 vdout0_6ck193 = 0 time = 970
+* CHECK dout0_7 vdout0_7ck193 = 0 time = 970
+* CHECK dout0_8 vdout0_8ck193 = 0 time = 970
+* CHECK dout0_9 vdout0_9ck193 = 0 time = 970
+* CHECK dout0_10 vdout0_10ck193 = 0 time = 970
+* CHECK dout0_11 vdout0_11ck193 = 1.0 time = 970
+* CHECK dout0_12 vdout0_12ck193 = 1.0 time = 970
+* CHECK dout0_13 vdout0_13ck193 = 0 time = 970
+* CHECK dout0_14 vdout0_14ck193 = 0 time = 970
+* CHECK dout0_15 vdout0_15ck193 = 0 time = 970
+* CHECK dout0_16 vdout0_16ck193 = 1.0 time = 970
+* CHECK dout0_17 vdout0_17ck193 = 0 time = 970
+* CHECK dout0_18 vdout0_18ck193 = 0 time = 970
+* CHECK dout0_19 vdout0_19ck193 = 1.0 time = 970
+* CHECK dout0_20 vdout0_20ck193 = 0 time = 970
+* CHECK dout0_21 vdout0_21ck193 = 0 time = 970
+* CHECK dout0_22 vdout0_22ck193 = 1.0 time = 970
+* CHECK dout0_0 vdout0_0ck197 = 0 time = 990
 * CHECK dout0_1 vdout0_1ck197 = 1.0 time = 990
-* CHECK dout0_2 vdout0_2ck197 = 1.0 time = 990
+* CHECK dout0_2 vdout0_2ck197 = 0 time = 990
 * CHECK dout0_3 vdout0_3ck197 = 1.0 time = 990
-* CHECK dout0_4 vdout0_4ck197 = 0 time = 990
-* CHECK dout0_5 vdout0_5ck197 = 0 time = 990
-* CHECK dout0_6 vdout0_6ck197 = 1.0 time = 990
-* CHECK dout0_7 vdout0_7ck197 = 0 time = 990
-* CHECK dout0_8 vdout0_8ck197 = 1.0 time = 990
+* CHECK dout0_4 vdout0_4ck197 = 1.0 time = 990
+* CHECK dout0_5 vdout0_5ck197 = 1.0 time = 990
+* CHECK dout0_6 vdout0_6ck197 = 0 time = 990
+* CHECK dout0_7 vdout0_7ck197 = 1.0 time = 990
+* CHECK dout0_8 vdout0_8ck197 = 0 time = 990
 * CHECK dout0_9 vdout0_9ck197 = 1.0 time = 990
-* CHECK dout0_10 vdout0_10ck197 = 0 time = 990
-* CHECK dout0_11 vdout0_11ck197 = 1.0 time = 990
-* CHECK dout0_12 vdout0_12ck197 = 0 time = 990
+* CHECK dout0_10 vdout0_10ck197 = 1.0 time = 990
+* CHECK dout0_11 vdout0_11ck197 = 0 time = 990
+* CHECK dout0_12 vdout0_12ck197 = 1.0 time = 990
 * CHECK dout0_13 vdout0_13ck197 = 1.0 time = 990
 * CHECK dout0_14 vdout0_14ck197 = 0 time = 990
-* CHECK dout0_15 vdout0_15ck197 = 1.0 time = 990
+* CHECK dout0_15 vdout0_15ck197 = 0 time = 990
 * CHECK dout0_16 vdout0_16ck197 = 0 time = 990
-* CHECK dout0_17 vdout0_17ck197 = 1.0 time = 990
-* CHECK dout0_18 vdout0_18ck197 = 0 time = 990
-* CHECK dout0_19 vdout0_19ck197 = 0 time = 990
-* CHECK dout0_20 vdout0_20ck197 = 1.0 time = 990
-* CHECK dout0_21 vdout0_21ck197 = 1.0 time = 990
-* CHECK dout0_22 vdout0_22ck197 = 1.0 time = 990
-* CHECK dout0_0 vdout0_0ck198 = 0 time = 995
-* CHECK dout0_1 vdout0_1ck198 = 1.0 time = 995
+* CHECK dout0_17 vdout0_17ck197 = 0 time = 990
+* CHECK dout0_18 vdout0_18ck197 = 1.0 time = 990
+* CHECK dout0_19 vdout0_19ck197 = 1.0 time = 990
+* CHECK dout0_20 vdout0_20ck197 = 0 time = 990
+* CHECK dout0_21 vdout0_21ck197 = 0 time = 990
+* CHECK dout0_22 vdout0_22ck197 = 0 time = 990
+* CHECK dout0_0 vdout0_0ck198 = 1.0 time = 995
+* CHECK dout0_1 vdout0_1ck198 = 0 time = 995
 * CHECK dout0_2 vdout0_2ck198 = 0 time = 995
 * CHECK dout0_3 vdout0_3ck198 = 0 time = 995
 * CHECK dout0_4 vdout0_4ck198 = 1.0 time = 995
-* CHECK dout0_5 vdout0_5ck198 = 0 time = 995
-* CHECK dout0_6 vdout0_6ck198 = 1.0 time = 995
-* CHECK dout0_7 vdout0_7ck198 = 0 time = 995
+* CHECK dout0_5 vdout0_5ck198 = 1.0 time = 995
+* CHECK dout0_6 vdout0_6ck198 = 0 time = 995
+* CHECK dout0_7 vdout0_7ck198 = 1.0 time = 995
 * CHECK dout0_8 vdout0_8ck198 = 1.0 time = 995
-* CHECK dout0_9 vdout0_9ck198 = 1.0 time = 995
-* CHECK dout0_10 vdout0_10ck198 = 0 time = 995
-* CHECK dout0_11 vdout0_11ck198 = 1.0 time = 995
-* CHECK dout0_12 vdout0_12ck198 = 1.0 time = 995
-* CHECK dout0_13 vdout0_13ck198 = 1.0 time = 995
-* CHECK dout0_14 vdout0_14ck198 = 1.0 time = 995
+* CHECK dout0_9 vdout0_9ck198 = 0 time = 995
+* CHECK dout0_10 vdout0_10ck198 = 1.0 time = 995
+* CHECK dout0_11 vdout0_11ck198 = 0 time = 995
+* CHECK dout0_12 vdout0_12ck198 = 0 time = 995
+* CHECK dout0_13 vdout0_13ck198 = 0 time = 995
+* CHECK dout0_14 vdout0_14ck198 = 0 time = 995
 * CHECK dout0_15 vdout0_15ck198 = 1.0 time = 995
-* CHECK dout0_16 vdout0_16ck198 = 0 time = 995
-* CHECK dout0_17 vdout0_17ck198 = 1.0 time = 995
+* CHECK dout0_16 vdout0_16ck198 = 1.0 time = 995
+* CHECK dout0_17 vdout0_17ck198 = 0 time = 995
 * CHECK dout0_18 vdout0_18ck198 = 1.0 time = 995
-* CHECK dout0_19 vdout0_19ck198 = 0 time = 995
-* CHECK dout0_20 vdout0_20ck198 = 0 time = 995
+* CHECK dout0_19 vdout0_19ck198 = 1.0 time = 995
+* CHECK dout0_20 vdout0_20ck198 = 1.0 time = 995
 * CHECK dout0_21 vdout0_21ck198 = 1.0 time = 995
 * CHECK dout0_22 vdout0_22ck198 = 0 time = 995
-* CHECK dout0_0 vdout0_0ck199 = 0 time = 1000
-* CHECK dout0_1 vdout0_1ck199 = 0 time = 1000
-* CHECK dout0_2 vdout0_2ck199 = 1.0 time = 1000
-* CHECK dout0_3 vdout0_3ck199 = 1.0 time = 1000
-* CHECK dout0_4 vdout0_4ck199 = 0 time = 1000
-* CHECK dout0_5 vdout0_5ck199 = 0 time = 1000
-* CHECK dout0_6 vdout0_6ck199 = 0 time = 1000
-* CHECK dout0_7 vdout0_7ck199 = 1.0 time = 1000
-* CHECK dout0_8 vdout0_8ck199 = 0 time = 1000
-* CHECK dout0_9 vdout0_9ck199 = 1.0 time = 1000
-* CHECK dout0_10 vdout0_10ck199 = 1.0 time = 1000
-* CHECK dout0_11 vdout0_11ck199 = 1.0 time = 1000
-* CHECK dout0_12 vdout0_12ck199 = 1.0 time = 1000
-* CHECK dout0_13 vdout0_13ck199 = 1.0 time = 1000
-* CHECK dout0_14 vdout0_14ck199 = 0 time = 1000
-* CHECK dout0_15 vdout0_15ck199 = 1.0 time = 1000
-* CHECK dout0_16 vdout0_16ck199 = 0 time = 1000
-* CHECK dout0_17 vdout0_17ck199 = 1.0 time = 1000
-* CHECK dout0_18 vdout0_18ck199 = 0 time = 1000
-* CHECK dout0_19 vdout0_19ck199 = 0 time = 1000
-* CHECK dout0_20 vdout0_20ck199 = 0 time = 1000
-* CHECK dout0_21 vdout0_21ck199 = 1.0 time = 1000
-* CHECK dout0_22 vdout0_22ck199 = 1.0 time = 1000
-* CHECK dout0_0 vdout0_0ck200 = 1.0 time = 1005
-* CHECK dout0_1 vdout0_1ck200 = 1.0 time = 1005
-* CHECK dout0_2 vdout0_2ck200 = 0 time = 1005
-* CHECK dout0_3 vdout0_3ck200 = 0 time = 1005
-* CHECK dout0_4 vdout0_4ck200 = 1.0 time = 1005
-* CHECK dout0_5 vdout0_5ck200 = 0 time = 1005
-* CHECK dout0_6 vdout0_6ck200 = 0 time = 1005
-* CHECK dout0_7 vdout0_7ck200 = 0 time = 1005
-* CHECK dout0_8 vdout0_8ck200 = 0 time = 1005
-* CHECK dout0_9 vdout0_9ck200 = 0 time = 1005
-* CHECK dout0_10 vdout0_10ck200 = 1.0 time = 1005
-* CHECK dout0_11 vdout0_11ck200 = 0 time = 1005
-* CHECK dout0_12 vdout0_12ck200 = 1.0 time = 1005
-* CHECK dout0_13 vdout0_13ck200 = 1.0 time = 1005
-* CHECK dout0_14 vdout0_14ck200 = 1.0 time = 1005
-* CHECK dout0_15 vdout0_15ck200 = 0 time = 1005
-* CHECK dout0_16 vdout0_16ck200 = 0 time = 1005
-* CHECK dout0_17 vdout0_17ck200 = 1.0 time = 1005
-* CHECK dout0_18 vdout0_18ck200 = 0 time = 1005
-* CHECK dout0_19 vdout0_19ck200 = 1.0 time = 1005
-* CHECK dout0_20 vdout0_20ck200 = 0 time = 1005
-* CHECK dout0_21 vdout0_21ck200 = 0 time = 1005
-* CHECK dout0_22 vdout0_22ck200 = 0 time = 1005
 * CHECK dout0_0 vdout0_0ck201 = 0 time = 1010
 * CHECK dout0_1 vdout0_1ck201 = 1.0 time = 1010
 * CHECK dout0_2 vdout0_2ck201 = 0 time = 1010
-* CHECK dout0_3 vdout0_3ck201 = 0 time = 1010
+* CHECK dout0_3 vdout0_3ck201 = 1.0 time = 1010
 * CHECK dout0_4 vdout0_4ck201 = 1.0 time = 1010
-* CHECK dout0_5 vdout0_5ck201 = 0 time = 1010
-* CHECK dout0_6 vdout0_6ck201 = 1.0 time = 1010
-* CHECK dout0_7 vdout0_7ck201 = 0 time = 1010
-* CHECK dout0_8 vdout0_8ck201 = 1.0 time = 1010
+* CHECK dout0_5 vdout0_5ck201 = 1.0 time = 1010
+* CHECK dout0_6 vdout0_6ck201 = 0 time = 1010
+* CHECK dout0_7 vdout0_7ck201 = 1.0 time = 1010
+* CHECK dout0_8 vdout0_8ck201 = 0 time = 1010
 * CHECK dout0_9 vdout0_9ck201 = 1.0 time = 1010
-* CHECK dout0_10 vdout0_10ck201 = 0 time = 1010
-* CHECK dout0_11 vdout0_11ck201 = 1.0 time = 1010
+* CHECK dout0_10 vdout0_10ck201 = 1.0 time = 1010
+* CHECK dout0_11 vdout0_11ck201 = 0 time = 1010
 * CHECK dout0_12 vdout0_12ck201 = 1.0 time = 1010
 * CHECK dout0_13 vdout0_13ck201 = 1.0 time = 1010
-* CHECK dout0_14 vdout0_14ck201 = 1.0 time = 1010
-* CHECK dout0_15 vdout0_15ck201 = 1.0 time = 1010
+* CHECK dout0_14 vdout0_14ck201 = 0 time = 1010
+* CHECK dout0_15 vdout0_15ck201 = 0 time = 1010
 * CHECK dout0_16 vdout0_16ck201 = 0 time = 1010
-* CHECK dout0_17 vdout0_17ck201 = 1.0 time = 1010
+* CHECK dout0_17 vdout0_17ck201 = 0 time = 1010
 * CHECK dout0_18 vdout0_18ck201 = 1.0 time = 1010
-* CHECK dout0_19 vdout0_19ck201 = 0 time = 1010
+* CHECK dout0_19 vdout0_19ck201 = 1.0 time = 1010
 * CHECK dout0_20 vdout0_20ck201 = 0 time = 1010
-* CHECK dout0_21 vdout0_21ck201 = 1.0 time = 1010
+* CHECK dout0_21 vdout0_21ck201 = 0 time = 1010
 * CHECK dout0_22 vdout0_22ck201 = 0 time = 1010
-* CHECK dout0_0 vdout0_0ck202 = 1.0 time = 1015
-* CHECK dout0_1 vdout0_1ck202 = 1.0 time = 1015
-* CHECK dout0_2 vdout0_2ck202 = 0 time = 1015
-* CHECK dout0_3 vdout0_3ck202 = 0 time = 1015
-* CHECK dout0_4 vdout0_4ck202 = 1.0 time = 1015
-* CHECK dout0_5 vdout0_5ck202 = 0 time = 1015
-* CHECK dout0_6 vdout0_6ck202 = 0 time = 1015
-* CHECK dout0_7 vdout0_7ck202 = 0 time = 1015
-* CHECK dout0_8 vdout0_8ck202 = 0 time = 1015
-* CHECK dout0_9 vdout0_9ck202 = 0 time = 1015
-* CHECK dout0_10 vdout0_10ck202 = 1.0 time = 1015
-* CHECK dout0_11 vdout0_11ck202 = 0 time = 1015
-* CHECK dout0_12 vdout0_12ck202 = 1.0 time = 1015
-* CHECK dout0_13 vdout0_13ck202 = 1.0 time = 1015
-* CHECK dout0_14 vdout0_14ck202 = 1.0 time = 1015
-* CHECK dout0_15 vdout0_15ck202 = 0 time = 1015
-* CHECK dout0_16 vdout0_16ck202 = 0 time = 1015
-* CHECK dout0_17 vdout0_17ck202 = 1.0 time = 1015
-* CHECK dout0_18 vdout0_18ck202 = 0 time = 1015
-* CHECK dout0_19 vdout0_19ck202 = 1.0 time = 1015
-* CHECK dout0_20 vdout0_20ck202 = 0 time = 1015
-* CHECK dout0_21 vdout0_21ck202 = 0 time = 1015
-* CHECK dout0_22 vdout0_22ck202 = 0 time = 1015
-* CHECK dout0_0 vdout0_0ck204 = 1.0 time = 1025
-* CHECK dout0_1 vdout0_1ck204 = 1.0 time = 1025
-* CHECK dout0_2 vdout0_2ck204 = 1.0 time = 1025
-* CHECK dout0_3 vdout0_3ck204 = 1.0 time = 1025
-* CHECK dout0_4 vdout0_4ck204 = 0 time = 1025
-* CHECK dout0_5 vdout0_5ck204 = 0 time = 1025
-* CHECK dout0_6 vdout0_6ck204 = 1.0 time = 1025
-* CHECK dout0_7 vdout0_7ck204 = 0 time = 1025
-* CHECK dout0_8 vdout0_8ck204 = 1.0 time = 1025
-* CHECK dout0_9 vdout0_9ck204 = 1.0 time = 1025
-* CHECK dout0_10 vdout0_10ck204 = 0 time = 1025
-* CHECK dout0_11 vdout0_11ck204 = 1.0 time = 1025
-* CHECK dout0_12 vdout0_12ck204 = 0 time = 1025
-* CHECK dout0_13 vdout0_13ck204 = 1.0 time = 1025
-* CHECK dout0_14 vdout0_14ck204 = 0 time = 1025
-* CHECK dout0_15 vdout0_15ck204 = 1.0 time = 1025
-* CHECK dout0_16 vdout0_16ck204 = 0 time = 1025
-* CHECK dout0_17 vdout0_17ck204 = 1.0 time = 1025
-* CHECK dout0_18 vdout0_18ck204 = 0 time = 1025
-* CHECK dout0_19 vdout0_19ck204 = 0 time = 1025
-* CHECK dout0_20 vdout0_20ck204 = 1.0 time = 1025
-* CHECK dout0_21 vdout0_21ck204 = 1.0 time = 1025
-* CHECK dout0_22 vdout0_22ck204 = 1.0 time = 1025
+* CHECK dout0_0 vdout0_0ck203 = 0 time = 1020
+* CHECK dout0_1 vdout0_1ck203 = 1.0 time = 1020
+* CHECK dout0_2 vdout0_2ck203 = 0 time = 1020
+* CHECK dout0_3 vdout0_3ck203 = 1.0 time = 1020
+* CHECK dout0_4 vdout0_4ck203 = 1.0 time = 1020
+* CHECK dout0_5 vdout0_5ck203 = 1.0 time = 1020
+* CHECK dout0_6 vdout0_6ck203 = 0 time = 1020
+* CHECK dout0_7 vdout0_7ck203 = 1.0 time = 1020
+* CHECK dout0_8 vdout0_8ck203 = 0 time = 1020
+* CHECK dout0_9 vdout0_9ck203 = 1.0 time = 1020
+* CHECK dout0_10 vdout0_10ck203 = 1.0 time = 1020
+* CHECK dout0_11 vdout0_11ck203 = 0 time = 1020
+* CHECK dout0_12 vdout0_12ck203 = 1.0 time = 1020
+* CHECK dout0_13 vdout0_13ck203 = 1.0 time = 1020
+* CHECK dout0_14 vdout0_14ck203 = 0 time = 1020
+* CHECK dout0_15 vdout0_15ck203 = 0 time = 1020
+* CHECK dout0_16 vdout0_16ck203 = 0 time = 1020
+* CHECK dout0_17 vdout0_17ck203 = 0 time = 1020
+* CHECK dout0_18 vdout0_18ck203 = 1.0 time = 1020
+* CHECK dout0_19 vdout0_19ck203 = 1.0 time = 1020
+* CHECK dout0_20 vdout0_20ck203 = 0 time = 1020
+* CHECK dout0_21 vdout0_21ck203 = 0 time = 1020
+* CHECK dout0_22 vdout0_22ck203 = 0 time = 1020
 .include /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array_2/functional_meas.sp
 * probe is used for hspice/xa, while plot is used in ngspice
 *.probe V(*)

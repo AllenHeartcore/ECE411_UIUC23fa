@@ -238,5 +238,4 @@ parameter   CACHE_LOG2_NUMSETS_L2   = 5;
 parameter   CACHE_LOG2_NUMWAYS_L2   = 1;
 parameter   CACHE_LOG2_WORDSIZE     = 7;
 
-`define MULTILV_D_CACHE
 endpackage : cache_params_pkg

@@ -3,7 +3,7 @@
 * TT process corner
 .include "/class/ece411/OpenRAM/technology/freepdk45/models/tran_models/models_nom/PMOS_VTG.inc"
 .include "/class/ece411/OpenRAM/technology/freepdk45/models/tran_models/models_nom/NMOS_VTG.inc"
-.include "/tmp/openram_haor2_3781972_temp/trimmed.sp"
+.include "/tmp/openram_haor2_923049_temp/trimmed.sp"
 
 * Global Power Supplies
 Vvdd vdd 0 5

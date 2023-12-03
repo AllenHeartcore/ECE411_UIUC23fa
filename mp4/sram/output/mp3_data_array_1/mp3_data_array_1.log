@@ -9,7 +9,7 @@
 |=========        Development help: openram-dev-group@ucsc.edu        =========|
 |=========                See LICENSE for license info                =========|
 |==============================================================================|
-** Start: 12/02/2023 23:40:43
+** Start: 12/03/2023 01:57:11
 Technology: freepdk45
 Total size: 2048 bits
 Word size: 128
@@ -35,15 +35,15 @@ Output files are:
 /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_data_array_1/mp3_data_array_1.log
 /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_data_array_1/mp3_data_array_1.lef
 /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_data_array_1/mp3_data_array_1.gds
-** Submodules: 7.2 seconds
+** Submodules: 6.3 seconds
 ** Placement: 0.5 seconds
-** Routing: 46.2 seconds
+** Routing: 42.6 seconds
 ** Verification: 0.0 seconds
-** SRAM creation: 54.0 seconds
+** SRAM creation: 49.4 seconds
 SP: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_data_array_1/mp3_data_array_1.sp
-** Spice writing: 0.5 seconds
+** Spice writing: 0.4 seconds
 DELAY: Writing stimulus...
-** DELAY: 0.6 seconds
+** DELAY: 0.5 seconds
 GDS: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_data_array_1/mp3_data_array_1.gds
 ** GDS: 0.3 seconds
 LEF: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_data_array_1/mp3_data_array_1.lef
@@ -53,7 +53,7 @@ LVS: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_data_arra
 LIB: Characterizing... 
 WARNING: file lib.py: line 778: Failed to retrieve git id
 
-** Characterization: 1.2 seconds
+** Characterization: 0.5 seconds
 Config: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_data_array_1/mp3_data_array_1.py
 ** Config: 0.0 seconds
 Datasheet: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_data_array_1/mp3_data_array_1.html
@@ -62,4 +62,4 @@ Verilog: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_data_
 ** Verilog: 0.0 seconds
 Extended Config: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_data_array_1/mp3_data_array_1_extended.py
 ** Extended Config: 0.0 seconds
-** End: 57.1 seconds
+** End: 51.6 seconds

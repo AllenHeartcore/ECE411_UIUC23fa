@@ -9,7 +9,7 @@
 |=========        Development help: openram-dev-group@ucsc.edu        =========|
 |=========                See LICENSE for license info                =========|
 |==============================================================================|
-** Start: 12/02/2023 23:42:16
+** Start: 12/03/2023 01:58:35
 Technology: freepdk45
 Total size: 384 bits
 Word size: 24
@@ -34,11 +34,11 @@ Output files are:
 /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array_1/mp3_tag_array_1.log
 /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array_1/mp3_tag_array_1.lef
 /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array_1/mp3_tag_array_1.gds
-** Submodules: 1.4 seconds
+** Submodules: 1.1 seconds
 ** Placement: 0.0 seconds
-** Routing: 10.3 seconds
+** Routing: 9.7 seconds
 ** Verification: 0.0 seconds
-** SRAM creation: 11.8 seconds
+** SRAM creation: 10.9 seconds
 SP: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array_1/mp3_tag_array_1.sp
 ** Spice writing: 0.1 seconds
 DELAY: Writing stimulus...
@@ -52,7 +52,7 @@ LVS: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array
 LIB: Characterizing... 
 WARNING: file lib.py: line 778: Failed to retrieve git id
 
-** Characterization: 0.3 seconds
+** Characterization: 0.2 seconds
 Config: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array_1/mp3_tag_array_1.py
 ** Config: 0.0 seconds
 Datasheet: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array_1/mp3_tag_array_1.html
@@ -61,4 +61,4 @@ Verilog: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_a
 ** Verilog: 0.0 seconds
 Extended Config: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array_1/mp3_tag_array_1_extended.py
 ** Extended Config: 0.0 seconds
-** End: 12.5 seconds
+** End: 11.6 seconds

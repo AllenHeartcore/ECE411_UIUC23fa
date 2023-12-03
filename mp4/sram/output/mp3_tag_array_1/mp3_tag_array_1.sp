@@ -82,275 +82,76 @@ Xdff_r3_c0
 + dff
 .ENDS mp3_tag_array_1_row_addr_dff
 
-.SUBCKT mp3_tag_array_1_data_dff
-+ din_0 din_1 din_2 din_3 din_4 din_5 din_6 din_7 din_8 din_9 din_10
-+ din_11 din_12 din_13 din_14 din_15 din_16 din_17 din_18 din_19 din_20
-+ din_21 din_22 din_23 dout_0 dout_1 dout_2 dout_3 dout_4 dout_5 dout_6
-+ dout_7 dout_8 dout_9 dout_10 dout_11 dout_12 dout_13 dout_14 dout_15
-+ dout_16 dout_17 dout_18 dout_19 dout_20 dout_21 dout_22 dout_23 clk
-+ vdd gnd
-* INPUT : din_0 
-* INPUT : din_1 
-* INPUT : din_2 
-* INPUT : din_3 
-* INPUT : din_4 
-* INPUT : din_5 
-* INPUT : din_6 
-* INPUT : din_7 
-* INPUT : din_8 
-* INPUT : din_9 
-* INPUT : din_10 
-* INPUT : din_11 
-* INPUT : din_12 
-* INPUT : din_13 
-* INPUT : din_14 
-* INPUT : din_15 
-* INPUT : din_16 
-* INPUT : din_17 
-* INPUT : din_18 
-* INPUT : din_19 
-* INPUT : din_20 
-* INPUT : din_21 
-* INPUT : din_22 
-* INPUT : din_23 
-* OUTPUT: dout_0 
-* OUTPUT: dout_1 
-* OUTPUT: dout_2 
-* OUTPUT: dout_3 
-* OUTPUT: dout_4 
-* OUTPUT: dout_5 
-* OUTPUT: dout_6 
-* OUTPUT: dout_7 
-* OUTPUT: dout_8 
-* OUTPUT: dout_9 
-* OUTPUT: dout_10 
-* OUTPUT: dout_11 
-* OUTPUT: dout_12 
-* OUTPUT: dout_13 
-* OUTPUT: dout_14 
-* OUTPUT: dout_15 
-* OUTPUT: dout_16 
-* OUTPUT: dout_17 
-* OUTPUT: dout_18 
-* OUTPUT: dout_19 
-* OUTPUT: dout_20 
-* OUTPUT: dout_21 
-* OUTPUT: dout_22 
-* OUTPUT: dout_23 
-* INPUT : clk 
-* POWER : vdd 
-* GROUND: gnd 
-* rows: 1 cols: 24
-Xdff_r0_c0
-+ din_0 dout_0 clk vdd gnd
-+ dff
-Xdff_r0_c1
-+ din_1 dout_1 clk vdd gnd
-+ dff
-Xdff_r0_c2
-+ din_2 dout_2 clk vdd gnd
-+ dff
-Xdff_r0_c3
-+ din_3 dout_3 clk vdd gnd
-+ dff
-Xdff_r0_c4
-+ din_4 dout_4 clk vdd gnd
-+ dff
-Xdff_r0_c5
-+ din_5 dout_5 clk vdd gnd
-+ dff
-Xdff_r0_c6
-+ din_6 dout_6 clk vdd gnd
-+ dff
-Xdff_r0_c7
-+ din_7 dout_7 clk vdd gnd
-+ dff
-Xdff_r0_c8
-+ din_8 dout_8 clk vdd gnd
-+ dff
-Xdff_r0_c9
-+ din_9 dout_9 clk vdd gnd
-+ dff
-Xdff_r0_c10
-+ din_10 dout_10 clk vdd gnd
-+ dff
-Xdff_r0_c11
-+ din_11 dout_11 clk vdd gnd
-+ dff
-Xdff_r0_c12
-+ din_12 dout_12 clk vdd gnd
-+ dff
-Xdff_r0_c13
-+ din_13 dout_13 clk vdd gnd
-+ dff
-Xdff_r0_c14
-+ din_14 dout_14 clk vdd gnd
-+ dff
-Xdff_r0_c15
-+ din_15 dout_15 clk vdd gnd
-+ dff
-Xdff_r0_c16
-+ din_16 dout_16 clk vdd gnd
-+ dff
-Xdff_r0_c17
-+ din_17 dout_17 clk vdd gnd
-+ dff
-Xdff_r0_c18
-+ din_18 dout_18 clk vdd gnd
-+ dff
-Xdff_r0_c19
-+ din_19 dout_19 clk vdd gnd
-+ dff
-Xdff_r0_c20
-+ din_20 dout_20 clk vdd gnd
-+ dff
-Xdff_r0_c21
-+ din_21 dout_21 clk vdd gnd
-+ dff
-Xdff_r0_c22
-+ din_22 dout_22 clk vdd gnd
-+ dff
-Xdff_r0_c23
-+ din_23 dout_23 clk vdd gnd
-+ dff
-.ENDS mp3_tag_array_1_data_dff
+* spice ptx M{0} {1} pmos_vtg m=10 w=0.865u l=0.05u pd=1.83u ps=1.83u as=0.11p ad=0.11p
 
-* spice ptx M{0} {1} nmos_vtg m=16 w=0.2925u l=0.05u pd=0.68u ps=0.68u as=0.04p ad=0.04p
+* spice ptx M{0} {1} nmos_vtg m=10 w=0.28750000000000003u l=0.05u pd=0.68u ps=0.68u as=0.04p ad=0.04p
 
-* spice ptx M{0} {1} pmos_vtg m=16 w=0.8775000000000001u l=0.05u pd=1.86u ps=1.86u as=0.11p ad=0.11p
-
-.SUBCKT mp3_tag_array_1_pinv_10
+.SUBCKT mp3_tag_array_1_pinv_12
 + A Z vdd gnd
 * INPUT : A 
 * OUTPUT: Z 
 * POWER : vdd 
 * GROUND: gnd 
-* size: 52
-Mpinv_pmos Z A vdd vdd pmos_vtg m=16 w=0.8775000000000001u l=0.05u pd=1.86u ps=1.86u as=0.11p ad=0.11p
-Mpinv_nmos Z A gnd gnd nmos_vtg m=16 w=0.2925u l=0.05u pd=0.68u ps=0.68u as=0.04p ad=0.04p
-.ENDS mp3_tag_array_1_pinv_10
+* size: 32
+Mpinv_pmos Z A vdd vdd pmos_vtg m=10 w=0.865u l=0.05u pd=1.83u ps=1.83u as=0.11p ad=0.11p
+Mpinv_nmos Z A gnd gnd nmos_vtg m=10 w=0.28750000000000003u l=0.05u pd=0.68u ps=0.68u as=0.04p ad=0.04p
+.ENDS mp3_tag_array_1_pinv_12
 
-* spice ptx M{0} {1} nmos_vtg m=2 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
-
-* spice ptx M{0} {1} pmos_vtg m=2 w=0.81u l=0.05u pd=1.72u ps=1.72u as=0.10p ad=0.10p
-
-.SUBCKT mp3_tag_array_1_pinv_8
+.SUBCKT mp3_tag_array_1_pdriver_2
 + A Z vdd gnd
 * INPUT : A 
 * OUTPUT: Z 
 * POWER : vdd 
 * GROUND: gnd 
-* size: 6
-Mpinv_pmos Z A vdd vdd pmos_vtg m=2 w=0.81u l=0.05u pd=1.72u ps=1.72u as=0.10p ad=0.10p
-Mpinv_nmos Z A gnd gnd nmos_vtg m=2 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
-.ENDS mp3_tag_array_1_pinv_8
+* sizes: [32]
+Xbuf_inv1
++ A Z vdd gnd
++ mp3_tag_array_1_pinv_12
+.ENDS mp3_tag_array_1_pdriver_2
 
 * spice ptx M{0} {1} nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
 
-* spice ptx M{0} {1} pmos_vtg m=1 w=0.54u l=0.05u pd=1.18u ps=1.18u as=0.07p ad=0.07p
-
-.SUBCKT mp3_tag_array_1_pinv_7
-+ A Z vdd gnd
-* INPUT : A 
-* OUTPUT: Z 
-* POWER : vdd 
-* GROUND: gnd 
-* size: 2
-Mpinv_pmos Z A vdd vdd pmos_vtg m=1 w=0.54u l=0.05u pd=1.18u ps=1.18u as=0.07p ad=0.07p
-Mpinv_nmos Z A gnd gnd nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
-.ENDS mp3_tag_array_1_pinv_7
+* spice ptx M{0} {1} nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
 
 * spice ptx M{0} {1} pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
 
-* spice ptx M{0} {1} nmos_vtg m=1 w=0.09u l=0.05u pd=0.28u ps=0.28u as=0.01p ad=0.01p
+* spice ptx M{0} {1} nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
 
-.SUBCKT mp3_tag_array_1_pinv_6
-+ A Z vdd gnd
+.SUBCKT mp3_tag_array_1_pnand3_0
++ A B C Z vdd gnd
 * INPUT : A 
+* INPUT : B 
+* INPUT : C 
 * OUTPUT: Z 
 * POWER : vdd 
 * GROUND: gnd 
 * size: 1
-Mpinv_pmos Z A vdd vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
-Mpinv_nmos Z A gnd gnd nmos_vtg m=1 w=0.09u l=0.05u pd=0.28u ps=0.28u as=0.01p ad=0.01p
-.ENDS mp3_tag_array_1_pinv_6
+Mpnand3_pmos1 vdd A Z vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
+Mpnand3_pmos2 Z B vdd vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
+Mpnand3_pmos3 Z C vdd vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
+Mpnand3_nmos1 Z C net1 gnd nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
+Mpnand3_nmos2 net1 B net2 gnd nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
+Mpnand3_nmos3 net2 A gnd gnd nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
+.ENDS mp3_tag_array_1_pnand3_0
 
-* spice ptx M{0} {1} nmos_vtg m=5 w=0.305u l=0.05u pd=0.71u ps=0.71u as=0.04p ad=0.04p
-
-* spice ptx M{0} {1} pmos_vtg m=5 w=0.9175u l=0.05u pd=1.94u ps=1.94u as=0.11p ad=0.11p
-
-.SUBCKT mp3_tag_array_1_pinv_9
-+ A Z vdd gnd
+.SUBCKT mp3_tag_array_1_pand3
++ A B C Z vdd gnd
 * INPUT : A 
+* INPUT : B 
+* INPUT : C 
 * OUTPUT: Z 
 * POWER : vdd 
 * GROUND: gnd 
-* size: 17
-Mpinv_pmos Z A vdd vdd pmos_vtg m=5 w=0.9175u l=0.05u pd=1.94u ps=1.94u as=0.11p ad=0.11p
-Mpinv_nmos Z A gnd gnd nmos_vtg m=5 w=0.305u l=0.05u pd=0.71u ps=0.71u as=0.04p ad=0.04p
-.ENDS mp3_tag_array_1_pinv_9
+* size: 32
+Xpand3_nand
++ A B C zb_int vdd gnd
++ mp3_tag_array_1_pnand3_0
+Xpand3_inv
++ zb_int Z vdd gnd
++ mp3_tag_array_1_pdriver_2
+.ENDS mp3_tag_array_1_pand3
 
-.SUBCKT mp3_tag_array_1_pdriver_0
-+ A Z vdd gnd
-* INPUT : A 
-* OUTPUT: Z 
-* POWER : vdd 
-* GROUND: gnd 
-* sizes: [1, 1, 2, 6, 17, 52]
-Xbuf_inv1
-+ A Zb1_int vdd gnd
-+ mp3_tag_array_1_pinv_6
-Xbuf_inv2
-+ Zb1_int Zb2_int vdd gnd
-+ mp3_tag_array_1_pinv_6
-Xbuf_inv3
-+ Zb2_int Zb3_int vdd gnd
-+ mp3_tag_array_1_pinv_7
-Xbuf_inv4
-+ Zb3_int Zb4_int vdd gnd
-+ mp3_tag_array_1_pinv_8
-Xbuf_inv5
-+ Zb4_int Zb5_int vdd gnd
-+ mp3_tag_array_1_pinv_9
-Xbuf_inv6
-+ Zb5_int Z vdd gnd
-+ mp3_tag_array_1_pinv_10
-.ENDS mp3_tag_array_1_pdriver_0
-
-* spice ptx M{0} {1} pmos_vtg m=4 w=0.81u l=0.05u pd=1.72u ps=1.72u as=0.10p ad=0.10p
-
-* spice ptx M{0} {1} nmos_vtg m=4 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
-
-.SUBCKT mp3_tag_array_1_pinv_3
-+ A Z vdd gnd
-* INPUT : A 
-* OUTPUT: Z 
-* POWER : vdd 
-* GROUND: gnd 
-* size: 12
-Mpinv_pmos Z A vdd vdd pmos_vtg m=4 w=0.81u l=0.05u pd=1.72u ps=1.72u as=0.10p ad=0.10p
-Mpinv_nmos Z A gnd gnd nmos_vtg m=4 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
-.ENDS mp3_tag_array_1_pinv_3
-
-.SUBCKT mp3_tag_array_1_pdriver
-+ A Z vdd gnd
-* INPUT : A 
-* OUTPUT: Z 
-* POWER : vdd 
-* GROUND: gnd 
-* sizes: [12]
-Xbuf_inv1
-+ A Z vdd gnd
-+ mp3_tag_array_1_pinv_3
-.ENDS mp3_tag_array_1_pdriver
-
-* spice ptx M{0} {1} pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
-
-* spice ptx M{0} {1} nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
-
-* spice ptx M{0} {1} nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
-
-.SUBCKT mp3_tag_array_1_pnand2_0
+.SUBCKT mp3_tag_array_1_pnand2_1
 + A B Z vdd gnd
 * INPUT : A 
 * INPUT : B 
@@ -362,23 +163,7 @@ Mpnand2_pmos1 vdd A Z vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03
 Mpnand2_pmos2 Z B vdd vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
 Mpnand2_nmos1 Z B net1 gnd nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
 Mpnand2_nmos2 net1 A gnd gnd nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
-.ENDS mp3_tag_array_1_pnand2_0
-
-.SUBCKT mp3_tag_array_1_pand2
-+ A B Z vdd gnd
-* INPUT : A 
-* INPUT : B 
-* OUTPUT: Z 
-* POWER : vdd 
-* GROUND: gnd 
-* size: 12
-Xpand2_nand
-+ A B zb_int vdd gnd
-+ mp3_tag_array_1_pnand2_0
-Xpand2_inv
-+ zb_int Z vdd gnd
-+ mp3_tag_array_1_pdriver
-.ENDS mp3_tag_array_1_pand2
+.ENDS mp3_tag_array_1_pnand2_1
 
 * spice ptx M{0} {1} nmos_vtg m=8 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
 
@@ -407,25 +192,6 @@ Xbuf_inv1
 + mp3_tag_array_1_pinv_13
 .ENDS mp3_tag_array_1_pdriver_3
 
-* spice ptx M{0} {1} nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
-
-.SUBCKT mp3_tag_array_1_pnand3_0
-+ A B C Z vdd gnd
-* INPUT : A 
-* INPUT : B 
-* INPUT : C 
-* OUTPUT: Z 
-* POWER : vdd 
-* GROUND: gnd 
-* size: 1
-Mpnand3_pmos1 vdd A Z vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
-Mpnand3_pmos2 Z B vdd vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
-Mpnand3_pmos3 Z C vdd vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
-Mpnand3_nmos1 Z C net1 gnd nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
-Mpnand3_nmos2 net1 B net2 gnd nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
-Mpnand3_nmos3 net2 A gnd gnd nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
-.ENDS mp3_tag_array_1_pnand3_0
-
 .SUBCKT mp3_tag_array_1_pand3_0
 + A B C Z vdd gnd
 * INPUT : A 
@@ -443,100 +209,24 @@ Xpand3_inv
 + mp3_tag_array_1_pdriver_3
 .ENDS mp3_tag_array_1_pand3_0
 
-* spice ptx M{0} {1} pmos_vtg m=2 w=0.675u l=0.05u pd=1.45u ps=1.45u as=0.08p ad=0.08p
+* spice ptx M{0} {1} nmos_vtg m=1 w=0.09u l=0.05u pd=0.28u ps=0.28u as=0.01p ad=0.01p
 
-* spice ptx M{0} {1} nmos_vtg m=2 w=0.225u l=0.05u pd=0.55u ps=0.55u as=0.03p ad=0.03p
+* spice ptx M{0} {1} pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
 
-.SUBCKT mp3_tag_array_1_pinv_11
+.SUBCKT mp3_tag_array_1_pinv_14
 + A Z vdd gnd
 * INPUT : A 
-* OUTPUT: Z 
-* POWER : vdd 
-* GROUND: gnd 
-* size: 5
-Mpinv_pmos Z A vdd vdd pmos_vtg m=2 w=0.675u l=0.05u pd=1.45u ps=1.45u as=0.08p ad=0.08p
-Mpinv_nmos Z A gnd gnd nmos_vtg m=2 w=0.225u l=0.05u pd=0.55u ps=0.55u as=0.03p ad=0.03p
-.ENDS mp3_tag_array_1_pinv_11
-
-.SUBCKT mp3_tag_array_1_pdriver_1
-+ A Z vdd gnd
-* INPUT : A 
-* OUTPUT: Z 
-* POWER : vdd 
-* GROUND: gnd 
-* sizes: [1, 5]
-Xbuf_inv1
-+ A Zb1_int vdd gnd
-+ mp3_tag_array_1_pinv_6
-Xbuf_inv2
-+ Zb1_int Z vdd gnd
-+ mp3_tag_array_1_pinv_11
-.ENDS mp3_tag_array_1_pdriver_1
-
-* spice ptx M{0} {1} pmos_vtg m=1 w=0.81u l=0.05u pd=1.72u ps=1.72u as=0.10p ad=0.10p
-
-* spice ptx M{0} {1} nmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
-
-.SUBCKT mp3_tag_array_1_pinv_15
-+ A Z vdd gnd
-* INPUT : A 
-* OUTPUT: Z 
-* POWER : vdd 
-* GROUND: gnd 
-* size: 3
-Mpinv_pmos Z A vdd vdd pmos_vtg m=1 w=0.81u l=0.05u pd=1.72u ps=1.72u as=0.10p ad=0.10p
-Mpinv_nmos Z A gnd gnd nmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
-.ENDS mp3_tag_array_1_pinv_15
-
-* spice ptx M{0} {1} nmos_vtg m=3 w=0.24u l=0.05u pd=0.58u ps=0.58u as=0.03p ad=0.03p
-
-* spice ptx M{0} {1} pmos_vtg m=3 w=0.72u l=0.05u pd=1.54u ps=1.54u as=0.09p ad=0.09p
-
-.SUBCKT mp3_tag_array_1_pinv_16
-+ A Z vdd gnd
-* INPUT : A 
-* OUTPUT: Z 
-* POWER : vdd 
-* GROUND: gnd 
-* size: 8
-Mpinv_pmos Z A vdd vdd pmos_vtg m=3 w=0.72u l=0.05u pd=1.54u ps=1.54u as=0.09p ad=0.09p
-Mpinv_nmos Z A gnd gnd nmos_vtg m=3 w=0.24u l=0.05u pd=0.58u ps=0.58u as=0.03p ad=0.03p
-.ENDS mp3_tag_array_1_pinv_16
-
-.SUBCKT mp3_tag_array_1_pdriver_4
-+ A Z vdd gnd
-* INPUT : A 
-* OUTPUT: Z 
-* POWER : vdd 
-* GROUND: gnd 
-* sizes: [1, 1, 3, 8]
-Xbuf_inv1
-+ A Zb1_int vdd gnd
-+ mp3_tag_array_1_pinv_6
-Xbuf_inv2
-+ Zb1_int Zb2_int vdd gnd
-+ mp3_tag_array_1_pinv_6
-Xbuf_inv3
-+ Zb2_int Zb3_int vdd gnd
-+ mp3_tag_array_1_pinv_15
-Xbuf_inv4
-+ Zb3_int Z vdd gnd
-+ mp3_tag_array_1_pinv_16
-.ENDS mp3_tag_array_1_pdriver_4
-
-.SUBCKT mp3_tag_array_1_pnand2_1
-+ A B Z vdd gnd
-* INPUT : A 
-* INPUT : B 
 * OUTPUT: Z 
 * POWER : vdd 
 * GROUND: gnd 
 * size: 1
-Mpnand2_pmos1 vdd A Z vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
-Mpnand2_pmos2 Z B vdd vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
-Mpnand2_nmos1 Z B net1 gnd nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
-Mpnand2_nmos2 net1 A gnd gnd nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
-.ENDS mp3_tag_array_1_pnand2_1
+Mpinv_pmos Z A vdd vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
+Mpinv_nmos Z A gnd gnd nmos_vtg m=1 w=0.09u l=0.05u pd=0.28u ps=0.28u as=0.01p ad=0.01p
+.ENDS mp3_tag_array_1_pinv_14
+
+* spice ptx M{0} {1} nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
+
+* spice ptx M{0} {1} pmos_vtg m=1 w=0.54u l=0.05u pd=1.18u ps=1.18u as=0.07p ad=0.07p
 
 .SUBCKT mp3_tag_array_1_pinv_1
 + A Z vdd gnd
@@ -604,61 +294,6 @@ Xdff_r1_c0
 + din_1 dout_1 dout_bar_1 clk vdd gnd
 + mp3_tag_array_1_dff_buf_0
 .ENDS mp3_tag_array_1_dff_buf_array
-
-* spice ptx M{0} {1} nmos_vtg m=10 w=0.28750000000000003u l=0.05u pd=0.68u ps=0.68u as=0.04p ad=0.04p
-
-* spice ptx M{0} {1} pmos_vtg m=10 w=0.865u l=0.05u pd=1.83u ps=1.83u as=0.11p ad=0.11p
-
-.SUBCKT mp3_tag_array_1_pinv_12
-+ A Z vdd gnd
-* INPUT : A 
-* OUTPUT: Z 
-* POWER : vdd 
-* GROUND: gnd 
-* size: 32
-Mpinv_pmos Z A vdd vdd pmos_vtg m=10 w=0.865u l=0.05u pd=1.83u ps=1.83u as=0.11p ad=0.11p
-Mpinv_nmos Z A gnd gnd nmos_vtg m=10 w=0.28750000000000003u l=0.05u pd=0.68u ps=0.68u as=0.04p ad=0.04p
-.ENDS mp3_tag_array_1_pinv_12
-
-.SUBCKT mp3_tag_array_1_pdriver_2
-+ A Z vdd gnd
-* INPUT : A 
-* OUTPUT: Z 
-* POWER : vdd 
-* GROUND: gnd 
-* sizes: [32]
-Xbuf_inv1
-+ A Z vdd gnd
-+ mp3_tag_array_1_pinv_12
-.ENDS mp3_tag_array_1_pdriver_2
-
-.SUBCKT mp3_tag_array_1_pand3
-+ A B C Z vdd gnd
-* INPUT : A 
-* INPUT : B 
-* INPUT : C 
-* OUTPUT: Z 
-* POWER : vdd 
-* GROUND: gnd 
-* size: 32
-Xpand3_nand
-+ A B C zb_int vdd gnd
-+ mp3_tag_array_1_pnand3_0
-Xpand3_inv
-+ zb_int Z vdd gnd
-+ mp3_tag_array_1_pdriver_2
-.ENDS mp3_tag_array_1_pand3
-
-.SUBCKT mp3_tag_array_1_pinv_14
-+ A Z vdd gnd
-* INPUT : A 
-* OUTPUT: Z 
-* POWER : vdd 
-* GROUND: gnd 
-* size: 1
-Mpinv_pmos Z A vdd vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
-Mpinv_nmos Z A gnd gnd nmos_vtg m=1 w=0.09u l=0.05u pd=0.28u ps=0.28u as=0.01p ad=0.01p
-.ENDS mp3_tag_array_1_pinv_14
 
 .SUBCKT mp3_tag_array_1_pinv_17
 + A Z vdd gnd
@@ -815,6 +450,238 @@ Xdload_8_3
 + mp3_tag_array_1_pinv_17
 .ENDS mp3_tag_array_1_delay_chain
 
+* spice ptx M{0} {1} pmos_vtg m=4 w=0.81u l=0.05u pd=1.72u ps=1.72u as=0.10p ad=0.10p
+
+* spice ptx M{0} {1} nmos_vtg m=4 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
+
+.SUBCKT mp3_tag_array_1_pinv_3
++ A Z vdd gnd
+* INPUT : A 
+* OUTPUT: Z 
+* POWER : vdd 
+* GROUND: gnd 
+* size: 12
+Mpinv_pmos Z A vdd vdd pmos_vtg m=4 w=0.81u l=0.05u pd=1.72u ps=1.72u as=0.10p ad=0.10p
+Mpinv_nmos Z A gnd gnd nmos_vtg m=4 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
+.ENDS mp3_tag_array_1_pinv_3
+
+.SUBCKT mp3_tag_array_1_pdriver
++ A Z vdd gnd
+* INPUT : A 
+* OUTPUT: Z 
+* POWER : vdd 
+* GROUND: gnd 
+* sizes: [12]
+Xbuf_inv1
++ A Z vdd gnd
++ mp3_tag_array_1_pinv_3
+.ENDS mp3_tag_array_1_pdriver
+
+.SUBCKT mp3_tag_array_1_pnand2_0
++ A B Z vdd gnd
+* INPUT : A 
+* INPUT : B 
+* OUTPUT: Z 
+* POWER : vdd 
+* GROUND: gnd 
+* size: 1
+Mpnand2_pmos1 vdd A Z vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
+Mpnand2_pmos2 Z B vdd vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
+Mpnand2_nmos1 Z B net1 gnd nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
+Mpnand2_nmos2 net1 A gnd gnd nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
+.ENDS mp3_tag_array_1_pnand2_0
+
+.SUBCKT mp3_tag_array_1_pand2
++ A B Z vdd gnd
+* INPUT : A 
+* INPUT : B 
+* OUTPUT: Z 
+* POWER : vdd 
+* GROUND: gnd 
+* size: 12
+Xpand2_nand
++ A B zb_int vdd gnd
++ mp3_tag_array_1_pnand2_0
+Xpand2_inv
++ zb_int Z vdd gnd
++ mp3_tag_array_1_pdriver
+.ENDS mp3_tag_array_1_pand2
+
+.SUBCKT mp3_tag_array_1_pinv_6
++ A Z vdd gnd
+* INPUT : A 
+* OUTPUT: Z 
+* POWER : vdd 
+* GROUND: gnd 
+* size: 1
+Mpinv_pmos Z A vdd vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
+Mpinv_nmos Z A gnd gnd nmos_vtg m=1 w=0.09u l=0.05u pd=0.28u ps=0.28u as=0.01p ad=0.01p
+.ENDS mp3_tag_array_1_pinv_6
+
+* spice ptx M{0} {1} pmos_vtg m=3 w=0.72u l=0.05u pd=1.54u ps=1.54u as=0.09p ad=0.09p
+
+* spice ptx M{0} {1} nmos_vtg m=3 w=0.24u l=0.05u pd=0.58u ps=0.58u as=0.03p ad=0.03p
+
+.SUBCKT mp3_tag_array_1_pinv_16
++ A Z vdd gnd
+* INPUT : A 
+* OUTPUT: Z 
+* POWER : vdd 
+* GROUND: gnd 
+* size: 8
+Mpinv_pmos Z A vdd vdd pmos_vtg m=3 w=0.72u l=0.05u pd=1.54u ps=1.54u as=0.09p ad=0.09p
+Mpinv_nmos Z A gnd gnd nmos_vtg m=3 w=0.24u l=0.05u pd=0.58u ps=0.58u as=0.03p ad=0.03p
+.ENDS mp3_tag_array_1_pinv_16
+
+* spice ptx M{0} {1} nmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
+
+* spice ptx M{0} {1} pmos_vtg m=1 w=0.81u l=0.05u pd=1.72u ps=1.72u as=0.10p ad=0.10p
+
+.SUBCKT mp3_tag_array_1_pinv_15
++ A Z vdd gnd
+* INPUT : A 
+* OUTPUT: Z 
+* POWER : vdd 
+* GROUND: gnd 
+* size: 3
+Mpinv_pmos Z A vdd vdd pmos_vtg m=1 w=0.81u l=0.05u pd=1.72u ps=1.72u as=0.10p ad=0.10p
+Mpinv_nmos Z A gnd gnd nmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
+.ENDS mp3_tag_array_1_pinv_15
+
+.SUBCKT mp3_tag_array_1_pdriver_4
++ A Z vdd gnd
+* INPUT : A 
+* OUTPUT: Z 
+* POWER : vdd 
+* GROUND: gnd 
+* sizes: [1, 1, 3, 8]
+Xbuf_inv1
++ A Zb1_int vdd gnd
++ mp3_tag_array_1_pinv_6
+Xbuf_inv2
++ Zb1_int Zb2_int vdd gnd
++ mp3_tag_array_1_pinv_6
+Xbuf_inv3
++ Zb2_int Zb3_int vdd gnd
++ mp3_tag_array_1_pinv_15
+Xbuf_inv4
++ Zb3_int Z vdd gnd
++ mp3_tag_array_1_pinv_16
+.ENDS mp3_tag_array_1_pdriver_4
+
+* spice ptx M{0} {1} nmos_vtg m=2 w=0.225u l=0.05u pd=0.55u ps=0.55u as=0.03p ad=0.03p
+
+* spice ptx M{0} {1} pmos_vtg m=2 w=0.675u l=0.05u pd=1.45u ps=1.45u as=0.08p ad=0.08p
+
+.SUBCKT mp3_tag_array_1_pinv_11
++ A Z vdd gnd
+* INPUT : A 
+* OUTPUT: Z 
+* POWER : vdd 
+* GROUND: gnd 
+* size: 5
+Mpinv_pmos Z A vdd vdd pmos_vtg m=2 w=0.675u l=0.05u pd=1.45u ps=1.45u as=0.08p ad=0.08p
+Mpinv_nmos Z A gnd gnd nmos_vtg m=2 w=0.225u l=0.05u pd=0.55u ps=0.55u as=0.03p ad=0.03p
+.ENDS mp3_tag_array_1_pinv_11
+
+.SUBCKT mp3_tag_array_1_pdriver_1
++ A Z vdd gnd
+* INPUT : A 
+* OUTPUT: Z 
+* POWER : vdd 
+* GROUND: gnd 
+* sizes: [1, 5]
+Xbuf_inv1
++ A Zb1_int vdd gnd
++ mp3_tag_array_1_pinv_6
+Xbuf_inv2
++ Zb1_int Z vdd gnd
++ mp3_tag_array_1_pinv_11
+.ENDS mp3_tag_array_1_pdriver_1
+
+* spice ptx M{0} {1} nmos_vtg m=2 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
+
+* spice ptx M{0} {1} pmos_vtg m=2 w=0.81u l=0.05u pd=1.72u ps=1.72u as=0.10p ad=0.10p
+
+.SUBCKT mp3_tag_array_1_pinv_8
++ A Z vdd gnd
+* INPUT : A 
+* OUTPUT: Z 
+* POWER : vdd 
+* GROUND: gnd 
+* size: 6
+Mpinv_pmos Z A vdd vdd pmos_vtg m=2 w=0.81u l=0.05u pd=1.72u ps=1.72u as=0.10p ad=0.10p
+Mpinv_nmos Z A gnd gnd nmos_vtg m=2 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
+.ENDS mp3_tag_array_1_pinv_8
+
+* spice ptx M{0} {1} pmos_vtg m=16 w=0.8775000000000001u l=0.05u pd=1.86u ps=1.86u as=0.11p ad=0.11p
+
+* spice ptx M{0} {1} nmos_vtg m=16 w=0.2925u l=0.05u pd=0.68u ps=0.68u as=0.04p ad=0.04p
+
+.SUBCKT mp3_tag_array_1_pinv_10
++ A Z vdd gnd
+* INPUT : A 
+* OUTPUT: Z 
+* POWER : vdd 
+* GROUND: gnd 
+* size: 52
+Mpinv_pmos Z A vdd vdd pmos_vtg m=16 w=0.8775000000000001u l=0.05u pd=1.86u ps=1.86u as=0.11p ad=0.11p
+Mpinv_nmos Z A gnd gnd nmos_vtg m=16 w=0.2925u l=0.05u pd=0.68u ps=0.68u as=0.04p ad=0.04p
+.ENDS mp3_tag_array_1_pinv_10
+
+.SUBCKT mp3_tag_array_1_pinv_7
++ A Z vdd gnd
+* INPUT : A 
+* OUTPUT: Z 
+* POWER : vdd 
+* GROUND: gnd 
+* size: 2
+Mpinv_pmos Z A vdd vdd pmos_vtg m=1 w=0.54u l=0.05u pd=1.18u ps=1.18u as=0.07p ad=0.07p
+Mpinv_nmos Z A gnd gnd nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
+.ENDS mp3_tag_array_1_pinv_7
+
+* spice ptx M{0} {1} nmos_vtg m=5 w=0.305u l=0.05u pd=0.71u ps=0.71u as=0.04p ad=0.04p
+
+* spice ptx M{0} {1} pmos_vtg m=5 w=0.9175u l=0.05u pd=1.94u ps=1.94u as=0.11p ad=0.11p
+
+.SUBCKT mp3_tag_array_1_pinv_9
++ A Z vdd gnd
+* INPUT : A 
+* OUTPUT: Z 
+* POWER : vdd 
+* GROUND: gnd 
+* size: 17
+Mpinv_pmos Z A vdd vdd pmos_vtg m=5 w=0.9175u l=0.05u pd=1.94u ps=1.94u as=0.11p ad=0.11p
+Mpinv_nmos Z A gnd gnd nmos_vtg m=5 w=0.305u l=0.05u pd=0.71u ps=0.71u as=0.04p ad=0.04p
+.ENDS mp3_tag_array_1_pinv_9
+
+.SUBCKT mp3_tag_array_1_pdriver_0
++ A Z vdd gnd
+* INPUT : A 
+* OUTPUT: Z 
+* POWER : vdd 
+* GROUND: gnd 
+* sizes: [1, 1, 2, 6, 17, 52]
+Xbuf_inv1
++ A Zb1_int vdd gnd
++ mp3_tag_array_1_pinv_6
+Xbuf_inv2
++ Zb1_int Zb2_int vdd gnd
++ mp3_tag_array_1_pinv_6
+Xbuf_inv3
++ Zb2_int Zb3_int vdd gnd
++ mp3_tag_array_1_pinv_7
+Xbuf_inv4
++ Zb3_int Zb4_int vdd gnd
++ mp3_tag_array_1_pinv_8
+Xbuf_inv5
++ Zb4_int Zb5_int vdd gnd
++ mp3_tag_array_1_pinv_9
+Xbuf_inv6
++ Zb5_int Z vdd gnd
++ mp3_tag_array_1_pinv_10
+.ENDS mp3_tag_array_1_pdriver_0
+
 .SUBCKT mp3_tag_array_1_control_logic_rw
 + csb web clk rbl_bl s_en w_en p_en_bar wl_en clk_buf vdd gnd
 * INPUT : csb 
@@ -869,6 +736,154 @@ Xbuf_p_en_bar
 + mp3_tag_array_1_pdriver_4
 .ENDS mp3_tag_array_1_control_logic_rw
 
+.SUBCKT mp3_tag_array_1_data_dff
++ din_0 din_1 din_2 din_3 din_4 din_5 din_6 din_7 din_8 din_9 din_10
++ din_11 din_12 din_13 din_14 din_15 din_16 din_17 din_18 din_19 din_20
++ din_21 din_22 din_23 dout_0 dout_1 dout_2 dout_3 dout_4 dout_5 dout_6
++ dout_7 dout_8 dout_9 dout_10 dout_11 dout_12 dout_13 dout_14 dout_15
++ dout_16 dout_17 dout_18 dout_19 dout_20 dout_21 dout_22 dout_23 clk
++ vdd gnd
+* INPUT : din_0 
+* INPUT : din_1 
+* INPUT : din_2 
+* INPUT : din_3 
+* INPUT : din_4 
+* INPUT : din_5 
+* INPUT : din_6 
+* INPUT : din_7 
+* INPUT : din_8 
+* INPUT : din_9 
+* INPUT : din_10 
+* INPUT : din_11 
+* INPUT : din_12 
+* INPUT : din_13 
+* INPUT : din_14 
+* INPUT : din_15 
+* INPUT : din_16 
+* INPUT : din_17 
+* INPUT : din_18 
+* INPUT : din_19 
+* INPUT : din_20 
+* INPUT : din_21 
+* INPUT : din_22 
+* INPUT : din_23 
+* OUTPUT: dout_0 
+* OUTPUT: dout_1 
+* OUTPUT: dout_2 
+* OUTPUT: dout_3 
+* OUTPUT: dout_4 
+* OUTPUT: dout_5 
+* OUTPUT: dout_6 
+* OUTPUT: dout_7 
+* OUTPUT: dout_8 
+* OUTPUT: dout_9 
+* OUTPUT: dout_10 
+* OUTPUT: dout_11 
+* OUTPUT: dout_12 
+* OUTPUT: dout_13 
+* OUTPUT: dout_14 
+* OUTPUT: dout_15 
+* OUTPUT: dout_16 
+* OUTPUT: dout_17 
+* OUTPUT: dout_18 
+* OUTPUT: dout_19 
+* OUTPUT: dout_20 
+* OUTPUT: dout_21 
+* OUTPUT: dout_22 
+* OUTPUT: dout_23 
+* INPUT : clk 
+* POWER : vdd 
+* GROUND: gnd 
+* rows: 1 cols: 24
+Xdff_r0_c0
++ din_0 dout_0 clk vdd gnd
++ dff
+Xdff_r0_c1
++ din_1 dout_1 clk vdd gnd
++ dff
+Xdff_r0_c2
++ din_2 dout_2 clk vdd gnd
++ dff
+Xdff_r0_c3
++ din_3 dout_3 clk vdd gnd
++ dff
+Xdff_r0_c4
++ din_4 dout_4 clk vdd gnd
++ dff
+Xdff_r0_c5
++ din_5 dout_5 clk vdd gnd
++ dff
+Xdff_r0_c6
++ din_6 dout_6 clk vdd gnd
++ dff
+Xdff_r0_c7
++ din_7 dout_7 clk vdd gnd
++ dff
+Xdff_r0_c8
++ din_8 dout_8 clk vdd gnd
++ dff
+Xdff_r0_c9
++ din_9 dout_9 clk vdd gnd
++ dff
+Xdff_r0_c10
++ din_10 dout_10 clk vdd gnd
++ dff
+Xdff_r0_c11
++ din_11 dout_11 clk vdd gnd
++ dff
+Xdff_r0_c12
++ din_12 dout_12 clk vdd gnd
++ dff
+Xdff_r0_c13
++ din_13 dout_13 clk vdd gnd
++ dff
+Xdff_r0_c14
++ din_14 dout_14 clk vdd gnd
++ dff
+Xdff_r0_c15
++ din_15 dout_15 clk vdd gnd
++ dff
+Xdff_r0_c16
++ din_16 dout_16 clk vdd gnd
++ dff
+Xdff_r0_c17
++ din_17 dout_17 clk vdd gnd
++ dff
+Xdff_r0_c18
++ din_18 dout_18 clk vdd gnd
++ dff
+Xdff_r0_c19
++ din_19 dout_19 clk vdd gnd
++ dff
+Xdff_r0_c20
++ din_20 dout_20 clk vdd gnd
++ dff
+Xdff_r0_c21
++ din_21 dout_21 clk vdd gnd
++ dff
+Xdff_r0_c22
++ din_22 dout_22 clk vdd gnd
++ dff
+Xdff_r0_c23
++ din_23 dout_23 clk vdd gnd
++ dff
+.ENDS mp3_tag_array_1_data_dff
+
+* spice ptx M{0} {1} nmos_vtg m=5 w=0.1075u l=0.05u pd=0.32u ps=0.32u as=0.01p ad=0.01p
+
+* spice ptx M{0} {1} pmos_vtg m=5 w=0.325u l=0.05u pd=0.75u ps=0.75u as=0.04p ad=0.04p
+
+.SUBCKT mp3_tag_array_1_pinv_0
++ A Z vdd gnd
+* INPUT : A 
+* OUTPUT: Z 
+* POWER : vdd 
+* GROUND: gnd 
+* size: 6
+Mpinv_pmos Z A vdd vdd pmos_vtg m=5 w=0.325u l=0.05u pd=0.75u ps=0.75u as=0.04p ad=0.04p
+Mpinv_nmos Z A gnd gnd nmos_vtg m=5 w=0.1075u l=0.05u pd=0.32u ps=0.32u as=0.01p ad=0.01p
+.ENDS mp3_tag_array_1_pinv_0
+
 .SUBCKT mp3_tag_array_1_pnand2
 + A B Z vdd gnd
 * INPUT : A 
@@ -882,6 +897,128 @@ Mpnand2_pmos2 Z B vdd vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03
 Mpnand2_nmos1 Z B net1 gnd nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
 Mpnand2_nmos2 net1 A gnd gnd nmos_vtg m=1 w=0.18u l=0.05u pd=0.46u ps=0.46u as=0.02p ad=0.02p
 .ENDS mp3_tag_array_1_pnand2
+
+.SUBCKT mp3_tag_array_1_wordline_driver
++ A B Z vdd gnd
+* INPUT : A 
+* INPUT : B 
+* OUTPUT: Z 
+* POWER : vdd 
+* GROUND: gnd 
+* cols: 24
+Xwld_nand
++ A B zb_int vdd gnd
++ mp3_tag_array_1_pnand2
+Xwl_driver
++ zb_int Z vdd gnd
++ mp3_tag_array_1_pinv_0
+.ENDS mp3_tag_array_1_wordline_driver
+
+.SUBCKT mp3_tag_array_1_wordline_driver_array
++ in_0 in_1 in_2 in_3 in_4 in_5 in_6 in_7 in_8 in_9 in_10 in_11 in_12
++ in_13 in_14 in_15 wl_0 wl_1 wl_2 wl_3 wl_4 wl_5 wl_6 wl_7 wl_8 wl_9
++ wl_10 wl_11 wl_12 wl_13 wl_14 wl_15 en vdd gnd
+* INPUT : in_0 
+* INPUT : in_1 
+* INPUT : in_2 
+* INPUT : in_3 
+* INPUT : in_4 
+* INPUT : in_5 
+* INPUT : in_6 
+* INPUT : in_7 
+* INPUT : in_8 
+* INPUT : in_9 
+* INPUT : in_10 
+* INPUT : in_11 
+* INPUT : in_12 
+* INPUT : in_13 
+* INPUT : in_14 
+* INPUT : in_15 
+* OUTPUT: wl_0 
+* OUTPUT: wl_1 
+* OUTPUT: wl_2 
+* OUTPUT: wl_3 
+* OUTPUT: wl_4 
+* OUTPUT: wl_5 
+* OUTPUT: wl_6 
+* OUTPUT: wl_7 
+* OUTPUT: wl_8 
+* OUTPUT: wl_9 
+* OUTPUT: wl_10 
+* OUTPUT: wl_11 
+* OUTPUT: wl_12 
+* OUTPUT: wl_13 
+* OUTPUT: wl_14 
+* OUTPUT: wl_15 
+* INPUT : en 
+* POWER : vdd 
+* GROUND: gnd 
+* rows: 16 cols: 24
+Xwl_driver_and0
++ in_0 en wl_0 vdd gnd
++ mp3_tag_array_1_wordline_driver
+Xwl_driver_and1
++ in_1 en wl_1 vdd gnd
++ mp3_tag_array_1_wordline_driver
+Xwl_driver_and2
++ in_2 en wl_2 vdd gnd
++ mp3_tag_array_1_wordline_driver
+Xwl_driver_and3
++ in_3 en wl_3 vdd gnd
++ mp3_tag_array_1_wordline_driver
+Xwl_driver_and4
++ in_4 en wl_4 vdd gnd
++ mp3_tag_array_1_wordline_driver
+Xwl_driver_and5
++ in_5 en wl_5 vdd gnd
++ mp3_tag_array_1_wordline_driver
+Xwl_driver_and6
++ in_6 en wl_6 vdd gnd
++ mp3_tag_array_1_wordline_driver
+Xwl_driver_and7
++ in_7 en wl_7 vdd gnd
++ mp3_tag_array_1_wordline_driver
+Xwl_driver_and8
++ in_8 en wl_8 vdd gnd
++ mp3_tag_array_1_wordline_driver
+Xwl_driver_and9
++ in_9 en wl_9 vdd gnd
++ mp3_tag_array_1_wordline_driver
+Xwl_driver_and10
++ in_10 en wl_10 vdd gnd
++ mp3_tag_array_1_wordline_driver
+Xwl_driver_and11
++ in_11 en wl_11 vdd gnd
++ mp3_tag_array_1_wordline_driver
+Xwl_driver_and12
++ in_12 en wl_12 vdd gnd
++ mp3_tag_array_1_wordline_driver
+Xwl_driver_and13
++ in_13 en wl_13 vdd gnd
++ mp3_tag_array_1_wordline_driver
+Xwl_driver_and14
++ in_14 en wl_14 vdd gnd
++ mp3_tag_array_1_wordline_driver
+Xwl_driver_and15
++ in_15 en wl_15 vdd gnd
++ mp3_tag_array_1_wordline_driver
+.ENDS mp3_tag_array_1_wordline_driver_array
+
+.SUBCKT mp3_tag_array_1_and2_dec_0
++ A B Z vdd gnd
+* INPUT : A 
+* INPUT : B 
+* OUTPUT: Z 
+* POWER : vdd 
+* GROUND: gnd 
+* size: 6
+Xpand2_dec_nand
++ A B zb_int vdd gnd
++ mp3_tag_array_1_pnand2
+Xpand2_dec_inv
++ zb_int Z vdd gnd
++ mp3_tag_array_1_pinv_0
+.ENDS mp3_tag_array_1_and2_dec_0
 
 .SUBCKT mp3_tag_array_1_pinv
 + A Z vdd gnd
@@ -1022,143 +1159,6 @@ XDEC_AND_15
 + mp3_tag_array_1_and2_dec
 .ENDS mp3_tag_array_1_hierarchical_decoder
 
-* spice ptx M{0} {1} pmos_vtg m=5 w=0.325u l=0.05u pd=0.75u ps=0.75u as=0.04p ad=0.04p
-
-* spice ptx M{0} {1} nmos_vtg m=5 w=0.1075u l=0.05u pd=0.32u ps=0.32u as=0.01p ad=0.01p
-
-.SUBCKT mp3_tag_array_1_pinv_0
-+ A Z vdd gnd
-* INPUT : A 
-* OUTPUT: Z 
-* POWER : vdd 
-* GROUND: gnd 
-* size: 6
-Mpinv_pmos Z A vdd vdd pmos_vtg m=5 w=0.325u l=0.05u pd=0.75u ps=0.75u as=0.04p ad=0.04p
-Mpinv_nmos Z A gnd gnd nmos_vtg m=5 w=0.1075u l=0.05u pd=0.32u ps=0.32u as=0.01p ad=0.01p
-.ENDS mp3_tag_array_1_pinv_0
-
-.SUBCKT mp3_tag_array_1_and2_dec_0
-+ A B Z vdd gnd
-* INPUT : A 
-* INPUT : B 
-* OUTPUT: Z 
-* POWER : vdd 
-* GROUND: gnd 
-* size: 6
-Xpand2_dec_nand
-+ A B zb_int vdd gnd
-+ mp3_tag_array_1_pnand2
-Xpand2_dec_inv
-+ zb_int Z vdd gnd
-+ mp3_tag_array_1_pinv_0
-.ENDS mp3_tag_array_1_and2_dec_0
-
-.SUBCKT mp3_tag_array_1_wordline_driver
-+ A B Z vdd gnd
-* INPUT : A 
-* INPUT : B 
-* OUTPUT: Z 
-* POWER : vdd 
-* GROUND: gnd 
-* cols: 24
-Xwld_nand
-+ A B zb_int vdd gnd
-+ mp3_tag_array_1_pnand2
-Xwl_driver
-+ zb_int Z vdd gnd
-+ mp3_tag_array_1_pinv_0
-.ENDS mp3_tag_array_1_wordline_driver
-
-.SUBCKT mp3_tag_array_1_wordline_driver_array
-+ in_0 in_1 in_2 in_3 in_4 in_5 in_6 in_7 in_8 in_9 in_10 in_11 in_12
-+ in_13 in_14 in_15 wl_0 wl_1 wl_2 wl_3 wl_4 wl_5 wl_6 wl_7 wl_8 wl_9
-+ wl_10 wl_11 wl_12 wl_13 wl_14 wl_15 en vdd gnd
-* INPUT : in_0 
-* INPUT : in_1 
-* INPUT : in_2 
-* INPUT : in_3 
-* INPUT : in_4 
-* INPUT : in_5 
-* INPUT : in_6 
-* INPUT : in_7 
-* INPUT : in_8 
-* INPUT : in_9 
-* INPUT : in_10 
-* INPUT : in_11 
-* INPUT : in_12 
-* INPUT : in_13 
-* INPUT : in_14 
-* INPUT : in_15 
-* OUTPUT: wl_0 
-* OUTPUT: wl_1 
-* OUTPUT: wl_2 
-* OUTPUT: wl_3 
-* OUTPUT: wl_4 
-* OUTPUT: wl_5 
-* OUTPUT: wl_6 
-* OUTPUT: wl_7 
-* OUTPUT: wl_8 
-* OUTPUT: wl_9 
-* OUTPUT: wl_10 
-* OUTPUT: wl_11 
-* OUTPUT: wl_12 
-* OUTPUT: wl_13 
-* OUTPUT: wl_14 
-* OUTPUT: wl_15 
-* INPUT : en 
-* POWER : vdd 
-* GROUND: gnd 
-* rows: 16 cols: 24
-Xwl_driver_and0
-+ in_0 en wl_0 vdd gnd
-+ mp3_tag_array_1_wordline_driver
-Xwl_driver_and1
-+ in_1 en wl_1 vdd gnd
-+ mp3_tag_array_1_wordline_driver
-Xwl_driver_and2
-+ in_2 en wl_2 vdd gnd
-+ mp3_tag_array_1_wordline_driver
-Xwl_driver_and3
-+ in_3 en wl_3 vdd gnd
-+ mp3_tag_array_1_wordline_driver
-Xwl_driver_and4
-+ in_4 en wl_4 vdd gnd
-+ mp3_tag_array_1_wordline_driver
-Xwl_driver_and5
-+ in_5 en wl_5 vdd gnd
-+ mp3_tag_array_1_wordline_driver
-Xwl_driver_and6
-+ in_6 en wl_6 vdd gnd
-+ mp3_tag_array_1_wordline_driver
-Xwl_driver_and7
-+ in_7 en wl_7 vdd gnd
-+ mp3_tag_array_1_wordline_driver
-Xwl_driver_and8
-+ in_8 en wl_8 vdd gnd
-+ mp3_tag_array_1_wordline_driver
-Xwl_driver_and9
-+ in_9 en wl_9 vdd gnd
-+ mp3_tag_array_1_wordline_driver
-Xwl_driver_and10
-+ in_10 en wl_10 vdd gnd
-+ mp3_tag_array_1_wordline_driver
-Xwl_driver_and11
-+ in_11 en wl_11 vdd gnd
-+ mp3_tag_array_1_wordline_driver
-Xwl_driver_and12
-+ in_12 en wl_12 vdd gnd
-+ mp3_tag_array_1_wordline_driver
-Xwl_driver_and13
-+ in_13 en wl_13 vdd gnd
-+ mp3_tag_array_1_wordline_driver
-Xwl_driver_and14
-+ in_14 en wl_14 vdd gnd
-+ mp3_tag_array_1_wordline_driver
-Xwl_driver_and15
-+ in_15 en wl_15 vdd gnd
-+ mp3_tag_array_1_wordline_driver
-.ENDS mp3_tag_array_1_wordline_driver_array
-
 .SUBCKT mp3_tag_array_1_port_address
 + addr_0 addr_1 addr_2 addr_3 wl_en wl_0 wl_1 wl_2 wl_3 wl_4 wl_5 wl_6
 + wl_7 wl_8 wl_9 wl_10 wl_11 wl_12 wl_13 wl_14 wl_15 rbl_wl vdd gnd
@@ -1202,6 +1202,649 @@ Xrbl_driver
 + mp3_tag_array_1_and2_dec_0
 .ENDS mp3_tag_array_1_port_address
 
+.SUBCKT write_driver din bl br en vdd gnd
+*inverters for enable and data input
+minP bl_bar din vdd vdd pmos_vtg w=360.000000n l=50.000000n
+minN bl_bar din gnd gnd nmos_vtg w=180.000000n l=50.000000n
+moutP en_bar en vdd vdd pmos_vtg w=360.000000n l=50.000000n
+moutN en_bar en gnd gnd nmos_vtg w=180.000000n l=50.000000n
+
+*tristate for BL
+mout0P int1 bl_bar vdd vdd pmos_vtg w=360.000000n l=50.000000n
+mout0P2 bl en_bar int1 vdd pmos_vtg w=360.000000n l=50.000000n
+mout0N bl en int2 gnd nmos_vtg w=180.000000n l=50.000000n
+mout0N2 int2 bl_bar gnd gnd nmos_vtg w=180.000000n l=50.000000n
+
+*tristate for BR
+mout1P int3 din vdd vdd pmos_vtg w=360.000000n l=50.000000n
+mout1P2 br en_bar int3 vdd pmos_vtg w=360.000000n l=50.000000n
+mout1N br en int4 gnd nmos_vtg w=180.000000n l=50.000000n
+mout1N2 int4 din gnd gnd nmos_vtg w=180.000000n l=50.000000n
+.ENDS write_driver
+
+
+.SUBCKT mp3_tag_array_1_write_driver_array
++ data_0 data_1 data_2 data_3 data_4 data_5 data_6 data_7 data_8 data_9
++ data_10 data_11 data_12 data_13 data_14 data_15 data_16 data_17
++ data_18 data_19 data_20 data_21 data_22 data_23 bl_0 br_0 bl_1 br_1
++ bl_2 br_2 bl_3 br_3 bl_4 br_4 bl_5 br_5 bl_6 br_6 bl_7 br_7 bl_8 br_8
++ bl_9 br_9 bl_10 br_10 bl_11 br_11 bl_12 br_12 bl_13 br_13 bl_14 br_14
++ bl_15 br_15 bl_16 br_16 bl_17 br_17 bl_18 br_18 bl_19 br_19 bl_20
++ br_20 bl_21 br_21 bl_22 br_22 bl_23 br_23 en vdd gnd
+* INPUT : data_0 
+* INPUT : data_1 
+* INPUT : data_2 
+* INPUT : data_3 
+* INPUT : data_4 
+* INPUT : data_5 
+* INPUT : data_6 
+* INPUT : data_7 
+* INPUT : data_8 
+* INPUT : data_9 
+* INPUT : data_10 
+* INPUT : data_11 
+* INPUT : data_12 
+* INPUT : data_13 
+* INPUT : data_14 
+* INPUT : data_15 
+* INPUT : data_16 
+* INPUT : data_17 
+* INPUT : data_18 
+* INPUT : data_19 
+* INPUT : data_20 
+* INPUT : data_21 
+* INPUT : data_22 
+* INPUT : data_23 
+* OUTPUT: bl_0 
+* OUTPUT: br_0 
+* OUTPUT: bl_1 
+* OUTPUT: br_1 
+* OUTPUT: bl_2 
+* OUTPUT: br_2 
+* OUTPUT: bl_3 
+* OUTPUT: br_3 
+* OUTPUT: bl_4 
+* OUTPUT: br_4 
+* OUTPUT: bl_5 
+* OUTPUT: br_5 
+* OUTPUT: bl_6 
+* OUTPUT: br_6 
+* OUTPUT: bl_7 
+* OUTPUT: br_7 
+* OUTPUT: bl_8 
+* OUTPUT: br_8 
+* OUTPUT: bl_9 
+* OUTPUT: br_9 
+* OUTPUT: bl_10 
+* OUTPUT: br_10 
+* OUTPUT: bl_11 
+* OUTPUT: br_11 
+* OUTPUT: bl_12 
+* OUTPUT: br_12 
+* OUTPUT: bl_13 
+* OUTPUT: br_13 
+* OUTPUT: bl_14 
+* OUTPUT: br_14 
+* OUTPUT: bl_15 
+* OUTPUT: br_15 
+* OUTPUT: bl_16 
+* OUTPUT: br_16 
+* OUTPUT: bl_17 
+* OUTPUT: br_17 
+* OUTPUT: bl_18 
+* OUTPUT: br_18 
+* OUTPUT: bl_19 
+* OUTPUT: br_19 
+* OUTPUT: bl_20 
+* OUTPUT: br_20 
+* OUTPUT: bl_21 
+* OUTPUT: br_21 
+* OUTPUT: bl_22 
+* OUTPUT: br_22 
+* OUTPUT: bl_23 
+* OUTPUT: br_23 
+* INPUT : en 
+* POWER : vdd 
+* GROUND: gnd 
+* columns: 24
+* word_size 24
+Xwrite_driver0
++ data_0 bl_0 br_0 en vdd gnd
++ write_driver
+Xwrite_driver1
++ data_1 bl_1 br_1 en vdd gnd
++ write_driver
+Xwrite_driver2
++ data_2 bl_2 br_2 en vdd gnd
++ write_driver
+Xwrite_driver3
++ data_3 bl_3 br_3 en vdd gnd
++ write_driver
+Xwrite_driver4
++ data_4 bl_4 br_4 en vdd gnd
++ write_driver
+Xwrite_driver5
++ data_5 bl_5 br_5 en vdd gnd
++ write_driver
+Xwrite_driver6
++ data_6 bl_6 br_6 en vdd gnd
++ write_driver
+Xwrite_driver7
++ data_7 bl_7 br_7 en vdd gnd
++ write_driver
+Xwrite_driver8
++ data_8 bl_8 br_8 en vdd gnd
++ write_driver
+Xwrite_driver9
++ data_9 bl_9 br_9 en vdd gnd
++ write_driver
+Xwrite_driver10
++ data_10 bl_10 br_10 en vdd gnd
++ write_driver
+Xwrite_driver11
++ data_11 bl_11 br_11 en vdd gnd
++ write_driver
+Xwrite_driver12
++ data_12 bl_12 br_12 en vdd gnd
++ write_driver
+Xwrite_driver13
++ data_13 bl_13 br_13 en vdd gnd
++ write_driver
+Xwrite_driver14
++ data_14 bl_14 br_14 en vdd gnd
++ write_driver
+Xwrite_driver15
++ data_15 bl_15 br_15 en vdd gnd
++ write_driver
+Xwrite_driver16
++ data_16 bl_16 br_16 en vdd gnd
++ write_driver
+Xwrite_driver17
++ data_17 bl_17 br_17 en vdd gnd
++ write_driver
+Xwrite_driver18
++ data_18 bl_18 br_18 en vdd gnd
++ write_driver
+Xwrite_driver19
++ data_19 bl_19 br_19 en vdd gnd
++ write_driver
+Xwrite_driver20
++ data_20 bl_20 br_20 en vdd gnd
++ write_driver
+Xwrite_driver21
++ data_21 bl_21 br_21 en vdd gnd
++ write_driver
+Xwrite_driver22
++ data_22 bl_22 br_22 en vdd gnd
++ write_driver
+Xwrite_driver23
++ data_23 bl_23 br_23 en vdd gnd
++ write_driver
+.ENDS mp3_tag_array_1_write_driver_array
+
+.SUBCKT sense_amp bl br dout en vdd gnd
+M_1 dint net_1 vdd vdd pmos_vtg w=540.0n l=50.0n
+M_3 net_1 dint vdd vdd pmos_vtg w=540.0n l=50.0n
+M_2 dint net_1 net_2 gnd nmos_vtg w=270.0n l=50.0n
+M_8 net_1 dint net_2 gnd nmos_vtg w=270.0n l=50.0n
+M_5 bl en dint vdd pmos_vtg w=720.0n l=50.0n
+M_6 br en net_1 vdd pmos_vtg w=720.0n l=50.0n
+M_7 net_2 en gnd gnd nmos_vtg w=270.0n l=50.0n
+
+M_9 dout_bar dint vdd vdd pmos_vtg w=180.0n l=50.0n
+M_10 dout_bar dint gnd gnd nmos_vtg w=90.0n l=50.0n
+M_11 dout dout_bar vdd vdd pmos_vtg w=540.0n l=50.0n
+M_12 dout dout_bar gnd gnd nmos_vtg w=270.0n l=50.0n
+.ENDS sense_amp
+
+
+.SUBCKT mp3_tag_array_1_sense_amp_array
++ data_0 bl_0 br_0 data_1 bl_1 br_1 data_2 bl_2 br_2 data_3 bl_3 br_3
++ data_4 bl_4 br_4 data_5 bl_5 br_5 data_6 bl_6 br_6 data_7 bl_7 br_7
++ data_8 bl_8 br_8 data_9 bl_9 br_9 data_10 bl_10 br_10 data_11 bl_11
++ br_11 data_12 bl_12 br_12 data_13 bl_13 br_13 data_14 bl_14 br_14
++ data_15 bl_15 br_15 data_16 bl_16 br_16 data_17 bl_17 br_17 data_18
++ bl_18 br_18 data_19 bl_19 br_19 data_20 bl_20 br_20 data_21 bl_21
++ br_21 data_22 bl_22 br_22 data_23 bl_23 br_23 en vdd gnd
+* OUTPUT: data_0 
+* INPUT : bl_0 
+* INPUT : br_0 
+* OUTPUT: data_1 
+* INPUT : bl_1 
+* INPUT : br_1 
+* OUTPUT: data_2 
+* INPUT : bl_2 
+* INPUT : br_2 
+* OUTPUT: data_3 
+* INPUT : bl_3 
+* INPUT : br_3 
+* OUTPUT: data_4 
+* INPUT : bl_4 
+* INPUT : br_4 
+* OUTPUT: data_5 
+* INPUT : bl_5 
+* INPUT : br_5 
+* OUTPUT: data_6 
+* INPUT : bl_6 
+* INPUT : br_6 
+* OUTPUT: data_7 
+* INPUT : bl_7 
+* INPUT : br_7 
+* OUTPUT: data_8 
+* INPUT : bl_8 
+* INPUT : br_8 
+* OUTPUT: data_9 
+* INPUT : bl_9 
+* INPUT : br_9 
+* OUTPUT: data_10 
+* INPUT : bl_10 
+* INPUT : br_10 
+* OUTPUT: data_11 
+* INPUT : bl_11 
+* INPUT : br_11 
+* OUTPUT: data_12 
+* INPUT : bl_12 
+* INPUT : br_12 
+* OUTPUT: data_13 
+* INPUT : bl_13 
+* INPUT : br_13 
+* OUTPUT: data_14 
+* INPUT : bl_14 
+* INPUT : br_14 
+* OUTPUT: data_15 
+* INPUT : bl_15 
+* INPUT : br_15 
+* OUTPUT: data_16 
+* INPUT : bl_16 
+* INPUT : br_16 
+* OUTPUT: data_17 
+* INPUT : bl_17 
+* INPUT : br_17 
+* OUTPUT: data_18 
+* INPUT : bl_18 
+* INPUT : br_18 
+* OUTPUT: data_19 
+* INPUT : bl_19 
+* INPUT : br_19 
+* OUTPUT: data_20 
+* INPUT : bl_20 
+* INPUT : br_20 
+* OUTPUT: data_21 
+* INPUT : bl_21 
+* INPUT : br_21 
+* OUTPUT: data_22 
+* INPUT : bl_22 
+* INPUT : br_22 
+* OUTPUT: data_23 
+* INPUT : bl_23 
+* INPUT : br_23 
+* INPUT : en 
+* POWER : vdd 
+* GROUND: gnd 
+* word_size 24
+* words_per_row: 1
+Xsa_d0
++ bl_0 br_0 data_0 en vdd gnd
++ sense_amp
+Xsa_d1
++ bl_1 br_1 data_1 en vdd gnd
++ sense_amp
+Xsa_d2
++ bl_2 br_2 data_2 en vdd gnd
++ sense_amp
+Xsa_d3
++ bl_3 br_3 data_3 en vdd gnd
++ sense_amp
+Xsa_d4
++ bl_4 br_4 data_4 en vdd gnd
++ sense_amp
+Xsa_d5
++ bl_5 br_5 data_5 en vdd gnd
++ sense_amp
+Xsa_d6
++ bl_6 br_6 data_6 en vdd gnd
++ sense_amp
+Xsa_d7
++ bl_7 br_7 data_7 en vdd gnd
++ sense_amp
+Xsa_d8
++ bl_8 br_8 data_8 en vdd gnd
++ sense_amp
+Xsa_d9
++ bl_9 br_9 data_9 en vdd gnd
++ sense_amp
+Xsa_d10
++ bl_10 br_10 data_10 en vdd gnd
++ sense_amp
+Xsa_d11
++ bl_11 br_11 data_11 en vdd gnd
++ sense_amp
+Xsa_d12
++ bl_12 br_12 data_12 en vdd gnd
++ sense_amp
+Xsa_d13
++ bl_13 br_13 data_13 en vdd gnd
++ sense_amp
+Xsa_d14
++ bl_14 br_14 data_14 en vdd gnd
++ sense_amp
+Xsa_d15
++ bl_15 br_15 data_15 en vdd gnd
++ sense_amp
+Xsa_d16
++ bl_16 br_16 data_16 en vdd gnd
++ sense_amp
+Xsa_d17
++ bl_17 br_17 data_17 en vdd gnd
++ sense_amp
+Xsa_d18
++ bl_18 br_18 data_18 en vdd gnd
++ sense_amp
+Xsa_d19
++ bl_19 br_19 data_19 en vdd gnd
++ sense_amp
+Xsa_d20
++ bl_20 br_20 data_20 en vdd gnd
++ sense_amp
+Xsa_d21
++ bl_21 br_21 data_21 en vdd gnd
++ sense_amp
+Xsa_d22
++ bl_22 br_22 data_22 en vdd gnd
++ sense_amp
+Xsa_d23
++ bl_23 br_23 data_23 en vdd gnd
++ sense_amp
+.ENDS mp3_tag_array_1_sense_amp_array
+
+.SUBCKT mp3_tag_array_1_precharge_0
++ bl br en_bar vdd
+* OUTPUT: bl 
+* OUTPUT: br 
+* INPUT : en_bar 
+* POWER : vdd 
+Mlower_pmos bl en_bar br vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
+Mupper_pmos1 bl en_bar vdd vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
+Mupper_pmos2 br en_bar vdd vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
+.ENDS mp3_tag_array_1_precharge_0
+
+.SUBCKT mp3_tag_array_1_precharge_array
++ bl_0 br_0 bl_1 br_1 bl_2 br_2 bl_3 br_3 bl_4 br_4 bl_5 br_5 bl_6 br_6
++ bl_7 br_7 bl_8 br_8 bl_9 br_9 bl_10 br_10 bl_11 br_11 bl_12 br_12
++ bl_13 br_13 bl_14 br_14 bl_15 br_15 bl_16 br_16 bl_17 br_17 bl_18
++ br_18 bl_19 br_19 bl_20 br_20 bl_21 br_21 bl_22 br_22 bl_23 br_23
++ bl_24 br_24 en_bar vdd
+* OUTPUT: bl_0 
+* OUTPUT: br_0 
+* OUTPUT: bl_1 
+* OUTPUT: br_1 
+* OUTPUT: bl_2 
+* OUTPUT: br_2 
+* OUTPUT: bl_3 
+* OUTPUT: br_3 
+* OUTPUT: bl_4 
+* OUTPUT: br_4 
+* OUTPUT: bl_5 
+* OUTPUT: br_5 
+* OUTPUT: bl_6 
+* OUTPUT: br_6 
+* OUTPUT: bl_7 
+* OUTPUT: br_7 
+* OUTPUT: bl_8 
+* OUTPUT: br_8 
+* OUTPUT: bl_9 
+* OUTPUT: br_9 
+* OUTPUT: bl_10 
+* OUTPUT: br_10 
+* OUTPUT: bl_11 
+* OUTPUT: br_11 
+* OUTPUT: bl_12 
+* OUTPUT: br_12 
+* OUTPUT: bl_13 
+* OUTPUT: br_13 
+* OUTPUT: bl_14 
+* OUTPUT: br_14 
+* OUTPUT: bl_15 
+* OUTPUT: br_15 
+* OUTPUT: bl_16 
+* OUTPUT: br_16 
+* OUTPUT: bl_17 
+* OUTPUT: br_17 
+* OUTPUT: bl_18 
+* OUTPUT: br_18 
+* OUTPUT: bl_19 
+* OUTPUT: br_19 
+* OUTPUT: bl_20 
+* OUTPUT: br_20 
+* OUTPUT: bl_21 
+* OUTPUT: br_21 
+* OUTPUT: bl_22 
+* OUTPUT: br_22 
+* OUTPUT: bl_23 
+* OUTPUT: br_23 
+* OUTPUT: bl_24 
+* OUTPUT: br_24 
+* INPUT : en_bar 
+* POWER : vdd 
+* cols: 25 size: 1 bl: bl br: br
+Xpre_column_0
++ bl_0 br_0 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_1
++ bl_1 br_1 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_2
++ bl_2 br_2 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_3
++ bl_3 br_3 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_4
++ bl_4 br_4 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_5
++ bl_5 br_5 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_6
++ bl_6 br_6 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_7
++ bl_7 br_7 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_8
++ bl_8 br_8 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_9
++ bl_9 br_9 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_10
++ bl_10 br_10 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_11
++ bl_11 br_11 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_12
++ bl_12 br_12 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_13
++ bl_13 br_13 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_14
++ bl_14 br_14 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_15
++ bl_15 br_15 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_16
++ bl_16 br_16 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_17
++ bl_17 br_17 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_18
++ bl_18 br_18 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_19
++ bl_19 br_19 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_20
++ bl_20 br_20 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_21
++ bl_21 br_21 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_22
++ bl_22 br_22 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_23
++ bl_23 br_23 en_bar vdd
++ mp3_tag_array_1_precharge_0
+Xpre_column_24
++ bl_24 br_24 en_bar vdd
++ mp3_tag_array_1_precharge_0
+.ENDS mp3_tag_array_1_precharge_array
+
+.SUBCKT mp3_tag_array_1_port_data
++ rbl_bl rbl_br bl_0 br_0 bl_1 br_1 bl_2 br_2 bl_3 br_3 bl_4 br_4 bl_5
++ br_5 bl_6 br_6 bl_7 br_7 bl_8 br_8 bl_9 br_9 bl_10 br_10 bl_11 br_11
++ bl_12 br_12 bl_13 br_13 bl_14 br_14 bl_15 br_15 bl_16 br_16 bl_17
++ br_17 bl_18 br_18 bl_19 br_19 bl_20 br_20 bl_21 br_21 bl_22 br_22
++ bl_23 br_23 dout_0 dout_1 dout_2 dout_3 dout_4 dout_5 dout_6 dout_7
++ dout_8 dout_9 dout_10 dout_11 dout_12 dout_13 dout_14 dout_15 dout_16
++ dout_17 dout_18 dout_19 dout_20 dout_21 dout_22 dout_23 din_0 din_1
++ din_2 din_3 din_4 din_5 din_6 din_7 din_8 din_9 din_10 din_11 din_12
++ din_13 din_14 din_15 din_16 din_17 din_18 din_19 din_20 din_21 din_22
++ din_23 s_en p_en_bar w_en vdd gnd
+* INOUT : rbl_bl 
+* INOUT : rbl_br 
+* INOUT : bl_0 
+* INOUT : br_0 
+* INOUT : bl_1 
+* INOUT : br_1 
+* INOUT : bl_2 
+* INOUT : br_2 
+* INOUT : bl_3 
+* INOUT : br_3 
+* INOUT : bl_4 
+* INOUT : br_4 
+* INOUT : bl_5 
+* INOUT : br_5 
+* INOUT : bl_6 
+* INOUT : br_6 
+* INOUT : bl_7 
+* INOUT : br_7 
+* INOUT : bl_8 
+* INOUT : br_8 
+* INOUT : bl_9 
+* INOUT : br_9 
+* INOUT : bl_10 
+* INOUT : br_10 
+* INOUT : bl_11 
+* INOUT : br_11 
+* INOUT : bl_12 
+* INOUT : br_12 
+* INOUT : bl_13 
+* INOUT : br_13 
+* INOUT : bl_14 
+* INOUT : br_14 
+* INOUT : bl_15 
+* INOUT : br_15 
+* INOUT : bl_16 
+* INOUT : br_16 
+* INOUT : bl_17 
+* INOUT : br_17 
+* INOUT : bl_18 
+* INOUT : br_18 
+* INOUT : bl_19 
+* INOUT : br_19 
+* INOUT : bl_20 
+* INOUT : br_20 
+* INOUT : bl_21 
+* INOUT : br_21 
+* INOUT : bl_22 
+* INOUT : br_22 
+* INOUT : bl_23 
+* INOUT : br_23 
+* OUTPUT: dout_0 
+* OUTPUT: dout_1 
+* OUTPUT: dout_2 
+* OUTPUT: dout_3 
+* OUTPUT: dout_4 
+* OUTPUT: dout_5 
+* OUTPUT: dout_6 
+* OUTPUT: dout_7 
+* OUTPUT: dout_8 
+* OUTPUT: dout_9 
+* OUTPUT: dout_10 
+* OUTPUT: dout_11 
+* OUTPUT: dout_12 
+* OUTPUT: dout_13 
+* OUTPUT: dout_14 
+* OUTPUT: dout_15 
+* OUTPUT: dout_16 
+* OUTPUT: dout_17 
+* OUTPUT: dout_18 
+* OUTPUT: dout_19 
+* OUTPUT: dout_20 
+* OUTPUT: dout_21 
+* OUTPUT: dout_22 
+* OUTPUT: dout_23 
+* INPUT : din_0 
+* INPUT : din_1 
+* INPUT : din_2 
+* INPUT : din_3 
+* INPUT : din_4 
+* INPUT : din_5 
+* INPUT : din_6 
+* INPUT : din_7 
+* INPUT : din_8 
+* INPUT : din_9 
+* INPUT : din_10 
+* INPUT : din_11 
+* INPUT : din_12 
+* INPUT : din_13 
+* INPUT : din_14 
+* INPUT : din_15 
+* INPUT : din_16 
+* INPUT : din_17 
+* INPUT : din_18 
+* INPUT : din_19 
+* INPUT : din_20 
+* INPUT : din_21 
+* INPUT : din_22 
+* INPUT : din_23 
+* INPUT : s_en 
+* INPUT : p_en_bar 
+* INPUT : w_en 
+* POWER : vdd 
+* GROUND: gnd 
+Xprecharge_array0
++ rbl_bl rbl_br bl_0 br_0 bl_1 br_1 bl_2 br_2 bl_3 br_3 bl_4 br_4 bl_5
++ br_5 bl_6 br_6 bl_7 br_7 bl_8 br_8 bl_9 br_9 bl_10 br_10 bl_11 br_11
++ bl_12 br_12 bl_13 br_13 bl_14 br_14 bl_15 br_15 bl_16 br_16 bl_17
++ br_17 bl_18 br_18 bl_19 br_19 bl_20 br_20 bl_21 br_21 bl_22 br_22
++ bl_23 br_23 p_en_bar vdd
++ mp3_tag_array_1_precharge_array
+Xsense_amp_array0
++ dout_0 bl_0 br_0 dout_1 bl_1 br_1 dout_2 bl_2 br_2 dout_3 bl_3 br_3
++ dout_4 bl_4 br_4 dout_5 bl_5 br_5 dout_6 bl_6 br_6 dout_7 bl_7 br_7
++ dout_8 bl_8 br_8 dout_9 bl_9 br_9 dout_10 bl_10 br_10 dout_11 bl_11
++ br_11 dout_12 bl_12 br_12 dout_13 bl_13 br_13 dout_14 bl_14 br_14
++ dout_15 bl_15 br_15 dout_16 bl_16 br_16 dout_17 bl_17 br_17 dout_18
++ bl_18 br_18 dout_19 bl_19 br_19 dout_20 bl_20 br_20 dout_21 bl_21
++ br_21 dout_22 bl_22 br_22 dout_23 bl_23 br_23 s_en vdd gnd
++ mp3_tag_array_1_sense_amp_array
+Xwrite_driver_array0
++ din_0 din_1 din_2 din_3 din_4 din_5 din_6 din_7 din_8 din_9 din_10
++ din_11 din_12 din_13 din_14 din_15 din_16 din_17 din_18 din_19 din_20
++ din_21 din_22 din_23 bl_0 br_0 bl_1 br_1 bl_2 br_2 bl_3 br_3 bl_4 br_4
++ bl_5 br_5 bl_6 br_6 bl_7 br_7 bl_8 br_8 bl_9 br_9 bl_10 br_10 bl_11
++ br_11 bl_12 br_12 bl_13 br_13 bl_14 br_14 bl_15 br_15 bl_16 br_16
++ bl_17 br_17 bl_18 br_18 bl_19 br_19 bl_20 br_20 bl_21 br_21 bl_22
++ br_22 bl_23 br_23 w_en vdd gnd
++ mp3_tag_array_1_write_driver_array
+.ENDS mp3_tag_array_1_port_data
+
 .SUBCKT dummy_cell_1rw bl br wl vdd gnd
 * Inverter 1
 MM0 Q_bar Q gnd gnd NMOS_VTG W=205.00n L=50n
@@ -1216,6 +1859,229 @@ MM3 bl_noconn wl Q gnd NMOS_VTG W=135.00n L=50n
 MM2 br_noconn wl Q_bar gnd NMOS_VTG W=135.00n L=50n
 .ENDS dummy_cell_1rw
 
+
+.SUBCKT mp3_tag_array_1_dummy_array_2
++ bl_0_0 br_0_0 wl_0_0 wl_0_1 wl_0_2 wl_0_3 wl_0_4 wl_0_5 wl_0_6 wl_0_7
++ wl_0_8 wl_0_9 wl_0_10 wl_0_11 wl_0_12 wl_0_13 wl_0_14 wl_0_15 wl_0_16
++ wl_0_17 wl_0_18 vdd gnd
+* INOUT : bl_0_0 
+* INOUT : br_0_0 
+* INPUT : wl_0_0 
+* INPUT : wl_0_1 
+* INPUT : wl_0_2 
+* INPUT : wl_0_3 
+* INPUT : wl_0_4 
+* INPUT : wl_0_5 
+* INPUT : wl_0_6 
+* INPUT : wl_0_7 
+* INPUT : wl_0_8 
+* INPUT : wl_0_9 
+* INPUT : wl_0_10 
+* INPUT : wl_0_11 
+* INPUT : wl_0_12 
+* INPUT : wl_0_13 
+* INPUT : wl_0_14 
+* INPUT : wl_0_15 
+* INPUT : wl_0_16 
+* INPUT : wl_0_17 
+* INPUT : wl_0_18 
+* POWER : vdd 
+* GROUND: gnd 
+Xbit_r0_c0
++ bl_0_0 br_0_0 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r1_c0
++ bl_0_0 br_0_0 wl_0_1 vdd gnd
++ dummy_cell_1rw
+Xbit_r2_c0
++ bl_0_0 br_0_0 wl_0_2 vdd gnd
++ dummy_cell_1rw
+Xbit_r3_c0
++ bl_0_0 br_0_0 wl_0_3 vdd gnd
++ dummy_cell_1rw
+Xbit_r4_c0
++ bl_0_0 br_0_0 wl_0_4 vdd gnd
++ dummy_cell_1rw
+Xbit_r5_c0
++ bl_0_0 br_0_0 wl_0_5 vdd gnd
++ dummy_cell_1rw
+Xbit_r6_c0
++ bl_0_0 br_0_0 wl_0_6 vdd gnd
++ dummy_cell_1rw
+Xbit_r7_c0
++ bl_0_0 br_0_0 wl_0_7 vdd gnd
++ dummy_cell_1rw
+Xbit_r8_c0
++ bl_0_0 br_0_0 wl_0_8 vdd gnd
++ dummy_cell_1rw
+Xbit_r9_c0
++ bl_0_0 br_0_0 wl_0_9 vdd gnd
++ dummy_cell_1rw
+Xbit_r10_c0
++ bl_0_0 br_0_0 wl_0_10 vdd gnd
++ dummy_cell_1rw
+Xbit_r11_c0
++ bl_0_0 br_0_0 wl_0_11 vdd gnd
++ dummy_cell_1rw
+Xbit_r12_c0
++ bl_0_0 br_0_0 wl_0_12 vdd gnd
++ dummy_cell_1rw
+Xbit_r13_c0
++ bl_0_0 br_0_0 wl_0_13 vdd gnd
++ dummy_cell_1rw
+Xbit_r14_c0
++ bl_0_0 br_0_0 wl_0_14 vdd gnd
++ dummy_cell_1rw
+Xbit_r15_c0
++ bl_0_0 br_0_0 wl_0_15 vdd gnd
++ dummy_cell_1rw
+Xbit_r16_c0
++ bl_0_0 br_0_0 wl_0_16 vdd gnd
++ dummy_cell_1rw
+Xbit_r17_c0
++ bl_0_0 br_0_0 wl_0_17 vdd gnd
++ dummy_cell_1rw
+Xbit_r18_c0
++ bl_0_0 br_0_0 wl_0_18 vdd gnd
++ dummy_cell_1rw
+.ENDS mp3_tag_array_1_dummy_array_2
+
+.SUBCKT mp3_tag_array_1_dummy_array_0
++ bl_0_0 br_0_0 bl_0_1 br_0_1 bl_0_2 br_0_2 bl_0_3 br_0_3 bl_0_4 br_0_4
++ bl_0_5 br_0_5 bl_0_6 br_0_6 bl_0_7 br_0_7 bl_0_8 br_0_8 bl_0_9 br_0_9
++ bl_0_10 br_0_10 bl_0_11 br_0_11 bl_0_12 br_0_12 bl_0_13 br_0_13
++ bl_0_14 br_0_14 bl_0_15 br_0_15 bl_0_16 br_0_16 bl_0_17 br_0_17
++ bl_0_18 br_0_18 bl_0_19 br_0_19 bl_0_20 br_0_20 bl_0_21 br_0_21
++ bl_0_22 br_0_22 bl_0_23 br_0_23 bl_0_24 br_0_24 wl_0_0 vdd gnd
+* INOUT : bl_0_0 
+* INOUT : br_0_0 
+* INOUT : bl_0_1 
+* INOUT : br_0_1 
+* INOUT : bl_0_2 
+* INOUT : br_0_2 
+* INOUT : bl_0_3 
+* INOUT : br_0_3 
+* INOUT : bl_0_4 
+* INOUT : br_0_4 
+* INOUT : bl_0_5 
+* INOUT : br_0_5 
+* INOUT : bl_0_6 
+* INOUT : br_0_6 
+* INOUT : bl_0_7 
+* INOUT : br_0_7 
+* INOUT : bl_0_8 
+* INOUT : br_0_8 
+* INOUT : bl_0_9 
+* INOUT : br_0_9 
+* INOUT : bl_0_10 
+* INOUT : br_0_10 
+* INOUT : bl_0_11 
+* INOUT : br_0_11 
+* INOUT : bl_0_12 
+* INOUT : br_0_12 
+* INOUT : bl_0_13 
+* INOUT : br_0_13 
+* INOUT : bl_0_14 
+* INOUT : br_0_14 
+* INOUT : bl_0_15 
+* INOUT : br_0_15 
+* INOUT : bl_0_16 
+* INOUT : br_0_16 
+* INOUT : bl_0_17 
+* INOUT : br_0_17 
+* INOUT : bl_0_18 
+* INOUT : br_0_18 
+* INOUT : bl_0_19 
+* INOUT : br_0_19 
+* INOUT : bl_0_20 
+* INOUT : br_0_20 
+* INOUT : bl_0_21 
+* INOUT : br_0_21 
+* INOUT : bl_0_22 
+* INOUT : br_0_22 
+* INOUT : bl_0_23 
+* INOUT : br_0_23 
+* INOUT : bl_0_24 
+* INOUT : br_0_24 
+* INPUT : wl_0_0 
+* POWER : vdd 
+* GROUND: gnd 
+Xbit_r0_c0
++ bl_0_0 br_0_0 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c1
++ bl_0_1 br_0_1 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c2
++ bl_0_2 br_0_2 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c3
++ bl_0_3 br_0_3 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c4
++ bl_0_4 br_0_4 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c5
++ bl_0_5 br_0_5 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c6
++ bl_0_6 br_0_6 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c7
++ bl_0_7 br_0_7 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c8
++ bl_0_8 br_0_8 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c9
++ bl_0_9 br_0_9 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c10
++ bl_0_10 br_0_10 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c11
++ bl_0_11 br_0_11 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c12
++ bl_0_12 br_0_12 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c13
++ bl_0_13 br_0_13 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c14
++ bl_0_14 br_0_14 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c15
++ bl_0_15 br_0_15 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c16
++ bl_0_16 br_0_16 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c17
++ bl_0_17 br_0_17 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c18
++ bl_0_18 br_0_18 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c19
++ bl_0_19 br_0_19 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c20
++ bl_0_20 br_0_20 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c21
++ bl_0_21 br_0_21 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c22
++ bl_0_22 br_0_22 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c23
++ bl_0_23 br_0_23 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c24
++ bl_0_24 br_0_24 wl_0_0 vdd gnd
++ dummy_cell_1rw
+.ENDS mp3_tag_array_1_dummy_array_0
 
 .SUBCKT mp3_tag_array_1_dummy_array_3
 + bl_0_0 br_0_0 wl_0_0 wl_0_1 wl_0_2 wl_0_3 wl_0_4 wl_0_5 wl_0_6 wl_0_7
@@ -1302,138 +2168,6 @@ Xbit_r18_c0
 + bl_0_0 br_0_0 wl_0_18 vdd gnd
 + dummy_cell_1rw
 .ENDS mp3_tag_array_1_dummy_array_3
-
-.SUBCKT mp3_tag_array_1_dummy_array
-+ bl_0_0 br_0_0 bl_0_1 br_0_1 bl_0_2 br_0_2 bl_0_3 br_0_3 bl_0_4 br_0_4
-+ bl_0_5 br_0_5 bl_0_6 br_0_6 bl_0_7 br_0_7 bl_0_8 br_0_8 bl_0_9 br_0_9
-+ bl_0_10 br_0_10 bl_0_11 br_0_11 bl_0_12 br_0_12 bl_0_13 br_0_13
-+ bl_0_14 br_0_14 bl_0_15 br_0_15 bl_0_16 br_0_16 bl_0_17 br_0_17
-+ bl_0_18 br_0_18 bl_0_19 br_0_19 bl_0_20 br_0_20 bl_0_21 br_0_21
-+ bl_0_22 br_0_22 bl_0_23 br_0_23 wl_0_0 vdd gnd
-* INOUT : bl_0_0 
-* INOUT : br_0_0 
-* INOUT : bl_0_1 
-* INOUT : br_0_1 
-* INOUT : bl_0_2 
-* INOUT : br_0_2 
-* INOUT : bl_0_3 
-* INOUT : br_0_3 
-* INOUT : bl_0_4 
-* INOUT : br_0_4 
-* INOUT : bl_0_5 
-* INOUT : br_0_5 
-* INOUT : bl_0_6 
-* INOUT : br_0_6 
-* INOUT : bl_0_7 
-* INOUT : br_0_7 
-* INOUT : bl_0_8 
-* INOUT : br_0_8 
-* INOUT : bl_0_9 
-* INOUT : br_0_9 
-* INOUT : bl_0_10 
-* INOUT : br_0_10 
-* INOUT : bl_0_11 
-* INOUT : br_0_11 
-* INOUT : bl_0_12 
-* INOUT : br_0_12 
-* INOUT : bl_0_13 
-* INOUT : br_0_13 
-* INOUT : bl_0_14 
-* INOUT : br_0_14 
-* INOUT : bl_0_15 
-* INOUT : br_0_15 
-* INOUT : bl_0_16 
-* INOUT : br_0_16 
-* INOUT : bl_0_17 
-* INOUT : br_0_17 
-* INOUT : bl_0_18 
-* INOUT : br_0_18 
-* INOUT : bl_0_19 
-* INOUT : br_0_19 
-* INOUT : bl_0_20 
-* INOUT : br_0_20 
-* INOUT : bl_0_21 
-* INOUT : br_0_21 
-* INOUT : bl_0_22 
-* INOUT : br_0_22 
-* INOUT : bl_0_23 
-* INOUT : br_0_23 
-* INPUT : wl_0_0 
-* POWER : vdd 
-* GROUND: gnd 
-Xbit_r0_c0
-+ bl_0_0 br_0_0 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c1
-+ bl_0_1 br_0_1 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c2
-+ bl_0_2 br_0_2 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c3
-+ bl_0_3 br_0_3 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c4
-+ bl_0_4 br_0_4 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c5
-+ bl_0_5 br_0_5 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c6
-+ bl_0_6 br_0_6 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c7
-+ bl_0_7 br_0_7 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c8
-+ bl_0_8 br_0_8 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c9
-+ bl_0_9 br_0_9 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c10
-+ bl_0_10 br_0_10 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c11
-+ bl_0_11 br_0_11 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c12
-+ bl_0_12 br_0_12 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c13
-+ bl_0_13 br_0_13 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c14
-+ bl_0_14 br_0_14 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c15
-+ bl_0_15 br_0_15 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c16
-+ bl_0_16 br_0_16 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c17
-+ bl_0_17 br_0_17 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c18
-+ bl_0_18 br_0_18 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c19
-+ bl_0_19 br_0_19 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c20
-+ bl_0_20 br_0_20 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c21
-+ bl_0_21 br_0_21 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c22
-+ bl_0_22 br_0_22 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c23
-+ bl_0_23 br_0_23 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-.ENDS mp3_tag_array_1_dummy_array
 
 .SUBCKT cell_1rw bl br wl vdd gnd
 * Inverter 1
@@ -2773,6 +3507,138 @@ Xrbc_16
 + replica_cell_1rw
 .ENDS mp3_tag_array_1_replica_column
 
+.SUBCKT mp3_tag_array_1_dummy_array
++ bl_0_0 br_0_0 bl_0_1 br_0_1 bl_0_2 br_0_2 bl_0_3 br_0_3 bl_0_4 br_0_4
++ bl_0_5 br_0_5 bl_0_6 br_0_6 bl_0_7 br_0_7 bl_0_8 br_0_8 bl_0_9 br_0_9
++ bl_0_10 br_0_10 bl_0_11 br_0_11 bl_0_12 br_0_12 bl_0_13 br_0_13
++ bl_0_14 br_0_14 bl_0_15 br_0_15 bl_0_16 br_0_16 bl_0_17 br_0_17
++ bl_0_18 br_0_18 bl_0_19 br_0_19 bl_0_20 br_0_20 bl_0_21 br_0_21
++ bl_0_22 br_0_22 bl_0_23 br_0_23 wl_0_0 vdd gnd
+* INOUT : bl_0_0 
+* INOUT : br_0_0 
+* INOUT : bl_0_1 
+* INOUT : br_0_1 
+* INOUT : bl_0_2 
+* INOUT : br_0_2 
+* INOUT : bl_0_3 
+* INOUT : br_0_3 
+* INOUT : bl_0_4 
+* INOUT : br_0_4 
+* INOUT : bl_0_5 
+* INOUT : br_0_5 
+* INOUT : bl_0_6 
+* INOUT : br_0_6 
+* INOUT : bl_0_7 
+* INOUT : br_0_7 
+* INOUT : bl_0_8 
+* INOUT : br_0_8 
+* INOUT : bl_0_9 
+* INOUT : br_0_9 
+* INOUT : bl_0_10 
+* INOUT : br_0_10 
+* INOUT : bl_0_11 
+* INOUT : br_0_11 
+* INOUT : bl_0_12 
+* INOUT : br_0_12 
+* INOUT : bl_0_13 
+* INOUT : br_0_13 
+* INOUT : bl_0_14 
+* INOUT : br_0_14 
+* INOUT : bl_0_15 
+* INOUT : br_0_15 
+* INOUT : bl_0_16 
+* INOUT : br_0_16 
+* INOUT : bl_0_17 
+* INOUT : br_0_17 
+* INOUT : bl_0_18 
+* INOUT : br_0_18 
+* INOUT : bl_0_19 
+* INOUT : br_0_19 
+* INOUT : bl_0_20 
+* INOUT : br_0_20 
+* INOUT : bl_0_21 
+* INOUT : br_0_21 
+* INOUT : bl_0_22 
+* INOUT : br_0_22 
+* INOUT : bl_0_23 
+* INOUT : br_0_23 
+* INPUT : wl_0_0 
+* POWER : vdd 
+* GROUND: gnd 
+Xbit_r0_c0
++ bl_0_0 br_0_0 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c1
++ bl_0_1 br_0_1 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c2
++ bl_0_2 br_0_2 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c3
++ bl_0_3 br_0_3 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c4
++ bl_0_4 br_0_4 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c5
++ bl_0_5 br_0_5 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c6
++ bl_0_6 br_0_6 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c7
++ bl_0_7 br_0_7 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c8
++ bl_0_8 br_0_8 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c9
++ bl_0_9 br_0_9 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c10
++ bl_0_10 br_0_10 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c11
++ bl_0_11 br_0_11 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c12
++ bl_0_12 br_0_12 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c13
++ bl_0_13 br_0_13 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c14
++ bl_0_14 br_0_14 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c15
++ bl_0_15 br_0_15 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c16
++ bl_0_16 br_0_16 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c17
++ bl_0_17 br_0_17 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c18
++ bl_0_18 br_0_18 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c19
++ bl_0_19 br_0_19 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c20
++ bl_0_20 br_0_20 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c21
++ bl_0_21 br_0_21 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c22
++ bl_0_22 br_0_22 wl_0_0 vdd gnd
++ dummy_cell_1rw
+Xbit_r0_c23
++ bl_0_23 br_0_23 wl_0_0 vdd gnd
++ dummy_cell_1rw
+.ENDS mp3_tag_array_1_dummy_array
+
 .SUBCKT mp3_tag_array_1_replica_bitcell_array
 + rbl_bl_0_0 rbl_br_0_0 bl_0_0 br_0_0 bl_0_1 br_0_1 bl_0_2 br_0_2 bl_0_3
 + br_0_3 bl_0_4 br_0_4 bl_0_5 br_0_5 bl_0_6 br_0_6 bl_0_7 br_0_7 bl_0_8
@@ -2877,143 +3743,6 @@ Xdummy_row_0
 + bl_0_22 br_0_22 bl_0_23 br_0_23 rbl_wl_0_0 vdd gnd
 + mp3_tag_array_1_dummy_array
 .ENDS mp3_tag_array_1_replica_bitcell_array
-
-.SUBCKT mp3_tag_array_1_dummy_array_0
-+ bl_0_0 br_0_0 bl_0_1 br_0_1 bl_0_2 br_0_2 bl_0_3 br_0_3 bl_0_4 br_0_4
-+ bl_0_5 br_0_5 bl_0_6 br_0_6 bl_0_7 br_0_7 bl_0_8 br_0_8 bl_0_9 br_0_9
-+ bl_0_10 br_0_10 bl_0_11 br_0_11 bl_0_12 br_0_12 bl_0_13 br_0_13
-+ bl_0_14 br_0_14 bl_0_15 br_0_15 bl_0_16 br_0_16 bl_0_17 br_0_17
-+ bl_0_18 br_0_18 bl_0_19 br_0_19 bl_0_20 br_0_20 bl_0_21 br_0_21
-+ bl_0_22 br_0_22 bl_0_23 br_0_23 bl_0_24 br_0_24 wl_0_0 vdd gnd
-* INOUT : bl_0_0 
-* INOUT : br_0_0 
-* INOUT : bl_0_1 
-* INOUT : br_0_1 
-* INOUT : bl_0_2 
-* INOUT : br_0_2 
-* INOUT : bl_0_3 
-* INOUT : br_0_3 
-* INOUT : bl_0_4 
-* INOUT : br_0_4 
-* INOUT : bl_0_5 
-* INOUT : br_0_5 
-* INOUT : bl_0_6 
-* INOUT : br_0_6 
-* INOUT : bl_0_7 
-* INOUT : br_0_7 
-* INOUT : bl_0_8 
-* INOUT : br_0_8 
-* INOUT : bl_0_9 
-* INOUT : br_0_9 
-* INOUT : bl_0_10 
-* INOUT : br_0_10 
-* INOUT : bl_0_11 
-* INOUT : br_0_11 
-* INOUT : bl_0_12 
-* INOUT : br_0_12 
-* INOUT : bl_0_13 
-* INOUT : br_0_13 
-* INOUT : bl_0_14 
-* INOUT : br_0_14 
-* INOUT : bl_0_15 
-* INOUT : br_0_15 
-* INOUT : bl_0_16 
-* INOUT : br_0_16 
-* INOUT : bl_0_17 
-* INOUT : br_0_17 
-* INOUT : bl_0_18 
-* INOUT : br_0_18 
-* INOUT : bl_0_19 
-* INOUT : br_0_19 
-* INOUT : bl_0_20 
-* INOUT : br_0_20 
-* INOUT : bl_0_21 
-* INOUT : br_0_21 
-* INOUT : bl_0_22 
-* INOUT : br_0_22 
-* INOUT : bl_0_23 
-* INOUT : br_0_23 
-* INOUT : bl_0_24 
-* INOUT : br_0_24 
-* INPUT : wl_0_0 
-* POWER : vdd 
-* GROUND: gnd 
-Xbit_r0_c0
-+ bl_0_0 br_0_0 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c1
-+ bl_0_1 br_0_1 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c2
-+ bl_0_2 br_0_2 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c3
-+ bl_0_3 br_0_3 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c4
-+ bl_0_4 br_0_4 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c5
-+ bl_0_5 br_0_5 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c6
-+ bl_0_6 br_0_6 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c7
-+ bl_0_7 br_0_7 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c8
-+ bl_0_8 br_0_8 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c9
-+ bl_0_9 br_0_9 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c10
-+ bl_0_10 br_0_10 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c11
-+ bl_0_11 br_0_11 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c12
-+ bl_0_12 br_0_12 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c13
-+ bl_0_13 br_0_13 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c14
-+ bl_0_14 br_0_14 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c15
-+ bl_0_15 br_0_15 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c16
-+ bl_0_16 br_0_16 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c17
-+ bl_0_17 br_0_17 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c18
-+ bl_0_18 br_0_18 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c19
-+ bl_0_19 br_0_19 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c20
-+ bl_0_20 br_0_20 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c21
-+ bl_0_21 br_0_21 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c22
-+ bl_0_22 br_0_22 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c23
-+ bl_0_23 br_0_23 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r0_c24
-+ bl_0_24 br_0_24 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-.ENDS mp3_tag_array_1_dummy_array_0
 
 .SUBCKT mp3_tag_array_1_dummy_array_1
 + bl_0_0 br_0_0 bl_0_1 br_0_1 bl_0_2 br_0_2 bl_0_3 br_0_3 bl_0_4 br_0_4
@@ -3152,92 +3881,6 @@ Xbit_r0_c24
 + dummy_cell_1rw
 .ENDS mp3_tag_array_1_dummy_array_1
 
-.SUBCKT mp3_tag_array_1_dummy_array_2
-+ bl_0_0 br_0_0 wl_0_0 wl_0_1 wl_0_2 wl_0_3 wl_0_4 wl_0_5 wl_0_6 wl_0_7
-+ wl_0_8 wl_0_9 wl_0_10 wl_0_11 wl_0_12 wl_0_13 wl_0_14 wl_0_15 wl_0_16
-+ wl_0_17 wl_0_18 vdd gnd
-* INOUT : bl_0_0 
-* INOUT : br_0_0 
-* INPUT : wl_0_0 
-* INPUT : wl_0_1 
-* INPUT : wl_0_2 
-* INPUT : wl_0_3 
-* INPUT : wl_0_4 
-* INPUT : wl_0_5 
-* INPUT : wl_0_6 
-* INPUT : wl_0_7 
-* INPUT : wl_0_8 
-* INPUT : wl_0_9 
-* INPUT : wl_0_10 
-* INPUT : wl_0_11 
-* INPUT : wl_0_12 
-* INPUT : wl_0_13 
-* INPUT : wl_0_14 
-* INPUT : wl_0_15 
-* INPUT : wl_0_16 
-* INPUT : wl_0_17 
-* INPUT : wl_0_18 
-* POWER : vdd 
-* GROUND: gnd 
-Xbit_r0_c0
-+ bl_0_0 br_0_0 wl_0_0 vdd gnd
-+ dummy_cell_1rw
-Xbit_r1_c0
-+ bl_0_0 br_0_0 wl_0_1 vdd gnd
-+ dummy_cell_1rw
-Xbit_r2_c0
-+ bl_0_0 br_0_0 wl_0_2 vdd gnd
-+ dummy_cell_1rw
-Xbit_r3_c0
-+ bl_0_0 br_0_0 wl_0_3 vdd gnd
-+ dummy_cell_1rw
-Xbit_r4_c0
-+ bl_0_0 br_0_0 wl_0_4 vdd gnd
-+ dummy_cell_1rw
-Xbit_r5_c0
-+ bl_0_0 br_0_0 wl_0_5 vdd gnd
-+ dummy_cell_1rw
-Xbit_r6_c0
-+ bl_0_0 br_0_0 wl_0_6 vdd gnd
-+ dummy_cell_1rw
-Xbit_r7_c0
-+ bl_0_0 br_0_0 wl_0_7 vdd gnd
-+ dummy_cell_1rw
-Xbit_r8_c0
-+ bl_0_0 br_0_0 wl_0_8 vdd gnd
-+ dummy_cell_1rw
-Xbit_r9_c0
-+ bl_0_0 br_0_0 wl_0_9 vdd gnd
-+ dummy_cell_1rw
-Xbit_r10_c0
-+ bl_0_0 br_0_0 wl_0_10 vdd gnd
-+ dummy_cell_1rw
-Xbit_r11_c0
-+ bl_0_0 br_0_0 wl_0_11 vdd gnd
-+ dummy_cell_1rw
-Xbit_r12_c0
-+ bl_0_0 br_0_0 wl_0_12 vdd gnd
-+ dummy_cell_1rw
-Xbit_r13_c0
-+ bl_0_0 br_0_0 wl_0_13 vdd gnd
-+ dummy_cell_1rw
-Xbit_r14_c0
-+ bl_0_0 br_0_0 wl_0_14 vdd gnd
-+ dummy_cell_1rw
-Xbit_r15_c0
-+ bl_0_0 br_0_0 wl_0_15 vdd gnd
-+ dummy_cell_1rw
-Xbit_r16_c0
-+ bl_0_0 br_0_0 wl_0_16 vdd gnd
-+ dummy_cell_1rw
-Xbit_r17_c0
-+ bl_0_0 br_0_0 wl_0_17 vdd gnd
-+ dummy_cell_1rw
-Xbit_r18_c0
-+ bl_0_0 br_0_0 wl_0_18 vdd gnd
-+ dummy_cell_1rw
-.ENDS mp3_tag_array_1_dummy_array_2
-
 .SUBCKT mp3_tag_array_1_capped_replica_bitcell_array
 + rbl_bl_0_0 rbl_br_0_0 bl_0_0 br_0_0 bl_0_1 br_0_1 bl_0_2 br_0_2 bl_0_3
 + br_0_3 bl_0_4 br_0_4 bl_0_5 br_0_5 bl_0_6 br_0_6 bl_0_7 br_0_7 bl_0_8
@@ -3355,649 +3998,6 @@ Xdummy_col_right
 + wl_0_11 wl_0_12 wl_0_13 wl_0_14 wl_0_15 gnd vdd gnd
 + mp3_tag_array_1_dummy_array_3
 .ENDS mp3_tag_array_1_capped_replica_bitcell_array
-
-.SUBCKT mp3_tag_array_1_precharge_0
-+ bl br en_bar vdd
-* OUTPUT: bl 
-* OUTPUT: br 
-* INPUT : en_bar 
-* POWER : vdd 
-Mlower_pmos bl en_bar br vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
-Mupper_pmos1 bl en_bar vdd vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
-Mupper_pmos2 br en_bar vdd vdd pmos_vtg m=1 w=0.27u l=0.05u pd=0.64u ps=0.64u as=0.03p ad=0.03p
-.ENDS mp3_tag_array_1_precharge_0
-
-.SUBCKT mp3_tag_array_1_precharge_array
-+ bl_0 br_0 bl_1 br_1 bl_2 br_2 bl_3 br_3 bl_4 br_4 bl_5 br_5 bl_6 br_6
-+ bl_7 br_7 bl_8 br_8 bl_9 br_9 bl_10 br_10 bl_11 br_11 bl_12 br_12
-+ bl_13 br_13 bl_14 br_14 bl_15 br_15 bl_16 br_16 bl_17 br_17 bl_18
-+ br_18 bl_19 br_19 bl_20 br_20 bl_21 br_21 bl_22 br_22 bl_23 br_23
-+ bl_24 br_24 en_bar vdd
-* OUTPUT: bl_0 
-* OUTPUT: br_0 
-* OUTPUT: bl_1 
-* OUTPUT: br_1 
-* OUTPUT: bl_2 
-* OUTPUT: br_2 
-* OUTPUT: bl_3 
-* OUTPUT: br_3 
-* OUTPUT: bl_4 
-* OUTPUT: br_4 
-* OUTPUT: bl_5 
-* OUTPUT: br_5 
-* OUTPUT: bl_6 
-* OUTPUT: br_6 
-* OUTPUT: bl_7 
-* OUTPUT: br_7 
-* OUTPUT: bl_8 
-* OUTPUT: br_8 
-* OUTPUT: bl_9 
-* OUTPUT: br_9 
-* OUTPUT: bl_10 
-* OUTPUT: br_10 
-* OUTPUT: bl_11 
-* OUTPUT: br_11 
-* OUTPUT: bl_12 
-* OUTPUT: br_12 
-* OUTPUT: bl_13 
-* OUTPUT: br_13 
-* OUTPUT: bl_14 
-* OUTPUT: br_14 
-* OUTPUT: bl_15 
-* OUTPUT: br_15 
-* OUTPUT: bl_16 
-* OUTPUT: br_16 
-* OUTPUT: bl_17 
-* OUTPUT: br_17 
-* OUTPUT: bl_18 
-* OUTPUT: br_18 
-* OUTPUT: bl_19 
-* OUTPUT: br_19 
-* OUTPUT: bl_20 
-* OUTPUT: br_20 
-* OUTPUT: bl_21 
-* OUTPUT: br_21 
-* OUTPUT: bl_22 
-* OUTPUT: br_22 
-* OUTPUT: bl_23 
-* OUTPUT: br_23 
-* OUTPUT: bl_24 
-* OUTPUT: br_24 
-* INPUT : en_bar 
-* POWER : vdd 
-* cols: 25 size: 1 bl: bl br: br
-Xpre_column_0
-+ bl_0 br_0 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_1
-+ bl_1 br_1 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_2
-+ bl_2 br_2 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_3
-+ bl_3 br_3 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_4
-+ bl_4 br_4 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_5
-+ bl_5 br_5 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_6
-+ bl_6 br_6 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_7
-+ bl_7 br_7 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_8
-+ bl_8 br_8 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_9
-+ bl_9 br_9 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_10
-+ bl_10 br_10 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_11
-+ bl_11 br_11 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_12
-+ bl_12 br_12 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_13
-+ bl_13 br_13 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_14
-+ bl_14 br_14 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_15
-+ bl_15 br_15 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_16
-+ bl_16 br_16 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_17
-+ bl_17 br_17 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_18
-+ bl_18 br_18 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_19
-+ bl_19 br_19 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_20
-+ bl_20 br_20 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_21
-+ bl_21 br_21 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_22
-+ bl_22 br_22 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_23
-+ bl_23 br_23 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-Xpre_column_24
-+ bl_24 br_24 en_bar vdd
-+ mp3_tag_array_1_precharge_0
-.ENDS mp3_tag_array_1_precharge_array
-
-.SUBCKT sense_amp bl br dout en vdd gnd
-M_1 dint net_1 vdd vdd pmos_vtg w=540.0n l=50.0n
-M_3 net_1 dint vdd vdd pmos_vtg w=540.0n l=50.0n
-M_2 dint net_1 net_2 gnd nmos_vtg w=270.0n l=50.0n
-M_8 net_1 dint net_2 gnd nmos_vtg w=270.0n l=50.0n
-M_5 bl en dint vdd pmos_vtg w=720.0n l=50.0n
-M_6 br en net_1 vdd pmos_vtg w=720.0n l=50.0n
-M_7 net_2 en gnd gnd nmos_vtg w=270.0n l=50.0n
-
-M_9 dout_bar dint vdd vdd pmos_vtg w=180.0n l=50.0n
-M_10 dout_bar dint gnd gnd nmos_vtg w=90.0n l=50.0n
-M_11 dout dout_bar vdd vdd pmos_vtg w=540.0n l=50.0n
-M_12 dout dout_bar gnd gnd nmos_vtg w=270.0n l=50.0n
-.ENDS sense_amp
-
-
-.SUBCKT mp3_tag_array_1_sense_amp_array
-+ data_0 bl_0 br_0 data_1 bl_1 br_1 data_2 bl_2 br_2 data_3 bl_3 br_3
-+ data_4 bl_4 br_4 data_5 bl_5 br_5 data_6 bl_6 br_6 data_7 bl_7 br_7
-+ data_8 bl_8 br_8 data_9 bl_9 br_9 data_10 bl_10 br_10 data_11 bl_11
-+ br_11 data_12 bl_12 br_12 data_13 bl_13 br_13 data_14 bl_14 br_14
-+ data_15 bl_15 br_15 data_16 bl_16 br_16 data_17 bl_17 br_17 data_18
-+ bl_18 br_18 data_19 bl_19 br_19 data_20 bl_20 br_20 data_21 bl_21
-+ br_21 data_22 bl_22 br_22 data_23 bl_23 br_23 en vdd gnd
-* OUTPUT: data_0 
-* INPUT : bl_0 
-* INPUT : br_0 
-* OUTPUT: data_1 
-* INPUT : bl_1 
-* INPUT : br_1 
-* OUTPUT: data_2 
-* INPUT : bl_2 
-* INPUT : br_2 
-* OUTPUT: data_3 
-* INPUT : bl_3 
-* INPUT : br_3 
-* OUTPUT: data_4 
-* INPUT : bl_4 
-* INPUT : br_4 
-* OUTPUT: data_5 
-* INPUT : bl_5 
-* INPUT : br_5 
-* OUTPUT: data_6 
-* INPUT : bl_6 
-* INPUT : br_6 
-* OUTPUT: data_7 
-* INPUT : bl_7 
-* INPUT : br_7 
-* OUTPUT: data_8 
-* INPUT : bl_8 
-* INPUT : br_8 
-* OUTPUT: data_9 
-* INPUT : bl_9 
-* INPUT : br_9 
-* OUTPUT: data_10 
-* INPUT : bl_10 
-* INPUT : br_10 
-* OUTPUT: data_11 
-* INPUT : bl_11 
-* INPUT : br_11 
-* OUTPUT: data_12 
-* INPUT : bl_12 
-* INPUT : br_12 
-* OUTPUT: data_13 
-* INPUT : bl_13 
-* INPUT : br_13 
-* OUTPUT: data_14 
-* INPUT : bl_14 
-* INPUT : br_14 
-* OUTPUT: data_15 
-* INPUT : bl_15 
-* INPUT : br_15 
-* OUTPUT: data_16 
-* INPUT : bl_16 
-* INPUT : br_16 
-* OUTPUT: data_17 
-* INPUT : bl_17 
-* INPUT : br_17 
-* OUTPUT: data_18 
-* INPUT : bl_18 
-* INPUT : br_18 
-* OUTPUT: data_19 
-* INPUT : bl_19 
-* INPUT : br_19 
-* OUTPUT: data_20 
-* INPUT : bl_20 
-* INPUT : br_20 
-* OUTPUT: data_21 
-* INPUT : bl_21 
-* INPUT : br_21 
-* OUTPUT: data_22 
-* INPUT : bl_22 
-* INPUT : br_22 
-* OUTPUT: data_23 
-* INPUT : bl_23 
-* INPUT : br_23 
-* INPUT : en 
-* POWER : vdd 
-* GROUND: gnd 
-* word_size 24
-* words_per_row: 1
-Xsa_d0
-+ bl_0 br_0 data_0 en vdd gnd
-+ sense_amp
-Xsa_d1
-+ bl_1 br_1 data_1 en vdd gnd
-+ sense_amp
-Xsa_d2
-+ bl_2 br_2 data_2 en vdd gnd
-+ sense_amp
-Xsa_d3
-+ bl_3 br_3 data_3 en vdd gnd
-+ sense_amp
-Xsa_d4
-+ bl_4 br_4 data_4 en vdd gnd
-+ sense_amp
-Xsa_d5
-+ bl_5 br_5 data_5 en vdd gnd
-+ sense_amp
-Xsa_d6
-+ bl_6 br_6 data_6 en vdd gnd
-+ sense_amp
-Xsa_d7
-+ bl_7 br_7 data_7 en vdd gnd
-+ sense_amp
-Xsa_d8
-+ bl_8 br_8 data_8 en vdd gnd
-+ sense_amp
-Xsa_d9
-+ bl_9 br_9 data_9 en vdd gnd
-+ sense_amp
-Xsa_d10
-+ bl_10 br_10 data_10 en vdd gnd
-+ sense_amp
-Xsa_d11
-+ bl_11 br_11 data_11 en vdd gnd
-+ sense_amp
-Xsa_d12
-+ bl_12 br_12 data_12 en vdd gnd
-+ sense_amp
-Xsa_d13
-+ bl_13 br_13 data_13 en vdd gnd
-+ sense_amp
-Xsa_d14
-+ bl_14 br_14 data_14 en vdd gnd
-+ sense_amp
-Xsa_d15
-+ bl_15 br_15 data_15 en vdd gnd
-+ sense_amp
-Xsa_d16
-+ bl_16 br_16 data_16 en vdd gnd
-+ sense_amp
-Xsa_d17
-+ bl_17 br_17 data_17 en vdd gnd
-+ sense_amp
-Xsa_d18
-+ bl_18 br_18 data_18 en vdd gnd
-+ sense_amp
-Xsa_d19
-+ bl_19 br_19 data_19 en vdd gnd
-+ sense_amp
-Xsa_d20
-+ bl_20 br_20 data_20 en vdd gnd
-+ sense_amp
-Xsa_d21
-+ bl_21 br_21 data_21 en vdd gnd
-+ sense_amp
-Xsa_d22
-+ bl_22 br_22 data_22 en vdd gnd
-+ sense_amp
-Xsa_d23
-+ bl_23 br_23 data_23 en vdd gnd
-+ sense_amp
-.ENDS mp3_tag_array_1_sense_amp_array
-
-.SUBCKT write_driver din bl br en vdd gnd
-*inverters for enable and data input
-minP bl_bar din vdd vdd pmos_vtg w=360.000000n l=50.000000n
-minN bl_bar din gnd gnd nmos_vtg w=180.000000n l=50.000000n
-moutP en_bar en vdd vdd pmos_vtg w=360.000000n l=50.000000n
-moutN en_bar en gnd gnd nmos_vtg w=180.000000n l=50.000000n
-
-*tristate for BL
-mout0P int1 bl_bar vdd vdd pmos_vtg w=360.000000n l=50.000000n
-mout0P2 bl en_bar int1 vdd pmos_vtg w=360.000000n l=50.000000n
-mout0N bl en int2 gnd nmos_vtg w=180.000000n l=50.000000n
-mout0N2 int2 bl_bar gnd gnd nmos_vtg w=180.000000n l=50.000000n
-
-*tristate for BR
-mout1P int3 din vdd vdd pmos_vtg w=360.000000n l=50.000000n
-mout1P2 br en_bar int3 vdd pmos_vtg w=360.000000n l=50.000000n
-mout1N br en int4 gnd nmos_vtg w=180.000000n l=50.000000n
-mout1N2 int4 din gnd gnd nmos_vtg w=180.000000n l=50.000000n
-.ENDS write_driver
-
-
-.SUBCKT mp3_tag_array_1_write_driver_array
-+ data_0 data_1 data_2 data_3 data_4 data_5 data_6 data_7 data_8 data_9
-+ data_10 data_11 data_12 data_13 data_14 data_15 data_16 data_17
-+ data_18 data_19 data_20 data_21 data_22 data_23 bl_0 br_0 bl_1 br_1
-+ bl_2 br_2 bl_3 br_3 bl_4 br_4 bl_5 br_5 bl_6 br_6 bl_7 br_7 bl_8 br_8
-+ bl_9 br_9 bl_10 br_10 bl_11 br_11 bl_12 br_12 bl_13 br_13 bl_14 br_14
-+ bl_15 br_15 bl_16 br_16 bl_17 br_17 bl_18 br_18 bl_19 br_19 bl_20
-+ br_20 bl_21 br_21 bl_22 br_22 bl_23 br_23 en vdd gnd
-* INPUT : data_0 
-* INPUT : data_1 
-* INPUT : data_2 
-* INPUT : data_3 
-* INPUT : data_4 
-* INPUT : data_5 
-* INPUT : data_6 
-* INPUT : data_7 
-* INPUT : data_8 
-* INPUT : data_9 
-* INPUT : data_10 
-* INPUT : data_11 
-* INPUT : data_12 
-* INPUT : data_13 
-* INPUT : data_14 
-* INPUT : data_15 
-* INPUT : data_16 
-* INPUT : data_17 
-* INPUT : data_18 
-* INPUT : data_19 
-* INPUT : data_20 
-* INPUT : data_21 
-* INPUT : data_22 
-* INPUT : data_23 
-* OUTPUT: bl_0 
-* OUTPUT: br_0 
-* OUTPUT: bl_1 
-* OUTPUT: br_1 
-* OUTPUT: bl_2 
-* OUTPUT: br_2 
-* OUTPUT: bl_3 
-* OUTPUT: br_3 
-* OUTPUT: bl_4 
-* OUTPUT: br_4 
-* OUTPUT: bl_5 
-* OUTPUT: br_5 
-* OUTPUT: bl_6 
-* OUTPUT: br_6 
-* OUTPUT: bl_7 
-* OUTPUT: br_7 
-* OUTPUT: bl_8 
-* OUTPUT: br_8 
-* OUTPUT: bl_9 
-* OUTPUT: br_9 
-* OUTPUT: bl_10 
-* OUTPUT: br_10 
-* OUTPUT: bl_11 
-* OUTPUT: br_11 
-* OUTPUT: bl_12 
-* OUTPUT: br_12 
-* OUTPUT: bl_13 
-* OUTPUT: br_13 
-* OUTPUT: bl_14 
-* OUTPUT: br_14 
-* OUTPUT: bl_15 
-* OUTPUT: br_15 
-* OUTPUT: bl_16 
-* OUTPUT: br_16 
-* OUTPUT: bl_17 
-* OUTPUT: br_17 
-* OUTPUT: bl_18 
-* OUTPUT: br_18 
-* OUTPUT: bl_19 
-* OUTPUT: br_19 
-* OUTPUT: bl_20 
-* OUTPUT: br_20 
-* OUTPUT: bl_21 
-* OUTPUT: br_21 
-* OUTPUT: bl_22 
-* OUTPUT: br_22 
-* OUTPUT: bl_23 
-* OUTPUT: br_23 
-* INPUT : en 
-* POWER : vdd 
-* GROUND: gnd 
-* columns: 24
-* word_size 24
-Xwrite_driver0
-+ data_0 bl_0 br_0 en vdd gnd
-+ write_driver
-Xwrite_driver1
-+ data_1 bl_1 br_1 en vdd gnd
-+ write_driver
-Xwrite_driver2
-+ data_2 bl_2 br_2 en vdd gnd
-+ write_driver
-Xwrite_driver3
-+ data_3 bl_3 br_3 en vdd gnd
-+ write_driver
-Xwrite_driver4
-+ data_4 bl_4 br_4 en vdd gnd
-+ write_driver
-Xwrite_driver5
-+ data_5 bl_5 br_5 en vdd gnd
-+ write_driver
-Xwrite_driver6
-+ data_6 bl_6 br_6 en vdd gnd
-+ write_driver
-Xwrite_driver7
-+ data_7 bl_7 br_7 en vdd gnd
-+ write_driver
-Xwrite_driver8
-+ data_8 bl_8 br_8 en vdd gnd
-+ write_driver
-Xwrite_driver9
-+ data_9 bl_9 br_9 en vdd gnd
-+ write_driver
-Xwrite_driver10
-+ data_10 bl_10 br_10 en vdd gnd
-+ write_driver
-Xwrite_driver11
-+ data_11 bl_11 br_11 en vdd gnd
-+ write_driver
-Xwrite_driver12
-+ data_12 bl_12 br_12 en vdd gnd
-+ write_driver
-Xwrite_driver13
-+ data_13 bl_13 br_13 en vdd gnd
-+ write_driver
-Xwrite_driver14
-+ data_14 bl_14 br_14 en vdd gnd
-+ write_driver
-Xwrite_driver15
-+ data_15 bl_15 br_15 en vdd gnd
-+ write_driver
-Xwrite_driver16
-+ data_16 bl_16 br_16 en vdd gnd
-+ write_driver
-Xwrite_driver17
-+ data_17 bl_17 br_17 en vdd gnd
-+ write_driver
-Xwrite_driver18
-+ data_18 bl_18 br_18 en vdd gnd
-+ write_driver
-Xwrite_driver19
-+ data_19 bl_19 br_19 en vdd gnd
-+ write_driver
-Xwrite_driver20
-+ data_20 bl_20 br_20 en vdd gnd
-+ write_driver
-Xwrite_driver21
-+ data_21 bl_21 br_21 en vdd gnd
-+ write_driver
-Xwrite_driver22
-+ data_22 bl_22 br_22 en vdd gnd
-+ write_driver
-Xwrite_driver23
-+ data_23 bl_23 br_23 en vdd gnd
-+ write_driver
-.ENDS mp3_tag_array_1_write_driver_array
-
-.SUBCKT mp3_tag_array_1_port_data
-+ rbl_bl rbl_br bl_0 br_0 bl_1 br_1 bl_2 br_2 bl_3 br_3 bl_4 br_4 bl_5
-+ br_5 bl_6 br_6 bl_7 br_7 bl_8 br_8 bl_9 br_9 bl_10 br_10 bl_11 br_11
-+ bl_12 br_12 bl_13 br_13 bl_14 br_14 bl_15 br_15 bl_16 br_16 bl_17
-+ br_17 bl_18 br_18 bl_19 br_19 bl_20 br_20 bl_21 br_21 bl_22 br_22
-+ bl_23 br_23 dout_0 dout_1 dout_2 dout_3 dout_4 dout_5 dout_6 dout_7
-+ dout_8 dout_9 dout_10 dout_11 dout_12 dout_13 dout_14 dout_15 dout_16
-+ dout_17 dout_18 dout_19 dout_20 dout_21 dout_22 dout_23 din_0 din_1
-+ din_2 din_3 din_4 din_5 din_6 din_7 din_8 din_9 din_10 din_11 din_12
-+ din_13 din_14 din_15 din_16 din_17 din_18 din_19 din_20 din_21 din_22
-+ din_23 s_en p_en_bar w_en vdd gnd
-* INOUT : rbl_bl 
-* INOUT : rbl_br 
-* INOUT : bl_0 
-* INOUT : br_0 
-* INOUT : bl_1 
-* INOUT : br_1 
-* INOUT : bl_2 
-* INOUT : br_2 
-* INOUT : bl_3 
-* INOUT : br_3 
-* INOUT : bl_4 
-* INOUT : br_4 
-* INOUT : bl_5 
-* INOUT : br_5 
-* INOUT : bl_6 
-* INOUT : br_6 
-* INOUT : bl_7 
-* INOUT : br_7 
-* INOUT : bl_8 
-* INOUT : br_8 
-* INOUT : bl_9 
-* INOUT : br_9 
-* INOUT : bl_10 
-* INOUT : br_10 
-* INOUT : bl_11 
-* INOUT : br_11 
-* INOUT : bl_12 
-* INOUT : br_12 
-* INOUT : bl_13 
-* INOUT : br_13 
-* INOUT : bl_14 
-* INOUT : br_14 
-* INOUT : bl_15 
-* INOUT : br_15 
-* INOUT : bl_16 
-* INOUT : br_16 
-* INOUT : bl_17 
-* INOUT : br_17 
-* INOUT : bl_18 
-* INOUT : br_18 
-* INOUT : bl_19 
-* INOUT : br_19 
-* INOUT : bl_20 
-* INOUT : br_20 
-* INOUT : bl_21 
-* INOUT : br_21 
-* INOUT : bl_22 
-* INOUT : br_22 
-* INOUT : bl_23 
-* INOUT : br_23 
-* OUTPUT: dout_0 
-* OUTPUT: dout_1 
-* OUTPUT: dout_2 
-* OUTPUT: dout_3 
-* OUTPUT: dout_4 
-* OUTPUT: dout_5 
-* OUTPUT: dout_6 
-* OUTPUT: dout_7 
-* OUTPUT: dout_8 
-* OUTPUT: dout_9 
-* OUTPUT: dout_10 
-* OUTPUT: dout_11 
-* OUTPUT: dout_12 
-* OUTPUT: dout_13 
-* OUTPUT: dout_14 
-* OUTPUT: dout_15 
-* OUTPUT: dout_16 
-* OUTPUT: dout_17 
-* OUTPUT: dout_18 
-* OUTPUT: dout_19 
-* OUTPUT: dout_20 
-* OUTPUT: dout_21 
-* OUTPUT: dout_22 
-* OUTPUT: dout_23 
-* INPUT : din_0 
-* INPUT : din_1 
-* INPUT : din_2 
-* INPUT : din_3 
-* INPUT : din_4 
-* INPUT : din_5 
-* INPUT : din_6 
-* INPUT : din_7 
-* INPUT : din_8 
-* INPUT : din_9 
-* INPUT : din_10 
-* INPUT : din_11 
-* INPUT : din_12 
-* INPUT : din_13 
-* INPUT : din_14 
-* INPUT : din_15 
-* INPUT : din_16 
-* INPUT : din_17 
-* INPUT : din_18 
-* INPUT : din_19 
-* INPUT : din_20 
-* INPUT : din_21 
-* INPUT : din_22 
-* INPUT : din_23 
-* INPUT : s_en 
-* INPUT : p_en_bar 
-* INPUT : w_en 
-* POWER : vdd 
-* GROUND: gnd 
-Xprecharge_array0
-+ rbl_bl rbl_br bl_0 br_0 bl_1 br_1 bl_2 br_2 bl_3 br_3 bl_4 br_4 bl_5
-+ br_5 bl_6 br_6 bl_7 br_7 bl_8 br_8 bl_9 br_9 bl_10 br_10 bl_11 br_11
-+ bl_12 br_12 bl_13 br_13 bl_14 br_14 bl_15 br_15 bl_16 br_16 bl_17
-+ br_17 bl_18 br_18 bl_19 br_19 bl_20 br_20 bl_21 br_21 bl_22 br_22
-+ bl_23 br_23 p_en_bar vdd
-+ mp3_tag_array_1_precharge_array
-Xsense_amp_array0
-+ dout_0 bl_0 br_0 dout_1 bl_1 br_1 dout_2 bl_2 br_2 dout_3 bl_3 br_3
-+ dout_4 bl_4 br_4 dout_5 bl_5 br_5 dout_6 bl_6 br_6 dout_7 bl_7 br_7
-+ dout_8 bl_8 br_8 dout_9 bl_9 br_9 dout_10 bl_10 br_10 dout_11 bl_11
-+ br_11 dout_12 bl_12 br_12 dout_13 bl_13 br_13 dout_14 bl_14 br_14
-+ dout_15 bl_15 br_15 dout_16 bl_16 br_16 dout_17 bl_17 br_17 dout_18
-+ bl_18 br_18 dout_19 bl_19 br_19 dout_20 bl_20 br_20 dout_21 bl_21
-+ br_21 dout_22 bl_22 br_22 dout_23 bl_23 br_23 s_en vdd gnd
-+ mp3_tag_array_1_sense_amp_array
-Xwrite_driver_array0
-+ din_0 din_1 din_2 din_3 din_4 din_5 din_6 din_7 din_8 din_9 din_10
-+ din_11 din_12 din_13 din_14 din_15 din_16 din_17 din_18 din_19 din_20
-+ din_21 din_22 din_23 bl_0 br_0 bl_1 br_1 bl_2 br_2 bl_3 br_3 bl_4 br_4
-+ bl_5 br_5 bl_6 br_6 bl_7 br_7 bl_8 br_8 bl_9 br_9 bl_10 br_10 bl_11
-+ br_11 bl_12 br_12 bl_13 br_13 bl_14 br_14 bl_15 br_15 bl_16 br_16
-+ bl_17 br_17 bl_18 br_18 bl_19 br_19 bl_20 br_20 bl_21 br_21 bl_22
-+ br_22 bl_23 br_23 w_en vdd gnd
-+ mp3_tag_array_1_write_driver_array
-.ENDS mp3_tag_array_1_port_data
 
 .SUBCKT mp3_tag_array_1_bank
 + dout0_0 dout0_1 dout0_2 dout0_3 dout0_4 dout0_5 dout0_6 dout0_7
