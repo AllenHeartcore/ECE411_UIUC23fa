@@ -33,7 +33,7 @@ import rv32i_types::*;
     local_branch_predictor local_branch_predictor (.clk, .rst,
         .update_branch_pc   (update_pc),                     // from pc value of EX stage
         .predict_branch_pc  (predict_pc),                     // predictd pc value of IF stage
-        .valid              (valid),                     // branch, jar, jalr of EX stage
+        .valid              (branch_valid),                     // branch, jar, jalr of EX stage
         .actual_branch_taken(branch_taken),                     // branch, jar, jalr of EX stage
         .prediction         (prediction)                      // signal that predict whether we should take branch for the pc value of IF stage
     );
@@ -41,7 +41,7 @@ import rv32i_types::*;
     // global_branch_predictor global_branch_predictor (
     //     .clk                (clk),
     //     .rst                (rst),
-    //     .valid              (valid),
+    //     .valid              (branch_valid),
     //     .actual_branch_taken(branch_taken),
     //     .prediction         (prediction)
     // );

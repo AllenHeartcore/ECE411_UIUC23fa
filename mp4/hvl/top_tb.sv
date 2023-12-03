@@ -13,7 +13,7 @@ module top_tb;
 
     bit rst;
 
-`define USE_TIMEOUT
+// `define USE_TIMEOUT
     int timeout = 1000000; // in cycles, change according to your needs
 
     import cache_params_pkg::*;
