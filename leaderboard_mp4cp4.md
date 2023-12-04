@@ -1,4 +1,4 @@
-# AG Leaderboard MP4CP4 2023-12-04T08:23:14-06:00
+# AG Leaderboard MP4CP4 2023-12-04T09:05:48-06:00
 
 ## PD<sup>2</sup>
 |Team|IPC|f<sub>Max</sub>(MHz)|Power(mW)|Delay(ns)|PD<sup>2</sup>|
