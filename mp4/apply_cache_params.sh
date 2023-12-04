@@ -1,7 +1,7 @@
 #!/bin/bash
 
 NSET1=4
-NWAY1=2
+NWAY1=1
 NSET2=5
 NWAY2=1
 WORDSIZE=8
