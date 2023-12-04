@@ -1,6 +1,4 @@
 # AG Leaderboard MP4CP4 2023-12-04T01:31:49-06:00
-Run started at 2023-12-04T01:31:49-06:00, finished at 2023-12-04T04:12:21-06:00
-
 
 ## PD<sup>2</sup>
 |Team|IPC|f<sub>Max</sub>(MHz)|Power(mW)|Delay(ns)|PD<sup>2</sup>|
