@@ -1,0 +1,64 @@
+|==============================================================================|
+|=========                      OpenRAM v1.2.35                       =========|
+|=========                                                            =========|
+|=========               VLSI Design and Automation Lab               =========|
+|=========        Computer Science and Engineering Department         =========|
+|=========            University of California Santa Cruz             =========|
+|=========                                                            =========|
+|=========          Usage help: openram-user-group@ucsc.edu           =========|
+|=========        Development help: openram-dev-group@ucsc.edu        =========|
+|=========                See LICENSE for license info                =========|
+|==============================================================================|
+** Start: 12/03/2023 20:40:30
+Technology: freepdk45
+Total size: 368 bits
+Word size: 23
+Words: 16
+Banks: 1
+RW ports: 1
+R-only ports: 0
+W-only ports: 0
+Design supply routing skipped. Supplies will have multiple must-connect pins. (route_supplies=True to enable supply routing).
+DRC/LVS/PEX is only run on the top-level design to save run-time (inline_lvsdrc=True to do inline checking).
+DRC/LVS/PEX is disabled (check_lvsdrc=True to enable).
+Characterization is disabled (using analytical delay models) (analytical_delay=False to simulate).
+Only generating nominal corner timing.
+Words per row: None
+Output files are: 
+/home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array/mp3_tag_array.lvs
+/home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array/mp3_tag_array.sp
+/home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array/mp3_tag_array.v
+/home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array/mp3_tag_array.lib
+/home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array/mp3_tag_array.py
+/home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array/mp3_tag_array.html
+/home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array/mp3_tag_array.log
+/home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array/mp3_tag_array.lef
+/home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array/mp3_tag_array.gds
+** Submodules: 1.4 seconds
+** Placement: 0.0 seconds
+** Routing: 9.4 seconds
+** Verification: 0.0 seconds
+** SRAM creation: 10.8 seconds
+SP: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array/mp3_tag_array.sp
+** Spice writing: 0.1 seconds
+DELAY: Writing stimulus...
+** DELAY: 0.1 seconds
+GDS: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array/mp3_tag_array.gds
+** GDS: 0.1 seconds
+LEF: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array/mp3_tag_array.lef
+** LEF: 0.0 seconds
+LVS: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array/mp3_tag_array.lvs.sp
+** LVS writing: 0.0 seconds
+LIB: Characterizing... 
+WARNING: file lib.py: line 778: Failed to retrieve git id
+
+** Characterization: 1.0 seconds
+Config: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array/mp3_tag_array.py
+** Config: 0.0 seconds
+Datasheet: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array/mp3_tag_array.html
+** Datasheet: 0.0 seconds
+Verilog: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array/mp3_tag_array.v
+** Verilog: 0.0 seconds
+Extended Config: Writing to /home/haor2/ece411/fa23_ece411_CRC/mp4/sram/output/mp3_tag_array/mp3_tag_array_extended.py
+** Extended Config: 0.0 seconds
+** End: 12.4 seconds
