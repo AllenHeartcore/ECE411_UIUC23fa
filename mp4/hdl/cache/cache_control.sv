@@ -13,8 +13,7 @@ import cache_types::*;
     output  logic mem_resp, pmem_read, pmem_write,
 
     input   logic SIGHIT, SIGDIRTY,
-    output  logic LD_VALID, LD_DIRTY, LD_TAG, LD_DATA, LD_PLRU, DIRTYVAL,
-    output  cache_types::waymux_t DIRTYWMUX, DATAWMUX,
+    output  logic LD_VALID, LD_DIRTY, LD_TAG, LD_DATA, DIRTYVAL,
     output  cache_types::datamux_t DATAMUX,
     output  cache_types::pmadmux_t PMADMUX
 );
@@ -28,10 +27,7 @@ import cache_types::*;
         LD_DIRTY = 1'b0;
         LD_TAG = 1'b0;
         LD_DATA = 1'b0;
-        LD_PLRU = 1'b0;
         DIRTYVAL = 1'b0;
-        DIRTYWMUX = W_HIT;
-        DATAWMUX = W_HIT;
         DATAMUX = D_CPU;
         PMADMUX = P_CPU;
         _perf_sigMiss = 1'b0;
@@ -43,24 +39,18 @@ import cache_types::*;
         LD_VALID = 1'b1;
     endfunction
 
-    function void loadDirty(cache_types::waymux_t dirtywmux, logic dirtyval);
+    function void loadDirty(logic dirtyval);
         LD_DIRTY = 1'b1;
         DIRTYVAL = dirtyval;
-        DIRTYWMUX = dirtywmux;
     endfunction
 
     function void loadTag();
         LD_TAG = 1'b1;
     endfunction
 
-    function void loadData(cache_types::waymux_t datawmux, cache_types::datamux_t datamux);
+    function void loadData(cache_types::datamux_t datamux);
         LD_DATA = 1'b1;
-        DATAWMUX = datawmux;
         DATAMUX = datamux;
-    endfunction
-
-    function void loadPLRU();
-        LD_PLRU = 1'b1;
     endfunction
 
     function void setPMemAddrMUX(cache_types::pmadmux_t pmadmux);
@@ -92,10 +82,9 @@ import cache_types::*;
             CMP: begin
                 if (SIGHIT) begin
                     if (mem_write) begin
-                        loadData(W_HIT, D_CPU);
-                        loadDirty(W_HIT, 1'b1);
+                        loadData(D_CPU);
+                        loadDirty(1'b1);
                     end
-                    loadPLRU();
                     mem_resp = 1'b1;
                     next_state = IDLE;
                     _perf_sigEnd = 1'b1;
@@ -119,8 +108,8 @@ import cache_types::*;
             LOAD: begin
                 loadTag();
                 loadValid();
-                loadData(W_LRU, D_LLC);
-                loadDirty(W_LRU, 1'b0);
+                loadData(D_LLC);
+                loadDirty(1'b0);
                 setPMemAddrMUX(P_CPU);
                 pmem_read = 1'b1;
                 if (pmem_resp)

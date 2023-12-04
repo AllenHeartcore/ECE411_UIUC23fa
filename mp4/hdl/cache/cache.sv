@@ -2,7 +2,6 @@ module cache #(
             parameter       s_word   = 256,
             parameter       s_mask   = s_word / 8,
             parameter       s_index  = 4,   // log2 of #sets
-            parameter       s_wayidx = 2,   // log2 of #ways
             parameter       level    = 1
 )(
     input                   clk,
@@ -30,8 +29,7 @@ module cache #(
 
 
     logic SIGHIT, SIGDIRTY;
-    logic LD_VALID, LD_DIRTY, LD_TAG, LD_DATA, LD_PLRU, DIRTYVAL;
-    cache_types::waymux_t DIRTYWMUX, DATAWMUX;
+    logic LD_VALID, LD_DIRTY, LD_TAG, LD_DATA, DIRTYVAL;
     cache_types::datamux_t DATAMUX;
     cache_types::pmadmux_t PMADMUX;
 
@@ -44,7 +42,6 @@ module cache #(
     cache_datapath #(
         .s_word(s_word),
         .s_index(s_index),
-        .s_wayidx(s_wayidx),
         .level(level)
     ) datapath(.*);
     CacheCounter perf_counter(.*);
