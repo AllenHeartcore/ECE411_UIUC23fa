@@ -247,10 +247,10 @@ Table 1: MP4 point breakdown. Points for each item are enclosed in brackets. Poi
 .. _Table 1:
 
 +-------------+-----------------------------------------+-----------------------------------------------------+
-|             | Implementation [65]                     | Documentation [55]                                  |
+|             | Implementation [80]                     | Documentation [40]                                  |
 +=============+=========================================+=====================================================+
-| CP 0 [6]    |                                         | - TA Meeting [1]                                    |
-|             |                                         | - Design [5]                                        |
+| CP 0 [5]    |                                         | - TA Meeting [1]                                    |
+|             |                                         | - Design [4]                                        |
 +-------------+-----------------------------------------+-----------------------------------------------------+
 | CP 1 [5]    |                                         | - TA Meeting [1]                                    |
 |             |                                         | - Progress report [2]                               |
@@ -260,12 +260,12 @@ Table 1: MP4 point breakdown. Points for each item are enclosed in brackets. Poi
 |             |                                         | - Progress report [2]                               |
 |             |                                         | - Roadmap [2]                                       |
 +-------------+-----------------------------------------+-----------------------------------------------------+
-| CP 3 [69]   | - CoreMark Runs Correctly [50]          | - TA Meeting [1]                                    |
-|             | - Synthesizes [10]                      | - Progress report [2]                               |
-|             |                                         | - Advanced Features Proposals + Design [6]          |
+| CP 3 [75]   | - CoreMark Runs Correctly [50]          | - TA Meeting [1]                                    |
+|             | - Synthesizes [20]                      | - Progress report [2]                               |
+|             |                                         | - Roadmap [2]                                       |
 +-------------+-----------------------------------------+-----------------------------------------------------+
-| CP 4 [35]   | - Design competition [5+X]              | - Presentation [10]                                 |
-|             |                                         | - Report [20]                                       |
+| CP 4 [35+X] | - Design competition [10]               | - Presentation [10]                                 |
+|             | - Additional Advanced Features [X]      | - Report [10]                                       |
 +-------------+-----------------------------------------+-----------------------------------------------------+
 Table 1: MP4 point breakdown. Points for each item are enclosed in brackets..
 
