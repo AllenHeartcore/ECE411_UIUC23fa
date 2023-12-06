@@ -264,7 +264,7 @@ Table 1: MP4 point breakdown. Points for each item are enclosed in brackets. Poi
 |             | - Synthesizes [20]                      | - Progress report [2]                               |
 |             |                                         | - Roadmap [2]                                       |
 +-------------+-----------------------------------------+-----------------------------------------------------+
-| CP 4 [35+X] | - Design competition [10]               | - Presentation [10]                                 |
+| CP 4 [30+X] | - Design competition [10]               | - Presentation [10]                                 |
 |             | - Additional Advanced Features [X]      | - Report [10]                                       |
 +-------------+-----------------------------------------+-----------------------------------------------------+
 Table 1: MP4 point breakdown. Points for each item are enclosed in brackets..
