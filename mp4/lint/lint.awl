@@ -1,0 +1,2 @@
+waive -rule {{NoAssignX-ML}}     -comment {RHS of a assignment contains 'X}
+waive -rule {{STARC05-2.11.3.1}} -comment {FSM must be split into always_ff and always_comb} 

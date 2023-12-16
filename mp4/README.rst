@@ -215,7 +215,7 @@ Checkpoint 3: Advanced Design Options
 
 Note: While the features in CP3 are important for your final design, correctness is infinitely more
 important than performance. In general, you should not move on to CP3 until your code works
-completely on all of the provided test codes. Coremark is required to execute correctly before you
+completely on all of the provided test codes. CoreMark is required to execute correctly before you
 start CP3 to receive any further credit. See the `Grading`_ section for further details on grading
 and consult your mentor TA if you become concerned about your progress.
 
@@ -303,7 +303,7 @@ design options you wish to pursue. Note that the ``+N`` points are extra credit.
 |             | - Arbiter [3]                           | - Progress report [2]                               |
 |             | - Hazard detection & forwarding [8]     | - Roadmap [2]                                       |
 |             | - Static branch predictor [1]           | - Advanced features proposal and designs [5]        |
-|             | - Coremark runs [+3]                    |                                                     |
+|             | - CoreMark runs [+3]                    |                                                     |
 +-------------+-----------------------------------------+-----------------------------------------------------+
 | CP 3 [25+X] | - Advanced design options [20+X]        | - TA Meeting [1]                                    |
 |             |                                         | - Progress report [2]                               |
@@ -352,10 +352,7 @@ to include on your progress report and roadmap.
 Advanced Features
 -----------------
 
-Of the 60 implementation points, 28 will come from the implementation of the basic pipeline and
-memory hierarchy. Up to 20 points will be given for the implementation of advanced design options.
-Up to 12 points will come from your group's performance in the design contest. To receive any points
-for the advanced design features, you must have numerical data which shows a change to your design's
+To receive points for the advanced design features, you must have numerical data which shows a change to your design's
 performance as compared to not having implemented the feature. The best way to provide this data is
 using performance counters. For each advanced design option, points will be awarded
 based on the three criteria below:
@@ -377,7 +374,29 @@ A list of advanced design options along with their point values are provided in 
 Design Competition
 ------------------
 
-TBD.
+The design competition will be scored on two metrics using the provided benchmark, CoreMark.
+The first metric is ``PD²`` and the second metric is ``PD³``, where ``P`` is power and ``D`` is delay.
+Minimizing both power and delay is key.
+
+Delay is the simulated time it takes to finish the benchmark. For CoreMark, the start and end time is marked
+by a special instruction and the time will be printed during simulation.
+
+Power is reported by Design Compiler using the activity factor from VCS after
+running the competition code. To get the power, first run the simulation, then goto the ``synth``
+folder and run ``make power``, then check "total power" in ``synth/report/power.rpt``.
+
+For both power and delay, you should put your Fmax in ``synth/clock_period.txt`` (in picoseconds). For best results,
+this should be the smallest possible number that will still meet timing. To check if you pass timing,
+check that "slack" in ``synth/report/timing.rpt`` is "MET".
+
+There is also an area limit of 75000 micrometers squared. See "Total cell area" in ``synth/report/area.rpt`` 
+
+You will be scored on both metrics and the higher of the two scores will be taken.
+For each metric, the score is the linear fit from the TA base reference design and the best design in the class,
+where the TA base reference design is 0 points and and the best design is full points.
+
+Your design must finish the benchmark code without errors and pass synthesis in order to participate in the
+competition. Without these conditions being met, you will receive no points on the design competition.
 
 Group Evaluations
 -----------------
@@ -397,7 +416,53 @@ responses on the group evaluation should not come as a surprise to anyone.
 Advanced Design Options
 =======================
 
-TBD.
+The following sections describe some common advanced design options. Each design option is assigned
+a point value (listed in brackets). Also note that based on
+design effort, your mentor TA can decide to take off or add points to a design option. To obtain
+full points for a design option, you must satisfy all the requirements given in the
+`Advanced Features`_ grading section. If you would like to add a feature to this list, you may work
+with your mentor TA to assign it a point value.
+
+- Cache organization and design options
+
+  - Multi level cache system [2] (Additional points up to TA discretion)
+  - Fully parameterized cache [6]
+
+- Advanced cache options
+
+  - Eviction write buffer with write merging [4]
+  - Victim cache [4]
+  - Pipelined L1 caches [8]
+  - Non-blocking L1 cache [8]
+  - Banked L1 or L2 cache [3]
+
+- Branch prediction options: note that multiple types of branch
+  predictors will receive decreasing credit in the following geometric
+  sequence: 80%, 40%, 20%, and so on. For instance, if you implement
+  both LTAGE and perceptron branch predictors, you will receive
+  8 + 0.8*7 = 13.6 points instead of 15.
+
+  - Local branch history table [2]
+  - Global 2-level branch history table [3]
+  - LTAGE branch predictor [8]
+  - Perceptron branch predictor [7]
+  - Software branch predictor model [2]
+  - Tournament branch predictor [2]
+  - Alternative branch predictor [points up to TA discretion]
+  - Branch target buffer, support for jumps [4]
+  - 4-way set associative or higher BTB [3]
+  - Return address stack [2]
+
+- Prefetch design options
+
+  - Basic hardware prefetching [4]
+  - Stride/advanced hardware prefetching [6]
+
+- RISC-V extensions
+
+  - RISC-V M Extension: A basic multiplier and divider design is worth
+    [2] each while an advanced multiplier and divider is worth [5] each.
+  - RISC-V C Extension [8]
 
 
 Advice from Past Students
@@ -443,7 +508,7 @@ Advice from Past Students
   - "Implement forwarding from the start, half of our bugs were in this. Take the paper design
     seriously, we eliminated a lot of bugs before we started."
   - "Integration is by far the most difficult part of this MP. Just because components work on their
-    own does not mean they will work together.''
+    own does not mean they will work together."
   - "The hard part about mp3 is 1) integrating components of your design together and 2) edge cases.
     Really try to think of all edge cases/bugs before you starting coding. Also, be patient when
     debugging."
